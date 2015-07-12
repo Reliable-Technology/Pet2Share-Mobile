@@ -1,0 +1,782 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CEF556017F1729CF780C00B2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D685707DD3766C3EB6E23122 /* libPods.a */; };
+		FB484A361B4FD0AA0045A6EA /* LandingPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A351B4FD0AA0045A6EA /* LandingPageVC.m */; };
+		FB484A391B4FD0DB0045A6EA /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A381B4FD0DB0045A6EA /* NSString+URLEncoding.m */; };
+		FB484A3F1B4FD12F0045A6EA /* Graphics.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A3E1B4FD12F0045A6EA /* Graphics.m */; };
+		FB484A421B4FD3E60045A6EA /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A411B4FD3E60045A6EA /* Constants.m */; };
+		FB484A431B4FD3E60045A6EA /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A411B4FD3E60045A6EA /* Constants.m */; };
+		FB484A4D1B4FD40A0045A6EA /* OrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A461B4FD40A0045A6EA /* OrderedDictionary.m */; };
+		FB484A4E1B4FD40A0045A6EA /* OrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A461B4FD40A0045A6EA /* OrderedDictionary.m */; };
+		FB484A4F1B4FD40A0045A6EA /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A481B4FD40A0045A6EA /* Reachability.m */; };
+		FB484A501B4FD40A0045A6EA /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A481B4FD40A0045A6EA /* Reachability.m */; };
+		FB484A511B4FD40A0045A6EA /* UIDevice+Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A4A1B4FD40A0045A6EA /* UIDevice+Hardware.m */; };
+		FB484A521B4FD40A0045A6EA /* UIDevice+Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A4A1B4FD40A0045A6EA /* UIDevice+Hardware.m */; };
+		FB484A531B4FD40A0045A6EA /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A4C1B4FD40A0045A6EA /* Utils.m */; };
+		FB484A541B4FD40A0045A6EA /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A4C1B4FD40A0045A6EA /* Utils.m */; };
+		FB484A581B50BE370045A6EA /* AppColor.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A571B50BE370045A6EA /* AppColor.m */; };
+		FB484A5B1B50BE410045A6EA /* AppColorScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A5A1B50BE410045A6EA /* AppColorScheme.m */; };
+		FB484A5E1B50BE4E0045A6EA /* ThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A5D1B50BE4E0045A6EA /* ThemeManager.m */; };
+		FB484A621B50BE910045A6EA /* RoundCornerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A611B50BE910045A6EA /* RoundCornerButton.m */; };
+		FB484A721B50C5FB0045A6EA /* LobsterTwo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A6D1B50C5FB0045A6EA /* LobsterTwo-Bold.otf */; };
+		FB484A731B50C5FB0045A6EA /* LobsterTwo-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A6E1B50C5FB0045A6EA /* LobsterTwo-BoldItalic.otf */; };
+		FB484A741B50C5FB0045A6EA /* LobsterTwo-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A6F1B50C5FB0045A6EA /* LobsterTwo-Italic.otf */; };
+		FB484A751B50C5FB0045A6EA /* LobsterTwo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A701B50C5FB0045A6EA /* LobsterTwo-Regular.otf */; };
+		FB484A761B50C5FB0045A6EA /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = FB484A711B50C5FB0045A6EA /* SIL Open Font License.txt */; };
+		FB484A8B1B50C6130045A6EA /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A781B50C6130045A6EA /* Lato-Black.ttf */; };
+		FB484A8C1B50C6130045A6EA /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A791B50C6130045A6EA /* Lato-BlackItalic.ttf */; };
+		FB484A8D1B50C6130045A6EA /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A7A1B50C6130045A6EA /* Lato-Bold.ttf */; };
+		FB484A8E1B50C6130045A6EA /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A7B1B50C6130045A6EA /* Lato-BoldItalic.ttf */; };
+		FB484A8F1B50C6130045A6EA /* Lato-Hairline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A7C1B50C6130045A6EA /* Lato-Hairline.ttf */; };
+		FB484A901B50C6130045A6EA /* Lato-HairlineItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A7D1B50C6130045A6EA /* Lato-HairlineItalic.ttf */; };
+		FB484A911B50C6130045A6EA /* Lato-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A7E1B50C6130045A6EA /* Lato-Heavy.ttf */; };
+		FB484A921B50C6130045A6EA /* Lato-HeavyItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A7F1B50C6130045A6EA /* Lato-HeavyItalic.ttf */; };
+		FB484A931B50C6130045A6EA /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A801B50C6130045A6EA /* Lato-Italic.ttf */; };
+		FB484A941B50C6130045A6EA /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A811B50C6130045A6EA /* Lato-Light.ttf */; };
+		FB484A951B50C6130045A6EA /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A821B50C6130045A6EA /* Lato-LightItalic.ttf */; };
+		FB484A961B50C6130045A6EA /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A831B50C6130045A6EA /* Lato-Medium.ttf */; };
+		FB484A971B50C6130045A6EA /* Lato-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A841B50C6130045A6EA /* Lato-MediumItalic.ttf */; };
+		FB484A981B50C6130045A6EA /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A851B50C6130045A6EA /* Lato-Regular.ttf */; };
+		FB484A991B50C6130045A6EA /* Lato-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A861B50C6130045A6EA /* Lato-Semibold.ttf */; };
+		FB484A9A1B50C6130045A6EA /* Lato-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A871B50C6130045A6EA /* Lato-SemiboldItalic.ttf */; };
+		FB484A9B1B50C6130045A6EA /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A881B50C6130045A6EA /* Lato-Thin.ttf */; };
+		FB484A9C1B50C6130045A6EA /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A891B50C6130045A6EA /* Lato-ThinItalic.ttf */; };
+		FB484A9D1B50C6130045A6EA /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = FB484A8A1B50C6130045A6EA /* SIL Open Font License.txt */; };
+		FBCEA4321B4CC3E000497678 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCEA4311B4CC3E000497678 /* main.m */; };
+		FBCEA4351B4CC3E000497678 /* Pet2ShareDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCEA4341B4CC3E000497678 /* Pet2ShareDelegate.m */; };
+		FBCEA43B1B4CC3E000497678 /* Pet2Share.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBCEA4391B4CC3E000497678 /* Pet2Share.storyboard */; };
+		FBCEA43D1B4CC3E000497678 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBCEA43C1B4CC3E000497678 /* Images.xcassets */; };
+		FBCEA4401B4CC3E000497678 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBCEA43E1B4CC3E000497678 /* LaunchScreen.xib */; };
+		FBCEA45B1B4CC86200497678 /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCEA4581B4CC86200497678 /* HttpClient.m */; };
+		FBCEA45E1B4CC99A00497678 /* testHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCEA45D1B4CC99A00497678 /* testHttpClient.m */; };
+		FBD3938A1B50D9B7000ED817 /* IntroPageContentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD393881B50D9B7000ED817 /* IntroPageContentVC.m */; };
+		FBD3938B1B50D9B7000ED817 /* IntroPageContentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBD393891B50D9B7000ED817 /* IntroPageContentVC.xib */; };
+		FBD3938F1B50D9DB000ED817 /* BaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD3938E1B50D9DB000ED817 /* BaseVC.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FBCEA4461B4CC3E000497678 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FBCEA4241B4CC3E000497678 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FBCEA42B1B4CC3E000497678;
+			remoteInfo = pet2share;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2D8E6D407B06EEEE9C8600F7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D685707DD3766C3EB6E23122 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E39AC5D91F18CB45AD8327A2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		FB484A341B4FD0AA0045A6EA /* LandingPageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingPageVC.h; sourceTree = "<group>"; };
+		FB484A351B4FD0AA0045A6EA /* LandingPageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingPageVC.m; sourceTree = "<group>"; };
+		FB484A371B4FD0DB0045A6EA /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		FB484A381B4FD0DB0045A6EA /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
+		FB484A3D1B4FD12F0045A6EA /* Graphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Graphics.h; sourceTree = "<group>"; };
+		FB484A3E1B4FD12F0045A6EA /* Graphics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Graphics.m; sourceTree = "<group>"; };
+		FB484A401B4FD3E60045A6EA /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		FB484A411B4FD3E60045A6EA /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		FB484A441B4FD40A0045A6EA /* Logger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logger.h; sourceTree = "<group>"; };
+		FB484A451B4FD40A0045A6EA /* OrderedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderedDictionary.h; sourceTree = "<group>"; };
+		FB484A461B4FD40A0045A6EA /* OrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderedDictionary.m; sourceTree = "<group>"; };
+		FB484A471B4FD40A0045A6EA /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		FB484A481B4FD40A0045A6EA /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		FB484A491B4FD40A0045A6EA /* UIDevice+Hardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Hardware.h"; sourceTree = "<group>"; };
+		FB484A4A1B4FD40A0045A6EA /* UIDevice+Hardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Hardware.m"; sourceTree = "<group>"; };
+		FB484A4B1B4FD40A0045A6EA /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		FB484A4C1B4FD40A0045A6EA /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		FB484A561B50BE370045A6EA /* AppColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppColor.h; sourceTree = "<group>"; };
+		FB484A571B50BE370045A6EA /* AppColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppColor.m; sourceTree = "<group>"; };
+		FB484A591B50BE410045A6EA /* AppColorScheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppColorScheme.h; sourceTree = "<group>"; };
+		FB484A5A1B50BE410045A6EA /* AppColorScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppColorScheme.m; sourceTree = "<group>"; };
+		FB484A5C1B50BE4E0045A6EA /* ThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeManager.h; sourceTree = "<group>"; };
+		FB484A5D1B50BE4E0045A6EA /* ThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeManager.m; sourceTree = "<group>"; };
+		FB484A601B50BE910045A6EA /* RoundCornerButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundCornerButton.h; sourceTree = "<group>"; };
+		FB484A611B50BE910045A6EA /* RoundCornerButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundCornerButton.m; sourceTree = "<group>"; };
+		FB484A6D1B50C5FB0045A6EA /* LobsterTwo-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LobsterTwo-Bold.otf"; sourceTree = "<group>"; };
+		FB484A6E1B50C5FB0045A6EA /* LobsterTwo-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LobsterTwo-BoldItalic.otf"; sourceTree = "<group>"; };
+		FB484A6F1B50C5FB0045A6EA /* LobsterTwo-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LobsterTwo-Italic.otf"; sourceTree = "<group>"; };
+		FB484A701B50C5FB0045A6EA /* LobsterTwo-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LobsterTwo-Regular.otf"; sourceTree = "<group>"; };
+		FB484A711B50C5FB0045A6EA /* SIL Open Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SIL Open Font License.txt"; sourceTree = "<group>"; };
+		FB484A781B50C6130045A6EA /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
+		FB484A791B50C6130045A6EA /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
+		FB484A7A1B50C6130045A6EA /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		FB484A7B1B50C6130045A6EA /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
+		FB484A7C1B50C6130045A6EA /* Lato-Hairline.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Hairline.ttf"; sourceTree = "<group>"; };
+		FB484A7D1B50C6130045A6EA /* Lato-HairlineItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-HairlineItalic.ttf"; sourceTree = "<group>"; };
+		FB484A7E1B50C6130045A6EA /* Lato-Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Heavy.ttf"; sourceTree = "<group>"; };
+		FB484A7F1B50C6130045A6EA /* Lato-HeavyItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-HeavyItalic.ttf"; sourceTree = "<group>"; };
+		FB484A801B50C6130045A6EA /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
+		FB484A811B50C6130045A6EA /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
+		FB484A821B50C6130045A6EA /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
+		FB484A831B50C6130045A6EA /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
+		FB484A841B50C6130045A6EA /* Lato-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-MediumItalic.ttf"; sourceTree = "<group>"; };
+		FB484A851B50C6130045A6EA /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		FB484A861B50C6130045A6EA /* Lato-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Semibold.ttf"; sourceTree = "<group>"; };
+		FB484A871B50C6130045A6EA /* Lato-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		FB484A881B50C6130045A6EA /* Lato-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Thin.ttf"; sourceTree = "<group>"; };
+		FB484A891B50C6130045A6EA /* Lato-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-ThinItalic.ttf"; sourceTree = "<group>"; };
+		FB484A8A1B50C6130045A6EA /* SIL Open Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SIL Open Font License.txt"; sourceTree = "<group>"; };
+		FBCEA42C1B4CC3E000497678 /* pet2share.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pet2share.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBCEA4301B4CC3E000497678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FBCEA4311B4CC3E000497678 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FBCEA4331B4CC3E000497678 /* Pet2ShareDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pet2ShareDelegate.h; sourceTree = "<group>"; };
+		FBCEA4341B4CC3E000497678 /* Pet2ShareDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Pet2ShareDelegate.m; sourceTree = "<group>"; };
+		FBCEA43A1B4CC3E000497678 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Pet2Share.storyboard; sourceTree = "<group>"; };
+		FBCEA43C1B4CC3E000497678 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		FBCEA43F1B4CC3E000497678 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		FBCEA4451B4CC3E000497678 /* pet2shareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pet2shareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBCEA44A1B4CC3E000497678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FBCEA4551B4CC78600497678 /* Pet2Share.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pet2Share.pch; sourceTree = "<group>"; };
+		FBCEA4571B4CC86200497678 /* HttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClient.h; sourceTree = "<group>"; };
+		FBCEA4581B4CC86200497678 /* HttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpClient.m; sourceTree = "<group>"; };
+		FBCEA45D1B4CC99A00497678 /* testHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testHttpClient.m; sourceTree = "<group>"; };
+		FBD393871B50D9B7000ED817 /* IntroPageContentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroPageContentVC.h; sourceTree = "<group>"; };
+		FBD393881B50D9B7000ED817 /* IntroPageContentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroPageContentVC.m; sourceTree = "<group>"; };
+		FBD393891B50D9B7000ED817 /* IntroPageContentVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroPageContentVC.xib; sourceTree = "<group>"; };
+		FBD3938D1B50D9DB000ED817 /* BaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseVC.h; sourceTree = "<group>"; };
+		FBD3938E1B50D9DB000ED817 /* BaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseVC.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FBCEA4291B4CC3E000497678 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEF556017F1729CF780C00B2 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBCEA4421B4CC3E000497678 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		54D431F1711D93AB40F7C4C0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D685707DD3766C3EB6E23122 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		772FBE74C50F966111D070AD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2D8E6D407B06EEEE9C8600F7 /* Pods.debug.xcconfig */,
+				E39AC5D91F18CB45AD8327A2 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FB484A301B4FD0910045A6EA /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				FB484A441B4FD40A0045A6EA /* Logger.h */,
+				FB484A451B4FD40A0045A6EA /* OrderedDictionary.h */,
+				FB484A461B4FD40A0045A6EA /* OrderedDictionary.m */,
+				FB484A471B4FD40A0045A6EA /* Reachability.h */,
+				FB484A481B4FD40A0045A6EA /* Reachability.m */,
+				FB484A491B4FD40A0045A6EA /* UIDevice+Hardware.h */,
+				FB484A4A1B4FD40A0045A6EA /* UIDevice+Hardware.m */,
+				FB484A4B1B4FD40A0045A6EA /* Utils.h */,
+				FB484A4C1B4FD40A0045A6EA /* Utils.m */,
+				FB484A371B4FD0DB0045A6EA /* NSString+URLEncoding.h */,
+				FB484A381B4FD0DB0045A6EA /* NSString+URLEncoding.m */,
+				FB484A401B4FD3E60045A6EA /* Constants.h */,
+				FB484A411B4FD3E60045A6EA /* Constants.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		FB484A311B4FD0910045A6EA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FBD3938C1B50D9DB000ED817 /* Templates */,
+				FBD393861B50D9B7000ED817 /* Intro */,
+				FB484A341B4FD0AA0045A6EA /* LandingPageVC.h */,
+				FB484A351B4FD0AA0045A6EA /* LandingPageVC.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		FB484A331B4FD0910045A6EA /* UX */ = {
+			isa = PBXGroup;
+			children = (
+				FB484A5F1B50BE880045A6EA /* Views */,
+				FB484A551B50BE2A0045A6EA /* Colors */,
+				FB484A3D1B4FD12F0045A6EA /* Graphics.h */,
+				FB484A3E1B4FD12F0045A6EA /* Graphics.m */,
+			);
+			path = UX;
+			sourceTree = "<group>";
+		};
+		FB484A551B50BE2A0045A6EA /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				FB484A561B50BE370045A6EA /* AppColor.h */,
+				FB484A571B50BE370045A6EA /* AppColor.m */,
+				FB484A591B50BE410045A6EA /* AppColorScheme.h */,
+				FB484A5A1B50BE410045A6EA /* AppColorScheme.m */,
+				FB484A5C1B50BE4E0045A6EA /* ThemeManager.h */,
+				FB484A5D1B50BE4E0045A6EA /* ThemeManager.m */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
+		FB484A5F1B50BE880045A6EA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FB484A601B50BE910045A6EA /* RoundCornerButton.h */,
+				FB484A611B50BE910045A6EA /* RoundCornerButton.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FB484A631B50C2350045A6EA /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FB484A6C1B50C5FB0045A6EA /* LobsterTwo */,
+				FB484A771B50C6130045A6EA /* Lato */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		FB484A6C1B50C5FB0045A6EA /* LobsterTwo */ = {
+			isa = PBXGroup;
+			children = (
+				FB484A6D1B50C5FB0045A6EA /* LobsterTwo-Bold.otf */,
+				FB484A6E1B50C5FB0045A6EA /* LobsterTwo-BoldItalic.otf */,
+				FB484A6F1B50C5FB0045A6EA /* LobsterTwo-Italic.otf */,
+				FB484A701B50C5FB0045A6EA /* LobsterTwo-Regular.otf */,
+				FB484A711B50C5FB0045A6EA /* SIL Open Font License.txt */,
+			);
+			path = LobsterTwo;
+			sourceTree = "<group>";
+		};
+		FB484A771B50C6130045A6EA /* Lato */ = {
+			isa = PBXGroup;
+			children = (
+				FB484A781B50C6130045A6EA /* Lato-Black.ttf */,
+				FB484A791B50C6130045A6EA /* Lato-BlackItalic.ttf */,
+				FB484A7A1B50C6130045A6EA /* Lato-Bold.ttf */,
+				FB484A7B1B50C6130045A6EA /* Lato-BoldItalic.ttf */,
+				FB484A7C1B50C6130045A6EA /* Lato-Hairline.ttf */,
+				FB484A7D1B50C6130045A6EA /* Lato-HairlineItalic.ttf */,
+				FB484A7E1B50C6130045A6EA /* Lato-Heavy.ttf */,
+				FB484A7F1B50C6130045A6EA /* Lato-HeavyItalic.ttf */,
+				FB484A801B50C6130045A6EA /* Lato-Italic.ttf */,
+				FB484A811B50C6130045A6EA /* Lato-Light.ttf */,
+				FB484A821B50C6130045A6EA /* Lato-LightItalic.ttf */,
+				FB484A831B50C6130045A6EA /* Lato-Medium.ttf */,
+				FB484A841B50C6130045A6EA /* Lato-MediumItalic.ttf */,
+				FB484A851B50C6130045A6EA /* Lato-Regular.ttf */,
+				FB484A861B50C6130045A6EA /* Lato-Semibold.ttf */,
+				FB484A871B50C6130045A6EA /* Lato-SemiboldItalic.ttf */,
+				FB484A881B50C6130045A6EA /* Lato-Thin.ttf */,
+				FB484A891B50C6130045A6EA /* Lato-ThinItalic.ttf */,
+				FB484A8A1B50C6130045A6EA /* SIL Open Font License.txt */,
+			);
+			path = Lato;
+			sourceTree = "<group>";
+		};
+		FBCEA4231B4CC3E000497678 = {
+			isa = PBXGroup;
+			children = (
+				FBCEA42E1B4CC3E000497678 /* pet2share */,
+				FBCEA4481B4CC3E000497678 /* pet2shareTests */,
+				FBCEA42D1B4CC3E000497678 /* Products */,
+				772FBE74C50F966111D070AD /* Pods */,
+				54D431F1711D93AB40F7C4C0 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		FBCEA42D1B4CC3E000497678 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FBCEA42C1B4CC3E000497678 /* pet2share.app */,
+				FBCEA4451B4CC3E000497678 /* pet2shareTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FBCEA42E1B4CC3E000497678 /* pet2share */ = {
+			isa = PBXGroup;
+			children = (
+				FB484A301B4FD0910045A6EA /* Common */,
+				FB484A311B4FD0910045A6EA /* Controllers */,
+				FB484A331B4FD0910045A6EA /* UX */,
+				FBCEA4561B4CC86200497678 /* Frameworks */,
+				FBCEA4391B4CC3E000497678 /* Pet2Share.storyboard */,
+				FBCEA43E1B4CC3E000497678 /* LaunchScreen.xib */,
+				FBCEA43C1B4CC3E000497678 /* Images.xcassets */,
+				FBCEA42F1B4CC3E000497678 /* Supporting Files */,
+			);
+			path = pet2share;
+			sourceTree = "<group>";
+		};
+		FBCEA42F1B4CC3E000497678 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FB484A631B50C2350045A6EA /* Fonts */,
+				FBCEA4551B4CC78600497678 /* Pet2Share.pch */,
+				FBCEA4331B4CC3E000497678 /* Pet2ShareDelegate.h */,
+				FBCEA4341B4CC3E000497678 /* Pet2ShareDelegate.m */,
+				FBCEA4301B4CC3E000497678 /* Info.plist */,
+				FBCEA4311B4CC3E000497678 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FBCEA4481B4CC3E000497678 /* pet2shareTests */ = {
+			isa = PBXGroup;
+			children = (
+				FBCEA45D1B4CC99A00497678 /* testHttpClient.m */,
+				FBCEA4491B4CC3E000497678 /* Supporting Files */,
+			);
+			path = pet2shareTests;
+			sourceTree = "<group>";
+		};
+		FBCEA4491B4CC3E000497678 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FBCEA44A1B4CC3E000497678 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FBCEA4561B4CC86200497678 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FBCEA4571B4CC86200497678 /* HttpClient.h */,
+				FBCEA4581B4CC86200497678 /* HttpClient.m */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		FBD393861B50D9B7000ED817 /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				FBD393871B50D9B7000ED817 /* IntroPageContentVC.h */,
+				FBD393881B50D9B7000ED817 /* IntroPageContentVC.m */,
+				FBD393891B50D9B7000ED817 /* IntroPageContentVC.xib */,
+			);
+			path = Intro;
+			sourceTree = "<group>";
+		};
+		FBD3938C1B50D9DB000ED817 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				FBD3938D1B50D9DB000ED817 /* BaseVC.h */,
+				FBD3938E1B50D9DB000ED817 /* BaseVC.m */,
+			);
+			path = Templates;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FBCEA42B1B4CC3E000497678 /* pet2share */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FBCEA44F1B4CC3E000497678 /* Build configuration list for PBXNativeTarget "pet2share" */;
+			buildPhases = (
+				683B1AE128CC115D7E9F2BE4 /* Check Pods Manifest.lock */,
+				FBCEA4281B4CC3E000497678 /* Sources */,
+				FBCEA4291B4CC3E000497678 /* Frameworks */,
+				FBCEA42A1B4CC3E000497678 /* Resources */,
+				C8A63182D90E860E4A1FE581 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = pet2share;
+			productName = pet2share;
+			productReference = FBCEA42C1B4CC3E000497678 /* pet2share.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FBCEA4441B4CC3E000497678 /* pet2shareTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FBCEA4521B4CC3E000497678 /* Build configuration list for PBXNativeTarget "pet2shareTests" */;
+			buildPhases = (
+				FBCEA4411B4CC3E000497678 /* Sources */,
+				FBCEA4421B4CC3E000497678 /* Frameworks */,
+				FBCEA4431B4CC3E000497678 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FBCEA4471B4CC3E000497678 /* PBXTargetDependency */,
+			);
+			name = pet2shareTests;
+			productName = pet2shareTests;
+			productReference = FBCEA4451B4CC3E000497678 /* pet2shareTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FBCEA4241B4CC3E000497678 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = "Pet 2 Share";
+				TargetAttributes = {
+					FBCEA42B1B4CC3E000497678 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					FBCEA4441B4CC3E000497678 = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = FBCEA42B1B4CC3E000497678;
+					};
+				};
+			};
+			buildConfigurationList = FBCEA4271B4CC3E000497678 /* Build configuration list for PBXProject "pet2share" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FBCEA4231B4CC3E000497678;
+			productRefGroup = FBCEA42D1B4CC3E000497678 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FBCEA42B1B4CC3E000497678 /* pet2share */,
+				FBCEA4441B4CC3E000497678 /* pet2shareTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FBCEA42A1B4CC3E000497678 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB484A921B50C6130045A6EA /* Lato-HeavyItalic.ttf in Resources */,
+				FB484A931B50C6130045A6EA /* Lato-Italic.ttf in Resources */,
+				FB484A911B50C6130045A6EA /* Lato-Heavy.ttf in Resources */,
+				FB484A941B50C6130045A6EA /* Lato-Light.ttf in Resources */,
+				FB484A8F1B50C6130045A6EA /* Lato-Hairline.ttf in Resources */,
+				FB484A9A1B50C6130045A6EA /* Lato-SemiboldItalic.ttf in Resources */,
+				FB484A961B50C6130045A6EA /* Lato-Medium.ttf in Resources */,
+				FB484A8D1B50C6130045A6EA /* Lato-Bold.ttf in Resources */,
+				FBD3938B1B50D9B7000ED817 /* IntroPageContentVC.xib in Resources */,
+				FB484A741B50C5FB0045A6EA /* LobsterTwo-Italic.otf in Resources */,
+				FB484A991B50C6130045A6EA /* Lato-Semibold.ttf in Resources */,
+				FB484A8B1B50C6130045A6EA /* Lato-Black.ttf in Resources */,
+				FB484A9C1B50C6130045A6EA /* Lato-ThinItalic.ttf in Resources */,
+				FB484A9D1B50C6130045A6EA /* SIL Open Font License.txt in Resources */,
+				FB484A901B50C6130045A6EA /* Lato-HairlineItalic.ttf in Resources */,
+				FB484A8E1B50C6130045A6EA /* Lato-BoldItalic.ttf in Resources */,
+				FB484A8C1B50C6130045A6EA /* Lato-BlackItalic.ttf in Resources */,
+				FB484A731B50C5FB0045A6EA /* LobsterTwo-BoldItalic.otf in Resources */,
+				FBCEA43B1B4CC3E000497678 /* Pet2Share.storyboard in Resources */,
+				FB484A761B50C5FB0045A6EA /* SIL Open Font License.txt in Resources */,
+				FB484A721B50C5FB0045A6EA /* LobsterTwo-Bold.otf in Resources */,
+				FB484A951B50C6130045A6EA /* Lato-LightItalic.ttf in Resources */,
+				FB484A751B50C5FB0045A6EA /* LobsterTwo-Regular.otf in Resources */,
+				FB484A971B50C6130045A6EA /* Lato-MediumItalic.ttf in Resources */,
+				FBCEA4401B4CC3E000497678 /* LaunchScreen.xib in Resources */,
+				FB484A9B1B50C6130045A6EA /* Lato-Thin.ttf in Resources */,
+				FBCEA43D1B4CC3E000497678 /* Images.xcassets in Resources */,
+				FB484A981B50C6130045A6EA /* Lato-Regular.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBCEA4431B4CC3E000497678 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		683B1AE128CC115D7E9F2BE4 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C8A63182D90E860E4A1FE581 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FBCEA4281B4CC3E000497678 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB484A391B4FD0DB0045A6EA /* NSString+URLEncoding.m in Sources */,
+				FB484A5E1B50BE4E0045A6EA /* ThemeManager.m in Sources */,
+				FB484A531B4FD40A0045A6EA /* Utils.m in Sources */,
+				FB484A621B50BE910045A6EA /* RoundCornerButton.m in Sources */,
+				FB484A4D1B4FD40A0045A6EA /* OrderedDictionary.m in Sources */,
+				FBCEA4351B4CC3E000497678 /* Pet2ShareDelegate.m in Sources */,
+				FBCEA45B1B4CC86200497678 /* HttpClient.m in Sources */,
+				FBD3938F1B50D9DB000ED817 /* BaseVC.m in Sources */,
+				FBCEA4321B4CC3E000497678 /* main.m in Sources */,
+				FB484A5B1B50BE410045A6EA /* AppColorScheme.m in Sources */,
+				FB484A511B4FD40A0045A6EA /* UIDevice+Hardware.m in Sources */,
+				FB484A3F1B4FD12F0045A6EA /* Graphics.m in Sources */,
+				FB484A421B4FD3E60045A6EA /* Constants.m in Sources */,
+				FBD3938A1B50D9B7000ED817 /* IntroPageContentVC.m in Sources */,
+				FB484A581B50BE370045A6EA /* AppColor.m in Sources */,
+				FB484A4F1B4FD40A0045A6EA /* Reachability.m in Sources */,
+				FB484A361B4FD0AA0045A6EA /* LandingPageVC.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBCEA4411B4CC3E000497678 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB484A521B4FD40A0045A6EA /* UIDevice+Hardware.m in Sources */,
+				FB484A4E1B4FD40A0045A6EA /* OrderedDictionary.m in Sources */,
+				FBCEA45E1B4CC99A00497678 /* testHttpClient.m in Sources */,
+				FB484A541B4FD40A0045A6EA /* Utils.m in Sources */,
+				FB484A501B4FD40A0045A6EA /* Reachability.m in Sources */,
+				FB484A431B4FD3E60045A6EA /* Constants.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FBCEA4471B4CC3E000497678 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FBCEA42B1B4CC3E000497678 /* pet2share */;
+			targetProxy = FBCEA4461B4CC3E000497678 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FBCEA4391B4CC3E000497678 /* Pet2Share.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FBCEA43A1B4CC3E000497678 /* Base */,
+			);
+			name = Pet2Share.storyboard;
+			sourceTree = "<group>";
+		};
+		FBCEA43E1B4CC3E000497678 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FBCEA43F1B4CC3E000497678 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FBCEA44D1B4CC3E000497678 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FBCEA44E1B4CC3E000497678 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FBCEA4501B4CC3E000497678 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D8E6D407B06EEEE9C8600F7 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Pet2Share/Pet2Share.pch";
+				INFOPLIST_FILE = pet2share/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FBCEA4511B4CC3E000497678 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E39AC5D91F18CB45AD8327A2 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Pet2Share/Pet2Share.pch";
+				INFOPLIST_FILE = pet2share/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		FBCEA4531B4CC3E000497678 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = pet2shareTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pet2share.app/pet2share";
+			};
+			name = Debug;
+		};
+		FBCEA4541B4CC3E000497678 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = pet2shareTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pet2share.app/pet2share";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FBCEA4271B4CC3E000497678 /* Build configuration list for PBXProject "pet2share" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FBCEA44D1B4CC3E000497678 /* Debug */,
+				FBCEA44E1B4CC3E000497678 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FBCEA44F1B4CC3E000497678 /* Build configuration list for PBXNativeTarget "pet2share" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FBCEA4501B4CC3E000497678 /* Debug */,
+				FBCEA4511B4CC3E000497678 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FBCEA4521B4CC3E000497678 /* Build configuration list for PBXNativeTarget "pet2shareTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FBCEA4531B4CC3E000497678 /* Debug */,
+				FBCEA4541B4CC3E000497678 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FBCEA4241B4CC3E000497678 /* Project object */;
+}

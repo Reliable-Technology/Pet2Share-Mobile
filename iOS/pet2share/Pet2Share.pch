@@ -1,0 +1,22 @@
+//
+//  Pet2Share.pch
+//  pet2share
+//
+//  Created by Tony Kieu on 7/7/15.
+//  Copyright (c) 2015 Pet 2 Share. All rights reserved.
+//
+
+#ifdef __OBJC__
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "Logger.h"
+#import "Constants.h"
+
+#endif
