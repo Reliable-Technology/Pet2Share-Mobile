@@ -39,6 +39,8 @@
 		FB1067E51B532F9700BEBC40 /* UnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067C81B532F9700BEBC40 /* UnwindSegue.swift */; };
 		FB1067E91B5341A500BEBC40 /* LoginViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067E81B5341A500BEBC40 /* LoginViewCtrl.m */; };
 		FB1067EC1B5341D600BEBC40 /* SignupViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067EB1B5341D600BEBC40 /* SignupViewCtrl.m */; };
+		FB1067F01B535B4C00BEBC40 /* LoginTableCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067EF1B535B4C00BEBC40 /* LoginTableCtrl.m */; };
+		FB1067F61B53697600BEBC40 /* DashboardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067F51B53697600BEBC40 /* DashboardVC.m */; };
 		FB484A361B4FD0AA0045A6EA /* LandingPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A351B4FD0AA0045A6EA /* LandingPageVC.m */; };
 		FB484A391B4FD0DB0045A6EA /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A381B4FD0DB0045A6EA /* NSString+URLEncoding.m */; };
 		FB484A3F1B4FD12F0045A6EA /* Graphics.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A3E1B4FD12F0045A6EA /* Graphics.m */; };
@@ -141,6 +143,11 @@
 		FB1067EA1B5341D600BEBC40 /* SignupViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewCtrl.h; sourceTree = "<group>"; };
 		FB1067EB1B5341D600BEBC40 /* SignupViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewCtrl.m; sourceTree = "<group>"; };
 		FB1067ED1B53449200BEBC40 /* BarButtonsProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BarButtonsProtocol.h; sourceTree = "<group>"; };
+		FB1067EE1B535B4C00BEBC40 /* LoginTableCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginTableCtrl.h; sourceTree = "<group>"; };
+		FB1067EF1B535B4C00BEBC40 /* LoginTableCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTableCtrl.m; sourceTree = "<group>"; };
+		FB1067F11B535F0F00BEBC40 /* FormProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormProtocol.h; sourceTree = "<group>"; };
+		FB1067F41B53697600BEBC40 /* DashboardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardVC.h; sourceTree = "<group>"; };
+		FB1067F51B53697600BEBC40 /* DashboardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardVC.m; sourceTree = "<group>"; };
 		FB484A341B4FD0AA0045A6EA /* LandingPageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingPageVC.h; sourceTree = "<group>"; };
 		FB484A351B4FD0AA0045A6EA /* LandingPageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingPageVC.m; sourceTree = "<group>"; };
 		FB484A371B4FD0DB0045A6EA /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
@@ -291,8 +298,20 @@
 				FB1067E81B5341A500BEBC40 /* LoginViewCtrl.m */,
 				FB1067EA1B5341D600BEBC40 /* SignupViewCtrl.h */,
 				FB1067EB1B5341D600BEBC40 /* SignupViewCtrl.m */,
+				FB1067EE1B535B4C00BEBC40 /* LoginTableCtrl.h */,
+				FB1067EF1B535B4C00BEBC40 /* LoginTableCtrl.m */,
+				FB1067F11B535F0F00BEBC40 /* FormProtocol.h */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		FB1067F31B53694C00BEBC40 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				FB1067F41B53697600BEBC40 /* DashboardVC.h */,
+				FB1067F51B53697600BEBC40 /* DashboardVC.m */,
+			);
+			path = Dashboard;
 			sourceTree = "<group>";
 		};
 		FB484A301B4FD0910045A6EA /* Common */ = {
@@ -320,6 +339,7 @@
 			children = (
 				FB1067E61B53412F00BEBC40 /* Auth */,
 				FBD3938C1B50D9DB000ED817 /* Templates */,
+				FB1067F31B53694C00BEBC40 /* Dashboard */,
 				FBD393861B50D9B7000ED817 /* Intro */,
 				FB484A341B4FD0AA0045A6EA /* LandingPageVC.h */,
 				FB484A351B4FD0AA0045A6EA /* LandingPageVC.m */,
@@ -696,6 +716,7 @@
 				FB1067CB1B532F9700BEBC40 /* AutoTextView.swift in Sources */,
 				FB1067C91B532F9700BEBC40 /* AsyncButton.swift in Sources */,
 				FB1067CA1B532F9700BEBC40 /* AsyncImageView.swift in Sources */,
+				FB1067F01B535B4C00BEBC40 /* LoginTableCtrl.m in Sources */,
 				FB484A581B50BE370045A6EA /* AppColor.m in Sources */,
 				FB1067D61B532F9700BEBC40 /* KeyboardLayoutConstraint.swift in Sources */,
 				FB1067E31B532F9700BEBC40 /* TransitionManager.swift in Sources */,
@@ -704,6 +725,7 @@
 				FB484A4F1B4FD40A0045A6EA /* Reachability.m in Sources */,
 				FB1067E21B532F9700BEBC40 /* SpringView.swift in Sources */,
 				FB1067CF1B532F9700BEBC40 /* DesignableLabel.swift in Sources */,
+				FB1067F61B53697600BEBC40 /* DashboardVC.m in Sources */,
 				FB484A361B4FD0AA0045A6EA /* LandingPageVC.m in Sources */,
 				FB1067DD1B532F9700BEBC40 /* SpringButton.swift in Sources */,
 				FB1067DC1B532F9700BEBC40 /* SpringAnimation.swift in Sources */,

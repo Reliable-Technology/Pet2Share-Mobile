@@ -21,4 +21,36 @@
 + (UIColor *)navigationBarSelectedMenuItemLabelColor;
 + (UIColor *)navigationBarUnselectedMenuItemLabelColor;
 
+#pragma mark - UITableView
+
++ (UIColor *)tableViewBackgroundColor;
++ (UIColor *)tableViewHeaderBackgroundColor;
++ (UIColor *)tableViewHeaderForegroundColor;
++ (UIColor *)tableViewGroupedHeaderAndFooterForegroundColor;
++ (UIColor *)tableViewGroupedHeaderAndFooterBackgroundColor;
++ (UIColor *)tableViewTintColor;
++ (UIColor *)tableViewCellBackgroundColor;
++ (UIColor *)tableViewCellDetailsColor;
++ (UIColor *)tableViewSelectedCellBackgroundColor;
++ (UIColor *)tableViewSeparatorColor;
++ (UIColor *)tableViewEmptyCellBackgroundColor;
++ (UIColor *)tableViewSectionIndexColor;
++ (UIColor *)tableViewPrimaryColumnBackgroundColor;
++ (UIColor *)tableViewSectionIndexBackgroundColor;
++ (UIColor *)tableViewSectionIndexTrackingBackgroundColor;
+
+#pragma mark - UILabel & UITextField
+
++ (UIColor *)textStyleTitleColor;
++ (UIColor *)textStyleTitleShadowColor;
++ (UIColor *)textStyleBodyColor;
++ (UIColor *)textStyleDescriptionColor;
++ (UIColor *)textStyleDisabledBodyColor;
++ (UIColor *)textStylePlaceholderColor;
++ (UIColor *)textStyleErrorColor;
++ (UIColor *)textStyleSuccessColor;
++ (UIColor *)textStyleLinkColor;
++ (UIColor *)textFieldTintColor;
++ (UIColor *)textViewBackgroundColor;
+
 @end

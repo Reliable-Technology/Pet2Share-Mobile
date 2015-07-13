@@ -7,8 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SIAlertView/SIAlertView.h>
+#import "AppColorScheme.h"
+
+typedef NS_ENUM(NSInteger, AlertType)
+{
+    NormalAlert,
+    WarningAlert,
+    ErrorAlert
+};
 
 @interface Graphics : NSObject
+
+#pragma mark - Alerts
+
++ (void)alert:(NSString *)title message:(NSString *)message type:(AlertType)type;
++ (void)promptAlert:(NSString *)title message:(NSString *)message type:(AlertType)type
+                 ok:(SIAlertViewHandler)okHandler
+             cancel:(SIAlertViewHandler)cancelHandler;
 
 #pragma mark - Color
 

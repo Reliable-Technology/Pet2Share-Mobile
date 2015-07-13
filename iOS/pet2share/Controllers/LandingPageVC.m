@@ -103,13 +103,13 @@ static CGFloat const kScrollTimer                   = 5.0f;
     {
         _introPageContent = @[ @{ kIntroPageTitleKey: @"Moments",
                                   kIntroPageSubtitleKey: @"Add some pet pictures to your designs and prototypes with placeholder pictures.",
-                                  kIntroPageBgImageNameKey: @"img-intro1.png" },
+                                  kIntroPageBgImageNameKey: @"img-intro1" },
                                @{ kIntroPageTitleKey: @"Social",
                                   kIntroPageSubtitleKey: @"A quick and simple service for getting pictures of kittens for use as placeholders in your designs or code.",
-                                  kIntroPageBgImageNameKey: @"img-intro1.png" },
+                                  kIntroPageBgImageNameKey: @"img-intro1" },
                                @{ kIntroPageTitleKey: @"Networking",
                                   kIntroPageSubtitleKey: @"Get placeholders related to the site you are developing, by pulling images from flickr based on tags.",
-                                  kIntroPageBgImageNameKey: @"img-intro1.png" } ];
+                                  kIntroPageBgImageNameKey: @"img-intro1" } ];
     }
     return _introPageContent;
 }

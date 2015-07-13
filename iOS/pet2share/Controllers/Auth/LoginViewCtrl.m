@@ -9,8 +9,16 @@
 #import "LoginViewCtrl.h"
 #import "Graphics.h"
 #import "AppColor.h"
+#import "RoundCornerButton.h"
+#import "LoginTableCtrl.h"
+#import "Utils.h"
 
-@interface LoginViewCtrl () <BarButtonsProtocol>
+@interface LoginViewCtrl () <BarButtonsProtocol, FormProtocol>
+
+@property (strong , nonatomic) LoginTableCtrl *loginTableCtrl;
+@property (strong, nonatomic) TransitionManager *transitionManager;
+
+@property (weak, nonatomic) IBOutlet RoundCornerButton *loginBtn;
 
 @end
 
@@ -25,6 +33,7 @@ static NSString * const kLeftIconImageName  = @"icon-arrowback";
     if ((self = [super initWithCoder:aDecoder]))
     {
         self.barButtonsProtocol = self;
+        _transitionManager = [TransitionManager new];
     }
     return self;
 }
@@ -36,6 +45,64 @@ static NSString * const kLeftIconImageName  = @"icon-arrowback";
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSForegroundColorAttributeName: [AppColor navigationBarTextColor],
        NSFontAttributeName:[UIFont fontWithName:kLogoTypeface size:18.0f]}];
+    
+    [self.loginBtn addTarget:self action:@selector(loginBtnTapped:)
+            forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:kSegueLoginContainer])
+    {
+        self.loginTableCtrl = segue.destinationViewController;
+        self.loginTableCtrl.formProtocol = self;
+    }
+    else if ([segue.identifier isEqualToString:kSegueDashboard])
+    {
+        UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
+        navController.transitioningDelegate = self.transitionManager;
+    }
+}
+
+#pragma mark - Private Instance Methods
+
+- (void)loginBtnTapped:(id)sender
+{
+    [self.loginTableCtrl resignAllTextFields];
+    
+    // Get email and password from textfield
+    NSString *username = [self.loginTableCtrl username];
+    NSString *password = [self.loginTableCtrl password];
+    fTRACE("User: %@, Password: %@", username, password);
+    
+    // Check to see if username is not empty
+    if (![Utils validateNotEmpty:username] || ![Utils validateNotEmpty:password])
+    {
+        [Graphics alert:NSLocalizedString(@"Error", @"")
+                message:NSLocalizedString(@"Username/password can not be empty.", @"")
+                   type:ErrorAlert];
+    }
+    else    // TODO: Implement the callback later, use test/pass134 for credential at the moment.
+    {
+#ifdef DEBUG
+        
+        if ([username isEqualToString:@"test"] && [password isEqualToString:@"pass1234"])
+        {
+            [self.loginBtn showActivityIndicator];
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 3.00 * NSEC_PER_SEC);
+            dispatch_after(popTime, dispatch_get_main_queue(), ^{
+                [self.loginBtn hideActivityIndicator];
+                [self performSegueWithIdentifier:kSegueDashboard sender:self];
+            });
+        }
+        else
+        {
+            [Graphics alert:NSLocalizedString(@"Error", @"")
+                    message:NSLocalizedString(@"Invalid username/password.", @"")
+                       type:ErrorAlert];
+        }
+#endif
+    }
 }
 
 #pragma mark - <BarButtonsDelegate>
@@ -51,6 +118,13 @@ static NSString * const kLeftIconImageName  = @"icon-arrowback";
 - (void)handleLeftButtonEvent:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - <FormProtocol>
+
+- (void)performAction
+{
+    [self loginBtnTapped:self.loginBtn];
 }
 
 @end
