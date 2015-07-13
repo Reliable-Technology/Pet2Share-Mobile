@@ -13,29 +13,52 @@
 
 @property (strong, nonatomic) UIPageViewController *introPagesCtrl;
 @property (readonly, nonatomic) NSArray *introPageContent;
+@property (strong, nonatomic) NSTimer *scrollTimer;
 
 @end
 
 @implementation LandingPageVC
+{
+    NSInteger _currPageIndex;
+}
 
 @synthesize introPageContent = _introPageContent;
 
 static NSString * const kIntroPageTitleKey          = @"intropagetitle";
 static NSString * const kIntroPageSubtitleKey       = @"intropagesubtitle";
 static NSString * const kIntroPageBgImageNameKey    = @"intropagebgimage";
+static CGFloat const kScrollTimer                   = 5.0f;
 
 #pragma mark - Life Cycle
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if ((self = [super initWithCoder:aDecoder]))
+    {
+        _currPageIndex = 0;
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     // Initialize the view with introduction images
-    IntroPageContentVC *startCtrl = [self pageContentAtIndex:0];
-    NSArray *controllers = @[startCtrl];
-    [self.introPagesCtrl setViewControllers:controllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    IntroPageContentVC *startCtrl = [self pageContentAtIndex:_currPageIndex];
+    [self.introPagesCtrl setViewControllers: @[startCtrl]
+                                  direction:UIPageViewControllerNavigationDirectionForward
+                                   animated:NO completion:nil];
+    
+    [self setPeriodicScroll:YES];
     
     // TODO: Google Analytics
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.scrollTimer invalidate];
 }
 
 - (void)dealloc
@@ -59,15 +82,15 @@ static NSString * const kIntroPageBgImageNameKey    = @"intropagebgimage";
 {
     if (!_introPageContent)
     {
-        _introPageContent = @[ @{ kIntroPageTitleKey: @"Title 1",
-                                  kIntroPageSubtitleKey: @"Subtitle 1",
-                                  kIntroPageBgImageNameKey: @"img-intro.png" },
-                               @{ kIntroPageTitleKey: @"Title 2",
-                                  kIntroPageSubtitleKey: @"Subtitle 2",
-                                  kIntroPageBgImageNameKey: @"img-intro.png" },
-                               @{ kIntroPageTitleKey: @"Title 3",
-                                  kIntroPageSubtitleKey: @"Subtitle 3",
-                                  kIntroPageBgImageNameKey: @"img-intro.png" } ];
+        _introPageContent = @[ @{ kIntroPageTitleKey: @"Moments",
+                                  kIntroPageSubtitleKey: @"Add some pet pictures to your designs and prototypes with placeholder pictures.",
+                                  kIntroPageBgImageNameKey: @"img-intro1.png" },
+                               @{ kIntroPageTitleKey: @"Social",
+                                  kIntroPageSubtitleKey: @"A quick and simple service for getting pictures of kittens for use as placeholders in your designs or code.",
+                                  kIntroPageBgImageNameKey: @"img-intro1.png" },
+                               @{ kIntroPageTitleKey: @"Networking",
+                                  kIntroPageSubtitleKey: @"Get placeholders related to the site you are developing, by pulling images from flickr based on tags.",
+                                  kIntroPageBgImageNameKey: @"img-intro1.png" } ];
     }
     return _introPageContent;
 }
@@ -80,22 +103,57 @@ static NSString * const kIntroPageBgImageNameKey    = @"intropagebgimage";
         return nil;
     }
     
-    IntroPageContentVC *pageContentCtrl;
+    IntroPageContentVC *pageCtrl;
     @try
     {
         NSDictionary *dict = [self.introPageContent objectAtIndex:index];
-        pageContentCtrl = [[IntroPageContentVC alloc] initWithTitle:dict[kIntroPageTitleKey]
-                                                           subTitle:dict[kIntroPageSubtitleKey]
-                                                        bgImageName:dict[kIntroPageBgImageNameKey]];
-        pageContentCtrl.pageIndex = index;
+        pageCtrl = [[IntroPageContentVC alloc] initWithTitle:dict[kIntroPageTitleKey]
+                                                    subTitle:dict[kIntroPageSubtitleKey]
+                                                 bgImageName:dict[kIntroPageBgImageNameKey]];
+        pageCtrl.pageIndex = index;
     }
     @catch (NSException *exception)
     {
         NSLog(@"%s - Exception: %@", __func__, [exception description]);
-        pageContentCtrl = [[IntroPageContentVC alloc] initWithTitle:kEmptyString subTitle:kEmptyString bgImageName:kEmptyString];
+        pageCtrl = [[IntroPageContentVC alloc] initWithTitle:kEmptyString subTitle:kEmptyString bgImageName:kEmptyString];
     }
 
-    return pageContentCtrl;
+    return pageCtrl;
+}
+
+- (void)setPeriodicScroll:(BOOL)on
+{
+    [self.scrollTimer invalidate];
+    self.scrollTimer = nil;
+    
+    if (on)
+    {
+        self.scrollTimer = [NSTimer scheduledTimerWithTimeInterval:kScrollTimer
+                                                            target:self
+                                                          selector:@selector(loadNextPage)
+                                                          userInfo:nil
+                                                           repeats:YES];
+    }
+}
+
+- (void)loadNextPage
+{
+    @try
+    {
+        IntroPageContentVC *currPageCtrl = [self pageContentAtIndex:++_currPageIndex];
+        if (currPageCtrl == nil)
+        {
+            _currPageIndex = 0;
+            currPageCtrl = [self pageContentAtIndex:_currPageIndex];
+        }
+        [self.introPagesCtrl setViewControllers:@[currPageCtrl]
+                                      direction:UIPageViewControllerNavigationDirectionForward
+                                       animated:YES completion:nil];
+    }
+    @catch (NSException *exception)
+    {
+        NSLog(@"%s - Exception: %@", __func__, [exception description]);
+    }
 }
 
 #pragma mark - <UIPageViewControllerDataSource>
@@ -103,6 +161,7 @@ static NSString * const kIntroPageBgImageNameKey    = @"intropagebgimage";
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
       viewControllerBeforeViewController:(UIViewController *)viewController
 {
+    [self setPeriodicScroll:NO];
     NSUInteger index = ((IntroPageContentVC *) viewController).pageIndex;
     if (index == 0 || index == NSNotFound) return nil;
     index--;
@@ -112,6 +171,7 @@ static NSString * const kIntroPageBgImageNameKey    = @"intropagebgimage";
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
        viewControllerAfterViewController:(UIViewController *)viewController
 {
+    [self setPeriodicScroll:NO];
     NSUInteger index = ((IntroPageContentVC *) viewController).pageIndex;
     if (index == NSNotFound) return nil;
     index++;
@@ -126,7 +186,7 @@ static NSString * const kIntroPageBgImageNameKey    = @"intropagebgimage";
 
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController
 {
-    return 0;
+    return _currPageIndex;
 }
 
 @end

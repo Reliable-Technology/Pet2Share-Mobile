@@ -26,20 +26,19 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet 2 Share" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9HS-pd-e91">
-                                <rect key="frame" x="20" y="60" width="560" height="56"/>
+                                <rect key="frame" x="20" y="60" width="560" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="PKE-3Z-UTN"/>
+                                    <constraint firstAttribute="height" constant="60" id="PKE-3Z-UTN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="LobsterTwo" family="Lobster Two" pointSize="40"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sgD-gi-luI">
-                                <rect key="frame" x="150" y="150" width="300" height="300"/>
+                                <rect key="frame" x="0.0" y="140" width="600" height="354"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="Atx-NP-utt"/>
-                                    <constraint firstAttribute="height" constant="300" id="RfH-Tn-gTw"/>
+                                    <constraint firstAttribute="height" constant="354" id="F2g-Vg-tWH"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="LPv-rL-1d4" kind="embed" identifier="intropages" id="pcd-VD-kog"/>
@@ -60,15 +59,17 @@
                         </subviews>
                         <color key="backgroundColor" red="0.12941176470588234" green="0.14509803921568626" blue="0.19215686274509802" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="sgD-gi-luI" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="2Qo-Fz-K2J"/>
+                            <constraint firstItem="sgD-gi-luI" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailing" id="BBk-Qj-bHg"/>
                             <constraint firstItem="9HS-pd-e91" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="4" id="DQn-7r-sm5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9HS-pd-e91" secondAttribute="trailing" constant="4" id="FOZ-b8-689"/>
                             <constraint firstItem="9HS-pd-e91" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="40" id="HQA-aL-1MR"/>
                             <constraint firstAttribute="centerX" secondItem="9HS-pd-e91" secondAttribute="centerX" id="Jtj-dQ-RKl"/>
-                            <constraint firstAttribute="centerY" secondItem="sgD-gi-luI" secondAttribute="centerY" id="Wdo-wW-ySs"/>
+                            <constraint firstItem="sgD-gi-luI" firstAttribute="top" secondItem="9HS-pd-e91" secondAttribute="bottom" constant="20" id="XkG-Dn-GdP"/>
                             <constraint firstItem="21a-us-Hsf" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="4" id="a2j-Qj-ILd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="21a-us-Hsf" secondAttribute="trailing" constant="4" id="asH-Qg-qzq"/>
                             <constraint firstAttribute="centerX" secondItem="21a-us-Hsf" secondAttribute="centerX" id="eMt-gW-jLh"/>
-                            <constraint firstAttribute="centerX" secondItem="sgD-gi-luI" secondAttribute="centerX" id="yIQ-SR-qyx"/>
+                            <constraint firstAttribute="centerX" secondItem="sgD-gi-luI" secondAttribute="centerX" id="nou-1e-NX6"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="21a-us-Hsf" secondAttribute="bottom" constant="20" id="zBC-H4-J5K"/>
                         </constraints>
                     </view>
