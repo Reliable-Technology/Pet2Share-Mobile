@@ -7,12 +7,26 @@
 //
 
 #import "ThemeManager.h"
+#import "Graphics.h"
+#import "AppColor.h"
 
 @implementation ThemeManager
 
 + (void)setDefaultTheme
 {
-    // TODO: Implement later
+    [self setNavigationBarTheme];
+}
+
++ (void)setNavigationBarTheme
+{
+    [UINavigationBar appearance].barTintColor = [Graphics darkerColorForColor:[AppColor navigationBarBackgroundColor]];
+    [UINavigationBar appearance].tintColor = [AppColor navigationBarTintColor];
+    [UINavigationBar appearance].translucent = NO;
+    [UINavigationBar appearance].barStyle = UIBarStyleBlackOpaque;
+    
+    [[UINavigationBar appearance] setTitleTextAttributes:
+     @{NSForegroundColorAttributeName: [AppColor navigationBarTextColor],
+       NSFontAttributeName:[UIFont fontWithName:kDefaultBoldTypeface size:18.0f]}];
 }
 
 @end

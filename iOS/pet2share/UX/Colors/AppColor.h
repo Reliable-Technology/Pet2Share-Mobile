@@ -10,4 +10,15 @@
 
 @interface AppColor : NSObject
 
+#pragma mark - UINavigationBar
+
++ (UIColor *)navigationBarBackgroundColor;
++ (UIColor *)navigationBarTintColor;
++ (UIColor *)navigationBarTextColor;
++ (UIColor *)navigationBarDisabledColor;
++ (UIColor *)navigationBarPageIndicatorColor;
++ (UIColor *)navigationBarPageHairLineColor;
++ (UIColor *)navigationBarSelectedMenuItemLabelColor;
++ (UIColor *)navigationBarUnselectedMenuItemLabelColor;
+
 @end

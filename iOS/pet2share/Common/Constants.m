@@ -11,8 +11,15 @@
 #pragma mark - Commons
 
 NSString * const kEmptyString               = @"";
+CGFloat const kBarButtonWidth               = 32.0f;
+CGFloat const kBarButtonHeight              = 32.0f;
+NSString * const kLogoTypeface              = @"LobsterTwo-Bold";
+NSString * const kDefaultTypeface           = @"Lato-Regular";
+NSString * const kDefaultBoldTypeface       = @"Lato-Bold";
 
 #pragma mark - Segues
 
 NSString * const kMainStoryboard            = @"Pet2Share";
-NSString * const kIntroPagesView            = @"intropages";
+NSString * const kSegueIntroPages           = @"intropages";
+NSString * const kSegueSignUp               = @"signup";
+NSString * const kSegueLogin                = @"login";

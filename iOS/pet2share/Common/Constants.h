@@ -6,13 +6,20 @@
 //  Copyright (c) 2015 Pet 2 Share. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 #pragma mark - Commons
 
 extern NSString * const kEmptyString;
+extern CGFloat const kBarButtonWidth;
+extern CGFloat const kBarButtonHeight;
+extern NSString * const kLogoTypeface;
+extern NSString * const kDefaultTypeface;
+extern NSString * const kDefaultBoldTypeface;
 
 #pragma mark - Segues
 
 extern NSString * const kMainStoryboard;
-extern NSString * const kIntroPagesView;
+extern NSString * const kSegueIntroPages;
+extern NSString * const kSegueSignUp;
+extern NSString * const kSegueLogin;

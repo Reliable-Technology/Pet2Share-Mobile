@@ -8,6 +8,7 @@
 
 #import "Pet2ShareDelegate.h"
 #import "UIDevice+Hardware.h"
+#import "ThemeManager.h"
 
 @interface Pet2ShareDelegate ()
 
@@ -20,6 +21,9 @@
     // Hardware information
     NSLog(@"Platform: %@", [[UIDevice currentDevice] platform]);
     NSLog(@"Bundle: %@", [[NSBundle mainBundle] bundleIdentifier]);
+    
+    // Default Themes
+    [ThemeManager setDefaultTheme];
     
     return YES;
 }

@@ -37,6 +37,8 @@
 		FB1067E31B532F9700BEBC40 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067C61B532F9700BEBC40 /* TransitionManager.swift */; };
 		FB1067E41B532F9700BEBC40 /* TransitionZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067C71B532F9700BEBC40 /* TransitionZoom.swift */; };
 		FB1067E51B532F9700BEBC40 /* UnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067C81B532F9700BEBC40 /* UnwindSegue.swift */; };
+		FB1067E91B5341A500BEBC40 /* LoginViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067E81B5341A500BEBC40 /* LoginViewCtrl.m */; };
+		FB1067EC1B5341D600BEBC40 /* SignupViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067EB1B5341D600BEBC40 /* SignupViewCtrl.m */; };
 		FB484A361B4FD0AA0045A6EA /* LandingPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A351B4FD0AA0045A6EA /* LandingPageVC.m */; };
 		FB484A391B4FD0DB0045A6EA /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A381B4FD0DB0045A6EA /* NSString+URLEncoding.m */; };
 		FB484A3F1B4FD12F0045A6EA /* Graphics.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A3E1B4FD12F0045A6EA /* Graphics.m */; };
@@ -87,7 +89,7 @@
 		FBCEA45E1B4CC99A00497678 /* testHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCEA45D1B4CC99A00497678 /* testHttpClient.m */; };
 		FBD3938A1B50D9B7000ED817 /* IntroPageContentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD393881B50D9B7000ED817 /* IntroPageContentVC.m */; };
 		FBD3938B1B50D9B7000ED817 /* IntroPageContentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBD393891B50D9B7000ED817 /* IntroPageContentVC.xib */; };
-		FBD3938F1B50D9DB000ED817 /* BaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD3938E1B50D9DB000ED817 /* BaseVC.m */; };
+		FBD3938F1B50D9DB000ED817 /* BaseNavViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD3938E1B50D9DB000ED817 /* BaseNavViewCtrl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +136,11 @@
 		FB1067C61B532F9700BEBC40 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		FB1067C71B532F9700BEBC40 /* TransitionZoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionZoom.swift; sourceTree = "<group>"; };
 		FB1067C81B532F9700BEBC40 /* UnwindSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnwindSegue.swift; sourceTree = "<group>"; };
+		FB1067E71B5341A500BEBC40 /* LoginViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewCtrl.h; sourceTree = "<group>"; };
+		FB1067E81B5341A500BEBC40 /* LoginViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewCtrl.m; sourceTree = "<group>"; };
+		FB1067EA1B5341D600BEBC40 /* SignupViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewCtrl.h; sourceTree = "<group>"; };
+		FB1067EB1B5341D600BEBC40 /* SignupViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewCtrl.m; sourceTree = "<group>"; };
+		FB1067ED1B53449200BEBC40 /* BarButtonsProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BarButtonsProtocol.h; sourceTree = "<group>"; };
 		FB484A341B4FD0AA0045A6EA /* LandingPageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingPageVC.h; sourceTree = "<group>"; };
 		FB484A351B4FD0AA0045A6EA /* LandingPageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingPageVC.m; sourceTree = "<group>"; };
 		FB484A371B4FD0DB0045A6EA /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
@@ -200,8 +207,8 @@
 		FBD393871B50D9B7000ED817 /* IntroPageContentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroPageContentVC.h; sourceTree = "<group>"; };
 		FBD393881B50D9B7000ED817 /* IntroPageContentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroPageContentVC.m; sourceTree = "<group>"; };
 		FBD393891B50D9B7000ED817 /* IntroPageContentVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroPageContentVC.xib; sourceTree = "<group>"; };
-		FBD3938D1B50D9DB000ED817 /* BaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseVC.h; sourceTree = "<group>"; };
-		FBD3938E1B50D9DB000ED817 /* BaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseVC.m; sourceTree = "<group>"; };
+		FBD3938D1B50D9DB000ED817 /* BaseNavViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavViewCtrl.h; sourceTree = "<group>"; };
+		FBD3938E1B50D9DB000ED817 /* BaseNavViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavViewCtrl.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +284,17 @@
 			path = Spring;
 			sourceTree = "<group>";
 		};
+		FB1067E61B53412F00BEBC40 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				FB1067E71B5341A500BEBC40 /* LoginViewCtrl.h */,
+				FB1067E81B5341A500BEBC40 /* LoginViewCtrl.m */,
+				FB1067EA1B5341D600BEBC40 /* SignupViewCtrl.h */,
+				FB1067EB1B5341D600BEBC40 /* SignupViewCtrl.m */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		FB484A301B4FD0910045A6EA /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,6 +318,7 @@
 		FB484A311B4FD0910045A6EA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FB1067E61B53412F00BEBC40 /* Auth */,
 				FBD3938C1B50D9DB000ED817 /* Templates */,
 				FBD393861B50D9B7000ED817 /* Intro */,
 				FB484A341B4FD0AA0045A6EA /* LandingPageVC.h */,
@@ -476,8 +495,9 @@
 		FBD3938C1B50D9DB000ED817 /* Templates */ = {
 			isa = PBXGroup;
 			children = (
-				FBD3938D1B50D9DB000ED817 /* BaseVC.h */,
-				FBD3938E1B50D9DB000ED817 /* BaseVC.m */,
+				FB1067ED1B53449200BEBC40 /* BarButtonsProtocol.h */,
+				FBD3938D1B50D9DB000ED817 /* BaseNavViewCtrl.h */,
+				FBD3938E1B50D9DB000ED817 /* BaseNavViewCtrl.m */,
 			);
 			path = Templates;
 			sourceTree = "<group>";
@@ -656,9 +676,11 @@
 				FB484A621B50BE910045A6EA /* RoundCornerButton.m in Sources */,
 				FB484A4D1B4FD40A0045A6EA /* OrderedDictionary.m in Sources */,
 				FB1067E41B532F9700BEBC40 /* TransitionZoom.swift in Sources */,
+				FB1067E91B5341A500BEBC40 /* LoginViewCtrl.m in Sources */,
 				FBCEA4351B4CC3E000497678 /* Pet2ShareDelegate.m in Sources */,
 				FBCEA45B1B4CC86200497678 /* HttpClient.m in Sources */,
-				FBD3938F1B50D9DB000ED817 /* BaseVC.m in Sources */,
+				FB1067EC1B5341D600BEBC40 /* SignupViewCtrl.m in Sources */,
+				FBD3938F1B50D9DB000ED817 /* BaseNavViewCtrl.m in Sources */,
 				FB1067CC1B532F9700BEBC40 /* BlurView.swift in Sources */,
 				FB1067DB1B532F9700BEBC40 /* Spring.swift in Sources */,
 				FBCEA4321B4CC3E000497678 /* main.m in Sources */,

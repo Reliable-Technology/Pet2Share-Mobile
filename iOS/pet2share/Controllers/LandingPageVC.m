@@ -8,12 +8,16 @@
 
 #import "LandingPageVC.h"
 #import "IntroPageContentVC.h"
+#import "LoginViewCtrl.h"
 
 @interface LandingPageVC () <UIPageViewControllerDataSource>
 
 @property (strong, nonatomic) UIPageViewController *introPagesCtrl;
 @property (readonly, nonatomic) NSArray *introPageContent;
 @property (strong, nonatomic) NSTimer *scrollTimer;
+@property (strong, nonatomic) TransitionManager *transitionManager;
+
+- (IBAction)getStartedBtnTapped:(id)sender;
 
 @end
 
@@ -36,6 +40,7 @@ static CGFloat const kScrollTimer                   = 5.0f;
     if ((self = [super initWithCoder:aDecoder]))
     {
         _currPageIndex = 0;
+        _transitionManager = [TransitionManager new];
     }
     return self;
 }
@@ -43,7 +48,7 @@ static CGFloat const kScrollTimer                   = 5.0f;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     // Initialize the view with introduction images
     IntroPageContentVC *startCtrl = [self pageContentAtIndex:_currPageIndex];
     [self.introPagesCtrl setViewControllers: @[startCtrl]
@@ -55,9 +60,18 @@ static CGFloat const kScrollTimer                   = 5.0f;
     // TODO: Google Analytics
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
     [self.scrollTimer invalidate];
 }
 
@@ -69,10 +83,15 @@ static CGFloat const kScrollTimer                   = 5.0f;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:kIntroPagesView] && !self.introPagesCtrl)
+    if ([segue.identifier isEqualToString:kSegueIntroPages])
     {
         _introPagesCtrl = (UIPageViewController *)segue.destinationViewController;
         self.introPagesCtrl.dataSource = self;
+    }
+    else if ([segue.identifier isEqualToString:kSegueLogin])
+    {
+//        LoginViewCtrl *loginCtrl = (LoginViewCtrl *)segue.destinationViewController;
+//        loginCtrl.transitioningDelegate = self.transitionManager;
     }
 }
 
@@ -154,6 +173,11 @@ static CGFloat const kScrollTimer                   = 5.0f;
     {
         NSLog(@"%s - Exception: %@", __func__, [exception description]);
     }
+}
+
+- (IBAction)getStartedBtnTapped:(id)sender
+{
+    [self performSegueWithIdentifier:kSegueLogin sender:self];
 }
 
 #pragma mark - <UIPageViewControllerDataSource>

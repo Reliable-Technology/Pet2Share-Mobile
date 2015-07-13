@@ -1,18 +1,18 @@
 //
-//  BaseVC.m
+//  SignupViewCtrl.m
 //  pet2share
 //
-//  Created by Tony Kieu on 7/10/15.
+//  Created by Tony Kieu on 7/12/15.
 //  Copyright (c) 2015 Pet 2 Share. All rights reserved.
 //
 
-#import "BaseVC.h"
+#import "SignupViewCtrl.h"
 
-@interface BaseVC ()
+@interface SignupViewCtrl ()
 
 @end
 
-@implementation BaseVC
+@implementation SignupViewCtrl
 
 - (void)viewDidLoad {
     [super viewDidLoad];
