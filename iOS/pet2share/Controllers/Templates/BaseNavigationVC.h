@@ -1,5 +1,5 @@
 //
-//  BaseNavViewCtrl.h
+//  BaseNavigationVC.h
 //  pet2share
 //
 //  Created by Tony Kieu on 7/10/15.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BarButtonsProtocol.h"
 
-@interface BaseNavViewCtrl : UIViewController
+@interface BaseNavigationVC : UIViewController
 
 @property (nonatomic, weak) id<BarButtonsProtocol> barButtonsProtocol;
 

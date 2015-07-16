@@ -94,4 +94,22 @@
     return nil;
 }
 
+#pragma mark - Views
+
++ (void)roundView:(UIView *)view cornerRadius:(CGFloat)cornerRadius
+    shadowOpacity:(CGFloat)shadowOpacity shadowRadius:(CGFloat)shadowRadius offset:(CGSize)shadowOffset
+{
+    view.layer.cornerRadius = cornerRadius;
+    [self dropShadow:view shadowOpacity:cornerRadius shadowRadius:shadowRadius offset:shadowOffset];
+}
+
++ (void)dropShadow:(UIView *)view shadowOpacity:(CGFloat)shadowOpacity
+      shadowRadius:(CGFloat)shadowRadius offset:(CGSize)shadowOffset
+{
+    view.layer.shadowColor = [[UIColor blackColor] CGColor];
+    view.layer.shadowOpacity = shadowOpacity;
+    view.layer.shadowRadius = shadowRadius;
+    view.layer.shadowOffset = shadowOffset;
+}
+
 @end

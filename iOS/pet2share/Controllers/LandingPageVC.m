@@ -8,7 +8,7 @@
 
 #import "LandingPageVC.h"
 #import "IntroPageContentVC.h"
-#import "LoginViewCtrl.h"
+#import "LoginVC.h"
 
 @interface LandingPageVC () <UIPageViewControllerDataSource>
 

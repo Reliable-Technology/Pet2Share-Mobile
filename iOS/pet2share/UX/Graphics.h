@@ -31,4 +31,11 @@ typedef NS_ENUM(NSInteger, AlertType)
 + (UIColor *)lighterColorForColor:(UIColor *)color;
 + (UIColor *)darkerColorForColor:(UIColor *)color;
 
+#pragma mark - Views
+
++ (void)roundView:(UIView *)view cornerRadius:(CGFloat)cornerRadius
+    shadowOpacity:(CGFloat)shadowOpacity shadowRadius:(CGFloat)shadowRadius offset:(CGSize)shadowOffset;
++ (void)dropShadow:(UIView *)view shadowOpacity:(CGFloat)shadowOpacity
+      shadowRadius:(CGFloat)shadowRadius offset:(CGSize)shadowOffset;
+
 @end

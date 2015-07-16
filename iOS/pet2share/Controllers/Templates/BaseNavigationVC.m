@@ -1,21 +1,21 @@
 //
-//  BaseNavViewCtrl.m
+//  BaseNavigationVC.m
 //  pet2share
 //
 //  Created by Tony Kieu on 7/10/15.
 //  Copyright (c) 2015 Pet 2 Share. All rights reserved.
 //
 
-#import "BaseNavViewCtrl.h"
+#import "BaseNavigationVC.h"
 
-@interface BaseNavViewCtrl ()
+@interface BaseNavigationVC ()
 
 @property (nonatomic, strong) UIButton *leftBtn;
 @property (nonatomic, strong) UIButton *rightBtn;
 
 @end
 
-@implementation BaseNavViewCtrl
+@implementation BaseNavigationVC
 
 - (void)viewDidLoad
 {

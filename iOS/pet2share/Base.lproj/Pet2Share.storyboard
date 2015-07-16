@@ -91,7 +91,7 @@
             </objects>
             <point key="canvasLocation" x="1440" y="477"/>
         </scene>
-        <!--Dashboard-->
+        <!--Pet 2 Share-->
         <scene sceneID="MRJ-2h-OZj">
             <objects>
                 <viewController id="wQ8-ER-nBr" customClass="DashboardVC" sceneMemberID="viewController">
@@ -102,9 +102,9 @@
                     <view key="view" contentMode="scaleToFill" id="EME-Eb-GQv">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.12941176470588234" green="0.14509803921568626" blue="0.19215686274509802" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Dashboard" id="gPE-D5-9qP">
+                    <navigationItem key="navigationItem" title="Pet 2 Share" id="gPE-D5-9qP">
                         <barButtonItem key="leftBarButtonItem" image="icon-close" id="gVU-ry-BAj">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -120,7 +120,7 @@
         <!--Pet 2 Share-->
         <scene sceneID="ogo-MI-ag9">
             <objects>
-                <viewController id="OBQ-c6-ya4" customClass="LoginViewCtrl" sceneMemberID="viewController">
+                <viewController id="OBQ-c6-ya4" customClass="LoginVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2YU-ku-K4j"/>
                         <viewControllerLayoutGuide type="bottom" id="Fe5-zp-ubT"/>

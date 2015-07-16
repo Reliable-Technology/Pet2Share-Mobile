@@ -21,13 +21,13 @@
 
 + (void)setNavigationBarTheme
 {
-    [UINavigationBar appearance].barTintColor = [Graphics darkerColorForColor:[AppColor navigationBarBackgroundColor]];
+    [UINavigationBar appearance].barTintColor = [Graphics lighterColorForColor:[AppColor navigationBarBackgroundColor]];
     [UINavigationBar appearance].tintColor = [AppColor navigationBarTintColor];
     [UINavigationBar appearance].translucent = NO;
     [UINavigationBar appearance].barStyle = UIBarStyleBlackOpaque;
     
     [[UINavigationBar appearance] setTitleTextAttributes:
-     @{NSForegroundColorAttributeName: [AppColor navigationBarTextColor],
+     @{NSForegroundColorAttributeName:[AppColor navigationBarTextColor],
        NSFontAttributeName:[UIFont fontWithName:kDefaultBoldTypeface size:18.0f]}];
 }
 

@@ -1,5 +1,5 @@
 //
-//  LoginViewCtrl.h
+//  LoginVC.h
 //  pet2share
 //
 //  Created by Tony Kieu on 7/12/15.
@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseNavViewCtrl.h"
+#import "BaseNavigationVC.h"
 
-@interface LoginViewCtrl : BaseNavViewCtrl
+@interface LoginVC : BaseNavigationVC
 
 @end

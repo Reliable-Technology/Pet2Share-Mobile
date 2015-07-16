@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseNavigationVC.h"
 
-@interface DashboardVC : UIViewController
+@interface DashboardVC : BaseNavigationVC
 
 @end
