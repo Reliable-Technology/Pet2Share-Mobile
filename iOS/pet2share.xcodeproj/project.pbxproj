@@ -82,6 +82,9 @@
 		FB484A9A1B50C6130045A6EA /* Lato-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A871B50C6130045A6EA /* Lato-SemiboldItalic.ttf */; };
 		FB484A9B1B50C6130045A6EA /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A881B50C6130045A6EA /* Lato-Thin.ttf */; };
 		FB484A9C1B50C6130045A6EA /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A891B50C6130045A6EA /* Lato-ThinItalic.ttf */; };
+		FBB899FD1B5DA92300DF0ABC /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB899FC1B5DA92300DF0ABC /* User.m */; };
+		FBB89A001B5DAF2900DF0ABC /* RepositoryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB899FF1B5DAF2900DF0ABC /* RepositoryObject.m */; };
+		FBB89A031B5DB98F00DF0ABC /* Pet2ShareService.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB89A021B5DB98F00DF0ABC /* Pet2ShareService.m */; };
 		FBCEA4321B4CC3E000497678 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCEA4311B4CC3E000497678 /* main.m */; };
 		FBCEA4351B4CC3E000497678 /* Pet2ShareDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCEA4341B4CC3E000497678 /* Pet2ShareDelegate.m */; };
 		FBCEA43B1B4CC3E000497678 /* Pet2Share.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBCEA4391B4CC3E000497678 /* Pet2Share.storyboard */; };
@@ -200,6 +203,12 @@
 		FB484A881B50C6130045A6EA /* Lato-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Thin.ttf"; sourceTree = "<group>"; };
 		FB484A891B50C6130045A6EA /* Lato-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-ThinItalic.ttf"; sourceTree = "<group>"; };
 		FB484A8A1B50C6130045A6EA /* SIL Open Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SIL Open Font License.txt"; sourceTree = "<group>"; };
+		FBB899FB1B5DA92300DF0ABC /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		FBB899FC1B5DA92300DF0ABC /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		FBB899FE1B5DAF2900DF0ABC /* RepositoryObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepositoryObject.h; sourceTree = "<group>"; };
+		FBB899FF1B5DAF2900DF0ABC /* RepositoryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepositoryObject.m; sourceTree = "<group>"; };
+		FBB89A011B5DB98F00DF0ABC /* Pet2ShareService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pet2ShareService.h; sourceTree = "<group>"; };
+		FBB89A021B5DB98F00DF0ABC /* Pet2ShareService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pet2ShareService.m; sourceTree = "<group>"; };
 		FBCEA42C1B4CC3E000497678 /* pet2share.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pet2share.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBCEA4301B4CC3E000497678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBCEA4311B4CC3E000497678 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -442,6 +451,17 @@
 			path = Lato;
 			sourceTree = "<group>";
 		};
+		FBCB35911B5DA7CC00A0742F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FBB899FB1B5DA92300DF0ABC /* User.h */,
+				FBB899FC1B5DA92300DF0ABC /* User.m */,
+				FBB899FE1B5DAF2900DF0ABC /* RepositoryObject.h */,
+				FBB899FF1B5DAF2900DF0ABC /* RepositoryObject.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		FBCEA4231B4CC3E000497678 = {
 			isa = PBXGroup;
 			children = (
@@ -510,8 +530,11 @@
 		FBCEA4561B4CC86200497678 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FBCB35911B5DA7CC00A0742F /* Models */,
 				FBCEA4571B4CC86200497678 /* HttpClient.h */,
 				FBCEA4581B4CC86200497678 /* HttpClient.m */,
+				FBB89A011B5DB98F00DF0ABC /* Pet2ShareService.h */,
+				FBB89A021B5DB98F00DF0ABC /* Pet2ShareService.m */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -697,6 +720,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBB899FD1B5DA92300DF0ABC /* User.m in Sources */,
 				FB484A391B4FD0DB0045A6EA /* NSString+URLEncoding.m in Sources */,
 				FB1067DF1B532F9700BEBC40 /* SpringLabel.swift in Sources */,
 				FB1067E11B532F9700BEBC40 /* SpringTextView.swift in Sources */,
@@ -724,6 +748,7 @@
 				FB484A3F1B4FD12F0045A6EA /* Graphics.m in Sources */,
 				FB484A421B4FD3E60045A6EA /* Constants.m in Sources */,
 				FB1067D91B532F9700BEBC40 /* Misc.swift in Sources */,
+				FBB89A031B5DB98F00DF0ABC /* Pet2ShareService.m in Sources */,
 				FBD3938A1B50D9B7000ED817 /* IntroPageContentVC.m in Sources */,
 				FB1067CD1B532F9700BEBC40 /* DesignableButton.swift in Sources */,
 				FB1067CB1B532F9700BEBC40 /* AutoTextView.swift in Sources */,
@@ -744,6 +769,7 @@
 				FB1067DD1B532F9700BEBC40 /* SpringButton.swift in Sources */,
 				FB1067DC1B532F9700BEBC40 /* SpringAnimation.swift in Sources */,
 				FB1067E01B532F9700BEBC40 /* SpringTextField.swift in Sources */,
+				FBB89A001B5DAF2900DF0ABC /* RepositoryObject.m in Sources */,
 				FB1067D71B532F9700BEBC40 /* LoadingView.swift in Sources */,
 				FB1067D11B532F9700BEBC40 /* DesignableTextField.swift in Sources */,
 			);

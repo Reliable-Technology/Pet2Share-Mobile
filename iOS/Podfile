@@ -6,6 +6,7 @@ inhibit_all_warnings!
 pod 'AFNetworking', :head
 pod 'ChameleonFramework', '~> 1.2.1'
 pod 'CHTCollectionViewWaterfallLayout', '~> 0.9.1'
+pod 'JSONModel', '~> 1.1.0'
 pod 'SIAlertView', :head
 
 post_install do |installer|
