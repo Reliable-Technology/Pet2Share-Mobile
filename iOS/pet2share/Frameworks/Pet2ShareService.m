@@ -8,6 +8,7 @@
 
 #import "Pet2ShareService.h"
 #import "HttpClient.h"
+#import "User.h"
 
 @implementation Pet2ShareService
 
@@ -23,8 +24,14 @@
     {
         if (!response.hasError)
         {
-            object = [[[self.jsonModel class] alloc] initWithDictionary:response.json];
-            if (object == nil) NSLog(@"%s: fail to parse reponse object: %@", __func__, error);
+            NSString *status = response.json[@"status"];
+            NSDictionary *data = response.json[@"data"];
+            
+            if ([status isEqualToString:@"success"])
+            {
+                object = [[[self.jsonModel class] alloc] initWithDictionary:data error:&error];
+                if (object == nil) NSLog(@"%s: fail to parse reponse object: %@", __func__, error);
+            }
         }
     }
     @catch (NSException *exception)
@@ -36,8 +43,8 @@
     {
         @try
         {
-            if (!response.hasError) [callback onReceiveSuccess:object];
-            else[callback onReceiveError:object];
+            if (!response.hasError && object) [callback onReceiveSuccess:object];
+            else [callback onReceiveError:object];
         }
         @catch(NSException *exception)
         {
@@ -46,14 +53,17 @@
     }
 }
 
+#pragma mark - Public Instance Methods
+
 - (void)login:(NSObject<Pet2ShareServiceCallback> *)callback
      username:(NSString *)username
      password:(NSString *)password
 {
     fTRACE("Username: %@ - Password: %@", username, password);
     
-    HttpClient *client = [HttpClient baseUrl:@"http://45.27.154.30"];
-    [client get:[NSString stringWithFormat:@"authenticate/@%@/%@", username, password]
+    HttpClient *client = [HttpClient baseUrl:@"http://localhost:8080/api/"];
+    self.jsonModel = [User class];
+    [client get:[NSString stringWithFormat:@"authenticate/%@/%@", username, password]
        callback:[HttpCallback callbackWithResult:^(HttpResponse *response) {
         [self parseResponse:response callback:callback];
     }]];

@@ -12,8 +12,9 @@
 #import "RoundCornerButton.h"
 #import "LoginTableCtrl.h"
 #import "Utils.h"
+#import "Pet2ShareService.h"
 
-@interface LoginVC () <BarButtonsProtocol, FormProtocol>
+@interface LoginVC () <BarButtonsProtocol, FormProtocol, Pet2ShareServiceCallback>
 
 @property (strong , nonatomic) LoginTableCtrl *loginTableCtrl;
 @property (strong, nonatomic) TransitionManager *transitionManager;
@@ -70,41 +71,23 @@ static NSString * const kLeftIconImageName  = @"icon-arrowback";
 {
     [self.loginTableCtrl resignAllTextFields];
     
-//    // Get email and password from textfield
-//    NSString *username = [self.loginTableCtrl username];
-//    NSString *password = [self.loginTableCtrl password];
-//    fTRACE("User: %@, Password: %@", username, password);
-//    
-//    // Check to see if username is not empty
-//    if (![Utils validateNotEmpty:username] || ![Utils validateNotEmpty:password])
-//    {
-//        [Graphics alert:NSLocalizedString(@"Error", @"")
-//                message:NSLocalizedString(@"Username/password can not be empty.", @"")
-//                   type:ErrorAlert];
-//    }
-//    else    // TODO: Implement the callback later, use test/pass134 for credential at the moment.
-//    {
-//#ifdef DEBUG
-//        
-//        if ([username isEqualToString:@"test"] && [password isEqualToString:@"pass1234"])
-//        {
-//            [self.loginBtn showActivityIndicator];
-//            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 2.00 * NSEC_PER_SEC);
-//            dispatch_after(popTime, dispatch_get_main_queue(), ^{
-//                [self.loginBtn hideActivityIndicator];
-//                [self performSegueWithIdentifier:kSegueDashboard sender:self];
-//            });
-//        }
-//        else
-//        {
-//            [Graphics alert:NSLocalizedString(@"Error", @"")
-//                    message:NSLocalizedString(@"Invalid username/password.", @"")
-//                       type:ErrorAlert];
-//        }
-//#endif
-//    }
+    // Get email and password from textfield
+    NSString *username = [self.loginTableCtrl username];
+    NSString *password = [self.loginTableCtrl password];
+    fTRACE("User: %@, Password: %@", username, password);
     
-    [self performSegueWithIdentifier:kSegueDashboard sender:self];
+    // Check to see if username is not empty
+    if (![Utils validateNotEmpty:username] || ![Utils validateNotEmpty:password])
+    {
+        [Graphics alert:NSLocalizedString(@"Error", @"")
+                message:NSLocalizedString(@"Username/password can not be empty.", @"")
+                   type:ErrorAlert];
+    }
+    else
+    {
+        Pet2ShareService *service = [Pet2ShareService new];
+        [service login:self username:username password:password];
+    }
 }
 
 #pragma mark - <BarButtonsDelegate>
@@ -127,6 +110,26 @@ static NSString * const kLeftIconImageName  = @"icon-arrowback";
 - (void)performAction
 {
     [self loginBtnTapped:self.loginBtn];
+}
+
+#pragma mark 
+
+- (void)onReceiveSuccess:(id)object
+{
+    fTRACE("Object: %@", object);
+    
+    if (object)
+    {
+        [self.loginBtn hideActivityIndicator];
+        [self performSegueWithIdentifier:kSegueDashboard sender:self];
+    }
+}
+
+- (void)onReceiveError:(id)object
+{
+    [Graphics alert:NSLocalizedString(@"Error", @"")
+            message:NSLocalizedString(@"Invalid username/password.", @"")
+               type:ErrorAlert];
 }
 
 @end

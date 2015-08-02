@@ -13,19 +13,19 @@
 + (JSONKeyMapper *) keyMapper
 {
     return [[JSONKeyMapper alloc] initWithDictionary:
-            @{@"Id": @"identifier",
-              @"FirstName": @"firstName",
-              @"LastName": @"lastName",
-              @"Email": @"email",
-              @"Mobile": @"mobile",
-              @"Phone": @"phone",
-              @"AddressLine1": @"addressLine1",
-              @"AddressLine2": @"addressLine2",
-              @"City": @"city",
-              @"Country": @"country",
-              @"ZipCode": @"zipCode",
-              @"CreatedDate": @"createdDate",
-              @"Password": @"password"}];
+            @{@"id": @"identifier",
+              @"firstName": @"firstName",
+              @"lastName": @"lastName",
+              @"email": @"email",
+              @"mobile": @"mobile",
+              @"phone": @"phone",
+              @"addressLine1": @"addressLine1",
+              @"addressLine2": @"addressLine2",
+              @"city": @"city",
+              @"country": @"country",
+              @"zipCode": @"zipCode",
+              @"createdDate": @"createdDate",
+              @"password": @"password"}];
 }
 
 - (BOOL)validateObject
