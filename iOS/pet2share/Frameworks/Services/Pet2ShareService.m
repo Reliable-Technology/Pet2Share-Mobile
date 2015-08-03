@@ -9,6 +9,7 @@
 #import "Pet2ShareService.h"
 #import "HttpClient.h"
 #import "User.h"
+#import "UrlManager.h"
 
 @implementation Pet2ShareService
 
@@ -61,9 +62,9 @@
 {
     fTRACE("Username: %@ - Password: %@", username, password);
     
-    HttpClient *client = [HttpClient baseUrl:@"http://localhost:8080/api/"];
+    HttpClient *client = [HttpClient baseUrl:[[UrlManager sharedInstance] webServiceUrl]];
     self.jsonModel = [User class];
-    [client get:[NSString stringWithFormat:@"authenticate/%@/%@", username, password]
+    [client get:[NSString stringWithFormat:AUTHENTICATE_ENDPOINT, username, password]
        callback:[HttpCallback callbackWithResult:^(HttpResponse *response) {
         [self parseResponse:response callback:callback];
     }]];

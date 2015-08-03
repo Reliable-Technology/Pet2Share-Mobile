@@ -15,7 +15,6 @@
 
 @end
 
-
 @interface Pet2ShareService : NSObject
 
 @property (nonatomic, strong) Class jsonModel;

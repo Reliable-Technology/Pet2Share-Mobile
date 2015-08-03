@@ -39,19 +39,12 @@
 #pragma mark - HttpResponse
 
 @interface HttpResponse : NSObject
-{
-    NSNumber *_statusCode;
-    NSDictionary *_headers;
-    BOOL _hasError;
-    HttpError *_error;
-    id _json;
-}
 
-@property (nonatomic, copy) NSNumber *statusCode;
-@property (nonatomic, copy) NSDictionary *headers;
+@property (nonatomic, strong) NSNumber *statusCode;
+@property (nonatomic, strong) NSDictionary *headers;
 @property (nonatomic, assign) BOOL hasError;
-@property (nonatomic, copy) HttpError *error;
-@property (nonatomic, copy) id json;
+@property (nonatomic, strong) HttpError *error;
+@property (nonatomic, strong) id json;
 
 @end
 

@@ -86,6 +86,7 @@
 		FB6C27331B6ED1EF0002034A /* Pet2ShareService.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C27321B6ED1EF0002034A /* Pet2ShareService.m */; };
 		FB6C27391B6ED2300002034A /* RepositoryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C27361B6ED2300002034A /* RepositoryObject.m */; };
 		FB6C273A1B6ED2300002034A /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C27381B6ED2300002034A /* User.m */; };
+		FB6C273D1B6ED2950002034A /* UrlManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C273C1B6ED2950002034A /* UrlManager.m */; };
 		FBCEA4321B4CC3E000497678 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCEA4311B4CC3E000497678 /* main.m */; };
 		FBCEA4351B4CC3E000497678 /* Pet2ShareDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCEA4341B4CC3E000497678 /* Pet2ShareDelegate.m */; };
 		FBCEA43B1B4CC3E000497678 /* Pet2Share.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBCEA4391B4CC3E000497678 /* Pet2Share.storyboard */; };
@@ -211,6 +212,9 @@
 		FB6C27361B6ED2300002034A /* RepositoryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepositoryObject.m; sourceTree = "<group>"; };
 		FB6C27371B6ED2300002034A /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		FB6C27381B6ED2300002034A /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		FB6C273B1B6ED2950002034A /* UrlManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrlManager.h; sourceTree = "<group>"; };
+		FB6C273C1B6ED2950002034A /* UrlManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UrlManager.m; sourceTree = "<group>"; };
+		FB6C273E1B6EEB0F0002034A /* ServiceConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceConfig.h; sourceTree = "<group>"; };
 		FBCEA42C1B4CC3E000497678 /* pet2share.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pet2share.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBCEA4301B4CC3E000497678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBCEA4311B4CC3E000497678 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -458,6 +462,9 @@
 			children = (
 				FB6C27311B6ED1EF0002034A /* Pet2ShareService.h */,
 				FB6C27321B6ED1EF0002034A /* Pet2ShareService.m */,
+				FB6C273B1B6ED2950002034A /* UrlManager.h */,
+				FB6C273C1B6ED2950002034A /* UrlManager.m */,
+				FB6C273E1B6EEB0F0002034A /* ServiceConfig.h */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -471,6 +478,13 @@
 				FB6C27381B6ED2300002034A /* User.m */,
 			);
 			path = DAL;
+			sourceTree = "<group>";
+		};
+		FB6C27421B6EEFE40002034A /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		FBCB35911B5DA7CC00A0742F /* Models */ = {
@@ -548,6 +562,7 @@
 		FBCEA4561B4CC86200497678 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FB6C27421B6EEFE40002034A /* Repositories */,
 				FB6C27341B6ED2300002034A /* DAL */,
 				FB6C27301B6ED1DA0002034A /* Services */,
 				FBCB35911B5DA7CC00A0742F /* Models */,
@@ -747,6 +762,7 @@
 				FB1067D21B532F9700BEBC40 /* DesignableTextView.swift in Sources */,
 				FB1067D31B532F9700BEBC40 /* DesignableView.swift in Sources */,
 				FB484A621B50BE910045A6EA /* RoundCornerButton.m in Sources */,
+				FB6C273D1B6ED2950002034A /* UrlManager.m in Sources */,
 				FB484A4D1B4FD40A0045A6EA /* OrderedDictionary.m in Sources */,
 				FB1067E41B532F9700BEBC40 /* TransitionZoom.swift in Sources */,
 				FB1067E91B5341A500BEBC40 /* LoginVC.m in Sources */,
