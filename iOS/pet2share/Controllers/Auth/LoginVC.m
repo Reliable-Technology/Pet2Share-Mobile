@@ -71,23 +71,25 @@ static NSString * const kLeftIconImageName  = @"icon-arrowback";
 {
     [self.loginTableCtrl resignAllTextFields];
     
-    // Get email and password from textfield
-    NSString *username = [self.loginTableCtrl username];
-    NSString *password = [self.loginTableCtrl password];
-    fTRACE("User: %@, Password: %@", username, password);
+//    // Get email and password from textfield
+//    NSString *username = [self.loginTableCtrl username];
+//    NSString *password = [self.loginTableCtrl password];
+//    fTRACE("User: %@, Password: %@", username, password);
+//    
+//    // Check to see if username is not empty
+//    if (![Utils validateNotEmpty:username] || ![Utils validateNotEmpty:password])
+//    {
+//        [Graphics alert:NSLocalizedString(@"Error", @"")
+//                message:NSLocalizedString(@"Username/password can not be empty.", @"")
+//                   type:ErrorAlert];
+//    }
+//    else
+//    {
+//        Pet2ShareService *service = [Pet2ShareService new];
+//        [service login:self username:username password:password];
+//    }
     
-    // Check to see if username is not empty
-    if (![Utils validateNotEmpty:username] || ![Utils validateNotEmpty:password])
-    {
-        [Graphics alert:NSLocalizedString(@"Error", @"")
-                message:NSLocalizedString(@"Username/password can not be empty.", @"")
-                   type:ErrorAlert];
-    }
-    else
-    {
-        Pet2ShareService *service = [Pet2ShareService new];
-        [service login:self username:username password:password];
-    }
+    [self performSegueWithIdentifier:kSegueMainView sender:self];
 }
 
 #pragma mark - <BarButtonsDelegate>
@@ -121,7 +123,7 @@ static NSString * const kLeftIconImageName  = @"icon-arrowback";
     if (object)
     {
         [self.loginBtn hideActivityIndicator];
-        [self performSegueWithIdentifier:kSegueDashboard sender:self];
+        [self performSegueWithIdentifier:kSegueMainView sender:self];
     }
 }
 
