@@ -13,8 +13,10 @@
 
 @interface DashboardCollectionCell ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
-
+@property (weak, nonatomic) IBOutlet UIImageView *posterImageView;
+@property (weak, nonatomic) IBOutlet UILabel *postedCommentLbl;
+@property (weak, nonatomic) IBOutlet UILabel *postedPostedTimeLbl;
+@property (weak, nonatomic) IBOutlet UIImageView *postedImageView;
 
 @end
 
@@ -22,13 +24,13 @@
 
 - (void)awakeFromNib
 {
-    NSUInteger pickACat = arc4random_uniform(4) + 1;
-    NSString *catFilename = [NSString stringWithFormat:@"img-cat%lu.jpg", (unsigned long)pickACat];
-    self.imageView.image = [UIImage imageNamed:catFilename];
-    self.imageView.contentMode = UIViewContentModeScaleAspectFill;
-    self.imageView.clipsToBounds = YES;
-    
-    self.layer.cornerRadius = 3.0f;
+//    NSUInteger pickACat = arc4random_uniform(4) + 1;
+//    NSString *catFilename = [NSString stringWithFormat:@"img-cat%lu.jpg", (unsigned long)pickACat];
+//    self.imageView.image = [UIImage imageNamed:catFilename];
+//    self.imageView.contentMode = UIViewContentModeScaleAspectFill;
+//    self.imageView.clipsToBounds = YES;
+//    
+//    self.layer.cornerRadius = 3.0f;
 }
 
 

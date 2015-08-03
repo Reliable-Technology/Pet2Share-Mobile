@@ -3,44 +3,54 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="DashboardCollectionCell">
-            <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="458"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                <rect key="frame" x="0.0" y="0.0" width="600" height="458"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nQs-f9-BpH">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="270"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LA1-qc-yeg">
+                        <rect key="frame" x="16" y="16" width="44" height="44"/>
                     </imageView>
-                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x9B-tg-G3i">
-                        <rect key="frame" x="0.0" y="270" width="300" height="30"/>
-                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="k21-fD-fXw">
-                            <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        </view>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="30" id="Ca8-wc-PsX"/>
-                        </constraints>
-                        <blurEffect style="light"/>
-                    </visualEffectView>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j5G-Ju-mmh">
+                        <rect key="frame" x="0.0" y="414" width="600" height="44"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBu-0M-3dQ">
+                        <rect key="frame" x="76" y="16" width="508" height="22"/>
+                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="15 Min" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l6G-wT-1YY">
+                        <rect key="frame" x="76" y="39" width="508" height="22"/>
+                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M5p-nQ-25G">
+                        <rect key="frame" x="0.0" y="78" width="600" height="338"/>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
-            <constraints>
-                <constraint firstAttribute="trailing" secondItem="nQs-f9-BpH" secondAttribute="trailing" id="2Z9-q7-zKv"/>
-                <constraint firstItem="nQs-f9-BpH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Mrx-Tf-fLN"/>
-                <constraint firstItem="nQs-f9-BpH" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Pbn-gL-IJj"/>
-                <constraint firstItem="x9B-tg-G3i" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="SCM-Lu-P95"/>
-                <constraint firstAttribute="trailing" secondItem="x9B-tg-G3i" secondAttribute="trailing" id="URa-PT-zTf"/>
-                <constraint firstAttribute="bottom" secondItem="x9B-tg-G3i" secondAttribute="bottom" id="kZq-Sm-Dg4"/>
-                <constraint firstItem="x9B-tg-G3i" firstAttribute="top" secondItem="nQs-f9-BpH" secondAttribute="bottom" id="yue-oV-l3Y"/>
-            </constraints>
+            <size key="customSize" width="576" height="463"/>
             <connections>
-                <outlet property="imageView" destination="nQs-f9-BpH" id="wUw-0L-x5s"/>
+                <outlet property="postedCommentLbl" destination="cBu-0M-3dQ" id="1xc-Ly-6z7"/>
+                <outlet property="postedImageView" destination="M5p-nQ-25G" id="BWf-47-Uu2"/>
+                <outlet property="postedPostedTimeLbl" destination="l6G-wT-1YY" id="Tg2-T7-eXx"/>
+                <outlet property="posterImageView" destination="LA1-qc-yeg" id="sHf-GZ-Mqe"/>
             </connections>
+            <point key="canvasLocation" x="283" y="316"/>
         </collectionViewCell>
     </objects>
 </document>
