@@ -13,6 +13,8 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
         </mutableArray>
         <mutableArray key="LobsterTwo-Regular.otf">
             <string>LobsterTwo</string>
@@ -103,7 +105,7 @@
                     <view key="view" contentMode="scaleToFill" id="cAo-wr-w9o">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.12941176470588234" green="0.14509803921568626" blue="0.19215686274509802" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Pet 2 Share" id="iN7-9S-2cK"/>
                 </viewController>
@@ -111,10 +113,10 @@
             </objects>
             <point key="canvasLocation" x="3894" y="1731"/>
         </scene>
-        <!--Pet 2 Share-->
+        <!--ProfileVC-->
         <scene sceneID="HJw-mR-kJX">
             <objects>
-                <viewController id="PoM-rN-Bg1" sceneMemberID="viewController">
+                <viewController id="PoM-rN-Bg1" customClass="ProfileVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HG3-fm-5mo"/>
                         <viewControllerLayoutGuide type="bottom" id="uEf-30-SIo"/>
@@ -122,9 +124,72 @@
                     <view key="view" contentMode="scaleToFill" id="Cv6-cm-ve6">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-cover" translatesAutoresizingMaskIntoConstraints="NO" id="mtC-eU-DTs">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                            </imageView>
+                            <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wQt-wn-0v0">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="MOa-Gb-epM" customClass="CircleImageView">
+                                        <rect key="frame" x="260" y="30" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="ITJ-q1-F1B"/>
+                                            <constraint firstAttribute="height" constant="80" id="cKZ-88-ecR"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hr3-t5-S6i">
+                                        <rect key="frame" x="80" y="130" width="440" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="m9d-Rb-JTa"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcW-Dw-46F">
+                                        <rect key="frame" x="80" y="151" width="440" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="QUk-HQ-Hzr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.12941176470588234" green="0.14509803921568626" blue="0.19215686274509802" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="hr3-t5-S6i" firstAttribute="leading" secondItem="wQt-wn-0v0" secondAttribute="leading" constant="80" id="7B7-p9-zU0"/>
+                                    <constraint firstAttribute="trailing" secondItem="hr3-t5-S6i" secondAttribute="trailing" constant="80" id="GRe-j4-jWj"/>
+                                    <constraint firstItem="lcW-Dw-46F" firstAttribute="top" secondItem="hr3-t5-S6i" secondAttribute="bottom" id="GZK-Bh-cmx"/>
+                                    <constraint firstItem="hr3-t5-S6i" firstAttribute="top" secondItem="MOa-Gb-epM" secondAttribute="bottom" constant="20" id="MXs-wW-vNo"/>
+                                    <constraint firstItem="lcW-Dw-46F" firstAttribute="leading" secondItem="wQt-wn-0v0" secondAttribute="leading" constant="80" id="P4D-df-gkU"/>
+                                    <constraint firstItem="MOa-Gb-epM" firstAttribute="top" secondItem="wQt-wn-0v0" secondAttribute="top" constant="30" id="Ue4-XX-lbY"/>
+                                    <constraint firstAttribute="centerX" secondItem="MOa-Gb-epM" secondAttribute="centerX" id="cRt-NY-bUR"/>
+                                    <constraint firstAttribute="trailing" secondItem="lcW-Dw-46F" secondAttribute="trailing" constant="80" id="qOi-0F-0tF"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.12941176469999999" green="0.1450980392" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="uEf-30-SIo" firstAttribute="top" secondItem="mtC-eU-DTs" secondAttribute="bottom" id="0SY-Sl-lrR"/>
+                            <constraint firstItem="wQt-wn-0v0" firstAttribute="leading" secondItem="Cv6-cm-ve6" secondAttribute="leading" id="FfB-NX-My7"/>
+                            <constraint firstItem="mtC-eU-DTs" firstAttribute="top" secondItem="HG3-fm-5mo" secondAttribute="bottom" id="H1Z-0V-3aU"/>
+                            <constraint firstItem="mtC-eU-DTs" firstAttribute="leading" secondItem="Cv6-cm-ve6" secondAttribute="leading" id="bV6-bW-cyy"/>
+                            <constraint firstItem="uEf-30-SIo" firstAttribute="top" secondItem="wQt-wn-0v0" secondAttribute="bottom" id="ebn-Ah-qLT"/>
+                            <constraint firstItem="mtC-eU-DTs" firstAttribute="top" secondItem="HG3-fm-5mo" secondAttribute="bottom" id="ekH-4H-8Ib"/>
+                            <constraint firstItem="wQt-wn-0v0" firstAttribute="top" secondItem="HG3-fm-5mo" secondAttribute="bottom" id="kZE-SL-4ib"/>
+                            <constraint firstItem="wQt-wn-0v0" firstAttribute="trailing" secondItem="Cv6-cm-ve6" secondAttribute="trailing" id="oSj-a7-lxB"/>
+                            <constraint firstItem="mtC-eU-DTs" firstAttribute="trailing" secondItem="Cv6-cm-ve6" secondAttribute="trailing" id="y1V-mE-oYF"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Pet 2 Share" id="cni-8g-CPA"/>
+                    <navigationItem key="navigationItem" id="cni-8g-CPA"/>
+                    <connections>
+                        <outlet property="avatarImageView" destination="MOa-Gb-epM" id="3No-f7-GsS"/>
+                        <outlet property="coverImageView" destination="mtC-eU-DTs" id="xwA-nR-i4m"/>
+                        <outlet property="locationLabel" destination="lcW-Dw-46F" id="1oB-1g-Rbv"/>
+                        <outlet property="nameLabel" destination="hr3-t5-S6i" id="Hir-Gb-CCf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zm9-FD-XHQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -423,6 +488,8 @@
         <image name="icon-selected-camera" width="24" height="18"/>
         <image name="icon-selected-feed" width="28" height="22"/>
         <image name="icon-selected-profile" width="24" height="22"/>
+        <image name="img-avatar" width="86" height="84"/>
+        <image name="img-cover" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8Ta-dl-rQ8"/>

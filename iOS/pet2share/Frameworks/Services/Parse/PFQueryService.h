@@ -14,6 +14,8 @@
 
 @interface PFQueryService : NSObject
 
++ (void)loadImageFile:(PFFile *)file imageView:(UIImageView *)imageView;
+
 + (void)loadImage:(ParseUser *)object
         imageView:(UIImageView *)imageView;
 

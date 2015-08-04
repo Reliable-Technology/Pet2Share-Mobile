@@ -11,6 +11,29 @@
 
 @implementation PFQueryService
 
++ (void)loadImageFile:(PFFile *)file imageView:(UIImageView *)imageView
+{
+    // fTRACE("Object: %@ Image Key: %@", [object description], imageKey);
+    
+    // Load Image Block
+    void (^loadImage)(PFFile *) = ^(PFFile *file) {
+        if (file)
+        {
+            [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                if (data) [imageView setImage:[UIImage imageWithData:data]];
+                else fTRACE("Error Getting Image: %@", [error localizedDescription]);
+            }];
+        }
+    };
+    
+    // If the object contains the file, load the image from the file.
+    // Otherwise, try fetching object once then load the image from the file.
+    if (file)
+    {
+        loadImage(file);
+    }
+}
+
 + (void)loadImage:(ParseUser *)user
         imageView:(UIImageView *)imageView
 {

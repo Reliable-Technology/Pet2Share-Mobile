@@ -40,9 +40,11 @@
 		FB1067E91B5341A500BEBC40 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067E81B5341A500BEBC40 /* LoginVC.m */; };
 		FB1067EC1B5341D600BEBC40 /* SignupViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067EB1B5341D600BEBC40 /* SignupViewCtrl.m */; };
 		FB1067F01B535B4C00BEBC40 /* LoginTableCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067EF1B535B4C00BEBC40 /* LoginTableCtrl.m */; };
-		FB1067F61B53697600BEBC40 /* FeedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067F51B53697600BEBC40 /* FeedVC.m */; };
 		FB2BDBAE1B5767940095B254 /* DashboardCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB2BDBAC1B5767940095B254 /* DashboardCollectionCell.m */; };
 		FB2BDBAF1B5767940095B254 /* DashboardCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB2BDBAD1B5767940095B254 /* DashboardCollectionCell.xib */; };
+		FB3B78811B705884002C961A /* FeedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3B78801B705884002C961A /* FeedVC.m */; };
+		FB3B78851B7058B4002C961A /* ProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3B78841B7058B4002C961A /* ProfileVC.m */; };
+		FB3B78881B706021002C961A /* CircleImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3B78871B706021002C961A /* CircleImageView.m */; };
 		FB484A361B4FD0AA0045A6EA /* LandingPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A351B4FD0AA0045A6EA /* LandingPageVC.m */; };
 		FB484A391B4FD0DB0045A6EA /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A381B4FD0DB0045A6EA /* NSString+URLEncoding.m */; };
 		FB484A3F1B4FD12F0045A6EA /* Graphics.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A3E1B4FD12F0045A6EA /* Graphics.m */; };
@@ -153,11 +155,15 @@
 		FB1067EE1B535B4C00BEBC40 /* LoginTableCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginTableCtrl.h; sourceTree = "<group>"; };
 		FB1067EF1B535B4C00BEBC40 /* LoginTableCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTableCtrl.m; sourceTree = "<group>"; };
 		FB1067F11B535F0F00BEBC40 /* FormProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormProtocol.h; sourceTree = "<group>"; };
-		FB1067F41B53697600BEBC40 /* FeedVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedVC.h; sourceTree = "<group>"; };
-		FB1067F51B53697600BEBC40 /* FeedVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedVC.m; sourceTree = "<group>"; };
 		FB2BDBAB1B5767940095B254 /* DashboardCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardCollectionCell.h; sourceTree = "<group>"; };
 		FB2BDBAC1B5767940095B254 /* DashboardCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardCollectionCell.m; sourceTree = "<group>"; };
 		FB2BDBAD1B5767940095B254 /* DashboardCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardCollectionCell.xib; sourceTree = "<group>"; };
+		FB3B787F1B705884002C961A /* FeedVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedVC.h; sourceTree = "<group>"; };
+		FB3B78801B705884002C961A /* FeedVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedVC.m; sourceTree = "<group>"; };
+		FB3B78831B7058B4002C961A /* ProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileVC.h; sourceTree = "<group>"; };
+		FB3B78841B7058B4002C961A /* ProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileVC.m; sourceTree = "<group>"; };
+		FB3B78861B706021002C961A /* CircleImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleImageView.h; sourceTree = "<group>"; };
+		FB3B78871B706021002C961A /* CircleImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleImageView.m; sourceTree = "<group>"; };
 		FB484A341B4FD0AA0045A6EA /* LandingPageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingPageVC.h; sourceTree = "<group>"; };
 		FB484A351B4FD0AA0045A6EA /* LandingPageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingPageVC.m; sourceTree = "<group>"; };
 		FB484A371B4FD0DB0045A6EA /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
@@ -332,15 +338,6 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
-		FB1067F31B53694C00BEBC40 /* Dashboard */ = {
-			isa = PBXGroup;
-			children = (
-				FB1067F41B53697600BEBC40 /* FeedVC.h */,
-				FB1067F51B53697600BEBC40 /* FeedVC.m */,
-			);
-			path = Dashboard;
-			sourceTree = "<group>";
-		};
 		FB2BDBAA1B5767610095B254 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,6 +346,24 @@
 				FB2BDBAD1B5767940095B254 /* DashboardCollectionCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		FB3B787E1B705884002C961A /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				FB3B787F1B705884002C961A /* FeedVC.h */,
+				FB3B78801B705884002C961A /* FeedVC.m */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		FB3B78821B7058A4002C961A /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				FB3B78831B7058B4002C961A /* ProfileVC.h */,
+				FB3B78841B7058B4002C961A /* ProfileVC.m */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		FB484A301B4FD0910045A6EA /* Common */ = {
@@ -376,10 +391,11 @@
 		FB484A311B4FD0910045A6EA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FB1067E61B53412F00BEBC40 /* Auth */,
 				FBD3938C1B50D9DB000ED817 /* Templates */,
-				FB1067F31B53694C00BEBC40 /* Dashboard */,
 				FBD393861B50D9B7000ED817 /* Intro */,
+				FB1067E61B53412F00BEBC40 /* Auth */,
+				FB3B787E1B705884002C961A /* Feed */,
+				FB3B78821B7058A4002C961A /* Profile */,
 				FB484A341B4FD0AA0045A6EA /* LandingPageVC.h */,
 				FB484A351B4FD0AA0045A6EA /* LandingPageVC.m */,
 			);
@@ -417,6 +433,8 @@
 				FB2BDBAA1B5767610095B254 /* Cells */,
 				FB484A601B50BE910045A6EA /* RoundCornerButton.h */,
 				FB484A611B50BE910045A6EA /* RoundCornerButton.m */,
+				FB3B78861B706021002C961A /* CircleImageView.h */,
+				FB3B78871B706021002C961A /* CircleImageView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -762,6 +780,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB3B78881B706021002C961A /* CircleImageView.m in Sources */,
 				FB6C273A1B6ED2300002034A /* User.m in Sources */,
 				FB484A391B4FD0DB0045A6EA /* NSString+URLEncoding.m in Sources */,
 				FB1067DF1B532F9700BEBC40 /* SpringLabel.swift in Sources */,
@@ -778,6 +797,7 @@
 				FB484A4D1B4FD40A0045A6EA /* OrderedDictionary.m in Sources */,
 				FB1067E41B532F9700BEBC40 /* TransitionZoom.swift in Sources */,
 				FB1067E91B5341A500BEBC40 /* LoginVC.m in Sources */,
+				FB3B78811B705884002C961A /* FeedVC.m in Sources */,
 				FBCEA4351B4CC3E000497678 /* Pet2ShareDelegate.m in Sources */,
 				FB1067EC1B5341D600BEBC40 /* SignupViewCtrl.m in Sources */,
 				FBD3938F1B50D9DB000ED817 /* BaseNavigationVC.m in Sources */,
@@ -792,6 +812,7 @@
 				FB484A421B4FD3E60045A6EA /* Constants.m in Sources */,
 				FB1067D91B532F9700BEBC40 /* Misc.swift in Sources */,
 				FBD3938A1B50D9B7000ED817 /* IntroPageContentVC.m in Sources */,
+				FB3B78851B7058B4002C961A /* ProfileVC.m in Sources */,
 				FB6C27331B6ED1EF0002034A /* Pet2ShareService.m in Sources */,
 				FB1067CD1B532F9700BEBC40 /* DesignableButton.swift in Sources */,
 				FB1067CB1B532F9700BEBC40 /* AutoTextView.swift in Sources */,
@@ -808,7 +829,6 @@
 				FB484A4F1B4FD40A0045A6EA /* Reachability.m in Sources */,
 				FB1067E21B532F9700BEBC40 /* SpringView.swift in Sources */,
 				FB1067CF1B532F9700BEBC40 /* DesignableLabel.swift in Sources */,
-				FB1067F61B53697600BEBC40 /* FeedVC.m in Sources */,
 				FB484A361B4FD0AA0045A6EA /* LandingPageVC.m in Sources */,
 				FB6C27531B702FB90002034A /* ParseUser.m in Sources */,
 				FB1067DD1B532F9700BEBC40 /* SpringButton.swift in Sources */,

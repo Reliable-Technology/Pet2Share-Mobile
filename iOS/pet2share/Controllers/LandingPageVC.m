@@ -52,6 +52,7 @@ static CGFloat const kScrollTimer                   = 5.0f;
     
     if ([PFUser currentUser].isAuthenticated)
     {
+        [[PFUser currentUser] fetchInBackground];
         [self performSegueWithIdentifier:kSegueMainView sender:nil];
     }
 
