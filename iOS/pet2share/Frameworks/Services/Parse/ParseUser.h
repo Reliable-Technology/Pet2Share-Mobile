@@ -23,17 +23,42 @@
 /*!
  @abstract User Phone Number
  */
-@property (PF_NULLABLE_PROPERTY nonatomic, strong) NSString *phoneNumber;
+@property (PF_NULLABLE_PROPERTY nonatomic, strong) NSString *phone;
+
+/*!
+ @abstract User Mobile Number
+ */
+@property (PF_NULLABLE_PROPERTY nonatomic, strong) NSString *mobile;
+
+/*!
+ @abstract User Address Line 1
+ */
+@property (PF_NULLABLE_PROPERTY nonatomic, strong) NSString *addressLine1;
+
+/*!
+ @abstract User Address Line 2
+ */
+@property (PF_NULLABLE_PROPERTY nonatomic, strong) NSString *addressLine2;
+
+/*!
+ @abstract User City
+ */
+@property (PF_NULLABLE_PROPERTY nonatomic, strong) NSString *city;
+
+/*!
+ @abstract User Country
+ */
+@property (PF_NULLABLE_PROPERTY nonatomic, strong) NSString *country;
+
+/*!
+ @abstract User ZipCode
+ */
+@property (PF_NULLABLE_PROPERTY nonatomic, strong) NSString *zipCode;
 
 /*!
  @abstract User Avatar Image File
  */
 @property (PF_NULLABLE_PROPERTY nonatomic, strong) PFFile *avatarImage;
-
-/*!
- @abstract List of <Device>
- */
-@property (PF_NULLABLE_PROPERTY nonatomic, strong) NSArray *devices;
 
 /*!
  @abstract User Email Verification Flag

@@ -12,9 +12,14 @@
 
 @dynamic firstName;
 @dynamic lastName;
-@dynamic phoneNumber;
+@dynamic phone;
+@dynamic mobile;
+@dynamic addressLine1;
+@dynamic addressLine2;
+@dynamic city;
+@dynamic country;
+@dynamic zipCode;
 @dynamic avatarImage;
-@dynamic devices;
 @dynamic emailVerified;
 
 + (void)load
@@ -26,9 +31,14 @@
 {
     self.firstName = nil;
     self.lastName = nil;
-    self.phoneNumber = nil;
+    self.phone = nil;
+    self.mobile = nil;
+    self.addressLine1 = nil;
+    self.addressLine2 = nil;
+    self.city = nil;
+    self.country = nil;
+    self.zipCode = nil;
     self.avatarImage = nil;
-    self.devices = nil;
     self.emailVerified = nil;
 }
 

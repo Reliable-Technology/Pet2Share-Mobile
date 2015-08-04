@@ -84,7 +84,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="rf0-RL-m2S"/>
                     <connections>
-                        <segue destination="OBQ-c6-ya4" kind="push" identifier="login" id="Ofg-ET-HNW"/>
+                        <segue destination="IvN-8E-Uwe" kind="presentation" identifier="mainview" id="8Ta-dl-rQ8"/>
+                        <segue destination="OBQ-c6-ya4" kind="show" identifier="login" id="z53-Kc-A7c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -188,7 +189,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uvi-O4-7cf">
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uvi-O4-7cf">
                                 <rect key="frame" x="20" y="100" width="560" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="ZEk-4I-K45"/>
@@ -197,7 +198,7 @@
                                     <segue destination="0ob-px-efQ" kind="embed" identifier="logincontainer" id="qqe-qW-1Ib"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3g-dk-wY5" customClass="RoundCornerButton">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3g-dk-wY5" customClass="RoundCornerButton">
                                 <rect key="frame" x="20" y="240" width="560" height="40"/>
                                 <color key="backgroundColor" red="0.49803921569999998" green="0.36078431370000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -209,7 +210,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l8L-9n-aHB">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l8L-9n-aHB">
                                 <rect key="frame" x="20" y="320" width="560" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Btl-1F-ldA"/>
@@ -407,4 +408,7 @@
         <image name="icon-feed" width="28" height="22"/>
         <image name="icon-profile" width="24" height="22"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="8Ta-dl-rQ8"/>
+    </inferredMetricsTieBreakers>
 </document>

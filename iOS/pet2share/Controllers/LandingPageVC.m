@@ -9,6 +9,7 @@
 #import "LandingPageVC.h"
 #import "IntroPageContentVC.h"
 #import "LoginVC.h"
+#import "ParseServices.h"
 
 @interface LandingPageVC () <UIPageViewControllerDataSource>
 
@@ -48,6 +49,11 @@ static CGFloat const kScrollTimer                   = 5.0f;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if ([PFUser currentUser].isAuthenticated)
+    {
+        [self performSegueWithIdentifier:kSegueMainView sender:nil];
+    }
 
     // Initialize the view with introduction images
     IntroPageContentVC *startCtrl = [self pageContentAtIndex:_currPageIndex];
@@ -88,10 +94,10 @@ static CGFloat const kScrollTimer                   = 5.0f;
         _introPagesCtrl = (UIPageViewController *)segue.destinationViewController;
         self.introPagesCtrl.dataSource = self;
     }
-    else if ([segue.identifier isEqualToString:kSegueLogin])
+    else if ([segue.identifier isEqualToString:kSegueMainView])
     {
-//        LoginViewCtrl *loginCtrl = (LoginViewCtrl *)segue.destinationViewController;
-//        loginCtrl.transitioningDelegate = self.transitionManager;
+        UIViewController *controller = segue.destinationViewController;
+        controller.transitioningDelegate = self.transitionManager;
     }
 }
 

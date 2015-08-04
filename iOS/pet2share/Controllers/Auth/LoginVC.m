@@ -12,9 +12,9 @@
 #import "RoundCornerButton.h"
 #import "LoginTableCtrl.h"
 #import "Utils.h"
-#import "Pet2ShareService.h"
+#import "ParseServices.h"
 
-@interface LoginVC () <BarButtonsProtocol, FormProtocol, Pet2ShareServiceCallback>
+@interface LoginVC () <BarButtonsProtocol, FormProtocol, PFQueryCallback>
 
 @property (strong , nonatomic) LoginTableCtrl *loginTableCtrl;
 @property (strong, nonatomic) TransitionManager *transitionManager;
@@ -71,25 +71,27 @@ static NSString * const kLeftIconImageName  = @"icon-arrowback";
 {
     [self.loginTableCtrl resignAllTextFields];
     
-//    // Get email and password from textfield
-//    NSString *username = [self.loginTableCtrl username];
-//    NSString *password = [self.loginTableCtrl password];
-//    fTRACE("User: %@, Password: %@", username, password);
-//    
-//    // Check to see if username is not empty
-//    if (![Utils validateNotEmpty:username] || ![Utils validateNotEmpty:password])
-//    {
-//        [Graphics alert:NSLocalizedString(@"Error", @"")
-//                message:NSLocalizedString(@"Username/password can not be empty.", @"")
-//                   type:ErrorAlert];
-//    }
-//    else
-//    {
-//        Pet2ShareService *service = [Pet2ShareService new];
-//        [service login:self username:username password:password];
-//    }
+    // Get email and password from textfield
+    NSString *username = [self.loginTableCtrl username];
+    NSString *password = [self.loginTableCtrl password];
+    fTRACE("User: %@, Password: %@", username, password);
     
-    [self performSegueWithIdentifier:kSegueMainView sender:self];
+    // Check to see if username is not empty
+    if (![Utils validateNotEmpty:username] || ![Utils validateNotEmpty:password])
+    {
+        [Graphics alert:NSLocalizedString(@"Error", @"")
+                message:NSLocalizedString(@"Username/password can not be empty.", @"")
+                   type:ErrorAlert];
+    }
+    else
+    {
+        // Show loading activity on register button
+        [self.loginBtn showActivityIndicator];
+        
+        // Perform registration. The database will store email as username.
+        PFQueryService *service = [PFQueryService new];
+        [service loginUser:self username:username password:password];
+    }
 }
 
 #pragma mark - <BarButtonsDelegate>
@@ -114,23 +116,28 @@ static NSString * const kLeftIconImageName  = @"icon-arrowback";
     [self loginBtnTapped:self.loginBtn];
 }
 
-#pragma mark 
+#pragma mark - <PFQueryCallback>
 
-- (void)onReceiveSuccess:(id)object
+- (void)onQuerySuccess:(PFObject *)object
 {
-    fTRACE("Object: %@", object);
+    fTRACE("Login Success: %@", [object description]);
     
-    if (object)
-    {
-        [self.loginBtn hideActivityIndicator];
-        [self performSegueWithIdentifier:kSegueMainView sender:self];
-    }
+    // Hide loading activity from register buttons (if any)
+    if (self.loginBtn.isLoading) [self.loginBtn hideActivityIndicator];
+    
+    // Navigate to the mainView
+    [self performSegueWithIdentifier:kSegueMainView sender:self];
 }
 
-- (void)onReceiveError:(id)object
+- (void)onQueryError:(NSError *)error
 {
+    fTRACE("Login Error: %@", [error localizedDescription]);
+    
+    // Hide loading activity from register buttons (if any)
+    if (self.loginBtn.isLoading) [self.loginBtn hideActivityIndicator];
+    
     [Graphics alert:NSLocalizedString(@"Error", @"")
-            message:NSLocalizedString(@"Invalid username/password.", @"")
+            message:[PFErrors getParseErrorMessage:(TBParseError)error.code]
                type:ErrorAlert];
 }
 
