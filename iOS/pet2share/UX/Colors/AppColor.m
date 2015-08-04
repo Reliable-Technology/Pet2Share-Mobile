@@ -47,6 +47,12 @@
 + (UIColor *)tableViewSectionIndexBackgroundColor SCHEME(clear)
 + (UIColor *)tableViewSectionIndexTrackingBackgroundColor SCHEME(lightGray)
 
+#pragma mark - UITabbar
+
++ (UIColor *)tabBarBackgroundColor SCHEME(white)
++ (UIColor *)tabBarTintColor SCHEME(darkGray)
++ (UIColor *)tabBarItemSelectedTitleColor SCHEME(purple)
+
 #pragma mark - UILabel & UITextField
 
 + (UIColor *)textStyleTitleColor SCHEME(darkGray)

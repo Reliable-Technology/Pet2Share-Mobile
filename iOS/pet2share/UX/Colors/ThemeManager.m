@@ -17,6 +17,7 @@
     [self setNavigationBarTheme];
     [self setTableViewTheme];
     [self setTableViewCellTheme];
+    [self setTabbarTheme];
 }
 
 + (void)setNavigationBarTheme
@@ -49,6 +50,20 @@
 {
     [UITableViewCell appearance].backgroundColor = [AppColor tableViewCellBackgroundColor];
     [UITableViewCell appearance].layoutMargins = UIEdgeInsetsZero;
+}
+
++ (void)setTabbarTheme
+{
+    [UITabBar appearance].backgroundColor = [AppColor tabBarBackgroundColor];
+    [UITabBar appearance].barTintColor = [AppColor tabBarBackgroundColor];
+    [UITabBar appearance].tintColor = [AppColor tabBarTintColor];
+
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[AppColor tabBarTintColor]}
+                                             forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[AppColor tabBarItemSelectedTitleColor]}
+                                             forState:UIControlStateSelected];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont fontWithName:kDefaultTypeface size:11.0f]}
+                                             forState:UIControlStateNormal];
 }
 
 @end
