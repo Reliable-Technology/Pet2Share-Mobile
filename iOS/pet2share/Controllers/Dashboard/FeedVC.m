@@ -1,26 +1,22 @@
 //
-//  DashboardVC.m
+//  FeedVC.m
 //  pet2share
 //
 //  Created by Tony Kieu on 7/12/15.
 //  Copyright (c) 2015 Pet 2 Share. All rights reserved.
 //
 
-#import <CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.h>
-#import "DashboardVC.h"
+#import "FeedVC.h"
 #import "AppColor.h"
 
-@interface DashboardVC ()
-
-- (IBAction)dismissView:(id)sender;
+@interface FeedVC ()
 
 @end
 
-@implementation DashboardVC
+@implementation FeedVC
 
 static NSString * const kCellIdentifier = @"cellidentifier";
 static NSString * const kCellNibName    = @"DashboardCollectionCell";
-static NSInteger const kSampleCellCount = 30;
 
 #pragma mark - Life Cycle
 
@@ -28,6 +24,7 @@ static NSInteger const kSampleCellCount = 30;
 {
     if ((self = [super initWithCoder:aDecoder]))
     {
+        // Custom Init
     }
     return self;
 }
@@ -44,13 +41,6 @@ static NSInteger const kSampleCellCount = 30;
 - (void)dealloc
 {
     TRACE_HERE;
-}
-
-#pragma mark - Events
-
-- (IBAction)dismissView:(id)sender
-{
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

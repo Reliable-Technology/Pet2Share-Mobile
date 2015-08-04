@@ -154,7 +154,7 @@
         <!--Pet 2 Share-->
         <scene sceneID="MRJ-2h-OZj">
             <objects>
-                <viewController id="wQ8-ER-nBr" customClass="DashboardVC" sceneMemberID="viewController">
+                <viewController id="wQ8-ER-nBr" customClass="FeedVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WWe-XX-LgW"/>
                         <viewControllerLayoutGuide type="bottom" id="Gzk-aZ-XW1"/>
@@ -164,14 +164,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.12941176470588234" green="0.14509803921568626" blue="0.19215686274509802" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Pet 2 Share" id="gPE-D5-9qP">
-                        <barButtonItem key="leftBarButtonItem" image="icon-close" id="gVU-ry-BAj">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="dismissView:" destination="wQ8-ER-nBr" id="T3Z-iC-rFT"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Pet 2 Share" id="gPE-D5-9qP"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sce-Q8-a5c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -189,7 +182,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uvi-O4-7cf">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uvi-O4-7cf">
                                 <rect key="frame" x="20" y="100" width="560" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="ZEk-4I-K45"/>
@@ -198,7 +191,7 @@
                                     <segue destination="0ob-px-efQ" kind="embed" identifier="logincontainer" id="qqe-qW-1Ib"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3g-dk-wY5" customClass="RoundCornerButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3g-dk-wY5" customClass="RoundCornerButton">
                                 <rect key="frame" x="20" y="240" width="560" height="40"/>
                                 <color key="backgroundColor" red="0.49803921569999998" green="0.36078431370000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -210,7 +203,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l8L-9n-aHB">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l8L-9n-aHB">
                                 <rect key="frame" x="20" y="320" width="560" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Btl-1F-ldA"/>
@@ -404,7 +397,6 @@
     </scenes>
     <resources>
         <image name="icon-camera" width="24" height="18"/>
-        <image name="icon-close" width="15" height="15"/>
         <image name="icon-feed" width="28" height="22"/>
         <image name="icon-profile" width="24" height="22"/>
     </resources>

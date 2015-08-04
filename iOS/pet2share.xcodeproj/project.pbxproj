@@ -40,7 +40,7 @@
 		FB1067E91B5341A500BEBC40 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067E81B5341A500BEBC40 /* LoginVC.m */; };
 		FB1067EC1B5341D600BEBC40 /* SignupViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067EB1B5341D600BEBC40 /* SignupViewCtrl.m */; };
 		FB1067F01B535B4C00BEBC40 /* LoginTableCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067EF1B535B4C00BEBC40 /* LoginTableCtrl.m */; };
-		FB1067F61B53697600BEBC40 /* DashboardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067F51B53697600BEBC40 /* DashboardVC.m */; };
+		FB1067F61B53697600BEBC40 /* FeedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067F51B53697600BEBC40 /* FeedVC.m */; };
 		FB2BDBAE1B5767940095B254 /* DashboardCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB2BDBAC1B5767940095B254 /* DashboardCollectionCell.m */; };
 		FB2BDBAF1B5767940095B254 /* DashboardCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB2BDBAD1B5767940095B254 /* DashboardCollectionCell.xib */; };
 		FB484A361B4FD0AA0045A6EA /* LandingPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A351B4FD0AA0045A6EA /* LandingPageVC.m */; };
@@ -153,8 +153,8 @@
 		FB1067EE1B535B4C00BEBC40 /* LoginTableCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginTableCtrl.h; sourceTree = "<group>"; };
 		FB1067EF1B535B4C00BEBC40 /* LoginTableCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTableCtrl.m; sourceTree = "<group>"; };
 		FB1067F11B535F0F00BEBC40 /* FormProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormProtocol.h; sourceTree = "<group>"; };
-		FB1067F41B53697600BEBC40 /* DashboardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardVC.h; sourceTree = "<group>"; };
-		FB1067F51B53697600BEBC40 /* DashboardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardVC.m; sourceTree = "<group>"; };
+		FB1067F41B53697600BEBC40 /* FeedVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedVC.h; sourceTree = "<group>"; };
+		FB1067F51B53697600BEBC40 /* FeedVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedVC.m; sourceTree = "<group>"; };
 		FB2BDBAB1B5767940095B254 /* DashboardCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardCollectionCell.h; sourceTree = "<group>"; };
 		FB2BDBAC1B5767940095B254 /* DashboardCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardCollectionCell.m; sourceTree = "<group>"; };
 		FB2BDBAD1B5767940095B254 /* DashboardCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardCollectionCell.xib; sourceTree = "<group>"; };
@@ -335,8 +335,8 @@
 		FB1067F31B53694C00BEBC40 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
-				FB1067F41B53697600BEBC40 /* DashboardVC.h */,
-				FB1067F51B53697600BEBC40 /* DashboardVC.m */,
+				FB1067F41B53697600BEBC40 /* FeedVC.h */,
+				FB1067F51B53697600BEBC40 /* FeedVC.m */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -808,7 +808,7 @@
 				FB484A4F1B4FD40A0045A6EA /* Reachability.m in Sources */,
 				FB1067E21B532F9700BEBC40 /* SpringView.swift in Sources */,
 				FB1067CF1B532F9700BEBC40 /* DesignableLabel.swift in Sources */,
-				FB1067F61B53697600BEBC40 /* DashboardVC.m in Sources */,
+				FB1067F61B53697600BEBC40 /* FeedVC.m in Sources */,
 				FB484A361B4FD0AA0045A6EA /* LandingPageVC.m in Sources */,
 				FB6C27531B702FB90002034A /* ParseUser.m in Sources */,
 				FB1067DD1B532F9700BEBC40 /* SpringButton.swift in Sources */,

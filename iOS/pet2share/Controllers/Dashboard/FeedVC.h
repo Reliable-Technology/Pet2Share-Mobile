@@ -1,5 +1,5 @@
 //
-//  DashboardVC.h
+//  FeedVC.h
 //  pet2share
 //
 //  Created by Tony Kieu on 7/12/15.
@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "BaseNavigationVC.h"
 
-@interface DashboardVC : BaseNavigationVC
+@interface FeedVC : BaseNavigationVC
 
 @end
