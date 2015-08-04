@@ -8,6 +8,7 @@
 
 #import "Pet2ShareDelegate.h"
 #import "UIDevice+Hardware.h"
+#import "ParseServices.h"
 #import "ThemeManager.h"
 
 @interface Pet2ShareDelegate ()
@@ -21,6 +22,11 @@
     // Hardware information
     NSLog(@"Platform: %@", [[UIDevice currentDevice] platform]);
     NSLog(@"Bundle: %@", [[NSBundle mainBundle] bundleIdentifier]);
+    
+    // Init Parse
+    [Parse enableLocalDatastore];
+    [Parse setApplicationId:@"abdLTq3XYcMpV7vIZ5J2jHPcqtPONAnBK4lJRa9u"
+                  clientKey:@"KnQAaJsMdFDRbZGYcmc5wd2a1swcMwtDrkPDX5oM"];
     
     // Default Themes
     [ThemeManager setDefaultTheme];

@@ -87,6 +87,9 @@
 		FB6C27391B6ED2300002034A /* RepositoryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C27361B6ED2300002034A /* RepositoryObject.m */; };
 		FB6C273A1B6ED2300002034A /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C27381B6ED2300002034A /* User.m */; };
 		FB6C273D1B6ED2950002034A /* UrlManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C273C1B6ED2950002034A /* UrlManager.m */; };
+		FB6C274C1B702DF30002034A /* PFErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C274B1B702DF30002034A /* PFErrors.m */; };
+		FB6C27501B702E420002034A /* PFQueryService.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C274F1B702E420002034A /* PFQueryService.m */; };
+		FB6C27531B702FB90002034A /* ParseUser.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C27521B702FB90002034A /* ParseUser.m */; };
 		FBCEA4321B4CC3E000497678 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCEA4311B4CC3E000497678 /* main.m */; };
 		FBCEA4351B4CC3E000497678 /* Pet2ShareDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCEA4341B4CC3E000497678 /* Pet2ShareDelegate.m */; };
 		FBCEA43B1B4CC3E000497678 /* Pet2Share.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBCEA4391B4CC3E000497678 /* Pet2Share.storyboard */; };
@@ -215,6 +218,14 @@
 		FB6C273B1B6ED2950002034A /* UrlManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrlManager.h; sourceTree = "<group>"; };
 		FB6C273C1B6ED2950002034A /* UrlManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UrlManager.m; sourceTree = "<group>"; };
 		FB6C273E1B6EEB0F0002034A /* ServiceConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceConfig.h; sourceTree = "<group>"; };
+		FB6C27491B702DCA0002034A /* ParseServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseServices.h; sourceTree = "<group>"; };
+		FB6C274A1B702DF30002034A /* PFErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFErrors.h; sourceTree = "<group>"; };
+		FB6C274B1B702DF30002034A /* PFErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFErrors.m; sourceTree = "<group>"; };
+		FB6C274D1B702E280002034A /* PFQueryCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFQueryCallback.h; sourceTree = "<group>"; };
+		FB6C274E1B702E420002034A /* PFQueryService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFQueryService.h; sourceTree = "<group>"; };
+		FB6C274F1B702E420002034A /* PFQueryService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFQueryService.m; sourceTree = "<group>"; };
+		FB6C27511B702FB90002034A /* ParseUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseUser.h; sourceTree = "<group>"; };
+		FB6C27521B702FB90002034A /* ParseUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseUser.m; sourceTree = "<group>"; };
 		FBCEA42C1B4CC3E000497678 /* pet2share.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pet2share.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBCEA4301B4CC3E000497678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBCEA4311B4CC3E000497678 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -460,6 +471,7 @@
 		FB6C27301B6ED1DA0002034A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				FB6C27471B702C210002034A /* Parse */,
 				FB6C27311B6ED1EF0002034A /* Pet2ShareService.h */,
 				FB6C27321B6ED1EF0002034A /* Pet2ShareService.m */,
 				FB6C273B1B6ED2950002034A /* UrlManager.h */,
@@ -480,18 +492,19 @@
 			path = DAL;
 			sourceTree = "<group>";
 		};
-		FB6C27421B6EEFE40002034A /* Repositories */ = {
+		FB6C27471B702C210002034A /* Parse */ = {
 			isa = PBXGroup;
 			children = (
+				FB6C27491B702DCA0002034A /* ParseServices.h */,
+				FB6C274A1B702DF30002034A /* PFErrors.h */,
+				FB6C274B1B702DF30002034A /* PFErrors.m */,
+				FB6C274D1B702E280002034A /* PFQueryCallback.h */,
+				FB6C274E1B702E420002034A /* PFQueryService.h */,
+				FB6C274F1B702E420002034A /* PFQueryService.m */,
+				FB6C27511B702FB90002034A /* ParseUser.h */,
+				FB6C27521B702FB90002034A /* ParseUser.m */,
 			);
-			path = Repositories;
-			sourceTree = "<group>";
-		};
-		FBCB35911B5DA7CC00A0742F /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
+			path = Parse;
 			sourceTree = "<group>";
 		};
 		FBCEA4231B4CC3E000497678 = {
@@ -562,10 +575,8 @@
 		FBCEA4561B4CC86200497678 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FB6C27421B6EEFE40002034A /* Repositories */,
 				FB6C27341B6ED2300002034A /* DAL */,
 				FB6C27301B6ED1DA0002034A /* Services */,
-				FBCB35911B5DA7CC00A0742F /* Models */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -761,6 +772,7 @@
 				FB1067DE1B532F9700BEBC40 /* SpringImageView.swift in Sources */,
 				FB1067D21B532F9700BEBC40 /* DesignableTextView.swift in Sources */,
 				FB1067D31B532F9700BEBC40 /* DesignableView.swift in Sources */,
+				FB6C274C1B702DF30002034A /* PFErrors.m in Sources */,
 				FB484A621B50BE910045A6EA /* RoundCornerButton.m in Sources */,
 				FB6C273D1B6ED2950002034A /* UrlManager.m in Sources */,
 				FB484A4D1B4FD40A0045A6EA /* OrderedDictionary.m in Sources */,
@@ -789,6 +801,7 @@
 				FB484A581B50BE370045A6EA /* AppColor.m in Sources */,
 				FB1067D61B532F9700BEBC40 /* KeyboardLayoutConstraint.swift in Sources */,
 				FB1067E31B532F9700BEBC40 /* TransitionManager.swift in Sources */,
+				FB6C27501B702E420002034A /* PFQueryService.m in Sources */,
 				FB2BDBAE1B5767940095B254 /* DashboardCollectionCell.m in Sources */,
 				FB1067CE1B532F9700BEBC40 /* DesignableImageView.swift in Sources */,
 				FB1067D01B532F9700BEBC40 /* DesignableTabBarController.swift in Sources */,
@@ -797,6 +810,7 @@
 				FB1067CF1B532F9700BEBC40 /* DesignableLabel.swift in Sources */,
 				FB1067F61B53697600BEBC40 /* DashboardVC.m in Sources */,
 				FB484A361B4FD0AA0045A6EA /* LandingPageVC.m in Sources */,
+				FB6C27531B702FB90002034A /* ParseUser.m in Sources */,
 				FB1067DD1B532F9700BEBC40 /* SpringButton.swift in Sources */,
 				FB1067DC1B532F9700BEBC40 /* SpringAnimation.swift in Sources */,
 				FB1067E01B532F9700BEBC40 /* SpringTextField.swift in Sources */,

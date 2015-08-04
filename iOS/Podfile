@@ -8,6 +8,8 @@ pod 'AMScrollingNavbar', '~> 1.5.1'
 pod 'ChameleonFramework', '~> 1.2.1'
 pod 'CHTCollectionViewWaterfallLayout', '~> 0.9.1'
 pod 'JSONModel', '~> 1.1.0'
+pod 'Parse', '~> 1.7.5.3'
+pod 'ParseUI', '~> 1.1.4'
 pod 'SIAlertView', :head
 
 post_install do |installer|
