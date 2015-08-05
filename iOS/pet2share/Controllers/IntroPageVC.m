@@ -6,23 +6,22 @@
 //  Copyright (c) 2015 Pet 2 Share. All rights reserved.
 //
 
-#import "LandingPageVC.h"
+#import "IntroPageVC.h"
 #import "IntroPageContentVC.h"
 #import "LoginVC.h"
 #import "ParseServices.h"
 
-@interface LandingPageVC () <UIPageViewControllerDataSource>
+@interface IntroPageVC () <UIPageViewControllerDataSource>
 
 @property (strong, nonatomic) UIPageViewController *introPagesCtrl;
 @property (readonly, nonatomic) NSArray *introPageContent;
 @property (strong, nonatomic) NSTimer *scrollTimer;
-@property (strong, nonatomic) TransitionManager *transitionManager;
 
 - (IBAction)getStartedBtnTapped:(id)sender;
 
 @end
 
-@implementation LandingPageVC
+@implementation IntroPageVC
 {
     NSInteger _currPageIndex;
 }
@@ -41,7 +40,6 @@ static CGFloat const kScrollTimer                   = 5.0f;
     if ((self = [super initWithCoder:aDecoder]))
     {
         _currPageIndex = 0;
-        _transitionManager = [TransitionManager new];
     }
     return self;
 }
@@ -50,12 +48,6 @@ static CGFloat const kScrollTimer                   = 5.0f;
 {
     [super viewDidLoad];
     
-    if ([PFUser currentUser].isAuthenticated)
-    {
-        [[PFUser currentUser] fetchInBackground];
-        [self performSegueWithIdentifier:kSegueMainView sender:nil];
-    }
-
     // Initialize the view with introduction images
     IntroPageContentVC *startCtrl = [self pageContentAtIndex:_currPageIndex];
     [self.introPagesCtrl setViewControllers: @[startCtrl]
@@ -94,11 +86,6 @@ static CGFloat const kScrollTimer                   = 5.0f;
     {
         _introPagesCtrl = (UIPageViewController *)segue.destinationViewController;
         self.introPagesCtrl.dataSource = self;
-    }
-    else if ([segue.identifier isEqualToString:kSegueMainView])
-    {
-        UIViewController *controller = segue.destinationViewController;
-        controller.transitioningDelegate = self.transitionManager;
     }
 }
 

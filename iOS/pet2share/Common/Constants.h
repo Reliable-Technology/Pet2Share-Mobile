@@ -24,5 +24,3 @@ extern NSString * const kSegueIntroPages;
 extern NSString * const kSegueSignUp;
 extern NSString * const kSegueLogin;
 extern NSString * const kSegueLoginContainer;
-extern NSString * const kSegueDashboard;
-extern NSString * const kSegueMainView;

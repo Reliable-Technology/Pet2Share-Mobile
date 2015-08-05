@@ -17,7 +17,6 @@
 @interface LoginVC () <BarButtonsProtocol, FormProtocol, PFQueryCallback>
 
 @property (strong , nonatomic) LoginTableCtrl *loginTableCtrl;
-@property (strong, nonatomic) TransitionManager *transitionManager;
 
 @property (weak, nonatomic) IBOutlet RoundCornerButton *loginBtn;
 
@@ -34,7 +33,6 @@ static NSString * const kLeftIconImageName  = @"icon-arrowback";
     if ((self = [super initWithCoder:aDecoder]))
     {
         self.barButtonsProtocol = self;
-        _transitionManager = [TransitionManager new];
     }
     return self;
 }
@@ -57,11 +55,6 @@ static NSString * const kLeftIconImageName  = @"icon-arrowback";
     {
         self.loginTableCtrl = segue.destinationViewController;
         self.loginTableCtrl.formProtocol = self;
-    }
-    else if ([segue.identifier isEqualToString:kSegueDashboard])
-    {
-        UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
-        navController.transitioningDelegate = self.transitionManager;
     }
 }
 
@@ -125,8 +118,8 @@ static NSString * const kLeftIconImageName  = @"icon-arrowback";
     // Hide loading activity from register buttons (if any)
     if (self.loginBtn.isLoading) [self.loginBtn hideActivityIndicator];
     
-    // Navigate to the mainView
-    [self performSegueWithIdentifier:kSegueMainView sender:self];
+    // Dismiss the login view
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)onQueryError:(NSError *)error
