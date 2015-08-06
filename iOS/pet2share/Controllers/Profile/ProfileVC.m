@@ -10,13 +10,15 @@
 #import "CircleImageView.h"
 #import "ParseServices.h"
 #import "Graphics.h"
+#import "PetTile.h"
 
-@interface ProfileVC ()
+@interface ProfileVC () <UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *coverImageView;
 @property (weak, nonatomic) IBOutlet CircleImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -36,6 +38,7 @@
     [super viewDidLoad];
         
     [self updateUserInfo:NO];
+    [self setupScrollView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -102,8 +105,23 @@
             }
         }];
     }
-    
-    
 }
+
+- (void)setupScrollView
+{
+    CGFloat offset = 0;
+    for (int i = 0; i < 8; i++)
+    {
+        if (i == 0) offset += 20;
+        PetTile *tile = [[PetTile alloc] initWithFrame:CGRectMake(offset, 0, 200, 250)];
+        [Graphics roundView:tile cornerRadius:10.0f shadowOpacity:0.7f shadowRadius:3.0f offset:CGSizeZero];
+        [self.scrollView addSubview:tile];
+        offset += tile.bounds.size.width + 20;
+    }
+    
+    self.scrollView.contentSize = CGSizeMake(offset, self.scrollView.frame.size.height);
+}
+
+#pragma mark - <UIScrollViewDelegate>
 
 @end

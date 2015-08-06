@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		CEF556017F1729CF780C00B2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D685707DD3766C3EB6E23122 /* libPods.a */; };
 		FB102AF01B72CBC600CBF26E /* Pet2ShareTabCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB102AEF1B72CBC600CBF26E /* Pet2ShareTabCtrl.m */; };
+		FB102AF31B72F22F00CBF26E /* ParsePet.m in Sources */ = {isa = PBXBuildFile; fileRef = FB102AF21B72F22F00CBF26E /* ParsePet.m */; };
+		FB102AF61B72F24D00CBF26E /* ParsePost.m in Sources */ = {isa = PBXBuildFile; fileRef = FB102AF51B72F24D00CBF26E /* ParsePost.m */; };
+		FB102AF91B72F5C500CBF26E /* PetTile.m in Sources */ = {isa = PBXBuildFile; fileRef = FB102AF81B72F5C500CBF26E /* PetTile.m */; };
+		FB102AFB1B72F5F500CBF26E /* PetTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB102AFA1B72F5F500CBF26E /* PetTile.xib */; };
 		FB1067C91B532F9700BEBC40 /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067AB1B532F9700BEBC40 /* AsyncButton.swift */; };
 		FB1067CA1B532F9700BEBC40 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067AC1B532F9700BEBC40 /* AsyncImageView.swift */; };
 		FB1067CB1B532F9700BEBC40 /* AutoTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067AD1B532F9700BEBC40 /* AutoTextView.swift */; };
@@ -120,6 +124,13 @@
 		E39AC5D91F18CB45AD8327A2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		FB102AEE1B72CBC600CBF26E /* Pet2ShareTabCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pet2ShareTabCtrl.h; sourceTree = "<group>"; };
 		FB102AEF1B72CBC600CBF26E /* Pet2ShareTabCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pet2ShareTabCtrl.m; sourceTree = "<group>"; };
+		FB102AF11B72F22F00CBF26E /* ParsePet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParsePet.h; sourceTree = "<group>"; };
+		FB102AF21B72F22F00CBF26E /* ParsePet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParsePet.m; sourceTree = "<group>"; };
+		FB102AF41B72F24D00CBF26E /* ParsePost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParsePost.h; sourceTree = "<group>"; };
+		FB102AF51B72F24D00CBF26E /* ParsePost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParsePost.m; sourceTree = "<group>"; };
+		FB102AF71B72F5C500CBF26E /* PetTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetTile.h; sourceTree = "<group>"; };
+		FB102AF81B72F5C500CBF26E /* PetTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetTile.m; sourceTree = "<group>"; };
+		FB102AFA1B72F5F500CBF26E /* PetTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PetTile.xib; sourceTree = "<group>"; };
 		FB1067AB1B532F9700BEBC40 /* AsyncButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncButton.swift; sourceTree = "<group>"; };
 		FB1067AC1B532F9700BEBC40 /* AsyncImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		FB1067AD1B532F9700BEBC40 /* AutoTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoTextView.swift; sourceTree = "<group>"; };
@@ -365,6 +376,9 @@
 			children = (
 				FB3B78831B7058B4002C961A /* ProfileVC.h */,
 				FB3B78841B7058B4002C961A /* ProfileVC.m */,
+				FB102AF71B72F5C500CBF26E /* PetTile.h */,
+				FB102AF81B72F5C500CBF26E /* PetTile.m */,
+				FB102AFA1B72F5F500CBF26E /* PetTile.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -526,6 +540,10 @@
 				FB6C274F1B702E420002034A /* PFQueryService.m */,
 				FB6C27511B702FB90002034A /* ParseUser.h */,
 				FB6C27521B702FB90002034A /* ParseUser.m */,
+				FB102AF11B72F22F00CBF26E /* ParsePet.h */,
+				FB102AF21B72F22F00CBF26E /* ParsePet.m */,
+				FB102AF41B72F24D00CBF26E /* ParsePost.h */,
+				FB102AF51B72F24D00CBF26E /* ParsePost.m */,
 			);
 			path = Parse;
 			sourceTree = "<group>";
@@ -725,6 +743,7 @@
 				FB484A8E1B50C6130045A6EA /* Lato-BoldItalic.ttf in Resources */,
 				FB1067D51B532F9700BEBC40 /* Info.plist in Resources */,
 				FB484A8C1B50C6130045A6EA /* Lato-BlackItalic.ttf in Resources */,
+				FB102AFB1B72F5F500CBF26E /* PetTile.xib in Resources */,
 				FB484A731B50C5FB0045A6EA /* LobsterTwo-BoldItalic.otf in Resources */,
 				FBCEA43B1B4CC3E000497678 /* Pet2Share.storyboard in Resources */,
 				FB484A721B50C5FB0045A6EA /* LobsterTwo-Bold.otf in Resources */,
@@ -786,6 +805,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB3B78881B706021002C961A /* CircleImageView.m in Sources */,
+				FB102AF61B72F24D00CBF26E /* ParsePost.m in Sources */,
 				FB6C273A1B6ED2300002034A /* User.m in Sources */,
 				FB484A391B4FD0DB0045A6EA /* NSString+URLEncoding.m in Sources */,
 				FB1067DF1B532F9700BEBC40 /* SpringLabel.swift in Sources */,
@@ -798,6 +818,7 @@
 				FB1067D31B532F9700BEBC40 /* DesignableView.swift in Sources */,
 				FB6C274C1B702DF30002034A /* PFErrors.m in Sources */,
 				FB484A621B50BE910045A6EA /* RoundCornerButton.m in Sources */,
+				FB102AF31B72F22F00CBF26E /* ParsePet.m in Sources */,
 				FB6C273D1B6ED2950002034A /* UrlManager.m in Sources */,
 				FB484A4D1B4FD40A0045A6EA /* OrderedDictionary.m in Sources */,
 				FB1067E41B532F9700BEBC40 /* TransitionZoom.swift in Sources */,
@@ -824,6 +845,7 @@
 				FB1067C91B532F9700BEBC40 /* AsyncButton.swift in Sources */,
 				FB1067CA1B532F9700BEBC40 /* AsyncImageView.swift in Sources */,
 				FB1067F01B535B4C00BEBC40 /* LoginTableCtrl.m in Sources */,
+				FB102AF91B72F5C500CBF26E /* PetTile.m in Sources */,
 				FB102AF01B72CBC600CBF26E /* Pet2ShareTabCtrl.m in Sources */,
 				FB484A581B50BE370045A6EA /* AppColor.m in Sources */,
 				FB1067D61B532F9700BEBC40 /* KeyboardLayoutConstraint.swift in Sources */,
