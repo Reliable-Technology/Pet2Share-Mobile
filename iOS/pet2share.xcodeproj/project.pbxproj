@@ -13,6 +13,8 @@
 		FB102AF61B72F24D00CBF26E /* ParsePost.m in Sources */ = {isa = PBXBuildFile; fileRef = FB102AF51B72F24D00CBF26E /* ParsePost.m */; };
 		FB102AF91B72F5C500CBF26E /* PetTile.m in Sources */ = {isa = PBXBuildFile; fileRef = FB102AF81B72F5C500CBF26E /* PetTile.m */; };
 		FB102AFB1B72F5F500CBF26E /* PetTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB102AFA1B72F5F500CBF26E /* PetTile.xib */; };
+		FB102AFF1B730EC300CBF26E /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB102AFD1B730EC300CBF26E /* CommentCell.m */; };
+		FB102B001B730EC300CBF26E /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB102AFE1B730EC300CBF26E /* CommentCell.xib */; };
 		FB1067C91B532F9700BEBC40 /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067AB1B532F9700BEBC40 /* AsyncButton.swift */; };
 		FB1067CA1B532F9700BEBC40 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067AC1B532F9700BEBC40 /* AsyncImageView.swift */; };
 		FB1067CB1B532F9700BEBC40 /* AutoTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067AD1B532F9700BEBC40 /* AutoTextView.swift */; };
@@ -131,6 +133,9 @@
 		FB102AF71B72F5C500CBF26E /* PetTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetTile.h; sourceTree = "<group>"; };
 		FB102AF81B72F5C500CBF26E /* PetTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetTile.m; sourceTree = "<group>"; };
 		FB102AFA1B72F5F500CBF26E /* PetTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PetTile.xib; sourceTree = "<group>"; };
+		FB102AFC1B730EC300CBF26E /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
+		FB102AFD1B730EC300CBF26E /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
+		FB102AFE1B730EC300CBF26E /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		FB1067AB1B532F9700BEBC40 /* AsyncButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncButton.swift; sourceTree = "<group>"; };
 		FB1067AC1B532F9700BEBC40 /* AsyncImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		FB1067AD1B532F9700BEBC40 /* AutoTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoTextView.swift; sourceTree = "<group>"; };
@@ -358,6 +363,9 @@
 				FB2BDBAB1B5767940095B254 /* DashboardCollectionCell.h */,
 				FB2BDBAC1B5767940095B254 /* DashboardCollectionCell.m */,
 				FB2BDBAD1B5767940095B254 /* DashboardCollectionCell.xib */,
+				FB102AFC1B730EC300CBF26E /* CommentCell.h */,
+				FB102AFD1B730EC300CBF26E /* CommentCell.m */,
+				FB102AFE1B730EC300CBF26E /* CommentCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -730,6 +738,7 @@
 				FB484A941B50C6130045A6EA /* Lato-Light.ttf in Resources */,
 				FB484A8F1B50C6130045A6EA /* Lato-Hairline.ttf in Resources */,
 				FB484A9A1B50C6130045A6EA /* Lato-SemiboldItalic.ttf in Resources */,
+				FB102B001B730EC300CBF26E /* CommentCell.xib in Resources */,
 				FB484A961B50C6130045A6EA /* Lato-Medium.ttf in Resources */,
 				FB484A8D1B50C6130045A6EA /* Lato-Bold.ttf in Resources */,
 				FBD3938B1B50D9B7000ED817 /* IntroPageContentVC.xib in Resources */,
@@ -841,6 +850,7 @@
 				FB3B78851B7058B4002C961A /* ProfileVC.m in Sources */,
 				FB6C27331B6ED1EF0002034A /* Pet2ShareService.m in Sources */,
 				FB1067CD1B532F9700BEBC40 /* DesignableButton.swift in Sources */,
+				FB102AFF1B730EC300CBF26E /* CommentCell.m in Sources */,
 				FB1067CB1B532F9700BEBC40 /* AutoTextView.swift in Sources */,
 				FB1067C91B532F9700BEBC40 /* AsyncButton.swift in Sources */,
 				FB1067CA1B532F9700BEBC40 /* AsyncImageView.swift in Sources */,

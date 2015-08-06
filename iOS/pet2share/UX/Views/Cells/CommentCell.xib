@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+        </mutableArray>
+        <mutableArray key="Lato-Semibold.ttf">
+            <string>Lato-Semibold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="99" id="KGk-i7-Jjw" customClass="CommentCell">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="MpV-4u-y67" customClass="CircleImageView">
+                        <rect key="frame" x="16" y="10" width="36" height="36"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="36" id="3zT-bO-bDm"/>
+                            <constraint firstAttribute="width" constant="36" id="Vre-8p-PkR"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tony Kieu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2OP-hJ-qx4">
+                        <rect key="frame" x="68" y="10" width="516" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="ARz-ui-lfQ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="15"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aug, 3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfr-aC-Yjz">
+                        <rect key="frame" x="68" y="32" width="516" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="cfq-Kp-Lxc"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cel-ZQ-JsV">
+                        <rect key="frame" x="16" y="52" width="568" height="40"/>
+                        <string key="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</string>
+                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="Cel-ZQ-JsV" secondAttribute="trailing" constant="8" id="4fr-GO-noI"/>
+                    <constraint firstItem="2OP-hJ-qx4" firstAttribute="leading" secondItem="MpV-4u-y67" secondAttribute="trailing" constant="16" id="5ZU-dZ-7gA"/>
+                    <constraint firstItem="dfr-aC-Yjz" firstAttribute="leading" secondItem="MpV-4u-y67" secondAttribute="trailing" constant="16" id="92Q-hr-rrO"/>
+                    <constraint firstItem="MpV-4u-y67" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="Qui-M8-8xe"/>
+                    <constraint firstItem="Cel-ZQ-JsV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="Ylu-iN-xEZ"/>
+                    <constraint firstItem="MpV-4u-y67" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="gEU-7H-ft8"/>
+                    <constraint firstItem="dfr-aC-Yjz" firstAttribute="top" secondItem="2OP-hJ-qx4" secondAttribute="bottom" constant="1" id="iQ8-iO-vIm"/>
+                    <constraint firstItem="2OP-hJ-qx4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="ib6-M8-dDM"/>
+                    <constraint firstItem="Cel-ZQ-JsV" firstAttribute="top" secondItem="MpV-4u-y67" secondAttribute="bottom" constant="6" id="kFb-L6-Snn"/>
+                    <constraint firstItem="Cel-ZQ-JsV" firstAttribute="top" secondItem="dfr-aC-Yjz" secondAttribute="bottom" constant="5" id="nz1-8O-RkP"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Cel-ZQ-JsV" secondAttribute="bottom" constant="-1" id="qUa-B5-cFc"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="dfr-aC-Yjz" secondAttribute="trailing" constant="8" id="sfU-ek-OYK"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="2OP-hJ-qx4" secondAttribute="trailing" constant="8" id="swt-1Q-fP9"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="avatarImageView" destination="MpV-4u-y67" id="nv1-q8-7VS"/>
+                <outlet property="commentDateLbl" destination="dfr-aC-Yjz" id="XOx-NC-qSs"/>
+                <outlet property="commentLbl" destination="Cel-ZQ-JsV" id="0xg-Lv-oOm"/>
+                <outlet property="commentNameLbl" destination="2OP-hJ-qx4" id="Gd9-wk-Qwt"/>
+            </connections>
+            <point key="canvasLocation" x="500" y="308.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="img-avatar" width="86" height="84"/>
+    </resources>
+</document>

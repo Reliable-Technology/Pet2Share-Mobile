@@ -11,14 +11,17 @@
 #import "ParseServices.h"
 #import "Graphics.h"
 #import "PetTile.h"
+#import "CommentCell.h"
 
-@interface ProfileVC () <UIScrollViewDelegate>
+static NSString * const kCellIdentifier     = @"commentcell";
+static NSString * const kCellNibName        = @"CommentCell";
 
-@property (weak, nonatomic) IBOutlet UIImageView *coverImageView;
+@interface ProfileVC () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
+
 @property (weak, nonatomic) IBOutlet CircleImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -36,6 +39,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Register cell and remove the footer section
+    [self.tableView registerNib:[UINib nibWithNibName:kCellNibName bundle:nil]
+         forCellReuseIdentifier:kCellIdentifier];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
         
     [self updateUserInfo:NO];
     [self setupScrollView];
@@ -58,22 +66,13 @@
     // Labels
     __block NSString *firstName = nil;
     __block NSString *lastName = nil;
-    __block NSString *city = nil;
-    __block NSString *state = nil;
-    
+
     // Name Label
     firstName = currentUser.firstName ?: NSLocalizedString(@"First Name", @"");
     lastName = currentUser.lastName ?: NSLocalizedString(@"Last Name", @"");
     self.nameLabel.text = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
     
-    // Location Label
-    city = currentUser.city ?: kEmptyString;
-    state = currentUser.regionState ?: kEmptyString;
-    if (city.length > 0 && state.length > 0)
-        self.locationLabel.text = [NSString stringWithFormat:@"%@, %@", city, state];
-    
     // Avatar image view
-    [PFQueryService loadImageFile:currentUser.coverImage imageView:self.coverImageView];
     [PFQueryService loadImageFile:currentUser.avatarImage imageView:self.avatarImageView];
     
     if (requireFetched)
@@ -89,14 +88,7 @@
                 lastName = user.lastName ?: NSLocalizedString(@"Last Name", @"");
                 self.nameLabel.text = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
                 
-                // Location Label
-                city = currentUser.city ?: kEmptyString;
-                state = currentUser.regionState ?: kEmptyString;
-                if (city.length > 0 && state.length > 0)
-                    self.locationLabel.text = [NSString stringWithFormat:@"%@, %@", city, state];
-                
                 // Fetch avatar image view
-                [PFQueryService loadImageFile:currentUser.coverImage imageView:self.coverImageView];
                 [PFQueryService loadImage:currentUser imageView:self.avatarImageView];
             }
             else
@@ -109,17 +101,44 @@
 
 - (void)setupScrollView
 {
-    CGFloat offset = 0;
+    CGFloat offset = 0.0f;
     for (int i = 0; i < 8; i++)
     {
-        if (i == 0) offset += 20;
+        if (i == 0) offset += 16.0f;
         PetTile *tile = [[PetTile alloc] initWithFrame:CGRectMake(offset, 0, 200, 250)];
-        [Graphics roundView:tile cornerRadius:10.0f shadowOpacity:0.7f shadowRadius:3.0f offset:CGSizeZero];
+        [Graphics dropShadow:tile shadowOpacity:0.7f shadowRadius:3.0f offset:CGSizeZero];
         [self.scrollView addSubview:tile];
-        offset += tile.bounds.size.width + 20;
+        offset += tile.bounds.size.width + 16.0f;
     }
     
     self.scrollView.contentSize = CGSizeMake(offset, self.scrollView.frame.size.height);
+}
+
+#pragma mark - <UITableViewDataSource>
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 10;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CommentCell *cell = (CommentCell *)[tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
+    if (!cell) cell = [[CommentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellIdentifier];
+    // TODO: Provide cell data
+    return cell;
+}
+
+#pragma mark - <UITableViewDelegate>
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [CommentCell cellHeight];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // TODO: Implement later
 }
 
 #pragma mark - <UIScrollViewDelegate>
