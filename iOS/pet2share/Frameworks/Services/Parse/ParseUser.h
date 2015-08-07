@@ -66,11 +66,6 @@
 @property (PF_NULLABLE_PROPERTY nonatomic, strong) PFFile *avatarImage;
 
 /*!
- @abstract User Cover Image File
- */
-@property (PF_NULLABLE_PROPERTY nonatomic, strong) PFFile *coverImage;
-
-/*!
  @abstract User Email Verification Flag
  */
 @property (PF_NULLABLE_PROPERTY nonatomic, strong) NSNumber *emailVerified;

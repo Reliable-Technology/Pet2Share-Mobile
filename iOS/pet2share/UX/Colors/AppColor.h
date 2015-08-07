@@ -48,6 +48,8 @@
 
 #pragma mark - UILabel & UITextField
 
++ (UIColor *)textStyleLightThemeColor;
++ (UIColor *)textStyleDarkThemeColor;
 + (UIColor *)textStyleTitleColor;
 + (UIColor *)textStyleTitleShadowColor;
 + (UIColor *)textStyleBodyColor;

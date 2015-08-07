@@ -13,9 +13,7 @@
 @dynamic nickName;
 @dynamic name;
 @dynamic avatarImage;
-@dynamic coverImage;
 @dynamic owner;
-@dynamic posts;
 
 + (NSString *)parseClassName
 {
@@ -32,9 +30,7 @@
     self.nickName = nil;
     self.name = nil;
     self.avatarImage = nil;
-    self.coverImage = nil;
     self.owner = nil;
-    self.posts = nil;
 }
 
 @end

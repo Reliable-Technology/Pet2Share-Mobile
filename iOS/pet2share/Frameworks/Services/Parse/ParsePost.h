@@ -8,6 +8,8 @@
 
 #import <Parse/Parse.h>
 
+@class ParsePet;
+
 @interface ParsePost : PFObject <PFSubclassing>
 
 /*!
@@ -26,8 +28,8 @@
 @property (PF_NULLABLE_PROPERTY nonatomic, strong) PFFile *image;
 
 /*!
- @abstract List of <Comments>
+ @abstract Pet
  */
-@property (PF_NULLABLE_PROPERTY nonatomic, strong) NSArray *comments;
+@property (PF_NULLABLE_PROPERTY nonatomic, strong) ParsePet *pet;
 
 @end

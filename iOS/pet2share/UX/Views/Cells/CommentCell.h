@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, CommentCellTheme)
+{
+    LightTheme,
+    DarkTheme
+};
+
 @interface CommentCell : UITableViewCell
 
 + (CGFloat)cellHeight;
+- (void)setCellTheme:(CommentCellTheme)cellTheme;
 
 @end

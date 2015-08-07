@@ -56,6 +56,7 @@ static CGFloat const kScrollTimer                   = 5.0f;
     
     [self setPeriodicScroll:YES];
     
+    
     // TODO: Google Analytics
 }
 

@@ -55,6 +55,8 @@
 
 #pragma mark - UILabel & UITextField
 
++ (UIColor *)textStyleLightThemeColor SCHEME(darkGray)
++ (UIColor *)textStyleDarkThemeColor SCHEME(white)
 + (UIColor *)textStyleTitleColor SCHEME(darkGray)
 + (UIColor *)textStyleTitleShadowColor SCHEME(white)
 + (UIColor *)textStyleBodyColor SCHEME(darkGray)

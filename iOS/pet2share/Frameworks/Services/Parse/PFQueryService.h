@@ -14,7 +14,8 @@
 
 @interface PFQueryService : NSObject
 
-+ (void)loadImageFile:(PFFile *)file imageView:(UIImageView *)imageView;
++ (void)loadImageFile:(PFFile *)file imageView:(UIImageView *)imageView
+           completion:(void (^)(BOOL finished))completion;
 
 + (void)loadImage:(ParseUser *)object
         imageView:(UIImageView *)imageView;
@@ -30,5 +31,8 @@
 - (void)loginUser:(NSObject<PFQueryCallback> *)callback
          username:(NSString *)username
          password:(NSString *)password;
+
+- (void)getAllPets:(NSObject<PFQueryCallback> *)callback
+           forUser:(ParseUser *)user;
 
 @end

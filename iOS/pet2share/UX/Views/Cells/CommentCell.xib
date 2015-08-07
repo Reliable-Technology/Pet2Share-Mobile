@@ -5,12 +5,14 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Lato-Regular.ttf">
-            <string>Lato-Regular</string>
-            <string>Lato-Regular</string>
+        <mutableArray key="Lato-Light.ttf">
+            <string>Lato-Light</string>
         </mutableArray>
         <mutableArray key="Lato-Semibold.ttf">
             <string>Lato-Semibold</string>
+        </mutableArray>
+        <mutableArray key="Lato-Thin.ttf">
+            <string>Lato-Thin</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -44,14 +46,14 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="cfq-Kp-Lxc"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                        <fontDescription key="fontDescription" name="Lato-Thin" family="Lato" pointSize="12"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cel-ZQ-JsV">
                         <rect key="frame" x="16" y="52" width="568" height="40"/>
                         <string key="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</string>
-                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
+                        <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="13"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>

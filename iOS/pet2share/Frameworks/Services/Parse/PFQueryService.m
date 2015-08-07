@@ -12,25 +12,19 @@
 @implementation PFQueryService
 
 + (void)loadImageFile:(PFFile *)file imageView:(UIImageView *)imageView
+           completion:(void (^)(BOOL finished))completion
 {
     // fTRACE("Object: %@ Image Key: %@", [object description], imageKey);
-    
-    // Load Image Block
-    void (^loadImage)(PFFile *) = ^(PFFile *file) {
-        if (file)
-        {
-            [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-                if (data) [imageView setImage:[UIImage imageWithData:data]];
-                else fTRACE("Error Getting Image: %@", [error localizedDescription]);
-            }];
-        }
-    };
     
     // If the object contains the file, load the image from the file.
     // Otherwise, try fetching object once then load the image from the file.
     if (file)
     {
-        loadImage(file);
+        [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            if (data) [imageView setImage:[UIImage imageWithData:data]];
+            else fTRACE("Error Getting Image: %@", [error localizedDescription]);
+            if (completion) completion(YES);
+        }];
     }
 }
 
@@ -133,6 +127,17 @@
         else [callback onQueryError:error];
     }];
     
+}
+
+- (void)getAllPets:(NSObject<PFQueryCallback> *)callback
+           forUser:(ParseUser *)user
+{
+    PFQuery *query = [ParsePet query];
+    [query whereKey:kParsePetOwner equalTo:user];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (objects) [callback onQueryListSuccess:objects];
+        else [callback onQueryError:error];
+    }];
 }
 
 @end

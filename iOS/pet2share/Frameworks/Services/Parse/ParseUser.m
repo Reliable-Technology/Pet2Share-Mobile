@@ -21,7 +21,6 @@
 @dynamic country;
 @dynamic zipCode;
 @dynamic avatarImage;
-@dynamic coverImage;
 @dynamic emailVerified;
 
 + (void)load
@@ -42,7 +41,6 @@
     self.country = nil;
     self.zipCode = nil;
     self.avatarImage = nil;
-    self.coverImage = nil;
     self.emailVerified = nil;
 }
 

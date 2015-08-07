@@ -8,6 +8,7 @@
 
 #import "CommentCell.h"
 #import "CircleImageView.h"
+#import "AppColor.h"
 
 @interface CommentCell ()
 
@@ -30,11 +31,33 @@
 - (void)awakeFromNib
 {
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.commentDateLbl.textColor = [AppColor textStyleDescriptionColor];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
+}
+
+#pragma mark - Public Instance Methods
+
+- (void)setCellTheme:(CommentCellTheme)cellTheme
+{
+    switch (cellTheme)
+    {
+        case LightTheme:
+            self.commentNameLbl.textColor = [AppColor textStyleLightThemeColor];
+            self.commentLbl.textColor = [AppColor textStyleLightThemeColor];
+            break;
+            
+        case DarkTheme:
+            self.commentNameLbl.textColor = [AppColor textStyleDarkThemeColor];
+            self.commentLbl.textColor = [AppColor textStyleDarkThemeColor];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 @end

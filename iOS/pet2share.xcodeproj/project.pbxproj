@@ -15,6 +15,7 @@
 		FB102AFB1B72F5F500CBF26E /* PetTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB102AFA1B72F5F500CBF26E /* PetTile.xib */; };
 		FB102AFF1B730EC300CBF26E /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB102AFD1B730EC300CBF26E /* CommentCell.m */; };
 		FB102B001B730EC300CBF26E /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB102AFE1B730EC300CBF26E /* CommentCell.xib */; };
+		FB102B031B7323C800CBF26E /* ParseComment.m in Sources */ = {isa = PBXBuildFile; fileRef = FB102B021B7323C800CBF26E /* ParseComment.m */; };
 		FB1067C91B532F9700BEBC40 /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067AB1B532F9700BEBC40 /* AsyncButton.swift */; };
 		FB1067CA1B532F9700BEBC40 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067AC1B532F9700BEBC40 /* AsyncImageView.swift */; };
 		FB1067CB1B532F9700BEBC40 /* AutoTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067AD1B532F9700BEBC40 /* AutoTextView.swift */; };
@@ -136,6 +137,8 @@
 		FB102AFC1B730EC300CBF26E /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
 		FB102AFD1B730EC300CBF26E /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
 		FB102AFE1B730EC300CBF26E /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
+		FB102B011B7323C800CBF26E /* ParseComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseComment.h; sourceTree = "<group>"; };
+		FB102B021B7323C800CBF26E /* ParseComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseComment.m; sourceTree = "<group>"; };
 		FB1067AB1B532F9700BEBC40 /* AsyncButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncButton.swift; sourceTree = "<group>"; };
 		FB1067AC1B532F9700BEBC40 /* AsyncImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		FB1067AD1B532F9700BEBC40 /* AutoTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoTextView.swift; sourceTree = "<group>"; };
@@ -552,6 +555,8 @@
 				FB102AF21B72F22F00CBF26E /* ParsePet.m */,
 				FB102AF41B72F24D00CBF26E /* ParsePost.h */,
 				FB102AF51B72F24D00CBF26E /* ParsePost.m */,
+				FB102B011B7323C800CBF26E /* ParseComment.h */,
+				FB102B021B7323C800CBF26E /* ParseComment.m */,
 			);
 			path = Parse;
 			sourceTree = "<group>";
@@ -868,6 +873,7 @@
 				FB1067E21B532F9700BEBC40 /* SpringView.swift in Sources */,
 				FB1067CF1B532F9700BEBC40 /* DesignableLabel.swift in Sources */,
 				FB484A361B4FD0AA0045A6EA /* IntroPageVC.m in Sources */,
+				FB102B031B7323C800CBF26E /* ParseComment.m in Sources */,
 				FB6C27531B702FB90002034A /* ParseUser.m in Sources */,
 				FB1067DD1B532F9700BEBC40 /* SpringButton.swift in Sources */,
 				FB1067DC1B532F9700BEBC40 /* SpringAnimation.swift in Sources */,

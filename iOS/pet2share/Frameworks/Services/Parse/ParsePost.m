@@ -13,7 +13,7 @@
 @dynamic title;
 @dynamic text;
 @dynamic image;
-@dynamic comments;
+@dynamic pet;
 
 + (NSString *)parseClassName
 {
@@ -30,7 +30,7 @@
     self.title = nil;
     self.text = nil;
     self.image = nil;
-    self.comments = nil;
+    self.pet = nil;
 }
 
 @end

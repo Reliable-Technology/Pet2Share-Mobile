@@ -28,18 +28,8 @@
 @property (PF_NULLABLE_PROPERTY nonatomic, strong) PFFile *avatarImage;
 
 /*!
- @abstract Cover Image
- */
-@property (PF_NULLABLE_PROPERTY nonatomic, strong) PFFile *coverImage;
-
-/*!
  @abstract Owner
  */
 @property (PF_NULLABLE_PROPERTY nonatomic, strong) ParseUser *owner;
-
-/*!
- @abstract List of <Posts>
- */
-@property (PF_NULLABLE_PROPERTY nonatomic, strong) NSArray *posts;
 
 @end

@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class ParsePet;
+
 @interface PetTile : UIControl
+
+- (void)setUpView:(ParsePet *)pet;
 
 @end

@@ -12,3 +12,12 @@
 #import "PFQueryCallback.h"
 #import "PFQueryService.h"
 #import "ParseUser.h"
+#import "ParsePet.h"
+#import "ParsePost.h"
+#import "ParseComment.h"
+
+
+static NSString * const kParsePetNickName       = @"nickName";
+static NSString * const kParsePetName           = @"name";
+static NSString * const kParsePetAvatarImage    = @"avatarImage";
+static NSString * const kParsePetOwner          = @"owner";

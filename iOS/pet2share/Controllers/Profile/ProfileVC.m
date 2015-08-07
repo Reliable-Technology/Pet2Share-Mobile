@@ -16,7 +16,7 @@
 static NSString * const kCellIdentifier     = @"commentcell";
 static NSString * const kCellNibName        = @"CommentCell";
 
-@interface ProfileVC () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
+@interface ProfileVC () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, PFQueryCallback>
 
 @property (weak, nonatomic) IBOutlet CircleImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -44,9 +44,12 @@ static NSString * const kCellNibName        = @"CommentCell";
     [self.tableView registerNib:[UINib nibWithNibName:kCellNibName bundle:nil]
          forCellReuseIdentifier:kCellIdentifier];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.layoutMargins = UIEdgeInsetsMake(0.0f, 16.0f, 0.0f, 0.0f);
         
     [self updateUserInfo:NO];
-    [self setupScrollView];
+    
+    PFQueryService *service = [PFQueryService new];
+    [service getAllPets:self forUser:[ParseUser currentUser]];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -73,7 +76,7 @@ static NSString * const kCellNibName        = @"CommentCell";
     self.nameLabel.text = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
     
     // Avatar image view
-    [PFQueryService loadImageFile:currentUser.avatarImage imageView:self.avatarImageView];
+    [PFQueryService loadImageFile:currentUser.avatarImage imageView:self.avatarImageView completion:nil];
     
     if (requireFetched)
     {
@@ -99,19 +102,42 @@ static NSString * const kCellNibName        = @"CommentCell";
     }
 }
 
-- (void)setupScrollView
+//- (void)setupScrollView
+//{
+//    CGFloat offset = 0.0f;
+//    for (int i = 0; i < 8; i++)
+//    {
+//        if (i == 0) offset += 16.0f;
+//        PetTile *tile = [[PetTile alloc] initWithFrame:CGRectMake(offset, 0, 200, 250)];
+//        [Graphics dropShadow:tile shadowOpacity:0.7f shadowRadius:3.0f offset:CGSizeZero];
+//        [self.scrollView addSubview:tile];
+//        offset += tile.bounds.size.width + 16.0f;
+//    }
+//    
+//    self.scrollView.contentSize = CGSizeMake(offset, self.scrollView.frame.size.height);
+//}
+
+#pragma mark - <PFQueryCallback>
+
+- (void)onQueryListSuccess:(NSArray *)objects
 {
     CGFloat offset = 0.0f;
-    for (int i = 0; i < 8; i++)
+    for (int i = 0; i < objects.count; i++)
     {
         if (i == 0) offset += 16.0f;
         PetTile *tile = [[PetTile alloc] initWithFrame:CGRectMake(offset, 0, 200, 250)];
+        [tile setUpView:objects[i]];
         [Graphics dropShadow:tile shadowOpacity:0.7f shadowRadius:3.0f offset:CGSizeZero];
         [self.scrollView addSubview:tile];
         offset += tile.bounds.size.width + 16.0f;
     }
     
     self.scrollView.contentSize = CGSizeMake(offset, self.scrollView.frame.size.height);
+}
+
+- (void)onQueryError:(NSError *)error
+{
+    [Graphics alert:NSLocalizedString(@"Error", @"") message:error.description type:ErrorAlert];
 }
 
 #pragma mark - <UITableViewDataSource>
@@ -125,7 +151,7 @@ static NSString * const kCellNibName        = @"CommentCell";
 {
     CommentCell *cell = (CommentCell *)[tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
     if (!cell) cell = [[CommentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellIdentifier];
-    // TODO: Provide cell data
+    [cell setCellTheme:DarkTheme];
     return cell;
 }
 

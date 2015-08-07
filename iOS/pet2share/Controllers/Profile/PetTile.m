@@ -7,6 +7,7 @@
 //
 
 #import "PetTile.h"
+#import "ParseServices.h"
 
 static NSString * const kNibName = @"PetTile";
 
@@ -15,8 +16,8 @@ static NSString * const kNibName = @"PetTile";
 @property (strong, nonatomic) IBOutlet UIView *view;
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nickNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *numPostsLabel;
-@property (weak, nonatomic) IBOutlet UILabel *lastUpdateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *createdDateLabel;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activity;
 
 @end
 
@@ -36,6 +37,17 @@ static NSString * const kNibName = @"PetTile";
 {
     [super awakeFromNib];
     [self addSubview:self.view];
+}
+
+#pragma mark - Public Instance Methods
+
+- (void)setUpView:(ParsePet *)pet
+{
+    self.nickNameLabel.text = pet.nickName ?: NSLocalizedString(@"N/A", @"");
+    self.createdDateLabel.text = pet.createdAt ? pet.createdAt.description : NSLocalizedString(@"N/A", @"");
+    [PFQueryService loadImageFile:pet.avatarImage imageView:self.avatarImageView completion:^(BOOL finished) {
+        [self.activity stopAnimating];
+    }];
 }
 
 @end
