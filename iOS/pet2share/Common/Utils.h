@@ -21,4 +21,8 @@
 + (BOOL)validateNotEmpty:(NSString *)candidate;
 + (BOOL)validateEmail:(NSString *)candidate;
 
+#pragma mark - Date
+
++ (NSString *)formatDate:(NSDate *)date format:(NSString *)format zone:(NSTimeZone *)zone;
+
 @end

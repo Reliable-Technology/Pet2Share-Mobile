@@ -40,7 +40,7 @@
                             <rect key="frame" x="90" y="90" width="20" height="20"/>
                         </activityIndicatorView>
                     </subviews>
-                    <color key="backgroundColor" red="0.51784205436706543" green="0.58159953355789185" blue="0.58617168664932251" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.51764705882352935" green="0.58039215686274503" blue="0.58431372549019611" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="200" id="9gB-kH-40D"/>
                         <constraint firstAttribute="centerY" secondItem="Jnb-SE-I5p" secondAttribute="centerY" id="LV4-ds-lrp"/>

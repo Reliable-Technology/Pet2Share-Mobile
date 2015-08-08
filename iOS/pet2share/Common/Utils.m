@@ -61,4 +61,19 @@
     return [emailTest evaluateWithObject:candidate];
 }
 
+#pragma mark - Date
+
++ (NSString *)formatDate:(NSDate *)date format:(NSString *)format zone:(NSTimeZone *)zone
+{
+    if (!date) date = [NSDate date];
+    
+    NSString *strDateOnly = @"";
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    
+    [dateFormatter setTimeZone:zone];
+    [dateFormatter setDateFormat:format];
+    
+    return strDateOnly = [dateFormatter stringFromDate:date];
+}
+
 @end
