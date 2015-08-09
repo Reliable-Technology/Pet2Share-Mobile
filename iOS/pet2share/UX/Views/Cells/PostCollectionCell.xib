@@ -69,9 +69,9 @@
             <size key="customSize" width="600" height="416"/>
             <connections>
                 <outlet property="avatarImageView" destination="3ia-QU-E8U" id="Q38-bU-Peb"/>
-                <outlet property="nameLabel" destination="LO4-qf-Ecz" id="ws6-LO-uCA"/>
                 <outlet property="postedDateLabel" destination="W3S-0q-08F" id="8W2-MB-cYy"/>
                 <outlet property="postedImageView" destination="hys-HA-B9A" id="GCH-t8-w6R"/>
+                <outlet property="usernameLabel" destination="LO4-qf-Ecz" id="nsH-Oh-c2N"/>
             </connections>
             <point key="canvasLocation" x="326" y="521"/>
         </collectionViewCell>

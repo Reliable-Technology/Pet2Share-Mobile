@@ -16,8 +16,13 @@
 #import "ParsePost.h"
 #import "ParseComment.h"
 
-
 static NSString * const kParsePetNickName       = @"nickName";
 static NSString * const kParsePetName           = @"name";
 static NSString * const kParsePetAvatarImage    = @"avatarImage";
 static NSString * const kParsePetOwner          = @"owner";
+
+static NSString * const kParsePostTitle         = @"title";
+static NSString * const kParsePostText          = @"text";
+static NSString * const kParsePostImage         = @"image";
+static NSString * const kParsePostPet           = @"pet";
+static NSString * const kParsePostPoster        = @"poster";

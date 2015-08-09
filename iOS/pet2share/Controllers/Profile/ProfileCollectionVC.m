@@ -85,7 +85,7 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
     [self.items removeAllObjects];
     
     PFQueryService *service = [PFQueryService new];
-    [service getAllPets:self forUser:[ParseUser currentUser]];
+    [service getPets:self forUser:[ParseUser currentUser]];
 }
 
 - (void)onQueryListSuccess:(NSArray *)objects

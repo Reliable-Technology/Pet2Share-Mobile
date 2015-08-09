@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class ParsePost;
+
 @interface PostCollectionCell : UICollectionViewCell
 
 + (CGFloat)cellHeight;
+- (void)setUpView:(ParsePost *)post;
 
 @end

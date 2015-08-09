@@ -9,11 +9,14 @@
 #import "PostCollectionVC.h"
 #import "PostCollectionCell.h"
 #import "ActivityView.h"
+#import "ParseServices.h"
+#import "Graphics.h"
 
+static CGFloat kCellSpacing                 = 10.0f;
 static NSString * const kCellIdentifier     = @"postcollectioncell";
 static NSString * const kCellNibName        = @"PostCollectionCell";
 
-@interface PostCollectionVC ()
+@interface PostCollectionVC () <PFQueryCallback>
 
 @property (nonatomic, strong) ActivityView *activity;
 
@@ -38,22 +41,43 @@ static NSString * const kCellNibName        = @"PostCollectionCell";
     [super viewDidLoad];
     
     _activity = [[ActivityView alloc] initWithView:self.collectionView];
-    
-    for (int i = 0; i < 5; i++)
-    {
-        [self.items addObject:@"test"];
-    }
-
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
+    [self requestData];
 }
 
 - (void)dealloc
 {
     TRACE_HERE;
+    self.activity = nil;
+}
+
+#pragma mark - Parse Services
+
+- (void)requestData
+{
+    // Show activity when there are no items;
+    if ([self.items count] == 0)
+    {
+        [self.activity show];
+    }
+    
+    // Remove all items
+    [self.items removeAllObjects];
+    
+    PFQueryService *service = [PFQueryService new];
+    [service getPosts:self forPet:self.pet];
+}
+
+- (void)onQueryListSuccess:(NSArray *)objects
+{
+    [self.activity hide];
+    [self.items addObjectsFromArray:objects];
+    [self.collectionView reloadData];
+}
+
+- (void)onQueryError:(NSError *)error
+{
+    [self.activity hide];
+    [Graphics alert:NSLocalizedString(@"Error", @"") message:error.description type:ErrorAlert];
 }
 
 #pragma mark - Layout
@@ -61,7 +85,7 @@ static NSString * const kCellNibName        = @"PostCollectionCell";
 - (void)setupLayout
 {
     CollectionViewLayout *layout = (CollectionViewLayout *)self.collectionViewLayout;
-    [layout setupLayout:OneColumn cellHeight:[PostCollectionCell cellHeight] spacing:10.0f];
+    [layout setupLayout:OneColumn cellHeight:[PostCollectionCell cellHeight] spacing:kCellSpacing];
 }
 
 #pragma mark - <UICollectionViewDataSource>
@@ -71,6 +95,17 @@ static NSString * const kCellNibName        = @"PostCollectionCell";
     PostCollectionCell *cell =
     (PostCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:self.cellReuseIdentifier
                                                                     forIndexPath:indexPath];
+    
+    @try
+    {
+        ParsePost *post = [self.items objectAtIndex:indexPath.row];
+        [cell setUpView:post];
+    }
+    @catch (NSException *exception)
+    {
+        NSLog(@"%s: Exception: %@", __func__, exception.description);
+    }
+    
     return cell;
 }
 

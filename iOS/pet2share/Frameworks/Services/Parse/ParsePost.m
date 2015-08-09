@@ -14,6 +14,7 @@
 @dynamic text;
 @dynamic image;
 @dynamic pet;
+@dynamic poster;
 
 + (NSString *)parseClassName
 {
@@ -31,6 +32,7 @@
     self.text = nil;
     self.image = nil;
     self.pet = nil;
+    self.poster = nil;
 }
 
 @end

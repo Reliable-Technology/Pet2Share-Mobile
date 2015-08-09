@@ -10,11 +10,13 @@
 #import "CircleImageView.h"
 #import "Graphics.h"
 #import "AppColor.h"
+#import "ParseServices.h"
+#import "Utils.h"
 
 @interface PostCollectionCell ()
 
 @property (weak, nonatomic) IBOutlet CircleImageView *avatarImageView;
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *postedDateLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *postedImageView;
 
@@ -36,6 +38,23 @@
     self.layer.shadowOffset = CGSizeZero;
     self.layer.shadowRadius = 2.0f;
     self.layer.shadowOpacity = 0.85f;
+}
+
+#pragma mark - Public Instance Methods
+
+- (void)setUpView:(ParsePost *)post
+{
+    // Poster username
+    self.usernameLabel.text = post.poster.username;
+    
+    // Poster avatar image
+    [PFQueryService loadImage:post.poster imageView:self.avatarImageView];
+    
+    // Post date
+    self.postedDateLabel.text = [Utils formatDate:post.createdAt format:kFormatMonthYearShort zone:[NSTimeZone defaultTimeZone]];
+    
+    // Post image
+    [PFQueryService loadImageFile:post.image imageView:self.postedImageView completion:nil];
 }
 
 @end

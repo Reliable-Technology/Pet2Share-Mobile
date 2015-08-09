@@ -126,14 +126,30 @@
         if ([object isKindOfClass:[ParseUser class]]) [callback onQuerySuccess:object];
         else [callback onQueryError:error];
     }];
-    
 }
 
-- (void)getAllPets:(NSObject<PFQueryCallback> *)callback
-           forUser:(ParseUser *)user
+- (void)getPets:(NSObject<PFQueryCallback> *)callback
+        forUser:(ParseUser *)user
 {
     PFQuery *query = [ParsePet query];
-    [query whereKey:kParsePetOwner equalTo:user];
+    if (user) [query whereKey:kParsePetOwner equalTo:user];
+    
+    // TODO: Caching & Paging
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (objects) [callback onQueryListSuccess:objects];
+        else [callback onQueryError:error];
+    }];
+}
+
+- (void)getPosts:(NSObject<PFQueryCallback> *)callback
+          forPet:(ParsePet *)pet
+{
+    PFQuery *query = [ParsePost query];
+    if (pet) [query whereKey:kParsePostPet equalTo:pet];
+    [query includeKey:kParsePostPoster];
+    
+    // TODO: Caching & Paging
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (objects) [callback onQueryListSuccess:objects];
         else [callback onQueryError:error];

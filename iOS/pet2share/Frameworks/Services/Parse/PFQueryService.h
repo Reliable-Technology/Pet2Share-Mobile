@@ -11,6 +11,7 @@
 @class PFObject;
 @class PFQueryCallback;
 @class ParseUser;
+@class ParsePet;
 
 @interface PFQueryService : NSObject
 
@@ -32,7 +33,10 @@
          username:(NSString *)username
          password:(NSString *)password;
 
-- (void)getAllPets:(NSObject<PFQueryCallback> *)callback
-           forUser:(ParseUser *)user;
+- (void)getPets:(NSObject<PFQueryCallback> *)callback
+        forUser:(ParseUser *)user;
+
+- (void)getPosts:(NSObject<PFQueryCallback> *)callback
+          forPet:(ParsePet *)pet;
 
 @end

@@ -8,6 +8,10 @@
 
 #import "CollectionViewController.h"
 
+@class ParsePet;
+
 @interface PostCollectionVC : CollectionViewController
+
+@property (nonatomic, strong) ParsePet *pet;
 
 @end

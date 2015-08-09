@@ -9,6 +9,7 @@
 #import <Parse/Parse.h>
 
 @class ParsePet;
+@class ParseUser;
 
 @interface ParsePost : PFObject <PFSubclassing>
 
@@ -31,5 +32,10 @@
  @abstract Pet
  */
 @property (PF_NULLABLE_PROPERTY nonatomic, strong) ParsePet *pet;
+
+/*!
+ @abstract Poster
+ */
+@property (PF_NULLABLE_PROPERTY nonatomic, strong) ParseUser *poster;
 
 @end
