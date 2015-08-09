@@ -117,6 +117,9 @@
 		FBD3938A1B50D9B7000ED817 /* IntroPageContentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD393881B50D9B7000ED817 /* IntroPageContentVC.m */; };
 		FBD3938B1B50D9B7000ED817 /* IntroPageContentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBD393891B50D9B7000ED817 /* IntroPageContentVC.xib */; };
 		FBD3938F1B50D9DB000ED817 /* BaseNavigationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD3938E1B50D9DB000ED817 /* BaseNavigationVC.m */; };
+		FBF82B521B77F88400E622C5 /* ConnectionsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF82B511B77F88400E622C5 /* ConnectionsVC.m */; };
+		FBF82B561B77F94800E622C5 /* FavoritesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF82B551B77F94800E622C5 /* FavoritesVC.m */; };
+		FBF82B5A1B77F97200E622C5 /* SearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF82B591B77F97200E622C5 /* SearchVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -294,6 +297,12 @@
 		FBD393891B50D9B7000ED817 /* IntroPageContentVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroPageContentVC.xib; sourceTree = "<group>"; };
 		FBD3938D1B50D9DB000ED817 /* BaseNavigationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationVC.h; sourceTree = "<group>"; };
 		FBD3938E1B50D9DB000ED817 /* BaseNavigationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationVC.m; sourceTree = "<group>"; };
+		FBF82B501B77F88400E622C5 /* ConnectionsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionsVC.h; sourceTree = "<group>"; };
+		FBF82B511B77F88400E622C5 /* ConnectionsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionsVC.m; sourceTree = "<group>"; };
+		FBF82B541B77F94800E622C5 /* FavoritesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesVC.h; sourceTree = "<group>"; };
+		FBF82B551B77F94800E622C5 /* FavoritesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesVC.m; sourceTree = "<group>"; };
+		FBF82B581B77F97200E622C5 /* SearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchVC.h; sourceTree = "<group>"; };
+		FBF82B591B77F97200E622C5 /* SearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -453,6 +462,9 @@
 				FBD393861B50D9B7000ED817 /* Intro */,
 				FB1067E61B53412F00BEBC40 /* Auth */,
 				FB3B787E1B705884002C961A /* Feed */,
+				FBF82B4C1B77F81600E622C5 /* Connections */,
+				FBF82B531B77F93E00E622C5 /* Favorites */,
+				FBF82B571B77F96A00E622C5 /* Search */,
 				FB3B78821B7058A4002C961A /* Profile */,
 				FB484A341B4FD0AA0045A6EA /* IntroPageVC.h */,
 				FB484A351B4FD0AA0045A6EA /* IntroPageVC.m */,
@@ -701,6 +713,33 @@
 			path = Templates;
 			sourceTree = "<group>";
 		};
+		FBF82B4C1B77F81600E622C5 /* Connections */ = {
+			isa = PBXGroup;
+			children = (
+				FBF82B501B77F88400E622C5 /* ConnectionsVC.h */,
+				FBF82B511B77F88400E622C5 /* ConnectionsVC.m */,
+			);
+			path = Connections;
+			sourceTree = "<group>";
+		};
+		FBF82B531B77F93E00E622C5 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				FBF82B541B77F94800E622C5 /* FavoritesVC.h */,
+				FBF82B551B77F94800E622C5 /* FavoritesVC.m */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		FBF82B571B77F96A00E622C5 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				FBF82B581B77F97200E622C5 /* SearchVC.h */,
+				FBF82B591B77F97200E622C5 /* SearchVC.m */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -868,6 +907,7 @@
 				FB3B78881B706021002C961A /* CircleImageView.m in Sources */,
 				FB102AF61B72F24D00CBF26E /* ParsePost.m in Sources */,
 				FB93C47B1B77187F003341DF /* PostCollectionVC.m in Sources */,
+				FBF82B561B77F94800E622C5 /* FavoritesVC.m in Sources */,
 				FB6C273A1B6ED2300002034A /* User.m in Sources */,
 				FB484A391B4FD0DB0045A6EA /* NSString+URLEncoding.m in Sources */,
 				FB1067DF1B532F9700BEBC40 /* SpringLabel.swift in Sources */,
@@ -912,6 +952,7 @@
 				FB1067CA1B532F9700BEBC40 /* AsyncImageView.swift in Sources */,
 				FB1067F01B535B4C00BEBC40 /* LoginTableCtrl.m in Sources */,
 				FB102AF01B72CBC600CBF26E /* Pet2ShareTabCtrl.m in Sources */,
+				FBF82B5A1B77F97200E622C5 /* SearchVC.m in Sources */,
 				FB484A581B50BE370045A6EA /* AppColor.m in Sources */,
 				FBC67DA91B75C43800AF1C95 /* ProfileCollectionVC.m in Sources */,
 				FB1067D61B532F9700BEBC40 /* KeyboardLayoutConstraint.swift in Sources */,
@@ -927,6 +968,7 @@
 				FB102B031B7323C800CBF26E /* ParseComment.m in Sources */,
 				FB6C27531B702FB90002034A /* ParseUser.m in Sources */,
 				FBC67DA61B75BE1400AF1C95 /* CollectionViewController.m in Sources */,
+				FBF82B521B77F88400E622C5 /* ConnectionsVC.m in Sources */,
 				FB93C4741B7710ED003341DF /* PetPostsVC.m in Sources */,
 				FB1067DD1B532F9700BEBC40 /* SpringButton.swift in Sources */,
 				FB1067DC1B532F9700BEBC40 /* SpringAnimation.swift in Sources */,

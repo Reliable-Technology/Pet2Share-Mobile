@@ -24,6 +24,7 @@ NSString * const kSegueIntroPages           = @"intropages";
 NSString * const kSegueSignUp               = @"signup";
 NSString * const kSegueLogin                = @"login";
 NSString * const kSegueLoginContainer       = @"logincontainer";
+NSString * const kSegueProfile              = @"profile";
 NSString * const kSegueProfileContainer     = @"profilecontainer";
 NSString * const kSeguePetPosts             = @"petposts";
 

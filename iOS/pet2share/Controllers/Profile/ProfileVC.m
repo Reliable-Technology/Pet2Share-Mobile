@@ -7,20 +7,17 @@
 //
 
 #import "ProfileVC.h"
-#import "ProfileCollectionVC.h"
 #import "ParseServices.h"
+
+@interface ProfileVC ()
+
+- (IBAction)closeButtonClicked:(id)sender;
+
+@end
 
 @implementation ProfileVC
 
 #pragma mark - Life Cycle
-
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    if ((self = [super initWithCoder:aDecoder]))
-    {
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -28,6 +25,13 @@
     
     ParseUser *currentUser = [ParseUser currentUser];
     self.navigationItem.title = currentUser.username;
+}
+
+#pragma mark - Events
+
+- (IBAction)closeButtonClicked:(id)sender
+{
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

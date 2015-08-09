@@ -70,6 +70,37 @@
     [alertView show];
 }
 
++ (UIImage *)tintImage:(UIImage *)source withColor:(UIColor *)color
+{
+    // Begin a new image context, to draw our colored image onto with the right scale
+    UIGraphicsBeginImageContextWithOptions(source.size, NO, [UIScreen mainScreen].scale);
+    
+    // Get a reference to that context we created
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    // Set the fill color
+    [color setFill];
+    
+    // Translate/flip the graphics context (for transforming from CG* coords to UI* coords
+    CGContextTranslateCTM(context, 0, source.size.height);
+    CGContextScaleCTM(context, 1.0, -1.0);
+    
+    CGContextSetBlendMode(context, kCGBlendModeColorBurn);
+    CGRect rect = CGRectMake(0, 0, source.size.width, source.size.height);
+    CGContextDrawImage(context, rect, source.CGImage);
+    
+    CGContextSetBlendMode(context, kCGBlendModeSourceIn);
+    CGContextAddRect(context, rect);
+    CGContextDrawPath(context,kCGPathFill);
+    
+    // Generate a new UIImage from the graphics context we drew onto
+    UIImage *coloredImg = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    // Return the color-burned image
+    return coloredImg;
+}
+
 #pragma mark - Color
 
 + (UIColor *)lighterColorForColor:(UIColor *)color
@@ -110,6 +141,48 @@
     view.layer.shadowOpacity = shadowOpacity;
     view.layer.shadowRadius = shadowRadius;
     view.layer.shadowOffset = shadowOffset;
+}
+
++ (UIImage *)circleImage:(UIImage*)image frame:(CGRect)frame
+{
+    // Create the bitmap graphics context
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(frame.size.width, frame.size.height), NO, 0.0);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    //Get the width and heights
+    CGFloat imageWidth = image.size.width;
+    CGFloat imageHeight = image.size.height;
+    CGFloat rectWidth = frame.size.width;
+    CGFloat rectHeight = frame.size.height;
+    
+    // Calculate the scale factor
+    CGFloat scaleFactorX = rectWidth/imageWidth;
+    CGFloat scaleFactorY = rectHeight/imageHeight;
+    
+    // Calculate the centre of the circle
+    CGFloat imageCentreX = rectWidth/2;
+    CGFloat imageCentreY = rectHeight/2;
+    
+    // Create and CLIP to a CIRCULAR Path
+    // (This could be replaced with any closed path if you want a different shaped clip)
+    CGFloat radius = rectWidth/2;
+    CGContextBeginPath (context);
+    CGContextAddArc (context, imageCentreX, imageCentreY, radius, 0, 2*M_PI, 0);
+    CGContextClosePath (context);
+    CGContextClip (context);
+    
+    // Set the SCALE factor for the graphics context
+    // All future draw calls will be scaled by this factor
+    CGContextScaleCTM (context, scaleFactorX, scaleFactorY);
+    
+    // Draw the IMAGE
+    CGRect myRect = CGRectMake(0, 0, imageWidth, imageHeight);
+    [image drawInRect:myRect];
+    
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
 }
 
 @end
