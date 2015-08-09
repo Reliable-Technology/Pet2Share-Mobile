@@ -12,7 +12,7 @@
 
 @interface PostCollectionCell : UICollectionViewCell
 
-+ (CGFloat)cellHeight;
++ (CGFloat)cellHeight:(CGFloat)spacing;
 - (void)setUpView:(ParsePost *)post;
 
 @end

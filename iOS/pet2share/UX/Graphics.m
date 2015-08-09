@@ -185,4 +185,10 @@
     return newImage;
 }
 
++ (CGSize)getDeviceSize
+{
+    CGRect screenBounds = [UIScreen mainScreen].bounds;
+    return screenBounds.size;
+}
+
 @end

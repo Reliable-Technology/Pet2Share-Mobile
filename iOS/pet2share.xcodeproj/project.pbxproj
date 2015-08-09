@@ -49,7 +49,6 @@
 		FB3B78811B705884002C961A /* FeedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3B78801B705884002C961A /* FeedVC.m */; };
 		FB3B78851B7058B4002C961A /* ProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3B78841B7058B4002C961A /* ProfileVC.m */; };
 		FB3B78881B706021002C961A /* CircleImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3B78871B706021002C961A /* CircleImageView.m */; };
-		FB484A361B4FD0AA0045A6EA /* IntroPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A351B4FD0AA0045A6EA /* IntroPageVC.m */; };
 		FB484A391B4FD0DB0045A6EA /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A381B4FD0DB0045A6EA /* NSString+URLEncoding.m */; };
 		FB484A3F1B4FD12F0045A6EA /* Graphics.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A3E1B4FD12F0045A6EA /* Graphics.m */; };
 		FB484A421B4FD3E60045A6EA /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A411B4FD3E60045A6EA /* Constants.m */; };
@@ -120,6 +119,7 @@
 		FBF82B521B77F88400E622C5 /* ConnectionsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF82B511B77F88400E622C5 /* ConnectionsVC.m */; };
 		FBF82B561B77F94800E622C5 /* FavoritesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF82B551B77F94800E622C5 /* FavoritesVC.m */; };
 		FBF82B5A1B77F97200E622C5 /* SearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF82B591B77F97200E622C5 /* SearchVC.m */; };
+		FBF82B5D1B77FB8400E622C5 /* IntroPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF82B5C1B77FB8400E622C5 /* IntroPageVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,8 +191,6 @@
 		FB3B78841B7058B4002C961A /* ProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileVC.m; sourceTree = "<group>"; };
 		FB3B78861B706021002C961A /* CircleImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleImageView.h; sourceTree = "<group>"; };
 		FB3B78871B706021002C961A /* CircleImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleImageView.m; sourceTree = "<group>"; };
-		FB484A341B4FD0AA0045A6EA /* IntroPageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroPageVC.h; sourceTree = "<group>"; };
-		FB484A351B4FD0AA0045A6EA /* IntroPageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroPageVC.m; sourceTree = "<group>"; };
 		FB484A371B4FD0DB0045A6EA /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
 		FB484A381B4FD0DB0045A6EA /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
 		FB484A3D1B4FD12F0045A6EA /* Graphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Graphics.h; sourceTree = "<group>"; };
@@ -303,6 +301,8 @@
 		FBF82B551B77F94800E622C5 /* FavoritesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesVC.m; sourceTree = "<group>"; };
 		FBF82B581B77F97200E622C5 /* SearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchVC.h; sourceTree = "<group>"; };
 		FBF82B591B77F97200E622C5 /* SearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchVC.m; sourceTree = "<group>"; };
+		FBF82B5B1B77FB8400E622C5 /* IntroPageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroPageVC.h; sourceTree = "<group>"; };
+		FBF82B5C1B77FB8400E622C5 /* IntroPageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroPageVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -466,8 +466,6 @@
 				FBF82B531B77F93E00E622C5 /* Favorites */,
 				FBF82B571B77F96A00E622C5 /* Search */,
 				FB3B78821B7058A4002C961A /* Profile */,
-				FB484A341B4FD0AA0045A6EA /* IntroPageVC.h */,
-				FB484A351B4FD0AA0045A6EA /* IntroPageVC.m */,
 				FB102AEE1B72CBC600CBF26E /* Pet2ShareTabCtrl.h */,
 				FB102AEF1B72CBC600CBF26E /* Pet2ShareTabCtrl.m */,
 			);
@@ -694,6 +692,8 @@
 		FBD393861B50D9B7000ED817 /* Intro */ = {
 			isa = PBXGroup;
 			children = (
+				FBF82B5B1B77FB8400E622C5 /* IntroPageVC.h */,
+				FBF82B5C1B77FB8400E622C5 /* IntroPageVC.m */,
 				FBD393871B50D9B7000ED817 /* IntroPageContentVC.h */,
 				FBD393881B50D9B7000ED817 /* IntroPageContentVC.m */,
 				FBD393891B50D9B7000ED817 /* IntroPageContentVC.xib */,
@@ -964,7 +964,6 @@
 				FB484A4F1B4FD40A0045A6EA /* Reachability.m in Sources */,
 				FB1067E21B532F9700BEBC40 /* SpringView.swift in Sources */,
 				FB1067CF1B532F9700BEBC40 /* DesignableLabel.swift in Sources */,
-				FB484A361B4FD0AA0045A6EA /* IntroPageVC.m in Sources */,
 				FB102B031B7323C800CBF26E /* ParseComment.m in Sources */,
 				FB6C27531B702FB90002034A /* ParseUser.m in Sources */,
 				FBC67DA61B75BE1400AF1C95 /* CollectionViewController.m in Sources */,
@@ -977,6 +976,7 @@
 				FB1067D71B532F9700BEBC40 /* LoadingView.swift in Sources */,
 				FB6C27391B6ED2300002034A /* RepositoryObject.m in Sources */,
 				FB6C272F1B6ED1C70002034A /* HttpClient.m in Sources */,
+				FBF82B5D1B77FB8400E622C5 /* IntroPageVC.m in Sources */,
 				FB1067D11B532F9700BEBC40 /* DesignableTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

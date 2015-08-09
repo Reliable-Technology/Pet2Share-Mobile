@@ -10,6 +10,7 @@
 #import "UIDevice+Hardware.h"
 #import "ParseServices.h"
 #import "ThemeManager.h"
+#import "Graphics.h"
 
 @interface Pet2ShareDelegate ()
 
@@ -22,6 +23,7 @@
     // Hardware information
     NSLog(@"Platform: %@", [[UIDevice currentDevice] platform]);
     NSLog(@"Bundle: %@", [[NSBundle mainBundle] bundleIdentifier]);
+    NSLog(@"Device size: {Width: %f,  Height: %f}", [Graphics getDeviceSize].width, [Graphics getDeviceSize].height);
     
     // Init Parse
     [Parse enableLocalDatastore];

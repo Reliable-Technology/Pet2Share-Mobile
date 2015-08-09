@@ -85,7 +85,7 @@ static NSString * const kCellNibName        = @"PostCollectionCell";
 - (void)setupLayout
 {
     CollectionViewLayout *layout = (CollectionViewLayout *)self.collectionViewLayout;
-    [layout setupLayout:OneColumn cellHeight:[PostCollectionCell cellHeight] spacing:kCellSpacing];
+    [layout setupLayout:OneColumn cellHeight:[PostCollectionCell cellHeight:kCellSpacing] spacing:kCellSpacing];
 }
 
 #pragma mark - <UICollectionViewDataSource>
