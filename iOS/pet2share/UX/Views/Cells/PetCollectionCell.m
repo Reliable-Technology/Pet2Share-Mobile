@@ -24,9 +24,27 @@
 
 #pragma mark - Life Cycle
 
-+ (CGFloat)cellHeight
++ (CGFloat)cellHeight:(CGFloat)spacing
 {
-    return 250.0f;
+//    return 250.0f;
+    
+    CGSize size = [Graphics getDeviceSize];
+    
+    // Consult xib for this value
+    CGFloat footerHeight = 50.0f;
+    
+    // Get the actual width, we assume this is for two columns
+    // layout.
+    CGFloat actualImageWidth = size.width- 3*spacing;
+    
+    // The picture at the bottom is changed due to device
+    // We want to have 1:1 aspect ratio.
+    CGFloat actualImageHeight = ceilf(actualImageWidth/2);
+    
+    // Actual cell height is the sum of header with image height
+    CGFloat actualHeight = actualImageHeight+footerHeight;
+    
+    return actualHeight;
 }
 
 - (void)awakeFromNib

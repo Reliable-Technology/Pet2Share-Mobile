@@ -7,7 +7,6 @@
 //
 
 #import "ProfileVC.h"
-#import "ParseServices.h"
 
 @interface ProfileVC ()
 
@@ -23,8 +22,7 @@
 {
     [super viewDidLoad];
     
-    ParseUser *currentUser = [ParseUser currentUser];
-    self.navigationItem.title = currentUser.username;
+    self.navigationItem.title = NSLocalizedString(@"Profile", @"");
 }
 
 #pragma mark - Events

@@ -111,7 +111,7 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
     {
         layout.parallaxHeaderReferenceSize = CGSizeMake(self.view.frame.size.width, [ProfileHeaderCell headerHeight]);
         layout.parallaxHeaderMinimumReferenceSize = CGSizeMake(self.view.frame.size.width, [ProfileHeaderCell headerHeight]-20.0f);
-        [layout setupLayout:TwoColumns cellHeight:[PetCollectionCell cellHeight] spacing:5.0f];
+        [layout setupLayout:TwoColumns cellHeight:[PetCollectionCell cellHeight:5.0f] spacing:5.0f];
         layout.parallaxHeaderAlwaysOnTop = NO;
         layout.disableStickyHeaders = YES;
     }

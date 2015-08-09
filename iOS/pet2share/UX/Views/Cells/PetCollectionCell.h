@@ -12,7 +12,7 @@
 
 @interface PetCollectionCell : UICollectionViewCell
 
-+ (CGFloat)cellHeight;
++ (CGFloat)cellHeight:(CGFloat)spacing;
 - (void)setUpView:(ParsePet *)pet;
 
 @end

@@ -68,6 +68,7 @@
     self.nameLabel.text = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
     
     // Poster avatar image
+    self.avatarImageView.image = [UIImage imageNamed:@"img-avatar"];
     [PFQueryService loadImage:post.poster imageView:self.avatarImageView];
     
     // Post date
@@ -77,6 +78,7 @@
     self.postedTitleLabel.text = post.title;
     
     // Post image
+    self.postedImageView.image = [UIImage imageNamed:@"img-placeholder"];
     [PFQueryService loadImageFile:post.image imageView:self.postedImageView completion:nil];
     
 }

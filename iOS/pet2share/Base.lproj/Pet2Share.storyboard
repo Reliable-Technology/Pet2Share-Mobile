@@ -322,7 +322,7 @@
                         <color key="backgroundColor" red="0.12941176470588234" green="0.14509803921568626" blue="0.19215686274509802" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="mp2-Le-SiH" firstAttribute="trailing" secondItem="EME-Eb-GQv" secondAttribute="trailing" id="HBK-Bg-RX0"/>
-                            <constraint firstItem="mp2-Le-SiH" firstAttribute="leading" secondItem="EME-Eb-GQv" secondAttribute="leadingMargin" constant="-16" id="Qeh-gL-VYP"/>
+                            <constraint firstItem="mp2-Le-SiH" firstAttribute="leading" secondItem="EME-Eb-GQv" secondAttribute="leading" id="Qeh-gL-VYP"/>
                             <constraint firstItem="Gzk-aZ-XW1" firstAttribute="top" secondItem="mp2-Le-SiH" secondAttribute="bottom" constant="-51" id="Ro8-6V-Hh1"/>
                             <constraint firstItem="mp2-Le-SiH" firstAttribute="top" secondItem="WWe-XX-LgW" secondAttribute="bottom" id="TaO-1l-Q2l"/>
                         </constraints>

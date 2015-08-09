@@ -40,7 +40,10 @@ static NSString * const kCellNibName        = @"PostCollectionCell";
 {
     [super viewDidLoad];
     
+    // Setup activity bounds
     _activity = [[ActivityView alloc] initWithView:self.collectionView];
+    
+    // Request Data
     [self requestData];
 }
 
