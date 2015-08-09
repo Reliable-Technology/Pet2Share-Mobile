@@ -125,7 +125,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fx2-Lo-Jd3">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <connections>
-                                    <segue destination="coE-6B-8Dl" kind="embed" id="shD-Is-0zB"/>
+                                    <segue destination="coE-6B-8Dl" kind="embed" identifier="profilecontainer" id="shD-Is-0zB"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -175,10 +175,81 @@
                             <outlet property="delegate" destination="coE-6B-8Dl" id="6WA-Yx-w3U"/>
                         </connections>
                     </collectionView>
+                    <connections>
+                        <segue destination="YCL-nY-yyu" kind="show" identifier="petposts" id="UBV-cv-KbO"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ztp-bc-5T8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2903" y="2373.5"/>
+            <point key="canvasLocation" x="2903" y="2342"/>
+        </scene>
+        <!--Pet PostsVC-->
+        <scene sceneID="2xu-ku-8IH">
+            <objects>
+                <viewController id="YCL-nY-yyu" customClass="PetPostsVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="O2Z-Ra-h4M"/>
+                        <viewControllerLayoutGuide type="bottom" id="Yjt-cU-GV5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6sf-li-Cli">
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="08c-jp-EOI">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <segue destination="jwl-0Q-FKY" kind="embed" id="3pY-Yq-qE1"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.12941176470588234" green="0.14509803921568626" blue="0.19215686274509802" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="08c-jp-EOI" firstAttribute="trailing" secondItem="6sf-li-Cli" secondAttribute="trailing" id="4NM-vj-ly5"/>
+                            <constraint firstItem="Yjt-cU-GV5" firstAttribute="top" secondItem="08c-jp-EOI" secondAttribute="bottom" id="jmj-Qz-WaG"/>
+                            <constraint firstItem="08c-jp-EOI" firstAttribute="top" secondItem="O2Z-Ra-h4M" secondAttribute="bottom" id="ofw-n9-7J7"/>
+                            <constraint firstItem="08c-jp-EOI" firstAttribute="leading" secondItem="6sf-li-Cli" secondAttribute="leading" id="r73-nz-wpU"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="t7c-oX-wHU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nz8-fV-T5R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3617" y="2342"/>
+        </scene>
+        <!--Post CollectionVC-->
+        <scene sceneID="17R-Hb-aZ8">
+            <objects>
+                <collectionViewController id="jwl-0Q-FKY" customClass="PostCollectionVC" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="OmR-xb-dOL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DGK-QA-tJJ" customClass="CollectionViewLayout">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="hm8-54-w1B">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="jwl-0Q-FKY" id="aQO-Ei-Uak"/>
+                            <outlet property="delegate" destination="jwl-0Q-FKY" id="D9l-QA-23j"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K6K-IL-sNa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4346" y="2342"/>
         </scene>
         <!--Pet2 Share Tab Ctrl-->
         <scene sceneID="UeJ-Tf-pIb">
@@ -211,15 +282,66 @@
                         <viewControllerLayoutGuide type="bottom" id="Gzk-aZ-XW1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="EME-Eb-GQv">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mp2-Le-SiH">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="538"/>
+                                <connections>
+                                    <segue destination="TjP-dn-0uF" kind="embed" id="Ldt-OJ-Xba"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <color key="backgroundColor" red="0.12941176470588234" green="0.14509803921568626" blue="0.19215686274509802" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="mp2-Le-SiH" firstAttribute="trailing" secondItem="EME-Eb-GQv" secondAttribute="trailing" id="HBK-Bg-RX0"/>
+                            <constraint firstItem="mp2-Le-SiH" firstAttribute="leading" secondItem="EME-Eb-GQv" secondAttribute="leadingMargin" constant="-16" id="Qeh-gL-VYP"/>
+                            <constraint firstItem="Gzk-aZ-XW1" firstAttribute="top" secondItem="mp2-Le-SiH" secondAttribute="bottom" constant="-51" id="Ro8-6V-Hh1"/>
+                            <constraint firstItem="mp2-Le-SiH" firstAttribute="top" secondItem="WWe-XX-LgW" secondAttribute="bottom" id="TaO-1l-Q2l"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Pet 2 Share" id="gPE-D5-9qP"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sce-Q8-a5c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2172" y="1011"/>
+        </scene>
+        <!--Post CollectionVC-->
+        <scene sceneID="amA-En-grw">
+            <objects>
+                <collectionViewController id="TjP-dn-0uF" customClass="PostCollectionVC" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="UHm-fH-0C4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="538"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ei4-UE-5IA" customClass="CollectionViewLayout">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Kq6-dI-HHI">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="TjP-dn-0uF" id="FdI-cT-v59"/>
+                            <outlet property="delegate" destination="TjP-dn-0uF" id="H9K-bs-L5H"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0WB-8I-PVT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2895" y="1010.5"/>
         </scene>
         <!--Pet 2 Share-->
         <scene sceneID="ogo-MI-ag9">

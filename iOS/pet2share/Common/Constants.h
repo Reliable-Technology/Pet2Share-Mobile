@@ -24,6 +24,8 @@ extern NSString * const kSegueIntroPages;
 extern NSString * const kSegueSignUp;
 extern NSString * const kSegueLogin;
 extern NSString * const kSegueLoginContainer;
+extern NSString * const kSegueProfileContainer;
+extern NSString * const kSeguePetPosts;
 
 #pragma mark - Date Format
 

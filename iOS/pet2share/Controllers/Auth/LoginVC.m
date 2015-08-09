@@ -14,6 +14,8 @@
 #import "Utils.h"
 #import "ParseServices.h"
 
+static NSString * const kLeftIconImageName  = @"icon-arrowback";
+
 @interface LoginVC () <BarButtonsProtocol, FormProtocol, PFQueryCallback>
 
 @property (strong , nonatomic) LoginTableCtrl *loginTableCtrl;
@@ -23,8 +25,6 @@
 @end
 
 @implementation LoginVC
-
-static NSString * const kLeftIconImageName  = @"icon-arrowback";
 
 #pragma mark - Life Cycle
 

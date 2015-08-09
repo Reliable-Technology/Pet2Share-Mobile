@@ -7,6 +7,7 @@
 //
 
 #import "ProfileVC.h"
+#import "ProfileCollectionVC.h"
 #import "ParseServices.h"
 
 @implementation ProfileVC

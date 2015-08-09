@@ -12,6 +12,7 @@
 #import "ParseServices.h"
 #import "ActivityView.h"
 #import "Graphics.h"
+#import "PetPostsVC.h"
 
 static NSString * const kCellIdentifier     = @"petcollectioncell";
 static NSString * const kHeaderIdentifier   = @"profileheadercell";
@@ -48,12 +49,21 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
                  withReuseIdentifier:kHeaderIdentifier];
     
     _activity = [[ActivityView alloc] initWithView:self.collectionView];
+    
+    [self requestData];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self requestData];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:kSeguePetPosts])
+    {
+        // Provide data for next screen here
+    }
 }
 
 - (void)dealloc
@@ -138,6 +148,14 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
         return cell;
     }
     return nil;
+}
+
+#pragma mark - <UICollectionViewDelegates>
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    fTRACE(@"Tile Selected Index: %ld", indexPath.row);
+    [self performSegueWithIdentifier:kSeguePetPosts sender:self];
 }
 
 @end

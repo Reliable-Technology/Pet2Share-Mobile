@@ -11,8 +11,6 @@
 		FB102AF01B72CBC600CBF26E /* Pet2ShareTabCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB102AEF1B72CBC600CBF26E /* Pet2ShareTabCtrl.m */; };
 		FB102AF31B72F22F00CBF26E /* ParsePet.m in Sources */ = {isa = PBXBuildFile; fileRef = FB102AF21B72F22F00CBF26E /* ParsePet.m */; };
 		FB102AF61B72F24D00CBF26E /* ParsePost.m in Sources */ = {isa = PBXBuildFile; fileRef = FB102AF51B72F24D00CBF26E /* ParsePost.m */; };
-		FB102AF91B72F5C500CBF26E /* PetTile.m in Sources */ = {isa = PBXBuildFile; fileRef = FB102AF81B72F5C500CBF26E /* PetTile.m */; };
-		FB102AFB1B72F5F500CBF26E /* PetTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB102AFA1B72F5F500CBF26E /* PetTile.xib */; };
 		FB102AFF1B730EC300CBF26E /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB102AFD1B730EC300CBF26E /* CommentCell.m */; };
 		FB102B001B730EC300CBF26E /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB102AFE1B730EC300CBF26E /* CommentCell.xib */; };
 		FB102B031B7323C800CBF26E /* ParseComment.m in Sources */ = {isa = PBXBuildFile; fileRef = FB102B021B7323C800CBF26E /* ParseComment.m */; };
@@ -48,8 +46,6 @@
 		FB1067E91B5341A500BEBC40 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067E81B5341A500BEBC40 /* LoginVC.m */; };
 		FB1067EC1B5341D600BEBC40 /* SignupViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067EB1B5341D600BEBC40 /* SignupViewCtrl.m */; };
 		FB1067F01B535B4C00BEBC40 /* LoginTableCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067EF1B535B4C00BEBC40 /* LoginTableCtrl.m */; };
-		FB2BDBAE1B5767940095B254 /* DashboardCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB2BDBAC1B5767940095B254 /* DashboardCollectionCell.m */; };
-		FB2BDBAF1B5767940095B254 /* DashboardCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB2BDBAD1B5767940095B254 /* DashboardCollectionCell.xib */; };
 		FB3B78811B705884002C961A /* FeedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3B78801B705884002C961A /* FeedVC.m */; };
 		FB3B78851B7058B4002C961A /* ProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3B78841B7058B4002C961A /* ProfileVC.m */; };
 		FB3B78881B706021002C961A /* CircleImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3B78871B706021002C961A /* CircleImageView.m */; };
@@ -100,6 +96,11 @@
 		FB6C274C1B702DF30002034A /* PFErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C274B1B702DF30002034A /* PFErrors.m */; };
 		FB6C27501B702E420002034A /* PFQueryService.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C274F1B702E420002034A /* PFQueryService.m */; };
 		FB6C27531B702FB90002034A /* ParseUser.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C27521B702FB90002034A /* ParseUser.m */; };
+		FB93C4741B7710ED003341DF /* PetPostsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB93C4731B7710ED003341DF /* PetPostsVC.m */; };
+		FB93C4771B7712B2003341DF /* Pet2Share.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB93C4751B7712B2003341DF /* Pet2Share.storyboard */; };
+		FB93C47B1B77187F003341DF /* PostCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB93C4791B77187F003341DF /* PostCollectionVC.m */; };
+		FB93C4801B771A81003341DF /* PostCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB93C47E1B771A81003341DF /* PostCollectionCell.m */; };
+		FB93C4811B771A81003341DF /* PostCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB93C47F1B771A81003341DF /* PostCollectionCell.xib */; };
 		FBC67D9E1B75B3B600AF1C95 /* ProfileHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC67D9C1B75B3B600AF1C95 /* ProfileHeaderCell.m */; };
 		FBC67D9F1B75B3B600AF1C95 /* ProfileHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBC67D9D1B75B3B600AF1C95 /* ProfileHeaderCell.xib */; };
 		FBC67DA31B75BD2C00AF1C95 /* CollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC67DA21B75BD2C00AF1C95 /* CollectionViewLayout.m */; };
@@ -110,7 +111,6 @@
 		FBC67DB41B75DE9000AF1C95 /* ActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC67DB31B75DE9000AF1C95 /* ActivityView.m */; };
 		FBCEA4321B4CC3E000497678 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCEA4311B4CC3E000497678 /* main.m */; };
 		FBCEA4351B4CC3E000497678 /* Pet2ShareDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCEA4341B4CC3E000497678 /* Pet2ShareDelegate.m */; };
-		FBCEA43B1B4CC3E000497678 /* Pet2Share.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBCEA4391B4CC3E000497678 /* Pet2Share.storyboard */; };
 		FBCEA43D1B4CC3E000497678 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBCEA43C1B4CC3E000497678 /* Images.xcassets */; };
 		FBCEA4401B4CC3E000497678 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBCEA43E1B4CC3E000497678 /* LaunchScreen.xib */; };
 		FBCEA45E1B4CC99A00497678 /* testHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCEA45D1B4CC99A00497678 /* testHttpClient.m */; };
@@ -139,9 +139,6 @@
 		FB102AF21B72F22F00CBF26E /* ParsePet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParsePet.m; sourceTree = "<group>"; };
 		FB102AF41B72F24D00CBF26E /* ParsePost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParsePost.h; sourceTree = "<group>"; };
 		FB102AF51B72F24D00CBF26E /* ParsePost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParsePost.m; sourceTree = "<group>"; };
-		FB102AF71B72F5C500CBF26E /* PetTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetTile.h; sourceTree = "<group>"; };
-		FB102AF81B72F5C500CBF26E /* PetTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetTile.m; sourceTree = "<group>"; };
-		FB102AFA1B72F5F500CBF26E /* PetTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PetTile.xib; sourceTree = "<group>"; };
 		FB102AFC1B730EC300CBF26E /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
 		FB102AFD1B730EC300CBF26E /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
 		FB102AFE1B730EC300CBF26E /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
@@ -185,9 +182,6 @@
 		FB1067EE1B535B4C00BEBC40 /* LoginTableCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginTableCtrl.h; sourceTree = "<group>"; };
 		FB1067EF1B535B4C00BEBC40 /* LoginTableCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTableCtrl.m; sourceTree = "<group>"; };
 		FB1067F11B535F0F00BEBC40 /* FormProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormProtocol.h; sourceTree = "<group>"; };
-		FB2BDBAB1B5767940095B254 /* DashboardCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardCollectionCell.h; sourceTree = "<group>"; };
-		FB2BDBAC1B5767940095B254 /* DashboardCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardCollectionCell.m; sourceTree = "<group>"; };
-		FB2BDBAD1B5767940095B254 /* DashboardCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardCollectionCell.xib; sourceTree = "<group>"; };
 		FB3B787F1B705884002C961A /* FeedVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedVC.h; sourceTree = "<group>"; };
 		FB3B78801B705884002C961A /* FeedVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedVC.m; sourceTree = "<group>"; };
 		FB3B78831B7058B4002C961A /* ProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileVC.h; sourceTree = "<group>"; };
@@ -262,6 +256,14 @@
 		FB6C274F1B702E420002034A /* PFQueryService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFQueryService.m; sourceTree = "<group>"; };
 		FB6C27511B702FB90002034A /* ParseUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseUser.h; sourceTree = "<group>"; };
 		FB6C27521B702FB90002034A /* ParseUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseUser.m; sourceTree = "<group>"; };
+		FB93C4721B7710ED003341DF /* PetPostsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetPostsVC.h; sourceTree = "<group>"; };
+		FB93C4731B7710ED003341DF /* PetPostsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetPostsVC.m; sourceTree = "<group>"; };
+		FB93C4761B7712B2003341DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = pet2share/Base.lproj/Pet2Share.storyboard; sourceTree = SOURCE_ROOT; };
+		FB93C4781B77187F003341DF /* PostCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCollectionVC.h; sourceTree = "<group>"; };
+		FB93C4791B77187F003341DF /* PostCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCollectionVC.m; sourceTree = "<group>"; };
+		FB93C47D1B771A81003341DF /* PostCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCollectionCell.h; sourceTree = "<group>"; };
+		FB93C47E1B771A81003341DF /* PostCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCollectionCell.m; sourceTree = "<group>"; };
+		FB93C47F1B771A81003341DF /* PostCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCollectionCell.xib; sourceTree = "<group>"; };
 		FBC67D9B1B75B3B600AF1C95 /* ProfileHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileHeaderCell.h; sourceTree = "<group>"; };
 		FBC67D9C1B75B3B600AF1C95 /* ProfileHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileHeaderCell.m; sourceTree = "<group>"; };
 		FBC67D9D1B75B3B600AF1C95 /* ProfileHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileHeaderCell.xib; sourceTree = "<group>"; };
@@ -281,7 +283,6 @@
 		FBCEA4311B4CC3E000497678 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FBCEA4331B4CC3E000497678 /* Pet2ShareDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pet2ShareDelegate.h; sourceTree = "<group>"; };
 		FBCEA4341B4CC3E000497678 /* Pet2ShareDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Pet2ShareDelegate.m; sourceTree = "<group>"; };
-		FBCEA43A1B4CC3E000497678 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Pet2Share.storyboard; sourceTree = "<group>"; };
 		FBCEA43C1B4CC3E000497678 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FBCEA43F1B4CC3E000497678 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		FBCEA4451B4CC3E000497678 /* pet2shareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pet2shareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -385,9 +386,6 @@
 		FB2BDBAA1B5767610095B254 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				FB2BDBAB1B5767940095B254 /* DashboardCollectionCell.h */,
-				FB2BDBAC1B5767940095B254 /* DashboardCollectionCell.m */,
-				FB2BDBAD1B5767940095B254 /* DashboardCollectionCell.xib */,
 				FB102AFC1B730EC300CBF26E /* CommentCell.h */,
 				FB102AFD1B730EC300CBF26E /* CommentCell.m */,
 				FB102AFE1B730EC300CBF26E /* CommentCell.xib */,
@@ -397,6 +395,9 @@
 				FBC67DAD1B75C48500AF1C95 /* PetCollectionCell.h */,
 				FBC67DAE1B75C48500AF1C95 /* PetCollectionCell.m */,
 				FBC67DAF1B75C48500AF1C95 /* PetCollectionCell.xib */,
+				FB93C47D1B771A81003341DF /* PostCollectionCell.h */,
+				FB93C47E1B771A81003341DF /* PostCollectionCell.m */,
+				FB93C47F1B771A81003341DF /* PostCollectionCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -417,9 +418,8 @@
 				FB3B78841B7058B4002C961A /* ProfileVC.m */,
 				FBC67DA71B75C43800AF1C95 /* ProfileCollectionVC.h */,
 				FBC67DA81B75C43800AF1C95 /* ProfileCollectionVC.m */,
-				FB102AF71B72F5C500CBF26E /* PetTile.h */,
-				FB102AF81B72F5C500CBF26E /* PetTile.m */,
-				FB102AFA1B72F5F500CBF26E /* PetTile.xib */,
+				FB93C4721B7710ED003341DF /* PetPostsVC.h */,
+				FB93C4731B7710ED003341DF /* PetPostsVC.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -632,7 +632,7 @@
 				FB484A311B4FD0910045A6EA /* Controllers */,
 				FB484A331B4FD0910045A6EA /* UX */,
 				FBCEA4561B4CC86200497678 /* Frameworks */,
-				FBCEA4391B4CC3E000497678 /* Pet2Share.storyboard */,
+				FB93C4751B7712B2003341DF /* Pet2Share.storyboard */,
 				FBCEA43E1B4CC3E000497678 /* LaunchScreen.xib */,
 				FBCEA43C1B4CC3E000497678 /* Images.xcassets */,
 				FBCEA42F1B4CC3E000497678 /* Supporting Files */,
@@ -695,6 +695,8 @@
 				FB1067ED1B53449200BEBC40 /* BarButtonsProtocol.h */,
 				FBD3938D1B50D9DB000ED817 /* BaseNavigationVC.h */,
 				FBD3938E1B50D9DB000ED817 /* BaseNavigationVC.m */,
+				FB93C4781B77187F003341DF /* PostCollectionVC.h */,
+				FB93C4791B77187F003341DF /* PostCollectionVC.m */,
 			);
 			path = Templates;
 			sourceTree = "<group>";
@@ -794,7 +796,6 @@
 				FB484A8D1B50C6130045A6EA /* Lato-Bold.ttf in Resources */,
 				FBD3938B1B50D9B7000ED817 /* IntroPageContentVC.xib in Resources */,
 				FB1067D81B532F9700BEBC40 /* LoadingView.xib in Resources */,
-				FB2BDBAF1B5767940095B254 /* DashboardCollectionCell.xib in Resources */,
 				FB484A741B50C5FB0045A6EA /* LobsterTwo-Italic.otf in Resources */,
 				FB484A991B50C6130045A6EA /* Lato-Semibold.ttf in Resources */,
 				FB484A8B1B50C6130045A6EA /* Lato-Black.ttf in Resources */,
@@ -803,11 +804,11 @@
 				FB484A8E1B50C6130045A6EA /* Lato-BoldItalic.ttf in Resources */,
 				FB1067D51B532F9700BEBC40 /* Info.plist in Resources */,
 				FB484A8C1B50C6130045A6EA /* Lato-BlackItalic.ttf in Resources */,
-				FB102AFB1B72F5F500CBF26E /* PetTile.xib in Resources */,
 				FB484A731B50C5FB0045A6EA /* LobsterTwo-BoldItalic.otf in Resources */,
-				FBCEA43B1B4CC3E000497678 /* Pet2Share.storyboard in Resources */,
 				FB484A721B50C5FB0045A6EA /* LobsterTwo-Bold.otf in Resources */,
 				FB484A951B50C6130045A6EA /* Lato-LightItalic.ttf in Resources */,
+				FB93C4771B7712B2003341DF /* Pet2Share.storyboard in Resources */,
+				FB93C4811B771A81003341DF /* PostCollectionCell.xib in Resources */,
 				FB484A751B50C5FB0045A6EA /* LobsterTwo-Regular.otf in Resources */,
 				FB484A971B50C6130045A6EA /* Lato-MediumItalic.ttf in Resources */,
 				FBCEA4401B4CC3E000497678 /* LaunchScreen.xib in Resources */,
@@ -866,6 +867,7 @@
 			files = (
 				FB3B78881B706021002C961A /* CircleImageView.m in Sources */,
 				FB102AF61B72F24D00CBF26E /* ParsePost.m in Sources */,
+				FB93C47B1B77187F003341DF /* PostCollectionVC.m in Sources */,
 				FB6C273A1B6ED2300002034A /* User.m in Sources */,
 				FB484A391B4FD0DB0045A6EA /* NSString+URLEncoding.m in Sources */,
 				FB1067DF1B532F9700BEBC40 /* SpringLabel.swift in Sources */,
@@ -909,14 +911,12 @@
 				FBC67DB01B75C48500AF1C95 /* PetCollectionCell.m in Sources */,
 				FB1067CA1B532F9700BEBC40 /* AsyncImageView.swift in Sources */,
 				FB1067F01B535B4C00BEBC40 /* LoginTableCtrl.m in Sources */,
-				FB102AF91B72F5C500CBF26E /* PetTile.m in Sources */,
 				FB102AF01B72CBC600CBF26E /* Pet2ShareTabCtrl.m in Sources */,
 				FB484A581B50BE370045A6EA /* AppColor.m in Sources */,
 				FBC67DA91B75C43800AF1C95 /* ProfileCollectionVC.m in Sources */,
 				FB1067D61B532F9700BEBC40 /* KeyboardLayoutConstraint.swift in Sources */,
 				FB1067E31B532F9700BEBC40 /* TransitionManager.swift in Sources */,
 				FB6C27501B702E420002034A /* PFQueryService.m in Sources */,
-				FB2BDBAE1B5767940095B254 /* DashboardCollectionCell.m in Sources */,
 				FB1067CE1B532F9700BEBC40 /* DesignableImageView.swift in Sources */,
 				FBC67D9E1B75B3B600AF1C95 /* ProfileHeaderCell.m in Sources */,
 				FB1067D01B532F9700BEBC40 /* DesignableTabBarController.swift in Sources */,
@@ -927,8 +927,10 @@
 				FB102B031B7323C800CBF26E /* ParseComment.m in Sources */,
 				FB6C27531B702FB90002034A /* ParseUser.m in Sources */,
 				FBC67DA61B75BE1400AF1C95 /* CollectionViewController.m in Sources */,
+				FB93C4741B7710ED003341DF /* PetPostsVC.m in Sources */,
 				FB1067DD1B532F9700BEBC40 /* SpringButton.swift in Sources */,
 				FB1067DC1B532F9700BEBC40 /* SpringAnimation.swift in Sources */,
+				FB93C4801B771A81003341DF /* PostCollectionCell.m in Sources */,
 				FB1067E01B532F9700BEBC40 /* SpringTextField.swift in Sources */,
 				FB1067D71B532F9700BEBC40 /* LoadingView.swift in Sources */,
 				FB6C27391B6ED2300002034A /* RepositoryObject.m in Sources */,
@@ -961,12 +963,13 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		FBCEA4391B4CC3E000497678 /* Pet2Share.storyboard */ = {
+		FB93C4751B7712B2003341DF /* Pet2Share.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				FBCEA43A1B4CC3E000497678 /* Base */,
+				FB93C4761B7712B2003341DF /* Base */,
 			);
 			name = Pet2Share.storyboard;
+			path = Frameworks;
 			sourceTree = "<group>";
 		};
 		FBCEA43E1B4CC3E000497678 /* LaunchScreen.xib */ = {
