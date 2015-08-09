@@ -27,6 +27,7 @@ NSString * const kSegueLoginContainer       = @"logincontainer";
 NSString * const kSegueProfile              = @"profile";
 NSString * const kSegueProfileContainer     = @"profilecontainer";
 NSString * const kSeguePetPosts             = @"petposts";
+NSString * const kSeguePetPostsContainer    = @"petpostscontainer";
 
 #pragma mark - Date Format
 

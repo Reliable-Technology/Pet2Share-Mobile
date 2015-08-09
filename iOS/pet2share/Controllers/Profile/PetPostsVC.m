@@ -7,6 +7,8 @@
 //
 
 #import "PetPostsVC.h"
+#import "PostCollectionVC.h"
+#import "ParseServices.h"
 
 static NSString * const kLeftIconImageName  = @"icon-arrowback";
 
@@ -30,6 +32,23 @@ static NSString * const kLeftIconImageName  = @"icon-arrowback";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.title = self.pet.nickName ?: NSLocalizedString(@"N/A", @"");
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:kSeguePetPostsContainer])
+    {
+        PostCollectionVC *collectionController = (PostCollectionVC *)segue.destinationViewController;
+        collectionController.pet = self.pet;
+    }
+}
+
+- (void)dealloc
+{
+    TRACE_HERE;
+    self.pet = nil;
 }
 
 #pragma mark - <BarButtonsDelegate>

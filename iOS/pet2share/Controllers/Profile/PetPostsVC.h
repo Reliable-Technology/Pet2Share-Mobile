@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "BaseNavigationVC.h"
 
+@class ParsePet;
+
 @interface PetPostsVC : BaseNavigationVC
+
+@property (nonatomic, strong) ParsePet *pet;
 
 @end

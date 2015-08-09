@@ -224,7 +224,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="08c-jp-EOI">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <connections>
-                                    <segue destination="jwl-0Q-FKY" kind="embed" id="3pY-Yq-qE1"/>
+                                    <segue destination="jwl-0Q-FKY" kind="embed" identifier="petpostscontainer" id="3pY-Yq-qE1"/>
                                 </connections>
                             </containerView>
                         </subviews>

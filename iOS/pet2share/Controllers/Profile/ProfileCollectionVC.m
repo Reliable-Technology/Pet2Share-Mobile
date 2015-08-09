@@ -7,6 +7,7 @@
 //
 
 #import "ProfileCollectionVC.h"
+#import "PetPostsVC.h"
 #import "ProfileHeaderCell.h"
 #import "PetCollectionCell.h"
 #import "ParseServices.h"
@@ -60,9 +61,12 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:kSeguePetPosts])
+    if ([segue.identifier isEqualToString:kSeguePetPosts]
+        && [sender isKindOfClass:[ParsePet class]])
     {
-        // Provide data for next screen here
+        ParsePet *pet = (ParsePet *)sender;
+        PetPostsVC *controller = (PetPostsVC *)segue.destinationViewController;
+        controller.pet = pet;
     }
 }
 
@@ -155,7 +159,16 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     fTRACE(@"Tile Selected Index: %ld", indexPath.row);
-    [self performSegueWithIdentifier:kSeguePetPosts sender:self];
+    
+    @try
+    {
+        ParsePet *pet = [self.items objectAtIndex:indexPath.row];
+        [self performSegueWithIdentifier:kSeguePetPosts sender:pet];
+    }
+    @catch (NSException *exception)
+    {
+        NSLog(@"%s: Exception: %@", __func__, exception.description);
+    }
 }
 
 @end
