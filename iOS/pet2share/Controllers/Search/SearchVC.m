@@ -9,6 +9,12 @@
 #import "SearchVC.h"
 #import "AppColor.h"
 
+@interface SearchVC ()
+
+@property (weak, nonatomic) IBOutlet SpringView *constructionView;
+
+@end
+
 @implementation SearchVC
 
 - (void)viewDidLoad
@@ -18,6 +24,15 @@
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSForegroundColorAttributeName: [AppColor navigationBarTextColor],
        NSFontAttributeName:[UIFont fontWithName:kLogoTypeface size:20.0f]}];
+    
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.5f * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^{
+        self.constructionView.hidden = NO;
+        self.constructionView.animation = @"zoomIn";
+        self.constructionView.curve = @"spring";
+        self.constructionView.duration = 1.0f;
+        [self.constructionView animate];
+    });
 }
 
 @end
