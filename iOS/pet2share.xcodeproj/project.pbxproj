@@ -46,6 +46,8 @@
 		FB1067E91B5341A500BEBC40 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067E81B5341A500BEBC40 /* LoginVC.m */; };
 		FB1067EC1B5341D600BEBC40 /* SignupViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067EB1B5341D600BEBC40 /* SignupViewCtrl.m */; };
 		FB1067F01B535B4C00BEBC40 /* LoginTableCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067EF1B535B4C00BEBC40 /* LoginTableCtrl.m */; };
+		FB1140651B783B340028881F /* ImagePostVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1140641B783B340028881F /* ImagePostVC.m */; };
+		FB1140681B78444B0028881F /* CameraNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1140671B78444B0028881F /* CameraNavigationController.m */; };
 		FB3B78811B705884002C961A /* FeedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3B78801B705884002C961A /* FeedVC.m */; };
 		FB3B78851B7058B4002C961A /* ProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3B78841B7058B4002C961A /* ProfileVC.m */; };
 		FB3B78881B706021002C961A /* CircleImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3B78871B706021002C961A /* CircleImageView.m */; };
@@ -187,6 +189,10 @@
 		FB1067EE1B535B4C00BEBC40 /* LoginTableCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginTableCtrl.h; sourceTree = "<group>"; };
 		FB1067EF1B535B4C00BEBC40 /* LoginTableCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTableCtrl.m; sourceTree = "<group>"; };
 		FB1067F11B535F0F00BEBC40 /* FormProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormProtocol.h; sourceTree = "<group>"; };
+		FB1140631B783B340028881F /* ImagePostVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePostVC.h; sourceTree = "<group>"; };
+		FB1140641B783B340028881F /* ImagePostVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePostVC.m; sourceTree = "<group>"; };
+		FB1140661B78444B0028881F /* CameraNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraNavigationController.h; sourceTree = "<group>"; };
+		FB1140671B78444B0028881F /* CameraNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraNavigationController.m; sourceTree = "<group>"; };
 		FB3B787F1B705884002C961A /* FeedVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedVC.h; sourceTree = "<group>"; };
 		FB3B78801B705884002C961A /* FeedVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedVC.m; sourceTree = "<group>"; };
 		FB3B78831B7058B4002C961A /* ProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileVC.h; sourceTree = "<group>"; };
@@ -424,6 +430,8 @@
 			children = (
 				FB3B787F1B705884002C961A /* FeedVC.h */,
 				FB3B78801B705884002C961A /* FeedVC.m */,
+				FB1140631B783B340028881F /* ImagePostVC.h */,
+				FB1140641B783B340028881F /* ImagePostVC.m */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -717,6 +725,8 @@
 				FBD3938E1B50D9DB000ED817 /* BaseNavigationVC.m */,
 				FB93C4781B77187F003341DF /* PostCollectionVC.h */,
 				FB93C4791B77187F003341DF /* PostCollectionVC.m */,
+				FB1140661B78444B0028881F /* CameraNavigationController.h */,
+				FB1140671B78444B0028881F /* CameraNavigationController.m */,
 			);
 			path = Templates;
 			sourceTree = "<group>";
@@ -959,6 +969,7 @@
 				FB1067CB1B532F9700BEBC40 /* AutoTextView.swift in Sources */,
 				FB1067C91B532F9700BEBC40 /* AsyncButton.swift in Sources */,
 				FBC67DB01B75C48500AF1C95 /* PetCollectionCell.m in Sources */,
+				FB1140651B783B340028881F /* ImagePostVC.m in Sources */,
 				FB1067CA1B532F9700BEBC40 /* AsyncImageView.swift in Sources */,
 				FB1067F01B535B4C00BEBC40 /* LoginTableCtrl.m in Sources */,
 				FB102AF01B72CBC600CBF26E /* Pet2ShareTabCtrl.m in Sources */,
@@ -970,6 +981,7 @@
 				FB6C27501B702E420002034A /* PFQueryService.m in Sources */,
 				FB1067CE1B532F9700BEBC40 /* DesignableImageView.swift in Sources */,
 				FBC67D9E1B75B3B600AF1C95 /* ProfileHeaderCell.m in Sources */,
+				FB1140681B78444B0028881F /* CameraNavigationController.m in Sources */,
 				FB1067D01B532F9700BEBC40 /* DesignableTabBarController.swift in Sources */,
 				FB484A4F1B4FD40A0045A6EA /* Reachability.m in Sources */,
 				FB1067E21B532F9700BEBC40 /* SpringView.swift in Sources */,
