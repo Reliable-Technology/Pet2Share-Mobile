@@ -33,6 +33,9 @@
          username:(NSString *)username
          password:(NSString *)password;
 
+- (void)getConnections:(NSObject<PFQueryCallback> *)callback
+               forUser:(ParseUser *)user;
+
 - (void)getPets:(NSObject<PFQueryCallback> *)callback
         forUser:(ParseUser *)user;
 

@@ -35,7 +35,7 @@
     
     // Get the actual width, we assume this is for two columns
     // layout.
-    CGFloat actualImageWidth = size.width- 3*spacing;
+    CGFloat actualImageWidth = size.width-3*spacing;
     
     // The picture at the bottom is changed due to device
     // We want to have 1:1 aspect ratio.

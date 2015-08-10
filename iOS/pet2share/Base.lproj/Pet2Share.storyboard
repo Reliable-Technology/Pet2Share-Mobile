@@ -100,11 +100,31 @@
                         <viewControllerLayoutGuide type="bottom" id="A9o-Nk-ILA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cAo-wr-w9o">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="m2O-RW-t10">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="lTn-2F-hlA" id="kMt-Df-ToE"/>
+                                    <outlet property="delegate" destination="lTn-2F-hlA" id="LIN-aq-M9N"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="0.12941176470588234" green="0.14509803921568626" blue="0.19215686274509802" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="m2O-RW-t10" firstAttribute="trailing" secondItem="cAo-wr-w9o" secondAttribute="trailing" id="63g-t3-oOq"/>
+                            <constraint firstItem="A9o-Nk-ILA" firstAttribute="top" secondItem="m2O-RW-t10" secondAttribute="bottom" id="6M3-ou-e4d"/>
+                            <constraint firstItem="m2O-RW-t10" firstAttribute="top" secondItem="QzL-qH-0Ph" secondAttribute="bottom" id="tTq-Mq-dCM"/>
+                            <constraint firstItem="m2O-RW-t10" firstAttribute="leading" secondItem="cAo-wr-w9o" secondAttribute="leading" id="try-Ba-rfg"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Pet 2 Share" id="iN7-9S-2cK"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="m2O-RW-t10" id="3ai-93-AR7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1SD-EO-dHK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

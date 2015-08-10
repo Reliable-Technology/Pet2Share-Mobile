@@ -16,6 +16,21 @@
 #import "ParsePost.h"
 #import "ParseComment.h"
 
+static NSString * const kParseUserUserName      = @"username";
+static NSString * const kParseUserPassword      = @"password";
+static NSString * const kParseUserFirstName     = @"firstName";
+static NSString * const kParseUserLastName      = @"lastName";
+static NSString * const kParseUserPhone         = @"phone";
+static NSString * const kParseUserMobile        = @"mobile";
+static NSString * const kParseUserAddressLine1  = @"addressLine1";
+static NSString * const kParseUserAddressLine2  = @"addressLine2";
+static NSString * const kParseUserCity          = @"city";
+static NSString * const kParseUserRegionState   = @"regionState";
+static NSString * const kParseUserCountry       = @"country";
+static NSString * const kParseUserZipCode       = @"zipCode";
+static NSString * const kParseUserAvatarImage   = @"avatarImage";
+static NSString * const kParseUserEmailVerified = @"emailVerified";
+
 static NSString * const kParsePetNickName       = @"nickName";
 static NSString * const kParsePetName           = @"name";
 static NSString * const kParsePetAvatarImage    = @"avatarImage";

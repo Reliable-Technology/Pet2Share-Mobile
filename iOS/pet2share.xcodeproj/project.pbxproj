@@ -120,6 +120,8 @@
 		FBF82B561B77F94800E622C5 /* FavoritesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF82B551B77F94800E622C5 /* FavoritesVC.m */; };
 		FBF82B5A1B77F97200E622C5 /* SearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF82B591B77F97200E622C5 /* SearchVC.m */; };
 		FBF82B5D1B77FB8400E622C5 /* IntroPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF82B5C1B77FB8400E622C5 /* IntroPageVC.m */; };
+		FBF82B611B781AE500E622C5 /* ProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF82B5F1B781AE500E622C5 /* ProfileCell.m */; };
+		FBF82B621B781AE500E622C5 /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBF82B601B781AE500E622C5 /* ProfileCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -303,6 +305,9 @@
 		FBF82B591B77F97200E622C5 /* SearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchVC.m; sourceTree = "<group>"; };
 		FBF82B5B1B77FB8400E622C5 /* IntroPageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroPageVC.h; sourceTree = "<group>"; };
 		FBF82B5C1B77FB8400E622C5 /* IntroPageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroPageVC.m; sourceTree = "<group>"; };
+		FBF82B5E1B781AE500E622C5 /* ProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCell.h; sourceTree = "<group>"; };
+		FBF82B5F1B781AE500E622C5 /* ProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCell.m; sourceTree = "<group>"; };
+		FBF82B601B781AE500E622C5 /* ProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -407,6 +412,9 @@
 				FB93C47D1B771A81003341DF /* PostCollectionCell.h */,
 				FB93C47E1B771A81003341DF /* PostCollectionCell.m */,
 				FB93C47F1B771A81003341DF /* PostCollectionCell.xib */,
+				FBF82B5E1B781AE500E622C5 /* ProfileCell.h */,
+				FBF82B5F1B781AE500E622C5 /* ProfileCell.m */,
+				FBF82B601B781AE500E622C5 /* ProfileCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -837,6 +845,7 @@
 				FB1067D81B532F9700BEBC40 /* LoadingView.xib in Resources */,
 				FB484A741B50C5FB0045A6EA /* LobsterTwo-Italic.otf in Resources */,
 				FB484A991B50C6130045A6EA /* Lato-Semibold.ttf in Resources */,
+				FBF82B621B781AE500E622C5 /* ProfileCell.xib in Resources */,
 				FB484A8B1B50C6130045A6EA /* Lato-Black.ttf in Resources */,
 				FB484A9C1B50C6130045A6EA /* Lato-ThinItalic.ttf in Resources */,
 				FB484A901B50C6130045A6EA /* Lato-HairlineItalic.ttf in Resources */,
@@ -923,6 +932,7 @@
 				FB102AF31B72F22F00CBF26E /* ParsePet.m in Sources */,
 				FB6C273D1B6ED2950002034A /* UrlManager.m in Sources */,
 				FB484A4D1B4FD40A0045A6EA /* OrderedDictionary.m in Sources */,
+				FBF82B611B781AE500E622C5 /* ProfileCell.m in Sources */,
 				FB1067E41B532F9700BEBC40 /* TransitionZoom.swift in Sources */,
 				FB1067E91B5341A500BEBC40 /* LoginVC.m in Sources */,
 				FB3B78811B705884002C961A /* FeedVC.m in Sources */,

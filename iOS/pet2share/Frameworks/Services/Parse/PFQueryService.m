@@ -128,6 +128,20 @@
     }];
 }
 
+- (void)getConnections:(NSObject<PFQueryCallback> *)callback
+        forUser:(ParseUser *)user
+{
+    PFQuery *query = [ParseUser query];
+    if (user) [query whereKey:kParseUserUserName notEqualTo:user.username];
+    
+    // TODO: Caching & Paging
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (objects) [callback onQueryListSuccess:objects];
+        else [callback onQueryError:error];
+    }];
+}
+
 - (void)getPets:(NSObject<PFQueryCallback> *)callback
         forUser:(ParseUser *)user
 {
