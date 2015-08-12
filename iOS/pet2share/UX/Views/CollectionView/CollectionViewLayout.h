@@ -18,5 +18,6 @@ typedef NS_ENUM(NSInteger, CollectionLayout)
 @interface CollectionViewLayout : CSStickyHeaderFlowLayout
 
 - (void)setupLayout:(CollectionLayout)layoutType cellHeight:(CGFloat)cellHeight spacing:(CGFloat)spacing;
+- (void)setupLayout:(CollectionLayout)layoutType cellHeight:(CGFloat)cellHeight verticalSpacing:(CGFloat)verticalSpacing horizontalSpacing:(CGFloat)horizontalSpacing;
 
 @end

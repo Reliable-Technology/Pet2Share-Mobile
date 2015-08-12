@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Pet 2 Share. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseNavigationVC.h"
 
-@interface ConnectionsVC : UIViewController
+@interface ConnectionsVC : BaseNavigationVC
 
 @end

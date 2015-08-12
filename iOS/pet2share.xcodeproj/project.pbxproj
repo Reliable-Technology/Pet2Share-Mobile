@@ -118,6 +118,10 @@
 		FBD3938A1B50D9B7000ED817 /* IntroPageContentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD393881B50D9B7000ED817 /* IntroPageContentVC.m */; };
 		FBD3938B1B50D9B7000ED817 /* IntroPageContentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBD393891B50D9B7000ED817 /* IntroPageContentVC.xib */; };
 		FBD3938F1B50D9DB000ED817 /* BaseNavigationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD3938E1B50D9DB000ED817 /* BaseNavigationVC.m */; };
+		FBEFE4B41B7AAFCE00FD6DD9 /* ProfileCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBEFE4B21B7AAFCE00FD6DD9 /* ProfileCollectionCell.m */; };
+		FBEFE4B51B7AAFCE00FD6DD9 /* ProfileCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBEFE4B31B7AAFCE00FD6DD9 /* ProfileCollectionCell.xib */; };
+		FBEFE4B81B7AC6AD00FD6DD9 /* UIView+CutOut.m in Sources */ = {isa = PBXBuildFile; fileRef = FBEFE4B71B7AC6AD00FD6DD9 /* UIView+CutOut.m */; };
+		FBEFE4BB1B7AD8BD00FD6DD9 /* ConnectionsCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBEFE4BA1B7AD8BD00FD6DD9 /* ConnectionsCollectionVC.m */; };
 		FBF82B521B77F88400E622C5 /* ConnectionsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF82B511B77F88400E622C5 /* ConnectionsVC.m */; };
 		FBF82B561B77F94800E622C5 /* FavoritesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF82B551B77F94800E622C5 /* FavoritesVC.m */; };
 		FBF82B5A1B77F97200E622C5 /* SearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF82B591B77F97200E622C5 /* SearchVC.m */; };
@@ -303,6 +307,13 @@
 		FBD393891B50D9B7000ED817 /* IntroPageContentVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroPageContentVC.xib; sourceTree = "<group>"; };
 		FBD3938D1B50D9DB000ED817 /* BaseNavigationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationVC.h; sourceTree = "<group>"; };
 		FBD3938E1B50D9DB000ED817 /* BaseNavigationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationVC.m; sourceTree = "<group>"; };
+		FBEFE4B11B7AAFCE00FD6DD9 /* ProfileCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCollectionCell.h; sourceTree = "<group>"; };
+		FBEFE4B21B7AAFCE00FD6DD9 /* ProfileCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCollectionCell.m; sourceTree = "<group>"; };
+		FBEFE4B31B7AAFCE00FD6DD9 /* ProfileCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileCollectionCell.xib; sourceTree = "<group>"; };
+		FBEFE4B61B7AC6AD00FD6DD9 /* UIView+CutOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CutOut.h"; sourceTree = "<group>"; };
+		FBEFE4B71B7AC6AD00FD6DD9 /* UIView+CutOut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CutOut.m"; sourceTree = "<group>"; };
+		FBEFE4B91B7AD8BD00FD6DD9 /* ConnectionsCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionsCollectionVC.h; sourceTree = "<group>"; };
+		FBEFE4BA1B7AD8BD00FD6DD9 /* ConnectionsCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionsCollectionVC.m; sourceTree = "<group>"; };
 		FBF82B501B77F88400E622C5 /* ConnectionsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionsVC.h; sourceTree = "<group>"; };
 		FBF82B511B77F88400E622C5 /* ConnectionsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionsVC.m; sourceTree = "<group>"; };
 		FBF82B541B77F94800E622C5 /* FavoritesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesVC.h; sourceTree = "<group>"; };
@@ -421,6 +432,9 @@
 				FBF82B5E1B781AE500E622C5 /* ProfileCell.h */,
 				FBF82B5F1B781AE500E622C5 /* ProfileCell.m */,
 				FBF82B601B781AE500E622C5 /* ProfileCell.xib */,
+				FBEFE4B11B7AAFCE00FD6DD9 /* ProfileCollectionCell.h */,
+				FBEFE4B21B7AAFCE00FD6DD9 /* ProfileCollectionCell.m */,
+				FBEFE4B31B7AAFCE00FD6DD9 /* ProfileCollectionCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -524,6 +538,8 @@
 				FB3B78871B706021002C961A /* CircleImageView.m */,
 				FBC67DB21B75DE9000AF1C95 /* ActivityView.h */,
 				FBC67DB31B75DE9000AF1C95 /* ActivityView.m */,
+				FBEFE4B61B7AC6AD00FD6DD9 /* UIView+CutOut.h */,
+				FBEFE4B71B7AC6AD00FD6DD9 /* UIView+CutOut.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -736,6 +752,8 @@
 			children = (
 				FBF82B501B77F88400E622C5 /* ConnectionsVC.h */,
 				FBF82B511B77F88400E622C5 /* ConnectionsVC.m */,
+				FBEFE4B91B7AD8BD00FD6DD9 /* ConnectionsCollectionVC.h */,
+				FBEFE4BA1B7AD8BD00FD6DD9 /* ConnectionsCollectionVC.m */,
 			);
 			path = Connections;
 			sourceTree = "<group>";
@@ -841,6 +859,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBC67D9F1B75B3B600AF1C95 /* ProfileHeaderCell.xib in Resources */,
+				FBEFE4B51B7AAFCE00FD6DD9 /* ProfileCollectionCell.xib in Resources */,
 				FB484A921B50C6130045A6EA /* Lato-HeavyItalic.ttf in Resources */,
 				FB484A931B50C6130045A6EA /* Lato-Italic.ttf in Resources */,
 				FB484A911B50C6130045A6EA /* Lato-Heavy.ttf in Resources */,
@@ -967,6 +986,7 @@
 				FB1067CD1B532F9700BEBC40 /* DesignableButton.swift in Sources */,
 				FB102AFF1B730EC300CBF26E /* CommentCell.m in Sources */,
 				FB1067CB1B532F9700BEBC40 /* AutoTextView.swift in Sources */,
+				FBEFE4BB1B7AD8BD00FD6DD9 /* ConnectionsCollectionVC.m in Sources */,
 				FB1067C91B532F9700BEBC40 /* AsyncButton.swift in Sources */,
 				FBC67DB01B75C48500AF1C95 /* PetCollectionCell.m in Sources */,
 				FB1140651B783B340028881F /* ImagePostVC.m in Sources */,
@@ -980,6 +1000,7 @@
 				FB1067E31B532F9700BEBC40 /* TransitionManager.swift in Sources */,
 				FB6C27501B702E420002034A /* PFQueryService.m in Sources */,
 				FB1067CE1B532F9700BEBC40 /* DesignableImageView.swift in Sources */,
+				FBEFE4B81B7AC6AD00FD6DD9 /* UIView+CutOut.m in Sources */,
 				FBC67D9E1B75B3B600AF1C95 /* ProfileHeaderCell.m in Sources */,
 				FB1140681B78444B0028881F /* CameraNavigationController.m in Sources */,
 				FB1067D01B532F9700BEBC40 /* DesignableTabBarController.swift in Sources */,
@@ -996,6 +1017,7 @@
 				FB93C4801B771A81003341DF /* PostCollectionCell.m in Sources */,
 				FB1067E01B532F9700BEBC40 /* SpringTextField.swift in Sources */,
 				FB1067D71B532F9700BEBC40 /* LoadingView.swift in Sources */,
+				FBEFE4B41B7AAFCE00FD6DD9 /* ProfileCollectionCell.m in Sources */,
 				FB6C27391B6ED2300002034A /* RepositoryObject.m in Sources */,
 				FB6C272F1B6ED1C70002034A /* HttpClient.m in Sources */,
 				FBF82B5D1B77FB8400E622C5 /* IntroPageVC.m in Sources */,

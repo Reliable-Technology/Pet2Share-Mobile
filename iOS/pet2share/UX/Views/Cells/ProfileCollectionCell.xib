@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Lato-Bold.ttf">
+            <string>Lato-Bold</string>
+            <string>Lato-Bold</string>
+        </mutableArray>
+        <mutableArray key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ProfileCollectionCell">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="136"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="600" height="136"/>
+                <subviews>
+                    <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kUL-TO-NAY">
+                        <rect key="frame" x="32" y="36" width="566" height="98"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAc-19-VYS">
+                                <rect key="frame" x="50" y="8" width="503" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="1np-nu-0za"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="13"/>
+                                <color key="textColor" red="0.42655369639396667" green="0.47584608197212219" blue="0.48026475310325623" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bf-wd-ys8">
+                                <rect key="frame" x="50" y="38" width="503" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="QUp-mh-oO2"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8bf-wd-ys8" firstAttribute="leading" secondItem="kUL-TO-NAY" secondAttribute="leading" constant="50" id="DQe-w9-eDj"/>
+                            <constraint firstAttribute="trailing" secondItem="eAc-19-VYS" secondAttribute="trailing" constant="13" id="TCc-kP-0LY"/>
+                            <constraint firstItem="eAc-19-VYS" firstAttribute="leading" secondItem="kUL-TO-NAY" secondAttribute="leading" constant="50" id="gKQ-aq-XSA"/>
+                            <constraint firstItem="eAc-19-VYS" firstAttribute="top" secondItem="kUL-TO-NAY" secondAttribute="top" constant="8" id="ixA-w7-BnN"/>
+                            <constraint firstAttribute="trailing" secondItem="8bf-wd-ys8" secondAttribute="trailing" constant="13" id="o8S-Pg-Rze"/>
+                            <constraint firstItem="8bf-wd-ys8" firstAttribute="top" secondItem="eAc-19-VYS" secondAttribute="bottom" constant="12" id="q0t-fA-uMy"/>
+                        </constraints>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="ruS-Oz-QPZ" customClass="CircleImageView">
+                        <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="64" id="bXO-yG-EMe"/>
+                            <constraint firstAttribute="height" constant="64" id="tKJ-am-qEO"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R3Q-22-PDV">
+                        <rect key="frame" x="80" y="4" width="400" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="w6R-o0-B2Q"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ah-oA-2Ua" customClass="RoundCornerButton">
+                        <rect key="frame" x="500" y="0.0" width="100" height="28"/>
+                        <color key="backgroundColor" red="0.23018704349999999" green="0.77713233230000001" blue="0.31589496140000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="U7F-kB-ntd"/>
+                            <constraint firstAttribute="height" constant="28" id="xhY-Kv-35j"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
+                        <state key="normal" title="Add Friend">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="kUL-TO-NAY" secondAttribute="bottom" constant="2" id="3wS-u2-Rls"/>
+                <constraint firstItem="kUL-TO-NAY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="32" id="4Y3-a1-ztD"/>
+                <constraint firstAttribute="trailing" secondItem="kUL-TO-NAY" secondAttribute="trailing" constant="2" id="9SJ-g8-ZFK"/>
+                <constraint firstAttribute="trailing" secondItem="7ah-oA-2Ua" secondAttribute="trailing" id="Itk-xr-Spd"/>
+                <constraint firstItem="ruS-Oz-QPZ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Saj-T2-CE1"/>
+                <constraint firstItem="R3Q-22-PDV" firstAttribute="leading" secondItem="ruS-Oz-QPZ" secondAttribute="trailing" constant="16" id="aw1-uN-4Ao"/>
+                <constraint firstItem="kUL-TO-NAY" firstAttribute="top" secondItem="R3Q-22-PDV" secondAttribute="bottom" constant="11" id="eyb-op-jGm"/>
+                <constraint firstItem="R3Q-22-PDV" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="h29-uP-vtI"/>
+                <constraint firstItem="ruS-Oz-QPZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="lfF-1f-xbs"/>
+                <constraint firstItem="kUL-TO-NAY" firstAttribute="top" secondItem="7ah-oA-2Ua" secondAttribute="bottom" constant="8" id="xWH-vb-IHe"/>
+                <constraint firstItem="7ah-oA-2Ua" firstAttribute="leading" secondItem="R3Q-22-PDV" secondAttribute="trailing" constant="20" id="zQD-Z3-ODw"/>
+            </constraints>
+            <size key="customSize" width="604" height="131"/>
+            <connections>
+                <outlet property="avatarImageView" destination="ruS-Oz-QPZ" id="tRh-W9-Lbk"/>
+                <outlet property="containerView" destination="kUL-TO-NAY" id="Uhb-PY-KOD"/>
+                <outlet property="nameLabel" destination="R3Q-22-PDV" id="Wiw-7d-45e"/>
+                <outlet property="numberofPetsLabel" destination="eAc-19-VYS" id="b3G-TY-3j8"/>
+                <outlet property="scrollView" destination="8bf-wd-ys8" id="WRV-nF-PYw"/>
+            </connections>
+            <point key="canvasLocation" x="439" y="228"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="img-avatar" width="86" height="84"/>
+    </resources>
+</document>
