@@ -162,6 +162,7 @@
     PFQuery *query = [ParsePost query];
     if (pet) [query whereKey:kParsePostPet equalTo:pet];
     [query includeKey:kParsePostPoster];
+    [query orderByDescending:@"createdAt"];
     
     // TODO: Caching & Paging
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {

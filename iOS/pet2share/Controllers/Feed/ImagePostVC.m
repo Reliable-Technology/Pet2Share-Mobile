@@ -11,6 +11,7 @@
 #import "Graphics.h"
 #import "ParseServices.h"
 #import "ActivityView.h"
+#import <DBCamera/UIImage+Crop.h>
 
 @interface ImagePostVC () <UITextFieldDelegate, PFQueryCallback, BarButtonsProtocol>
 
@@ -95,7 +96,8 @@
     [self.activity show];
     
     PFQueryService *service = [PFQueryService new];
-    [service addPost:self image:self.image
+    [service addPost:self
+               image:[self imageByCroppingImage:self.image]
                 text:self.postTitleTextField.text
              forUser:[ParseUser currentUser]
               forPet:[self.pets objectAtIndex:0]];
@@ -148,6 +150,28 @@
     [self.activity hide];
     [Graphics alert:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Can not post!", @"")
                type:ErrorAlert];
+}
+
+- (UIImage *)imageByCroppingImage:(UIImage *)image
+{
+    CGFloat width = image.size.width;
+    CGFloat height = width * 9 / 16;
+    CGSize size = CGSizeMake(width, height);
+    
+    // not equivalent to image.size (which depends on the imageOrientation)!
+    double refWidth = CGImageGetWidth(image.CGImage);
+    double refHeight = CGImageGetHeight(image.CGImage);
+    
+    double x = (refWidth - size.width) / 2.0;
+    double y = (refHeight - size.height) / 2.0;
+    
+    CGRect cropRect = CGRectMake(x, y, size.height, size.width);
+    CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], cropRect);
+    
+    UIImage *cropped = [UIImage imageWithCGImage:imageRef scale:0.0 orientation:image.imageOrientation];
+    CGImageRelease(imageRef);
+    
+    return cropped;
 }
 
 @end

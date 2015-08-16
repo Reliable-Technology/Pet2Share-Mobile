@@ -39,14 +39,7 @@ static const CGFloat kActivityViewSize = 22.0f;
         [self setFlexibleMarginsForView:self.activityIndicator];
         [self setFlexibleMarginsForView:self];
         [self addSubview:self.activityIndicator];
-        
-        CABasicAnimation *animation = [CABasicAnimation new];
-        animation.keyPath = @"transform.rotation.z";
-        animation.fromValue = @(degreesToRadians(360));
-        animation.toValue = @(degreesToRadians(0));
-        animation.duration = 1.2;
-        animation.repeatCount = HUGE;
-        [self.activityIndicator.layer addAnimation:animation forKey:@""];
+
     }
     return self;
 }
@@ -75,17 +68,20 @@ static const CGFloat kActivityViewSize = 22.0f;
         [self setFlexibleMarginsForView:self];
         [self addSubview:self.activityIndicator];
         
-        CABasicAnimation *animation = [CABasicAnimation new];
-        animation.keyPath = @"transform.rotation.z";
-        animation.fromValue = @(degreesToRadians(360));
-        animation.toValue = @(degreesToRadians(0));
-        animation.duration = 1.2;
-        animation.repeatCount = HUGE;
-        [self.activityIndicator.layer addAnimation:animation forKey:@""];
-        
         parentView = view;
     }
     return self;
+}
+
+- (void)willMoveToSuperview:(UIView *)newSuperview
+{
+    CABasicAnimation *animation = [CABasicAnimation new];
+    animation.keyPath = @"transform.rotation.z";
+    animation.fromValue = @(degreesToRadians(360));
+    animation.toValue = @(degreesToRadians(0));
+    animation.duration = 1.2;
+    animation.repeatCount = HUGE;
+    [self.activityIndicator.layer addAnimation:animation forKey:@""];
 }
 
 - (void)setFlexibleMarginsForView: (UIView*) view

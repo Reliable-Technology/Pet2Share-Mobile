@@ -13,5 +13,6 @@
 @interface PostCollectionVC : CollectionViewController
 
 @property (nonatomic, strong) ParsePet *pet;
+- (void)requestData;
 
 @end

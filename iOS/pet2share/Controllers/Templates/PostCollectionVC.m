@@ -42,6 +42,11 @@ static NSString * const kCellNibName        = @"PostCollectionCell";
     
     // Setup activity bounds
     _activity = [[ActivityView alloc] initWithView:self.collectionView];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
     // Request Data
     [self requestData];
@@ -63,9 +68,6 @@ static NSString * const kCellNibName        = @"PostCollectionCell";
         [self.activity show];
     }
     
-    // Remove all items
-    [self.items removeAllObjects];
-    
     PFQueryService *service = [PFQueryService new];
     [service getPosts:self forPet:self.pet];
 }
@@ -73,6 +75,7 @@ static NSString * const kCellNibName        = @"PostCollectionCell";
 - (void)onQueryListSuccess:(NSArray *)objects
 {
     [self.activity hide];
+    [self.items removeAllObjects];
     [self.items addObjectsFromArray:objects];
     [self.collectionView reloadData];
 }
