@@ -8,9 +8,9 @@
         <mutableArray key="Lato-Bold.ttf">
             <string>Lato-Bold</string>
             <string>Lato-Bold</string>
-            <string>Lato-Bold</string>
         </mutableArray>
         <mutableArray key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
@@ -408,7 +408,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PcP-Ma-MvL">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="70"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Write Something..." clearsOnBeginEditing="YES" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="26A-z9-Ykp">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="TopLeft" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Write Something..." clearsOnBeginEditing="YES" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="26A-z9-Ykp">
                                         <rect key="frame" x="76" y="7" width="508" height="56"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
@@ -426,42 +426,44 @@
                                     <constraint firstAttribute="height" constant="70" id="8dR-9x-Bn7"/>
                                 </constraints>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tE5-8a-i3h">
-                                <rect key="frame" x="0.0" y="70" width="600" height="430"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <segue destination="kjs-Fm-CTy" kind="embed" identifier="pettagscontainer" id="kgC-BS-er3"/>
-                                </connections>
-                            </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWl-x3-KS0">
-                                <rect key="frame" x="0.0" y="500" width="600" height="36"/>
-                                <color key="backgroundColor" red="0.37071776390075684" green="0.25714370608329773" blue="0.75468015670776367" alpha="1" colorSpace="calibratedRGB"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UeL-Rw-Xv4">
+                                <rect key="frame" x="0.0" y="80" width="600" height="80"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tagging" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VNi-v4-WYI">
+                                        <rect key="frame" x="16" y="7" width="568" height="15"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2OR-Wd-1mD">
+                                        <rect key="frame" x="16" y="28" width="568" height="44"/>
+                                    </scrollView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="Btk-tv-laB"/>
+                                    <constraint firstItem="2OR-Wd-1mD" firstAttribute="leading" secondItem="UeL-Rw-Xv4" secondAttribute="leading" constant="16" id="BVi-aC-iDS"/>
+                                    <constraint firstItem="VNi-v4-WYI" firstAttribute="leading" secondItem="UeL-Rw-Xv4" secondAttribute="leading" constant="16" id="Doc-8q-HPd"/>
+                                    <constraint firstItem="2OR-Wd-1mD" firstAttribute="top" secondItem="VNi-v4-WYI" secondAttribute="bottom" constant="6" id="IjD-ry-44x"/>
+                                    <constraint firstAttribute="trailing" secondItem="VNi-v4-WYI" secondAttribute="trailing" constant="16" id="QVc-Hg-LdN"/>
+                                    <constraint firstAttribute="height" constant="80" id="Tlc-ln-7bP"/>
+                                    <constraint firstAttribute="trailing" secondItem="2OR-Wd-1mD" secondAttribute="trailing" constant="16" id="dks-5E-zW1"/>
+                                    <constraint firstItem="VNi-v4-WYI" firstAttribute="top" secondItem="UeL-Rw-Xv4" secondAttribute="top" constant="7" id="fax-GL-e8S"/>
+                                    <constraint firstAttribute="bottom" secondItem="2OR-Wd-1mD" secondAttribute="bottom" constant="8" id="rlT-wC-DDa"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Post">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.12941176470588234" green="0.14509803921568626" blue="0.19215686274509802" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="2H1-gT-58C" firstAttribute="trailing" secondItem="fgA-f7-gSU" secondAttribute="trailing" id="1MF-VK-juZ"/>
-                            <constraint firstItem="PX9-aV-exA" firstAttribute="top" secondItem="fWl-x3-KS0" secondAttribute="bottom" id="5L7-Gv-CkK"/>
+                            <constraint firstItem="UeL-Rw-Xv4" firstAttribute="trailing" secondItem="fgA-f7-gSU" secondAttribute="trailing" id="2K3-oA-bOm"/>
                             <constraint firstItem="PcP-Ma-MvL" firstAttribute="trailing" secondItem="fgA-f7-gSU" secondAttribute="trailing" id="6QG-Dh-H0O"/>
                             <constraint firstItem="PcP-Ma-MvL" firstAttribute="leading" secondItem="fgA-f7-gSU" secondAttribute="leading" id="CfR-hl-ffI"/>
-                            <constraint firstItem="fWl-x3-KS0" firstAttribute="leading" secondItem="fgA-f7-gSU" secondAttribute="leading" id="Fe0-RK-hgI"/>
-                            <constraint firstItem="tE5-8a-i3h" firstAttribute="leading" secondItem="fgA-f7-gSU" secondAttribute="leading" id="GfQ-9Y-nZS"/>
-                            <constraint firstItem="fWl-x3-KS0" firstAttribute="trailing" secondItem="fgA-f7-gSU" secondAttribute="trailing" id="Inv-vI-ZWr"/>
+                            <constraint firstItem="UeL-Rw-Xv4" firstAttribute="leading" secondItem="fgA-f7-gSU" secondAttribute="leading" id="JKn-yB-08x"/>
+                            <constraint firstItem="UeL-Rw-Xv4" firstAttribute="top" secondItem="PcP-Ma-MvL" secondAttribute="bottom" constant="10" id="RiW-i4-CaB"/>
                             <constraint firstItem="PcP-Ma-MvL" firstAttribute="top" secondItem="baI-7m-l6O" secondAttribute="bottom" id="TKe-67-JVK"/>
                             <constraint firstItem="PX9-aV-exA" firstAttribute="top" secondItem="2H1-gT-58C" secondAttribute="bottom" id="dna-bD-7Xw"/>
                             <constraint firstItem="2H1-gT-58C" firstAttribute="top" secondItem="baI-7m-l6O" secondAttribute="bottom" id="kG6-VU-E18"/>
                             <constraint firstItem="2H1-gT-58C" firstAttribute="leading" secondItem="fgA-f7-gSU" secondAttribute="leading" id="lvO-97-hS1"/>
-                            <constraint firstItem="fWl-x3-KS0" firstAttribute="top" secondItem="tE5-8a-i3h" secondAttribute="bottom" id="orL-sq-Y1i"/>
-                            <constraint firstItem="tE5-8a-i3h" firstAttribute="trailing" secondItem="fgA-f7-gSU" secondAttribute="trailing" id="xTZ-x1-Zkj"/>
-                            <constraint firstItem="tE5-8a-i3h" firstAttribute="top" secondItem="PcP-Ma-MvL" secondAttribute="bottom" id="xf6-R2-Ttd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="db9-W7-xi8">
@@ -477,46 +479,12 @@
                         <outlet property="headerView" destination="PcP-Ma-MvL" id="q68-BX-Irn"/>
                         <outlet property="postImageView" destination="XdI-Hs-Hlj" id="eEL-Ub-8BF"/>
                         <outlet property="postTitleTextField" destination="26A-z9-Ykp" id="McT-rR-g4N"/>
+                        <outlet property="scrollView" destination="2OR-Wd-1mD" id="JcT-2E-McV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q3X-kf-X8G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3757" y="1665"/>
-        </scene>
-        <!--Pet Tags CollectionVC-->
-        <scene sceneID="Efb-dm-bjL">
-            <objects>
-                <collectionViewController id="kjs-Fm-CTy" customClass="PetTagsCollectionVC" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="bEg-Xb-a8e">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="430"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dNT-Vh-fw1" customClass="CollectionViewLayout">
-                            <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="hCz-pU-iDb">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="kjs-Fm-CTy" id="16I-Hd-1Sw"/>
-                            <outlet property="delegate" destination="kjs-Fm-CTy" id="82Z-fB-tRl"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3X6-0h-76v" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4454" y="1754"/>
         </scene>
         <!--Pet 2 Share-->
         <scene sceneID="ogo-MI-ag9">

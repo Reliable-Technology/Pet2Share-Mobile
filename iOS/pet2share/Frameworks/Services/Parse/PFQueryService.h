@@ -42,4 +42,10 @@
 - (void)getPosts:(NSObject<PFQueryCallback> *)callback
           forPet:(ParsePet *)pet;
 
+- (void)addPost:(NSObject<PFQueryCallback> *)callback
+          image:(UIImage *)image
+           text:(NSString *)text
+        forUser:(ParseUser *)user
+         forPet:(ParsePet *)pet;
+
 @end

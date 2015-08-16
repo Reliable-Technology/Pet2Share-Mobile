@@ -170,4 +170,27 @@
     }];
 }
 
+- (void)addPost:(NSObject<PFQueryCallback> *)callback
+          image:(UIImage *)image
+           text:(NSString *)text
+        forUser:(ParseUser *)user
+         forPet:(ParsePet *)pet
+{
+    ParsePost *post = [ParsePost new];
+    
+    NSData *data = UIImageJPEGRepresentation(image, 1.0f);
+    PFFile *imageFile = [PFFile fileWithName:@"post-img.jpg" data:data];
+    
+    post.image = imageFile;
+    post.text = text;
+    post.title = text;
+    post.poster = user;
+    post.pet = pet;
+    
+    [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) [callback onPostSuccess];
+        else [callback onPostFailure];
+    }];
+}
+
 @end

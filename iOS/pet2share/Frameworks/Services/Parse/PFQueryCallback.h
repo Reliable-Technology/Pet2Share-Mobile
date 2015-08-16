@@ -11,6 +11,8 @@
 @protocol PFQueryCallback <NSObject>
 
 @optional
+- (void)onPostSuccess;
+- (void)onPostFailure;
 - (void)onQueryListSuccess:(NSArray *)objects;
 - (void)onQuerySuccess:(PFObject *)object;
 - (void)onQueryError:(NSError *)error;

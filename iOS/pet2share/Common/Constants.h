@@ -26,7 +26,6 @@ extern NSString * const kSegueLogin;
 extern NSString * const kSegueLoginContainer;
 extern NSString * const kSegueProfile;
 extern NSString * const kSegueImagePost;
-extern NSString * const kSeguePetTagsContainer;
 extern NSString * const kSegueProfileContainer;
 extern NSString * const kSeguePetPosts;
 extern NSString * const kSeguePetPostsContainer;

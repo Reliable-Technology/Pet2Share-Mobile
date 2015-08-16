@@ -10,12 +10,17 @@
 #import "CircleImageView.h"
 #import "Graphics.h"
 #import "ParseServices.h"
+#import "ActivityView.h"
 
-@interface ImagePostVC () <BarButtonsProtocol, UITextFieldDelegate>
+@interface ImagePostVC () <UITextFieldDelegate, PFQueryCallback, BarButtonsProtocol>
 
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet UITextField *postTitleTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *postImageView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) ActivityView *activity;
+
+@property (strong, nonatomic) NSMutableArray *pets;
 
 - (IBAction)dismissView:(id)sender;
 
@@ -30,6 +35,7 @@
     if ((self = [super initWithCoder:aDecoder]))
     {
         self.barButtonsProtocol = self;
+        _pets = [NSMutableArray array];
     }
     return self;
 }
@@ -44,6 +50,13 @@
     // Post Image View
     [self.postImageView setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
     self.postImageView.image = self.image;
+    
+    [self.postTitleTextField becomeFirstResponder];
+    
+    PFQueryService *service = [PFQueryService new];
+    [service getPets:self forUser:[ParseUser currentUser]];
+    
+    _activity = [[ActivityView alloc] initWithView:self.view];
 }
 
 #pragma mark - Events
@@ -52,8 +65,6 @@
 {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
-
-#pragma mark - <BarButtonsProtocol>
 
 - (UIButton *)setupRightBarButton
 {
@@ -66,7 +77,28 @@
 
 - (void)handleRightButtonEvent:(id)sender
 {
-    TRACE_HERE;
+    if ([self.postTitleTextField.text isEqualToString:kEmptyString])
+    {
+        [Graphics alert:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Add some text!", @"")
+                   type:ErrorAlert];
+        return;
+    }
+    
+    if ([self.pets count] == 0)
+    {
+        [Graphics alert:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"You don't have any pets!", @"")
+                   type:ErrorAlert];
+        return;
+    }
+    
+    [self.postTitleTextField resignFirstResponder];
+    [self.activity show];
+    
+    PFQueryService *service = [PFQueryService new];
+    [service addPost:self image:self.image
+                text:self.postTitleTextField.text
+             forUser:[ParseUser currentUser]
+              forPet:[self.pets objectAtIndex:0]];
 }
 
 #pragma mark - <UITextFieldDelegate>
@@ -81,10 +113,41 @@
     if (textField == self.postTitleTextField)
     {
         [textField resignFirstResponder];
-        // TODO: Perform Posting
     }
     
     return YES;
+}
+
+#pragma mark - <PFQueryCallback>
+
+- (void)onQueryListSuccess:(NSArray *)objects
+{
+    [self.pets addObjectsFromArray:objects];
+    
+    CGFloat offset = 0.0f;
+    for (int i = 0; i < objects.count; i++)
+    {
+        ParsePet *pet = (ParsePet *)[objects objectAtIndex:i];
+        CircleImageView *petImageView = [[CircleImageView alloc] initWithFrame:CGRectMake(offset, 0, 44, 44)];
+        [petImageView setImage:[UIImage imageNamed:@"img-avatar"]];
+        [self.scrollView addSubview:petImageView];
+        [PFQueryService loadImageFile:pet.avatarImage imageView:petImageView completion:nil];
+        offset += petImageView.bounds.size.width + 8.0f;
+    }
+    self.scrollView.contentSize = CGSizeMake(offset, self.scrollView.frame.size.height);
+}
+
+- (void)onPostSuccess
+{
+    [self.activity hide];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)onPostFailure
+{
+    [self.activity hide];
+    [Graphics alert:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Can not post!", @"")
+               type:ErrorAlert];
 }
 
 @end

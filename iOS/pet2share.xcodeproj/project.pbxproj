@@ -89,9 +89,6 @@
 		FB484A9A1B50C6130045A6EA /* Lato-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A871B50C6130045A6EA /* Lato-SemiboldItalic.ttf */; };
 		FB484A9B1B50C6130045A6EA /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A881B50C6130045A6EA /* Lato-Thin.ttf */; };
 		FB484A9C1B50C6130045A6EA /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A891B50C6130045A6EA /* Lato-ThinItalic.ttf */; };
-		FB65BAB01B80F89000E23275 /* PetTagsCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB65BAAF1B80F89000E23275 /* PetTagsCollectionVC.m */; };
-		FB65BAB41B80F98300E23275 /* PetTagsCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB65BAB21B80F98300E23275 /* PetTagsCollectionCell.m */; };
-		FB65BAB51B80F98300E23275 /* PetTagsCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB65BAB31B80F98300E23275 /* PetTagsCollectionCell.xib */; };
 		FB65BAB81B80F9AD00E23275 /* CheckMark.m in Sources */ = {isa = PBXBuildFile; fileRef = FB65BAB71B80F9AD00E23275 /* CheckMark.m */; };
 		FB6C272F1B6ED1C70002034A /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C272E1B6ED1C70002034A /* HttpClient.m */; };
 		FB6C27331B6ED1EF0002034A /* Pet2ShareService.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C27321B6ED1EF0002034A /* Pet2ShareService.m */; };
@@ -130,8 +127,6 @@
 		FBF82B561B77F94800E622C5 /* FavoritesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF82B551B77F94800E622C5 /* FavoritesVC.m */; };
 		FBF82B5A1B77F97200E622C5 /* SearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF82B591B77F97200E622C5 /* SearchVC.m */; };
 		FBF82B5D1B77FB8400E622C5 /* IntroPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF82B5C1B77FB8400E622C5 /* IntroPageVC.m */; };
-		FBF82B611B781AE500E622C5 /* ProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF82B5F1B781AE500E622C5 /* ProfileCell.m */; };
-		FBF82B621B781AE500E622C5 /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBF82B601B781AE500E622C5 /* ProfileCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -254,11 +249,6 @@
 		FB484A881B50C6130045A6EA /* Lato-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Thin.ttf"; sourceTree = "<group>"; };
 		FB484A891B50C6130045A6EA /* Lato-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-ThinItalic.ttf"; sourceTree = "<group>"; };
 		FB484A8A1B50C6130045A6EA /* SIL Open Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SIL Open Font License.txt"; sourceTree = "<group>"; };
-		FB65BAAE1B80F89000E23275 /* PetTagsCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetTagsCollectionVC.h; sourceTree = "<group>"; };
-		FB65BAAF1B80F89000E23275 /* PetTagsCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetTagsCollectionVC.m; sourceTree = "<group>"; };
-		FB65BAB11B80F98300E23275 /* PetTagsCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetTagsCollectionCell.h; sourceTree = "<group>"; };
-		FB65BAB21B80F98300E23275 /* PetTagsCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetTagsCollectionCell.m; sourceTree = "<group>"; };
-		FB65BAB31B80F98300E23275 /* PetTagsCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PetTagsCollectionCell.xib; sourceTree = "<group>"; };
 		FB65BAB61B80F9AD00E23275 /* CheckMark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckMark.h; sourceTree = "<group>"; };
 		FB65BAB71B80F9AD00E23275 /* CheckMark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckMark.m; sourceTree = "<group>"; };
 		FB6C272D1B6ED1C70002034A /* HttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClient.h; sourceTree = "<group>"; };
@@ -333,9 +323,6 @@
 		FBF82B591B77F97200E622C5 /* SearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchVC.m; sourceTree = "<group>"; };
 		FBF82B5B1B77FB8400E622C5 /* IntroPageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroPageVC.h; sourceTree = "<group>"; };
 		FBF82B5C1B77FB8400E622C5 /* IntroPageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroPageVC.m; sourceTree = "<group>"; };
-		FBF82B5E1B781AE500E622C5 /* ProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCell.h; sourceTree = "<group>"; };
-		FBF82B5F1B781AE500E622C5 /* ProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCell.m; sourceTree = "<group>"; };
-		FBF82B601B781AE500E622C5 /* ProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -440,15 +427,9 @@
 				FB93C47D1B771A81003341DF /* PostCollectionCell.h */,
 				FB93C47E1B771A81003341DF /* PostCollectionCell.m */,
 				FB93C47F1B771A81003341DF /* PostCollectionCell.xib */,
-				FBF82B5E1B781AE500E622C5 /* ProfileCell.h */,
-				FBF82B5F1B781AE500E622C5 /* ProfileCell.m */,
-				FBF82B601B781AE500E622C5 /* ProfileCell.xib */,
 				FBEFE4B11B7AAFCE00FD6DD9 /* ProfileCollectionCell.h */,
 				FBEFE4B21B7AAFCE00FD6DD9 /* ProfileCollectionCell.m */,
 				FBEFE4B31B7AAFCE00FD6DD9 /* ProfileCollectionCell.xib */,
-				FB65BAB11B80F98300E23275 /* PetTagsCollectionCell.h */,
-				FB65BAB21B80F98300E23275 /* PetTagsCollectionCell.m */,
-				FB65BAB31B80F98300E23275 /* PetTagsCollectionCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -460,8 +441,6 @@
 				FB3B78801B705884002C961A /* FeedVC.m */,
 				FB1140631B783B340028881F /* ImagePostVC.h */,
 				FB1140641B783B340028881F /* ImagePostVC.m */,
-				FB65BAAE1B80F89000E23275 /* PetTagsCollectionVC.h */,
-				FB65BAAF1B80F89000E23275 /* PetTagsCollectionVC.m */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -892,11 +871,9 @@
 				FB1067D81B532F9700BEBC40 /* LoadingView.xib in Resources */,
 				FB484A741B50C5FB0045A6EA /* LobsterTwo-Italic.otf in Resources */,
 				FB484A991B50C6130045A6EA /* Lato-Semibold.ttf in Resources */,
-				FBF82B621B781AE500E622C5 /* ProfileCell.xib in Resources */,
 				FB484A8B1B50C6130045A6EA /* Lato-Black.ttf in Resources */,
 				FB484A9C1B50C6130045A6EA /* Lato-ThinItalic.ttf in Resources */,
 				FB484A901B50C6130045A6EA /* Lato-HairlineItalic.ttf in Resources */,
-				FB65BAB51B80F98300E23275 /* PetTagsCollectionCell.xib in Resources */,
 				FB484A8E1B50C6130045A6EA /* Lato-BoldItalic.ttf in Resources */,
 				FB1067D51B532F9700BEBC40 /* Info.plist in Resources */,
 				FB484A8C1B50C6130045A6EA /* Lato-BlackItalic.ttf in Resources */,
@@ -979,9 +956,7 @@
 				FB484A621B50BE910045A6EA /* RoundCornerButton.m in Sources */,
 				FB102AF31B72F22F00CBF26E /* ParsePet.m in Sources */,
 				FB6C273D1B6ED2950002034A /* UrlManager.m in Sources */,
-				FB65BAB41B80F98300E23275 /* PetTagsCollectionCell.m in Sources */,
 				FB484A4D1B4FD40A0045A6EA /* OrderedDictionary.m in Sources */,
-				FBF82B611B781AE500E622C5 /* ProfileCell.m in Sources */,
 				FB1067E41B532F9700BEBC40 /* TransitionZoom.swift in Sources */,
 				FB1067E91B5341A500BEBC40 /* LoginVC.m in Sources */,
 				FB3B78811B705884002C961A /* FeedVC.m in Sources */,
@@ -996,7 +971,6 @@
 				FB1067E51B532F9700BEBC40 /* UnwindSegue.swift in Sources */,
 				FB1067DA1B532F9700BEBC40 /* SoundPlayer.swift in Sources */,
 				FB484A5B1B50BE410045A6EA /* AppColorScheme.m in Sources */,
-				FB65BAB01B80F89000E23275 /* PetTagsCollectionVC.m in Sources */,
 				FB484A511B4FD40A0045A6EA /* UIDevice+Hardware.m in Sources */,
 				FB484A3F1B4FD12F0045A6EA /* Graphics.m in Sources */,
 				FB484A421B4FD3E60045A6EA /* Constants.m in Sources */,
