@@ -87,10 +87,8 @@ static NSString * const kCellNibName    = @"DashboardCollectionCell";
 {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
     button.frame = _profileImgFrame;
-    [button setBackgroundImage:[Graphics tintImage:[UIImage imageNamed:kImageIconName]
-                                         withColor:[AppColorScheme white]]
+    [button setBackgroundImage:[Graphics circleImage:[UIImage imageNamed:@"img-avatar"] frame:_profileImgFrame]
                       forState:UIControlStateNormal];
-    
     [PFQueryService loadImage:[ParseUser currentUser] completion:^(UIImage *image) {
         [self setLeftBarButtonImage:[Graphics circleImage:image frame:_profileImgFrame]];
     }];

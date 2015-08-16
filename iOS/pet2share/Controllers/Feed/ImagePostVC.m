@@ -14,7 +14,6 @@
 @interface ImagePostVC () <BarButtonsProtocol, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *headerView;
-@property (weak, nonatomic) IBOutlet CircleImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet UITextField *postTitleTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *postImageView;
 
@@ -41,22 +40,10 @@
     
     // Title
     self.title = NSLocalizedString(@"Share Moment", @"");
-    
-    [Graphics dropShadow:self.headerView shadowOpacity:0.85f shadowRadius:1.0f offset:CGSizeMake(0.0f, 1.0f)];
-    
-    // Avatar Image View
-    [PFQueryService loadImage:[ParseUser currentUser] imageView:self.avatarImageView];
-    
+        
     // Post Image View
     [self.postImageView setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
     self.postImageView.image = self.image;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [self.postTitleTextField becomeFirstResponder];
 }
 
 #pragma mark - Events
@@ -70,13 +57,16 @@
 
 - (UIButton *)setupRightBarButton
 {
-    // TODO: Postting Button
-    return nil;
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    button.frame = CGRectMake(0.0f, 0.0f, kBarButtonWidth, kBarButtonHeight);
+    [button setImage:[Graphics tintImage:[UIImage imageNamed:@"icon-checkmark"]
+                               withColor:[AppColorScheme white]] forState:UIControlStateNormal];
+    return button;
 }
 
 - (void)handleRightButtonEvent:(id)sender
 {
-    // TODO: Implement later
+    TRACE_HERE;
 }
 
 #pragma mark - <UITextFieldDelegate>

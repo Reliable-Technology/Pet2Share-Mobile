@@ -54,11 +54,6 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
     [self requestData];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:kSeguePetPosts]

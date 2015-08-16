@@ -89,6 +89,10 @@
 		FB484A9A1B50C6130045A6EA /* Lato-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A871B50C6130045A6EA /* Lato-SemiboldItalic.ttf */; };
 		FB484A9B1B50C6130045A6EA /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A881B50C6130045A6EA /* Lato-Thin.ttf */; };
 		FB484A9C1B50C6130045A6EA /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A891B50C6130045A6EA /* Lato-ThinItalic.ttf */; };
+		FB65BAB01B80F89000E23275 /* PetTagsCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB65BAAF1B80F89000E23275 /* PetTagsCollectionVC.m */; };
+		FB65BAB41B80F98300E23275 /* PetTagsCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB65BAB21B80F98300E23275 /* PetTagsCollectionCell.m */; };
+		FB65BAB51B80F98300E23275 /* PetTagsCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB65BAB31B80F98300E23275 /* PetTagsCollectionCell.xib */; };
+		FB65BAB81B80F9AD00E23275 /* CheckMark.m in Sources */ = {isa = PBXBuildFile; fileRef = FB65BAB71B80F9AD00E23275 /* CheckMark.m */; };
 		FB6C272F1B6ED1C70002034A /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C272E1B6ED1C70002034A /* HttpClient.m */; };
 		FB6C27331B6ED1EF0002034A /* Pet2ShareService.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C27321B6ED1EF0002034A /* Pet2ShareService.m */; };
 		FB6C27391B6ED2300002034A /* RepositoryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C27361B6ED2300002034A /* RepositoryObject.m */; };
@@ -250,6 +254,13 @@
 		FB484A881B50C6130045A6EA /* Lato-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Thin.ttf"; sourceTree = "<group>"; };
 		FB484A891B50C6130045A6EA /* Lato-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-ThinItalic.ttf"; sourceTree = "<group>"; };
 		FB484A8A1B50C6130045A6EA /* SIL Open Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SIL Open Font License.txt"; sourceTree = "<group>"; };
+		FB65BAAE1B80F89000E23275 /* PetTagsCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetTagsCollectionVC.h; sourceTree = "<group>"; };
+		FB65BAAF1B80F89000E23275 /* PetTagsCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetTagsCollectionVC.m; sourceTree = "<group>"; };
+		FB65BAB11B80F98300E23275 /* PetTagsCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetTagsCollectionCell.h; sourceTree = "<group>"; };
+		FB65BAB21B80F98300E23275 /* PetTagsCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetTagsCollectionCell.m; sourceTree = "<group>"; };
+		FB65BAB31B80F98300E23275 /* PetTagsCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PetTagsCollectionCell.xib; sourceTree = "<group>"; };
+		FB65BAB61B80F9AD00E23275 /* CheckMark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckMark.h; sourceTree = "<group>"; };
+		FB65BAB71B80F9AD00E23275 /* CheckMark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckMark.m; sourceTree = "<group>"; };
 		FB6C272D1B6ED1C70002034A /* HttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClient.h; sourceTree = "<group>"; };
 		FB6C272E1B6ED1C70002034A /* HttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpClient.m; sourceTree = "<group>"; };
 		FB6C27311B6ED1EF0002034A /* Pet2ShareService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pet2ShareService.h; sourceTree = "<group>"; };
@@ -435,6 +446,9 @@
 				FBEFE4B11B7AAFCE00FD6DD9 /* ProfileCollectionCell.h */,
 				FBEFE4B21B7AAFCE00FD6DD9 /* ProfileCollectionCell.m */,
 				FBEFE4B31B7AAFCE00FD6DD9 /* ProfileCollectionCell.xib */,
+				FB65BAB11B80F98300E23275 /* PetTagsCollectionCell.h */,
+				FB65BAB21B80F98300E23275 /* PetTagsCollectionCell.m */,
+				FB65BAB31B80F98300E23275 /* PetTagsCollectionCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -446,6 +460,8 @@
 				FB3B78801B705884002C961A /* FeedVC.m */,
 				FB1140631B783B340028881F /* ImagePostVC.h */,
 				FB1140641B783B340028881F /* ImagePostVC.m */,
+				FB65BAAE1B80F89000E23275 /* PetTagsCollectionVC.h */,
+				FB65BAAF1B80F89000E23275 /* PetTagsCollectionVC.m */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -540,6 +556,8 @@
 				FBC67DB31B75DE9000AF1C95 /* ActivityView.m */,
 				FBEFE4B61B7AC6AD00FD6DD9 /* UIView+CutOut.h */,
 				FBEFE4B71B7AC6AD00FD6DD9 /* UIView+CutOut.m */,
+				FB65BAB61B80F9AD00E23275 /* CheckMark.h */,
+				FB65BAB71B80F9AD00E23275 /* CheckMark.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -878,6 +896,7 @@
 				FB484A8B1B50C6130045A6EA /* Lato-Black.ttf in Resources */,
 				FB484A9C1B50C6130045A6EA /* Lato-ThinItalic.ttf in Resources */,
 				FB484A901B50C6130045A6EA /* Lato-HairlineItalic.ttf in Resources */,
+				FB65BAB51B80F98300E23275 /* PetTagsCollectionCell.xib in Resources */,
 				FB484A8E1B50C6130045A6EA /* Lato-BoldItalic.ttf in Resources */,
 				FB1067D51B532F9700BEBC40 /* Info.plist in Resources */,
 				FB484A8C1B50C6130045A6EA /* Lato-BlackItalic.ttf in Resources */,
@@ -960,6 +979,7 @@
 				FB484A621B50BE910045A6EA /* RoundCornerButton.m in Sources */,
 				FB102AF31B72F22F00CBF26E /* ParsePet.m in Sources */,
 				FB6C273D1B6ED2950002034A /* UrlManager.m in Sources */,
+				FB65BAB41B80F98300E23275 /* PetTagsCollectionCell.m in Sources */,
 				FB484A4D1B4FD40A0045A6EA /* OrderedDictionary.m in Sources */,
 				FBF82B611B781AE500E622C5 /* ProfileCell.m in Sources */,
 				FB1067E41B532F9700BEBC40 /* TransitionZoom.swift in Sources */,
@@ -971,10 +991,12 @@
 				FB1067CC1B532F9700BEBC40 /* BlurView.swift in Sources */,
 				FB1067DB1B532F9700BEBC40 /* Spring.swift in Sources */,
 				FBC67DB41B75DE9000AF1C95 /* ActivityView.m in Sources */,
+				FB65BAB81B80F9AD00E23275 /* CheckMark.m in Sources */,
 				FBCEA4321B4CC3E000497678 /* main.m in Sources */,
 				FB1067E51B532F9700BEBC40 /* UnwindSegue.swift in Sources */,
 				FB1067DA1B532F9700BEBC40 /* SoundPlayer.swift in Sources */,
 				FB484A5B1B50BE410045A6EA /* AppColorScheme.m in Sources */,
+				FB65BAB01B80F89000E23275 /* PetTagsCollectionVC.m in Sources */,
 				FB484A511B4FD40A0045A6EA /* UIDevice+Hardware.m in Sources */,
 				FB484A3F1B4FD12F0045A6EA /* Graphics.m in Sources */,
 				FB484A421B4FD3E60045A6EA /* Constants.m in Sources */,
