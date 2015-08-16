@@ -157,11 +157,18 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-background" translatesAutoresizingMaskIntoConstraints="NO" id="LSS-ZB-6Zn">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                             </imageView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="5bF-JR-NYs">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="0.12941176470588234" green="0.14509803921568626" blue="0.19215686274509802" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="LSS-ZB-6Zn" firstAttribute="trailing" secondItem="Fxg-Go-ZyT" secondAttribute="trailing" id="Ep2-Jj-iIS"/>
+                            <constraint firstItem="5bF-JR-NYs" firstAttribute="leading" secondItem="Fxg-Go-ZyT" secondAttribute="leading" id="QJ0-pg-ZfE"/>
+                            <constraint firstItem="5bF-JR-NYs" firstAttribute="top" secondItem="bZd-bg-A9T" secondAttribute="bottom" id="T3g-bs-lt5"/>
                             <constraint firstItem="LSS-ZB-6Zn" firstAttribute="top" secondItem="bZd-bg-A9T" secondAttribute="bottom" id="kEV-iO-iWM"/>
+                            <constraint firstItem="5bF-JR-NYs" firstAttribute="trailing" secondItem="Fxg-Go-ZyT" secondAttribute="trailing" id="o7S-lv-cxg"/>
                             <constraint firstItem="AiB-OW-3Qh" firstAttribute="top" secondItem="LSS-ZB-6Zn" secondAttribute="bottom" id="qGp-4L-PSq"/>
                             <constraint firstItem="LSS-ZB-6Zn" firstAttribute="leading" secondItem="Fxg-Go-ZyT" secondAttribute="leading" id="vL9-ib-KUh"/>
                         </constraints>
