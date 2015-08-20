@@ -61,15 +61,15 @@
     {
         _pets = [NSMutableArray array];
         PFQueryService *service = [PFQueryService new];
-        [service getPets:self forUser:[ParseUser currentUser]];
+        [service getPets:self forUser:user];
     }
-    
 }
 
 #pragma mark - <PFQueryCallback>
 
 - (void)onQueryListSuccess:(NSArray *)objects
 {
+    fTRACE(@"Objects: %@", objects);
     CGFloat offset = 0.0f;
     self.numberofPetsLabel.text = [NSString stringWithFormat:@"%ld %@", objects.count, NSLocalizedString(@"PETS", @"")];
     for (int i = 0; i < objects.count; i++)
