@@ -10,8 +10,3 @@ pod 'CHTCollectionViewWaterfallLayout', '~> 0.9.1'
 pod 'JSONModel', '~> 1.1.0'
 pod 'SIAlertView', :head
 
-post_install do |installer|
- installer.project.targets.each do |target|
-  puts "#{target.name}"
- end
-end
