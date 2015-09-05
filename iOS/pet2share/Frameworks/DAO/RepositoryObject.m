@@ -10,7 +10,7 @@
 
 @implementation RepositoryObject
 
-+ (NSDictionary*)sortableMap
++ (NSDictionary *)sortableMap
 {
     return nil;
 }
@@ -25,12 +25,12 @@
     return YES;
 }
 
-- (NSString*)uniqueId
+- (NSString *)uniqueId
 {
     return [self description];
 }
 
-- (NSString*)filterTags
+- (NSString *)filterTags
 {
     return [self description];
 }

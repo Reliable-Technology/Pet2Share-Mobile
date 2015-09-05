@@ -8,6 +8,13 @@
 
 #import "JSONModel.h"
 
+/*!
+ *  @class      RepositoryObject
+ *
+ *  @discussion This is the abstract class for all the response object. This class contains
+ *              all abstract methods that will be implemented at concrete classes.
+ *
+ */
 @interface RepositoryObject : JSONModel
 
 /*!
