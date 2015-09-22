@@ -8,35 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CEF556017F1729CF780C00B2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D685707DD3766C3EB6E23122 /* libPods.a */; };
-		FB1067C91B532F9700BEBC40 /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067AB1B532F9700BEBC40 /* AsyncButton.swift */; };
-		FB1067CA1B532F9700BEBC40 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067AC1B532F9700BEBC40 /* AsyncImageView.swift */; };
-		FB1067CB1B532F9700BEBC40 /* AutoTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067AD1B532F9700BEBC40 /* AutoTextView.swift */; };
-		FB1067CC1B532F9700BEBC40 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067AE1B532F9700BEBC40 /* BlurView.swift */; };
-		FB1067CD1B532F9700BEBC40 /* DesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067AF1B532F9700BEBC40 /* DesignableButton.swift */; };
-		FB1067CE1B532F9700BEBC40 /* DesignableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067B01B532F9700BEBC40 /* DesignableImageView.swift */; };
-		FB1067CF1B532F9700BEBC40 /* DesignableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067B11B532F9700BEBC40 /* DesignableLabel.swift */; };
-		FB1067D01B532F9700BEBC40 /* DesignableTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067B21B532F9700BEBC40 /* DesignableTabBarController.swift */; };
-		FB1067D11B532F9700BEBC40 /* DesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067B31B532F9700BEBC40 /* DesignableTextField.swift */; };
-		FB1067D21B532F9700BEBC40 /* DesignableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067B41B532F9700BEBC40 /* DesignableTextView.swift */; };
-		FB1067D31B532F9700BEBC40 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067B51B532F9700BEBC40 /* DesignableView.swift */; };
-		FB1067D41B532F9700BEBC40 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067B61B532F9700BEBC40 /* ImageLoader.swift */; };
-		FB1067D51B532F9700BEBC40 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB1067B71B532F9700BEBC40 /* Info.plist */; };
-		FB1067D61B532F9700BEBC40 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067B81B532F9700BEBC40 /* KeyboardLayoutConstraint.swift */; };
-		FB1067D71B532F9700BEBC40 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067B91B532F9700BEBC40 /* LoadingView.swift */; };
-		FB1067D81B532F9700BEBC40 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB1067BA1B532F9700BEBC40 /* LoadingView.xib */; };
-		FB1067D91B532F9700BEBC40 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067BB1B532F9700BEBC40 /* Misc.swift */; };
-		FB1067DA1B532F9700BEBC40 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067BC1B532F9700BEBC40 /* SoundPlayer.swift */; };
-		FB1067DB1B532F9700BEBC40 /* Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067BE1B532F9700BEBC40 /* Spring.swift */; };
-		FB1067DC1B532F9700BEBC40 /* SpringAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067BF1B532F9700BEBC40 /* SpringAnimation.swift */; };
-		FB1067DD1B532F9700BEBC40 /* SpringButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067C01B532F9700BEBC40 /* SpringButton.swift */; };
-		FB1067DE1B532F9700BEBC40 /* SpringImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067C11B532F9700BEBC40 /* SpringImageView.swift */; };
-		FB1067DF1B532F9700BEBC40 /* SpringLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067C21B532F9700BEBC40 /* SpringLabel.swift */; };
-		FB1067E01B532F9700BEBC40 /* SpringTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067C31B532F9700BEBC40 /* SpringTextField.swift */; };
-		FB1067E11B532F9700BEBC40 /* SpringTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067C41B532F9700BEBC40 /* SpringTextView.swift */; };
-		FB1067E21B532F9700BEBC40 /* SpringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067C51B532F9700BEBC40 /* SpringView.swift */; };
-		FB1067E31B532F9700BEBC40 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067C61B532F9700BEBC40 /* TransitionManager.swift */; };
-		FB1067E41B532F9700BEBC40 /* TransitionZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067C71B532F9700BEBC40 /* TransitionZoom.swift */; };
-		FB1067E51B532F9700BEBC40 /* UnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1067C81B532F9700BEBC40 /* UnwindSegue.swift */; };
 		FB1067E91B5341A500BEBC40 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067E81B5341A500BEBC40 /* LoginVC.m */; };
 		FB1067EC1B5341D600BEBC40 /* SignupViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067EB1B5341D600BEBC40 /* SignupViewCtrl.m */; };
 		FB1067F01B535B4C00BEBC40 /* LoginTableCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067EF1B535B4C00BEBC40 /* LoginTableCtrl.m */; };
@@ -113,36 +84,6 @@
 		2D8E6D407B06EEEE9C8600F7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D685707DD3766C3EB6E23122 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E39AC5D91F18CB45AD8327A2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		FB1067AB1B532F9700BEBC40 /* AsyncButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncButton.swift; sourceTree = "<group>"; };
-		FB1067AC1B532F9700BEBC40 /* AsyncImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
-		FB1067AD1B532F9700BEBC40 /* AutoTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoTextView.swift; sourceTree = "<group>"; };
-		FB1067AE1B532F9700BEBC40 /* BlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
-		FB1067AF1B532F9700BEBC40 /* DesignableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableButton.swift; sourceTree = "<group>"; };
-		FB1067B01B532F9700BEBC40 /* DesignableImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableImageView.swift; sourceTree = "<group>"; };
-		FB1067B11B532F9700BEBC40 /* DesignableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableLabel.swift; sourceTree = "<group>"; };
-		FB1067B21B532F9700BEBC40 /* DesignableTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableTabBarController.swift; sourceTree = "<group>"; };
-		FB1067B31B532F9700BEBC40 /* DesignableTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableTextField.swift; sourceTree = "<group>"; };
-		FB1067B41B532F9700BEBC40 /* DesignableTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableTextView.swift; sourceTree = "<group>"; };
-		FB1067B51B532F9700BEBC40 /* DesignableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
-		FB1067B61B532F9700BEBC40 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
-		FB1067B71B532F9700BEBC40 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FB1067B81B532F9700BEBC40 /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
-		FB1067B91B532F9700BEBC40 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		FB1067BA1B532F9700BEBC40 /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
-		FB1067BB1B532F9700BEBC40 /* Misc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
-		FB1067BC1B532F9700BEBC40 /* SoundPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
-		FB1067BD1B532F9700BEBC40 /* Spring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spring.h; sourceTree = "<group>"; };
-		FB1067BE1B532F9700BEBC40 /* Spring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spring.swift; sourceTree = "<group>"; };
-		FB1067BF1B532F9700BEBC40 /* SpringAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringAnimation.swift; sourceTree = "<group>"; };
-		FB1067C01B532F9700BEBC40 /* SpringButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringButton.swift; sourceTree = "<group>"; };
-		FB1067C11B532F9700BEBC40 /* SpringImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringImageView.swift; sourceTree = "<group>"; };
-		FB1067C21B532F9700BEBC40 /* SpringLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringLabel.swift; sourceTree = "<group>"; };
-		FB1067C31B532F9700BEBC40 /* SpringTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringTextField.swift; sourceTree = "<group>"; };
-		FB1067C41B532F9700BEBC40 /* SpringTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringTextView.swift; sourceTree = "<group>"; };
-		FB1067C51B532F9700BEBC40 /* SpringView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringView.swift; sourceTree = "<group>"; };
-		FB1067C61B532F9700BEBC40 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
-		FB1067C71B532F9700BEBC40 /* TransitionZoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionZoom.swift; sourceTree = "<group>"; };
-		FB1067C81B532F9700BEBC40 /* UnwindSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnwindSegue.swift; sourceTree = "<group>"; };
 		FB1067E71B5341A500BEBC40 /* LoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
 		FB1067E81B5341A500BEBC40 /* LoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
 		FB1067EA1B5341D600BEBC40 /* SignupViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewCtrl.h; sourceTree = "<group>"; };
@@ -273,43 +214,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		FB1067AA1B532F9700BEBC40 /* Spring */ = {
-			isa = PBXGroup;
-			children = (
-				FB1067AB1B532F9700BEBC40 /* AsyncButton.swift */,
-				FB1067AC1B532F9700BEBC40 /* AsyncImageView.swift */,
-				FB1067AD1B532F9700BEBC40 /* AutoTextView.swift */,
-				FB1067AE1B532F9700BEBC40 /* BlurView.swift */,
-				FB1067AF1B532F9700BEBC40 /* DesignableButton.swift */,
-				FB1067B01B532F9700BEBC40 /* DesignableImageView.swift */,
-				FB1067B11B532F9700BEBC40 /* DesignableLabel.swift */,
-				FB1067B21B532F9700BEBC40 /* DesignableTabBarController.swift */,
-				FB1067B31B532F9700BEBC40 /* DesignableTextField.swift */,
-				FB1067B41B532F9700BEBC40 /* DesignableTextView.swift */,
-				FB1067B51B532F9700BEBC40 /* DesignableView.swift */,
-				FB1067B61B532F9700BEBC40 /* ImageLoader.swift */,
-				FB1067B71B532F9700BEBC40 /* Info.plist */,
-				FB1067B81B532F9700BEBC40 /* KeyboardLayoutConstraint.swift */,
-				FB1067B91B532F9700BEBC40 /* LoadingView.swift */,
-				FB1067BA1B532F9700BEBC40 /* LoadingView.xib */,
-				FB1067BB1B532F9700BEBC40 /* Misc.swift */,
-				FB1067BC1B532F9700BEBC40 /* SoundPlayer.swift */,
-				FB1067BD1B532F9700BEBC40 /* Spring.h */,
-				FB1067BE1B532F9700BEBC40 /* Spring.swift */,
-				FB1067BF1B532F9700BEBC40 /* SpringAnimation.swift */,
-				FB1067C01B532F9700BEBC40 /* SpringButton.swift */,
-				FB1067C11B532F9700BEBC40 /* SpringImageView.swift */,
-				FB1067C21B532F9700BEBC40 /* SpringLabel.swift */,
-				FB1067C31B532F9700BEBC40 /* SpringTextField.swift */,
-				FB1067C41B532F9700BEBC40 /* SpringTextView.swift */,
-				FB1067C51B532F9700BEBC40 /* SpringView.swift */,
-				FB1067C61B532F9700BEBC40 /* TransitionManager.swift */,
-				FB1067C71B532F9700BEBC40 /* TransitionZoom.swift */,
-				FB1067C81B532F9700BEBC40 /* UnwindSegue.swift */,
-			);
-			path = Spring;
-			sourceTree = "<group>";
-		};
 		FB1067E61B53412F00BEBC40 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -381,7 +285,6 @@
 		FB484A331B4FD0910045A6EA /* UX */ = {
 			isa = PBXGroup;
 			children = (
-				FB1067AA1B532F9700BEBC40 /* Spring */,
 				FB484A5F1B50BE880045A6EA /* Views */,
 				FB484A551B50BE2A0045A6EA /* Colors */,
 				FB484A3D1B4FD12F0045A6EA /* Graphics.h */,
@@ -641,7 +544,8 @@
 		FBCEA4241B4CC3E000497678 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Pet 2 Share";
 				TargetAttributes = {
 					FBCEA42B1B4CC3E000497678 = {
@@ -686,7 +590,6 @@
 				FB484A961B50C6130045A6EA /* Lato-Medium.ttf in Resources */,
 				FB484A8D1B50C6130045A6EA /* Lato-Bold.ttf in Resources */,
 				FBD3938B1B50D9B7000ED817 /* IntroPageContentVC.xib in Resources */,
-				FB1067D81B532F9700BEBC40 /* LoadingView.xib in Resources */,
 				FB2BDBAF1B5767940095B254 /* DashboardCollectionCell.xib in Resources */,
 				FB484A741B50C5FB0045A6EA /* LobsterTwo-Italic.otf in Resources */,
 				FB484A991B50C6130045A6EA /* Lato-Semibold.ttf in Resources */,
@@ -694,7 +597,6 @@
 				FB484A9C1B50C6130045A6EA /* Lato-ThinItalic.ttf in Resources */,
 				FB484A901B50C6130045A6EA /* Lato-HairlineItalic.ttf in Resources */,
 				FB484A8E1B50C6130045A6EA /* Lato-BoldItalic.ttf in Resources */,
-				FB1067D51B532F9700BEBC40 /* Info.plist in Resources */,
 				FB484A8C1B50C6130045A6EA /* Lato-BlackItalic.ttf in Resources */,
 				FB484A731B50C5FB0045A6EA /* LobsterTwo-BoldItalic.otf in Resources */,
 				FBCEA43B1B4CC3E000497678 /* Pet2Share.storyboard in Resources */,
@@ -757,59 +659,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB484A391B4FD0DB0045A6EA /* NSString+URLEncoding.m in Sources */,
-				FB1067DF1B532F9700BEBC40 /* SpringLabel.swift in Sources */,
-				FB1067E11B532F9700BEBC40 /* SpringTextView.swift in Sources */,
 				FB484A5E1B50BE4E0045A6EA /* ThemeManager.m in Sources */,
 				FB484A531B4FD40A0045A6EA /* Utils.m in Sources */,
-				FB1067D41B532F9700BEBC40 /* ImageLoader.swift in Sources */,
-				FB1067DE1B532F9700BEBC40 /* SpringImageView.swift in Sources */,
-				FB1067D21B532F9700BEBC40 /* DesignableTextView.swift in Sources */,
-				FB1067D31B532F9700BEBC40 /* DesignableView.swift in Sources */,
 				FB484A621B50BE910045A6EA /* RoundCornerButton.m in Sources */,
 				FB6C273D1B6ED2950002034A /* UrlManager.m in Sources */,
 				FB484A4D1B4FD40A0045A6EA /* OrderedDictionary.m in Sources */,
-				FB1067E41B532F9700BEBC40 /* TransitionZoom.swift in Sources */,
 				FBB531141B9BA8A7004D5DA2 /* ResponseObject.m in Sources */,
 				FB1067E91B5341A500BEBC40 /* LoginVC.m in Sources */,
 				FBCEA4351B4CC3E000497678 /* Pet2ShareDelegate.m in Sources */,
 				FB1067EC1B5341D600BEBC40 /* SignupViewCtrl.m in Sources */,
 				FBD3938F1B50D9DB000ED817 /* BaseNavigationVC.m in Sources */,
-				FB1067CC1B532F9700BEBC40 /* BlurView.swift in Sources */,
-				FB1067DB1B532F9700BEBC40 /* Spring.swift in Sources */,
 				FBCEA4321B4CC3E000497678 /* main.m in Sources */,
-				FB1067E51B532F9700BEBC40 /* UnwindSegue.swift in Sources */,
-				FB1067DA1B532F9700BEBC40 /* SoundPlayer.swift in Sources */,
 				FB484A5B1B50BE410045A6EA /* AppColorScheme.m in Sources */,
 				FB484A511B4FD40A0045A6EA /* UIDevice+Hardware.m in Sources */,
 				FB484A3F1B4FD12F0045A6EA /* Graphics.m in Sources */,
 				FB484A421B4FD3E60045A6EA /* Constants.m in Sources */,
-				FB1067D91B532F9700BEBC40 /* Misc.swift in Sources */,
 				FBD3938A1B50D9B7000ED817 /* IntroPageContentVC.m in Sources */,
 				FB6C27331B6ED1EF0002034A /* Pet2ShareService.m in Sources */,
-				FB1067CD1B532F9700BEBC40 /* DesignableButton.swift in Sources */,
 				FBB531101B9BA6E0004D5DA2 /* User.m in Sources */,
-				FB1067CB1B532F9700BEBC40 /* AutoTextView.swift in Sources */,
-				FB1067C91B532F9700BEBC40 /* AsyncButton.swift in Sources */,
-				FB1067CA1B532F9700BEBC40 /* AsyncImageView.swift in Sources */,
 				FB1067F01B535B4C00BEBC40 /* LoginTableCtrl.m in Sources */,
 				FB484A581B50BE370045A6EA /* AppColor.m in Sources */,
-				FB1067D61B532F9700BEBC40 /* KeyboardLayoutConstraint.swift in Sources */,
-				FB1067E31B532F9700BEBC40 /* TransitionManager.swift in Sources */,
 				FB2BDBAE1B5767940095B254 /* DashboardCollectionCell.m in Sources */,
-				FB1067CE1B532F9700BEBC40 /* DesignableImageView.swift in Sources */,
-				FB1067D01B532F9700BEBC40 /* DesignableTabBarController.swift in Sources */,
 				FB484A4F1B4FD40A0045A6EA /* Reachability.m in Sources */,
-				FB1067E21B532F9700BEBC40 /* SpringView.swift in Sources */,
-				FB1067CF1B532F9700BEBC40 /* DesignableLabel.swift in Sources */,
 				FB1067F61B53697600BEBC40 /* DashboardVC.m in Sources */,
 				FB484A361B4FD0AA0045A6EA /* LandingPageVC.m in Sources */,
-				FB1067DD1B532F9700BEBC40 /* SpringButton.swift in Sources */,
-				FB1067DC1B532F9700BEBC40 /* SpringAnimation.swift in Sources */,
-				FB1067E01B532F9700BEBC40 /* SpringTextField.swift in Sources */,
 				FBB5310F1B9BA6E0004D5DA2 /* RepositoryObject.m in Sources */,
-				FB1067D71B532F9700BEBC40 /* LoadingView.swift in Sources */,
 				FB6C272F1B6ED1C70002034A /* HttpClient.m in Sources */,
-				FB1067D11B532F9700BEBC40 /* DesignableTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -877,6 +752,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -944,6 +820,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Pet2Share/Pet2Share.pch";
 				INFOPLIST_FILE = pet2share/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "pet2share.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -956,6 +833,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Pet2Share/Pet2Share.pch";
 				INFOPLIST_FILE = pet2share/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "pet2share.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -974,6 +852,7 @@
 				);
 				INFOPLIST_FILE = pet2shareTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "pet2share.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pet2share.app/pet2share";
 			};
@@ -989,6 +868,7 @@
 				);
 				INFOPLIST_FILE = pet2shareTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "pet2share.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pet2share.app/pet2share";
 			};

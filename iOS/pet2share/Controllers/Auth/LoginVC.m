@@ -17,8 +17,6 @@
 @interface LoginVC () <BarButtonsProtocol, FormProtocol, Pet2ShareServiceCallback>
 
 @property (strong , nonatomic) LoginTableCtrl *loginTableCtrl;
-@property (strong, nonatomic) TransitionManager *transitionManager;
-
 @property (weak, nonatomic) IBOutlet RoundCornerButton *loginBtn;
 
 @end
@@ -34,7 +32,6 @@ static NSString * const kLeftIconImageName  = @"icon-arrowback";
     if ((self = [super initWithCoder:aDecoder]))
     {
         self.barButtonsProtocol = self;
-        _transitionManager = [TransitionManager new];
     }
     return self;
 }
@@ -57,11 +54,6 @@ static NSString * const kLeftIconImageName  = @"icon-arrowback";
     {
         self.loginTableCtrl = segue.destinationViewController;
         self.loginTableCtrl.formProtocol = self;
-    }
-    else if ([segue.identifier isEqualToString:kSegueDashboard])
-    {
-        UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
-        navController.transitioningDelegate = self.transitionManager;
     }
 }
 

@@ -20,7 +20,6 @@
 
 static NSString * const kCellIdentifier = @"cellidentifier";
 static NSString * const kCellNibName    = @"DashboardCollectionCell";
-static NSInteger const kSampleCellCount = 30;
 
 #pragma mark - Life Cycle
 

@@ -14,9 +14,9 @@
 @property (strong, nonatomic) NSString *introSubTitle;
 @property (strong, nonatomic) NSString *introBgImageName;
 
-@property (weak, nonatomic) IBOutlet SpringImageView *backgroundImgView;
-@property (weak, nonatomic) IBOutlet SpringLabel *titleLbl;
-@property (weak, nonatomic) IBOutlet SpringLabel *subtitleLbl;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImgView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLbl;
+@property (weak, nonatomic) IBOutlet UILabel *subtitleLbl;
 
 @end
 
@@ -49,10 +49,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    // Show the labels with animation
-    [self.titleLbl animate];
-    [self.subtitleLbl animate];
 }
 
 - (void)dealloc

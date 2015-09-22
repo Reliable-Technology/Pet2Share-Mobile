@@ -15,7 +15,6 @@
 @property (strong, nonatomic) UIPageViewController *introPagesCtrl;
 @property (readonly, nonatomic) NSArray *introPageContent;
 @property (strong, nonatomic) NSTimer *scrollTimer;
-@property (strong, nonatomic) TransitionManager *transitionManager;
 
 - (IBAction)getStartedBtnTapped:(id)sender;
 
@@ -40,7 +39,6 @@ static CGFloat const kScrollTimer                   = 5.0f;
     if ((self = [super initWithCoder:aDecoder]))
     {
         _currPageIndex = 0;
-        _transitionManager = [TransitionManager new];
     }
     return self;
 }
@@ -87,11 +85,6 @@ static CGFloat const kScrollTimer                   = 5.0f;
     {
         _introPagesCtrl = (UIPageViewController *)segue.destinationViewController;
         self.introPagesCtrl.dataSource = self;
-    }
-    else if ([segue.identifier isEqualToString:kSegueLogin])
-    {
-//        LoginViewCtrl *loginCtrl = (LoginViewCtrl *)segue.destinationViewController;
-//        loginCtrl.transitioningDelegate = self.transitionManager;
     }
 }
 
