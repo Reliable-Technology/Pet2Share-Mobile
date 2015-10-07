@@ -21,6 +21,7 @@
 + (UIColor *)darkBlueColor  { return [UIColor flatBlueColorDark]; }
 + (UIColor *)black			{ return [UIColor flatBlackColor]; }
 + (UIColor *)green          { return [UIColor flatGreenColorDark]; }
++ (UIColor *)mint           { return [UIColor flatMintColor]; }
 + (UIColor *)darkGray		{ return [UIColor flatGrayColorDark]; }
 + (UIColor *)lightGray		{ return [UIColor flatGrayColor]; }
 + (UIColor *)purple         RGB(127,     92,     230)

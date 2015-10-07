@@ -15,6 +15,7 @@
 + (UIColor *)darkBlueColor;
 + (UIColor *)black;
 + (UIColor *)green;
++ (UIColor *)mint;
 + (UIColor *)darkGray;
 + (UIColor *)lightGray;
 + (UIColor *)purple;

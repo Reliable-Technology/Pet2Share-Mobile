@@ -16,7 +16,6 @@
 		FB265B431BC37FAB0094AC37 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = FB265B421BC37FAB0094AC37 /* Person.m */; settings = {ASSET_TAGS = (); }; };
 		FB2BDBAE1B5767940095B254 /* DashboardCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB2BDBAC1B5767940095B254 /* DashboardCollectionCell.m */; };
 		FB2BDBAF1B5767940095B254 /* DashboardCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB2BDBAD1B5767940095B254 /* DashboardCollectionCell.xib */; };
-		FB484A361B4FD0AA0045A6EA /* LandingPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A351B4FD0AA0045A6EA /* LandingPageVC.m */; };
 		FB484A391B4FD0DB0045A6EA /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A381B4FD0DB0045A6EA /* NSString+URLEncoding.m */; };
 		FB484A3F1B4FD12F0045A6EA /* Graphics.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A3E1B4FD12F0045A6EA /* Graphics.m */; };
 		FB484A421B4FD3E60045A6EA /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A411B4FD3E60045A6EA /* Constants.m */; };
@@ -61,6 +60,7 @@
 		FB6C272F1B6ED1C70002034A /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C272E1B6ED1C70002034A /* HttpClient.m */; };
 		FB6C27331B6ED1EF0002034A /* Pet2ShareService.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C27321B6ED1EF0002034A /* Pet2ShareService.m */; };
 		FB6C273D1B6ED2950002034A /* UrlManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C273C1B6ED2950002034A /* UrlManager.m */; };
+		FBA3F6B91BC5555E0094288D /* SignUpTableCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA3F6B81BC5555E0094288D /* SignUpTableCtrl.m */; settings = {ASSET_TAGS = (); }; };
 		FBB531141B9BA8A7004D5DA2 /* ResponseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB531131B9BA8A7004D5DA2 /* ResponseObject.m */; };
 		FBCDC9A81BC3381B00808E30 /* ErrorMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCDC9A21BC3381B00808E30 /* ErrorMessage.m */; settings = {ASSET_TAGS = (); }; };
 		FBCDC9A91BC3381B00808E30 /* RepositoryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCDC9A41BC3381B00808E30 /* RepositoryObject.m */; settings = {ASSET_TAGS = (); }; };
@@ -71,8 +71,6 @@
 		FBCEA43D1B4CC3E000497678 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBCEA43C1B4CC3E000497678 /* Images.xcassets */; };
 		FBCEA4401B4CC3E000497678 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBCEA43E1B4CC3E000497678 /* LaunchScreen.xib */; };
 		FBCEA45E1B4CC99A00497678 /* testHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCEA45D1B4CC99A00497678 /* testHttpClient.m */; };
-		FBD3938A1B50D9B7000ED817 /* IntroPageContentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD393881B50D9B7000ED817 /* IntroPageContentVC.m */; };
-		FBD3938B1B50D9B7000ED817 /* IntroPageContentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBD393891B50D9B7000ED817 /* IntroPageContentVC.xib */; };
 		FBD3938F1B50D9DB000ED817 /* BaseNavigationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD3938E1B50D9DB000ED817 /* BaseNavigationVC.m */; };
 /* End PBXBuildFile section */
 
@@ -105,8 +103,6 @@
 		FB2BDBAB1B5767940095B254 /* DashboardCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardCollectionCell.h; sourceTree = "<group>"; };
 		FB2BDBAC1B5767940095B254 /* DashboardCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardCollectionCell.m; sourceTree = "<group>"; };
 		FB2BDBAD1B5767940095B254 /* DashboardCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardCollectionCell.xib; sourceTree = "<group>"; };
-		FB484A341B4FD0AA0045A6EA /* LandingPageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingPageVC.h; sourceTree = "<group>"; };
-		FB484A351B4FD0AA0045A6EA /* LandingPageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingPageVC.m; sourceTree = "<group>"; };
 		FB484A371B4FD0DB0045A6EA /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
 		FB484A381B4FD0DB0045A6EA /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
 		FB484A3D1B4FD12F0045A6EA /* Graphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Graphics.h; sourceTree = "<group>"; };
@@ -169,6 +165,8 @@
 		FB6C273B1B6ED2950002034A /* UrlManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrlManager.h; sourceTree = "<group>"; };
 		FB6C273C1B6ED2950002034A /* UrlManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UrlManager.m; sourceTree = "<group>"; };
 		FB6C273E1B6EEB0F0002034A /* ServiceConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceConfig.h; sourceTree = "<group>"; };
+		FBA3F6B71BC5555E0094288D /* SignUpTableCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpTableCtrl.h; sourceTree = "<group>"; };
+		FBA3F6B81BC5555E0094288D /* SignUpTableCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpTableCtrl.m; sourceTree = "<group>"; };
 		FBB531121B9BA8A7004D5DA2 /* ResponseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseObject.h; sourceTree = "<group>"; };
 		FBB531131B9BA8A7004D5DA2 /* ResponseObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseObject.m; sourceTree = "<group>"; };
 		FBCDC9A11BC3381B00808E30 /* ErrorMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorMessage.h; sourceTree = "<group>"; };
@@ -190,9 +188,6 @@
 		FBCEA44A1B4CC3E000497678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBCEA4551B4CC78600497678 /* Pet2Share.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pet2Share.pch; sourceTree = "<group>"; };
 		FBCEA45D1B4CC99A00497678 /* testHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testHttpClient.m; sourceTree = "<group>"; };
-		FBD393871B50D9B7000ED817 /* IntroPageContentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroPageContentVC.h; sourceTree = "<group>"; };
-		FBD393881B50D9B7000ED817 /* IntroPageContentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroPageContentVC.m; sourceTree = "<group>"; };
-		FBD393891B50D9B7000ED817 /* IntroPageContentVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroPageContentVC.xib; sourceTree = "<group>"; };
 		FBD3938D1B50D9DB000ED817 /* BaseNavigationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationVC.h; sourceTree = "<group>"; };
 		FBD3938E1B50D9DB000ED817 /* BaseNavigationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -246,6 +241,8 @@
 				FB1067EE1B535B4C00BEBC40 /* LoginTableCtrl.h */,
 				FB1067EF1B535B4C00BEBC40 /* LoginTableCtrl.m */,
 				FB1067F11B535F0F00BEBC40 /* FormProtocol.h */,
+				FBA3F6B71BC5555E0094288D /* SignUpTableCtrl.h */,
+				FBA3F6B81BC5555E0094288D /* SignUpTableCtrl.m */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -297,9 +294,6 @@
 				FB1067E61B53412F00BEBC40 /* Auth */,
 				FBD3938C1B50D9DB000ED817 /* Templates */,
 				FB1067F31B53694C00BEBC40 /* Dashboard */,
-				FBD393861B50D9B7000ED817 /* Intro */,
-				FB484A341B4FD0AA0045A6EA /* LandingPageVC.h */,
-				FB484A351B4FD0AA0045A6EA /* LandingPageVC.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -495,16 +489,6 @@
 			path = Frameworks;
 			sourceTree = "<group>";
 		};
-		FBD393861B50D9B7000ED817 /* Intro */ = {
-			isa = PBXGroup;
-			children = (
-				FBD393871B50D9B7000ED817 /* IntroPageContentVC.h */,
-				FBD393881B50D9B7000ED817 /* IntroPageContentVC.m */,
-				FBD393891B50D9B7000ED817 /* IntroPageContentVC.xib */,
-			);
-			path = Intro;
-			sourceTree = "<group>";
-		};
 		FBD3938C1B50D9DB000ED817 /* Templates */ = {
 			isa = PBXGroup;
 			children = (
@@ -609,7 +593,6 @@
 				FB484A9A1B50C6130045A6EA /* Lato-SemiboldItalic.ttf in Resources */,
 				FB484A961B50C6130045A6EA /* Lato-Medium.ttf in Resources */,
 				FB484A8D1B50C6130045A6EA /* Lato-Bold.ttf in Resources */,
-				FBD3938B1B50D9B7000ED817 /* IntroPageContentVC.xib in Resources */,
 				FB2BDBAF1B5767940095B254 /* DashboardCollectionCell.xib in Resources */,
 				FB484A741B50C5FB0045A6EA /* LobsterTwo-Italic.otf in Resources */,
 				FB484A991B50C6130045A6EA /* Lato-Semibold.ttf in Resources */,
@@ -725,11 +708,11 @@
 				FBCDC9A91BC3381B00808E30 /* RepositoryObject.m in Sources */,
 				FBCEA4321B4CC3E000497678 /* main.m in Sources */,
 				FB484A5B1B50BE410045A6EA /* AppColorScheme.m in Sources */,
+				FBA3F6B91BC5555E0094288D /* SignUpTableCtrl.m in Sources */,
 				FB484A511B4FD40A0045A6EA /* UIDevice+Hardware.m in Sources */,
 				FB484A3F1B4FD12F0045A6EA /* Graphics.m in Sources */,
 				FB5050301BC4CBB40037F3E5 /* Address.m in Sources */,
 				FB484A421B4FD3E60045A6EA /* Constants.m in Sources */,
-				FBD3938A1B50D9B7000ED817 /* IntroPageContentVC.m in Sources */,
 				FB6C27331B6ED1EF0002034A /* Pet2ShareService.m in Sources */,
 				FB5050331BC4D0B10037F3E5 /* Date.m in Sources */,
 				FB1067F01B535B4C00BEBC40 /* LoginTableCtrl.m in Sources */,
@@ -738,7 +721,6 @@
 				FB2BDBAE1B5767940095B254 /* DashboardCollectionCell.m in Sources */,
 				FB484A4F1B4FD40A0045A6EA /* Reachability.m in Sources */,
 				FB1067F61B53697600BEBC40 /* DashboardVC.m in Sources */,
-				FB484A361B4FD0AA0045A6EA /* LandingPageVC.m in Sources */,
 				FB6C272F1B6ED1C70002034A /* HttpClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

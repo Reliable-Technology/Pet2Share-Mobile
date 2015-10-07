@@ -12,7 +12,7 @@
 
 @interface LoginTableCtrl () <UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField *usernameTxtField;
+@property (weak, nonatomic) IBOutlet UITextField *emailTxtField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTxtField;
 
 @end
@@ -23,11 +23,7 @@
 {
     [super viewDidLoad];
     
-    self.usernameTxtField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Username", @"")
-                                                                                  attributes:@{NSForegroundColorAttributeName:[AppColorScheme darkGray]}];
-    self.passwordTxtField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Password", @"")
-                                                                                  attributes:@{NSForegroundColorAttributeName:[AppColorScheme darkGray]}];
-    self.usernameTxtField.delegate = self;
+    self.emailTxtField.delegate = self;
     self.passwordTxtField.delegate = self;
     
     self.tableView.layer.cornerRadius = 3.f;
@@ -36,29 +32,17 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    
     [self resignAllTextFields];
 }
 
 - (void)dealloc
 {
     TRACE_HERE;
-    self.usernameTxtField = nil;
+    self.emailTxtField = nil;
     self.passwordTxtField = nil;
 }
 
 #pragma mark - Private Instance Methods
-
-- (void)setupCustomClearButton:(UITextField *)textfield
-{
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
-    button.frame = CGRectMake(0, 0, 10, 10);
-    [button setImage:[UIImage imageNamed:@"icon-close"] forState:UIControlStateNormal];
-    [button setImage:[UIImage imageNamed:@"icon-close"] forState:UIControlStateHighlighted];
-    [button addTarget:self action:@selector(clearText:) forControlEvents:UIControlEventTouchUpInside];
-    textfield.rightView = button;
-    textfield.rightViewMode = UITextFieldViewModeWhileEditing;
-}
 
 - (void)clearText:(id)sender
 {
@@ -71,9 +55,9 @@
 
 #pragma mark - Public Instance Methods
 
-- (NSString *)username
+- (NSString *)email
 {
-    return self.usernameTxtField.text ? self.usernameTxtField.text : kEmptyString;
+    return self.emailTxtField.text ? self.emailTxtField.text : kEmptyString;
 }
 
 - (NSString *)password
@@ -83,7 +67,7 @@
 
 - (void)resignAllTextFields
 {
-    if ([self.usernameTxtField isFirstResponder]) [self.usernameTxtField resignFirstResponder];
+    if ([self.emailTxtField isFirstResponder]) [self.emailTxtField resignFirstResponder];
     else if ([self.passwordTxtField isFirstResponder]) [self.passwordTxtField resignFirstResponder];
 }
 
@@ -96,11 +80,11 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if (textField == self.usernameTxtField)
+    if (textField == self.emailTxtField)
     {
         [self.passwordTxtField becomeFirstResponder];
     }
-    else if (textField == self.passwordTxtField)
+    else
     {
         [textField resignFirstResponder];
         if ([self.formProtocol respondsToSelector:@selector(performAction)])
