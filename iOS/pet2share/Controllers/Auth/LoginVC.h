@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseNavigationVC.h"
 
-@interface LoginVC : BaseNavigationVC
+@interface LoginVC : UIViewController
 
 @end

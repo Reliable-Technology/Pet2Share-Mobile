@@ -15,7 +15,7 @@
 
 #pragma mark - UINavigationBar
 
-+ (UIColor *)navigationBarBackgroundColor SCHEME(purple)
++ (UIColor *)navigationBarBackgroundColor SCHEME(mint)
 + (UIColor *)navigationBarTintColor SCHEME(white)
 + (UIColor *)navigationBarTextColor SCHEME(white)
 + (UIColor *)navigationBarDisabledColor SCHEME(lightGray)

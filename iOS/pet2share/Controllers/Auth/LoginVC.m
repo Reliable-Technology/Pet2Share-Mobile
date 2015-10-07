@@ -14,7 +14,7 @@
 #import "Utils.h"
 #import "Pet2ShareService.h"
 
-@interface LoginVC () <BarButtonsProtocol, FormProtocol, Pet2ShareServiceCallback>
+@interface LoginVC () <FormProtocol, Pet2ShareServiceCallback>
 
 @property (strong , nonatomic) LoginTableCtrl *loginTableCtrl;
 @property (weak, nonatomic) IBOutlet RoundCornerButton *loginBtn;
@@ -23,16 +23,12 @@
 
 @implementation LoginVC
 
-static NSString * const kLeftIconImageName  = @"icon-arrowback";
-
 #pragma mark - Life Cycle
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if ((self = [super initWithCoder:aDecoder]))
-    {
-        self.barButtonsProtocol = self;
-    }
+    {}
     return self;
 }
 
@@ -40,39 +36,50 @@ static NSString * const kLeftIconImageName  = @"icon-arrowback";
 {
     [super viewDidLoad];
     
-    [self.navigationController.navigationBar setTitleTextAttributes:
-     @{NSForegroundColorAttributeName: [AppColor navigationBarTextColor],
-       NSFontAttributeName:[UIFont fontWithName:kLogoTypeface size:20.0f]}];
-    
     [self.loginBtn addTarget:self action:@selector(loginBtnTapped:)
             forControlEvents:UIControlEventTouchUpInside];
+    
+    UITapGestureRecognizer *singleTap
+    = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mainViewTapped:)];
+    [self.view addGestureRecognizer:singleTap];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:kSegueLoginContainer])
     {
-        self.loginTableCtrl = segue.destinationViewController;
+        self.loginTableCtrl = (LoginTableCtrl *)segue.destinationViewController;
         self.loginTableCtrl.formProtocol = self;
     }
 }
 
 #pragma mark - Private Instance Methods
 
+- (void)mainViewTapped:(id)sender
+{
+    [self.loginTableCtrl resignAllTextFields];
+}
+
 - (void)loginBtnTapped:(id)sender
 {
     [self.loginTableCtrl resignAllTextFields];
     
-    // Get email and password from textfield
-    NSString *username = [self.loginTableCtrl username];
+    // Get email and password from textfields
+    NSString *username = [self.loginTableCtrl email];
     NSString *password = [self.loginTableCtrl password];
     fTRACE("User: %@, Password: %@", username, password);
     
-    // Check to see if username is not empty
+    // Check to see if username and password are not empty
     if (![Utils validateNotEmpty:username] || ![Utils validateNotEmpty:password])
     {
         [Graphics alert:NSLocalizedString(@"Error", @"")
-                message:NSLocalizedString(@"Username/password can not be empty.", @"")
+                message:NSLocalizedString(@"Email or password can not be empty.", @"")
+                   type:ErrorAlert];
+    }
+    else if (![Utils validateEmail:username])
+    {
+        [Graphics alert:NSLocalizedString(@"Error", @"")
+                message:NSLocalizedString(@"Email is invalid.", @"")
                    type:ErrorAlert];
     }
     else
@@ -83,21 +90,6 @@ static NSString * const kLeftIconImageName  = @"icon-arrowback";
     }
 }
 
-#pragma mark - <BarButtonsDelegate>
-
-- (UIButton *)setupLeftBarButton
-{
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
-    button.frame = CGRectMake(0, 0, kBarButtonWidth, kBarButtonHeight);
-    [button setImage:[UIImage imageNamed:kLeftIconImageName] forState:UIControlStateNormal];
-    return button;
-}
-
-- (void)handleLeftButtonEvent:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 #pragma mark - <FormProtocol>
 
 - (void)performAction
@@ -105,7 +97,7 @@ static NSString * const kLeftIconImageName  = @"icon-arrowback";
     [self loginBtnTapped:self.loginBtn];
 }
 
-#pragma mark 
+#pragma mark - <Pet2ShareServiceCallback>
 
 - (void)onReceiveSuccess:(NSArray *)objects
 {
