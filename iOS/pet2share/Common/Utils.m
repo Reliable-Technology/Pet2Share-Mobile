@@ -7,6 +7,7 @@
 //
 
 #import "Utils.h"
+#import "Constants.h"
 
 @implementation Utils
 
@@ -59,6 +60,18 @@
     NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     return [emailTest evaluateWithObject:candidate];
+}
+
+#pragma mark - Date
+
++ (NSDate *)dateFromJSON:(NSString *)dateString
+{
+    unsigned long startPos = [dateString rangeOfString:@"("].location+1;
+    unsigned long endPos = [dateString rangeOfString:@")"].location;
+    NSRange range = NSMakeRange(startPos,endPos-startPos);
+    unsigned long long milliseconds = [[dateString substringWithRange:range] longLongValue];
+    NSTimeInterval interval = milliseconds/1000;
+    return [NSDate dateWithTimeIntervalSince1970:interval];
 }
 
 @end

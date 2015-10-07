@@ -8,6 +8,12 @@
 
 #import "JSONModel.h"
 
+@class ErrorMessage;
+
 @interface ResponseObject : JSONModel
+
+@property ErrorMessage<Optional> *errorMessage;
+@property NSInteger total;
+@property NSArray<Optional> *results;
 
 @end

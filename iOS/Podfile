@@ -3,9 +3,12 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.4'
 inhibit_all_warnings!
 
+link_with 'pet2share', 'pet2shareTests'
+
 pod 'AFNetworking', :head
 pod 'AMScrollingNavbar', '~> 1.5.1'
 pod 'ChameleonFramework', '~> 1.2.1'
 pod 'CHTCollectionViewWaterfallLayout', '~> 0.9.1'
 pod 'JSONModel', '~> 1.1.0'
 pod 'SIAlertView', :head
+pod 'pop', :head

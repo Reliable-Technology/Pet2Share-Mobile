@@ -21,4 +21,8 @@
 + (BOOL)validateNotEmpty:(NSString *)candidate;
 + (BOOL)validateEmail:(NSString *)candidate;
 
+#pragma mark - Date
+
++ (NSDate *)dateFromJSON:(NSString *)dateString;
+
 @end

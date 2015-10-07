@@ -24,24 +24,13 @@
     [super viewDidLoad];
     
     self.usernameTxtField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Username", @"")
-                                                                                     attributes:@{NSForegroundColorAttributeName:[AppColorScheme darkGray]}];
+                                                                                  attributes:@{NSForegroundColorAttributeName:[AppColorScheme darkGray]}];
     self.passwordTxtField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Password", @"")
                                                                                   attributes:@{NSForegroundColorAttributeName:[AppColorScheme darkGray]}];
-    self.usernameTxtField.textColor = [AppColor textStyleTitleShadowColor];
-    self.passwordTxtField.textColor = [AppColor textStyleTitleShadowColor];
-    self.usernameTxtField.tintColor = [AppColor textStyleTitleShadowColor];
-    self.passwordTxtField.tintColor = [AppColor textStyleTitleShadowColor];
     self.usernameTxtField.delegate = self;
     self.passwordTxtField.delegate = self;
-    [self setupCustomClearButton:self.usernameTxtField];
-    [self setupCustomClearButton:self.passwordTxtField];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
     
-    [self.usernameTxtField becomeFirstResponder];
+    self.tableView.layer.cornerRadius = 3.f;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -120,6 +109,5 @@
     
     return YES;
 }
-
 
 @end

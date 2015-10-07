@@ -12,10 +12,10 @@
 
 + (JSONKeyMapper *)keyMapper
 {
-    return [[JSONKeyMapper alloc] initWithDictionary:@{@"ResponseType": @"responseType",
-                                                       @"Message": @"message",
-                                                       @"Data": @"data",
-                                                       @"Results": @"results"}];
+    return [[JSONKeyMapper alloc]
+            initWithDictionary:@{@"ErrorMsg": @"errorMessage",
+                                 @"Total": @"total",
+                                 @"Results": @"results"}];
 }
 
 @end

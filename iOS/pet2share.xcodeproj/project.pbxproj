@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C0193C2C670251B8116E2CC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D685707DD3766C3EB6E23122 /* libPods.a */; };
 		CEF556017F1729CF780C00B2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D685707DD3766C3EB6E23122 /* libPods.a */; };
 		FB1067E91B5341A500BEBC40 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067E81B5341A500BEBC40 /* LoginVC.m */; };
 		FB1067EC1B5341D600BEBC40 /* SignupViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067EB1B5341D600BEBC40 /* SignupViewCtrl.m */; };
 		FB1067F01B535B4C00BEBC40 /* LoginTableCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067EF1B535B4C00BEBC40 /* LoginTableCtrl.m */; };
 		FB1067F61B53697600BEBC40 /* DashboardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067F51B53697600BEBC40 /* DashboardVC.m */; };
+		FB265B431BC37FAB0094AC37 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = FB265B421BC37FAB0094AC37 /* Person.m */; settings = {ASSET_TAGS = (); }; };
 		FB2BDBAE1B5767940095B254 /* DashboardCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB2BDBAC1B5767940095B254 /* DashboardCollectionCell.m */; };
 		FB2BDBAF1B5767940095B254 /* DashboardCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB2BDBAD1B5767940095B254 /* DashboardCollectionCell.xib */; };
 		FB484A361B4FD0AA0045A6EA /* LandingPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A351B4FD0AA0045A6EA /* LandingPageVC.m */; };
@@ -53,12 +55,16 @@
 		FB484A9A1B50C6130045A6EA /* Lato-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A871B50C6130045A6EA /* Lato-SemiboldItalic.ttf */; };
 		FB484A9B1B50C6130045A6EA /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A881B50C6130045A6EA /* Lato-Thin.ttf */; };
 		FB484A9C1B50C6130045A6EA /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A891B50C6130045A6EA /* Lato-ThinItalic.ttf */; };
+		FB5050301BC4CBB40037F3E5 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = FB50502F1BC4CBB40037F3E5 /* Address.m */; settings = {ASSET_TAGS = (); }; };
+		FB5050331BC4D0B10037F3E5 /* Date.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5050321BC4D0B10037F3E5 /* Date.m */; settings = {ASSET_TAGS = (); }; };
+		FB5050391BC4D1E70037F3E5 /* JSONValueTransformer+Date.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5050381BC4D1E70037F3E5 /* JSONValueTransformer+Date.m */; settings = {ASSET_TAGS = (); }; };
 		FB6C272F1B6ED1C70002034A /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C272E1B6ED1C70002034A /* HttpClient.m */; };
 		FB6C27331B6ED1EF0002034A /* Pet2ShareService.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C27321B6ED1EF0002034A /* Pet2ShareService.m */; };
 		FB6C273D1B6ED2950002034A /* UrlManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C273C1B6ED2950002034A /* UrlManager.m */; };
-		FBB5310F1B9BA6E0004D5DA2 /* RepositoryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB5310C1B9BA6E0004D5DA2 /* RepositoryObject.m */; };
-		FBB531101B9BA6E0004D5DA2 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB5310E1B9BA6E0004D5DA2 /* User.m */; };
 		FBB531141B9BA8A7004D5DA2 /* ResponseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB531131B9BA8A7004D5DA2 /* ResponseObject.m */; };
+		FBCDC9A81BC3381B00808E30 /* ErrorMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCDC9A21BC3381B00808E30 /* ErrorMessage.m */; settings = {ASSET_TAGS = (); }; };
+		FBCDC9A91BC3381B00808E30 /* RepositoryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCDC9A41BC3381B00808E30 /* RepositoryObject.m */; settings = {ASSET_TAGS = (); }; };
+		FBCDC9AA1BC3381B00808E30 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCDC9A61BC3381B00808E30 /* User.m */; settings = {ASSET_TAGS = (); }; };
 		FBCEA4321B4CC3E000497678 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCEA4311B4CC3E000497678 /* main.m */; };
 		FBCEA4351B4CC3E000497678 /* Pet2ShareDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCEA4341B4CC3E000497678 /* Pet2ShareDelegate.m */; };
 		FBCEA43B1B4CC3E000497678 /* Pet2Share.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBCEA4391B4CC3E000497678 /* Pet2Share.storyboard */; };
@@ -94,6 +100,8 @@
 		FB1067F11B535F0F00BEBC40 /* FormProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormProtocol.h; sourceTree = "<group>"; };
 		FB1067F41B53697600BEBC40 /* DashboardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardVC.h; sourceTree = "<group>"; };
 		FB1067F51B53697600BEBC40 /* DashboardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardVC.m; sourceTree = "<group>"; };
+		FB265B411BC37FAB0094AC37 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		FB265B421BC37FAB0094AC37 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		FB2BDBAB1B5767940095B254 /* DashboardCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardCollectionCell.h; sourceTree = "<group>"; };
 		FB2BDBAC1B5767940095B254 /* DashboardCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardCollectionCell.m; sourceTree = "<group>"; };
 		FB2BDBAD1B5767940095B254 /* DashboardCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardCollectionCell.xib; sourceTree = "<group>"; };
@@ -146,6 +154,14 @@
 		FB484A881B50C6130045A6EA /* Lato-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Thin.ttf"; sourceTree = "<group>"; };
 		FB484A891B50C6130045A6EA /* Lato-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-ThinItalic.ttf"; sourceTree = "<group>"; };
 		FB484A8A1B50C6130045A6EA /* SIL Open Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SIL Open Font License.txt"; sourceTree = "<group>"; };
+		FB50502E1BC4CBB40037F3E5 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
+		FB50502F1BC4CBB40037F3E5 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
+		FB5050311BC4D0B10037F3E5 /* Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Date.h; sourceTree = "<group>"; };
+		FB5050321BC4D0B10037F3E5 /* Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Date.m; sourceTree = "<group>"; };
+		FB5050371BC4D1E70037F3E5 /* JSONValueTransformer+Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSONValueTransformer+Date.h"; sourceTree = "<group>"; };
+		FB5050381BC4D1E70037F3E5 /* JSONValueTransformer+Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONValueTransformer+Date.m"; sourceTree = "<group>"; };
+		FB535B691BC4610C00C6A3B3 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		FB535B6B1BC461CD00C6A3B3 /* libJSONModel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONModel.a; path = "Pods/../build/Debug-iphoneos/libJSONModel.a"; sourceTree = "<group>"; };
 		FB6C272D1B6ED1C70002034A /* HttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClient.h; sourceTree = "<group>"; };
 		FB6C272E1B6ED1C70002034A /* HttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpClient.m; sourceTree = "<group>"; };
 		FB6C27311B6ED1EF0002034A /* Pet2ShareService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pet2ShareService.h; sourceTree = "<group>"; };
@@ -153,12 +169,15 @@
 		FB6C273B1B6ED2950002034A /* UrlManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrlManager.h; sourceTree = "<group>"; };
 		FB6C273C1B6ED2950002034A /* UrlManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UrlManager.m; sourceTree = "<group>"; };
 		FB6C273E1B6EEB0F0002034A /* ServiceConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceConfig.h; sourceTree = "<group>"; };
-		FBB5310B1B9BA6E0004D5DA2 /* RepositoryObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepositoryObject.h; sourceTree = "<group>"; };
-		FBB5310C1B9BA6E0004D5DA2 /* RepositoryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepositoryObject.m; sourceTree = "<group>"; };
-		FBB5310D1B9BA6E0004D5DA2 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		FBB5310E1B9BA6E0004D5DA2 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		FBB531121B9BA8A7004D5DA2 /* ResponseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseObject.h; sourceTree = "<group>"; };
 		FBB531131B9BA8A7004D5DA2 /* ResponseObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseObject.m; sourceTree = "<group>"; };
+		FBCDC9A11BC3381B00808E30 /* ErrorMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorMessage.h; sourceTree = "<group>"; };
+		FBCDC9A21BC3381B00808E30 /* ErrorMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorMessage.m; sourceTree = "<group>"; };
+		FBCDC9A31BC3381B00808E30 /* RepositoryObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepositoryObject.h; sourceTree = "<group>"; };
+		FBCDC9A41BC3381B00808E30 /* RepositoryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepositoryObject.m; sourceTree = "<group>"; };
+		FBCDC9A51BC3381B00808E30 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		FBCDC9A61BC3381B00808E30 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		FBCDC9A71BC3381B00808E30 /* WSConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSConstants.h; sourceTree = "<group>"; };
 		FBCEA42C1B4CC3E000497678 /* pet2share.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pet2share.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBCEA4301B4CC3E000497678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBCEA4311B4CC3E000497678 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -191,6 +210,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C0193C2C670251B8116E2CC /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +220,8 @@
 		54D431F1711D93AB40F7C4C0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FB535B6B1BC461CD00C6A3B3 /* libJSONModel.a */,
+				FB535B691BC4610C00C6A3B3 /* libPods.a */,
 				D685707DD3766C3EB6E23122 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -375,29 +397,26 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		FB6C27421B6EEFE40002034A /* Repositories */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Repositories;
-			sourceTree = "<group>";
-		};
-		FBB5310A1B9BA6E0004D5DA2 /* DAO */ = {
-			isa = PBXGroup;
-			children = (
-				FBB5310B1B9BA6E0004D5DA2 /* RepositoryObject.h */,
-				FBB5310C1B9BA6E0004D5DA2 /* RepositoryObject.m */,
-				FBB5310D1B9BA6E0004D5DA2 /* User.h */,
-				FBB5310E1B9BA6E0004D5DA2 /* User.m */,
-			);
-			path = DAO;
-			sourceTree = "<group>";
-		};
 		FBB531111B9BA718004D5DA2 /* DAL */ = {
 			isa = PBXGroup;
 			children = (
+				FBCDC9A71BC3381B00808E30 /* WSConstants.h */,
 				FBB531121B9BA8A7004D5DA2 /* ResponseObject.h */,
 				FBB531131B9BA8A7004D5DA2 /* ResponseObject.m */,
+				FBCDC9A31BC3381B00808E30 /* RepositoryObject.h */,
+				FBCDC9A41BC3381B00808E30 /* RepositoryObject.m */,
+				FBCDC9A11BC3381B00808E30 /* ErrorMessage.h */,
+				FBCDC9A21BC3381B00808E30 /* ErrorMessage.m */,
+				FBCDC9A51BC3381B00808E30 /* User.h */,
+				FBCDC9A61BC3381B00808E30 /* User.m */,
+				FB265B411BC37FAB0094AC37 /* Person.h */,
+				FB265B421BC37FAB0094AC37 /* Person.m */,
+				FB50502E1BC4CBB40037F3E5 /* Address.h */,
+				FB50502F1BC4CBB40037F3E5 /* Address.m */,
+				FB5050311BC4D0B10037F3E5 /* Date.h */,
+				FB5050321BC4D0B10037F3E5 /* Date.m */,
+				FB5050371BC4D1E70037F3E5 /* JSONValueTransformer+Date.h */,
+				FB5050381BC4D1E70037F3E5 /* JSONValueTransformer+Date.m */,
 			);
 			path = DAL;
 			sourceTree = "<group>";
@@ -471,8 +490,6 @@
 			isa = PBXGroup;
 			children = (
 				FBB531111B9BA718004D5DA2 /* DAL */,
-				FBB5310A1B9BA6E0004D5DA2 /* DAO */,
-				FB6C27421B6EEFE40002034A /* Repositories */,
 				FB6C27301B6ED1DA0002034A /* Services */,
 			);
 			path = Frameworks;
@@ -524,9 +541,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FBCEA4521B4CC3E000497678 /* Build configuration list for PBXNativeTarget "pet2shareTests" */;
 			buildPhases = (
+				1BEF4C5B7BB79F8A72E1F332 /* Check Pods Manifest.lock */,
 				FBCEA4411B4CC3E000497678 /* Sources */,
 				FBCEA4421B4CC3E000497678 /* Frameworks */,
 				FBCEA4431B4CC3E000497678 /* Resources */,
+				63F341AC4345AB1F60AEFE8E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -550,6 +569,7 @@
 				TargetAttributes = {
 					FBCEA42B1B4CC3E000497678 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = ZU5W5X3DU9;
 					};
 					FBCEA4441B4CC3E000497678 = {
 						CreatedOnToolsVersion = 6.4;
@@ -621,6 +641,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1BEF4C5B7BB79F8A72E1F332 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		63F341AC4345AB1F60AEFE8E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		683B1AE128CC115D7E9F2BE4 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -658,6 +708,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBCDC9A81BC3381B00808E30 /* ErrorMessage.m in Sources */,
 				FB484A391B4FD0DB0045A6EA /* NSString+URLEncoding.m in Sources */,
 				FB484A5E1B50BE4E0045A6EA /* ThemeManager.m in Sources */,
 				FB484A531B4FD40A0045A6EA /* Utils.m in Sources */,
@@ -665,25 +716,29 @@
 				FB6C273D1B6ED2950002034A /* UrlManager.m in Sources */,
 				FB484A4D1B4FD40A0045A6EA /* OrderedDictionary.m in Sources */,
 				FBB531141B9BA8A7004D5DA2 /* ResponseObject.m in Sources */,
+				FBCDC9AA1BC3381B00808E30 /* User.m in Sources */,
+				FB5050391BC4D1E70037F3E5 /* JSONValueTransformer+Date.m in Sources */,
 				FB1067E91B5341A500BEBC40 /* LoginVC.m in Sources */,
 				FBCEA4351B4CC3E000497678 /* Pet2ShareDelegate.m in Sources */,
 				FB1067EC1B5341D600BEBC40 /* SignupViewCtrl.m in Sources */,
 				FBD3938F1B50D9DB000ED817 /* BaseNavigationVC.m in Sources */,
+				FBCDC9A91BC3381B00808E30 /* RepositoryObject.m in Sources */,
 				FBCEA4321B4CC3E000497678 /* main.m in Sources */,
 				FB484A5B1B50BE410045A6EA /* AppColorScheme.m in Sources */,
 				FB484A511B4FD40A0045A6EA /* UIDevice+Hardware.m in Sources */,
 				FB484A3F1B4FD12F0045A6EA /* Graphics.m in Sources */,
+				FB5050301BC4CBB40037F3E5 /* Address.m in Sources */,
 				FB484A421B4FD3E60045A6EA /* Constants.m in Sources */,
 				FBD3938A1B50D9B7000ED817 /* IntroPageContentVC.m in Sources */,
 				FB6C27331B6ED1EF0002034A /* Pet2ShareService.m in Sources */,
-				FBB531101B9BA6E0004D5DA2 /* User.m in Sources */,
+				FB5050331BC4D0B10037F3E5 /* Date.m in Sources */,
 				FB1067F01B535B4C00BEBC40 /* LoginTableCtrl.m in Sources */,
+				FB265B431BC37FAB0094AC37 /* Person.m in Sources */,
 				FB484A581B50BE370045A6EA /* AppColor.m in Sources */,
 				FB2BDBAE1B5767940095B254 /* DashboardCollectionCell.m in Sources */,
 				FB484A4F1B4FD40A0045A6EA /* Reachability.m in Sources */,
 				FB1067F61B53697600BEBC40 /* DashboardVC.m in Sources */,
 				FB484A361B4FD0AA0045A6EA /* LandingPageVC.m in Sources */,
-				FBB5310F1B9BA6E0004D5DA2 /* RepositoryObject.m in Sources */,
 				FB6C272F1B6ED1C70002034A /* HttpClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -817,11 +872,14 @@
 			baseConfigurationReference = 2D8E6D407B06EEEE9C8600F7 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Pet2Share/Pet2Share.pch";
 				INFOPLIST_FILE = pet2share/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "pet2share.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -830,16 +888,20 @@
 			baseConfigurationReference = E39AC5D91F18CB45AD8327A2 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Pet2Share/Pet2Share.pch";
 				INFOPLIST_FILE = pet2share/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "pet2share.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
 		FBCEA4531B4CC3E000497678 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D8E6D407B06EEEE9C8600F7 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -852,6 +914,10 @@
 				);
 				INFOPLIST_FILE = pet2shareTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "pet2share.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pet2share.app/pet2share";
@@ -860,6 +926,7 @@
 		};
 		FBCEA4541B4CC3E000497678 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E39AC5D91F18CB45AD8327A2 /* Pods.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -868,6 +935,10 @@
 				);
 				INFOPLIST_FILE = pet2shareTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "pet2share.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pet2share.app/pet2share";

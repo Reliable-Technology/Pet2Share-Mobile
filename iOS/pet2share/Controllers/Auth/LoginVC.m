@@ -63,25 +63,24 @@ static NSString * const kLeftIconImageName  = @"icon-arrowback";
 {
     [self.loginTableCtrl resignAllTextFields];
     
-//    // Get email and password from textfield
-//    NSString *username = [self.loginTableCtrl username];
-//    NSString *password = [self.loginTableCtrl password];
-//    fTRACE("User: %@, Password: %@", username, password);
-//    
-//    // Check to see if username is not empty
-//    if (![Utils validateNotEmpty:username] || ![Utils validateNotEmpty:password])
-//    {
-//        [Graphics alert:NSLocalizedString(@"Error", @"")
-//                message:NSLocalizedString(@"Username/password can not be empty.", @"")
-//                   type:ErrorAlert];
-//    }
-//    else
-//    {
-//        Pet2ShareService *service = [Pet2ShareService new];
-//        [service login:self username:username password:password];
-//    }
+    // Get email and password from textfield
+    NSString *username = [self.loginTableCtrl username];
+    NSString *password = [self.loginTableCtrl password];
+    fTRACE("User: %@, Password: %@", username, password);
     
-    [self performSegueWithIdentifier:kSegueMainView sender:self];
+    // Check to see if username is not empty
+    if (![Utils validateNotEmpty:username] || ![Utils validateNotEmpty:password])
+    {
+        [Graphics alert:NSLocalizedString(@"Error", @"")
+                message:NSLocalizedString(@"Username/password can not be empty.", @"")
+                   type:ErrorAlert];
+    }
+    else
+    {
+        Pet2ShareService *service = [Pet2ShareService new];
+        [service loginUser:self username:username password:password];
+        [self.loginBtn showActivityIndicator];
+    }
 }
 
 #pragma mark - <BarButtonsDelegate>
@@ -108,22 +107,28 @@ static NSString * const kLeftIconImageName  = @"icon-arrowback";
 
 #pragma mark 
 
-- (void)onReceiveSuccess:(id)object
+- (void)onReceiveSuccess:(NSArray *)objects
 {
-    fTRACE("Object: %@", object);
+    fTRACE("Objects: %@", objects);
+    [self.loginBtn hideActivityIndicator];
     
-    if (object)
+    if (objects.count == 1)
     {
         [self.loginBtn hideActivityIndicator];
         [self performSegueWithIdentifier:kSegueMainView sender:self];
     }
+    else
+    {
+       [Graphics alert:NSLocalizedString(@"Error", @"")
+               message:NSLocalizedString(@"Unknown Error. Try again!", @"")
+                  type:ErrorAlert];
+    }
 }
 
-- (void)onReceiveError:(id)object
+- (void)onReceiveError:(ErrorMessage *)errorMessage
 {
-    [Graphics alert:NSLocalizedString(@"Error", @"")
-            message:NSLocalizedString(@"Invalid username/password.", @"")
-               type:ErrorAlert];
+    [Graphics alert:NSLocalizedString(@"Error", @"") message:errorMessage.message type:ErrorAlert];
+    [self.loginBtn hideActivityIndicator];
 }
 
 @end

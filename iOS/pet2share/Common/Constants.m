@@ -16,6 +16,7 @@ CGFloat const kBarButtonHeight              = 32.0f;
 NSString * const kLogoTypeface              = @"LobsterTwo-Bold";
 NSString * const kDefaultTypeface           = @"Lato-Regular";
 NSString * const kDefaultBoldTypeface       = @"Lato-Bold";
+NSString * const kEmptyDate                 = @"/Date(-62135568000000)/";
 
 #pragma mark - Segues
 

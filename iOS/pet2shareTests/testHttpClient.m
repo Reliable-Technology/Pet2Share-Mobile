@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import "HttpClient.h"
+#import "Pet2ShareService.h"
+#import "Logger.h"
 
-@interface testHttpClient : XCTestCase
+@interface testHttpClient : XCTestCase <Pet2ShareServiceCallback>
 
 @property (nonatomic, strong) XCTestExpectation *expectation;
-@property (nonatomic, strong) NSString *baseUrl;
 
 @end
 
@@ -26,34 +26,23 @@ static CGFloat const kRequestTimeOut = 30.0f;
 - (void)setUp
 {
     [super setUp];
-    
     _expectation = nil;
-    _baseUrl = @"https://itunes.apple.com";
 }
 
 - (void)tearDown
 {
     [super tearDown];
-    
     self.expectation = nil;
-    self.baseUrl = nil;
 }
 
-#pragma mark - Unit Tests
+#pragma mark - Login Unit Tests
 
-- (void)testJsonGetRequest
+- (void)testLogin
 {
-    HttpClient *client = [HttpClient baseUrl:self.baseUrl];
-    
     self.expectation = [self expectationWithDescription:@"Response Test"];
     
-    [client get:@"search?term=jack+johnson&limit=25" callback:[HttpCallback callbackWithResult:^(HttpResponse *response) {
-        if (!response.hasError)
-        {
-            NSLog(@"JSON: %@", response.json);
-        }
-        [self.expectation fulfill];
-    }]];
+    Pet2ShareService *service = [Pet2ShareService new];
+    [service loginUser:self username:@"Test" password:@"Test"];
     
     [self waitForExpectationsWithTimeout:kRequestTimeOut handler:^(NSError *error) {
         if (error)
@@ -61,18 +50,39 @@ static CGFloat const kRequestTimeOut = 30.0f;
             NSLog(@"Error: %@", [error localizedDescription]);
         }
     }];
-    XCTAssert(@"Passed!");
+    XCTAssert(YES, @"Passed");
 }
 
-#pragma mark - Performance Unit Tests
-// TODO: Should I implement this?
+- (void)testRegister
+{
+    self.expectation = [self expectationWithDescription:@"Response Test"];
+    
+    Pet2ShareService *service = [Pet2ShareService new];
+    [service registerUser:self firstname:@"Nish" lastname:@"Rathi" username:@"nish@gmail.com" password:@"test" phone:nil];
+    
+    [self waitForExpectationsWithTimeout:kRequestTimeOut handler:^(NSError *error) {
+        if (error)
+        {
+            NSLog(@"Error: %@", [error localizedDescription]);
+        }
+    }];
+    XCTAssert(YES, @"Passed");
+}
 
-//- (void)testPerformanceExample
-//{
-//    // This is an example of a performance test case.
-//    [self measureBlock:^{
-//        // Put the code you want to measure the time of here.
-//    }];
-//}
+#pragma mark - <Pet2ShareServiceCallback>
+
+- (void)onReceiveSuccess:(NSArray *)objects
+{
+    fTRACE("Object: %@", objects);
+    [self.expectation fulfill];
+    XCTAssert(YES, @"Passed");
+}
+
+- (void)onReceiveError:(ErrorMessage *)errorMessage
+{
+    fTRACE("ErrorMessage: %@", errorMessage);
+    [self.expectation fulfill];
+    XCTAssert(NO, @"Failed");
+}
 
 @end

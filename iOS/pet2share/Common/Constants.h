@@ -16,6 +16,7 @@ extern CGFloat const kBarButtonHeight;
 extern NSString * const kLogoTypeface;
 extern NSString * const kDefaultTypeface;
 extern NSString * const kDefaultBoldTypeface;
+extern NSString * const kEmptyDate;
 
 #pragma mark - Segues
 
