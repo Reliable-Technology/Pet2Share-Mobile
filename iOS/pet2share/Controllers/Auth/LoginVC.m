@@ -72,31 +72,29 @@
     [self.loginTableCtrl resignAllTextFields];
     [self.loginBtn showActivityIndicator];
     
-//    // Get email and password from textfields
-//    NSString *username = [self.loginTableCtrl email];
-//    NSString *password = [self.loginTableCtrl password];
-//    fTRACE("User: %@, Password: %@", username, password);
-//    
-//    // Check to see if username and password are not empty
-//    if (![Utils validateNotEmpty:username] || ![Utils validateNotEmpty:password])
-//    {
-//        [Graphics alert:NSLocalizedString(@"Error", @"")
-//                message:NSLocalizedString(@"Email or password can not be empty.", @"")
-//                   type:ErrorAlert];
-//    }
-//    else if (![Utils validateEmail:username])
-//    {
-//        [Graphics alert:NSLocalizedString(@"Error", @"")
-//                message:NSLocalizedString(@"Email is invalid.", @"")
-//                   type:ErrorAlert];
-//    }
-//    else
-//    {
-//        Pet2ShareService *service = [Pet2ShareService new];
-//        [service loginUser:self username:username password:password];
-//    }
+    // Get email and password from textfields
+    NSString *username = [self.loginTableCtrl email];
+    NSString *password = [self.loginTableCtrl password];
+    fTRACE("User: %@, Password: %@", username, password);
     
-    [self performSegueWithIdentifier:kSegueMainView sender:self];
+    // Check to see if username and password are not empty
+    if (![Utils validateNotEmpty:username] || ![Utils validateNotEmpty:password])
+    {
+        [Graphics alert:NSLocalizedString(@"Error", @"")
+                message:NSLocalizedString(@"Email or password can not be empty.", @"")
+                   type:ErrorAlert];
+    }
+    else if (![Utils validateEmail:username])
+    {
+        [Graphics alert:NSLocalizedString(@"Error", @"")
+                message:NSLocalizedString(@"Email is invalid.", @"")
+                   type:ErrorAlert];
+    }
+    else
+    {
+        Pet2ShareService *service = [Pet2ShareService new];
+        [service loginUser:self username:username password:password];
+    }
 }
 
 #pragma mark - <FormProtocol>

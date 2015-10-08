@@ -18,7 +18,7 @@
 
 #define LOCALWEBSERVICE_TEST 1         // Turn on local testing mode
 
-#define PET2SHARE_DEV_LOCAL_URL             @"http://192.168.0.13:8087"
+#define PET2SHARE_DEV_LOCAL_URL             @"http://192.168.0.7:8087"
 #define PET2SHARE_DEV_URL                   @""
 #define PET2SHARE_QA_URL                    @""
 #define PET2SHARE_STAGING_URL               @""
@@ -39,7 +39,9 @@
 /// ENDPOINTS
 ///------------------------------------------------------------------------------
 
-#define LOGIN_ENDPOINT                      @"loginuser"
-#define REGISTER_ENDPOINT                   @"register"
+#define LOGIN_ENDPOINT                      @"LoginUser"
+#define REGISTER_ENDPOINT                   @"Register"
+#define GETUSERPROFILE_ENDPOINT             @"GetUserProfile"
+#define UPDATEUSERPROFILE_ENDPOINT          @"UpdateUserProfile"
 
 #endif

@@ -29,7 +29,7 @@
     
     [[UINavigationBar appearance] setTitleTextAttributes:
      @{NSForegroundColorAttributeName:[AppColor navigationBarTextColor],
-       NSFontAttributeName:[UIFont fontWithName:kDefaultBoldTypeface size:18.0f]}];
+       NSFontAttributeName:[UIFont systemFontOfSize:17.0f]}];
 }
 
 + (void)setTableViewTheme
@@ -54,7 +54,7 @@
 
 + (void)setTabbarTheme
 {
-    [UITabBar appearance].backgroundColor = [AppColor tabBarBackgroundColor];
+//    [UITabBar appearance].backgroundColor = [AppColor tabBarBackgroundColor];
     [UITabBar appearance].barTintColor = [AppColor tabBarBackgroundColor];
     [UITabBar appearance].tintColor = [AppColor tabBarTintColor];
     

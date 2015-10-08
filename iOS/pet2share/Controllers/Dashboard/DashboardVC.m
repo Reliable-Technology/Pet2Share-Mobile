@@ -9,13 +9,11 @@
 #import "DashboardVC.h"
 #import "AppColor.h"
 #import "Graphics.h"
-
-static NSString * const kImageIconName = @"icon-profile";
+#import "PostsVC.h"
 
 @interface DashboardVC ()
-{
-    CGRect _profileImageBounds;
-}
+
+@property (nonatomic, strong) PostsVC *postsCollectionView;
 
 @end
 
