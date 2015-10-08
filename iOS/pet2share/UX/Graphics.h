@@ -37,5 +37,7 @@ typedef NS_ENUM(NSInteger, AlertType)
     shadowOpacity:(CGFloat)shadowOpacity shadowRadius:(CGFloat)shadowRadius offset:(CGSize)shadowOffset;
 + (void)dropShadow:(UIView *)view shadowOpacity:(CGFloat)shadowOpacity
       shadowRadius:(CGFloat)shadowRadius offset:(CGSize)shadowOffset;
++ (UIImage *)circleImage:(UIImage*)image frame:(CGRect)frame;
++ (CGSize)getDeviceSize;
 
 @end

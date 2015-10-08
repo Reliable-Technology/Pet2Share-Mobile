@@ -2,8 +2,8 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "img-cat4.jpg"
+      "filename" : "img-samplepet.jpeg",
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",

@@ -1,19 +1,19 @@
 //
-//  SignupViewCtrl.m
+//  SignupVC.m
 //  pet2share
 //
 //  Created by Tony Kieu on 7/12/15.
 //  Copyright (c) 2015 Pet 2 Share. All rights reserved.
 //
 
-#import "SignupViewCtrl.h"
+#import "SignupVC.h"
 #import "SignUpTableCtrl.h"
 #import "Pet2ShareService.h"
 #import "RoundCornerButton.h"
 #import "Utils.h"
 #import "Graphics.h"
 
-@interface SignupViewCtrl () <FormProtocol, Pet2ShareServiceCallback>
+@interface SignupVC () <FormProtocol, Pet2ShareServiceCallback>
 
 @property (weak, nonatomic) IBOutlet RoundCornerButton *createAccountBtn;
 @property (strong, nonatomic) SignUpTableCtrl *signupTableCtrl;
@@ -22,7 +22,7 @@
 
 @end
 
-@implementation SignupViewCtrl
+@implementation SignupVC
 
 #pragma mark - Life Cycle
 

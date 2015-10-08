@@ -24,7 +24,21 @@ extern NSString * const kMainStoryboard;
 extern NSString * const kSegueIntroPages;
 extern NSString * const kSegueSignUp;
 extern NSString * const kSegueLogin;
+extern NSString * const kSegueProfile;
 extern NSString * const kSegueLoginContainer;
 extern NSString * const kSegueRegisterContainer;
 extern NSString * const kSegueDashboard;
 extern NSString * const kSegueMainView;
+
+#pragma mark - Date Format
+
+extern NSString * const kFormatDate;
+extern NSString * const kFormatDateTime;
+extern NSString * const kFormatDateTimeShort;
+extern NSString * const kFormatDateTimeLong;
+extern NSString * const kFormatDayOfWeekWIthDate;
+extern NSString * const kFormatDayMonthShort;
+extern NSString * const kFormatMonthYearShort;
+extern NSString * const kFormatDayOfWeekShort;
+extern NSString * const kFormatDayOfWeekLong;
+extern NSString * const kFormatDateUS;

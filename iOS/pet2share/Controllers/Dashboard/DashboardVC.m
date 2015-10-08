@@ -6,13 +6,16 @@
 //  Copyright (c) 2015 Pet 2 Share. All rights reserved.
 //
 
-#import <CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.h>
 #import "DashboardVC.h"
 #import "AppColor.h"
+#import "Graphics.h"
+
+static NSString * const kImageIconName = @"icon-profile";
 
 @interface DashboardVC ()
-
-- (IBAction)dismissView:(id)sender;
+{
+    CGRect _profileImageBounds;
+}
 
 @end
 
@@ -26,8 +29,7 @@ static NSString * const kCellNibName    = @"DashboardCollectionCell";
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if ((self = [super initWithCoder:aDecoder]))
-    {
-    }
+    {}
     return self;
 }
 
@@ -37,19 +39,17 @@ static NSString * const kCellNibName    = @"DashboardCollectionCell";
     
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSForegroundColorAttributeName: [AppColor navigationBarTextColor],
-       NSFontAttributeName:[UIFont fontWithName:kLogoTypeface size:20.0f]}];
+       NSFontAttributeName:[UIFont fontWithName:kLogoTypeface size:20.0f]}];    
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    fTRACE(@"Segue Identifier: %@", segue.identifier);
 }
 
 - (void)dealloc
 {
     TRACE_HERE;
-}
-
-#pragma mark - Events
-
-- (IBAction)dismissView:(id)sender
-{
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

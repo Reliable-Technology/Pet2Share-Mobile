@@ -13,6 +13,7 @@
 #import "LoginTableCtrl.h"
 #import "Utils.h"
 #import "Pet2ShareService.h"
+#import "CurrentUser.h"
 
 @interface LoginVC () <FormProtocol, Pet2ShareServiceCallback>
 
@@ -44,6 +45,12 @@
     [self.view addGestureRecognizer:singleTap];
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [self.loginTableCtrl clearPasswordField];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:kSegueLoginContainer])
@@ -63,31 +70,33 @@
 - (void)loginBtnTapped:(id)sender
 {
     [self.loginTableCtrl resignAllTextFields];
+    [self.loginBtn showActivityIndicator];
     
-    // Get email and password from textfields
-    NSString *username = [self.loginTableCtrl email];
-    NSString *password = [self.loginTableCtrl password];
-    fTRACE("User: %@, Password: %@", username, password);
+//    // Get email and password from textfields
+//    NSString *username = [self.loginTableCtrl email];
+//    NSString *password = [self.loginTableCtrl password];
+//    fTRACE("User: %@, Password: %@", username, password);
+//    
+//    // Check to see if username and password are not empty
+//    if (![Utils validateNotEmpty:username] || ![Utils validateNotEmpty:password])
+//    {
+//        [Graphics alert:NSLocalizedString(@"Error", @"")
+//                message:NSLocalizedString(@"Email or password can not be empty.", @"")
+//                   type:ErrorAlert];
+//    }
+//    else if (![Utils validateEmail:username])
+//    {
+//        [Graphics alert:NSLocalizedString(@"Error", @"")
+//                message:NSLocalizedString(@"Email is invalid.", @"")
+//                   type:ErrorAlert];
+//    }
+//    else
+//    {
+//        Pet2ShareService *service = [Pet2ShareService new];
+//        [service loginUser:self username:username password:password];
+//    }
     
-    // Check to see if username and password are not empty
-    if (![Utils validateNotEmpty:username] || ![Utils validateNotEmpty:password])
-    {
-        [Graphics alert:NSLocalizedString(@"Error", @"")
-                message:NSLocalizedString(@"Email or password can not be empty.", @"")
-                   type:ErrorAlert];
-    }
-    else if (![Utils validateEmail:username])
-    {
-        [Graphics alert:NSLocalizedString(@"Error", @"")
-                message:NSLocalizedString(@"Email is invalid.", @"")
-                   type:ErrorAlert];
-    }
-    else
-    {
-        Pet2ShareService *service = [Pet2ShareService new];
-        [service loginUser:self username:username password:password];
-        [self.loginBtn showActivityIndicator];
-    }
+    [self performSegueWithIdentifier:kSegueMainView sender:self];
 }
 
 #pragma mark - <FormProtocol>
@@ -101,11 +110,25 @@
 
 - (void)onReceiveSuccess:(NSArray *)objects
 {
-    fTRACE("Objects: %@", objects);
     [self.loginBtn hideActivityIndicator];
     
     if (objects.count == 1)
     {
+        User *user = [objects objectAtIndex:0];
+        CurrentUser *currentUser = [CurrentUser sharedInstance];
+        currentUser.username = user.username;
+        currentUser.password = user.password;
+        currentUser.email = user.email;
+        currentUser.alternateEmail = user.alternateEmail;
+        currentUser.socialMediaId = user.socialMediaId;
+        currentUser.socialMediaName = user.socialMediaName;
+        currentUser.phone = user.phone;
+        currentUser.socialMediaSource = user.socialMediaSource;
+        currentUser.person = user.person;
+        currentUser.userType = user.userType;
+        currentUser.isAuthenticated = user.isAuthenticated;
+        currentUser.isActive = user.isActive;
+        
         [self.loginBtn hideActivityIndicator];
         [self performSegueWithIdentifier:kSegueMainView sender:self];
     }

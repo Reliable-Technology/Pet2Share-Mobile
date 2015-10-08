@@ -1,5 +1,5 @@
 //
-//  SignupViewCtrl.h
+//  SignupVC.h
 //  pet2share
 //
 //  Created by Tony Kieu on 7/12/15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SignupViewCtrl : UIViewController
+@interface SignupVC : UIViewController
 
 @end

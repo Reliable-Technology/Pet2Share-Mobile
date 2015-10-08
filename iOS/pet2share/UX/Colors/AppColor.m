@@ -15,7 +15,7 @@
 
 #pragma mark - UINavigationBar
 
-+ (UIColor *)navigationBarBackgroundColor SCHEME(mint)
++ (UIColor *)navigationBarBackgroundColor SCHEME(darkBlueColor)
 + (UIColor *)navigationBarTintColor SCHEME(white)
 + (UIColor *)navigationBarTextColor SCHEME(white)
 + (UIColor *)navigationBarDisabledColor SCHEME(lightGray)
@@ -46,6 +46,12 @@
 + (UIColor *)tableViewSectionIndexColor SCHEME(darkGray)
 + (UIColor *)tableViewSectionIndexBackgroundColor SCHEME(clear)
 + (UIColor *)tableViewSectionIndexTrackingBackgroundColor SCHEME(lightGray)
+
+#pragma mark - UITabbar
+
++ (UIColor *)tabBarBackgroundColor SCHEME(white)
++ (UIColor *)tabBarTintColor SCHEME(darkGray)
++ (UIColor *)tabBarItemSelectedTitleColor SCHEME(darkBlueColor)
 
 #pragma mark - UILabel & UITextField
 

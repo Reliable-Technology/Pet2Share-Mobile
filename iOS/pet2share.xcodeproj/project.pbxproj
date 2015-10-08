@@ -10,7 +10,7 @@
 		7C0193C2C670251B8116E2CC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D685707DD3766C3EB6E23122 /* libPods.a */; };
 		CEF556017F1729CF780C00B2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D685707DD3766C3EB6E23122 /* libPods.a */; };
 		FB1067E91B5341A500BEBC40 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067E81B5341A500BEBC40 /* LoginVC.m */; };
-		FB1067EC1B5341D600BEBC40 /* SignupViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067EB1B5341D600BEBC40 /* SignupViewCtrl.m */; };
+		FB1067EC1B5341D600BEBC40 /* SignupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067EB1B5341D600BEBC40 /* SignupVC.m */; };
 		FB1067F01B535B4C00BEBC40 /* LoginTableCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067EF1B535B4C00BEBC40 /* LoginTableCtrl.m */; };
 		FB1067F61B53697600BEBC40 /* DashboardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067F51B53697600BEBC40 /* DashboardVC.m */; };
 		FB265B431BC37FAB0094AC37 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = FB265B421BC37FAB0094AC37 /* Person.m */; settings = {ASSET_TAGS = (); }; };
@@ -71,6 +71,15 @@
 		FBCEA43D1B4CC3E000497678 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBCEA43C1B4CC3E000497678 /* Images.xcassets */; };
 		FBCEA4401B4CC3E000497678 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBCEA43E1B4CC3E000497678 /* LaunchScreen.xib */; };
 		FBCEA45E1B4CC99A00497678 /* testHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCEA45D1B4CC99A00497678 /* testHttpClient.m */; };
+		FBCF4A6B1BC5876000C75066 /* CurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A6A1BC5876000C75066 /* CurrentUser.m */; settings = {ASSET_TAGS = (); }; };
+		FBCF4A6F1BC5B08800C75066 /* CollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A6E1BC5B08800C75066 /* CollectionViewLayout.m */; settings = {ASSET_TAGS = (); }; };
+		FBCF4A721BC5B0C500C75066 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A711BC5B0C500C75066 /* CollectionViewController.m */; settings = {ASSET_TAGS = (); }; };
+		FBCF4A761BC5B28700C75066 /* ProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A751BC5B28700C75066 /* ProfileVC.m */; settings = {ASSET_TAGS = (); }; };
+		FBCF4A7E1BC6888C00C75066 /* CircleImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A7D1BC6888C00C75066 /* CircleImageView.m */; settings = {ASSET_TAGS = (); }; };
+		FBCF4A821BC68CF200C75066 /* PetCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A801BC68CF200C75066 /* PetCollectionCell.m */; settings = {ASSET_TAGS = (); }; };
+		FBCF4A831BC68CF200C75066 /* PetCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBCF4A811BC68CF200C75066 /* PetCollectionCell.xib */; settings = {ASSET_TAGS = (); }; };
+		FBCF4A871BC698B700C75066 /* ProfileHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A851BC698B700C75066 /* ProfileHeaderCell.m */; settings = {ASSET_TAGS = (); }; };
+		FBCF4A881BC698B700C75066 /* ProfileHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBCF4A861BC698B700C75066 /* ProfileHeaderCell.xib */; settings = {ASSET_TAGS = (); }; };
 		FBD3938F1B50D9DB000ED817 /* BaseNavigationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD3938E1B50D9DB000ED817 /* BaseNavigationVC.m */; };
 /* End PBXBuildFile section */
 
@@ -90,8 +99,8 @@
 		E39AC5D91F18CB45AD8327A2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		FB1067E71B5341A500BEBC40 /* LoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
 		FB1067E81B5341A500BEBC40 /* LoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
-		FB1067EA1B5341D600BEBC40 /* SignupViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewCtrl.h; sourceTree = "<group>"; };
-		FB1067EB1B5341D600BEBC40 /* SignupViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewCtrl.m; sourceTree = "<group>"; };
+		FB1067EA1B5341D600BEBC40 /* SignupVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupVC.h; sourceTree = "<group>"; };
+		FB1067EB1B5341D600BEBC40 /* SignupVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupVC.m; sourceTree = "<group>"; };
 		FB1067ED1B53449200BEBC40 /* BarButtonsProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BarButtonsProtocol.h; sourceTree = "<group>"; };
 		FB1067EE1B535B4C00BEBC40 /* LoginTableCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginTableCtrl.h; sourceTree = "<group>"; };
 		FB1067EF1B535B4C00BEBC40 /* LoginTableCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTableCtrl.m; sourceTree = "<group>"; };
@@ -188,6 +197,22 @@
 		FBCEA44A1B4CC3E000497678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBCEA4551B4CC78600497678 /* Pet2Share.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pet2Share.pch; sourceTree = "<group>"; };
 		FBCEA45D1B4CC99A00497678 /* testHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testHttpClient.m; sourceTree = "<group>"; };
+		FBCF4A691BC5876000C75066 /* CurrentUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentUser.h; sourceTree = "<group>"; };
+		FBCF4A6A1BC5876000C75066 /* CurrentUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentUser.m; sourceTree = "<group>"; };
+		FBCF4A6D1BC5B08800C75066 /* CollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewLayout.h; sourceTree = "<group>"; };
+		FBCF4A6E1BC5B08800C75066 /* CollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewLayout.m; sourceTree = "<group>"; };
+		FBCF4A701BC5B0C500C75066 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
+		FBCF4A711BC5B0C500C75066 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		FBCF4A741BC5B28700C75066 /* ProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileVC.h; sourceTree = "<group>"; };
+		FBCF4A751BC5B28700C75066 /* ProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileVC.m; sourceTree = "<group>"; };
+		FBCF4A7C1BC6888C00C75066 /* CircleImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleImageView.h; sourceTree = "<group>"; };
+		FBCF4A7D1BC6888C00C75066 /* CircleImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleImageView.m; sourceTree = "<group>"; };
+		FBCF4A7F1BC68CF200C75066 /* PetCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetCollectionCell.h; sourceTree = "<group>"; };
+		FBCF4A801BC68CF200C75066 /* PetCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetCollectionCell.m; sourceTree = "<group>"; };
+		FBCF4A811BC68CF200C75066 /* PetCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PetCollectionCell.xib; sourceTree = "<group>"; };
+		FBCF4A841BC698B700C75066 /* ProfileHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileHeaderCell.h; sourceTree = "<group>"; };
+		FBCF4A851BC698B700C75066 /* ProfileHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileHeaderCell.m; sourceTree = "<group>"; };
+		FBCF4A861BC698B700C75066 /* ProfileHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileHeaderCell.xib; sourceTree = "<group>"; };
 		FBD3938D1B50D9DB000ED817 /* BaseNavigationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationVC.h; sourceTree = "<group>"; };
 		FBD3938E1B50D9DB000ED817 /* BaseNavigationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -236,8 +261,8 @@
 			children = (
 				FB1067E71B5341A500BEBC40 /* LoginVC.h */,
 				FB1067E81B5341A500BEBC40 /* LoginVC.m */,
-				FB1067EA1B5341D600BEBC40 /* SignupViewCtrl.h */,
-				FB1067EB1B5341D600BEBC40 /* SignupViewCtrl.m */,
+				FB1067EA1B5341D600BEBC40 /* SignupVC.h */,
+				FB1067EB1B5341D600BEBC40 /* SignupVC.m */,
 				FB1067EE1B535B4C00BEBC40 /* LoginTableCtrl.h */,
 				FB1067EF1B535B4C00BEBC40 /* LoginTableCtrl.m */,
 				FB1067F11B535F0F00BEBC40 /* FormProtocol.h */,
@@ -259,9 +284,15 @@
 		FB2BDBAA1B5767610095B254 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				FBCF4A841BC698B700C75066 /* ProfileHeaderCell.h */,
+				FBCF4A851BC698B700C75066 /* ProfileHeaderCell.m */,
+				FBCF4A861BC698B700C75066 /* ProfileHeaderCell.xib */,
 				FB2BDBAB1B5767940095B254 /* DashboardCollectionCell.h */,
 				FB2BDBAC1B5767940095B254 /* DashboardCollectionCell.m */,
 				FB2BDBAD1B5767940095B254 /* DashboardCollectionCell.xib */,
+				FBCF4A7F1BC68CF200C75066 /* PetCollectionCell.h */,
+				FBCF4A801BC68CF200C75066 /* PetCollectionCell.m */,
+				FBCF4A811BC68CF200C75066 /* PetCollectionCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -294,6 +325,7 @@
 				FB1067E61B53412F00BEBC40 /* Auth */,
 				FBD3938C1B50D9DB000ED817 /* Templates */,
 				FB1067F31B53694C00BEBC40 /* Dashboard */,
+				FBCF4A731BC5B26E00C75066 /* Profile */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -325,9 +357,12 @@
 		FB484A5F1B50BE880045A6EA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FBCF4A6C1BC5B07400C75066 /* CollectionViewLayout */,
 				FB2BDBAA1B5767610095B254 /* Cells */,
 				FB484A601B50BE910045A6EA /* RoundCornerButton.h */,
 				FB484A611B50BE910045A6EA /* RoundCornerButton.m */,
+				FBCF4A7C1BC6888C00C75066 /* CircleImageView.h */,
+				FBCF4A7D1BC6888C00C75066 /* CircleImageView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -483,10 +518,40 @@
 		FBCEA4561B4CC86200497678 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FBCF4A681BC5875300C75066 /* Models */,
 				FBB531111B9BA718004D5DA2 /* DAL */,
 				FB6C27301B6ED1DA0002034A /* Services */,
 			);
 			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		FBCF4A681BC5875300C75066 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FBCF4A691BC5876000C75066 /* CurrentUser.h */,
+				FBCF4A6A1BC5876000C75066 /* CurrentUser.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FBCF4A6C1BC5B07400C75066 /* CollectionViewLayout */ = {
+			isa = PBXGroup;
+			children = (
+				FBCF4A6D1BC5B08800C75066 /* CollectionViewLayout.h */,
+				FBCF4A6E1BC5B08800C75066 /* CollectionViewLayout.m */,
+				FBCF4A701BC5B0C500C75066 /* CollectionViewController.h */,
+				FBCF4A711BC5B0C500C75066 /* CollectionViewController.m */,
+			);
+			path = CollectionViewLayout;
+			sourceTree = "<group>";
+		};
+		FBCF4A731BC5B26E00C75066 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				FBCF4A741BC5B28700C75066 /* ProfileVC.h */,
+				FBCF4A751BC5B28700C75066 /* ProfileVC.m */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		FBD3938C1B50D9DB000ED817 /* Templates */ = {
@@ -588,6 +653,7 @@
 				FB484A921B50C6130045A6EA /* Lato-HeavyItalic.ttf in Resources */,
 				FB484A931B50C6130045A6EA /* Lato-Italic.ttf in Resources */,
 				FB484A911B50C6130045A6EA /* Lato-Heavy.ttf in Resources */,
+				FBCF4A831BC68CF200C75066 /* PetCollectionCell.xib in Resources */,
 				FB484A941B50C6130045A6EA /* Lato-Light.ttf in Resources */,
 				FB484A8F1B50C6130045A6EA /* Lato-Hairline.ttf in Resources */,
 				FB484A9A1B50C6130045A6EA /* Lato-SemiboldItalic.ttf in Resources */,
@@ -608,6 +674,7 @@
 				FB484A751B50C5FB0045A6EA /* LobsterTwo-Regular.otf in Resources */,
 				FB484A971B50C6130045A6EA /* Lato-MediumItalic.ttf in Resources */,
 				FBCEA4401B4CC3E000497678 /* LaunchScreen.xib in Resources */,
+				FBCF4A881BC698B700C75066 /* ProfileHeaderCell.xib in Resources */,
 				FB484A9B1B50C6130045A6EA /* Lato-Thin.ttf in Resources */,
 				FBCEA43D1B4CC3E000497678 /* Images.xcassets in Resources */,
 				FB484A981B50C6130045A6EA /* Lato-Regular.ttf in Resources */,
@@ -692,6 +759,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBCDC9A81BC3381B00808E30 /* ErrorMessage.m in Sources */,
+				FBCF4A7E1BC6888C00C75066 /* CircleImageView.m in Sources */,
+				FBCF4A6F1BC5B08800C75066 /* CollectionViewLayout.m in Sources */,
 				FB484A391B4FD0DB0045A6EA /* NSString+URLEncoding.m in Sources */,
 				FB484A5E1B50BE4E0045A6EA /* ThemeManager.m in Sources */,
 				FB484A531B4FD40A0045A6EA /* Utils.m in Sources */,
@@ -702,13 +771,18 @@
 				FBCDC9AA1BC3381B00808E30 /* User.m in Sources */,
 				FB5050391BC4D1E70037F3E5 /* JSONValueTransformer+Date.m in Sources */,
 				FB1067E91B5341A500BEBC40 /* LoginVC.m in Sources */,
+				FBCF4A821BC68CF200C75066 /* PetCollectionCell.m in Sources */,
+				FBCF4A871BC698B700C75066 /* ProfileHeaderCell.m in Sources */,
+				FBCF4A721BC5B0C500C75066 /* CollectionViewController.m in Sources */,
 				FBCEA4351B4CC3E000497678 /* Pet2ShareDelegate.m in Sources */,
-				FB1067EC1B5341D600BEBC40 /* SignupViewCtrl.m in Sources */,
+				FBCF4A6B1BC5876000C75066 /* CurrentUser.m in Sources */,
+				FB1067EC1B5341D600BEBC40 /* SignupVC.m in Sources */,
 				FBD3938F1B50D9DB000ED817 /* BaseNavigationVC.m in Sources */,
 				FBCDC9A91BC3381B00808E30 /* RepositoryObject.m in Sources */,
 				FBCEA4321B4CC3E000497678 /* main.m in Sources */,
 				FB484A5B1B50BE410045A6EA /* AppColorScheme.m in Sources */,
 				FBA3F6B91BC5555E0094288D /* SignUpTableCtrl.m in Sources */,
+				FBCF4A761BC5B28700C75066 /* ProfileVC.m in Sources */,
 				FB484A511B4FD40A0045A6EA /* UIDevice+Hardware.m in Sources */,
 				FB484A3F1B4FD12F0045A6EA /* Graphics.m in Sources */,
 				FB5050301BC4CBB40037F3E5 /* Address.m in Sources */,

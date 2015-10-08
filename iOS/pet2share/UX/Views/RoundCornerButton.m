@@ -72,7 +72,6 @@
 
 - (void)showActivityIndicator
 {
-    self.backgroundColor = [Graphics darkerColorForColor:self.backgroundColor];
     self.enabled = NO;
     self.isLoading = YES;
     [self.activity startAnimating];
@@ -80,7 +79,6 @@
 
 - (void)hideActivityIndicator
 {
-    self.backgroundColor = [Graphics lighterColorForColor:self.backgroundColor];
     self.enabled = YES;
     self.isLoading = NO;
     [self.activity stopAnimating];

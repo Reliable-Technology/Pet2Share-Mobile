@@ -8,7 +8,8 @@ link_with 'pet2share', 'pet2shareTests'
 pod 'AFNetworking', :head
 pod 'AMScrollingNavbar', '~> 1.5.1'
 pod 'ChameleonFramework', '~> 1.2.1'
-pod 'CHTCollectionViewWaterfallLayout', '~> 0.9.1'
+pod 'CSStickyHeaderFlowLayout', :head
+pod 'EGOCache', :head
 pod 'JSONModel', '~> 1.1.0'
 pod 'SIAlertView', :head
 pod 'pop', :head

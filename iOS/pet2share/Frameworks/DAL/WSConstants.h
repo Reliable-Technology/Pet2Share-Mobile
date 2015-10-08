@@ -6,7 +6,6 @@
 //  Copyright © 2015 Pet 2 Share. All rights reserved.
 //
 
-#import "WSConstants.h"
 #import "ResponseObject.h"
 #import "RepositoryObject.h"
 #import "ErrorMessage.h"

@@ -6,9 +6,9 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="LobsterTwo-Regular.otf">
-            <string>LobsterTwo</string>
-            <string>LobsterTwo</string>
+        <mutableArray key="LobsterTwo-Bold.otf">
+            <string>LobsterTwo-Bold</string>
+            <string>LobsterTwo-Bold</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -24,18 +24,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.90980392160000001" green="0.92549019610000005" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="iN7-9S-2cK"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1SD-EO-dHK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3908" y="2022"/>
+            <point key="canvasLocation" x="3882" y="2220"/>
         </scene>
-        <!--View Controller-->
+        <!--ProfileVC-->
         <scene sceneID="HJw-mR-kJX">
             <objects>
-                <viewController id="PoM-rN-Bg1" sceneMemberID="viewController">
+                <viewController id="PoM-rN-Bg1" customClass="ProfileVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HG3-fm-5mo"/>
                         <viewControllerLayoutGuide type="bottom" id="uEf-30-SIo"/>
@@ -44,13 +44,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.90980392156862744" green="0.92549019607843142" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="cni-8g-CPA"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zm9-FD-XHQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3920" y="2667"/>
+            <point key="canvasLocation" x="4794" y="2906"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="UeJ-Tf-pIb">
@@ -63,6 +63,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.15410047769546509" green="0.41306763887405396" blue="0.69063264131546021" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="za2-nH-tDl" kind="relationship" relationship="viewControllers" id="a9p-aa-h3C"/>
@@ -86,20 +87,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" red="0.12941176470588234" green="0.14509803921568626" blue="0.19215686274509802" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.90980392156862744" green="0.92549019607843142" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Pet 2 Share" id="gPE-D5-9qP">
-                        <barButtonItem key="leftBarButtonItem" image="icon-close" id="gVU-ry-BAj">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="dismissView:" destination="wQ8-ER-nBr" id="T3Z-iC-rFT"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Pet 2 Share" id="gPE-D5-9qP"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sce-Q8-a5c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3892" y="1416"/>
+            <point key="canvasLocation" x="3882" y="1450"/>
         </scene>
         <!--Pet 2 Share-->
         <scene sceneID="ogo-MI-ag9">
@@ -114,7 +108,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yar-p1-V8P">
-                                <rect key="frame" x="20" y="160" width="560" height="280"/>
+                                <rect key="frame" x="20" y="64" width="560" height="280"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uvi-O4-7cf">
                                         <rect key="frame" x="0.0" y="56" width="560" height="100"/>
@@ -129,7 +123,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3g-dk-wY5" customClass="RoundCornerButton">
                                         <rect key="frame" x="0.0" y="176" width="560" height="40"/>
                                         <animations/>
-                                        <color key="backgroundColor" red="0.30588235294117649" green="0.77254901960784317" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.19376453757286072" green="0.50850099325180054" blue="0.85232251882553101" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="KY3-i4-S6S"/>
                                         </constraints>
@@ -160,7 +154,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="NAC-j3-xV0"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="LobsterTwo" family="Lobster Two" pointSize="30"/>
+                                        <fontDescription key="fontDescription" name="LobsterTwo-Bold" family="Lobster Two" pointSize="30"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -185,10 +179,10 @@
                             </view>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.1803921568627451" green="0.69411764705882351" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.15410047769546509" green="0.41306763887405396" blue="0.69063264131546021" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="yar-p1-V8P" firstAttribute="top" secondItem="2YU-ku-K4j" secondAttribute="bottom" constant="44" id="IxA-qJ-k8s"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yar-p1-V8P" secondAttribute="trailing" id="k8L-Ll-MdM"/>
-                            <constraint firstItem="yar-p1-V8P" firstAttribute="centerY" secondItem="HCN-gC-bSJ" secondAttribute="centerY" id="mtW-cY-Udy"/>
                             <constraint firstAttribute="leadingMargin" secondItem="yar-p1-V8P" secondAttribute="leading" id="xOw-W3-8BN"/>
                         </constraints>
                     </view>
@@ -283,10 +277,10 @@
             </objects>
             <point key="canvasLocation" x="2867" y="306"/>
         </scene>
-        <!--Signup View Ctrl-->
+        <!--SignupVC-->
         <scene sceneID="gVI-DW-BjM">
             <objects>
-                <viewController id="EWB-ce-Lku" customClass="SignupViewCtrl" sceneMemberID="viewController">
+                <viewController id="EWB-ce-Lku" customClass="SignupVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9cd-fw-rUX"/>
                         <viewControllerLayoutGuide type="bottom" id="obp-WI-azw"/>
@@ -316,14 +310,14 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="bg2-Qg-tYR"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="LobsterTwo" family="Lobster Two" pointSize="30"/>
+                                        <fontDescription key="fontDescription" name="LobsterTwo-Bold" family="Lobster Two" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jii-xn-Edr" customClass="RoundCornerButton">
                                         <rect key="frame" x="0.0" y="276" width="560" height="40"/>
                                         <animations/>
-                                        <color key="backgroundColor" red="0.30588235294117649" green="0.77254901960784317" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.19376453757286072" green="0.50850099325180054" blue="0.85232251882553101" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Wpw-r8-LPl"/>
                                         </constraints>
@@ -361,7 +355,7 @@
                             </view>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.1803921568627451" green="0.69411764705882351" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.15410047769546509" green="0.41306763887405396" blue="0.69063264131546021" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="KU0-Kb-b8J" secondAttribute="leading" id="5Ix-4o-xTk"/>
                             <constraint firstItem="KU0-Kb-b8J" firstAttribute="top" secondItem="9cd-fw-rUX" secondAttribute="bottom" constant="44" id="BVe-ok-3Up"/>
@@ -402,6 +396,7 @@
                                                     <rect key="frame" x="16" y="0.0" width="528" height="50"/>
                                                     <animations/>
                                                     <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next"/>
                                                 </textField>
@@ -453,6 +448,7 @@
                                                     <rect key="frame" x="16" y="0.0" width="528" height="50"/>
                                                     <animations/>
                                                     <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
                                                 </textField>
@@ -478,6 +474,7 @@
                                                     <rect key="frame" x="16" y="0.0" width="528" height="50"/>
                                                     <animations/>
                                                     <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
                                                 </textField>
@@ -529,7 +526,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dC2-HM-ALl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3152" y="1574"/>
+            <point key="canvasLocation" x="2979" y="1450"/>
         </scene>
         <!--Camera-->
         <scene sceneID="WA1-Cf-GzU">
@@ -549,7 +546,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbL-q0-sXc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3152" y="2227"/>
+            <point key="canvasLocation" x="2979" y="2215"/>
         </scene>
         <!--Profile-->
         <scene sceneID="Mvd-4w-Nbm">
@@ -564,12 +561,51 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="PoM-rN-Bg1" kind="relationship" relationship="rootViewController" id="4zo-fs-kp2"/>
+                        <segue destination="utb-Y4-g4h" kind="relationship" relationship="rootViewController" id="kUj-pF-gm8"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hv7-9M-Gxt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3091" y="2892"/>
+            <point key="canvasLocation" x="2979" y="2906"/>
+        </scene>
+        <!--Pet 2 Share-->
+        <scene sceneID="hno-IN-ibU">
+            <objects>
+                <collectionViewController id="utb-Y4-g4h" customClass="ProfileVC" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="ONN-bk-krf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" red="0.90980392160000001" green="0.92549019610000005" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iYs-6G-6J8" customClass="CollectionViewLayout">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="fnm-xU-NoZ">
+                                <rect key="frame" x="0.0" y="64" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <animations/>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="utb-Y4-g4h" id="gBO-18-fx4"/>
+                            <outlet property="delegate" destination="utb-Y4-g4h" id="NiC-pd-pmp"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Pet 2 Share" id="kc2-0e-wJI"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kgO-jI-Cx8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3888" y="2906"/>
         </scene>
     </scenes>
     <resources>

@@ -40,6 +40,13 @@
 + (UIColor *)tableViewSectionIndexBackgroundColor;
 + (UIColor *)tableViewSectionIndexTrackingBackgroundColor;
 
+#pragma mark - UITabbar
+
++ (UIColor *)tabBarBackgroundColor;
++ (UIColor *)tabBarTintColor;
++ (UIColor *)tabBarItemSelectedTitleColor;
+
+
 #pragma mark - UILabel & UITextField
 
 + (UIColor *)textStyleTitleColor;

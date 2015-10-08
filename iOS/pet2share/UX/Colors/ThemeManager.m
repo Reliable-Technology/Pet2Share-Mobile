@@ -17,11 +17,12 @@
     [self setNavigationBarTheme];
     [self setTableViewTheme];
     [self setTableViewCellTheme];
+    [self setTabbarTheme];
 }
 
 + (void)setNavigationBarTheme
 {
-    [UINavigationBar appearance].barTintColor = [Graphics lighterColorForColor:[AppColor navigationBarBackgroundColor]];
+    [UINavigationBar appearance].barTintColor = [AppColor navigationBarBackgroundColor];
     [UINavigationBar appearance].tintColor = [AppColor navigationBarTintColor];
     [UINavigationBar appearance].translucent = NO;
     [UINavigationBar appearance].barStyle = UIBarStyleBlackOpaque;
@@ -49,6 +50,18 @@
 {
     [UITableViewCell appearance].backgroundColor = [AppColor tableViewCellBackgroundColor];
     [UITableViewCell appearance].layoutMargins = UIEdgeInsetsZero;
+}
+
++ (void)setTabbarTheme
+{
+    [UITabBar appearance].backgroundColor = [AppColor tabBarBackgroundColor];
+    [UITabBar appearance].barTintColor = [AppColor tabBarBackgroundColor];
+    [UITabBar appearance].tintColor = [AppColor tabBarTintColor];
+    
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[AppColor tabBarTintColor]}
+                                             forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[AppColor tabBarItemSelectedTitleColor]}
+                                             forState:UIControlStateSelected];
 }
 
 @end

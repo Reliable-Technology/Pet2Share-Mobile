@@ -71,6 +71,12 @@
     else if ([self.passwordTxtField isFirstResponder]) [self.passwordTxtField resignFirstResponder];
 }
 
+- (void)clearPasswordField
+{
+    [self resignAllTextFields];
+    self.passwordTxtField.text = kEmptyString;
+}
+
 #pragma mark - <UITextFieldDelegate>
 
 - (BOOL)textFieldShouldClear:(UITextField *)textField

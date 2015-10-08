@@ -24,7 +24,22 @@ NSString * const kMainStoryboard            = @"Pet2Share";
 NSString * const kSegueIntroPages           = @"intropages";
 NSString * const kSegueSignUp               = @"signup";
 NSString * const kSegueLogin                = @"login";
+NSString * const kSegueProfile              = @"profile";
 NSString * const kSegueLoginContainer       = @"logincontainer";
 NSString * const kSegueRegisterContainer    = @"registercontainer";
 NSString * const kSegueDashboard            = @"dashboard";
 NSString * const kSegueMainView             = @"mainview";
+
+#pragma mark - Date Format
+
+NSString * const kFormatDate                = @"yyyy-MM-dd 00:00:00";
+NSString * const kFormatDateTime            = @"yyyy-MM-dd HH:mm:00.000";
+NSString * const kFormatDateTimeShort       = @"yyyy-MM-dd HH:mm:ss";
+NSString * const kFormatDateTimeLong        = @"yyyy-MM-dd HH:mm:ss.SSS";
+NSString * const kFormatDayOfWeekWIthDate   = @"EEE, dd MMM";
+NSString * const kFormatDayMonthShort       = @"dd MMM";
+NSString * const kFormatMonthYearShort      = @"MMM, yyyy";
+NSString * const kFormatDayOfWeekShort      = @"EEE";
+NSString * const kFormatDayOfWeekLong       = @"EEEE";
+NSString * const kFormatDateUS              = @"M/d/yyyy";
+

@@ -18,7 +18,7 @@
 }
 
 + (UIColor *)blue           { return [UIColor flatSkyBlueColor]; }
-+ (UIColor *)darkBlueColor  { return [UIColor flatBlueColorDark]; }
++ (UIColor *)darkBlueColor  { return [UIColor flatSkyBlueColorDark]; }
 + (UIColor *)black			{ return [UIColor flatBlackColor]; }
 + (UIColor *)green          { return [UIColor flatGreenColorDark]; }
 + (UIColor *)mint           { return [UIColor flatMintColor]; }
