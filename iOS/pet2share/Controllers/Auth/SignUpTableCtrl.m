@@ -31,7 +31,7 @@
     self.emailTextField.delegate = self;
     self.passwordTextField.delegate = self;
     
-    self.tableView.layer.cornerRadius = 3.f;
+    self.tableView.layer.cornerRadius = 3.0f;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -47,17 +47,6 @@
     self.lastnameTextField = nil;
     self.emailTextField = nil;
     self.passwordTextField = nil;
-}
-
-#pragma mark - Private Instance Methods
-
-- (void)clearText:(id)sender
-{
-    if ([sender isKindOfClass:[UITextField class]])
-    {
-        UITextField *textField = (UITextField *)sender;
-        textField.text = kEmptyString;
-    }
 }
 
 #pragma mark - Public Instance Methods
@@ -88,6 +77,27 @@
     if ([self.lastnameTextField isFirstResponder]) [self.lastnameTextField resignFirstResponder];
     if ([self.emailTextField isFirstResponder]) [self.emailTextField resignFirstResponder];
     if ([self.passwordTextField isFirstResponder]) [self.passwordTextField resignFirstResponder];
+}
+
+- (void)clearTextFields
+{
+    [self resignAllTextFields];
+    self.firstnameTextField.text = kEmptyString;
+    self.lastnameTextField.text = kEmptyString;
+    self.emailTextField.text = kEmptyString;
+    self.passwordTextField.text = kEmptyString;
+}
+
+#pragma mark - <UITableViewDelegate>
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([tableView respondsToSelector:@selector(setSeparatorInset:)])
+        [tableView setSeparatorInset:UIEdgeInsetsZero];
+    if ([tableView respondsToSelector:@selector(setLayoutMargins:)])
+        [tableView setLayoutMargins:UIEdgeInsetsZero];
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)])
+        [cell setLayoutMargins:UIEdgeInsetsZero];
 }
 
 #pragma mark - <UITextFieldDelegate>

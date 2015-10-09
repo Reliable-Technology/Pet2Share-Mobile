@@ -29,7 +29,7 @@
     
     [[UINavigationBar appearance] setTitleTextAttributes:
      @{NSForegroundColorAttributeName:[AppColor navigationBarTextColor],
-       NSFontAttributeName:[UIFont systemFontOfSize:17.0f]}];
+       NSFontAttributeName:[UIFont systemFontOfSize:16.0f weight:UIFontWeightBold]}];
 }
 
 + (void)setTableViewTheme

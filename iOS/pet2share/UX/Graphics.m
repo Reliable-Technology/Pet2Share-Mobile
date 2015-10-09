@@ -106,10 +106,13 @@
 + (void)dropShadow:(UIView *)view shadowOpacity:(CGFloat)shadowOpacity
       shadowRadius:(CGFloat)shadowRadius offset:(CGSize)shadowOffset
 {
+    view.layer.masksToBounds = NO;
+    view.layer.rasterizationScale = [[UIScreen mainScreen] scale];
+    view.layer.shouldRasterize = YES;
     view.layer.shadowColor = [[UIColor blackColor] CGColor];
-    view.layer.shadowOpacity = shadowOpacity;
-    view.layer.shadowRadius = shadowRadius;
     view.layer.shadowOffset = shadowOffset;
+    view.layer.shadowRadius = shadowRadius;
+    view.layer.shadowOpacity = shadowOpacity;
 }
 
 + (UIImage *)circleImage:(UIImage*)image frame:(CGRect)frame
@@ -152,6 +155,62 @@
     UIGraphicsEndImageContext();
     
     return newImage;
+}
+
++ (UIImage *)scaleImage:(UIImage *)image toSize:(CGSize)newSize
+{
+    CGSize scaledSize = newSize;
+    float scaleFactor = 1.0;
+    if( image.size.width > image.size.height )
+    {
+        scaleFactor = image.size.width / image.size.height;
+        scaledSize.width = newSize.width;
+        scaledSize.height = newSize.height / scaleFactor;
+    }
+    else {
+        scaleFactor = image.size.height / image.size.width;
+        scaledSize.height = newSize.height;
+        scaledSize.width = newSize.width / scaleFactor;
+    }
+    
+    UIGraphicsBeginImageContextWithOptions( scaledSize, NO, 0.0 );
+    CGRect scaledImageRect = CGRectMake( 0.0, 0.0, scaledSize.width, scaledSize.height );
+    [image drawInRect:scaledImageRect];
+    UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return scaledImage;
+}
+
++ (UIImage *)tintImage:(UIImage *)source withColor:(UIColor *)color
+{
+    // Begin a new image context, to draw our colored image onto with the right scale
+    UIGraphicsBeginImageContextWithOptions(source.size, NO, [UIScreen mainScreen].scale);
+    
+    // Get a reference to that context we created
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    // Set the fill color
+    [color setFill];
+    
+    // Translate/flip the graphics context (for transforming from CG* coords to UI* coords
+    CGContextTranslateCTM(context, 0, source.size.height);
+    CGContextScaleCTM(context, 1.0, -1.0);
+    
+    CGContextSetBlendMode(context, kCGBlendModeColorBurn);
+    CGRect rect = CGRectMake(0, 0, source.size.width, source.size.height);
+    CGContextDrawImage(context, rect, source.CGImage);
+    
+    CGContextSetBlendMode(context, kCGBlendModeSourceIn);
+    CGContextAddRect(context, rect);
+    CGContextDrawPath(context,kCGPathFill);
+    
+    // Generate a new UIImage from the graphics context we drew onto
+    UIImage *coloredImg = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    // Return the color-burned image
+    return coloredImg;
 }
 
 + (CGSize)getDeviceSize

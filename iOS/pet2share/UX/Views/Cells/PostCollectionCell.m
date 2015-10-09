@@ -47,14 +47,8 @@
 }
 
 - (void)awakeFromNib
-{    
-    self.layer.masksToBounds = NO;
-    self.layer.rasterizationScale = [[UIScreen mainScreen] scale];
-    self.layer.shouldRasterize = YES;
-    self.layer.shadowColor = [[UIColor blackColor] CGColor];
-    self.layer.shadowOffset = CGSizeZero;
-    self.layer.shadowRadius = 2.0f;
-    self.layer.shadowOpacity = 0.85f;
+{
+    [Graphics dropShadow:self shadowOpacity:0.85f shadowRadius:2.0f offset:CGSizeZero];
 }
 
 #pragma mark - Public Instance Methods

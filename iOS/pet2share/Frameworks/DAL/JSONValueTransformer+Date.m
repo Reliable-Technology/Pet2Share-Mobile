@@ -13,7 +13,7 @@
 
 - (NSDate *)DateFromNSString:(NSString *)string
 {
-    return [Utils dateFromJSON:string];
+    return [Utils deserializeJsonDateString:string];
 }
 
 @end

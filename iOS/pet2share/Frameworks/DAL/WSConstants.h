@@ -13,3 +13,4 @@
 #import "Person.h"
 #import "Address.h"
 #import "Date.h"
+#import "UpdateMessage.h"

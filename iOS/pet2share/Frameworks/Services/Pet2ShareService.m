@@ -20,6 +20,20 @@ static id ObjectOrNull(id object)
 
 #pragma mark - Private Instance Methods
 
+- (void)requestData:(NSObject<Pet2ShareServiceCallback> *)callback
+           endPoint:(NSString *)endPoint
+          jsonModel:(Class)model
+           postData:(NSDictionary *)postData
+{
+    HttpClient *client = [HttpClient baseUrl:[[UrlManager sharedInstance] webServiceUrl]];
+    self.jsonModel = model;
+    
+    [client post:endPoint data:postData
+        callback:[HttpCallback callbackWithResult:^(HttpResponse *response) {
+        [self parseResponse:response callback:callback];
+    }]];
+}
+
 - (void)parseResponse:(HttpResponse *)response
              callback:(NSObject<Pet2ShareServiceCallback> *)callback
 {
@@ -31,6 +45,8 @@ static id ObjectOrNull(id object)
     {
         if (!response.hasError && [self.jsonModel isSubclassOfClass:[RepositoryObject class]])
         {
+            fTRACE(@"Response JSON: %@", response.json);
+            
             ResponseObject *responseObj = [[ResponseObject alloc] initWithDictionary:response.json error:&error];
             errorMessage = responseObj.errorMessage;
             
@@ -76,20 +92,13 @@ static id ObjectOrNull(id object)
          username:(NSString *)username
          password:(NSString *)password
 {
-    fTRACE("Username: %@ - Password: %@", username, password);
+    fTRACE("%@ <Username: %@ - Password: %@>", LOGIN_ENDPOINT, username, password);
     
     NSMutableDictionary *postData = [NSMutableDictionary dictionary];
     [postData setObject:ObjectOrNull(username) forKey:@"UserName"];
     [postData setObject:ObjectOrNull(password) forKey:@"Password"];
     
-    HttpClient *client = [HttpClient baseUrl:[[UrlManager sharedInstance] webServiceUrl]];
-    self.jsonModel = [User class];
-    
-    [client post:LOGIN_ENDPOINT
-            data:postData
-        callback:[HttpCallback callbackWithResult:^(HttpResponse *response) {
-        [self parseResponse:response callback:callback];
-    }]];
+    [self requestData:callback endPoint:LOGIN_ENDPOINT jsonModel:[User class] postData:postData];
 }
 
 - (void)registerUser:(NSObject<Pet2ShareServiceCallback> *)callback
@@ -99,7 +108,8 @@ static id ObjectOrNull(id object)
             password:(NSString *)password
                phone:(NSString *)phone
 {
-    fTRACE("Firstname: %@ - Lastname: %@ - Username: %@ - Password: %@ - Phone: %@", firstname, lastname, username, password, phone);
+    fTRACE("%@ <Firstname: %@ - Lastname: %@ - Username: %@ - Password: %@ - Phone: %@>",
+           REGISTER_ENDPOINT, firstname, lastname, username, password, phone);
     
     NSMutableDictionary *postData = [NSMutableDictionary dictionary];
     [postData setObject:ObjectOrNull(firstname) forKey:@"FirstName"];
@@ -108,14 +118,80 @@ static id ObjectOrNull(id object)
     [postData setObject:ObjectOrNull(password) forKey:@"Password"];
     [postData setObject:ObjectOrNull(phone) forKey:@"Phone"];
     
-    HttpClient *client = [HttpClient baseUrl:[[UrlManager sharedInstance] webServiceUrl]];
-    self.jsonModel = [User class];
+    [self requestData:callback endPoint:REGISTER_ENDPOINT jsonModel:[User class] postData:postData];
+}
+
+- (void)getUserProfile:(NSObject<Pet2ShareServiceCallback> *)callback userId:(NSInteger)userId
+{
+    fTRACE(@"%@ <Identifier: %ld>", GETUSERPROFILE_ENDPOINT, userId);
     
-    [client post:REGISTER_ENDPOINT
-            data:postData
-        callback:[HttpCallback callbackWithResult:^(HttpResponse *response) {
-        [self parseResponse:response callback:callback];
-    }]];
+    NSMutableDictionary *postData = [NSMutableDictionary dictionary];
+    [postData setObject:@(userId) forKey:@"UserId"];
+    
+    [self requestData:callback endPoint:GETUSERPROFILE_ENDPOINT jsonModel:[User class] postData:postData];
+}
+
+- (void)updateUserProfile:(NSObject<Pet2ShareServiceCallback> *)callback
+                   userId:(NSInteger)userId
+                firstName:(NSString *)firstName
+                 lastName:(NSString *)lastName
+                    email:(NSString *)email
+           alternateEmail:(NSString *)alternateEmail
+                    phone:(NSString *)phone
+           secondaryPhone:(NSString *)secondaryPhone
+              dateOfBirth:(NSDate *)dateOfBirth
+                  aboutMe:(NSString *)aboutMe
+             addressLine1:(NSString *)addressLine1
+             addressLine2:(NSString *)addressLine2
+                     city:(NSString *)city
+                    state:(NSString *)state
+                  country:(NSString *)country
+                  zipCode:(NSString *)zipCode
+{
+    fTRACE(@"%@ <Identifier: %ld>", UPDATEUSERPROFILE_ENDPOINT, userId);
+    
+    NSMutableDictionary *postData = [NSMutableDictionary dictionary];
+    [postData setObject:@(userId) forKey:@"UserId"];
+    [postData setObject:ObjectOrNull(firstName) forKey:@"FirstName"];
+    [postData setObject:ObjectOrNull(lastName) forKey:@"LastName"];
+    [postData setObject:ObjectOrNull(email) forKey:@"Email"];
+    [postData setObject:ObjectOrNull(alternateEmail) forKey:@"AlternateEmail"];
+    [postData setObject:ObjectOrNull(phone) forKey:@"PhoneNumber"];
+    [postData setObject:ObjectOrNull(secondaryPhone) forKey:@"SecondaryPhone"];
+    [postData setObject:[Utils formatdateToDateTime:dateOfBirth] forKey:@"DateOfBirth"];
+    [postData setObject:ObjectOrNull(aboutMe) forKey:@"AboutMe"];
+    [postData setObject:ObjectOrNull(addressLine1) forKey:@"AddressLine1"];
+    [postData setObject:ObjectOrNull(addressLine2) forKey:@"AddressLine2"];
+    [postData setObject:ObjectOrNull(city) forKey:@"City"];
+    [postData setObject:ObjectOrNull(state) forKey:@"State"];
+    [postData setObject:ObjectOrNull(country) forKey:@"Country"];
+    [postData setObject:ObjectOrNull(zipCode) forKey:@"ZipCode"];
+    
+    [self requestData:callback endPoint:UPDATEUSERPROFILE_ENDPOINT jsonModel:[UpdateMessage class] postData:postData];
+}
+
+- (void)loadImage:(NSString *)url
+       completion:(void (^)(UIImage* image))completion
+{
+    if (!url) return;
+    
+    dispatch_queue_t imageQueue = dispatch_queue_create("imageDownloader", nil);
+    dispatch_async(imageQueue, ^{
+        @try
+        {
+            NSURL *imageUrl = [NSURL URLWithString:url];
+            NSData *data = [NSData dataWithContentsOfURL:imageUrl];
+            UIImage *image = [UIImage imageWithData:data];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(image);
+            });
+        }
+        @catch (NSException *exception)
+        {
+            NSLog(@"%s: exception on download image: %@", __func__, exception);
+        }
+    });
 }
 
 @end

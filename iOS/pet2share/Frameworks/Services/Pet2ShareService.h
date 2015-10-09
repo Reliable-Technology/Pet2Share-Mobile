@@ -31,5 +31,27 @@
             password:(NSString *)password
                phone:(NSString *)phone;
 
+- (void)getUserProfile:(NSObject<Pet2ShareServiceCallback> *)callback
+                userId:(NSInteger)userId;
+
+- (void)updateUserProfile:(NSObject<Pet2ShareServiceCallback> *)callback
+                   userId:(NSInteger)userId
+                firstName:(NSString *)firstName
+                 lastName:(NSString *)lastName
+                    email:(NSString *)email
+           alternateEmail:(NSString *)alternateEmail
+                    phone:(NSString *)phone
+           secondaryPhone:(NSString *)secondaryPhone
+              dateOfBirth:(NSDate *)dateOfBirth
+                  aboutMe:(NSString *)aboutMe
+             addressLine1:(NSString *)addressLine1
+             addressLine2:(NSString *)addressLine2
+                     city:(NSString *)city
+                    state:(NSString *)state
+                  country:(NSString *)country
+                  zipCode:(NSString *)zipCode;
+
+- (void)loadImage:(NSString *)url
+       completion:(void (^)(UIImage* image))completion;
 
 @end

@@ -21,7 +21,7 @@
                             <constraint firstAttribute="height" constant="96" id="vke-Sd-clk"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8DR-6I-BMs">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name, Last Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8DR-6I-BMs">
                         <rect key="frame" x="40" y="130" width="520" height="22"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -47,7 +47,7 @@
                             <constraint firstAttribute="height" constant="30" id="mnF-Nh-y2n"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <state key="normal" title="Settings">
+                        <state key="normal" title="Edit Profile">
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
@@ -73,8 +73,8 @@
             <size key="customSize" width="600" height="223"/>
             <connections>
                 <outlet property="avatarImageView" destination="gjX-70-hdZ" id="Pky-Qf-k8r"/>
+                <outlet property="editProfileBtn" destination="3iQ-g9-kh7" id="q9t-eS-Ii0"/>
                 <outlet property="nameLabel" destination="8DR-6I-BMs" id="JW7-Bc-z9n"/>
-                <outlet property="settingsButton" destination="3iQ-g9-kh7" id="VU3-SG-uOI"/>
                 <outlet property="socialInfoLabel" destination="QTE-mf-KHw" id="hdA-to-EuL"/>
             </connections>
             <point key="canvasLocation" x="500" y="491.5"/>

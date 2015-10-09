@@ -10,12 +10,16 @@
 
 #pragma mark - Commons
 
+/** Degrees to Radians **/
+#define degreesToRadians( degrees ) ( ( degrees ) / 180.0 * M_PI )
+
+/** Radians to Degrees **/
+#define radiansToDegrees( radians ) ( ( radians ) * ( 180.0 / M_PI ) )
+
 extern NSString * const kEmptyString;
 extern CGFloat const kBarButtonWidth;
 extern CGFloat const kBarButtonHeight;
 extern NSString * const kLogoTypeface;
-extern NSString * const kDefaultTypeface;
-extern NSString * const kDefaultBoldTypeface;
 extern NSString * const kEmptyDate;
 
 #pragma mark - Segues
@@ -29,6 +33,7 @@ extern NSString * const kSegueLoginContainer;
 extern NSString * const kSegueRegisterContainer;
 extern NSString * const kSegueDashboard;
 extern NSString * const kSegueMainView;
+extern NSString * const kSegueEditProfile;
 
 #pragma mark - Date Format
 

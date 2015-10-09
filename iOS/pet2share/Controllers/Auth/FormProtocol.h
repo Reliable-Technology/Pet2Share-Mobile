@@ -11,4 +11,7 @@
 @required
 - (void)performAction;
 
+@optional
+- (void)goToNextSection;
+
 @end

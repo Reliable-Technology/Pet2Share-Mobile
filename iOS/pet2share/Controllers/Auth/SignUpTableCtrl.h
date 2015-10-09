@@ -18,5 +18,6 @@
 - (NSString *)email;
 - (NSString *)password;
 - (void)resignAllTextFields;
+- (void)clearTextFields;
 
 @end

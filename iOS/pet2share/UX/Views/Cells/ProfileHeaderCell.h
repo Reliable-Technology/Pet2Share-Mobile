@@ -8,11 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
-@class CurrentUser;
+@protocol ProfileHeaderDelegate <NSObject>
+
+@required
+- (void)editProfile:(id)sender;
+
+@end
+
+@class Pet2ShareUser;
 
 @interface ProfileHeaderCell : UICollectionViewCell
 
+@property (nonatomic, weak) id<ProfileHeaderDelegate> delegate;
+
 + (CGFloat)cellHeight;
-- (void)updateUserInfo:(CurrentUser *)user;
+- (void)updateUserInfo:(Pet2ShareUser *)user;
 
 @end

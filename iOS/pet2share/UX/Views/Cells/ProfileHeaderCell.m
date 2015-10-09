@@ -8,6 +8,8 @@
 
 #import "ProfileHeaderCell.h"
 #import "CircleImageView.h"
+#import "Pet2ShareService.h"
+#import "Pet2ShareUser.h"
 #import "Graphics.h"
 
 @interface ProfileHeaderCell ()
@@ -15,11 +17,13 @@
 @property (weak, nonatomic) IBOutlet CircleImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *socialInfoLabel;
-@property (weak, nonatomic) IBOutlet UIButton *settingsButton;
+@property (weak, nonatomic) IBOutlet UIButton *editProfileBtn;
 
 @end
 
 @implementation ProfileHeaderCell
+
+#pragma mark - Life Cycle
 
 + (CGFloat)cellHeight
 {
@@ -29,14 +33,39 @@
 - (void)awakeFromNib
 {
     TRACE_HERE;
-    self.settingsButton.layer.borderColor = [[AppColorScheme white] CGColor];
-    self.settingsButton.layer.borderWidth = 1.0f;
-    self.settingsButton.layer.cornerRadius = 3.0f;
+    self.editProfileBtn.layer.borderColor = [[AppColorScheme white] CGColor];
+    self.editProfileBtn.layer.borderWidth = 1.0f;
+    self.editProfileBtn.layer.cornerRadius = 3.0f;
+    [self.editProfileBtn addTarget:self action:@selector(editProfileBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)updateUserInfo:(CurrentUser *)user
+- (void)updateUserInfo:(Pet2ShareUser *)user
 {
-    // TODO: Implement later
+    Person *person = user.person;
+    
+    if (person)
+    {
+        // Fetch Name label
+        NSString *firstName = user.person.firstName ?: NSLocalizedString(@"First Name", @"");
+        NSString *lastName = user.person.lastName ?: NSLocalizedString(@"Last Name", @"");
+        self.nameLabel.text = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+        
+        // Fetch image
+        Pet2ShareService *service = [Pet2ShareService new];
+        [service loadImage:person.avatarUrl completion:^(UIImage *image) {
+            [self.avatarImageView setImage:image];
+        }];
+    }
+}
+
+#pragma mark - Events
+
+- (void)editProfileBtnTapped:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(editProfile:)])
+    {
+        [self.delegate performSelector:@selector(editProfile:) withObject:sender];
+    }
 }
 
 @end

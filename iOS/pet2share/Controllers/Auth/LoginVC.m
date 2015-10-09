@@ -13,7 +13,7 @@
 #import "LoginTableCtrl.h"
 #import "Utils.h"
 #import "Pet2ShareService.h"
-#import "CurrentUser.h"
+#import "Pet2ShareUser.h"
 
 @interface LoginVC () <FormProtocol, Pet2ShareServiceCallback>
 
@@ -28,8 +28,7 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
-    if ((self = [super initWithCoder:aDecoder]))
-    {}
+    if ((self = [super initWithCoder:aDecoder])) {}
     return self;
 }
 
@@ -113,20 +112,7 @@
     if (objects.count == 1)
     {
         User *user = [objects objectAtIndex:0];
-        CurrentUser *currentUser = [CurrentUser sharedInstance];
-        currentUser.username = user.username;
-        currentUser.password = user.password;
-        currentUser.email = user.email;
-        currentUser.alternateEmail = user.alternateEmail;
-        currentUser.socialMediaId = user.socialMediaId;
-        currentUser.socialMediaName = user.socialMediaName;
-        currentUser.phone = user.phone;
-        currentUser.socialMediaSource = user.socialMediaSource;
-        currentUser.person = user.person;
-        currentUser.userType = user.userType;
-        currentUser.isAuthenticated = user.isAuthenticated;
-        currentUser.isActive = user.isActive;
-        
+        [[Pet2ShareUser current] updateFromUser:user];
         [self.loginBtn hideActivityIndicator];
         [self performSegueWithIdentifier:kSegueMainView sender:self];
     }

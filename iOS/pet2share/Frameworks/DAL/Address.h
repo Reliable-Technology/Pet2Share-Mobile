@@ -15,8 +15,8 @@
 @property NSString<Optional> *addressLine2;
 @property NSString<Optional> *city;
 @property NSString<Optional> *country;
-@property (readonly) BOOL isBillingAddress;
-@property (readonly) BOOL isShippingAddress;
+@property BOOL isBillingAddress;
+@property BOOL isShippingAddress;
 @property NSString<Optional> *state;
 @property NSString<Optional> *zipCode;
 

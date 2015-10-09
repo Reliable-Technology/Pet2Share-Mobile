@@ -14,8 +14,6 @@ NSString * const kEmptyString               = @"";
 CGFloat const kBarButtonWidth               = 32.0f;
 CGFloat const kBarButtonHeight              = 32.0f;
 NSString * const kLogoTypeface              = @"LobsterTwo-Bold";
-NSString * const kDefaultTypeface           = @"Lato-Regular";
-NSString * const kDefaultBoldTypeface       = @"Lato-Bold";
 NSString * const kEmptyDate                 = @"/Date(-62135568000000)/";
 
 #pragma mark - Segues
@@ -29,6 +27,7 @@ NSString * const kSegueLoginContainer       = @"logincontainer";
 NSString * const kSegueRegisterContainer    = @"registercontainer";
 NSString * const kSegueDashboard            = @"dashboard";
 NSString * const kSegueMainView             = @"mainview";
+NSString * const kSegueEditProfile          = @"editprofile";
 
 #pragma mark - Date Format
 

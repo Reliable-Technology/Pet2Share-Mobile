@@ -23,6 +23,7 @@
 
 #pragma mark - Date
 
-+ (NSDate *)dateFromJSON:(NSString *)dateString;
++ (NSDate *)deserializeJsonDateString:(NSString *)jsonDateString;
++ (NSString *)formatdateToDateTime:(NSDate *)date;
 
 @end

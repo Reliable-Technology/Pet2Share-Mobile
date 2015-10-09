@@ -74,4 +74,25 @@
     return [NSDate dateWithTimeIntervalSince1970:interval];
 }
 
++ (NSDate *)deserializeJsonDateString:(NSString *)jsonDateString
+{
+    NSInteger offset = [[NSTimeZone defaultTimeZone] secondsFromGMT];
+    NSInteger startPosition = [jsonDateString rangeOfString:@"("].location + 1;
+    NSTimeInterval unixTime = [[jsonDateString substringWithRange:NSMakeRange(startPosition, 13)] doubleValue] / 1000;
+    NSDate *date = [[NSDate dateWithTimeIntervalSince1970:unixTime] dateByAddingTimeInterval:offset];
+    
+    return date;
+}
+
++ (NSString *)formatdateToDateTime:(NSDate *)date
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"Z"];
+    
+    NSString *jsonDate = [NSString stringWithFormat:@"/Date(%.0f000%@)/",
+                          [date timeIntervalSince1970], [formatter stringFromDate:date]];
+    
+    return jsonDate;
+}
+
 @end

@@ -15,10 +15,10 @@
 
 @interface User : RepositoryObject
 
-@property (readonly) NSInteger identifier;
-@property (readonly) NSString<Optional> *username;
+@property NSInteger identifier;
+@property NSString<Optional> *username;
 @property NSString<Optional> *password;
-@property (readonly) BOOL isAuthenticated;
+@property BOOL isAuthenticated;
 @property Person *person;
 @property NSString *email;
 @property NSString<Optional> *alternateEmail;
@@ -29,28 +29,28 @@
 @property UserType<Optional> *userType;
 @property Date *dateAdded;
 @property Date *dateModified;
-@property (readonly) BOOL isActive;
+@property BOOL isActive;
 
 @end
 
 @interface UserType : RepositoryObject
 
-@property (readonly) NSInteger identifier;
+@property NSInteger identifier;
 @property NSString<Optional> *name;
 @property NSDate *dateAdded;
 @property NSDate *dateModified;
-@property (readonly) BOOL isActive;
-@property (readonly) BOOL isDeleted;
+@property BOOL isActive;
+@property BOOL isDeleted;
 
 @end
 
 @interface SocialMediaSource : RepositoryObject
 
-@property (readonly) NSInteger identifier;
+@property NSInteger identifier;
 @property NSString<Optional> *name;
 @property NSDate *dateAdded;
 @property NSDate *dateModified;
-@property (readonly) BOOL isActive;
-@property (readonly) BOOL isDeleted;
+@property BOOL isActive;
+@property BOOL isDeleted;
 
 @end

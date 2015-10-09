@@ -1,5 +1,5 @@
 //
-//  CurrentUser.h
+//  Pet2ShareUser.h
 //  pet2share
 //
 //  Created by Tony Kieu on 10/7/15.
@@ -9,12 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "WSConstants.h"
 
-@interface CurrentUser : NSObject
+@interface Pet2ShareUser : NSObject
 
-+ (instancetype)sharedInstance;
++ (instancetype)current;
++ (Pet2ShareUser *)user;
+- (void)updateFromUser:(User *)user;
+- (User *)toModel;
 
-@property (nonatomic, strong) NSString *username;
-@property (nonatomic, strong) NSString *password;
+@property (nonatomic, readonly) NSInteger identifier;
+@property (nonatomic, readonly) NSString *username;
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *alternateEmail;
 @property (nonatomic, strong) NSString *socialMediaId;
@@ -23,7 +26,7 @@
 @property (nonatomic, strong) SocialMediaSource *socialMediaSource;
 @property (nonatomic, strong) Person *person;
 @property (nonatomic, strong) UserType *userType;
-@property (nonatomic, assign) BOOL isAuthenticated;
-@property (nonatomic, assign) BOOL isActive;
+@property (nonatomic, readonly) BOOL isAuthenticated;
+@property (nonatomic, readonly) BOOL isActive;
 
 @end

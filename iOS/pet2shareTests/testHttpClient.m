@@ -69,6 +69,22 @@ static CGFloat const kRequestTimeOut = 30.0f;
     XCTAssert(YES, @"Passed");
 }
 
+- (void)testGetUserProfile
+{
+    self.expectation = [self expectationWithDescription:@"Response Test"];
+    
+    Pet2ShareService *service = [Pet2ShareService new];
+    [service getUserProfile:self userId:10];
+    
+    [self waitForExpectationsWithTimeout:kRequestTimeOut handler:^(NSError *error) {
+        if (error)
+        {
+            NSLog(@"Error: %@", [error localizedDescription]);
+        }
+    }];
+    XCTAssert(YES, @"Passed");
+}
+
 #pragma mark - <Pet2ShareServiceCallback>
 
 - (void)onReceiveSuccess:(NSArray *)objects

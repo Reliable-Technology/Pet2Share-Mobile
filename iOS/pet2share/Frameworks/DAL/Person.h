@@ -13,7 +13,7 @@
 
 @interface Person : RepositoryObject
 
-@property (readonly) NSInteger identifier;
+@property NSInteger identifier;
 @property NSString<Optional> *firstName;
 @property NSString<Optional> *lastName;
 @property NSString<Optional> *email;
@@ -25,6 +25,6 @@
 @property NSString<Optional> *aboutMe;
 @property Date *dateAdded;
 @property Date *dateModified;
-@property (readonly) BOOL isActive;
+@property BOOL isActive;
 
 @end

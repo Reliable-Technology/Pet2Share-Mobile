@@ -11,14 +11,14 @@
 #import "ProfileHeaderCell.h"
 #import "PetCollectionCell.h"
 #import "Pet2ShareService.h"
-#import "CurrentUser.h"
+#import "Pet2ShareUser.h"
 
 static NSString * const kCellIdentifier     = @"petcollectioncell";
 static NSString * const kHeaderIdentifier   = @"profileheadercell";
 static NSString * const kHeaderNibName      = @"ProfileHeaderCell";
 static NSString * const kCellNibName        = @"PetCollectionCell";
 
-@interface ProfileVC () <Pet2ShareServiceCallback>
+@interface ProfileVC () <ProfileHeaderDelegate>
 
 @end
 
@@ -54,6 +54,13 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
     [self requestData];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.collectionView reloadData];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // TODO: Implement later
@@ -87,10 +94,7 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
     // TODO: Implement later
     
     for (int i = 0; i < 10; i++)
-    {
         [self.items addObject:@"Test"];
-        [self.collectionView reloadData];
-    }
 }
 
 - (void)onReceiveSuccess:(NSArray *)objects
@@ -132,7 +136,8 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
         ProfileHeaderCell *cell = [collectionView dequeueReusableSupplementaryViewOfKind:kind
                                                                      withReuseIdentifier:kHeaderIdentifier
                                                                             forIndexPath:indexPath];
-        [cell updateUserInfo:[CurrentUser sharedInstance]];
+        [cell updateUserInfo:[Pet2ShareUser current]];
+        cell.delegate = self;
         return cell;
     }
     return nil;
@@ -153,6 +158,13 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
 //    {
 //        NSLog(@"%s: Exception: %@", __func__, exception.description);
 //    }
+}
+
+#pragma mark - <ProfileHeaderDelegate>
+
+- (void)editProfile:(id)sender
+{
+    [self performSegueWithIdentifier:kSegueEditProfile sender:self];
 }
 
 @end
