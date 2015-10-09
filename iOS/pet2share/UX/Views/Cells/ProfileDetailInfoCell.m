@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (strong, nonatomic) NSString *tagKey;
 
 @end
 
@@ -45,20 +46,39 @@
     self.textField.delegate = self;
 }
 
-#pragma mark - Public Instance Methods
+#pragma mark - <UITextFieldDelegate>
 
-- (id)text
+- (BOOL)textFieldShouldClear:(UITextField *)textField
 {
-    return self.textField.text ? self.textField.text : [NSNull class];
+    return YES;
 }
 
-- (void)updateCell:(NSDictionary *)dict
+- (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    // Icon Image
+    if ([self.formProtocol respondsToSelector:@selector(fieldIsDirty)])
+        [self.formProtocol fieldIsDirty];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if ([self.formProtocol respondsToSelector:@selector(updateData:value:)])
+        [self.formProtocol updateData:self.tagKey value:self.fieldValue];
+}
+
+#pragma mark - Public Instance Methods
+
+- (NSString *)fieldValue
+{
+    if (self.textField.text && ![self.textField.text isEqualToString:NSLocalizedString(@"N/A", @"")])
+        return self.textField.text;
+    else return nil;
+}
+
+- (void)updateCell:(NSDictionary *)dict forTagKey:(NSString *)tagKey
+{
+    self.tagKey = tagKey;
     self.iconImageView.image = [Graphics tintImage:[UIImage imageNamed:dict[kCellImageIcon]]
                                          withColor:[AppColorScheme darkGray]];
-    
-    // TextField
     self.textField.text = dict[kCellEditText];
 }
 

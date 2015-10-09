@@ -20,21 +20,20 @@ static NSString * const kCellProfileBasicInfoIdentifier     = @"profilebasicinfo
 static NSString * const kCellProfileBasicInfoNibName        = @"ProfileBasicInfoCell";
 static NSString * const kCellProfileDetailInfoIdentifier    = @"profiledetailinfocell";
 static NSString * const kCellProfileDetailInfoNibName       = @"ProfileDetailInfoCell";
-static NSString * const kCellReuseIdentifier                = @"cellidentifier";
+static NSString * const kCellIdentifier                     = @"cellidentifier";
 static NSString * const kCellHeight                         = @"cellheight";
 static NSInteger const kFirstSectionIndex                   = 0;
 static NSInteger const kSecondSectionIndex                  = 1;
 
-@interface EditProfileVC () <BarButtonsProtocol, Pet2ShareServiceCallback, UITableViewDataSource, UITableViewDelegate, ProfileBasicInfoDelegate>
+@interface EditProfileVC () <BarButtonsProtocol, Pet2ShareServiceCallback, UITableViewDataSource, UITableViewDelegate, FormProtocol>
 {
-    NSInteger _focusSection;
     BOOL _isDirty;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) ActivityView *activity;
 @property (strong, nonatomic) MutableOrderedDictionary *cellData;
-@property (strong, nonatomic) Pet2ShareUser *tempUser;
+@property (strong, nonatomic) NSMutableDictionary *unsavedData;
 
 @end
 
@@ -48,9 +47,8 @@ static NSInteger const kSecondSectionIndex                  = 1;
     {
         self.barButtonsProtocol = self;
         _cellData = [MutableOrderedDictionary dictionary];
-        _tempUser = [Pet2ShareUser user];
-        _focusSection = kFirstSectionIndex;
         _isDirty = NO;
+        _unsavedData = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -95,18 +93,24 @@ static NSInteger const kSecondSectionIndex                  = 1;
         
         if (currentUser.person)
         {
-            // Basic Info
-            NSDictionary *cellBasicInfo = @{kCellImageIcon1:    @"icon-user-selected",
-                                            kCellImageIcon2:    @"icon-contact-selected",
-                                            kCellImageIcon3:    @"icon-contact-selected",
-                                            kCellImageLink:     currentUser.person.avatarUrl ?: NSLocalizedString(@"N/A", @""),
-                                            kCellNonEditText:   currentUser.email ?: NSLocalizedString(@"N/A", @""),
-                                            kCellEditText1:     currentUser.person.firstName ?: NSLocalizedString(@"N/A", @""),
-                                            kCellEditText2:     currentUser.person.lastName ?: NSLocalizedString(@"N/A", @"")};
+            ///------------------------------------------------
+            /// Basic Info
+            ///------------------------------------------------
+            
+            NSDictionary *cellBasicInfo = @{kCellImageIcon1: @"icon-user-selected",
+                                            kCellImageIcon2: @"icon-contact-selected",
+                                            kCellImageIcon3: @"icon-contact-selected",
+                                            kCellImageLink: currentUser.person.avatarUrl ?: NSLocalizedString(@"N/A", @""),
+                                            kCellNonEditText: currentUser.email ?: NSLocalizedString(@"N/A", @""),
+                                            kCellEditText1: currentUser.person.firstName ?: NSLocalizedString(@"N/A", @""),
+                                            kCellEditText2: currentUser.person.lastName ?: NSLocalizedString(@"N/A", @"")};
             [self.cellData insertObject:@[cellBasicInfo] forKey:kCellProfileBasicInfoIdentifier atIndex:kFirstSectionIndex];
             
-            // Detail Info
-            NSString *birthDateStr = currentUser.person.dateOfBirth
+            ///------------------------------------------------
+            /// Detail Info
+            ///------------------------------------------------
+            
+            NSString *dateOfBirthStr = currentUser.person.dateOfBirth
             ? [currentUser.person.dateOfBirth formattedDateWithFormat:kFormatDateUS]: NSLocalizedString(@"N/A", @"");
             
             Address *address = currentUser.person.address;
@@ -128,19 +132,21 @@ static NSInteger const kSecondSectionIndex                  = 1;
                     [addressStr appendString:address.state];
                     [addressStr appendString:@", "];
                 }
-                
                 if (address.zipCode)
                 {
                     [addressStr appendString:address.zipCode];
                 }
             }
             
-            NSArray *cellDetailInfo = @[@{kCellImageIcon:       @"icon-phone-selected",
-                                          kCellEditText:        currentUser.phone ?: NSLocalizedString(@"N/A", @"")},
-                                        @{kCellImageIcon:       @"icon-birthdaycake-selected",
-                                          kCellEditText:        birthDateStr},
-                                        @{kCellImageIcon:       @"icon-home-selected",
-                                          kCellEditText:        [NSString stringWithString:addressStr]}];
+            NSArray *cellDetailInfo = @[@{kCellImageIcon: @"icon-phone-selected",
+                                          kCellEditText: currentUser.phone ?: NSLocalizedString(@"N/A", @""),
+                                          kCellIdentifier: kPhoneKey},
+                                        @{kCellImageIcon: @"icon-birthdaycake-selected",
+                                          kCellEditText: dateOfBirthStr,
+                                          kCellIdentifier: kDateOfBirthKey},
+                                        @{kCellImageIcon: @"icon-home-selected",
+                                          kCellEditText: [NSString stringWithString:addressStr],
+                                          kCellIdentifier: kAddressKey}];
             [self.cellData insertObject:cellDetailInfo forKey:kCellProfileDetailInfoIdentifier atIndex:kSecondSectionIndex];
         }
     }
@@ -157,10 +163,31 @@ static NSInteger const kSecondSectionIndex                  = 1;
     [self.activity show];
     self.tableView.userInteractionEnabled = NO;
     
-    Pet2ShareService *service = [Pet2ShareService new];
-    [Pet2ShareUser current].person.firstName = self.tempUser.person.firstName;
-    [Pet2ShareUser current].person.lastName = self.tempUser.person.lastName;
+    for (NSString *key in self.unsavedData)
+    {
+        id value = self.unsavedData[key];
+        
+        if ([key isEqualToString:kFirstNameKey])
+            [Pet2ShareUser current].person.firstName = value;
+        else if ([key isEqualToString:kLastNameKey])
+            [Pet2ShareUser current].person.lastName = value;
+        else if ([key isEqualToString:kPhoneKey])
+        {
+            [Pet2ShareUser current].phone = value;
+            [Pet2ShareUser current].person.primaryPhone = value;
+        }
+        else if ([key isEqualToString:kDateOfBirthKey])
+        {
+            // TODO: Implement later
+            // self.tempUser.person.dateOfBirth = (Date *)[NSDate dateWithString:value formatString:kFormatDateUS];
+        }
+        else if ([key isEqualToString:kAddressKey])
+        {
+            // TODO: Implement later
+        }
+    }
     
+    Pet2ShareService *service = [Pet2ShareService new];
     [service updateUserProfile:self
                         userId:[Pet2ShareUser current].identifier
                      firstName:[Pet2ShareUser current].person.firstName
@@ -212,20 +239,38 @@ static NSInteger const kSecondSectionIndex                  = 1;
 
 - (void)handleRightButtonEvent:(id)sender
 {
+    if (!_isDirty)
+    {
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        return;
+    }
+    
     [Graphics promptAlert:NSLocalizedString(@"Save Settings", @"")
                   message:NSLocalizedString(@"Do you want to save new user information?", @"")
                      type:NormalAlert
                        ok:^(SIAlertView *alert) {
+                           [self.view endEditing:YES];
                            [self updateUserProfile];
                        } cancel:^(SIAlertView *alert) {
                            return;
                        }];
 }
 
-- (void)updateUserFirstName:(NSString *)firstName lastName:(NSString *)lastName
+#pragma mark - <FormProtocol>
+
+- (void)performAction
 {
-    self.tempUser.person.firstName = firstName;
-    self.tempUser.person.lastName = lastName;
+    // No Implementation
+}
+
+- (void)fieldIsDirty
+{
+    if (!_isDirty) _isDirty = YES;
+}
+
+- (void)updateData:(NSString *)key value:(NSString *)value
+{
+    [self.unsavedData setObject:value forKey:key];
 }
 
 #pragma mark - <UITableViewDelegate>
@@ -258,8 +303,8 @@ static NSInteger const kSecondSectionIndex                  = 1;
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     float width = tableView.bounds.size.width;
-    int fontSize = 13;
-    int padding = 16;
+    int fontSize = 13.0f;
+    int padding = 16.0f;
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, width, fontSize+padding*2)];
     view.backgroundColor = [AppColorScheme white];
@@ -302,7 +347,7 @@ static NSInteger const kSecondSectionIndex                  = 1;
             if (!basicCell) basicCell = [[ProfileBasicInfoCell alloc] initWithStyle:UITableViewCellStyleDefault
                                                                     reuseIdentifier:reuseIdentifier];
             [basicCell updateCell:data];
-            basicCell.delegate = self;
+            basicCell.formProtocol = self;
             cell = basicCell;
         }
         else if ([reuseIdentifier isEqualToString:kCellProfileDetailInfoIdentifier])
@@ -311,7 +356,8 @@ static NSInteger const kSecondSectionIndex                  = 1;
             ProfileDetailInfoCell *detailCell = [self.tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
             if (!detailCell) detailCell = [[ProfileDetailInfoCell alloc] initWithStyle:UITableViewCellStyleDefault
                                                                        reuseIdentifier:reuseIdentifier];
-            [detailCell updateCell:data];
+            detailCell.formProtocol = self;
+            [detailCell updateCell:data forTagKey:data[kCellIdentifier]];
             cell = detailCell;
         }
         else
@@ -319,7 +365,7 @@ static NSInteger const kSecondSectionIndex                  = 1;
             fTRACE(@"Error - Unrecognized Identifier %@", reuseIdentifier);
             cell = [self.tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
             if (!cell) cell = [[ProfileBasicInfoCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                                          reuseIdentifier:reuseIdentifier]; 
+                                                          reuseIdentifier:reuseIdentifier];
         }
         return cell;
     }

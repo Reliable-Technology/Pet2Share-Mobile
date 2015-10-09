@@ -60,38 +60,39 @@
     return YES;
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField
+- (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    if ([self.delegate respondsToSelector:@selector(updateUserFirstName:lastName:)])
-        [self.delegate updateUserFirstName:self.firstName lastName:self.lastName];
+    if ([self.formProtocol respondsToSelector:@selector(fieldIsDirty)])
+        [self.formProtocol fieldIsDirty];
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
+- (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    if (textField == self.firstnameTxtField)
-        [self.lastNameTxtField becomeFirstResponder];
-    else
-        [textField resignFirstResponder];
-
-    return YES;
+    if ([self.formProtocol respondsToSelector:@selector(updateData:value:)])
+    {
+        if (textField == self.firstnameTxtField)
+            [self.formProtocol updateData:kFirstNameKey value:self.firstName];
+        else if (textField == self.lastNameTxtField)
+            [self.formProtocol updateData:kLastNameKey value:self.lastName];
+    }
 }
 
 #pragma mark - Public Instance Methods
 
 - (NSString *)firstName
 {
-    if (self.firstnameTxtField.text && ![self.firstnameTxtField.text isEqualToString:NSLocalizedString(@"N/A", @"")])
+    if (![self.lastNameTxtField.text isEqualToString:kEmptyString] &&
+        ![self.firstnameTxtField.text isEqualToString:NSLocalizedString(@"N/A", @"")])
         return self.firstnameTxtField.text;
-    else
-        return nil;
+    else return nil;
 }
 
 - (NSString *)lastName
 {
-    if (self.lastNameTxtField.text && ![self.lastNameTxtField.text isEqualToString:NSLocalizedString(@"N/A", @"")])
+    if (![self.lastNameTxtField.text isEqualToString:kEmptyString]
+        && ![self.lastNameTxtField.text isEqualToString:NSLocalizedString(@"N/A", @"")])
         return self.lastNameTxtField.text;
-    else
-        return nil;
+    else return nil;
 }
 
 - (void)resignAllTextFields
@@ -111,9 +112,9 @@
                                                withColor:[AppColorScheme darkGray]];
     
     // Labels & TextFields
-    self.usernameLabel.text = dict[kCellNonEditText];
-    self.firstnameTxtField.text = dict[kCellEditText1];
-    self.lastNameTxtField.text = dict[kCellEditText2];
+    if (dict[kCellNonEditText] != NSLocalizedString(@"N/A", @"")) self.usernameLabel.text = dict[kCellNonEditText];
+    if (dict[kCellEditText1] != NSLocalizedString(@"N/A", @"")) self.firstnameTxtField.text = dict[kCellEditText1];
+    if (dict[kCellEditText2] != NSLocalizedString(@"N/A", @"")) self.lastNameTxtField.text = dict[kCellEditText2];
     
     // Request Avatar Image
     Pet2ShareService *service = [Pet2ShareService new];

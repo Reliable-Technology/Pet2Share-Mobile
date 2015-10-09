@@ -7,14 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FormProtocol.h"
 
 static NSString * const kCellImageIcon      = @"imageicon";
 static NSString * const kCellEditText       = @"edittext";
+static NSString * const kPhoneKey           = @"phone";
+static NSString * const kDateOfBirthKey     = @"dateofbirth";
+static NSString * const kAddressKey         = @"address";
 
 @interface ProfileDetailInfoCell : UITableViewCell
 
+@property (nonatomic, weak) id<FormProtocol> formProtocol;
+
 + (CGFloat)cellHeight;
-- (id)text;
-- (void)updateCell:(NSDictionary *)dict;
+- (void)updateCell:(NSDictionary *)dict forTagKey:(NSString *)tagKey;
 
 @end

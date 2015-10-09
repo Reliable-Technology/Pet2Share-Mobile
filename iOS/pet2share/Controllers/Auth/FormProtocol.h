@@ -12,6 +12,7 @@
 - (void)performAction;
 
 @optional
-- (void)goToNextSection;
+- (void)fieldIsDirty;
+- (void)updateData:(NSString *)key value:(NSString *)value;
 
 @end

@@ -12,9 +12,7 @@
 @interface Pet2ShareUser : NSObject
 
 + (instancetype)current;
-+ (Pet2ShareUser *)user;
 - (void)updateFromUser:(User *)user;
-- (User *)toModel;
 
 @property (nonatomic, readonly) NSInteger identifier;
 @property (nonatomic, readonly) NSString *username;
@@ -26,7 +24,7 @@
 @property (nonatomic, strong) SocialMediaSource *socialMediaSource;
 @property (nonatomic, strong) Person *person;
 @property (nonatomic, strong) UserType *userType;
-@property (nonatomic, readonly) BOOL isAuthenticated;
-@property (nonatomic, readonly) BOOL isActive;
+@property (nonatomic, assign) BOOL isAuthenticated;
+@property (nonatomic, assign) BOOL isActive;
 
 @end

@@ -14,7 +14,7 @@ NSString * const kEmptyString               = @"";
 CGFloat const kBarButtonWidth               = 32.0f;
 CGFloat const kBarButtonHeight              = 32.0f;
 NSString * const kLogoTypeface              = @"LobsterTwo-Bold";
-NSString * const kEmptyDate                 = @"/Date(-62135568000000)/";
+NSString *const kObjectTagKey               = @"objecttag";
 
 #pragma mark - Segues
 
@@ -40,5 +40,5 @@ NSString * const kFormatDayMonthShort       = @"dd MMM";
 NSString * const kFormatMonthYearShort      = @"MMM, yyyy";
 NSString * const kFormatDayOfWeekShort      = @"EEE";
 NSString * const kFormatDayOfWeekLong       = @"EEEE";
-NSString * const kFormatDateUS              = @"M/d/yyyy";
+NSString * const kFormatDateUS              = @"MM/dd/yyyy";
 

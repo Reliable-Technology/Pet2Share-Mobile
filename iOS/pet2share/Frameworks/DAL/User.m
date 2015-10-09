@@ -23,7 +23,7 @@
                                  @"SocialMediaSource": @"socialMediaSource",
                                  @"SocialMediaId": @"socialMediaId",
                                  @"SocialMediaName": @"socialMediaName",
-                                 @"phone": @"phone",
+                                 @"Phone": @"phone",
                                  @"UType": @"userType",
                                  @"DateAdded": @"dateAdded",
                                  @"DateModified": @"dateModified",

@@ -26,9 +26,9 @@ static Pet2ShareUser *_current = nil;
     return _current;
 }
 
-+ (Pet2ShareUser *)user
+- (id)copyWithZone:(NSZone *)zone
 {
-    return [Pet2ShareUser new];
+    return [Pet2ShareUser current];
 }
 
 - (id)init
@@ -36,8 +36,6 @@ static Pet2ShareUser *_current = nil;
     if ((self = [super init]))
     {
         _person = [Person new];
-        _socialMediaSource = [SocialMediaSource new];
-        _userType = [UserType new];
     }
     return self;
 }
@@ -59,13 +57,6 @@ static Pet2ShareUser *_current = nil;
         _isAuthenticated = user.isAuthenticated;
         _isActive = user.isActive;
     }
-}
-
-- (User *)toModel
-{
-    User *newUser = [User new];
-    newUser.person = self.person;
-    return newUser;
 }
 
 @end

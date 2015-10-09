@@ -16,11 +16,14 @@
 /** Radians to Degrees **/
 #define radiansToDegrees( radians ) ( ( radians ) * ( 180.0 / M_PI ) )
 
+#define propertyKeyPath(property) (@""#property)
+#define propertyKeyPathLastComponent(property) [[(@""#property) componentsSeparatedByString:@"."] lastObject]
+
 extern NSString * const kEmptyString;
 extern CGFloat const kBarButtonWidth;
 extern CGFloat const kBarButtonHeight;
 extern NSString * const kLogoTypeface;
-extern NSString * const kEmptyDate;
+extern NSString * const kObjectTagKey;
 
 #pragma mark - Segues
 
