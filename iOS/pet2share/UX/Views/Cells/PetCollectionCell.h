@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class Pet;
+
 @interface PetCollectionCell : UICollectionViewCell
 
 + (CGFloat)cellHeight:(CGFloat)spacing;
-- (void)setupView;
+- (void)setupView:(Pet *)pet;
 
 @end

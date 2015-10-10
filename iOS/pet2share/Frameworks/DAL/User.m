@@ -25,6 +25,7 @@
                                  @"SocialMediaName": @"socialMediaName",
                                  @"Phone": @"phone",
                                  @"UType": @"userType",
+                                 @"Pets": @"pets",
                                  @"DateAdded": @"dateAdded",
                                  @"DateModified": @"dateModified",
                                  @"IsActive": @"isActive"}];

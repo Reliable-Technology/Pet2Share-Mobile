@@ -9,13 +9,15 @@
 #import "PetCollectionCell.h"
 #import "Utils.h"
 #import "Graphics.h"
+#import "Pet2ShareUser.h"
+#import "Pet2ShareService.h"
 
 @interface PetCollectionCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UIView *infoView;
-@property (weak, nonatomic) IBOutlet UILabel *nickNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *createdDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *otherInfoLabel;
 
 @end
 
@@ -55,10 +57,21 @@
 
 #pragma mark - Public Instance Methods
 
-- (void)setupView
+- (void)setupView:(Pet *)pet
 {
-    // TODO: Implement later
+    fTRACE(@"Pet: %@", pet);
+    
+    // Pet name
+    self.nameLabel.text = pet.name;
+    
+    // Other Info
+    self.otherInfoLabel.text = pet.about;
+    
+    // Load Image
+    Pet2ShareService *service = [Pet2ShareService new];
+    [service loadImage:pet.profilePicture completion:^(UIImage *image) {
+        self.profileImageView.image = image;
+    }];
 }
-
 
 @end

@@ -89,6 +89,8 @@
 		FBCF4AB31BC7371C00C75066 /* ProfileDetailInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4AB11BC7371C00C75066 /* ProfileDetailInfoCell.m */; settings = {ASSET_TAGS = (); }; };
 		FBCF4AB41BC7371C00C75066 /* ProfileDetailInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBCF4AB21BC7371C00C75066 /* ProfileDetailInfoCell.xib */; settings = {ASSET_TAGS = (); }; };
 		FBCF4AB71BC81BC900C75066 /* UpdateMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4AB61BC81BC900C75066 /* UpdateMessage.m */; settings = {ASSET_TAGS = (); }; };
+		FBCF4ABA1BC8641B00C75066 /* Pet.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4AB91BC8641B00C75066 /* Pet.m */; settings = {ASSET_TAGS = (); }; };
+		FBCF4ABD1BC8691700C75066 /* PetType.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4ABC1BC8691700C75066 /* PetType.m */; settings = {ASSET_TAGS = (); }; };
 		FBD3938F1B50D9DB000ED817 /* BaseNavigationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD3938E1B50D9DB000ED817 /* BaseNavigationVC.m */; };
 /* End PBXBuildFile section */
 
@@ -238,6 +240,10 @@
 		FBCF4AB21BC7371C00C75066 /* ProfileDetailInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileDetailInfoCell.xib; sourceTree = "<group>"; };
 		FBCF4AB51BC81BC900C75066 /* UpdateMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateMessage.h; sourceTree = "<group>"; };
 		FBCF4AB61BC81BC900C75066 /* UpdateMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateMessage.m; sourceTree = "<group>"; };
+		FBCF4AB81BC8641B00C75066 /* Pet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pet.h; sourceTree = "<group>"; };
+		FBCF4AB91BC8641B00C75066 /* Pet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pet.m; sourceTree = "<group>"; };
+		FBCF4ABB1BC8691700C75066 /* PetType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetType.h; sourceTree = "<group>"; };
+		FBCF4ABC1BC8691700C75066 /* PetType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetType.m; sourceTree = "<group>"; };
 		FBD3938D1B50D9DB000ED817 /* BaseNavigationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationVC.h; sourceTree = "<group>"; };
 		FBD3938E1B50D9DB000ED817 /* BaseNavigationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -481,6 +487,10 @@
 				FB5050381BC4D1E70037F3E5 /* JSONValueTransformer+Date.m */,
 				FBCF4AB51BC81BC900C75066 /* UpdateMessage.h */,
 				FBCF4AB61BC81BC900C75066 /* UpdateMessage.m */,
+				FBCF4AB81BC8641B00C75066 /* Pet.h */,
+				FBCF4AB91BC8641B00C75066 /* Pet.m */,
+				FBCF4ABB1BC8691700C75066 /* PetType.h */,
+				FBCF4ABC1BC8691700C75066 /* PetType.m */,
 			);
 			path = DAL;
 			sourceTree = "<group>";
@@ -827,6 +837,7 @@
 				FBCDC9A91BC3381B00808E30 /* RepositoryObject.m in Sources */,
 				FBCEA4321B4CC3E000497678 /* main.m in Sources */,
 				FB484A5B1B50BE410045A6EA /* AppColorScheme.m in Sources */,
+				FBCF4ABD1BC8691700C75066 /* PetType.m in Sources */,
 				FBA3F6B91BC5555E0094288D /* SignUpTableCtrl.m in Sources */,
 				FBCF4A761BC5B28700C75066 /* ProfileVC.m in Sources */,
 				FB484A511B4FD40A0045A6EA /* UIDevice+Hardware.m in Sources */,
@@ -844,6 +855,7 @@
 				FB484A581B50BE370045A6EA /* AppColor.m in Sources */,
 				FB484A4F1B4FD40A0045A6EA /* Reachability.m in Sources */,
 				FBCF4AA41BC72E9D00C75066 /* ProfileBasicInfoCell.m in Sources */,
+				FBCF4ABA1BC8641B00C75066 /* Pet.m in Sources */,
 				FB1067F61B53697600BEBC40 /* DashboardVC.m in Sources */,
 				FB6C272F1B6ED1C70002034A /* HttpClient.m in Sources */,
 			);

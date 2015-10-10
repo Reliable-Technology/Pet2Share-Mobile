@@ -13,6 +13,8 @@
 @class UserType;
 @class Date;
 
+@protocol Pet;
+
 @interface User : RepositoryObject
 
 @property NSInteger identifier;
@@ -27,6 +29,7 @@
 @property NSString<Optional> *socialMediaName;
 @property NSString<Optional> *phone;
 @property UserType<Optional> *userType;
+@property NSArray<Pet, Optional> *pets;
 @property Date *dateAdded;
 @property Date *dateModified;
 @property BOOL isActive;

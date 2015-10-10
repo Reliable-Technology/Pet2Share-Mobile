@@ -54,6 +54,7 @@ static Pet2ShareUser *_current = nil;
         self.socialMediaSource = user.socialMediaSource;
         self.person = user.person;
         self.userType = user.userType;
+        self.pets = user.pets;
         _isAuthenticated = user.isAuthenticated;
         _isActive = user.isActive;
     }

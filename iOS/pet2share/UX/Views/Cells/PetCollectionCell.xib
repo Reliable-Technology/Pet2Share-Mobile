@@ -13,9 +13,10 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="600" height="250"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-samplepet" translatesAutoresizingMaskIntoConstraints="NO" id="V8T-pf-K4c">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V8T-pf-K4c">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
                         <animations/>
+                        <color key="backgroundColor" red="0.13346317410469055" green="0.18231484293937683" blue="0.25190103054046631" alpha="1" colorSpace="calibratedRGB"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XUZ-bD-3mb">
                         <rect key="frame" x="0.0" y="200" width="600" height="50"/>
@@ -66,14 +67,11 @@
                 <constraint firstItem="V8T-pf-K4c" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="m1X-FH-MNg"/>
             </constraints>
             <connections>
-                <outlet property="createdDateLabel" destination="zqc-RD-ube" id="lEi-LF-hfF"/>
                 <outlet property="infoView" destination="XUZ-bD-3mb" id="KZx-m1-ENa"/>
-                <outlet property="nickNameLabel" destination="CtI-po-CPh" id="KDd-35-jAf"/>
+                <outlet property="nameLabel" destination="CtI-po-CPh" id="mH4-v8-lq0"/>
+                <outlet property="otherInfoLabel" destination="zqc-RD-ube" id="O7j-Vx-RPV"/>
                 <outlet property="profileImageView" destination="V8T-pf-K4c" id="Rlg-2v-Oac"/>
             </connections>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="img-samplepet" width="500" height="500"/>
-    </resources>
 </document>

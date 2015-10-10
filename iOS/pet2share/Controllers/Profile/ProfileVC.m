@@ -43,21 +43,18 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
      @{NSForegroundColorAttributeName: [AppColor navigationBarTextColor],
        NSFontAttributeName:[UIFont fontWithName:kLogoTypeface size:20.0f]}];
     
-    // Register header view
+    // Setup collection view
     [self.collectionView registerNib:[UINib nibWithNibName:kHeaderNibName bundle:nil]
           forSupplementaryViewOfKind:CSStickyHeaderParallaxHeader
                  withReuseIdentifier:kHeaderIdentifier];
-    
     self.collectionView.backgroundColor = [AppColorScheme white];
     
-    // Request Data
-    [self requestData];
+    [self.items addObjectsFromArray:[Pet2ShareUser current].pets];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
     [self.collectionView reloadData];
 }
 
@@ -87,26 +84,6 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
     }
 }
 
-#pragma mark - Web Services
-
-- (void)requestData
-{
-    // TODO: Implement later
-    
-    for (int i = 0; i < 10; i++)
-        [self.items addObject:@"Test"];
-}
-
-- (void)onReceiveSuccess:(NSArray *)objects
-{
-    // TODO: Implement later
-}
-
-- (void)onReceiveError:(ErrorMessage *)errorMessage
-{
-    // TODO: Implement later
-}
-
 #pragma mark - <UICollectionViewDataSource>
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
@@ -115,15 +92,15 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
     PetCollectionCell *cell =
     (PetCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:self.cellReuseIdentifier
                                                                    forIndexPath:indexPath];
-//    @try
-//    {
-//        ParsePet *pet = [self.items objectAtIndex:indexPath.row];
-//        [cell setUpView:pet];
-//    }
-//    @catch (NSException *exception)
-//    {
-//        NSLog(@"%s: Exception: %@", __func__, exception.description);
-//    }
+    @try
+    {
+        Pet *pet = [self.items objectAtIndex:indexPath.row];
+        [cell setupView:pet];
+    }
+    @catch (NSException *exception)
+    {
+        NSLog(@"%s: Exception: %@", __func__, exception.description);
+    }
     
     return cell;
 }
