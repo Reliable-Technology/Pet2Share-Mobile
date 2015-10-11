@@ -75,7 +75,7 @@
                 <outlet property="avatarImageView" destination="gjX-70-hdZ" id="Pky-Qf-k8r"/>
                 <outlet property="editProfileBtn" destination="3iQ-g9-kh7" id="q9t-eS-Ii0"/>
                 <outlet property="nameLabel" destination="8DR-6I-BMs" id="JW7-Bc-z9n"/>
-                <outlet property="socialInfoLabel" destination="QTE-mf-KHw" id="hdA-to-EuL"/>
+                <outlet property="socialStatusInfoLabel" destination="QTE-mf-KHw" id="8fR-KF-fpH"/>
             </connections>
             <point key="canvasLocation" x="500" y="491.5"/>
         </collectionViewCell>

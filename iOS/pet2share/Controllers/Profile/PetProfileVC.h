@@ -1,0 +1,17 @@
+//
+//  PetProfileVC.h
+//  pet2share
+//
+//  Created by Tony Kieu on 10/10/15.
+//  Copyright © 2015 Pet 2 Share. All rights reserved.
+//
+
+#import "CollectionViewController.h"
+
+@class Pet;
+
+@interface PetProfileVC : CollectionViewController
+
+@property (nonatomic, strong) Pet *pet;
+
+@end

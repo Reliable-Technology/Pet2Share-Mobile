@@ -48,7 +48,7 @@
 
 - (void)awakeFromNib
 {
-    [Graphics dropShadow:self shadowOpacity:0.85f shadowRadius:2.0f offset:CGSizeZero];
+    [Graphics dropShadow:self shadowOpacity:0.85f shadowRadius:1.0f offset:CGSizeZero];
 }
 
 #pragma mark - Public Instance Methods

@@ -28,6 +28,7 @@ NSString * const kSegueRegisterContainer    = @"registercontainer";
 NSString * const kSegueDashboard            = @"dashboard";
 NSString * const kSegueMainView             = @"mainview";
 NSString * const kSegueEditProfile          = @"editprofile";
+NSString * const kSeguePetProfile           = @"petprofile";
 
 #pragma mark - Date Format
 

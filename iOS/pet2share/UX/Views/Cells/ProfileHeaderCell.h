@@ -22,6 +22,6 @@
 @property (nonatomic, weak) id<ProfileHeaderDelegate> delegate;
 
 + (CGFloat)cellHeight;
-- (void)updateUserInfo:(Pet2ShareUser *)user;
+- (void)updateProfileAvatar:(NSString *)url name:(NSString *)name socialStatusInfo:(NSString *)socialStatusInfo;
 
 @end

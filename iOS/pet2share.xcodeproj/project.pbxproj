@@ -55,6 +55,7 @@
 		FB5050331BC4D0B10037F3E5 /* Date.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5050321BC4D0B10037F3E5 /* Date.m */; settings = {ASSET_TAGS = (); }; };
 		FB5050391BC4D1E70037F3E5 /* JSONValueTransformer+Date.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5050381BC4D1E70037F3E5 /* JSONValueTransformer+Date.m */; settings = {ASSET_TAGS = (); }; };
 		FB5E1EBC1BC9DDAB00897CA2 /* DashboardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5E1EBB1BC9DDAB00897CA2 /* DashboardVC.m */; settings = {ASSET_TAGS = (); }; };
+		FB5E1EBF1BC9E2CE00897CA2 /* PetProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5E1EBE1BC9E2CE00897CA2 /* PetProfileVC.m */; settings = {ASSET_TAGS = (); }; };
 		FB6C272F1B6ED1C70002034A /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C272E1B6ED1C70002034A /* HttpClient.m */; };
 		FB6C27331B6ED1EF0002034A /* Pet2ShareService.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C27321B6ED1EF0002034A /* Pet2ShareService.m */; };
 		FB6C273D1B6ED2950002034A /* UrlManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C273C1B6ED2950002034A /* UrlManager.m */; };
@@ -175,6 +176,8 @@
 		FB535B6B1BC461CD00C6A3B3 /* libJSONModel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONModel.a; path = "Pods/../build/Debug-iphoneos/libJSONModel.a"; sourceTree = "<group>"; };
 		FB5E1EBA1BC9DDAB00897CA2 /* DashboardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardVC.h; sourceTree = "<group>"; };
 		FB5E1EBB1BC9DDAB00897CA2 /* DashboardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardVC.m; sourceTree = "<group>"; };
+		FB5E1EBD1BC9E2CE00897CA2 /* PetProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetProfileVC.h; sourceTree = "<group>"; };
+		FB5E1EBE1BC9E2CE00897CA2 /* PetProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetProfileVC.m; sourceTree = "<group>"; };
 		FB6C272D1B6ED1C70002034A /* HttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClient.h; sourceTree = "<group>"; };
 		FB6C272E1B6ED1C70002034A /* HttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpClient.m; sourceTree = "<group>"; };
 		FB6C27311B6ED1EF0002034A /* Pet2ShareService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pet2ShareService.h; sourceTree = "<group>"; };
@@ -586,6 +589,8 @@
 				FBCF4A751BC5B28700C75066 /* ProfileVC.m */,
 				FBCF4A9B1BC7076200C75066 /* EditProfileVC.h */,
 				FBCF4A9C1BC7076200C75066 /* EditProfileVC.m */,
+				FB5E1EBD1BC9E2CE00897CA2 /* PetProfileVC.h */,
+				FB5E1EBE1BC9E2CE00897CA2 /* PetProfileVC.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -839,6 +844,7 @@
 				FBCEA4321B4CC3E000497678 /* main.m in Sources */,
 				FB484A5B1B50BE410045A6EA /* AppColorScheme.m in Sources */,
 				FBCF4ABD1BC8691700C75066 /* PetType.m in Sources */,
+				FB5E1EBF1BC9E2CE00897CA2 /* PetProfileVC.m in Sources */,
 				FBA3F6B91BC5555E0094288D /* SignUpTableCtrl.m in Sources */,
 				FBCF4A761BC5B28700C75066 /* ProfileVC.m in Sources */,
 				FB484A511B4FD40A0045A6EA /* UIDevice+Hardware.m in Sources */,

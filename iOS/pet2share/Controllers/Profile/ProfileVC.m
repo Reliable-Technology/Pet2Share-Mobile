@@ -12,6 +12,7 @@
 #import "PetCollectionCell.h"
 #import "Pet2ShareService.h"
 #import "Pet2ShareUser.h"
+#import "PetProfileVC.h"
 
 static NSString * const kCellIdentifier     = @"petcollectioncell";
 static NSString * const kHeaderIdentifier   = @"profileheadercell";
@@ -37,12 +38,12 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     // Set title text attribute (Lobster Typeface)
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSForegroundColorAttributeName: [AppColor navigationBarTextColor],
        NSFontAttributeName:[UIFont fontWithName:kLogoTypeface size:20.0f]}];
-    
+ 
     // Setup collection view
     [self.collectionView registerNib:[UINib nibWithNibName:kHeaderNibName bundle:nil]
           forSupplementaryViewOfKind:CSStickyHeaderParallaxHeader
@@ -60,7 +61,15 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // TODO: Implement later
+    if ([segue.identifier isEqualToString:kSegueEditProfile])
+    {
+        TRACE_HERE;
+    }
+    else if ([segue.identifier isEqualToString:kSeguePetProfile])
+    {
+        PetProfileVC *viewController = (PetProfileVC *)segue.destinationViewController;
+        viewController.pet = (Pet *)sender;
+    }
 }
 
 - (void)dealloc
@@ -110,12 +119,24 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
 {
     if ([kind isEqualToString:CSStickyHeaderParallaxHeader])
     {
-        ProfileHeaderCell *cell = [collectionView dequeueReusableSupplementaryViewOfKind:kind
-                                                                     withReuseIdentifier:kHeaderIdentifier
-                                                                            forIndexPath:indexPath];
-        [cell updateUserInfo:[Pet2ShareUser current]];
-        cell.delegate = self;
-        return cell;
+        @try
+        {
+            ProfileHeaderCell *cell = [collectionView dequeueReusableSupplementaryViewOfKind:kind
+                                                                         withReuseIdentifier:kHeaderIdentifier
+                                                                                forIndexPath:indexPath];
+            Pet2ShareUser *currentUser = [Pet2ShareUser current];
+            NSString *firstName = currentUser.person.firstName;
+            NSString *lastName = currentUser.person.lastName;
+            NSString *name = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+            [cell updateProfileAvatar:currentUser.person.avatarUrl name:name socialStatusInfo:nil];
+            cell.delegate = self;
+            
+            return cell;
+        }
+        @catch (NSException *exception)
+        {
+            NSLog(@"%s: Exception: %@", __func__, exception.description);
+        }
     }
     return nil;
 }
@@ -125,16 +146,16 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     fTRACE(@"Tile Selected Index: %ld", indexPath.row);
-//    
-//    @try
-//    {
-//        ParsePet *pet = [self.items objectAtIndex:indexPath.row];
-//        [self performSegueWithIdentifier:kSeguePetPosts sender:pet];
-//    }
-//    @catch (NSException *exception)
-//    {
-//        NSLog(@"%s: Exception: %@", __func__, exception.description);
-//    }
+    
+    @try
+    {
+        Pet *pet = [self.items objectAtIndex:indexPath.row];
+        [self performSegueWithIdentifier:kSeguePetProfile sender:pet];
+    }
+    @catch (NSException *exception)
+    {
+        NSLog(@"%s: Exception: %@", __func__, exception.description);
+    }
 }
 
 #pragma mark - <ProfileHeaderDelegate>

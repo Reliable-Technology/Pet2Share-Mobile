@@ -37,6 +37,7 @@ extern NSString * const kSegueRegisterContainer;
 extern NSString * const kSegueDashboard;
 extern NSString * const kSegueMainView;
 extern NSString * const kSegueEditProfile;
+extern NSString * const kSeguePetProfile;
 
 #pragma mark - Date Format
 

@@ -57,8 +57,7 @@ static NSString * const kCellNibName        = @"PostCollectionCell";
 
 - (void)requestData
 {
-    // TODO: Implement later
-    
+    // TODO: Hacking, need full implementation here
     if ([self.items count] == 0)
     {
         for (int i = 0; i < 10; i++)

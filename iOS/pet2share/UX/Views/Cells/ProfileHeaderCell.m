@@ -16,7 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet CircleImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *socialInfoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *socialStatusInfoLabel;
 @property (weak, nonatomic) IBOutlet UIButton *editProfileBtn;
 
 @end
@@ -39,23 +39,16 @@
     [self.editProfileBtn addTarget:self action:@selector(editProfileBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)updateUserInfo:(Pet2ShareUser *)user
+- (void)updateProfileAvatar:(NSString *)url name:(NSString *)name socialStatusInfo:(NSString *)socialStatusInfo
 {
-    Person *person = user.person;
+    self.nameLabel.text = name ?: NSLocalizedString(@"N/A", @"");
+    self.socialStatusInfoLabel.text = socialStatusInfo ?: NSLocalizedString(@"N/A", @"");
     
-    if (person)
-    {
-        // Fetch Name label
-        NSString *firstName = user.person.firstName ?: NSLocalizedString(@"First Name", @"");
-        NSString *lastName = user.person.lastName ?: NSLocalizedString(@"Last Name", @"");
-        self.nameLabel.text = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
-        
-        // Fetch image
-        Pet2ShareService *service = [Pet2ShareService new];
-        [service loadImage:person.avatarUrl completion:^(UIImage *image) {
-            [self.avatarImageView setImage:image];
-        }];
-    }
+    // Fetch image
+    Pet2ShareService *service = [Pet2ShareService new];
+    [service loadImage:url completion:^(UIImage *image) {
+        [self.avatarImageView setImage:image];
+    }];
 }
 
 #pragma mark - Events

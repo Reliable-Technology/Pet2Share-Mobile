@@ -652,6 +652,7 @@
                     <navigationItem key="navigationItem" title="Pet 2 Share" id="kc2-0e-wJI"/>
                     <connections>
                         <segue destination="Ayh-7u-e8f" kind="presentation" identifier="editprofile" id="fym-dI-unK"/>
+                        <segue destination="03B-eo-mY5" kind="show" identifier="petprofile" id="iEw-lh-hJI"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kgO-jI-Cx8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -716,6 +717,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kcD-K1-D30" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4619" y="2906"/>
+        </scene>
+        <!--Pet 2 Share-->
+        <scene sceneID="VCZ-Mb-fA5">
+            <objects>
+                <collectionViewController title="Pet 2 Share" id="03B-eo-mY5" customClass="PetProfileVC" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="RSr-e6-p8F">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bkI-P2-Akk" customClass="CollectionViewLayout">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="qs1-gQ-Bdd">
+                                <rect key="frame" x="0.0" y="64" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <animations/>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="03B-eo-mY5" id="Vrz-xv-nt5"/>
+                            <outlet property="delegate" destination="03B-eo-mY5" id="AcY-OQ-en3"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IYZ-kW-UDa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4619" y="3651"/>
         </scene>
     </scenes>
     <resources>
