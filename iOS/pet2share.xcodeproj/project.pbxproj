@@ -12,7 +12,6 @@
 		FB1067E91B5341A500BEBC40 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067E81B5341A500BEBC40 /* LoginVC.m */; };
 		FB1067EC1B5341D600BEBC40 /* SignupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067EB1B5341D600BEBC40 /* SignupVC.m */; };
 		FB1067F01B535B4C00BEBC40 /* LoginTableCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067EF1B535B4C00BEBC40 /* LoginTableCtrl.m */; };
-		FB1067F61B53697600BEBC40 /* DashboardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067F51B53697600BEBC40 /* DashboardVC.m */; };
 		FB265B431BC37FAB0094AC37 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = FB265B421BC37FAB0094AC37 /* Person.m */; settings = {ASSET_TAGS = (); }; };
 		FB484A391B4FD0DB0045A6EA /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A381B4FD0DB0045A6EA /* NSString+URLEncoding.m */; };
 		FB484A3F1B4FD12F0045A6EA /* Graphics.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A3E1B4FD12F0045A6EA /* Graphics.m */; };
@@ -55,6 +54,7 @@
 		FB5050301BC4CBB40037F3E5 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = FB50502F1BC4CBB40037F3E5 /* Address.m */; settings = {ASSET_TAGS = (); }; };
 		FB5050331BC4D0B10037F3E5 /* Date.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5050321BC4D0B10037F3E5 /* Date.m */; settings = {ASSET_TAGS = (); }; };
 		FB5050391BC4D1E70037F3E5 /* JSONValueTransformer+Date.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5050381BC4D1E70037F3E5 /* JSONValueTransformer+Date.m */; settings = {ASSET_TAGS = (); }; };
+		FB5E1EBC1BC9DDAB00897CA2 /* DashboardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5E1EBB1BC9DDAB00897CA2 /* DashboardVC.m */; settings = {ASSET_TAGS = (); }; };
 		FB6C272F1B6ED1C70002034A /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C272E1B6ED1C70002034A /* HttpClient.m */; };
 		FB6C27331B6ED1EF0002034A /* Pet2ShareService.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C27321B6ED1EF0002034A /* Pet2ShareService.m */; };
 		FB6C273D1B6ED2950002034A /* UrlManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C273C1B6ED2950002034A /* UrlManager.m */; };
@@ -116,8 +116,6 @@
 		FB1067EE1B535B4C00BEBC40 /* LoginTableCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginTableCtrl.h; sourceTree = "<group>"; };
 		FB1067EF1B535B4C00BEBC40 /* LoginTableCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTableCtrl.m; sourceTree = "<group>"; };
 		FB1067F11B535F0F00BEBC40 /* FormProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormProtocol.h; sourceTree = "<group>"; };
-		FB1067F41B53697600BEBC40 /* DashboardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardVC.h; sourceTree = "<group>"; };
-		FB1067F51B53697600BEBC40 /* DashboardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardVC.m; sourceTree = "<group>"; };
 		FB265B411BC37FAB0094AC37 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		FB265B421BC37FAB0094AC37 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		FB484A371B4FD0DB0045A6EA /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
@@ -175,6 +173,8 @@
 		FB5050381BC4D1E70037F3E5 /* JSONValueTransformer+Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONValueTransformer+Date.m"; sourceTree = "<group>"; };
 		FB535B691BC4610C00C6A3B3 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		FB535B6B1BC461CD00C6A3B3 /* libJSONModel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONModel.a; path = "Pods/../build/Debug-iphoneos/libJSONModel.a"; sourceTree = "<group>"; };
+		FB5E1EBA1BC9DDAB00897CA2 /* DashboardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardVC.h; sourceTree = "<group>"; };
+		FB5E1EBB1BC9DDAB00897CA2 /* DashboardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardVC.m; sourceTree = "<group>"; };
 		FB6C272D1B6ED1C70002034A /* HttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClient.h; sourceTree = "<group>"; };
 		FB6C272E1B6ED1C70002034A /* HttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpClient.m; sourceTree = "<group>"; };
 		FB6C27311B6ED1EF0002034A /* Pet2ShareService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pet2ShareService.h; sourceTree = "<group>"; };
@@ -303,15 +303,6 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
-		FB1067F31B53694C00BEBC40 /* Dashboard */ = {
-			isa = PBXGroup;
-			children = (
-				FB1067F41B53697600BEBC40 /* DashboardVC.h */,
-				FB1067F51B53697600BEBC40 /* DashboardVC.m */,
-			);
-			path = Dashboard;
-			sourceTree = "<group>";
-		};
 		FB2BDBAA1B5767610095B254 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -361,7 +352,7 @@
 			children = (
 				FB1067E61B53412F00BEBC40 /* Auth */,
 				FBD3938C1B50D9DB000ED817 /* Templates */,
-				FB1067F31B53694C00BEBC40 /* Dashboard */,
+				FB5E1EB91BC9DD9300897CA2 /* Feed */,
 				FBCF4A731BC5B26E00C75066 /* Profile */,
 			);
 			path = Controllers;
@@ -451,6 +442,15 @@
 				FB484A8A1B50C6130045A6EA /* SIL Open Font License.txt */,
 			);
 			path = Lato;
+			sourceTree = "<group>";
+		};
+		FB5E1EB91BC9DD9300897CA2 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				FB5E1EBA1BC9DDAB00897CA2 /* DashboardVC.h */,
+				FB5E1EBB1BC9DDAB00897CA2 /* DashboardVC.m */,
+			);
+			path = Feed;
 			sourceTree = "<group>";
 		};
 		FB6C27301B6ED1DA0002034A /* Services */ = {
@@ -833,6 +833,7 @@
 				FBCEA4351B4CC3E000497678 /* Pet2ShareDelegate.m in Sources */,
 				FBCF4A6B1BC5876000C75066 /* Pet2ShareUser.m in Sources */,
 				FB1067EC1B5341D600BEBC40 /* SignupVC.m in Sources */,
+				FB5E1EBC1BC9DDAB00897CA2 /* DashboardVC.m in Sources */,
 				FBD3938F1B50D9DB000ED817 /* BaseNavigationVC.m in Sources */,
 				FBCDC9A91BC3381B00808E30 /* RepositoryObject.m in Sources */,
 				FBCEA4321B4CC3E000497678 /* main.m in Sources */,
@@ -856,7 +857,6 @@
 				FB484A4F1B4FD40A0045A6EA /* Reachability.m in Sources */,
 				FBCF4AA41BC72E9D00C75066 /* ProfileBasicInfoCell.m in Sources */,
 				FBCF4ABA1BC8641B00C75066 /* Pet.m in Sources */,
-				FB1067F61B53697600BEBC40 /* DashboardVC.m in Sources */,
 				FB6C272F1B6ED1C70002034A /* HttpClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -992,6 +992,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Pet2Share/Pet2Share.pch";
 				INFOPLIST_FILE = pet2share/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1008,6 +1009,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Pet2Share/Pet2Share.pch";
 				INFOPLIST_FILE = pet2share/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1022,20 +1024,14 @@
 			baseConfigurationReference = 2D8E6D407B06EEEE9C8600F7 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = pet2shareTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "pet2share.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pet2share.app/pet2share";
@@ -1047,16 +1043,10 @@
 			baseConfigurationReference = E39AC5D91F18CB45AD8327A2 /* Pods.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = pet2shareTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "pet2share.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pet2share.app/pet2share";
