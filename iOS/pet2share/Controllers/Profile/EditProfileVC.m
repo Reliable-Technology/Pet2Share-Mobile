@@ -13,29 +13,30 @@
 #import "Pet2ShareUser.h"
 #import "ProfileBasicInfoCell.h"
 #import "TextFieldTableCell.h"
+#import "ProfileAddressInfoCell.h"
 #import "OrderedDictionary.h"
 #import "Utils.h"
 
-static NSString * const kCellProfileBasicInfoIdentifier     = @"profilebasicinfocell";
-static NSString * const kCellProfileBasicInfoNibName        = @"ProfileBasicInfoCell";
-static NSString * const kCellProfileOtherInfoIdentifier     = @"profileotherinfocell";
-static NSString * const kCellProfileOtherInfoNibName        = @"TextFieldTableCell";
-static NSString * const kCellIdentifier                     = @"cellidentifier";
+static NSString * const kCellBasicInfoIdentifier            = @"basicinfocell";
+static NSString * const kCellOtherInfoIdentifier            = @"otherinfocell";
+static NSString * const kCellAddressInfoIdentifier          = @"addressinfocell";
+static NSString * const kCellBasicInfoNibName               = @"ProfileBasicInfoCell";
+static NSString * const kCellOtherInfoNibName               = @"TextFieldTableCell";
+static NSString * const kCellAddressInfoNibName             = @"ProfileAddressInfoCell";
+
+static NSString * const kCellClassName                      = @"cellclass";
+static NSString * const kCellTag                            = @"celltag";
 static NSString * const kCellHeight                         = @"cellheight";
-static NSString * const kCellImageIcon                      = @"imageicon";
-static NSString * const kCellEditText                       = @"edittext";
 
 static NSString * const kInputTypeKey                       = @"inputtype";
 static NSString * const kPhoneKey                           = @"phone";
 static NSString * const kDateOfBirthKey                     = @"dateofbirth";
-static NSString * const kAddressKey                         = @"address";
 
-static NSInteger const kFirstSectionIndex                   = 0;
-static NSInteger const kSecondSectionIndex                  = 1;
 static CGFloat const kHeaderFontSize                        = 13.0f;
 static CGFloat const kHeaderPadding                         = 16.0f;
 #define kFirstSectionTitle                                  NSLocalizedString(@"Basic Info", @"")
 #define kSecondSectionTitle                                 NSLocalizedString(@"Other Info", @"")
+#define kThirdSectionTitle                                  NSLocalizedString(@"Address", @"")
 
 @interface EditProfileVC () <BarButtonsProtocol, Pet2ShareServiceCallback, UITableViewDataSource, UITableViewDelegate, FormProtocol>
 {
@@ -51,7 +52,8 @@ static CGFloat const kHeaderPadding                         = 16.0f;
 
 @implementation EditProfileVC
 
-#pragma mark - Life Cycle
+#pragma mark -
+#pragma mark Life Cycle
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -75,17 +77,43 @@ static CGFloat const kHeaderPadding                         = 16.0f;
     _activity = [[ActivityView alloc] initWithView:self.view];
     
     // UITableViewCell registration
-    [self.tableView registerNib:[UINib nibWithNibName:kCellProfileBasicInfoNibName bundle:nil]
-         forCellReuseIdentifier:kCellProfileBasicInfoIdentifier];
-    [self.tableView registerNib:[UINib nibWithNibName:kCellProfileOtherInfoNibName bundle:nil]
-         forCellReuseIdentifier:kCellProfileOtherInfoIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:kCellBasicInfoNibName bundle:nil]
+         forCellReuseIdentifier:kCellBasicInfoIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:kCellOtherInfoNibName bundle:nil]
+         forCellReuseIdentifier:kCellOtherInfoIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:kCellAddressInfoNibName bundle:nil]
+         forCellReuseIdentifier:kCellAddressInfoIdentifier];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     // Request profile data
     [self loadCellData];
+    
+    // Keyboard notifications
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
 }
 
-#pragma mark - Private Instance Methods
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.view endEditing:YES];
+}
+
+- (void)dealloc
+{
+    TRACE_HERE;
+    self.tableView = nil;
+    self.activity = nil;
+    self.cellData = nil;
+    self.unsavedData = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+}
+
+#pragma mark -
+#pragma mark Private Instance Methods
 
 - (UIButton *)createBarButtonWithTitle:(NSString *)title
 {
@@ -109,59 +137,49 @@ static CGFloat const kHeaderPadding                         = 16.0f;
             /// Basic Info
             ///------------------------------------------------
             
-            NSDictionary *cellBasicInfo = @{kCellImageIcon1: @"icon-user-selected",
-                                            kCellImageIcon2: @"icon-contact-selected",
-                                            kCellImageIcon3: @"icon-contact-selected",
-                                            kCellImageLink: currentUser.person.avatarUrl ?: NSLocalizedString(@"N/A", @""),
-                                            kCellNonEditText: currentUser.email ?: NSLocalizedString(@"N/A", @""),
-                                            kCellEditText1: currentUser.person.firstName ?: NSLocalizedString(@"N/A", @""),
-                                            kCellEditText2: currentUser.person.lastName ?: NSLocalizedString(@"N/A", @"")};
-            [self.cellData insertObject:@[cellBasicInfo] forKey:kCellProfileBasicInfoIdentifier atIndex:kFirstSectionIndex];
+            NSArray *cellBasicInfo = @[@{kUserNameImageIcon: @"icon-user-selected",
+                                         kFirstNameImageIcon: @"icon-contact-selected",
+                                         kLastNameImageIcon: @"icon-contact-selected",
+                                         kCellImageLink: currentUser.person.avatarUrl ?: kEmptyString,
+                                         kUserNameKey: currentUser.email ?: kEmptyString,
+                                         kFirstNameKey: currentUser.person.firstName ?: kEmptyString,
+                                         kLastNameKey: currentUser.person.lastName ?: kEmptyString,
+                                         kCellClassName: kCellBasicInfoNibName}];
+            [self.cellData setObject:cellBasicInfo forKey:kCellBasicInfoIdentifier];
             
             ///------------------------------------------------
-            /// Detail Info
+            /// Other Info
             ///------------------------------------------------
             
-            NSString *dateOfBirthStr = [Utils formatNSDateToString:currentUser.person.dateOfBirth];
+            NSArray *cellDetailInfo = @[@{kTextCellImageIcon: @"icon-phone-selected",
+                                          kTextCellKey: currentUser.phone ?: kEmptyString,
+                                          kCellTag: kPhoneKey,
+                                          kInputTypeKey: @(InputTypePhonePad),
+                                          kCellClassName: kCellOtherInfoNibName},
+                                        @{kTextCellImageIcon: @"icon-birthdaycake-selected",
+                                          kTextCellKey: [Utils formatNSDateToString:currentUser.person.dateOfBirth],
+                                          kCellTag: kDateOfBirthKey,
+                                          kInputTypeKey: @(InputTypeDate),
+                                          kCellClassName: kCellOtherInfoNibName}];
+            [self.cellData setObject:cellDetailInfo forKey:kCellOtherInfoIdentifier];
+            
+            ///------------------------------------------------
+            /// Address Info
+            ///------------------------------------------------
             
             Address *address = currentUser.person.address;
-            NSMutableString *addressStr = [NSMutableString new];
+            
             if (address)
             {
-                if (address.addressLine1)
-                {
-                    [addressStr appendString:address.addressLine1];
-                    [addressStr appendString:@", "];
-                }
-                if (address.city)
-                {
-                    [addressStr appendString:address.city];
-                    [addressStr appendString:@", "];
-                }
-                if (address.state)
-                {
-                    [addressStr appendString:address.state];
-                    [addressStr appendString:@", "];
-                }
-                if (address.zipCode)
-                {
-                    [addressStr appendString:address.zipCode];
-                }
+                NSArray *addressInfo = @[@{kAddressImageIconKey: @"icon-home-selected",
+                                           kCityImageIconKey: @"icon-city",
+                                           kAddressKey: address.addressLine1 ?: kEmptyString,
+                                           kCityKey: address.city ?: kEmptyString,
+                                           kStateKey: address.state ?: kEmptyString,
+                                           kZipCodeKey: address.zipCode ?: kEmptyString,
+                                           kCellClassName: kCellAddressInfoNibName}];
+                [self.cellData setObject:addressInfo forKey:kCellAddressInfoIdentifier];
             }
-            
-            NSArray *cellDetailInfo = @[@{kCellImageIcon: @"icon-phone-selected",
-                                          kCellEditText: currentUser.phone ?: NSLocalizedString(@"N/A", @""),
-                                          kCellIdentifier: kPhoneKey,
-                                          kInputTypeKey: @(InputTypePhonePad)},
-                                        @{kCellImageIcon: @"icon-birthdaycake-selected",
-                                          kCellEditText: dateOfBirthStr,
-                                          kCellIdentifier: kDateOfBirthKey,
-                                          kInputTypeKey: @(InputTypeDate)},
-                                        @{kCellImageIcon: @"icon-home-selected",
-                                          kCellEditText: [NSString stringWithString:addressStr],
-                                          kCellIdentifier: kAddressKey,
-                                          kInputTypeKey: @(InputTypeDefault)}];
-            [self.cellData insertObject:cellDetailInfo forKey:kCellProfileOtherInfoIdentifier atIndex:kSecondSectionIndex];
         }
     }
     @catch (NSException *exception)
@@ -177,49 +195,57 @@ static CGFloat const kHeaderPadding                         = 16.0f;
     [self.activity show];
     self.tableView.userInteractionEnabled = NO;
     
+    Pet2ShareUser *currentUser = [Pet2ShareUser current];
+    
     for (NSString *key in self.unsavedData)
     {
         id value = self.unsavedData[key];
         
         if ([key isEqualToString:kFirstNameKey])
-            [Pet2ShareUser current].person.firstName = value;
+            currentUser.person.firstName = value;
         else if ([key isEqualToString:kLastNameKey])
-            [Pet2ShareUser current].person.lastName = value;
+            currentUser.person.lastName = value;
         else if ([key isEqualToString:kPhoneKey])
         {
-            [Pet2ShareUser current].phone = value;
-            [Pet2ShareUser current].person.primaryPhone = value;
+            currentUser.phone = value;
+            currentUser.person.primaryPhone = value;
         }
         else if ([key isEqualToString:kDateOfBirthKey])
-        {
-            [Pet2ShareUser current].person.dateOfBirth = (Date *)[Utils formatStringToNSDate:value withFormat:kFormatDateUS];
-        }
+            currentUser.person.dateOfBirth
+            = (Date *)[Utils formatStringToNSDate:value withFormat:kFormatDateUS];
         else if ([key isEqualToString:kAddressKey])
-        {
-            // TODO: Implement later
-        }
+            currentUser.person.address.addressLine1 = value;
+        else if ([key isEqualToString:kCityKey])
+            currentUser.person.address.city = value;
+        else if ([key isEqualToString:kStateKey])
+            currentUser.person.address.state = value;
+        else if ([key isEqualToString:kZipCodeKey])
+            currentUser.person.address.zipCode = value;
+        else
+            fTRACE(@"Unrecognized Key: %@ - Value: %@", key, value);
     }
     
     Pet2ShareService *service = [Pet2ShareService new];
     [service updateUserProfile:self
-                        userId:[Pet2ShareUser current].identifier
-                     firstName:[Pet2ShareUser current].person.firstName
-                      lastName:[Pet2ShareUser current].person.lastName
-                         email:[Pet2ShareUser current].email
-                alternateEmail:[Pet2ShareUser current].alternateEmail
-                         phone:[Pet2ShareUser current].phone
-                secondaryPhone:[Pet2ShareUser current].person.secondaryPhone
-                   dateOfBirth:[Pet2ShareUser current].person.dateOfBirth
-                       aboutMe:[Pet2ShareUser current].person.aboutMe
-                  addressLine1:[Pet2ShareUser current].person.address.addressLine1
-                  addressLine2:[Pet2ShareUser current].person.address.addressLine2
-                          city:[Pet2ShareUser current].person.address.city
-                         state:[Pet2ShareUser current].person.address.state
-                       country:[Pet2ShareUser current].person.address.country
-                       zipCode:[Pet2ShareUser current].person.address.zipCode];
+                        userId:currentUser.identifier
+                     firstName:currentUser.person.firstName
+                      lastName:currentUser.person.lastName
+                         email:currentUser.email
+                alternateEmail:currentUser.alternateEmail
+                         phone:currentUser.phone
+                secondaryPhone:currentUser.person.secondaryPhone
+                   dateOfBirth:currentUser.person.dateOfBirth
+                       aboutMe:currentUser.person.aboutMe
+                  addressLine1:currentUser.person.address.addressLine1
+                  addressLine2:currentUser.person.address.addressLine2
+                          city:currentUser.person.address.city
+                         state:currentUser.person.address.state
+                       country:currentUser.person.address.country
+                       zipCode:currentUser.person.address.zipCode];
 }
 
-#pragma mark - <Pet2ShareServiceCallback>
+#pragma mark -
+#pragma mark <Pet2ShareServiceCallback>
 
 - (void)onReceiveSuccess:(NSArray *)objects
 {
@@ -269,7 +295,8 @@ static CGFloat const kHeaderPadding                         = 16.0f;
                        }];
 }
 
-#pragma mark - <FormProtocol>
+#pragma mark -
+#pragma mark <FormProtocol>
 
 - (void)performAction
 {
@@ -283,7 +310,35 @@ static CGFloat const kHeaderPadding                         = 16.0f;
 
 - (void)updateData:(NSString *)key value:(NSString *)value
 {
-    [self.unsavedData setObject:value forKey:key];
+    fTRACE(@"Key: %@ - Value: %@", key, value);
+    if (value)
+    {
+        [self.unsavedData setObject:value forKey:key];
+    }
+}
+
+#pragma mark -
+#pragma mark Events
+
+- (void)keyboardWillShow:(NSNotification *)sender
+{
+    CGSize keyboardSize = [[[sender userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    NSTimeInterval duration = [[[sender userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    [UIView animateWithDuration:duration animations:^{
+        UIEdgeInsets edgeInsets = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0);
+        [self.tableView setContentInset:edgeInsets];
+        [self.tableView setScrollIndicatorInsets:edgeInsets];
+    }];
+}
+
+- (void)keyboardWillHide:(NSNotification *)sender
+{
+    NSTimeInterval duration = [[[sender userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    [UIView animateWithDuration:duration animations:^{
+        UIEdgeInsets edgeInsets = UIEdgeInsetsZero;
+        [self.tableView setContentInset:edgeInsets];
+        [self.tableView setScrollIndicatorInsets:edgeInsets];
+    }];
 }
 
 #pragma mark - <UITableViewDelegate>
@@ -300,11 +355,15 @@ static CGFloat const kHeaderPadding                         = 16.0f;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == kFirstSectionIndex) return [ProfileBasicInfoCell cellHeight];
-    else return [TextFieldTableCell cellHeight];
+    NSString *sectionKey = [self.cellData keyAtIndex:indexPath.section];
+    if ([sectionKey isEqualToString:kCellBasicInfoIdentifier])          return [ProfileBasicInfoCell cellHeight];
+    else if ([sectionKey isEqualToString:kCellOtherInfoIdentifier])     return [TextFieldTableCell cellHeight];
+    else if ([sectionKey isEqualToString:kCellAddressInfoIdentifier])   return [ProfileAddressInfoCell cellHeight];
+    else return 0;
 }
 
-#pragma mark - <UITableViewDataSource>
+#pragma mark -
+#pragma mark <UITableViewDataSource>
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -324,9 +383,15 @@ static CGFloat const kHeaderPadding                         = 16.0f;
     headerLabel.backgroundColor = [AppColorScheme clear];
     headerLabel.textColor = [AppColorScheme darkGray];
     headerLabel.font = [UIFont boldSystemFontOfSize:kHeaderFontSize];
-    if (section == kFirstSectionIndex) headerLabel.text = [kFirstSectionTitle uppercaseString];
-    else headerLabel.text = [kSecondSectionTitle uppercaseString];
     [headerView addSubview:headerLabel];
+    
+    // Header Text
+    NSString *sectionKey = [self.cellData keyAtIndex:section];
+    fTRACE(@"Section Key: %@", sectionKey);
+    if ([sectionKey isEqualToString:kCellBasicInfoIdentifier])          headerLabel.text = [kFirstSectionTitle uppercaseString];
+    else if ([sectionKey isEqualToString:kCellOtherInfoIdentifier])     headerLabel.text = [kSecondSectionTitle uppercaseString];
+    else if ([sectionKey isEqualToString:kCellAddressInfoIdentifier])   headerLabel.text = [kThirdSectionTitle uppercaseString];
+    else headerLabel.text = kEmptyString;
     
     return headerView;
 }
@@ -339,45 +404,42 @@ static CGFloat const kHeaderPadding                         = 16.0f;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell;
     NSInteger index = indexPath.row;
     NSInteger section = indexPath.section;
-    NSDictionary *data = nil;
     
     @try
     {
-        NSArray *dataList = [self.cellData objectAtIndex:section];
+        NSDictionary *data = [self.cellData objectAtIndex:section][index];
         NSString *reuseIdentifier = [self.cellData keyAtIndex:section];
         
-        if ([reuseIdentifier isEqualToString:kCellProfileBasicInfoIdentifier])
+        Class cellClass = NSClassFromString(data[kCellClassName]);
+        UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+        if (!cell) cell = [[cellClass alloc] initWithStyle:UITableViewCellStyleDefault
+                                           reuseIdentifier:reuseIdentifier];
+        
+        if ([reuseIdentifier isEqualToString:kCellBasicInfoIdentifier]
+            || [reuseIdentifier isEqualToString:kCellAddressInfoIdentifier])
         {
-            data = dataList[index];
-            ProfileBasicInfoCell *basicCell = [self.tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
-            if (!basicCell) basicCell = [[ProfileBasicInfoCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                                                    reuseIdentifier:reuseIdentifier];
-            [basicCell updateCell:data];
-            basicCell.formProtocol = self;
-            cell = basicCell;
+            [(ProfileBasicInfoCell *)cell setFormProtocol:self];
+            [(ProfileBasicInfoCell *)cell updateCell:data];
         }
-        else if ([reuseIdentifier isEqualToString:kCellProfileOtherInfoIdentifier])
+        else if ([reuseIdentifier isEqualToString:kCellOtherInfoIdentifier])
         {
-            data = dataList[index];
-            TextFieldTableCell *textCell = [self.tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
-            if (!textCell) textCell = [[TextFieldTableCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                                                reuseIdentifier:reuseIdentifier];
-            textCell.formProtocol = self;
-            [textCell updateTextField:data[kCellEditText]
-                        iconImageName:data[kCellImageIcon]
-                                  tag:data[kCellIdentifier]
-                            inputType:[data[kInputTypeKey] integerValue]];
-            cell = textCell;
+            ((TextFieldTableCell *)cell).formProtocol = self;
+            [(TextFieldTableCell *)cell setFormProtocol:self];
+            [(TextFieldTableCell *)cell updateTextField:data[kTextCellKey]
+                                          iconImageName:data[kTextCellImageIcon]
+                                                    tag:data[kCellTag]
+                                              inputType:[data[kInputTypeKey] integerValue]];
+        }
+        else if ([reuseIdentifier isEqualToString:kCellAddressInfoIdentifier])
+        {
+            [(ProfileAddressInfoCell *)cell setFormProtocol:self];
+            [(ProfileAddressInfoCell *)cell updateCell:data];
         }
         else
         {
             fTRACE(@"Error - Unrecognized Identifier %@", reuseIdentifier);
-            cell = [self.tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
-            if (!cell) cell = [[ProfileBasicInfoCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                                          reuseIdentifier:reuseIdentifier];
         }
         return cell;
     }

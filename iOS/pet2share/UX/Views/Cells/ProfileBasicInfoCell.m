@@ -71,50 +71,53 @@
     if ([self.formProtocol respondsToSelector:@selector(updateData:value:)])
     {
         if (textField == self.firstnameTxtField)
+        {
+            textField.text = [textField.text capitalizedString];
             [self.formProtocol updateData:kFirstNameKey value:self.firstName];
+        }
         else if (textField == self.lastNameTxtField)
+        {
+            textField.text = [textField.text capitalizedString];
             [self.formProtocol updateData:kLastNameKey value:self.lastName];
+        }
+        else fTRACE(@"Error: Unrecognized TextField: %@", textField);
     }
 }
 
-#pragma mark - Public Instance Methods
+#pragma mark - 
+#pragma mark Private Instance Methods
 
 - (NSString *)firstName
 {
-    if (![self.lastNameTxtField.text isEqualToString:kEmptyString] &&
-        ![self.firstnameTxtField.text isEqualToString:NSLocalizedString(@"N/A", @"")])
+    if (![self.firstnameTxtField.text isEqualToString:kEmptyString])
         return self.firstnameTxtField.text;
     else return nil;
 }
 
 - (NSString *)lastName
 {
-    if (![self.lastNameTxtField.text isEqualToString:kEmptyString]
-        && ![self.lastNameTxtField.text isEqualToString:NSLocalizedString(@"N/A", @"")])
+    if (![self.lastNameTxtField.text isEqualToString:kEmptyString])
         return self.lastNameTxtField.text;
     else return nil;
 }
 
-- (void)resignAllTextFields
-{
-    if ([self.firstnameTxtField isFirstResponder]) [self.firstnameTxtField resignFirstResponder];
-    else if ([self.lastNameTxtField isFirstResponder]) [self.lastNameTxtField resignFirstResponder];
-}
+#pragma mark -
+#pragma mark Public Instance Methods
 
 - (void)updateCell:(NSDictionary *)dict
 {
     // Icon Images
-    self.usernameIconImgView.image = [Graphics tintImage:[UIImage imageNamed:dict[kCellImageIcon1]]
+    self.usernameIconImgView.image = [Graphics tintImage:[UIImage imageNamed:dict[kUserNameImageIcon]]
                                                withColor:[AppColorScheme darkGray]];
-    self.firstnameIconImgView.image = [Graphics tintImage:[UIImage imageNamed:dict[kCellImageIcon2]]
+    self.firstnameIconImgView.image = [Graphics tintImage:[UIImage imageNamed:dict[kFirstNameImageIcon]]
                                                 withColor:[AppColorScheme darkGray]];
-    self.lastnameIconImgView.image = [Graphics tintImage:[UIImage imageNamed:dict[kCellImageIcon3]]
+    self.lastnameIconImgView.image = [Graphics tintImage:[UIImage imageNamed:dict[kLastNameImageIcon]]
                                                withColor:[AppColorScheme darkGray]];
     
     // Labels & TextFields
-    if (dict[kCellNonEditText] != NSLocalizedString(@"N/A", @"")) self.usernameLabel.text = dict[kCellNonEditText];
-    if (dict[kCellEditText1] != NSLocalizedString(@"N/A", @"")) self.firstnameTxtField.text = dict[kCellEditText1];
-    if (dict[kCellEditText2] != NSLocalizedString(@"N/A", @"")) self.lastNameTxtField.text = dict[kCellEditText2];
+    self.usernameLabel.text = dict[kUserNameKey];
+    self.firstnameTxtField.text = dict[kFirstNameKey];
+    self.lastNameTxtField.text = dict[kLastNameKey];
     
     // Request Avatar Image
     Pet2ShareService *service = [Pet2ShareService new];

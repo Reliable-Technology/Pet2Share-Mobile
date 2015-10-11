@@ -9,14 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "FormProtocol.h"
 
-static NSString * const kCellImageIcon1     = @"image1";
-static NSString * const kCellImageIcon2     = @"image2";
-static NSString * const kCellImageIcon3     = @"image3";
+static NSString * const kUserNameImageIcon  = @"usernameimageicon";
+static NSString * const kFirstNameImageIcon = @"firstnameimageicon";
+static NSString * const kLastNameImageIcon  = @"lastnameimageicon";
 static NSString * const kCellImageLink      = @"imagelink";
-static NSString * const kCellNonEditText    = @"nonedittext";
-static NSString * const kCellEditText1      = @"edittext1";
-static NSString * const kCellEditText2      = @"edittext2";
-
+static NSString * const kUserNameKey        = @"username";
 static NSString * const kFirstNameKey       = @"firstname";
 static NSString * const kLastNameKey        = @"lastname";
 

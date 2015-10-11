@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "FormProtocol.h"
 
+static NSString * const kTextCellImageIcon  = @"imageicon";
+static NSString * const kTextCellKey        = @"textcellkey";
+
 typedef NS_ENUM(NSInteger, TextFieldInputType)
 {
     InputTypeDefault,
