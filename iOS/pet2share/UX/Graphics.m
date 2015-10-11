@@ -15,12 +15,12 @@
 + (SIAlertView *)buildAlert:(NSString *)title message:(NSString *)message type:(AlertType)type
 {
     SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:title andMessage:message];
-    alertView.titleFont = [UIFont fontWithName:@"AvenirNext-Medium" size:20.0f];
-    alertView.messageFont = [UIFont fontWithName:@"AvenirNext-Regular" size:15.0f];
-    alertView.buttonFont = [UIFont fontWithName:@"AvenirNext-Regular" size:17.0f];
+    alertView.titleFont = [UIFont systemFontOfSize:20.0f weight:UIFontWeightMedium];
+    alertView.messageFont = [UIFont systemFontOfSize:15.0f weight:UIFontWeightRegular];
+    alertView.buttonFont = [UIFont systemFontOfSize:17.0f weight:UIFontWeightRegular];
     alertView.cornerRadius = 5.0f;
     alertView.transitionStyle = SIAlertViewTransitionStyleBounce;
-    alertView.buttonFont = [UIFont fontWithName:@"AvenirNext-Regular" size:15.0f];
+    alertView.buttonFont = [UIFont systemFontOfSize:15.0f weight:UIFontWeightRegular];
     
     switch (type)
     {

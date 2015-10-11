@@ -69,7 +69,6 @@
 - (void)loginBtnTapped:(id)sender
 {
     [self.loginTableCtrl resignAllTextFields];
-    [self.loginBtn showActivityIndicator];
     
     // Get email and password from textfields
     NSString *username = [self.loginTableCtrl email];
@@ -93,6 +92,7 @@
     {
         Pet2ShareService *service = [Pet2ShareService new];
         [service loginUser:self username:username password:password];
+        [self.loginBtn showActivityIndicator];
     }
 }
 

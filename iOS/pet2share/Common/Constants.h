@@ -23,7 +23,7 @@ extern NSString * const kEmptyString;
 extern CGFloat const kBarButtonWidth;
 extern CGFloat const kBarButtonHeight;
 extern NSString * const kLogoTypeface;
-extern NSString * const kObjectTagKey;
+extern NSInteger const kcenturyInSeconds;
 
 #pragma mark - Segues
 
@@ -45,7 +45,8 @@ extern NSString * const kFormatDate;
 extern NSString * const kFormatDateTime;
 extern NSString * const kFormatDateTimeShort;
 extern NSString * const kFormatDateTimeLong;
-extern NSString * const kFormatDayOfWeekWIthDate;
+extern NSString * const kFormatDateUTC;
+extern NSString * const kFormatDayOfWeekWithDate;
 extern NSString * const kFormatDayMonthShort;
 extern NSString * const kFormatMonthYearShort;
 extern NSString * const kFormatDayOfWeekShort;

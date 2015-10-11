@@ -8,10 +8,12 @@
 
 #import "Utils.h"
 #import "Constants.h"
+#import "DateFormatterFactory.h"
 
 @implementation Utils
 
-#pragma mark - Validation Tools
+#pragma mark -
+#pragma mark Validation Tools
 
 + (BOOL)validateAlpha:(NSString *)candidate
 {
@@ -62,17 +64,8 @@
     return [emailTest evaluateWithObject:candidate];
 }
 
-#pragma mark - Date
-
-+ (NSDate *)dateFromJSON:(NSString *)dateString
-{
-    unsigned long startPos = [dateString rangeOfString:@"("].location+1;
-    unsigned long endPos = [dateString rangeOfString:@")"].location;
-    NSRange range = NSMakeRange(startPos,endPos-startPos);
-    unsigned long long milliseconds = [[dateString substringWithRange:range] longLongValue];
-    NSTimeInterval interval = milliseconds/1000;
-    return [NSDate dateWithTimeIntervalSince1970:interval];
-}
+#pragma mark -
+#pragma mark Date
 
 + (NSDate *)deserializeJsonDateString:(NSString *)jsonDateString
 {
@@ -84,15 +77,40 @@
     return date;
 }
 
-+ (NSString *)formatdateToDateTime:(NSDate *)date
++ (NSString *)formatNSDateToDateTime:(NSDate *)date
 {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"Z"];
+    if (!date) return kEmptyString;
     
+    NSDateFormatter *formatter = [[DateFormatterFactory sharedFactory] dateFormatterWithFormat:@"Z"];
     NSString *jsonDate = [NSString stringWithFormat:@"/Date(%.0f000%@)/",
                           [date timeIntervalSince1970], [formatter stringFromDate:date]];
-    
     return jsonDate;
+}
+
++ (NSString *)formatNSDateToString:(NSDate *)date
+{
+    return [self formatNSDateToString:date withFormat:kFormatDateUS];
+}
+
++ (NSString *)formatNSDateToString:(NSDate *)date withFormat:(NSString *)format
+{
+    if (!date) return kEmptyString;
+    
+    NSDateFormatter *dateFormatter = [[DateFormatterFactory sharedFactory] dateFormatterWithFormat:format
+                                                                                         andLocale:[NSLocale currentLocale]];
+    return [dateFormatter stringFromDate:date];
+}
+
++ (NSDate *)formatUTCStringToNSDate:(NSString *)dateStr
+{
+    return [self formatStringToNSDate:dateStr withFormat:kFormatDateUTC];
+}
+
++ (NSDate *)formatStringToNSDate:(NSString *)dateStr withFormat:(NSString *)format
+{
+    NSDateFormatter *dateFormatter = [[DateFormatterFactory sharedFactory] dateFormatterWithFormat:format
+                                                                                         andLocale:[NSLocale currentLocale]];
+    return [dateFormatter dateFromString:dateStr];
 }
 
 @end

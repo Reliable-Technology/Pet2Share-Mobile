@@ -158,7 +158,7 @@ static id ObjectOrNull(id object)
     [postData setObject:ObjectOrNull(alternateEmail) forKey:@"AlternateEmail"];
     [postData setObject:ObjectOrNull(phone) forKey:@"PhoneNumber"];
     [postData setObject:ObjectOrNull(secondaryPhone) forKey:@"SecondaryPhone"];
-    [postData setObject:[Utils formatdateToDateTime:dateOfBirth] forKey:@"DateOfBirth"];
+    [postData setObject:[Utils formatNSDateToDateTime:dateOfBirth] forKey:@"DateOfBirth"];
     [postData setObject:ObjectOrNull(aboutMe) forKey:@"AboutMe"];
     [postData setObject:ObjectOrNull(addressLine1) forKey:@"AddressLine1"];
     [postData setObject:ObjectOrNull(addressLine2) forKey:@"AddressLine2"];

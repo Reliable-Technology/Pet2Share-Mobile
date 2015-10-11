@@ -6,24 +6,36 @@
 //  Copyright © 2015 Pet 2 Share. All rights reserved.
 //
 
-#import <DateTools/DateTools.h>
 #import "EditProfileVC.h"
 #import "Graphics.h"
 #import "ActivityView.h"
 #import "Pet2ShareService.h"
 #import "Pet2ShareUser.h"
 #import "ProfileBasicInfoCell.h"
-#import "ProfileDetailInfoCell.h"
+#import "TextFieldTableCell.h"
 #import "OrderedDictionary.h"
+#import "Utils.h"
 
 static NSString * const kCellProfileBasicInfoIdentifier     = @"profilebasicinfocell";
 static NSString * const kCellProfileBasicInfoNibName        = @"ProfileBasicInfoCell";
-static NSString * const kCellProfileDetailInfoIdentifier    = @"profiledetailinfocell";
-static NSString * const kCellProfileDetailInfoNibName       = @"ProfileDetailInfoCell";
+static NSString * const kCellProfileOtherInfoIdentifier     = @"profileotherinfocell";
+static NSString * const kCellProfileOtherInfoNibName        = @"TextFieldTableCell";
 static NSString * const kCellIdentifier                     = @"cellidentifier";
 static NSString * const kCellHeight                         = @"cellheight";
+static NSString * const kCellImageIcon                      = @"imageicon";
+static NSString * const kCellEditText                       = @"edittext";
+
+static NSString * const kInputTypeKey                       = @"inputtype";
+static NSString * const kPhoneKey                           = @"phone";
+static NSString * const kDateOfBirthKey                     = @"dateofbirth";
+static NSString * const kAddressKey                         = @"address";
+
 static NSInteger const kFirstSectionIndex                   = 0;
 static NSInteger const kSecondSectionIndex                  = 1;
+static CGFloat const kHeaderFontSize                        = 13.0f;
+static CGFloat const kHeaderPadding                         = 16.0f;
+#define kFirstSectionTitle                                  NSLocalizedString(@"Basic Info", @"")
+#define kSecondSectionTitle                                 NSLocalizedString(@"Other Info", @"")
 
 @interface EditProfileVC () <BarButtonsProtocol, Pet2ShareServiceCallback, UITableViewDataSource, UITableViewDelegate, FormProtocol>
 {
@@ -65,8 +77,8 @@ static NSInteger const kSecondSectionIndex                  = 1;
     // UITableViewCell registration
     [self.tableView registerNib:[UINib nibWithNibName:kCellProfileBasicInfoNibName bundle:nil]
          forCellReuseIdentifier:kCellProfileBasicInfoIdentifier];
-    [self.tableView registerNib:[UINib nibWithNibName:kCellProfileDetailInfoNibName bundle:nil]
-         forCellReuseIdentifier:kCellProfileDetailInfoIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:kCellProfileOtherInfoNibName bundle:nil]
+         forCellReuseIdentifier:kCellProfileOtherInfoIdentifier];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     // Request profile data
@@ -110,8 +122,7 @@ static NSInteger const kSecondSectionIndex                  = 1;
             /// Detail Info
             ///------------------------------------------------
             
-            NSString *dateOfBirthStr = currentUser.person.dateOfBirth
-            ? [currentUser.person.dateOfBirth formattedDateWithFormat:kFormatDateUS]: NSLocalizedString(@"N/A", @"");
+            NSString *dateOfBirthStr = [Utils formatNSDateToString:currentUser.person.dateOfBirth];
             
             Address *address = currentUser.person.address;
             NSMutableString *addressStr = [NSMutableString new];
@@ -140,14 +151,17 @@ static NSInteger const kSecondSectionIndex                  = 1;
             
             NSArray *cellDetailInfo = @[@{kCellImageIcon: @"icon-phone-selected",
                                           kCellEditText: currentUser.phone ?: NSLocalizedString(@"N/A", @""),
-                                          kCellIdentifier: kPhoneKey},
+                                          kCellIdentifier: kPhoneKey,
+                                          kInputTypeKey: @(InputTypePhonePad)},
                                         @{kCellImageIcon: @"icon-birthdaycake-selected",
                                           kCellEditText: dateOfBirthStr,
-                                          kCellIdentifier: kDateOfBirthKey},
+                                          kCellIdentifier: kDateOfBirthKey,
+                                          kInputTypeKey: @(InputTypeDate)},
                                         @{kCellImageIcon: @"icon-home-selected",
                                           kCellEditText: [NSString stringWithString:addressStr],
-                                          kCellIdentifier: kAddressKey}];
-            [self.cellData insertObject:cellDetailInfo forKey:kCellProfileDetailInfoIdentifier atIndex:kSecondSectionIndex];
+                                          kCellIdentifier: kAddressKey,
+                                          kInputTypeKey: @(InputTypeDefault)}];
+            [self.cellData insertObject:cellDetailInfo forKey:kCellProfileOtherInfoIdentifier atIndex:kSecondSectionIndex];
         }
     }
     @catch (NSException *exception)
@@ -178,8 +192,7 @@ static NSInteger const kSecondSectionIndex                  = 1;
         }
         else if ([key isEqualToString:kDateOfBirthKey])
         {
-            // TODO: Implement later
-            // self.tempUser.person.dateOfBirth = (Date *)[NSDate dateWithString:value formatString:kFormatDateUS];
+            [Pet2ShareUser current].person.dateOfBirth = (Date *)[Utils formatStringToNSDate:value withFormat:kFormatDateUS];
         }
         else if ([key isEqualToString:kAddressKey])
         {
@@ -287,10 +300,8 @@ static NSInteger const kSecondSectionIndex                  = 1;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == kFirstSectionIndex)
-        return [ProfileBasicInfoCell cellHeight];
-    else
-        return [ProfileDetailInfoCell cellHeight];
+    if (indexPath.section == kFirstSectionIndex) return [ProfileBasicInfoCell cellHeight];
+    else return [TextFieldTableCell cellHeight];
 }
 
 #pragma mark - <UITableViewDataSource>
@@ -302,24 +313,22 @@ static NSInteger const kSecondSectionIndex                  = 1;
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    float width = tableView.bounds.size.width;
-    int fontSize = 13.0f;
-    int padding = 16.0f;
+    CGFloat width = tableView.bounds.size.width;
+   
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, width, kHeaderFontSize+kHeaderPadding*2)];
+    headerView.backgroundColor = [AppColorScheme white];
+    headerView.userInteractionEnabled = YES;
+    headerView.tag = section;
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, width, fontSize+padding*2)];
-    view.backgroundColor = [AppColorScheme white];
-    view.userInteractionEnabled = YES;
-    view.tag = section;
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(kHeaderPadding, kHeaderPadding/2, width-kHeaderPadding, kHeaderFontSize)];
+    headerLabel.backgroundColor = [AppColorScheme clear];
+    headerLabel.textColor = [AppColorScheme darkGray];
+    headerLabel.font = [UIFont boldSystemFontOfSize:kHeaderFontSize];
+    if (section == kFirstSectionIndex) headerLabel.text = [kFirstSectionTitle uppercaseString];
+    else headerLabel.text = [kSecondSectionTitle uppercaseString];
+    [headerView addSubview:headerLabel];
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(padding, 8.0f, width - padding, fontSize)];
-    label.backgroundColor = [AppColorScheme clear];
-    label.textColor = [AppColorScheme darkGray];
-    label.font = [UIFont boldSystemFontOfSize:fontSize];
-    if (section == kFirstSectionIndex) label.text = [NSLocalizedString(@"Basic Info", @"") uppercaseString];
-    else label.text = [NSLocalizedString(@"Other Info", @"") uppercaseString];
-    [view addSubview:label];
-    
-    return view;
+    return headerView;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -350,15 +359,18 @@ static NSInteger const kSecondSectionIndex                  = 1;
             basicCell.formProtocol = self;
             cell = basicCell;
         }
-        else if ([reuseIdentifier isEqualToString:kCellProfileDetailInfoIdentifier])
+        else if ([reuseIdentifier isEqualToString:kCellProfileOtherInfoIdentifier])
         {
             data = dataList[index];
-            ProfileDetailInfoCell *detailCell = [self.tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
-            if (!detailCell) detailCell = [[ProfileDetailInfoCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                                                       reuseIdentifier:reuseIdentifier];
-            detailCell.formProtocol = self;
-            [detailCell updateCell:data forTagKey:data[kCellIdentifier]];
-            cell = detailCell;
+            TextFieldTableCell *textCell = [self.tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+            if (!textCell) textCell = [[TextFieldTableCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                                                reuseIdentifier:reuseIdentifier];
+            textCell.formProtocol = self;
+            [textCell updateTextField:data[kCellEditText]
+                        iconImageName:data[kCellImageIcon]
+                                  tag:data[kCellIdentifier]
+                            inputType:[data[kInputTypeKey] integerValue]];
+            cell = textCell;
         }
         else
         {

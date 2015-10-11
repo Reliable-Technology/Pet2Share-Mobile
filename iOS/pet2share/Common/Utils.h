@@ -10,7 +10,8 @@
 
 @interface Utils : NSObject
 
-#pragma mark - Validation Tools
+#pragma mark -
+#pragma mark Validation Tools
 
 + (BOOL)validateAlpha:(NSString *)candidate;
 + (BOOL)validateAlphaSpaces:(NSString *)candidate;
@@ -21,9 +22,14 @@
 + (BOOL)validateNotEmpty:(NSString *)candidate;
 + (BOOL)validateEmail:(NSString *)candidate;
 
-#pragma mark - Date
+#pragma mark -
+#pragma mark Date
 
 + (NSDate *)deserializeJsonDateString:(NSString *)jsonDateString;
-+ (NSString *)formatdateToDateTime:(NSDate *)date;
++ (NSString *)formatNSDateToDateTime:(NSDate *)date;
++ (NSString *)formatNSDateToString:(NSDate *)date;
++ (NSString *)formatNSDateToString:(NSDate *)date withFormat:(NSString *)format;
++ (NSDate *)formatUTCStringToNSDate:(NSString *)dateStr;
++ (NSDate *)formatStringToNSDate:(NSString *)dateStr withFormat:(NSString *)format;
 
 @end
