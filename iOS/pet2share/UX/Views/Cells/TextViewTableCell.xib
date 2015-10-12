@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="TextViewTableCell">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="250"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="600" height="249"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000 Characters Left" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BaS-ru-SGD">
+                        <rect key="frame" x="20" y="16" width="560" height="16"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="beC-ij-Sfh"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                        <color key="textColor" red="0.68888300657272339" green="0.71366006135940552" blue="0.73448425531387329" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nu6-Kh-gjG">
+                        <rect key="frame" x="16" y="36" width="568" height="198"/>
+                        <animations/>
+                        <color key="tintColor" red="0.42655369639396667" green="0.47584608197212219" blue="0.48026475310325623" alpha="1" colorSpace="calibratedRGB"/>
+                        <mutableString key="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</mutableString>
+                        <color key="textColor" red="0.42655369639396667" green="0.47584608197212219" blue="0.48026475310325623" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                </subviews>
+                <animations/>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="BaS-ru-SGD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="0xY-Ia-tAk"/>
+                    <constraint firstItem="Nu6-Kh-gjG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="94E-Vb-uDs"/>
+                    <constraint firstItem="BaS-ru-SGD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="ho1-tw-0Ak"/>
+                    <constraint firstItem="Nu6-Kh-gjG" firstAttribute="top" secondItem="BaS-ru-SGD" secondAttribute="bottom" constant="4" id="iU6-nL-szL"/>
+                    <constraint firstItem="BaS-ru-SGD" firstAttribute="centerX" secondItem="Nu6-Kh-gjG" secondAttribute="centerX" id="v95-Jz-WJ0"/>
+                    <constraint firstItem="Nu6-Kh-gjG" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="vOw-BK-mIO"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Nu6-Kh-gjG" secondAttribute="bottom" constant="7" id="yE9-ah-LI8"/>
+                </constraints>
+            </tableViewCellContentView>
+            <animations/>
+            <connections>
+                <outlet property="remainCharacterLabels" destination="BaS-ru-SGD" id="x6s-tF-iE7"/>
+                <outlet property="textView" destination="Nu6-Kh-gjG" id="IoJ-P9-Qj3"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

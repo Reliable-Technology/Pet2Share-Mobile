@@ -56,6 +56,17 @@
     
 }
 
++ (void)alert:(NSString *)title message:(NSString *)message type:(AlertType)type
+           ok:(SIAlertViewHandler)okHandler
+{
+    SIAlertView *alertView = [self buildAlert:title message:message type:type];
+    [alertView addButtonWithTitle:NSLocalizedString(@"OK", @"")
+                             type:SIAlertViewButtonTypeCancel
+                          handler:okHandler];
+    [alertView show];
+    
+}
+
 + (void)promptAlert:(NSString *)title message:(NSString *)message type:(AlertType)type
                  ok:(SIAlertViewHandler)okHandler
              cancel:(SIAlertViewHandler)cancelHandler

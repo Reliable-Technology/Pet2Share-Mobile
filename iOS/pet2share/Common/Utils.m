@@ -12,6 +12,23 @@
 
 @implementation Utils
 
+#pragma mark - 
+#pragma mark - Labels
+
++ (CGSize)findHeightForText:(NSString *)text havingWidth:(CGFloat)widthValue andFont:(UIFont *)font
+{
+    CGSize size = CGSizeZero;
+    if (text)
+    {
+        CGRect frame = [text boundingRectWithSize:CGSizeMake(widthValue, CGFLOAT_MAX)
+                                          options:NSStringDrawingUsesLineFragmentOrigin
+                                       attributes:@{ NSFontAttributeName:font}
+                                          context:nil];
+        size = CGSizeMake(frame.size.width, frame.size.height + 1);
+    }
+    return size;
+}
+
 #pragma mark -
 #pragma mark Validation Tools
 

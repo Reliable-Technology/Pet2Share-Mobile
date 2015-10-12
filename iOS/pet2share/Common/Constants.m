@@ -15,6 +15,7 @@ CGFloat const kBarButtonWidth               = 32.0f;
 CGFloat const kBarButtonHeight              = 32.0f;
 NSString * const kLogoTypeface              = @"LobsterTwo-Bold";
 NSInteger const kcenturyInSeconds           = 3154000000;
+NSInteger const kDescriptionMaxCharacters   = 1000;
 
 #pragma mark - Segues
 

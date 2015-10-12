@@ -61,6 +61,8 @@
 		FB5E1ECA1BCA9DA400897CA2 /* DateFormatterFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5E1EC91BCA9DA400897CA2 /* DateFormatterFactory.m */; settings = {ASSET_TAGS = (); }; };
 		FB5E1ECE1BCABF7000897CA2 /* ProfileAddressInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5E1ECC1BCABF7000897CA2 /* ProfileAddressInfoCell.m */; settings = {ASSET_TAGS = (); }; };
 		FB5E1ECF1BCABF7000897CA2 /* ProfileAddressInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB5E1ECD1BCABF7000897CA2 /* ProfileAddressInfoCell.xib */; settings = {ASSET_TAGS = (); }; };
+		FB5E1ED31BCB0FD800897CA2 /* TextViewTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5E1ED11BCB0FD800897CA2 /* TextViewTableCell.m */; settings = {ASSET_TAGS = (); }; };
+		FB5E1ED41BCB0FD800897CA2 /* TextViewTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB5E1ED21BCB0FD800897CA2 /* TextViewTableCell.xib */; settings = {ASSET_TAGS = (); }; };
 		FB6C272F1B6ED1C70002034A /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C272E1B6ED1C70002034A /* HttpClient.m */; };
 		FB6C27331B6ED1EF0002034A /* Pet2ShareService.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C27321B6ED1EF0002034A /* Pet2ShareService.m */; };
 		FB6C273D1B6ED2950002034A /* UrlManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C273C1B6ED2950002034A /* UrlManager.m */; };
@@ -189,6 +191,9 @@
 		FB5E1ECB1BCABF7000897CA2 /* ProfileAddressInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileAddressInfoCell.h; sourceTree = "<group>"; };
 		FB5E1ECC1BCABF7000897CA2 /* ProfileAddressInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileAddressInfoCell.m; sourceTree = "<group>"; };
 		FB5E1ECD1BCABF7000897CA2 /* ProfileAddressInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileAddressInfoCell.xib; sourceTree = "<group>"; };
+		FB5E1ED01BCB0FD800897CA2 /* TextViewTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewTableCell.h; sourceTree = "<group>"; };
+		FB5E1ED11BCB0FD800897CA2 /* TextViewTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewTableCell.m; sourceTree = "<group>"; };
+		FB5E1ED21BCB0FD800897CA2 /* TextViewTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewTableCell.xib; sourceTree = "<group>"; };
 		FB6C272D1B6ED1C70002034A /* HttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClient.h; sourceTree = "<group>"; };
 		FB6C272E1B6ED1C70002034A /* HttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpClient.m; sourceTree = "<group>"; };
 		FB6C27311B6ED1EF0002034A /* Pet2ShareService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pet2ShareService.h; sourceTree = "<group>"; };
@@ -335,6 +340,9 @@
 				FB5E1ECB1BCABF7000897CA2 /* ProfileAddressInfoCell.h */,
 				FB5E1ECC1BCABF7000897CA2 /* ProfileAddressInfoCell.m */,
 				FB5E1ECD1BCABF7000897CA2 /* ProfileAddressInfoCell.xib */,
+				FB5E1ED01BCB0FD800897CA2 /* TextViewTableCell.h */,
+				FB5E1ED11BCB0FD800897CA2 /* TextViewTableCell.m */,
+				FB5E1ED21BCB0FD800897CA2 /* TextViewTableCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -733,6 +741,7 @@
 				FB484A991B50C6130045A6EA /* Lato-Semibold.ttf in Resources */,
 				FB484A8B1B50C6130045A6EA /* Lato-Black.ttf in Resources */,
 				FB484A9C1B50C6130045A6EA /* Lato-ThinItalic.ttf in Resources */,
+				FB5E1ED41BCB0FD800897CA2 /* TextViewTableCell.xib in Resources */,
 				FB484A901B50C6130045A6EA /* Lato-HairlineItalic.ttf in Resources */,
 				FB484A8E1B50C6130045A6EA /* Lato-BoldItalic.ttf in Resources */,
 				FB484A8C1B50C6130045A6EA /* Lato-BlackItalic.ttf in Resources */,
@@ -831,6 +840,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBCDC9A81BC3381B00808E30 /* ErrorMessage.m in Sources */,
+				FB5E1ED31BCB0FD800897CA2 /* TextViewTableCell.m in Sources */,
 				FBCF4A7E1BC6888C00C75066 /* CircleImageView.m in Sources */,
 				FB484A391B4FD0DB0045A6EA /* NSString+URLEncoding.m in Sources */,
 				FBCF4A9A1BC6CF6B00C75066 /* CollectionViewLayout.m in Sources */,

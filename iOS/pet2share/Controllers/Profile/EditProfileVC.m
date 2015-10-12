@@ -14,15 +14,18 @@
 #import "ProfileBasicInfoCell.h"
 #import "TextFieldTableCell.h"
 #import "ProfileAddressInfoCell.h"
+#import "TextViewTableCell.h"
 #import "OrderedDictionary.h"
 #import "Utils.h"
 
 static NSString * const kCellBasicInfoIdentifier            = @"basicinfocell";
 static NSString * const kCellOtherInfoIdentifier            = @"otherinfocell";
 static NSString * const kCellAddressInfoIdentifier          = @"addressinfocell";
+static NSString * const kCellAboutMeIdentifier              = @"aboutmecell";
 static NSString * const kCellBasicInfoNibName               = @"ProfileBasicInfoCell";
 static NSString * const kCellOtherInfoNibName               = @"TextFieldTableCell";
 static NSString * const kCellAddressInfoNibName             = @"ProfileAddressInfoCell";
+static NSString * const kCellAboutMeNibName                 = @"TextViewTableCell";
 
 static NSString * const kCellClassName                      = @"cellclass";
 static NSString * const kCellTag                            = @"celltag";
@@ -31,12 +34,14 @@ static NSString * const kCellHeight                         = @"cellheight";
 static NSString * const kInputTypeKey                       = @"inputtype";
 static NSString * const kPhoneKey                           = @"phone";
 static NSString * const kDateOfBirthKey                     = @"dateofbirth";
+static NSString * const kAboutMeKey                         = @"aboutme";
 
 static CGFloat const kHeaderFontSize                        = 13.0f;
 static CGFloat const kHeaderPadding                         = 16.0f;
 #define kFirstSectionTitle                                  NSLocalizedString(@"Basic Info", @"")
 #define kSecondSectionTitle                                 NSLocalizedString(@"Other Info", @"")
 #define kThirdSectionTitle                                  NSLocalizedString(@"Address", @"")
+#define KFourthSectionTitle                                 NSLocalizedString(@"About Me", @"")
 
 @interface EditProfileVC () <BarButtonsProtocol, Pet2ShareServiceCallback, UITableViewDataSource, UITableViewDelegate, FormProtocol>
 {
@@ -83,6 +88,8 @@ static CGFloat const kHeaderPadding                         = 16.0f;
          forCellReuseIdentifier:kCellOtherInfoIdentifier];
     [self.tableView registerNib:[UINib nibWithNibName:kCellAddressInfoNibName bundle:nil]
          forCellReuseIdentifier:kCellAddressInfoIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:kCellAboutMeNibName bundle:nil]
+         forCellReuseIdentifier:kCellAboutMeIdentifier];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     // Request profile data
@@ -180,6 +187,16 @@ static CGFloat const kHeaderPadding                         = 16.0f;
                                            kCellClassName: kCellAddressInfoNibName}];
                 [self.cellData setObject:addressInfo forKey:kCellAddressInfoIdentifier];
             }
+            
+            ///------------------------------------------------
+            /// About Me
+            ///------------------------------------------------
+            
+            NSArray *aboutMeInfo = @[@{kTextViewKey: currentUser.person.aboutMe ?: kEmptyString,
+                                       kCellTag: kAboutMeKey}];
+            [self.cellData setObject:aboutMeInfo forKey:kCellAboutMeIdentifier];
+            
+            ///------------------------------------------------
         }
     }
     @catch (NSException *exception)
@@ -221,6 +238,8 @@ static CGFloat const kHeaderPadding                         = 16.0f;
             currentUser.person.address.state = value;
         else if ([key isEqualToString:kZipCodeKey])
             currentUser.person.address.zipCode = value;
+        else if ([key isEqualToString:kAboutMeKey])
+            currentUser.person.aboutMe = value;
         else
             fTRACE(@"Unrecognized Key: %@ - Value: %@", key, value);
     }
@@ -310,11 +329,8 @@ static CGFloat const kHeaderPadding                         = 16.0f;
 
 - (void)updateData:(NSString *)key value:(NSString *)value
 {
-    fTRACE(@"Key: %@ - Value: %@", key, value);
-    if (value)
-    {
-        [self.unsavedData setObject:value forKey:key];
-    }
+    // fTRACE(@"Key: %@ - Value: %@", key, value);
+    if (value) [self.unsavedData setObject:value forKey:key];
 }
 
 #pragma mark -
@@ -356,9 +372,14 @@ static CGFloat const kHeaderPadding                         = 16.0f;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *sectionKey = [self.cellData keyAtIndex:indexPath.section];
-    if ([sectionKey isEqualToString:kCellBasicInfoIdentifier])          return [ProfileBasicInfoCell cellHeight];
-    else if ([sectionKey isEqualToString:kCellOtherInfoIdentifier])     return [TextFieldTableCell cellHeight];
-    else if ([sectionKey isEqualToString:kCellAddressInfoIdentifier])   return [ProfileAddressInfoCell cellHeight];
+    if ([sectionKey isEqualToString:kCellBasicInfoIdentifier])
+        return [ProfileBasicInfoCell cellHeight];
+    else if ([sectionKey isEqualToString:kCellOtherInfoIdentifier])
+        return [TextFieldTableCell cellHeight];
+    else if ([sectionKey isEqualToString:kCellAddressInfoIdentifier])
+        return [ProfileAddressInfoCell cellHeight];
+    else if ([sectionKey isEqualToString:kCellAboutMeIdentifier])
+        return [TextViewTableCell cellHeightForText:[Pet2ShareUser current].person.aboutMe];
     else return 0;
 }
 
@@ -391,6 +412,7 @@ static CGFloat const kHeaderPadding                         = 16.0f;
     if ([sectionKey isEqualToString:kCellBasicInfoIdentifier])          headerLabel.text = [kFirstSectionTitle uppercaseString];
     else if ([sectionKey isEqualToString:kCellOtherInfoIdentifier])     headerLabel.text = [kSecondSectionTitle uppercaseString];
     else if ([sectionKey isEqualToString:kCellAddressInfoIdentifier])   headerLabel.text = [kThirdSectionTitle uppercaseString];
+    else if ([sectionKey isEqualToString:kCellAboutMeIdentifier])       headerLabel.text = [KFourthSectionTitle uppercaseString];
     else headerLabel.text = kEmptyString;
     
     return headerView;
@@ -436,6 +458,11 @@ static CGFloat const kHeaderPadding                         = 16.0f;
         {
             [(ProfileAddressInfoCell *)cell setFormProtocol:self];
             [(ProfileAddressInfoCell *)cell updateCell:data];
+        }
+        else if ([reuseIdentifier isEqualToString:kCellAboutMeIdentifier])
+        {
+            [(TextViewTableCell *)cell setFormProtocol:self];
+            [(TextViewTableCell *)cell updateCell:data[kTextViewKey] tag:data[kCellTag]];
         }
         else
         {
