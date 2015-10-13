@@ -6,14 +6,32 @@
 //  Copyright © 2015 Pet 2 Share. All rights reserved.
 //
 
+#import <DBCamera/DBCameraContainerViewController.h>
 #import "ButtonTabbarController.h"
+#import "CameraNavigationController.h"
 
 static NSString * const kCameraImage            = @"img-camera";
 static NSInteger const kTabBarCameraItemTag     = 1;
 
+@interface ButtonTabbarController () <DBCameraViewControllerDelegate>
+{
+    BOOL _cameraButtonTapped;
+}
+
+@end
+
 @implementation ButtonTabbarController
 
 #pragma mark - Life Cycle
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if ((self = [super initWithCoder:aDecoder]))
+    {
+        _cameraButtonTapped = NO;
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -24,6 +42,13 @@ static NSInteger const kTabBarCameraItemTag     = 1;
                     highlightImage:[UIImage imageNamed:kCameraImage]];
     
     [[[self.tabBar items] objectAtIndex:kTabBarCameraItemTag] setEnabled:NO];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    if (_cameraButtonTapped)
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
 }
 
 #pragma mark - Private Instance Methods
@@ -64,6 +89,21 @@ static NSInteger const kTabBarCameraItemTag     = 1;
 - (void)buttonTapped:(id)sender
 {
     fTRACE(@"Sender: %@", sender);
+    
+    DBCameraContainerViewController *cameraContainer = [[DBCameraContainerViewController alloc] initWithDelegate:self];
+    [cameraContainer setFullScreenMode];
+    CameraNavigationController *nav = [[CameraNavigationController alloc] initWithRootViewController:cameraContainer];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
+#pragma mark -
+#pragma mark <DBCameraViewControllerDelegate>
+
+- (void)dismissCamera:(id)cameraViewController
+{
+    _cameraButtonTapped = NO;
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

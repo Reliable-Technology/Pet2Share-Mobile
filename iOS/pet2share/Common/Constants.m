@@ -32,6 +32,7 @@ NSString * const kSegueMainView             = @"mainview";
 NSString * const kSegueEditProfile          = @"editprofile";
 NSString * const kSeguePetProfile           = @"petprofile";
 NSString * const kSegueAddEditPetProfile    = @"addeditpetprofile";
+NSString * const kSegueShowCamera           = @"showcamera";
 
 #pragma mark - Date Format
 
