@@ -649,10 +649,18 @@
                             <outlet property="delegate" destination="utb-Y4-g4h" id="NiC-pd-pmp"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Pet 2 Share" id="kc2-0e-wJI"/>
+                    <navigationItem key="navigationItem" title="Pet 2 Share" id="kc2-0e-wJI">
+                        <barButtonItem key="rightBarButtonItem" image="icon-plus" id="SkI-vk-yLk">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="addButtonTapped:" destination="utb-Y4-g4h" id="OH2-Ly-wHk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="Ayh-7u-e8f" kind="presentation" identifier="editprofile" id="fym-dI-unK"/>
                         <segue destination="03B-eo-mY5" kind="show" identifier="petprofile" id="iEw-lh-hJI"/>
+                        <segue destination="jLb-Ts-bBI" kind="presentation" identifier="addeditpetprofile" id="a6S-YY-rEy"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kgO-jI-Cx8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -751,17 +759,17 @@
                         </connections>
                     </collectionView>
                     <connections>
-                        <segue destination="jLb-Ts-bBI" kind="presentation" identifier="editpetprofile" id="3JU-0T-BsM"/>
+                        <segue destination="jLb-Ts-bBI" kind="presentation" identifier="addeditpetprofile" id="3JU-0T-BsM"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IYZ-kW-UDa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4619" y="3651"/>
+            <point key="canvasLocation" x="3888" y="3645"/>
         </scene>
-        <!--Edit Pet ProfileVC-->
+        <!--Add Edit Pet ProfileVC-->
         <scene sceneID="Ry2-ik-PuJ">
             <objects>
-                <viewController id="IYS-J9-CDe" customClass="EditPetProfileVC" sceneMemberID="viewController">
+                <viewController id="IYS-J9-CDe" customClass="AddEditPetProfileVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QJU-Yg-S2V"/>
                         <viewControllerLayoutGuide type="bottom" id="YCz-cL-TfH"/>
@@ -796,7 +804,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ugd-kY-vsO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6243" y="3651"/>
+            <point key="canvasLocation" x="5424" y="3645"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="o9u-wJ-7ae">
@@ -815,17 +823,19 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GI0-fY-j0c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5431" y="3651"/>
+            <point key="canvasLocation" x="4619" y="3645"/>
         </scene>
     </scenes>
     <resources>
         <image name="icon-close" width="15" height="15"/>
         <image name="icon-feed" width="28" height="22"/>
         <image name="icon-feed-selected" width="28" height="22"/>
+        <image name="icon-plus" width="18" height="18"/>
         <image name="icon-user" width="28" height="24"/>
         <image name="icon-user-selected" width="28" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XHL-Y0-yVk"/>
+        <segue reference="a6S-YY-rEy"/>
     </inferredMetricsTieBreakers>
 </document>

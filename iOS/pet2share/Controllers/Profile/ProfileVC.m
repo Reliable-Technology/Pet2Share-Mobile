@@ -13,6 +13,7 @@
 #import "Pet2ShareService.h"
 #import "Pet2ShareUser.h"
 #import "PetProfileVC.h"
+#import "AddEditPetProfileVC.h"
 
 static NSString * const kCellIdentifier     = @"petcollectioncell";
 static NSString * const kHeaderIdentifier   = @"profileheadercell";
@@ -21,9 +22,14 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
 
 @interface ProfileVC () <ProfileHeaderDelegate>
 
+- (IBAction)addButtonTapped:(id)sender;
+
 @end
 
 @implementation ProfileVC
+
+#pragma mark -
+#pragma mark Life Cycle
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -49,13 +55,14 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
           forSupplementaryViewOfKind:CSStickyHeaderParallaxHeader
                  withReuseIdentifier:kHeaderIdentifier];
     self.collectionView.backgroundColor = [AppColorScheme white];
-    
-    [self.items addObjectsFromArray:[Pet2ShareUser current].pets];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self.items removeAllObjects];
+    [self.items addObjectsFromArray:[Pet2ShareUser current].pets];
     [self.collectionView reloadData];
 }
 
@@ -70,6 +77,16 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
         PetProfileVC *viewController = (PetProfileVC *)segue.destinationViewController;
         viewController.pet = (Pet *)sender;
     }
+    else if ([segue.identifier isEqualToString:kSegueAddEditPetProfile])
+    {
+        UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
+        AddEditPetProfileVC *addEditProfileVC = (AddEditPetProfileVC *)navController.topViewController;
+        if (addEditProfileVC)
+        {
+            addEditProfileVC.petProfileMode = AddPetProfile;
+            addEditProfileVC.pet = [Pet new];
+        }
+    }
 }
 
 - (void)dealloc
@@ -77,7 +94,8 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
     TRACE_HERE;
 }
 
-#pragma mark - Private Instance Methods
+#pragma mark -
+#pragma mark Private Instance Methods
 
 - (void)setupLayout
 {
@@ -93,7 +111,16 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
     }
 }
 
-#pragma mark - <UICollectionViewDataSource>
+#pragma mark - 
+#pragma mark Events
+
+- (IBAction)addButtonTapped:(id)sender
+{
+    [self performSegueWithIdentifier:kSegueAddEditPetProfile sender:self];
+}
+
+#pragma mark -
+#pragma mark <UICollectionViewDataSource>
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -140,7 +167,8 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
     return nil;
 }
 
-#pragma mark - <UICollectionViewDelegates>
+#pragma mark -
+#pragma mark <UICollectionViewDelegates>
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -157,7 +185,8 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
     }
 }
 
-#pragma mark - <ProfileHeaderDelegate>
+#pragma mark -
+#pragma mark <ProfileHeaderDelegate>
 
 - (void)editProfile:(id)sender
 {

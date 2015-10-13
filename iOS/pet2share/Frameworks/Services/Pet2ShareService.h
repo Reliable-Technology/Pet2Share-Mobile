@@ -52,7 +52,6 @@
                   zipCode:(NSString *)zipCode;
 
 - (void)insertPetProfile:(NSObject<Pet2ShareServiceCallback> *)callback
-                   petId:(NSInteger)petId
                   userId:(NSInteger)userId
                     name:(NSString *)name
               familyName:(NSString *)familyName

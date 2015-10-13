@@ -119,7 +119,7 @@
     // Request Avatar Image
     Pet2ShareService *service = [Pet2ShareService new];
     [service loadImage:dict[kCellImageLink] completion:^(UIImage *image) {
-        self.avatarImgView.image = image;
+        self.avatarImgView.image = image ?: [UIImage imageNamed:@"img-avatar"];
     }];
 }
 

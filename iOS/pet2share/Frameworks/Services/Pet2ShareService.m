@@ -172,7 +172,6 @@ static id ObjectOrNull(id object)
 }
 
 - (void)insertPetProfile:(NSObject<Pet2ShareServiceCallback> *)callback
-                   petId:(NSInteger)petId
                   userId:(NSInteger)userId
                     name:(NSString *)name
               familyName:(NSString *)familyName
@@ -184,7 +183,6 @@ static id ObjectOrNull(id object)
     fTRACE(@"%@ <Identifier: %ld>", INSERTPETPROFILE_ENDPOINT, userId);
     
     NSMutableDictionary *postData = [NSMutableDictionary dictionary];
-    [postData setObject:@(petId) forKey:@"PetId"];
     [postData setObject:@(userId) forKey:@"UserId"];
     [postData setObject:ObjectOrNull(name) forKey:@"Name"];
     [postData setObject:ObjectOrNull(familyName) forKey:@"FamilyName"];

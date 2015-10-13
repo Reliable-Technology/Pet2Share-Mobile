@@ -12,7 +12,7 @@
 #import "ProfileHeaderCell.h"
 #import "Pet2ShareService.h"
 #import "PostCollectionCell.h"
-#import "EditPetProfileVC.h"
+#import "AddEditPetProfileVC.h"
 
 static CGFloat kCellSpacing                     = 10.0f;
 static NSString * const kHeaderIdentifier       = @"profileheadercell";
@@ -70,11 +70,15 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:kSegueEditPetProfile])
+    if ([segue.identifier isEqualToString:kSegueAddEditPetProfile])
     {
         UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
-        EditPetProfileVC *editPetProfileVC = (EditPetProfileVC *)navController.topViewController;
-        if (editPetProfileVC) editPetProfileVC.pet = self.pet;
+        AddEditPetProfileVC *addEditProfileVC = (AddEditPetProfileVC *)navController.topViewController;
+        if (addEditProfileVC)
+        {
+            addEditProfileVC.petProfileMode = EditPetProfile;
+            addEditProfileVC.pet = self.pet;
+        }
     }
 }
 
@@ -173,7 +177,7 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
 
 - (void)editProfile:(id)sender
 {
-    [self performSegueWithIdentifier:kSegueEditPetProfile sender:self];
+    [self performSegueWithIdentifier:kSegueAddEditPetProfile sender:self];
 }
 
 @end

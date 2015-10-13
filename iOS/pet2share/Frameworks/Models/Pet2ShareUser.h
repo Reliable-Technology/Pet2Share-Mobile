@@ -24,7 +24,7 @@
 @property (nonatomic, strong) SocialMediaSource *socialMediaSource;
 @property (nonatomic, strong) Person *person;
 @property (nonatomic, strong) UserType *userType;
-@property (nonatomic, strong) NSArray *pets;
+@property (nonatomic, strong) NSMutableArray *pets;
 @property (nonatomic, readonly) BOOL isAuthenticated;
 @property (nonatomic, readonly) BOOL isActive;
 

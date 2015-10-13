@@ -1,12 +1,12 @@
 //
-//  EditPetProfileVC.m
+//  AddEditPetProfileVC.m
 //  pet2share
 //
 //  Created by Tony Kieu on 10/12/15.
 //  Copyright © 2015 Pet 2 Share. All rights reserved.
 //
 
-#import "EditPetProfileVC.h"
+#import "AddEditPetProfileVC.h"
 #import "Utils.h"
 #import "Graphics.h"
 #import "ActivityView.h"
@@ -43,7 +43,7 @@ static CGFloat const kHeaderPadding                         = 16.0f;
 #define kSecondSectionTitle                                 NSLocalizedString(@"Other Pet Info", @"")
 #define kThirdSectionTitle                                  NSLocalizedString(@"About Pet", @"")
 
-@interface EditPetProfileVC () <BarButtonsProtocol, Pet2ShareServiceCallback, UITableViewDataSource, UITableViewDelegate, FormProtocol>
+@interface AddEditPetProfileVC () <BarButtonsProtocol, Pet2ShareServiceCallback, UITableViewDataSource, UITableViewDelegate, FormProtocol>
 {
     BOOL _isDirty;
 }
@@ -55,7 +55,7 @@ static CGFloat const kHeaderPadding                         = 16.0f;
 
 @end
 
-@implementation EditPetProfileVC
+@implementation AddEditPetProfileVC
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -74,7 +74,8 @@ static CGFloat const kHeaderPadding                         = 16.0f;
     [super viewDidLoad];
     
     // Title
-    self.title = NSLocalizedString(@"PET EDIT PROFILE", @"");
+    if (self.petProfileMode == AddPetProfile) self.title = NSLocalizedString(@"ADD PET PROFILE", @"");
+    else self.title = NSLocalizedString(@"PET EDIT PROFILE", @"");
     
     // UITableViewCell registration
     [self.tableView registerNib:[UINib nibWithNibName:kCellNameInfoNibName bundle:nil]
@@ -100,7 +101,6 @@ static CGFloat const kHeaderPadding                         = 16.0f;
     [super viewWillDisappear:animated];
     [self.view endEditing:YES];
 }
-
 
 - (void)dealloc
 {
@@ -193,35 +193,53 @@ static CGFloat const kHeaderPadding                         = 16.0f;
     [self.tableView reloadData];
 }
 
-- (void)updatePetProfile
+- (void)addUpdatePetProfile
 {
     [self.activity show];
     self.tableView.userInteractionEnabled = NO;
     
-    // Update current user pet
-    for (Pet *pet in [Pet2ShareUser current].pets)
-    {
-        if (pet.identifier == self.pet.identifier)
-        {
-            pet.name = self.pet.name;
-            pet.familyName = self.pet.familyName;
-            pet.dateOfBirth = self.pet.dateOfBirth;
-            pet.favFood = self.pet.favFood;
-            pet.about = self.pet.about;
-            break;
-        }
-    }
-    
-    // Update the database
     Pet2ShareService *service = [Pet2ShareService new];
-    [service updatePetProfile:self petId:self.pet.identifier
-                       userId:[Pet2ShareUser current].identifier
-                         name:self.pet.name
-                   familyName:self.pet.familyName
-                      petType:nil
-                  dateOfBirth:self.pet.dateOfBirth
-                        about:self.pet.about
-                      favFood:self.pet.favFood];
+    
+    if (self.petProfileMode == AddPetProfile)
+    {
+        [[Pet2ShareUser current].pets addObject:self.pet];
+        // Update the database
+        [service insertPetProfile:self
+                           userId:[Pet2ShareUser current].identifier
+                             name:self.pet.name
+                       familyName:self.pet.familyName
+                          petType:nil
+                      dateOfBirth:self.pet.dateOfBirth
+                            about:self.pet.about
+                          favFood:self.pet.favFood];
+    }
+    else
+    {
+        // Update current user pet
+        for (Pet *pet in [Pet2ShareUser current].pets)
+        {
+            if (pet.identifier == self.pet.identifier)
+            {
+                pet.name = self.pet.name;
+                pet.familyName = self.pet.familyName;
+                pet.dateOfBirth = self.pet.dateOfBirth;
+                pet.favFood = self.pet.favFood;
+                pet.about = self.pet.about;
+                break;
+            }
+        }
+        
+        // Update the database
+        [service updatePetProfile:self
+                            petId:self.pet.identifier
+                           userId:[Pet2ShareUser current].identifier
+                             name:self.pet.name
+                       familyName:self.pet.familyName
+                          petType:nil
+                      dateOfBirth:self.pet.dateOfBirth
+                            about:self.pet.about
+                          favFood:self.pet.favFood];
+    }
 }
 
 #pragma mark -
@@ -249,7 +267,10 @@ static CGFloat const kHeaderPadding                         = 16.0f;
 
 - (UIButton *)setupRightBarButton
 {
-    return [Graphics createBarButtonWithTitle:NSLocalizedString(@"DONE", @"")];
+    if (self.petProfileMode == AddPetProfile)
+        return [Graphics createBarButtonWithTitle:NSLocalizedString(@"ADD", @"")];
+    else
+        return [Graphics createBarButtonWithTitle:NSLocalizedString(@"EDIT", @"")];
 }
 
 - (void)handleLeftButtonEvent:(id)sender
@@ -265,11 +286,14 @@ static CGFloat const kHeaderPadding                         = 16.0f;
         return;
     }
     
+    NSString *message = self.petProfileMode == AddPetProfile
+    ? NSLocalizedString(@"Do you want to add new pet?", @"")
+    : NSLocalizedString(@"Do you want to edit pet information?", @"");
     [Graphics promptAlert:NSLocalizedString(@"Save Settings", @"")
-                  message:NSLocalizedString(@"Do you want to save new user information?", @"")
+                  message:message
                      type:NormalAlert
                        ok:^(SIAlertView *alert) {
-                           [self updatePetProfile];
+                           [self addUpdatePetProfile];
                        } cancel:^(SIAlertView *alert) {
                            return;
                        }];
@@ -299,6 +323,8 @@ static CGFloat const kHeaderPadding                         = 16.0f;
         self.pet.dateOfBirth = (Date *)[Utils formatStringToNSDate:value withFormat:kFormatDateUS];
     else if ([key isEqualToString:kFavFoodKey])
         self.pet.favFood = value;
+    else if ([key isEqualToString:kAboutMeKey])
+        self.pet.about = value;
     else
         fTRACE(@"Unrecognized Key: %@ - Value: %@", key, value);
 }
