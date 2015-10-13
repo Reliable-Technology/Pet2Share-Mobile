@@ -51,6 +51,8 @@
 		FB484A9A1B50C6130045A6EA /* Lato-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A871B50C6130045A6EA /* Lato-SemiboldItalic.ttf */; };
 		FB484A9B1B50C6130045A6EA /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A881B50C6130045A6EA /* Lato-Thin.ttf */; };
 		FB484A9C1B50C6130045A6EA /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A891B50C6130045A6EA /* Lato-ThinItalic.ttf */; };
+		FB4BCBD11BCD6FA7009F853E /* ProfileNameInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB4BCBCF1BCD6FA7009F853E /* ProfileNameInfoCell.m */; settings = {ASSET_TAGS = (); }; };
+		FB4BCBD21BCD6FA7009F853E /* ProfileNameInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB4BCBD01BCD6FA7009F853E /* ProfileNameInfoCell.xib */; settings = {ASSET_TAGS = (); }; };
 		FB4ED0251BCC843200E9F379 /* EditPetProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB4ED0241BCC843200E9F379 /* EditPetProfileVC.m */; settings = {ASSET_TAGS = (); }; };
 		FB5050301BC4CBB40037F3E5 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = FB50502F1BC4CBB40037F3E5 /* Address.m */; settings = {ASSET_TAGS = (); }; };
 		FB5050331BC4D0B10037F3E5 /* Date.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5050321BC4D0B10037F3E5 /* Date.m */; settings = {ASSET_TAGS = (); }; };
@@ -172,6 +174,9 @@
 		FB484A881B50C6130045A6EA /* Lato-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Thin.ttf"; sourceTree = "<group>"; };
 		FB484A891B50C6130045A6EA /* Lato-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-ThinItalic.ttf"; sourceTree = "<group>"; };
 		FB484A8A1B50C6130045A6EA /* SIL Open Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SIL Open Font License.txt"; sourceTree = "<group>"; };
+		FB4BCBCE1BCD6FA7009F853E /* ProfileNameInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileNameInfoCell.h; sourceTree = "<group>"; };
+		FB4BCBCF1BCD6FA7009F853E /* ProfileNameInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileNameInfoCell.m; sourceTree = "<group>"; };
+		FB4BCBD01BCD6FA7009F853E /* ProfileNameInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileNameInfoCell.xib; sourceTree = "<group>"; };
 		FB4ED0231BCC843200E9F379 /* EditPetProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditPetProfileVC.h; sourceTree = "<group>"; };
 		FB4ED0241BCC843200E9F379 /* EditPetProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditPetProfileVC.m; sourceTree = "<group>"; };
 		FB50502E1BC4CBB40037F3E5 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
@@ -337,6 +342,9 @@
 				FBCF4AA11BC72E9D00C75066 /* ProfileBasicInfoCell.h */,
 				FBCF4AA21BC72E9D00C75066 /* ProfileBasicInfoCell.m */,
 				FBCF4AA31BC72E9D00C75066 /* ProfileBasicInfoCell.xib */,
+				FB4BCBCE1BCD6FA7009F853E /* ProfileNameInfoCell.h */,
+				FB4BCBCF1BCD6FA7009F853E /* ProfileNameInfoCell.m */,
+				FB4BCBD01BCD6FA7009F853E /* ProfileNameInfoCell.xib */,
 				FB5E1EC31BCA944C00897CA2 /* TextFieldTableCell.h */,
 				FB5E1EC41BCA944C00897CA2 /* TextFieldTableCell.m */,
 				FB5E1EC51BCA944C00897CA2 /* TextFieldTableCell.xib */,
@@ -748,6 +756,7 @@
 				FB484A9C1B50C6130045A6EA /* Lato-ThinItalic.ttf in Resources */,
 				FB5E1ED41BCB0FD800897CA2 /* TextViewTableCell.xib in Resources */,
 				FB484A901B50C6130045A6EA /* Lato-HairlineItalic.ttf in Resources */,
+				FB4BCBD21BCD6FA7009F853E /* ProfileNameInfoCell.xib in Resources */,
 				FB484A8E1B50C6130045A6EA /* Lato-BoldItalic.ttf in Resources */,
 				FB484A8C1B50C6130045A6EA /* Lato-BlackItalic.ttf in Resources */,
 				FB484A731B50C5FB0045A6EA /* LobsterTwo-BoldItalic.otf in Resources */,
@@ -854,6 +863,7 @@
 				FB484A621B50BE910045A6EA /* RoundCornerButton.m in Sources */,
 				FB6C273D1B6ED2950002034A /* UrlManager.m in Sources */,
 				FB484A4D1B4FD40A0045A6EA /* OrderedDictionary.m in Sources */,
+				FB4BCBD11BCD6FA7009F853E /* ProfileNameInfoCell.m in Sources */,
 				FB4ED0251BCC843200E9F379 /* EditPetProfileVC.m in Sources */,
 				FBCF4A991BC6CF6B00C75066 /* CollectionViewController.m in Sources */,
 				FB5E1EC61BCA944C00897CA2 /* TextFieldTableCell.m in Sources */,

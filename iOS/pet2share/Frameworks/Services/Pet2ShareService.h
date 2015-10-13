@@ -51,6 +51,26 @@
                   country:(NSString *)country
                   zipCode:(NSString *)zipCode;
 
+- (void)insertPetProfile:(NSObject<Pet2ShareServiceCallback> *)callback
+                   petId:(NSInteger)petId
+                  userId:(NSInteger)userId
+                    name:(NSString *)name
+              familyName:(NSString *)familyName
+                 petType:(PetType *)petType
+             dateOfBirth:(NSDate *)dateOfBirth
+                   about:(NSString *)about
+                 favFood:(NSString *)favFood;
+
+- (void)updatePetProfile:(NSObject<Pet2ShareServiceCallback> *)callback
+                  petId:(NSInteger)petId
+                  userId:(NSInteger)userId
+                    name:(NSString *)name
+              familyName:(NSString *)familyName
+                 petType:(PetType *)petType
+             dateOfBirth:(NSDate *)dateOfBirth
+                   about:(NSString *)about
+                 favFood:(NSString *)favFood;
+
 - (void)loadImage:(NSString *)url
        completion:(void (^)(UIImage* image))completion;
 

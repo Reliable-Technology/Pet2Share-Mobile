@@ -10,7 +10,7 @@
 
 @implementation Graphics
 
-#pragma mark - Private Helpers
+#pragma mark - Private Helpersname
 
 + (SIAlertView *)buildAlert:(NSString *)title message:(NSString *)message type:(AlertType)type
 {

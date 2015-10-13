@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Pet 2 Share. All rights reserved.
 //
 
+#import <EGOCache/EGOCache.h>
 #import "Pet2ShareService.h"
 #import "HttpClient.h"
 #import "UrlManager.h"
@@ -170,10 +171,68 @@ static id ObjectOrNull(id object)
     [self requestData:callback endPoint:UPDATEUSERPROFILE_ENDPOINT jsonModel:[UpdateMessage class] postData:postData];
 }
 
+- (void)insertPetProfile:(NSObject<Pet2ShareServiceCallback> *)callback
+                   petId:(NSInteger)petId
+                  userId:(NSInteger)userId
+                    name:(NSString *)name
+              familyName:(NSString *)familyName
+                 petType:(PetType *)petType
+             dateOfBirth:(NSDate *)dateOfBirth
+                   about:(NSString *)about
+                 favFood:(NSString *)favFood
+{
+    fTRACE(@"%@ <Identifier: %ld>", INSERTPETPROFILE_ENDPOINT, userId);
+    
+    NSMutableDictionary *postData = [NSMutableDictionary dictionary];
+    [postData setObject:@(petId) forKey:@"PetId"];
+    [postData setObject:@(userId) forKey:@"UserId"];
+    [postData setObject:ObjectOrNull(name) forKey:@"Name"];
+    [postData setObject:ObjectOrNull(familyName) forKey:@"FamilyName"];
+    [postData setObject:ObjectOrNull(petType) forKey:@"PetTypeId"];
+    [postData setObject:[Utils formatNSDateToDateTime:dateOfBirth] forKey:@"DOB"];
+    [postData setObject:ObjectOrNull(about) forKey:@"About"];
+    [postData setObject:ObjectOrNull(favFood) forKey:@"FavFood"];
+    
+    [self requestData:callback endPoint:INSERTPETPROFILE_ENDPOINT jsonModel:[UpdateMessage class] postData:postData];
+}
+
+- (void)updatePetProfile:(NSObject<Pet2ShareServiceCallback> *)callback
+                   petId:(NSInteger)petId
+                  userId:(NSInteger)userId
+                    name:(NSString *)name
+              familyName:(NSString *)familyName
+                 petType:(PetType *)petType
+             dateOfBirth:(NSDate *)dateOfBirth
+                   about:(NSString *)about
+                 favFood:(NSString *)favFood
+{
+    fTRACE(@"%@ <Identifier: %ld>", UPDATEPETPROFILE_ENDPOINT, userId);
+    
+    NSMutableDictionary *postData = [NSMutableDictionary dictionary];
+    [postData setObject:@(petId) forKey:@"PetId"];
+    [postData setObject:@(userId) forKey:@"UserId"];
+    [postData setObject:ObjectOrNull(name) forKey:@"Name"];
+    [postData setObject:ObjectOrNull(familyName) forKey:@"FamilyName"];
+    [postData setObject:ObjectOrNull(petType) forKey:@"PetTypeId"];
+    [postData setObject:[Utils formatNSDateToDateTime:dateOfBirth] forKey:@"DOB"];
+    [postData setObject:ObjectOrNull(about) forKey:@"About"];
+    [postData setObject:ObjectOrNull(favFood) forKey:@"FavFood"];
+    
+    [self requestData:callback endPoint:UPDATEPETPROFILE_ENDPOINT jsonModel:[UpdateMessage class] postData:postData];
+}
+
 - (void)loadImage:(NSString *)url
        completion:(void (^)(UIImage* image))completion
 {
     if (!url) return;
+    
+    if ([[EGOCache globalCache] hasCacheForKey:url])
+    {
+        NSData *data = [[EGOCache globalCache] dataForKey:url];
+        UIImage *image = [UIImage imageWithData:data];
+        completion(image);
+        return;
+    }
     
     dispatch_queue_t imageQueue = dispatch_queue_create("imageDownloader", nil);
     dispatch_async(imageQueue, ^{
@@ -183,6 +242,9 @@ static id ObjectOrNull(id object)
             NSData *data = [NSData dataWithContentsOfURL:imageUrl];
             UIImage *image = [UIImage imageWithData:data];
             
+            if (![[EGOCache globalCache] hasCacheForKey:url])
+                [[EGOCache globalCache] setData:data forKey:url withTimeoutInterval:kImageCacheTimeOut];
+        
             dispatch_async(dispatch_get_main_queue(), ^{
                 completion(image);
             });

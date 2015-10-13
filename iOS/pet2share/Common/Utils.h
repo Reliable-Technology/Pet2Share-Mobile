@@ -31,7 +31,7 @@
 #pragma mark Date
 
 + (NSDate *)deserializeJsonDateString:(NSString *)jsonDateString;
-+ (NSString *)formatNSDateToDateTime:(NSDate *)date;
++ (id)formatNSDateToDateTime:(NSDate *)date;
 + (NSString *)formatNSDateToString:(NSDate *)date;
 + (NSString *)formatNSDateToString:(NSDate *)date withFormat:(NSString *)format;
 + (NSDate *)formatUTCStringToNSDate:(NSString *)dateStr;

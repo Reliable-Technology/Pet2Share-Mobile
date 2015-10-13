@@ -157,11 +157,11 @@
             </tableViewCellContentView>
             <animations/>
             <connections>
-                <outlet property="avatarImageView" destination="PcM-Bo-bdY" id="zN3-1p-dxU"/>
+                <outlet property="avatarImageView" destination="PcM-Bo-bdY" id="CUE-wd-5oo"/>
                 <outlet property="firstnameIconImgView" destination="mDG-gu-Aox" id="SZq-BC-KCq"/>
                 <outlet property="firstnameTxtField" destination="bET-iZ-XrU" id="OVu-kq-ZXq"/>
-                <outlet property="lastNameTxtField" destination="Zrk-JE-BSu" id="7M2-XB-uDG"/>
                 <outlet property="lastnameIconImgView" destination="EHL-9A-thN" id="foE-z8-lht"/>
+                <outlet property="lastnameTxtField" destination="Zrk-JE-BSu" id="eOF-9f-EZa"/>
                 <outlet property="usernameIconImgView" destination="2ge-Jq-Sm5" id="AkJ-n8-zOV"/>
                 <outlet property="usernameLabel" destination="ryY-qr-zbu" id="6MD-hz-pZb"/>
             </connections>

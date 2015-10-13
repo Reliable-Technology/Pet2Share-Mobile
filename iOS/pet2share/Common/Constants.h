@@ -25,6 +25,7 @@ extern CGFloat const kBarButtonHeight;
 extern NSString * const kLogoTypeface;
 extern NSInteger const kcenturyInSeconds;
 extern NSInteger const kDescriptionMaxCharacters;
+extern NSInteger const kImageCacheTimeOut;
 
 #pragma mark - Segues
 

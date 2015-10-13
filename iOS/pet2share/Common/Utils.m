@@ -94,9 +94,9 @@
     return date;
 }
 
-+ (NSString *)formatNSDateToDateTime:(NSDate *)date
++ (id)formatNSDateToDateTime:(NSDate *)date
 {
-    if (!date) return kEmptyString;
+    if (!date) return [NSNull new];
     
     NSDateFormatter *formatter = [[DateFormatterFactory sharedFactory] dateFormatterWithFormat:@"Z"];
     NSString *jsonDate = [NSString stringWithFormat:@"/Date(%.0f000%@)/",

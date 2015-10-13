@@ -1,33 +1,31 @@
 //
-//  ProfileBasicInfoCell.m
+//  ProfileNameInfoCell.m
 //  pet2share
 //
-//  Created by Tony Kieu on 10/8/15.
+//  Created by Tony Kieu on 10/13/15.
 //  Copyright © 2015 Pet 2 Share. All rights reserved.
 //
 
-#import "ProfileBasicInfoCell.h"
-#import "CircleImageView.h"
+#import "ProfileNameInfoCell.h"
 #import "Pet2ShareService.h"
 #import "Graphics.h"
+#import "CircleImageView.h"
 
-@interface ProfileBasicInfoCell () <UITextFieldDelegate>
+@interface ProfileNameInfoCell () <UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UIImageView *usernameIconImgView;
 @property (weak, nonatomic) IBOutlet UIImageView *firstnameIconImgView;
 @property (weak, nonatomic) IBOutlet UIImageView *lastnameIconImgView;
-@property (weak, nonatomic) IBOutlet CircleImageView *avatarImageView;
-@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *firstnameTxtField;
 @property (weak, nonatomic) IBOutlet UITextField *lastnameTxtField;
+@property (weak, nonatomic) IBOutlet CircleImageView *avatarImgView;
 
 @end
 
-@implementation ProfileBasicInfoCell
+@implementation ProfileNameInfoCell
 
 + (CGFloat)cellHeight
 {
-    return 132.0f;
+    return 88.0f;
 }
 
 #pragma mark - 
@@ -54,7 +52,7 @@
     self.lastnameTxtField.delegate = self;
 }
 
-#pragma mark -
+#pragma mark - 
 #pragma mark <UITextFieldDelegate>
 
 - (BOOL)textFieldShouldClear:(UITextField *)textField
@@ -86,7 +84,7 @@
     }
 }
 
-#pragma mark - 
+#pragma mark -
 #pragma mark Private Instance Methods
 
 - (NSString *)firstName
@@ -109,22 +107,19 @@
 - (void)updateCell:(NSDictionary *)dict
 {
     // Icon Images
-    self.usernameIconImgView.image = [Graphics tintImage:[UIImage imageNamed:dict[kUserNameImageIcon]]
-                                               withColor:[AppColorScheme darkGray]];
     self.firstnameIconImgView.image = [Graphics tintImage:[UIImage imageNamed:dict[kFirstNameImageIcon]]
                                                 withColor:[AppColorScheme darkGray]];
     self.lastnameIconImgView.image = [Graphics tintImage:[UIImage imageNamed:dict[kLastNameImageIcon]]
                                                withColor:[AppColorScheme darkGray]];
     
     // Labels & TextFields
-    self.usernameLabel.text = dict[kUserNameKey];
     self.firstnameTxtField.text = dict[kFirstNameKey];
     self.lastnameTxtField.text = dict[kLastNameKey];
     
     // Request Avatar Image
     Pet2ShareService *service = [Pet2ShareService new];
     [service loadImage:dict[kCellImageLink] completion:^(UIImage *image) {
-        self.avatarImageView.image = image;
+        self.avatarImgView.image = image;
     }];
 }
 

@@ -16,6 +16,7 @@ CGFloat const kBarButtonHeight              = 32.0f;
 NSString * const kLogoTypeface              = @"LobsterTwo-Bold";
 NSInteger const kcenturyInSeconds           = 3154000000;
 NSInteger const kDescriptionMaxCharacters   = 1000;
+NSInteger const kImageCacheTimeOut          = 60*60*24; // 1 day
 
 #pragma mark - Segues
 

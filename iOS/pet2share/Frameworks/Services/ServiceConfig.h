@@ -43,5 +43,7 @@
 #define REGISTER_ENDPOINT                   @"Register"
 #define GETUSERPROFILE_ENDPOINT             @"GetUserProfile"
 #define UPDATEUSERPROFILE_ENDPOINT          @"UpdateUserProfile"
+#define INSERTPETPROFILE_ENDPOINT           @"InsertPetProfile"
+#define UPDATEPETPROFILE_ENDPOINT           @"UpdatePetProfile"
 
 #endif

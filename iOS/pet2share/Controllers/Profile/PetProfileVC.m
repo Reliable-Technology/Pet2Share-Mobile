@@ -62,6 +62,12 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
     [self requestData];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.collectionView reloadData];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:kSegueEditPetProfile])
@@ -101,7 +107,6 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
         for (int i = 0; i < 5; i++)
         {
             [self.items addObject:@"Test"];
-            [self.collectionView reloadData];
         }
     }
 }
@@ -139,8 +144,11 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
         {
             ProfileHeaderCell *cell = [collectionView dequeueReusableSupplementaryViewOfKind:kind
                                                                          withReuseIdentifier:kHeaderIdentifier
-                                                                                forIndexPath:indexPath];
-            [cell updateProfileAvatar:self.pet.profilePicture name:self.pet.name socialStatusInfo:nil];
+                                                                                forIndexPath:indexPath];  
+            NSString *firstName = self.pet.name;
+            NSString *lastName = self.pet.familyName;
+            NSString *name = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+            [cell updateProfileAvatar:self.pet.profilePicture name:name socialStatusInfo:nil];
             cell.delegate = self;
             return cell;
         }

@@ -19,11 +19,6 @@ typedef NS_ENUM(NSInteger, AlertType)
 
 @interface Graphics : NSObject
 
-#pragma mark -
-#pragma mark - Labels
-
-+ (CGSize)findHeightForText:(NSString *)text havingWidth:(CGFloat)widthValue andFont:(UIFont *)font;
-
 #pragma mark - Alerts
 
 + (void)alert:(NSString *)title message:(NSString *)message type:(AlertType)type;

@@ -130,7 +130,6 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
             NSString *name = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
             [cell updateProfileAvatar:currentUser.person.avatarUrl name:name socialStatusInfo:nil];
             cell.delegate = self;
-            
             return cell;
         }
         @catch (NSException *exception)
