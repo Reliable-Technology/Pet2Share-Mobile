@@ -12,6 +12,7 @@
 #import "ProfileHeaderCell.h"
 #import "Pet2ShareService.h"
 #import "PostCollectionCell.h"
+#import "EditPetProfileVC.h"
 
 static CGFloat kCellSpacing                     = 10.0f;
 static NSString * const kHeaderIdentifier       = @"profileheadercell";
@@ -25,6 +26,9 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
 @end
 
 @implementation PetProfileVC
+
+#pragma mark - 
+#pragma mark Life Cycle
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -60,7 +64,12 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // TODO: Implement later
+    if ([segue.identifier isEqualToString:kSegueEditPetProfile])
+    {
+        UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
+        EditPetProfileVC *editPetProfileVC = (EditPetProfileVC *)navController.topViewController;
+        if (editPetProfileVC) editPetProfileVC.pet = self.pet;
+    }
 }
 
 - (void)dealloc
@@ -97,14 +106,16 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
     }
 }
 
-#pragma mark - Events
+#pragma mark -
+#pragma mark Events
 
 - (void)backBarButtonTapped
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-#pragma mark - <Pet2ShareServiceCallback>
+#pragma mark -
+#pragma mark <Pet2ShareServiceCallback>
 
 - (void)onReceiveSuccess:(NSArray *)objects
 {
@@ -116,7 +127,8 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
     fTRACE(@"Error Message: %@", errorMessage.message);
 }
 
-#pragma mark - <UICollectionViewDataSource>
+#pragma mark -
+#pragma mark <UICollectionViewDataSource>
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
            viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
@@ -148,11 +160,12 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
     return cell;
 }
 
-#pragma mark - <ProfileHeaderDelegate>
+#pragma mark -
+#pragma mark <ProfileHeaderDelegate>
 
 - (void)editProfile:(id)sender
 {
-//    [self performSegueWithIdentifier:kSegueEditProfile sender:self];
+    [self performSegueWithIdentifier:kSegueEditPetProfile sender:self];
 }
 
 @end

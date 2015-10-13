@@ -51,6 +51,7 @@
 		FB484A9A1B50C6130045A6EA /* Lato-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A871B50C6130045A6EA /* Lato-SemiboldItalic.ttf */; };
 		FB484A9B1B50C6130045A6EA /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A881B50C6130045A6EA /* Lato-Thin.ttf */; };
 		FB484A9C1B50C6130045A6EA /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A891B50C6130045A6EA /* Lato-ThinItalic.ttf */; };
+		FB4ED0251BCC843200E9F379 /* EditPetProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB4ED0241BCC843200E9F379 /* EditPetProfileVC.m */; settings = {ASSET_TAGS = (); }; };
 		FB5050301BC4CBB40037F3E5 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = FB50502F1BC4CBB40037F3E5 /* Address.m */; settings = {ASSET_TAGS = (); }; };
 		FB5050331BC4D0B10037F3E5 /* Date.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5050321BC4D0B10037F3E5 /* Date.m */; settings = {ASSET_TAGS = (); }; };
 		FB5050391BC4D1E70037F3E5 /* JSONValueTransformer+Date.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5050381BC4D1E70037F3E5 /* JSONValueTransformer+Date.m */; settings = {ASSET_TAGS = (); }; };
@@ -171,6 +172,8 @@
 		FB484A881B50C6130045A6EA /* Lato-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Thin.ttf"; sourceTree = "<group>"; };
 		FB484A891B50C6130045A6EA /* Lato-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-ThinItalic.ttf"; sourceTree = "<group>"; };
 		FB484A8A1B50C6130045A6EA /* SIL Open Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SIL Open Font License.txt"; sourceTree = "<group>"; };
+		FB4ED0231BCC843200E9F379 /* EditPetProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditPetProfileVC.h; sourceTree = "<group>"; };
+		FB4ED0241BCC843200E9F379 /* EditPetProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditPetProfileVC.m; sourceTree = "<group>"; };
 		FB50502E1BC4CBB40037F3E5 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
 		FB50502F1BC4CBB40037F3E5 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
 		FB5050311BC4D0B10037F3E5 /* Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Date.h; sourceTree = "<group>"; };
@@ -612,6 +615,8 @@
 				FBCF4A9C1BC7076200C75066 /* EditProfileVC.m */,
 				FB5E1EBD1BC9E2CE00897CA2 /* PetProfileVC.h */,
 				FB5E1EBE1BC9E2CE00897CA2 /* PetProfileVC.m */,
+				FB4ED0231BCC843200E9F379 /* EditPetProfileVC.h */,
+				FB4ED0241BCC843200E9F379 /* EditPetProfileVC.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -849,6 +854,7 @@
 				FB484A621B50BE910045A6EA /* RoundCornerButton.m in Sources */,
 				FB6C273D1B6ED2950002034A /* UrlManager.m in Sources */,
 				FB484A4D1B4FD40A0045A6EA /* OrderedDictionary.m in Sources */,
+				FB4ED0251BCC843200E9F379 /* EditPetProfileVC.m in Sources */,
 				FBCF4A991BC6CF6B00C75066 /* CollectionViewController.m in Sources */,
 				FB5E1EC61BCA944C00897CA2 /* TextFieldTableCell.m in Sources */,
 				FBB531141B9BA8A7004D5DA2 /* ResponseObject.m in Sources */,

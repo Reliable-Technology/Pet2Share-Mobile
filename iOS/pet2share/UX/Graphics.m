@@ -230,4 +230,14 @@
     return screenBounds.size;
 }
 
++ (UIButton *)createBarButtonWithTitle:(NSString *)title
+{
+    CGSize buttonSize = [title sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15.0f weight:UIFontWeightBold]}];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    button.frame = CGRectMake(0.0f, 0.0f, buttonSize.width, buttonSize.height);
+    [button setTitle:title forState:UIControlStateNormal];
+    [button setTitle:title forState:UIControlStateHighlighted];
+    return button;
+}
+
 @end

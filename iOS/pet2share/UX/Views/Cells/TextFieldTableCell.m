@@ -131,16 +131,12 @@
         {
             self.datePicker.datePickerMode = UIDatePickerModeDate;
             self.textField.inputView = self.datePicker;
-            self.datePicker.date = [Utils formatStringToNSDate:self.textField.text withFormat:kFormatDateUS];
-            self.textField.text = [Utils formatNSDateToString:self.datePicker.date];
+            self.datePicker.date = [Utils formatStringToNSDate:self.textField.text withFormat:kFormatDateUS] ?: [NSDate date];
             break;
         }
         case InputTypeTime:
         {
-            self.datePicker.datePickerMode = UIDatePickerModeTime;
-            self.textField.inputView = self.datePicker;
-            self.datePicker.date = [Utils formatStringToNSDate:self.textField.text withFormat:kFormatDateUS];
-            self.textField.text = [Utils formatNSDateToString:self.datePicker.date];
+            // TODO: No implementation at this point
             break;
         }
         default:

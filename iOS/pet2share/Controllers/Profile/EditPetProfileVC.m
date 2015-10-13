@@ -1,12 +1,12 @@
 //
-//  EditProfileVC.m
+//  EditPetProfileVC.m
 //  pet2share
 //
-//  Created by Tony Kieu on 10/8/15.
+//  Created by Tony Kieu on 10/12/15.
 //  Copyright © 2015 Pet 2 Share. All rights reserved.
 //
 
-#import "EditProfileVC.h"
+#import "EditPetProfileVC.h"
 #import "Utils.h"
 #import "Graphics.h"
 #import "ActivityView.h"
@@ -38,12 +38,11 @@ static NSString * const kAboutMeKey                         = @"aboutme";
 
 static CGFloat const kHeaderFontSize                        = 13.0f;
 static CGFloat const kHeaderPadding                         = 16.0f;
-#define kFirstSectionTitle                                  NSLocalizedString(@"Basic Info", @"")
-#define kSecondSectionTitle                                 NSLocalizedString(@"Other Info", @"")
-#define kThirdSectionTitle                                  NSLocalizedString(@"Address", @"")
-#define KFourthSectionTitle                                 NSLocalizedString(@"About Me", @"")
+#define kFirstSectionTitle                                  NSLocalizedString(@"Basic Pet Info", @"")
+#define kSecondSectionTitle                                 NSLocalizedString(@"Other Pet Info", @"")
+#define kThirdSectionTitle                                  NSLocalizedString(@"About Pet", @"")
 
-@interface EditProfileVC () <BarButtonsProtocol, Pet2ShareServiceCallback, UITableViewDataSource, UITableViewDelegate, FormProtocol>
+@interface EditPetProfileVC () <BarButtonsProtocol, UITableViewDataSource, UITableViewDelegate, FormProtocol>
 {
     BOOL _isDirty;
 }
@@ -51,14 +50,11 @@ static CGFloat const kHeaderPadding                         = 16.0f;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) ActivityView *activity;
 @property (strong, nonatomic) MutableOrderedDictionary *cellData;
-@property (strong, nonatomic) NSMutableDictionary *unsavedData;
+@property (strong, nonatomic) NSDictionary *unsavedData;
 
 @end
 
-@implementation EditProfileVC
-
-#pragma mark -
-#pragma mark Life Cycle
+@implementation EditPetProfileVC
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -77,18 +73,13 @@ static CGFloat const kHeaderPadding                         = 16.0f;
     [super viewDidLoad];
     
     // Title
-    self.title = NSLocalizedString(@"EDIT PROFILE", @"");
-
-    // Activity View
-    _activity = [[ActivityView alloc] initWithView:self.view];
+    self.title = NSLocalizedString(@"PET EDIT PROFILE", @"");
     
     // UITableViewCell registration
     [self.tableView registerNib:[UINib nibWithNibName:kCellBasicInfoNibName bundle:nil]
          forCellReuseIdentifier:kCellBasicInfoIdentifier];
     [self.tableView registerNib:[UINib nibWithNibName:kCellOtherInfoNibName bundle:nil]
          forCellReuseIdentifier:kCellOtherInfoIdentifier];
-    [self.tableView registerNib:[UINib nibWithNibName:kCellAddressInfoNibName bundle:nil]
-         forCellReuseIdentifier:kCellAddressInfoIdentifier];
     [self.tableView registerNib:[UINib nibWithNibName:kCellAboutMeNibName bundle:nil]
          forCellReuseIdentifier:kCellAboutMeIdentifier];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -101,12 +92,6 @@ static CGFloat const kHeaderPadding                         = 16.0f;
                                                  name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification object:nil];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [self.view endEditing:YES];
 }
 
 - (void)dealloc
@@ -151,9 +136,7 @@ static CGFloat const kHeaderPadding                         = 16.0f;
 {
     @try
     {
-        Pet2ShareUser *currentUser = [Pet2ShareUser current];
-        
-        if (currentUser.person)
+        if (self.pet)
         {
             ///------------------------------------------------
             /// Basic Info
@@ -162,10 +145,10 @@ static CGFloat const kHeaderPadding                         = 16.0f;
             NSArray *cellBasicInfo = @[@{kUserNameImageIcon: @"icon-user-selected",
                                          kFirstNameImageIcon: @"icon-contact-selected",
                                          kLastNameImageIcon: @"icon-contact-selected",
-                                         kCellImageLink: currentUser.person.avatarUrl ?: kEmptyString,
-                                         kUserNameKey: currentUser.email ?: kEmptyString,
-                                         kFirstNameKey: currentUser.person.firstName ?: kEmptyString,
-                                         kLastNameKey: currentUser.person.lastName ?: kEmptyString,
+                                         kCellImageLink: self.pet.profilePicture ?: kEmptyString,
+                                         kUserNameKey: self.pet.name ?: kEmptyString,
+                                         kFirstNameKey: self.pet.name ?: kEmptyString,
+                                         kLastNameKey: self.pet.familyName ?: kEmptyString,
                                          kCellClassName: kCellBasicInfoNibName}];
             [self.cellData setObject:cellBasicInfo forKey:kCellBasicInfoIdentifier];
             
@@ -173,41 +156,18 @@ static CGFloat const kHeaderPadding                         = 16.0f;
             /// Other Info
             ///------------------------------------------------
             
-            NSArray *cellDetailInfo = @[@{kTextCellImageIcon: @"icon-phone-selected",
-                                          kTextCellKey: currentUser.phone ?: kEmptyString,
-                                          kCellTag: kPhoneKey,
-                                          kInputTypeKey: @(InputTypePhonePad),
-                                          kCellClassName: kCellOtherInfoNibName},
-                                        @{kTextCellImageIcon: @"icon-birthdaycake-selected",
-                                          kTextCellKey: [Utils formatNSDateToString:currentUser.person.dateOfBirth],
+            NSArray *cellDetailInfo = @[@{kTextCellImageIcon: @"icon-birthdaycake-selected",
+                                          kTextCellKey: [Utils formatNSDateToString:self.pet.dateOfBirth],
                                           kCellTag: kDateOfBirthKey,
                                           kInputTypeKey: @(InputTypeDate),
                                           kCellClassName: kCellOtherInfoNibName}];
             [self.cellData setObject:cellDetailInfo forKey:kCellOtherInfoIdentifier];
             
             ///------------------------------------------------
-            /// Address Info
-            ///------------------------------------------------
-            
-            Address *address = currentUser.person.address;
-            
-            if (address)
-            {
-                NSArray *addressInfo = @[@{kAddressImageIconKey: @"icon-home-selected",
-                                           kCityImageIconKey: @"icon-city",
-                                           kAddressKey: address.addressLine1 ?: kEmptyString,
-                                           kCityKey: address.city ?: kEmptyString,
-                                           kStateKey: address.state ?: kEmptyString,
-                                           kZipCodeKey: address.zipCode ?: kEmptyString,
-                                           kCellClassName: kCellAddressInfoNibName}];
-                [self.cellData setObject:addressInfo forKey:kCellAddressInfoIdentifier];
-            }
-            
-            ///------------------------------------------------
             /// About Me
             ///------------------------------------------------
             
-            NSArray *aboutMeInfo = @[@{kTextViewKey: currentUser.person.aboutMe ?: kEmptyString,
+            NSArray *aboutMeInfo = @[@{kTextViewKey: self.pet.about ?: kEmptyString,
                                        kCellTag: kAboutMeKey}];
             [self.cellData setObject:aboutMeInfo forKey:kCellAboutMeIdentifier];
             
@@ -220,77 +180,6 @@ static CGFloat const kHeaderPadding                         = 16.0f;
     }
     
     [self.tableView reloadData];
-}
-
-- (void)updateUserProfile
-{
-    [self.activity show];
-    self.tableView.userInteractionEnabled = NO;
-    
-    Pet2ShareUser *currentUser = [Pet2ShareUser current];
-    
-    for (NSString *key in self.unsavedData)
-    {
-        id value = self.unsavedData[key];
-        
-        if ([key isEqualToString:kFirstNameKey])
-            currentUser.person.firstName = value;
-        else if ([key isEqualToString:kLastNameKey])
-            currentUser.person.lastName = value;
-        else if ([key isEqualToString:kPhoneKey])
-        {
-            currentUser.phone = value;
-            currentUser.person.primaryPhone = value;
-        }
-        else if ([key isEqualToString:kDateOfBirthKey])
-            currentUser.person.dateOfBirth
-            = (Date *)[Utils formatStringToNSDate:value withFormat:kFormatDateUS];
-        else if ([key isEqualToString:kAddressKey])
-            currentUser.person.address.addressLine1 = value;
-        else if ([key isEqualToString:kCityKey])
-            currentUser.person.address.city = value;
-        else if ([key isEqualToString:kStateKey])
-            currentUser.person.address.state = value;
-        else if ([key isEqualToString:kZipCodeKey])
-            currentUser.person.address.zipCode = value;
-        else if ([key isEqualToString:kAboutMeKey])
-            currentUser.person.aboutMe = value;
-        else
-            fTRACE(@"Unrecognized Key: %@ - Value: %@", key, value);
-    }
-    
-    Pet2ShareService *service = [Pet2ShareService new];
-    [service updateUserProfile:self
-                        userId:currentUser.identifier
-                     firstName:currentUser.person.firstName
-                      lastName:currentUser.person.lastName
-                         email:currentUser.email
-                alternateEmail:currentUser.alternateEmail
-                         phone:currentUser.phone
-                secondaryPhone:currentUser.person.secondaryPhone
-                   dateOfBirth:currentUser.person.dateOfBirth
-                       aboutMe:currentUser.person.aboutMe
-                  addressLine1:currentUser.person.address.addressLine1
-                  addressLine2:currentUser.person.address.addressLine2
-                          city:currentUser.person.address.city
-                         state:currentUser.person.address.state
-                       country:currentUser.person.address.country
-                       zipCode:currentUser.person.address.zipCode];
-}
-
-#pragma mark -
-#pragma mark <Pet2ShareServiceCallback>
-
-- (void)onReceiveSuccess:(NSArray *)objects
-{
-    [self.activity hide];
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)onReceiveError:(ErrorMessage *)errorMessage
-{
-    [self.activity hide];
-    [Graphics alert:NSLocalizedString(@"Error", @"") message:errorMessage.message type:ErrorAlert];
 }
 
 #pragma mark -
@@ -313,22 +202,9 @@ static CGFloat const kHeaderPadding                         = 16.0f;
 
 - (void)handleRightButtonEvent:(id)sender
 {
-    if (!_isDirty)
-    {
-        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-        return;
-    }
-    
-    [Graphics promptAlert:NSLocalizedString(@"Save Settings", @"")
-                  message:NSLocalizedString(@"Do you want to save new user information?", @"")
-                     type:NormalAlert
-                       ok:^(SIAlertView *alert) {
-                           [self.view endEditing:YES];
-                           [self updateUserProfile];
-                       } cancel:^(SIAlertView *alert) {
-                           return;
-                       }];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 #pragma mark -
 #pragma mark <FormProtocol>
@@ -340,16 +216,16 @@ static CGFloat const kHeaderPadding                         = 16.0f;
 
 - (void)fieldIsDirty
 {
-    if (!_isDirty) _isDirty = YES;
 }
 
 - (void)updateData:(NSString *)key value:(NSString *)value
 {
     // fTRACE(@"Key: %@ - Value: %@", key, value);
-    if (value) [self.unsavedData setObject:value forKey:key];
 }
 
-#pragma mark - <UITableViewDelegate>
+
+#pragma mark -
+#pragma mark <UITableViewDelegate>
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -368,10 +244,8 @@ static CGFloat const kHeaderPadding                         = 16.0f;
         return [ProfileBasicInfoCell cellHeight];
     else if ([sectionKey isEqualToString:kCellOtherInfoIdentifier])
         return [TextFieldTableCell cellHeight];
-    else if ([sectionKey isEqualToString:kCellAddressInfoIdentifier])
-        return [ProfileAddressInfoCell cellHeight];
     else if ([sectionKey isEqualToString:kCellAboutMeIdentifier])
-        return [TextViewTableCell cellHeightForText:[Pet2ShareUser current].person.aboutMe];
+        return [TextViewTableCell cellHeightForText:self.pet.about];
     else return 0;
 }
 
@@ -386,7 +260,7 @@ static CGFloat const kHeaderPadding                         = 16.0f;
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     CGFloat width = tableView.bounds.size.width;
-   
+    
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, width, kHeaderFontSize+kHeaderPadding*2)];
     headerView.backgroundColor = [AppColorScheme white];
     headerView.userInteractionEnabled = YES;
@@ -403,8 +277,7 @@ static CGFloat const kHeaderPadding                         = 16.0f;
     fTRACE(@"Section Key: %@", sectionKey);
     if ([sectionKey isEqualToString:kCellBasicInfoIdentifier])          headerLabel.text = [kFirstSectionTitle uppercaseString];
     else if ([sectionKey isEqualToString:kCellOtherInfoIdentifier])     headerLabel.text = [kSecondSectionTitle uppercaseString];
-    else if ([sectionKey isEqualToString:kCellAddressInfoIdentifier])   headerLabel.text = [kThirdSectionTitle uppercaseString];
-    else if ([sectionKey isEqualToString:kCellAboutMeIdentifier])       headerLabel.text = [KFourthSectionTitle uppercaseString];
+    else if ([sectionKey isEqualToString:kCellAboutMeIdentifier])       headerLabel.text = [kThirdSectionTitle uppercaseString];
     else headerLabel.text = kEmptyString;
     
     return headerView;
@@ -447,11 +320,6 @@ static CGFloat const kHeaderPadding                         = 16.0f;
                                                     tag:data[kCellTag]
                                               inputType:[data[kInputTypeKey] integerValue]];
         }
-        else if ([reuseIdentifier isEqualToString:kCellAddressInfoIdentifier])
-        {
-            [(ProfileAddressInfoCell *)cell setFormProtocol:self];
-            [(ProfileAddressInfoCell *)cell updateCell:data];
-        }
         else if ([reuseIdentifier isEqualToString:kCellAboutMeIdentifier])
         {
             [(TextViewTableCell *)cell setFormProtocol:self];
@@ -467,9 +335,11 @@ static CGFloat const kHeaderPadding                         = 16.0f;
         NSLog(@"%s : Exception: %@", __func__, [exception description]);
         cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell"];
         if (!cell) cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                           reuseIdentifier:@"cell"];
+                                                 reuseIdentifier:@"cell"];
     }
     return cell;
 }
+
+
 
 @end

@@ -48,5 +48,6 @@ typedef NS_ENUM(NSInteger, AlertType)
 + (UIImage *)scaleImage:(UIImage *)image toSize:(CGSize)newSize;
 + (UIImage *)tintImage:(UIImage *)source withColor:(UIColor *)color;
 + (CGSize)getDeviceSize;
++ (UIButton *)createBarButtonWithTitle:(NSString *)title;
 
 @end
