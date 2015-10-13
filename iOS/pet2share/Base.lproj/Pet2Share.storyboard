@@ -12,10 +12,10 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Post ImageVC-->
         <scene sceneID="BFX-Js-4WD">
             <objects>
-                <viewController id="lTn-2F-hlA" sceneMemberID="viewController">
+                <viewController id="lTn-2F-hlA" customClass="PostImageVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QzL-qH-0Ph"/>
                         <viewControllerLayoutGuide type="bottom" id="A9o-Nk-ILA"/>
@@ -49,6 +49,7 @@
                         <segue destination="za2-nH-tDl" kind="relationship" relationship="viewControllers" id="a9p-aa-h3C"/>
                         <segue destination="SVe-fX-1VW" kind="relationship" relationship="viewControllers" id="dGQ-7f-sIt"/>
                         <segue destination="2DW-Mk-OFi" kind="relationship" relationship="viewControllers" id="0qt-mK-swk"/>
+                        <segue destination="SVe-fX-1VW" kind="presentation" identifier="postimage" id="fJX-iP-2TD"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="edr-ZP-614" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -836,6 +837,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XHL-Y0-yVk"/>
+        <segue reference="fJX-iP-2TD"/>
         <segue reference="a6S-YY-rEy"/>
     </inferredMetricsTieBreakers>
 </document>

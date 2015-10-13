@@ -9,6 +9,7 @@
 #import <DBCamera/DBCameraContainerViewController.h>
 #import "ButtonTabbarController.h"
 #import "CameraNavigationController.h"
+#import "PostImageVC.h"
 
 static NSString * const kCameraImage            = @"img-camera";
 static NSInteger const kTabBarCameraItemTag     = 1;
@@ -18,11 +19,14 @@ static NSInteger const kTabBarCameraItemTag     = 1;
     BOOL _cameraButtonTapped;
 }
 
+@property (nonatomic, strong) UIImage *image;
+
 @end
 
 @implementation ButtonTabbarController
 
-#pragma mark - Life Cycle
+#pragma mark -
+#pragma mark Life Cycle
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -44,14 +48,25 @@ static NSInteger const kTabBarCameraItemTag     = 1;
     [[[self.tabBar items] objectAtIndex:kTabBarCameraItemTag] setEnabled:NO];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:kSeguePostImage])
+    {
+        UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
+        PostImageVC *postImageVC = (PostImageVC *)navController.topViewController;
+        if (postImageVC) postImageVC.image = self.image;
+    }
+}
+
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
     if (_cameraButtonTapped)
-        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
 }
 
-#pragma mark - Private Instance Methods
+#pragma mark -
+#pragma mark Private Instance Methods
 
 /*!
  *  @method addCenterButtonWithImage:highlightImage:
@@ -90,6 +105,7 @@ static NSInteger const kTabBarCameraItemTag     = 1;
 {
     fTRACE(@"Sender: %@", sender);
     
+    _cameraButtonTapped = YES;
     DBCameraContainerViewController *cameraContainer = [[DBCameraContainerViewController alloc] initWithDelegate:self];
     [cameraContainer setFullScreenMode];
     CameraNavigationController *nav = [[CameraNavigationController alloc] initWithRootViewController:cameraContainer];
@@ -102,8 +118,19 @@ static NSInteger const kTabBarCameraItemTag     = 1;
 - (void)dismissCamera:(id)cameraViewController
 {
     _cameraButtonTapped = NO;
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)camera:(id)cameraViewController didFinishWithImage:(UIImage *)image withMetadata:(NSDictionary *)metadata
+{
+    _cameraButtonTapped = NO;
+    self.image = image;
+    [cameraViewController restoreFullScreenMode];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self performSegueWithIdentifier:kSeguePostImage sender:nil];
+    }];
 }
 
 @end

@@ -70,6 +70,7 @@
 		FB6C272F1B6ED1C70002034A /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C272E1B6ED1C70002034A /* HttpClient.m */; };
 		FB6C27331B6ED1EF0002034A /* Pet2ShareService.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C27321B6ED1EF0002034A /* Pet2ShareService.m */; };
 		FB6C273D1B6ED2950002034A /* UrlManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C273C1B6ED2950002034A /* UrlManager.m */; };
+		FBA2A35A1BCDA78800368D39 /* PostImageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA2A3591BCDA78800368D39 /* PostImageVC.m */; settings = {ASSET_TAGS = (); }; };
 		FBA3F6B91BC5555E0094288D /* SignUpTableCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA3F6B81BC5555E0094288D /* SignUpTableCtrl.m */; settings = {ASSET_TAGS = (); }; };
 		FBB531141B9BA8A7004D5DA2 /* ResponseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB531131B9BA8A7004D5DA2 /* ResponseObject.m */; };
 		FBCDC9A81BC3381B00808E30 /* ErrorMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCDC9A21BC3381B00808E30 /* ErrorMessage.m */; settings = {ASSET_TAGS = (); }; };
@@ -212,6 +213,8 @@
 		FB6C273B1B6ED2950002034A /* UrlManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrlManager.h; sourceTree = "<group>"; };
 		FB6C273C1B6ED2950002034A /* UrlManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UrlManager.m; sourceTree = "<group>"; };
 		FB6C273E1B6EEB0F0002034A /* ServiceConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceConfig.h; sourceTree = "<group>"; };
+		FBA2A3581BCDA78800368D39 /* PostImageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostImageVC.h; sourceTree = "<group>"; };
+		FBA2A3591BCDA78800368D39 /* PostImageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostImageVC.m; sourceTree = "<group>"; };
 		FBA3F6B71BC5555E0094288D /* SignUpTableCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpTableCtrl.h; sourceTree = "<group>"; };
 		FBA3F6B81BC5555E0094288D /* SignUpTableCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpTableCtrl.m; sourceTree = "<group>"; };
 		FBB531121B9BA8A7004D5DA2 /* ResponseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseObject.h; sourceTree = "<group>"; };
@@ -488,6 +491,8 @@
 			children = (
 				FB4BCBD71BCDA08A009F853E /* CameraNavigationController.h */,
 				FB4BCBD81BCDA08A009F853E /* CameraNavigationController.m */,
+				FBA2A3581BCDA78800368D39 /* PostImageVC.h */,
+				FBA2A3591BCDA78800368D39 /* PostImageVC.m */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -904,6 +909,7 @@
 				FB484A511B4FD40A0045A6EA /* UIDevice+Hardware.m in Sources */,
 				FBCF4A921BC6CF5800C75066 /* PostCollectionCell.m in Sources */,
 				FB484A3F1B4FD12F0045A6EA /* Graphics.m in Sources */,
+				FBA2A35A1BCDA78800368D39 /* PostImageVC.m in Sources */,
 				FB5050301BC4CBB40037F3E5 /* Address.m in Sources */,
 				FB484A421B4FD3E60045A6EA /* Constants.m in Sources */,
 				FBCF4A8E1BC6CF2E00C75066 /* PostsVC.m in Sources */,
