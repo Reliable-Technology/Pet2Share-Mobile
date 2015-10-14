@@ -1,5 +1,5 @@
 //
-//  EditProfileVC.h
+//  EditUserProfileVC.h
 //  pet2share
 //
 //  Created by Tony Kieu on 10/8/15.
@@ -8,6 +8,6 @@
 
 #import "BaseNavigationVC.h"
 
-@interface EditProfileVC : BaseNavigationVC
+@interface EditUserProfileVC : BaseNavigationVC
 
 @end

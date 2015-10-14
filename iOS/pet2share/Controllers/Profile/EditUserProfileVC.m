@@ -1,5 +1,5 @@
 //
-//  EditProfileVC.m
+//  EditUserProfileVC.m
 //  pet2share
 //
 //  Created by Tony Kieu on 10/8/15.
@@ -8,7 +8,7 @@
 
 #import <DBCamera/DBCameraContainerViewController.h>
 #import "DBCameraLibraryViewController.h"
-#import "EditProfileVC.h"
+#import "EditUserProfileVC.h"
 #import "Utils.h"
 #import "Graphics.h"
 #import "ActivityView.h"
@@ -46,7 +46,7 @@ static CGFloat const kHeaderPadding                         = 16.0f;
 #define kThirdSectionTitle                                  NSLocalizedString(@"Address", @"")
 #define KFourthSectionTitle                                 NSLocalizedString(@"About Me", @"")
 
-@interface EditProfileVC () <BarButtonsProtocol, Pet2ShareServiceCallback,
+@interface EditUserProfileVC () <BarButtonsProtocol, Pet2ShareServiceCallback,
 UITableViewDataSource, UITableViewDelegate, FormProtocol,
 CellButtonDelegate, ImageActionSheetDelegate, DBCameraViewControllerDelegate>
 {

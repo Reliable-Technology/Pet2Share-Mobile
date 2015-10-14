@@ -667,10 +667,10 @@
             </objects>
             <point key="canvasLocation" x="3888" y="2906"/>
         </scene>
-        <!--Edit ProfileVC-->
+        <!--Edit User ProfileVC-->
         <scene sceneID="Txk-Vr-n6I">
             <objects>
-                <viewController id="7Rk-VQ-Inq" customClass="EditProfileVC" sceneMemberID="viewController">
+                <viewController id="7Rk-VQ-Inq" customClass="EditUserProfileVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Rad-fH-lk7"/>
                         <viewControllerLayoutGuide type="bottom" id="Gab-BV-ifg"/>

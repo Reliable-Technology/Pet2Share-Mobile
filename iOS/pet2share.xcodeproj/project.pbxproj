@@ -95,7 +95,7 @@
 		FBCF4A931BC6CF5800C75066 /* PostCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBCF4A911BC6CF5800C75066 /* PostCollectionCell.xib */; settings = {ASSET_TAGS = (); }; };
 		FBCF4A991BC6CF6B00C75066 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A961BC6CF6B00C75066 /* CollectionViewController.m */; settings = {ASSET_TAGS = (); }; };
 		FBCF4A9A1BC6CF6B00C75066 /* CollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A981BC6CF6B00C75066 /* CollectionViewLayout.m */; settings = {ASSET_TAGS = (); }; };
-		FBCF4A9D1BC7076200C75066 /* EditProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A9C1BC7076200C75066 /* EditProfileVC.m */; settings = {ASSET_TAGS = (); }; };
+		FBCF4A9D1BC7076200C75066 /* EditUserProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A9C1BC7076200C75066 /* EditUserProfileVC.m */; settings = {ASSET_TAGS = (); }; };
 		FBCF4AA01BC7116400C75066 /* ActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A9F1BC7116400C75066 /* ActivityView.m */; settings = {ASSET_TAGS = (); }; };
 		FBCF4AA41BC72E9D00C75066 /* ProfileBasicInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4AA21BC72E9D00C75066 /* ProfileBasicInfoCell.m */; settings = {ASSET_TAGS = (); }; };
 		FBCF4AA51BC72E9D00C75066 /* ProfileBasicInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBCF4AA31BC72E9D00C75066 /* ProfileBasicInfoCell.xib */; settings = {ASSET_TAGS = (); }; };
@@ -263,8 +263,8 @@
 		FBCF4A961BC6CF6B00C75066 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
 		FBCF4A971BC6CF6B00C75066 /* CollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewLayout.h; sourceTree = "<group>"; };
 		FBCF4A981BC6CF6B00C75066 /* CollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewLayout.m; sourceTree = "<group>"; };
-		FBCF4A9B1BC7076200C75066 /* EditProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileVC.h; sourceTree = "<group>"; };
-		FBCF4A9C1BC7076200C75066 /* EditProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileVC.m; sourceTree = "<group>"; };
+		FBCF4A9B1BC7076200C75066 /* EditUserProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditUserProfileVC.h; sourceTree = "<group>"; };
+		FBCF4A9C1BC7076200C75066 /* EditUserProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditUserProfileVC.m; sourceTree = "<group>"; };
 		FBCF4A9E1BC7116400C75066 /* ActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityView.h; sourceTree = "<group>"; };
 		FBCF4A9F1BC7116400C75066 /* ActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityView.m; sourceTree = "<group>"; };
 		FBCF4AA11BC72E9D00C75066 /* ProfileBasicInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileBasicInfoCell.h; sourceTree = "<group>"; };
@@ -641,8 +641,8 @@
 			children = (
 				FBCF4A741BC5B28700C75066 /* UserProfileVC.h */,
 				FBCF4A751BC5B28700C75066 /* UserProfileVC.m */,
-				FBCF4A9B1BC7076200C75066 /* EditProfileVC.h */,
-				FBCF4A9C1BC7076200C75066 /* EditProfileVC.m */,
+				FBCF4A9B1BC7076200C75066 /* EditUserProfileVC.h */,
+				FBCF4A9C1BC7076200C75066 /* EditUserProfileVC.m */,
 				FB5E1EBD1BC9E2CE00897CA2 /* PetProfileVC.h */,
 				FB5E1EBE1BC9E2CE00897CA2 /* PetProfileVC.m */,
 				FB4ED0231BCC843200E9F379 /* AddEditPetProfileVC.h */,
@@ -919,7 +919,7 @@
 				FB5050301BC4CBB40037F3E5 /* Address.m in Sources */,
 				FB484A421B4FD3E60045A6EA /* Constants.m in Sources */,
 				FBCF4A8E1BC6CF2E00C75066 /* PostsVC.m in Sources */,
-				FBCF4A9D1BC7076200C75066 /* EditProfileVC.m in Sources */,
+				FBCF4A9D1BC7076200C75066 /* EditUserProfileVC.m in Sources */,
 				FB6C27331B6ED1EF0002034A /* Pet2ShareService.m in Sources */,
 				FB5E1ECE1BCABF7000897CA2 /* ProfileAddressInfoCell.m in Sources */,
 				FBCF4AB71BC81BC900C75066 /* UpdateMessage.m in Sources */,
