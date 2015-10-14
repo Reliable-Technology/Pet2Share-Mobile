@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "FormProtocol.h"
 
-static NSString * const kTextViewKey        = @"textviewkey";
-
 @interface TextViewTableCell : UITableViewCell
 
 @property (nonatomic, weak) id<FormProtocol> formProtocol;

@@ -6,8 +6,8 @@
 //  Copyright © 2015 Pet 2 Share. All rights reserved.
 //
 
-#import "BaseNavigationVC.h"
+#import "EditProfileVC.h"
 
-@interface EditUserProfileVC : BaseNavigationVC
+@interface EditUserProfileVC : EditProfileVC
 
 @end

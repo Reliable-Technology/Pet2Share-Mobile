@@ -8,13 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FormProtocol.h"
-
-static NSString * const kAddressImageIconKey    = @"addressimageicon";
-static NSString * const kCityImageIconKey       = @"cityimageicon";
-static NSString * const kAddressKey             = @"address";
-static NSString * const kCityKey                = @"city";
-static NSString * const kStateKey               = @"state";
-static NSString * const kZipCodeKey             = @"zipcode";
+#import "CellConstants.h"
 
 @interface ProfileAddressInfoCell : UITableViewCell
 

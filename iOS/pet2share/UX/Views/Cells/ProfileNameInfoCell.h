@@ -8,12 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FormProtocol.h"
-
-static NSString * const kFirstNameImageIcon = @"firstnameimageicon";
-static NSString * const kLastNameImageIcon  = @"lastnameimageicon";
-static NSString * const kCellImageLink      = @"imagelink";
-static NSString * const kFirstNameKey       = @"firstname";
-static NSString * const kLastNameKey        = @"lastname";
+#import "CellConstants.h"
 
 @interface ProfileNameInfoCell : UITableViewCell
 

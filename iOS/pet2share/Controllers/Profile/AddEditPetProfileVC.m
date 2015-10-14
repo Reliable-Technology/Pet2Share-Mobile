@@ -7,147 +7,72 @@
 //
 
 #import "AddEditPetProfileVC.h"
-#import "Utils.h"
-#import "Graphics.h"
-#import "ActivityView.h"
-#import "OrderedDictionary.h"
 #import "Pet2ShareService.h"
 #import "Pet2ShareUser.h"
-#import "ProfileNameInfoCell.h"
-#import "TextFieldTableCell.h"
-#import "ProfileAddressInfoCell.h"
-#import "TextViewTableCell.h"
+#import "Pet.h"
 
-static NSString * const kCellNameInfoIdentifier             = @"nameinfocell";
-static NSString * const kCellOtherInfoIdentifier            = @"otherinfocell";
-static NSString * const kCellAddressInfoIdentifier          = @"addressinfocell";
-static NSString * const kCellAboutMeIdentifier              = @"aboutmecell";
-static NSString * const kCellNameInfoNibName                = @"ProfileNameInfoCell";
-static NSString * const kCellOtherInfoNibName               = @"TextFieldTableCell";
-static NSString * const kCellAddressInfoNibName             = @"ProfileAddressInfoCell";
-static NSString * const kCellAboutMeNibName                 = @"TextViewTableCell";
-
-static NSString * const kCellClassName                      = @"cellclass";
-static NSString * const kCellTag                            = @"celltag";
-static NSString * const kCellHeight                         = @"cellheight";
-
-static NSString * const kInputTypeKey                       = @"inputtype";
-static NSString * const kPhoneKey                           = @"phone";
-static NSString * const kDateOfBirthKey                     = @"dateofbirth";
-static NSString * const kFavFoodKey                         = @"favfood";
-static NSString * const kAboutMeKey                         = @"aboutme";
-
-static CGFloat const kHeaderFontSize                        = 13.0f;
-static CGFloat const kHeaderPadding                         = 16.0f;
-#define kFirstSectionTitle                                  NSLocalizedString(@"Basic Pet Info", @"")
-#define kSecondSectionTitle                                 NSLocalizedString(@"Other Pet Info", @"")
-#define kThirdSectionTitle                                  NSLocalizedString(@"About Pet", @"")
-
-@interface AddEditPetProfileVC () <BarButtonsProtocol, Pet2ShareServiceCallback, UITableViewDataSource, UITableViewDelegate, FormProtocol>
-{
-    BOOL _isDirty;
-}
+@interface AddEditPetProfileVC () <Pet2ShareServiceCallback>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) ActivityView *activity;
-@property (strong, nonatomic) MutableOrderedDictionary *cellData;
-@property (strong, nonatomic) NSMutableDictionary *unsavedData;
 
 @end
 
 @implementation AddEditPetProfileVC
 
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    if ((self = [super initWithCoder:aDecoder]))
-    {
-        self.barButtonsProtocol = self;
-        _cellData = [MutableOrderedDictionary dictionary];
-        _isDirty = NO;
-        _unsavedData = [NSMutableDictionary dictionary];
-    }
-    return self;
-}
+#pragma mark -
+#pragma mark Life Cycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    // Title
-    if (self.petProfileMode == AddPetProfile) self.title = NSLocalizedString(@"ADD PET PROFILE", @"");
-    else self.title = NSLocalizedString(@"PET EDIT PROFILE", @"");
-    
-    // UITableViewCell registration
-    [self.tableView registerNib:[UINib nibWithNibName:kCellNameInfoNibName bundle:nil]
-         forCellReuseIdentifier:kCellNameInfoIdentifier];
-    [self.tableView registerNib:[UINib nibWithNibName:kCellOtherInfoNibName bundle:nil]
-         forCellReuseIdentifier:kCellOtherInfoIdentifier];
-    [self.tableView registerNib:[UINib nibWithNibName:kCellAboutMeNibName bundle:nil]
-         forCellReuseIdentifier:kCellAboutMeIdentifier];
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    
-    // Request profile data
-    [self loadCellData];
-    
-    // Keyboard notifications
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:)
-                                                 name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:)
-                                                 name:UIKeyboardWillHideNotification object:nil];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [self.view endEditing:YES];
-}
-
-- (void)dealloc
-{
-    TRACE_HERE;
-    self.tableView = nil;
-    self.activity = nil;
-    self.cellData = nil;
-    self.unsavedData = nil;
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+    // Assign table view
+    [self assignTableView:self.tableView];
 }
 
 #pragma mark -
-#pragma mark Events
+#pragma mark Superclass Instance Methods
 
-- (void)keyboardWillShow:(NSNotification *)sender
+- (NSString *)getViewTitle
 {
-    CGSize keyboardSize = [[[sender userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
-    NSTimeInterval duration = [[[sender userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    [UIView animateWithDuration:duration animations:^{
-        UIEdgeInsets edgeInsets = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0);
-        [self.tableView setContentInset:edgeInsets];
-        [self.tableView setScrollIndicatorInsets:edgeInsets];
-    }];
+    switch (self.petProfileMode)
+    {
+        case AddPetProfile: return NSLocalizedString(@"ADD PET PROFILE", @"");
+        case EditPetProfile: return NSLocalizedString(@"EDIT PET PROFILE", @"");
+        default: return kEmptyString;
+    }
 }
 
-- (void)keyboardWillHide:(NSNotification *)sender
+- (NSString *)getSectionTitle:(NSString *)identifier
 {
-    NSTimeInterval duration = [[[sender userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    [UIView animateWithDuration:duration animations:^{
-        UIEdgeInsets edgeInsets = UIEdgeInsetsZero;
-        [self.tableView setContentInset:edgeInsets];
-        [self.tableView setScrollIndicatorInsets:edgeInsets];
-    }];
+    NSString *sectionTitle;
+    
+    if ([identifier isEqualToString:kCellNameInfoIdentifier])
+        sectionTitle = NSLocalizedString(@"Basic Pet Info", @"");
+    else if ([identifier isEqualToString:kCellOtherInfoIdentifier])
+        sectionTitle = NSLocalizedString(@"Other Pet Info", @"");
+    else if ([identifier isEqualToString:kCellAboutMeIdentifier])
+        sectionTitle = NSLocalizedString(@"About Pet", @"");
+    else sectionTitle = kEmptyString;
+    
+    return [sectionTitle uppercaseString];
 }
 
-#pragma mark -
-#pragma mark Private Instance Methods
+- (CGFloat)getDynamicCellHeight:(NSString *)key
+{
+    if ([key isEqualToString:kCellAboutMeIdentifier])
+        return [TextViewTableCell cellHeightForText:self.pet.about];
+    else return 0.0f;
+}
 
-- (void)loadCellData
+- (void)initCellData
 {
     @try
     {
         if (self.pet)
         {
             ///------------------------------------------------
-            /// Basic Info
+            /// Basic Pet Info
             ///------------------------------------------------
             
             NSArray *cellBasicInfo = @[@{kFirstNameImageIcon: @"icon-contact-selected",
@@ -159,11 +84,11 @@ static CGFloat const kHeaderPadding                         = 16.0f;
             [self.cellData setObject:cellBasicInfo forKey:kCellNameInfoIdentifier];
             
             ///------------------------------------------------
-            /// Other Info
+            /// Other Pet Info
             ///------------------------------------------------
             
             NSArray *cellDetailInfo = @[@{kTextCellImageIcon: @"icon-birthdaycake-selected",
-                                          kTextCellKey: [Utils formatNSDateToString:self.pet.dateOfBirth],
+                                          kTextCellKey: [Utils formatNSDateToString:(NSDate *)self.pet.dateOfBirth],
                                           kCellTag: kDateOfBirthKey,
                                           kInputTypeKey: @(InputTypeDate),
                                           kCellClassName: kCellOtherInfoNibName},
@@ -175,12 +100,12 @@ static CGFloat const kHeaderPadding                         = 16.0f;
             [self.cellData setObject:cellDetailInfo forKey:kCellOtherInfoIdentifier];
             
             ///------------------------------------------------
-            /// About Me
+            /// About Pet
             ///------------------------------------------------
             
-            NSArray *aboutMeInfo = @[@{kTextViewKey: self.pet.about ?: kEmptyString,
-                                       kCellTag: kAboutMeKey}];
-            [self.cellData setObject:aboutMeInfo forKey:kCellAboutMeIdentifier];
+            NSArray *aboutPetInfo = @[@{kTextViewKey: self.pet.about ?: kEmptyString,
+                                        kCellTag: kAboutMeKey}];
+            [self.cellData setObject:aboutPetInfo forKey:kCellAboutMeIdentifier];
             
             ///------------------------------------------------
         }
@@ -189,56 +114,75 @@ static CGFloat const kHeaderPadding                         = 16.0f;
     {
         NSLog(@"%s : Exception: %@", __func__, [exception description]);
     }
-    
-    [self.tableView reloadData];
 }
 
-- (void)addUpdatePetProfile
+- (void)alertSavingData
+{
+    NSString *message = self.petProfileMode == AddPetProfile
+    ? NSLocalizedString(@"Do you want to add new pet?", @"")
+    : NSLocalizedString(@"Do you want to edit pet information?", @"");
+    
+    [Graphics promptAlert:NSLocalizedString(@"Save Settings", @"")
+                  message:message
+                     type:NormalAlert
+                       ok:^(SIAlertView *alert) {
+                           [self updateServerData];
+                       } cancel:^(SIAlertView *alert) {
+                           return;
+                       }];
+}
+
+- (void)updateServerData
 {
     [self.activity show];
     self.tableView.userInteractionEnabled = NO;
+    [self.view endEditing:YES];
     
     Pet2ShareService *service = [Pet2ShareService new];
     
-    if (self.petProfileMode == AddPetProfile)
+    switch (self.petProfileMode)
     {
-        [[Pet2ShareUser current].pets addObject:self.pet];
-        // Update the database
-        [service insertPetProfile:self
-                           userId:[Pet2ShareUser current].identifier
-                             name:self.pet.name
-                       familyName:self.pet.familyName
-                          petType:nil
-                      dateOfBirth:self.pet.dateOfBirth
-                            about:self.pet.about
-                          favFood:self.pet.favFood];
-    }
-    else
-    {
-        // Update current user pet
-        for (Pet *pet in [Pet2ShareUser current].pets)
+        case AddPetProfile:     // Add new pet to the server database
         {
-            if (pet.identifier == self.pet.identifier)
-            {
-                pet.name = self.pet.name;
-                pet.familyName = self.pet.familyName;
-                pet.dateOfBirth = self.pet.dateOfBirth;
-                pet.favFood = self.pet.favFood;
-                pet.about = self.pet.about;
-                break;
-            }
+            [[Pet2ShareUser current].pets addObject:self.pet];
+            [service insertPetProfile:self
+                               userId:[Pet2ShareUser current].identifier
+                                 name:self.pet.name
+                           familyName:self.pet.familyName
+                              petType:nil
+                          dateOfBirth:self.pet.dateOfBirth
+                                about:self.pet.about
+                              favFood:self.pet.favFood];
+            break;
         }
         
-        // Update the database
-        [service updatePetProfile:self
-                            petId:self.pet.identifier
-                           userId:[Pet2ShareUser current].identifier
-                             name:self.pet.name
-                       familyName:self.pet.familyName
-                          petType:nil
-                      dateOfBirth:self.pet.dateOfBirth
-                            about:self.pet.about
-                          favFood:self.pet.favFood];
+        case EditPetProfile:    // Edit current pet in the database
+        {
+            for (Pet *pet in [Pet2ShareUser current].pets)
+            {
+                if (pet.identifier == self.pet.identifier)
+                {
+                    pet.name = self.pet.name;
+                    pet.familyName = self.pet.familyName;
+                    pet.dateOfBirth = self.pet.dateOfBirth;
+                    pet.favFood = self.pet.favFood;
+                    pet.about = self.pet.about;
+                    break;
+                }
+            }
+            
+            [service updatePetProfile:self
+                                petId:self.pet.identifier
+                               userId:[Pet2ShareUser current].identifier
+                                 name:self.pet.name
+                           familyName:self.pet.familyName
+                              petType:nil
+                          dateOfBirth:self.pet.dateOfBirth
+                                about:self.pet.about
+                              favFood:self.pet.favFood];
+        }
+            
+        default: break;
     }
 }
 
@@ -258,63 +202,11 @@ static CGFloat const kHeaderPadding                         = 16.0f;
 }
 
 #pragma mark -
-#pragma mark <BarButtonsProtocol>
-
-- (UIButton *)setupLeftBarButton
-{
-    return [Graphics createBarButtonWithTitle:NSLocalizedString(@"CANCEL", @"")];
-}
-
-- (UIButton *)setupRightBarButton
-{
-    if (self.petProfileMode == AddPetProfile)
-        return [Graphics createBarButtonWithTitle:NSLocalizedString(@"ADD", @"")];
-    else
-        return [Graphics createBarButtonWithTitle:NSLocalizedString(@"EDIT", @"")];
-}
-
-- (void)handleLeftButtonEvent:(id)sender
-{
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)handleRightButtonEvent:(id)sender
-{
-    if (!_isDirty)
-    {
-        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-        return;
-    }
-    
-    NSString *message = self.petProfileMode == AddPetProfile
-    ? NSLocalizedString(@"Do you want to add new pet?", @"")
-    : NSLocalizedString(@"Do you want to edit pet information?", @"");
-    [Graphics promptAlert:NSLocalizedString(@"Save Settings", @"")
-                  message:message
-                     type:NormalAlert
-                       ok:^(SIAlertView *alert) {
-                           [self addUpdatePetProfile];
-                       } cancel:^(SIAlertView *alert) {
-                           return;
-                       }];
-}
-
-#pragma mark -
 #pragma mark <FormProtocol>
-
-- (void)performAction
-{
-    // No Implementation
-}
-
-- (void)fieldIsDirty
-{
-    if (!_isDirty) _isDirty = YES;
-}
 
 - (void)updateData:(NSString *)key value:(NSString *)value
 {
-    // fTRACE(@"Key: %@ - Value: %@", key, value);
+    fTRACE(@"Key: %@ - Value: %@", key, value);
     if ([key isEqualToString:kFirstNameKey])
         self.pet.name = value;
     else if ([key isEqualToString:kLastNameKey])
@@ -325,125 +217,7 @@ static CGFloat const kHeaderPadding                         = 16.0f;
         self.pet.favFood = value;
     else if ([key isEqualToString:kAboutMeKey])
         self.pet.about = value;
-    else
-        fTRACE(@"Unrecognized Key: %@ - Value: %@", key, value);
+    else fTRACE(@"Unrecognized Key: %@ - Value: %@", key, value);
 }
-
-#pragma mark -
-#pragma mark <UITableViewDelegate>
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if ([tableView respondsToSelector:@selector(setSeparatorInset:)])
-        [tableView setSeparatorInset:UIEdgeInsetsZero];
-    if ([tableView respondsToSelector:@selector(setLayoutMargins:)])
-        [tableView setLayoutMargins:UIEdgeInsetsZero];
-    if ([cell respondsToSelector:@selector(setLayoutMargins:)])
-        [cell setLayoutMargins:UIEdgeInsetsZero];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSString *sectionKey = [self.cellData keyAtIndex:indexPath.section];
-    if ([sectionKey isEqualToString:kCellNameInfoIdentifier])
-        return [ProfileNameInfoCell cellHeight];
-    else if ([sectionKey isEqualToString:kCellOtherInfoIdentifier])
-        return [TextFieldTableCell cellHeight];
-    else if ([sectionKey isEqualToString:kCellAboutMeIdentifier])
-        return [TextViewTableCell cellHeightForText:self.pet.about];
-    else return 0;
-}
-
-#pragma mark -
-#pragma mark <UITableViewDataSource>
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return [self.cellData count];
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    CGFloat width = tableView.bounds.size.width;
-    
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, width, kHeaderFontSize+kHeaderPadding*2)];
-    headerView.backgroundColor = [AppColorScheme white];
-    headerView.userInteractionEnabled = YES;
-    headerView.tag = section;
-    
-    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(kHeaderPadding, kHeaderPadding/2, width-kHeaderPadding, kHeaderFontSize)];
-    headerLabel.backgroundColor = [AppColorScheme clear];
-    headerLabel.textColor = [AppColorScheme darkGray];
-    headerLabel.font = [UIFont boldSystemFontOfSize:kHeaderFontSize];
-    [headerView addSubview:headerLabel];
-    
-    // Header Text
-    NSString *sectionKey = [self.cellData keyAtIndex:section];
-    fTRACE(@"Section Key: %@", sectionKey);
-    if ([sectionKey isEqualToString:kCellNameInfoIdentifier])          headerLabel.text = [kFirstSectionTitle uppercaseString];
-    else if ([sectionKey isEqualToString:kCellOtherInfoIdentifier])     headerLabel.text = [kSecondSectionTitle uppercaseString];
-    else if ([sectionKey isEqualToString:kCellAboutMeIdentifier])       headerLabel.text = [kThirdSectionTitle uppercaseString];
-    else headerLabel.text = kEmptyString;
-    
-    return headerView;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    NSArray *data = [self.cellData objectAtIndex:section];
-    return [data count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSInteger index = indexPath.row;
-    NSInteger section = indexPath.section;
-    UITableViewCell *cell;
-    
-    @try
-    {
-        NSDictionary *data = [self.cellData objectAtIndex:section][index];
-        NSString *reuseIdentifier = [self.cellData keyAtIndex:section];
-        
-        Class cellClass = NSClassFromString(data[kCellClassName]);
-        cell = [self.tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
-        if (!cell) cell = [[cellClass alloc] initWithStyle:UITableViewCellStyleDefault
-                                           reuseIdentifier:reuseIdentifier];
-        
-        if ([reuseIdentifier isEqualToString:kCellNameInfoIdentifier]
-            || [reuseIdentifier isEqualToString:kCellAddressInfoIdentifier])
-        {
-            [(ProfileNameInfoCell *)cell setFormProtocol:self];
-            [(ProfileNameInfoCell *)cell updateCell:data];
-        }
-        else if ([reuseIdentifier isEqualToString:kCellOtherInfoIdentifier])
-        {
-            ((TextFieldTableCell *)cell).formProtocol = self;
-            [(TextFieldTableCell *)cell setFormProtocol:self];
-            [(TextFieldTableCell *)cell updateTextField:data[kTextCellKey]
-                                          iconImageName:data[kTextCellImageIcon]
-                                                    tag:data[kCellTag]
-                                              inputType:[data[kInputTypeKey] integerValue]];
-        }
-        else if ([reuseIdentifier isEqualToString:kCellAboutMeIdentifier])
-        {
-            [(TextViewTableCell *)cell setFormProtocol:self];
-            [(TextViewTableCell *)cell updateCell:data[kTextViewKey] tag:data[kCellTag]];
-        }
-        else
-        {
-            fTRACE(@"Error - Unrecognized Identifier %@", reuseIdentifier);
-        }
-    }
-    @catch (NSException *exception)
-    {
-        NSLog(@"%s : Exception: %@", __func__, [exception description]);
-        cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell"];
-        if (!cell) cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                                 reuseIdentifier:@"cell"];
-    }
-    return cell;
-}
-
 
 @end
