@@ -172,7 +172,7 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    fTRACE(@"Tile Selected Index: %ld", indexPath.row);
+    fTRACE(@"Tile Selected Index: %ld", (long)indexPath.row);
     
     @try
     {

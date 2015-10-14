@@ -97,8 +97,8 @@ static CGFloat const kSpacing           = 16.0f;
 - (void)updateRemainCharactersLabel
 {
     NSInteger remainingChar = _remainCharacters > 0 ? _remainCharacters : 0;
-    if (remainingChar == 1) self.remainCharacterLabels.text = [NSString stringWithFormat:@"%ld Character Left", remainingChar];
-    else self.remainCharacterLabels.text = [NSString stringWithFormat:@"%ld Characters Left", remainingChar];
+    if (remainingChar == 1) self.remainCharacterLabels.text = [NSString stringWithFormat:@"%ld Character Left", (long)remainingChar];
+    else self.remainCharacterLabels.text = [NSString stringWithFormat:@"%ld Characters Left", (long)remainingChar];
     [self.remainCharacterLabels reloadInputViews];
 }
 

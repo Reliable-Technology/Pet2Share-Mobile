@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *lastnameTxtField;
 @property (weak, nonatomic) IBOutlet CircleImageView *avatarImgView;
 
+- (IBAction)editAvatarImageBtnTapped:(id)sender;
+
 @end
 
 @implementation ProfileNameInfoCell
@@ -121,6 +123,14 @@
     [service loadImage:dict[kCellImageLink] completion:^(UIImage *image) {
         self.avatarImgView.image = image ?: [UIImage imageNamed:@"img-avatar"];
     }];
+}
+
+- (IBAction)editAvatarImageBtnTapped:(id)sender
+{
+    if ([self.buttonDelegate respondsToSelector:@selector(editButtonTapped:)])
+    {
+        [self.buttonDelegate performSelector:@selector(editButtonTapped:) withObject:sender];
+    }
 }
 
 @end

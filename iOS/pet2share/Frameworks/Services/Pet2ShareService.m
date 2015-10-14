@@ -168,7 +168,7 @@ static id ObjectOrNull(id object)
 
 - (void)getUserProfile:(NSObject<Pet2ShareServiceCallback> *)callback userId:(NSInteger)userId
 {
-    fTRACE(@"%@ <Identifier: %ld>", GETUSERPROFILE_ENDPOINT, userId);
+    fTRACE(@"%@ <Identifier: %ld>", GETUSERPROFILE_ENDPOINT, (long)userId);
     
     NSMutableDictionary *postData = [NSMutableDictionary dictionary];
     [postData setObject:@(userId) forKey:@"UserId"];
@@ -193,7 +193,7 @@ static id ObjectOrNull(id object)
                   country:(NSString *)country
                   zipCode:(NSString *)zipCode
 {
-    fTRACE(@"%@ <Identifier: %ld>", UPDATEUSERPROFILE_ENDPOINT, userId);
+    fTRACE(@"%@ <Identifier: %ld>", UPDATEUSERPROFILE_ENDPOINT, (long)userId);
     
     NSMutableDictionary *postData = [NSMutableDictionary dictionary];
     [postData setObject:@(userId) forKey:@"UserId"];
@@ -224,7 +224,7 @@ static id ObjectOrNull(id object)
                    about:(NSString *)about
                  favFood:(NSString *)favFood
 {
-    fTRACE(@"%@ <Identifier: %ld>", INSERTPETPROFILE_ENDPOINT, userId);
+    fTRACE(@"%@ <Identifier: %ld>", INSERTPETPROFILE_ENDPOINT, (long)userId);
     
     NSMutableDictionary *postData = [NSMutableDictionary dictionary];
     [postData setObject:@(userId) forKey:@"UserId"];
@@ -248,7 +248,7 @@ static id ObjectOrNull(id object)
                    about:(NSString *)about
                  favFood:(NSString *)favFood
 {
-    fTRACE(@"%@ <Identifier: %ld>", UPDATEPETPROFILE_ENDPOINT, userId);
+    fTRACE(@"%@ <Identifier: %ld>", UPDATEPETPROFILE_ENDPOINT, (long)userId);
     
     NSMutableDictionary *postData = [NSMutableDictionary dictionary];
     [postData setObject:@(petId) forKey:@"PetId"];
@@ -304,10 +304,10 @@ static id ObjectOrNull(id object)
               image:(UIImage *)image
      isCoverPicture:(BOOL)isCoverPicture
 {
-    fTRACE(@"%@ <Identifier: %ld>", UPLOADUSERPICTURE_ENDPOINT, userId);
+    fTRACE(@"%@ <Identifier: %ld>", UPLOADUSERPICTURE_ENDPOINT, (long)userId);
     
     NSString *endPoint = [NSString stringWithFormat:@"%@?UserId=%ld&FileName=%@.png&IsCoverPic=%@",
-                          UPLOADUSERPICTURE_ENDPOINT, userId, fileName, isCoverPicture ? @"true" : @"false"];
+                          UPLOADUSERPICTURE_ENDPOINT, (long)userId, fileName, isCoverPicture ? @"true" : @"false"];
     NSData *data = UIImageJPEGRepresentation(image, 0.5);
     
     [self postBinaryRequest:callback endPoint:endPoint jsonModel:[UpdateMessage class] postData:data];

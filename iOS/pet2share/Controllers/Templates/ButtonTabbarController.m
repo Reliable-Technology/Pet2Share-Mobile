@@ -105,11 +105,25 @@ static NSInteger const kTabBarCameraItemTag     = 1;
 {
     fTRACE(@"Sender: %@", sender);
     
-    _cameraButtonTapped = YES;
-    DBCameraContainerViewController *cameraContainer = [[DBCameraContainerViewController alloc] initWithDelegate:self];
-    [cameraContainer setFullScreenMode];
-    CameraNavigationController *nav = [[CameraNavigationController alloc] initWithRootViewController:cameraContainer];
-    [self presentViewController:nav animated:YES completion:nil];
+//    _cameraButtonTapped = YES;
+//    DBCameraContainerViewController *cameraContainer = [[DBCameraContainerViewController alloc] initWithDelegate:self];
+//    [cameraContainer setFullScreenMode];
+//    CameraNavigationController *nav = [[CameraNavigationController alloc] initWithRootViewController:cameraContainer];
+//    [self presentViewController:nav animated:YES completion:nil];
+    
+//    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+//    picker.delegate = self;
+//    picker.allowsEditing = YES;
+//    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+//    
+//    [self presentViewController:picker animated:YES completion:NULL];
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
 }
 
 #pragma mark -

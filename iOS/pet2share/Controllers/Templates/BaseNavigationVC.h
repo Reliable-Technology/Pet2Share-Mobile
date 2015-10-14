@@ -7,11 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BarButtonsProtocol.h"
+#import "BaseNavigationProtocol.h"
+#import "ImageActionSheet.h"
+
+@protocol BaseNavigationProtocol <NSObject>
+
+@optional
+- (UIButton *)setupLeftBarButton;
+- (UIButton *)setupRightBarButton;
+- (void)handleActionButton:(NSInteger)buttonIndex;
+
+@end
 
 @interface BaseNavigationVC : UIViewController
 
-@property (nonatomic, weak) id<BarButtonsProtocol> barButtonsProtocol;
+@property (nonatomic, weak) id<BaseNavigationProtocol> baseNavProtocol;
 
 - (void)handleLeftButtonEvent:(id)sender;
 - (void)handleRightButtonEvent:(id)sender;
@@ -19,5 +29,6 @@
 - (void)setLeftBarButtonImage:(UIImage *)image;
 - (void)setRightBarButtonTitle:(NSString *)text;
 - (void)setRightBarButtonImage:(UIImage *)image;
+- (void)setupActionSheet:(NSString *)title buttons:(NSArray *)buttons;
 
 @end

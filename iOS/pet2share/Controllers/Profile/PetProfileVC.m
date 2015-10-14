@@ -49,7 +49,7 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
     [backButton setImage:[UIImage imageNamed:kLeftIconImageName] forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(backBarButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-
+    
     // Setup collection view
     [self.collectionView registerNib:[UINib nibWithNibName:kHeaderNibName bundle:nil]
           forSupplementaryViewOfKind:CSStickyHeaderParallaxHeader

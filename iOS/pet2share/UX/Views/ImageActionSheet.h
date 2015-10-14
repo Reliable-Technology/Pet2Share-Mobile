@@ -19,7 +19,7 @@ typedef NS_ENUM(NSInteger, ImageActionButton)
 @protocol ImageActionSheetDelegate <NSObject>
 
 @required
--(void)actionSheet:(ImageActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
+- (void)actionSheet:(ImageActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
 
 @end
 
@@ -35,7 +35,7 @@ typedef NS_ENUM(NSInteger, ImageActionButton)
    availableButtons:(NSArray *)availableButtons
   cancelButtonTitle:(NSString *)cancelButtonTitle;
 
-- (void)showInViewController: (UIViewController *)viewController;
+- (void)showInViewController:(UIViewController *)viewController;
 - (void)dismissActionSheet;
 
 + (NSString *)getLabel:(NSInteger)imageActionButton;

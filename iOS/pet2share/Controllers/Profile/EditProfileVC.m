@@ -7,11 +7,13 @@
 //
 
 #import "EditProfileVC.h"
+#import "ImageActionSheet.h"
 
 static CGFloat const kHeaderFontSize            = 13.0f;
 static CGFloat const kHeaderPadding             = 16.0f;
 
-@interface EditProfileVC () <BarButtonsProtocol, UITableViewDataSource, UITableViewDelegate>
+@interface EditProfileVC () <BaseNavigationProtocol, UITableViewDataSource, UITableViewDelegate,
+CellButtonDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 {
     BOOL _isDirty;
 }
@@ -41,7 +43,7 @@ NSString * const kCellAboutMeNibName            = @"TextViewTableCell";
     if ((self = [super initWithCoder:aDecoder]))
     {
         _isDirty = NO;
-        self.barButtonsProtocol = self;
+        self.baseNavProtocol = self;
         _cellData = [MutableOrderedDictionary dictionary];
     }
     return self;
@@ -62,7 +64,6 @@ NSString * const kCellAboutMeNibName            = @"TextViewTableCell";
                                                  name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification object:nil];
-    
     // Init cell data
     [self initCellData];
     [self.table reloadData];
@@ -77,6 +78,11 @@ NSString * const kCellAboutMeNibName            = @"TextViewTableCell";
 {
     [super viewWillDisappear:animated];
     [self.view endEditing:YES];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)dealloc
@@ -162,25 +168,24 @@ NSString * const kCellAboutMeNibName            = @"TextViewTableCell";
     }];
 }
 
+///--------------------------------------------------------------------
+/// Delegates & Protocols callbacks
+///--------------------------------------------------------------------
+
 #pragma mark -
-#pragma mark <BarButtonsProtocol>
+#pragma mark <BaseNavigationProtocol>
 
 - (UIButton *)setupLeftBarButton
-{
-    return [Graphics createBarButtonWithTitle:NSLocalizedString(@"CANCEL", @"")];
-}
-
-- (UIButton *)setupRightBarButton
 {
     return [Graphics createBarButtonWithTitle:NSLocalizedString(@"DONE", @"")];
 }
 
-- (void)handleLeftButtonEvent:(id)sender
+- (UIButton *)setupRightBarButton
 {
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    return [Graphics createBarButtonWithTitle:NSLocalizedString(@"CANCEL", @"")];
 }
 
-- (void)handleRightButtonEvent:(id)sender
+- (void)handleLeftButtonEvent:(id)sender
 {
     if (!_isDirty)
     {
@@ -189,6 +194,45 @@ NSString * const kCellAboutMeNibName            = @"TextViewTableCell";
     }
     
     [self alertSavingData];
+}
+
+- (void)handleRightButtonEvent:(id)sender
+{
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)handleActionButton:(NSInteger)buttonIndex
+{
+    UIImagePickerController *picker = [UIImagePickerController new];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    
+    switch (buttonIndex)
+    {
+        case IMAGE_BUTTON_UPLOADIMAGE:
+        {
+            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            break;
+        }
+            
+        case IMAGE_BUTTON_TAKEPICTURE:
+        {
+            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            break;
+        }
+            
+        default: break;
+    }
+    
+    [self presentViewController:picker animated:YES completion:nil];
+}
+
+#pragma mark -
+#pragma mark <CellButtonDelegate>
+
+- (void)editButtonTapped:(id)sender
+{
+    [self setupActionSheet:nil buttons:@[@(IMAGE_BUTTON_UPLOADIMAGE), @(IMAGE_BUTTON_TAKEPICTURE)]];
 }
 
 #pragma mark -
@@ -202,6 +246,21 @@ NSString * const kCellAboutMeNibName            = @"TextViewTableCell";
 - (void)fieldIsDirty
 {
     if (!_isDirty) _isDirty = YES;
+}
+
+#pragma mark -
+#pragma mark <UINavigationControllerDelegate>
+
+- (void)navigationController:(UINavigationController *)navigationController
+      willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+    fTRACE(@"Info: %@", info);
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 ///--------------------------------------------------------------------
@@ -291,8 +350,7 @@ NSString * const kCellAboutMeNibName            = @"TextViewTableCell";
         if ([reuseIdentifier isEqualToString:kCellBasicInfoIdentifier])
         {
             [(ProfileBasicInfoCell *)cell setFormProtocol:self];
-            // TODO: Button Action
-//            [(ProfileBasicInfoCell *)cell setButtonDelegate:self];
+            [(ProfileBasicInfoCell *)cell setButtonDelegate:self];
             [(ProfileBasicInfoCell *)cell updateCell:data];
         }
         else if ([reuseIdentifier isEqualToString:kCellNameInfoIdentifier])

@@ -124,7 +124,7 @@
 		FB1067E81B5341A500BEBC40 /* LoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
 		FB1067EA1B5341D600BEBC40 /* SignupVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupVC.h; sourceTree = "<group>"; };
 		FB1067EB1B5341D600BEBC40 /* SignupVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupVC.m; sourceTree = "<group>"; };
-		FB1067ED1B53449200BEBC40 /* BarButtonsProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BarButtonsProtocol.h; sourceTree = "<group>"; };
+		FB1067ED1B53449200BEBC40 /* BaseNavigationProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseNavigationProtocol.h; sourceTree = "<group>"; };
 		FB1067EE1B535B4C00BEBC40 /* LoginTableCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginTableCtrl.h; sourceTree = "<group>"; };
 		FB1067EF1B535B4C00BEBC40 /* LoginTableCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTableCtrl.m; sourceTree = "<group>"; };
 		FB1067F11B535F0F00BEBC40 /* FormProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormProtocol.h; sourceTree = "<group>"; };
@@ -646,14 +646,14 @@
 			children = (
 				FBCF4A741BC5B28700C75066 /* UserProfileVC.h */,
 				FBCF4A751BC5B28700C75066 /* UserProfileVC.m */,
-				FBCF4A9B1BC7076200C75066 /* EditUserProfileVC.h */,
-				FBCF4A9C1BC7076200C75066 /* EditUserProfileVC.m */,
 				FB5E1EBD1BC9E2CE00897CA2 /* PetProfileVC.h */,
 				FB5E1EBE1BC9E2CE00897CA2 /* PetProfileVC.m */,
-				FB4ED0231BCC843200E9F379 /* AddEditPetProfileVC.h */,
-				FB4ED0241BCC843200E9F379 /* AddEditPetProfileVC.m */,
 				FB4DB93F1BCE9F5200C1466D /* EditProfileVC.h */,
 				FB4DB9401BCE9F5200C1466D /* EditProfileVC.m */,
+				FBCF4A9B1BC7076200C75066 /* EditUserProfileVC.h */,
+				FBCF4A9C1BC7076200C75066 /* EditUserProfileVC.m */,
+				FB4ED0231BCC843200E9F379 /* AddEditPetProfileVC.h */,
+				FB4ED0241BCC843200E9F379 /* AddEditPetProfileVC.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -672,7 +672,7 @@
 		FBD3938C1B50D9DB000ED817 /* Templates */ = {
 			isa = PBXGroup;
 			children = (
-				FB1067ED1B53449200BEBC40 /* BarButtonsProtocol.h */,
+				FB1067ED1B53449200BEBC40 /* BaseNavigationProtocol.h */,
 				FBD3938D1B50D9DB000ED817 /* BaseNavigationVC.h */,
 				FBD3938E1B50D9DB000ED817 /* BaseNavigationVC.m */,
 				FBCF4A891BC6B82400C75066 /* ButtonTabbarController.h */,

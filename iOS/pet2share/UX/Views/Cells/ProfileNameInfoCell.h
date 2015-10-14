@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "FormProtocol.h"
 #import "CellConstants.h"
+#import "CellButtonDelegate.h"
 
 @interface ProfileNameInfoCell : UITableViewCell
 
 @property (nonatomic, weak) id<FormProtocol> formProtocol;
+@property (nonatomic, weak) id<CellButtonDelegate> buttonDelegate;
 
 + (CGFloat)cellHeight;
 - (void)updateCell:(NSDictionary *)dict;

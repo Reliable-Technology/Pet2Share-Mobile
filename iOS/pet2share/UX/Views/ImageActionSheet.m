@@ -8,7 +8,6 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "ImageActionSheet.h"
-#import "AppColorScheme.h"
 
 @implementation ImageActionSheet
 
@@ -61,20 +60,27 @@
                                                               [self actionSheet: self clickedButtonAtIndex: self.cancelButtonIndex];
                                                           }]];
         
-        [[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(dismissActionSheet) name:UIApplicationDidEnterBackgroundNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissActionSheet)
+                                                     name:UIApplicationDidEnterBackgroundNotification object:nil];
     }
     
     return self;
 }
 
+- (void)dealloc
+{
+    TRACE_HERE;
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
+}
+
 - (void)showInViewController:(UIViewController *)viewController
 {
-    [viewController presentViewController: alertController animated: YES completion: nil];
+    [viewController presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)dismissActionSheet
 {
-    [alertController dismissViewControllerAnimated: NO completion: nil];
+    [alertController dismissViewControllerAnimated:NO completion:nil];
 }
 
 - (void)actionSheet:(ImageActionSheet *)sender clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -85,7 +91,7 @@
     }
 }
 
-- (NSInteger) cancelButtonIndex
+- (NSInteger)cancelButtonIndex
 {
     return -1;
 }
