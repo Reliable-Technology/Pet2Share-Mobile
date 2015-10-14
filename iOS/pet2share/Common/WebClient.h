@@ -17,8 +17,7 @@
 #define HTTP_STATUS_METHODNOTALLOWED    405
 #define HTTP_STATUS_NOT_ACCEPTABLE      406
 #define HTTP_STATUS_CONFLICT            409
-#define CONTENT_TYPE                    @"Content-Type"
-#define JSON_RESPONSE                   @"json"
+#define CONTENT_TYPE_HEADER             @"Content-Type"
 #define CONTENT_TYPE_JSON               @"application/json"
 #define CONTENT_TYPE_XML                @"application/xml"
 #define CONTENT_TYPE_OCTET_STREAM       @"binary/octet-stream"
