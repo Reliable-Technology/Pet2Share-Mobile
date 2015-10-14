@@ -62,7 +62,7 @@ CellButtonDelegate, ImageActionSheetDelegate, DBCameraViewControllerDelegate>
 
 @end
 
-@implementation EditProfileVC
+@implementation EditUserProfileVC
 
 #pragma mark -
 #pragma mark Life Cycle
