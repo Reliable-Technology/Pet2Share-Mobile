@@ -6,6 +6,8 @@
 //  Copyright © 2015 Pet 2 Share. All rights reserved.
 //
 
+#import <DBCamera/DBCameraContainerViewController.h>
+#import "DBCameraLibraryViewController.h"
 #import "EditProfileVC.h"
 #import "Utils.h"
 #import "Graphics.h"
@@ -17,6 +19,7 @@
 #import "TextFieldTableCell.h"
 #import "ProfileAddressInfoCell.h"
 #import "TextViewTableCell.h"
+#import "ImageActionSheet.h"
 
 static NSString * const kCellBasicInfoIdentifier            = @"basicinfocell";
 static NSString * const kCellOtherInfoIdentifier            = @"otherinfocell";
@@ -43,7 +46,9 @@ static CGFloat const kHeaderPadding                         = 16.0f;
 #define kThirdSectionTitle                                  NSLocalizedString(@"Address", @"")
 #define KFourthSectionTitle                                 NSLocalizedString(@"About Me", @"")
 
-@interface EditProfileVC () <BarButtonsProtocol, Pet2ShareServiceCallback, UITableViewDataSource, UITableViewDelegate, FormProtocol>
+@interface EditProfileVC () <BarButtonsProtocol, Pet2ShareServiceCallback,
+UITableViewDataSource, UITableViewDelegate, FormProtocol,
+CellButtonDelegate, ImageActionSheetDelegate, DBCameraViewControllerDelegate>
 {
     BOOL _isDirty;
 }
@@ -52,6 +57,8 @@ static CGFloat const kHeaderPadding                         = 16.0f;
 @property (strong, nonatomic) ActivityView *activity;
 @property (strong, nonatomic) MutableOrderedDictionary *cellData;
 @property (strong, nonatomic) NSMutableDictionary *unsavedData;
+@property (strong, nonatomic) NSArray *availableButtons;
+@property (strong, nonatomic) ImageActionSheet *actionSheet;
 
 @end
 
@@ -68,6 +75,7 @@ static CGFloat const kHeaderPadding                         = 16.0f;
         _cellData = [MutableOrderedDictionary dictionary];
         _isDirty = NO;
         _unsavedData = [NSMutableDictionary dictionary];
+        _availableButtons = @[@(IMAGE_BUTTON_UPLOADIMAGE), @(IMAGE_BUTTON_TAKEPICTURE)];
     }
     return self;
 }
@@ -349,6 +357,55 @@ static CGFloat const kHeaderPadding                         = 16.0f;
     if (value) [self.unsavedData setObject:value forKey:key];
 }
 
+#pragma mark -
+#pragma mark Profile Image Update
+
+- (void)editButtonTapped:(id)sender
+{
+    _actionSheet = [[ImageActionSheet alloc] initWithTitle:NSLocalizedString(@"Upload Profile Picture", @"")
+                                                  delegate:self
+                                          availableButtons:self.availableButtons
+                                         cancelButtonTitle:NSLocalizedString(@"Cancel", @"")];
+    [self.actionSheet showInViewController:self];
+}
+
+- (void)actionSheet:(ImageActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex)
+    {
+        case IMAGE_BUTTON_UPLOADIMAGE:
+        {
+            DBCameraLibraryViewController *vc = [[DBCameraLibraryViewController alloc] init];
+            [vc setDelegate:self];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+            [nav setNavigationBarHidden:YES];
+            [self presentViewController:nav animated:YES completion:nil];
+            break;
+        }
+        default: break;
+    }
+}
+
+- (void)dismissCamera:(id)cameraViewController
+{
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+}
+
+- (void)camera:(id)cameraViewController didFinishWithImage:(UIImage *)image withMetadata:(NSDictionary *)metadata
+{
+    [cameraViewController restoreFullScreenMode];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+    
+    NSString *uniqueImageName = [Utils getUniqueFileName:@"userprofileavatar"];
+    
+    Pet2ShareService *service = [Pet2ShareService new];
+    [service uploadImage:self
+                  userId:[Pet2ShareUser current].identifier
+                fileName:uniqueImageName
+                   image:image
+          isCoverPicture:NO];
+}
+
 #pragma mark - <UITableViewDelegate>
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -432,10 +489,10 @@ static CGFloat const kHeaderPadding                         = 16.0f;
         if (!cell) cell = [[cellClass alloc] initWithStyle:UITableViewCellStyleDefault
                                            reuseIdentifier:reuseIdentifier];
         
-        if ([reuseIdentifier isEqualToString:kCellBasicInfoIdentifier]
-            || [reuseIdentifier isEqualToString:kCellAddressInfoIdentifier])
+        if ([reuseIdentifier isEqualToString:kCellBasicInfoIdentifier])
         {
             [(ProfileBasicInfoCell *)cell setFormProtocol:self];
+            [(ProfileBasicInfoCell *)cell setButtonDelegate:self];
             [(ProfileBasicInfoCell *)cell updateCell:data];
         }
         else if ([reuseIdentifier isEqualToString:kCellOtherInfoIdentifier])

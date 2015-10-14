@@ -11,9 +11,11 @@
 @interface Utils : NSObject
 
 #pragma mark -
-#pragma mark - Labels
+#pragma mark Common
 
++ (NSString *)jsonRepresentation:(NSDictionary *)dict;
 + (CGSize)findHeightForText:(NSString *)text havingWidth:(CGFloat)widthValue andFont:(UIFont *)font;
++ (NSString *)getUniqueFileName:(NSString *)fileName;
 
 #pragma mark -
 #pragma mark Validation Tools

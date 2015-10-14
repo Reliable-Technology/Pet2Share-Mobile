@@ -58,7 +58,8 @@ static UrlManager *_sharedInstance = nil;
 
 @implementation UrlManager
 
-#pragma mark - Life Cycle
+#pragma mark -
+#pragma mark Life Cycle
 
 + (UrlManager *)sharedInstance
 {
@@ -89,7 +90,8 @@ static UrlManager *_sharedInstance = nil;
     return self;
 }
 
-#pragma mark - Private Instance Methods
+#pragma mark -
+#pragma mark Private Instance Methods
 
 - (Url *)getUrl
 {
@@ -103,7 +105,8 @@ static UrlManager *_sharedInstance = nil;
     return url;
 }
 
-#pragma mark - Public Instance Methods
+#pragma mark -
+#pragma mark Public Instance Methods
 
 - (NSString *)webServiceUrl
 {
@@ -115,6 +118,26 @@ static UrlManager *_sharedInstance = nil;
     }
         
     return url;
+}
+
+- (NSString *)webServiceUrl:(NSString*)endpoint
+{
+    NSString *webserviceUrl = [self webServiceUrl];
+    NSString *newURL = kEmptyString;
+    
+    // Add trailing slash to the end of web service
+    if (![webserviceUrl hasSuffix:@"/"])
+    {
+        newURL = [NSString stringWithFormat:@"%@/%@", webserviceUrl, endpoint];
+    }
+    else
+    {
+        newURL = [NSString stringWithFormat:@"%@%@", webserviceUrl, endpoint];
+    }
+    
+    fTRACE("result url=%@", newURL);
+    
+    return newURL;
 }
 
 @end

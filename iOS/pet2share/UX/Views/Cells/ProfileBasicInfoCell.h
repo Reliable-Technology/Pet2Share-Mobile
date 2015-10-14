@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FormProtocol.h"
+#import "CellButtonDelegate.h"
 
 static NSString * const kUserNameImageIcon  = @"usernameimageicon";
 static NSString * const kFirstNameImageIcon = @"firstnameimageicon";
@@ -20,6 +21,7 @@ static NSString * const kLastNameKey        = @"lastname";
 @interface ProfileBasicInfoCell : UITableViewCell
 
 @property (nonatomic, weak) id<FormProtocol> formProtocol;
+@property (nonatomic, weak) id<CellButtonDelegate> buttonDelegate;
 
 + (CGFloat)cellHeight;
 - (void)updateCell:(NSDictionary *)dict;

@@ -21,7 +21,7 @@ static NSString * const kHeaderNibName          = @"ProfileHeaderCell";
 static NSString * const kCellNibName            = @"PostCollectionCell";
 static NSString * const kLeftIconImageName      = @"icon-arrowback";
 
-@interface PetProfileVC () <Pet2ShareServiceCallback, ProfileHeaderDelegate>
+@interface PetProfileVC () <Pet2ShareServiceCallback, CellButtonDelegate>
 
 @end
 
@@ -173,9 +173,9 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
 }
 
 #pragma mark -
-#pragma mark <ProfileHeaderDelegate>
+#pragma mark <CellButtonDelegate>
 
-- (void)editProfile:(id)sender
+- (void)editButtonTapped:(id)sender
 {
     [self performSegueWithIdentifier:kSegueAddEditPetProfile sender:self];
 }

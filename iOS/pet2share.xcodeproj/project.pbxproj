@@ -54,6 +54,7 @@
 		FB4BCBD11BCD6FA7009F853E /* ProfileNameInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB4BCBCF1BCD6FA7009F853E /* ProfileNameInfoCell.m */; settings = {ASSET_TAGS = (); }; };
 		FB4BCBD21BCD6FA7009F853E /* ProfileNameInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB4BCBD01BCD6FA7009F853E /* ProfileNameInfoCell.xib */; settings = {ASSET_TAGS = (); }; };
 		FB4BCBD91BCDA08A009F853E /* CameraNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB4BCBD81BCDA08A009F853E /* CameraNavigationController.m */; settings = {ASSET_TAGS = (); }; };
+		FB4DB9381BCDC88300C1466D /* WebClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FB4DB9371BCDC88300C1466D /* WebClient.m */; settings = {ASSET_TAGS = (); }; };
 		FB4ED0251BCC843200E9F379 /* AddEditPetProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB4ED0241BCC843200E9F379 /* AddEditPetProfileVC.m */; settings = {ASSET_TAGS = (); }; };
 		FB5050301BC4CBB40037F3E5 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = FB50502F1BC4CBB40037F3E5 /* Address.m */; settings = {ASSET_TAGS = (); }; };
 		FB5050331BC4D0B10037F3E5 /* Date.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5050321BC4D0B10037F3E5 /* Date.m */; settings = {ASSET_TAGS = (); }; };
@@ -67,10 +68,10 @@
 		FB5E1ECF1BCABF7000897CA2 /* ProfileAddressInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB5E1ECD1BCABF7000897CA2 /* ProfileAddressInfoCell.xib */; settings = {ASSET_TAGS = (); }; };
 		FB5E1ED31BCB0FD800897CA2 /* TextViewTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5E1ED11BCB0FD800897CA2 /* TextViewTableCell.m */; settings = {ASSET_TAGS = (); }; };
 		FB5E1ED41BCB0FD800897CA2 /* TextViewTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB5E1ED21BCB0FD800897CA2 /* TextViewTableCell.xib */; settings = {ASSET_TAGS = (); }; };
-		FB6C272F1B6ED1C70002034A /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C272E1B6ED1C70002034A /* HttpClient.m */; };
 		FB6C27331B6ED1EF0002034A /* Pet2ShareService.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C27321B6ED1EF0002034A /* Pet2ShareService.m */; };
 		FB6C273D1B6ED2950002034A /* UrlManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C273C1B6ED2950002034A /* UrlManager.m */; };
 		FBA2A35A1BCDA78800368D39 /* PostImageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA2A3591BCDA78800368D39 /* PostImageVC.m */; settings = {ASSET_TAGS = (); }; };
+		FBA2A3601BCDAD8800368D39 /* ImageActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA2A35F1BCDAD8800368D39 /* ImageActionSheet.m */; settings = {ASSET_TAGS = (); }; };
 		FBA3F6B91BC5555E0094288D /* SignUpTableCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA3F6B81BC5555E0094288D /* SignUpTableCtrl.m */; settings = {ASSET_TAGS = (); }; };
 		FBB531141B9BA8A7004D5DA2 /* ResponseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB531131B9BA8A7004D5DA2 /* ResponseObject.m */; };
 		FBCDC9A81BC3381B00808E30 /* ErrorMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCDC9A21BC3381B00808E30 /* ErrorMessage.m */; settings = {ASSET_TAGS = (); }; };
@@ -81,7 +82,6 @@
 		FBCEA43B1B4CC3E000497678 /* Pet2Share.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBCEA4391B4CC3E000497678 /* Pet2Share.storyboard */; };
 		FBCEA43D1B4CC3E000497678 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBCEA43C1B4CC3E000497678 /* Images.xcassets */; };
 		FBCEA4401B4CC3E000497678 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBCEA43E1B4CC3E000497678 /* LaunchScreen.xib */; };
-		FBCEA45E1B4CC99A00497678 /* testHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCEA45D1B4CC99A00497678 /* testHttpClient.m */; };
 		FBCF4A6B1BC5876000C75066 /* Pet2ShareUser.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A6A1BC5876000C75066 /* Pet2ShareUser.m */; settings = {ASSET_TAGS = (); }; };
 		FBCF4A761BC5B28700C75066 /* ProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A751BC5B28700C75066 /* ProfileVC.m */; settings = {ASSET_TAGS = (); }; };
 		FBCF4A7E1BC6888C00C75066 /* CircleImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A7D1BC6888C00C75066 /* CircleImageView.m */; settings = {ASSET_TAGS = (); }; };
@@ -181,6 +181,8 @@
 		FB4BCBD01BCD6FA7009F853E /* ProfileNameInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileNameInfoCell.xib; sourceTree = "<group>"; };
 		FB4BCBD71BCDA08A009F853E /* CameraNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraNavigationController.h; sourceTree = "<group>"; };
 		FB4BCBD81BCDA08A009F853E /* CameraNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraNavigationController.m; sourceTree = "<group>"; };
+		FB4DB9361BCDC88300C1466D /* WebClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebClient.h; sourceTree = "<group>"; };
+		FB4DB9371BCDC88300C1466D /* WebClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebClient.m; sourceTree = "<group>"; };
 		FB4ED0231BCC843200E9F379 /* AddEditPetProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEditPetProfileVC.h; sourceTree = "<group>"; };
 		FB4ED0241BCC843200E9F379 /* AddEditPetProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEditPetProfileVC.m; sourceTree = "<group>"; };
 		FB50502E1BC4CBB40037F3E5 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
@@ -206,8 +208,6 @@
 		FB5E1ED01BCB0FD800897CA2 /* TextViewTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewTableCell.h; sourceTree = "<group>"; };
 		FB5E1ED11BCB0FD800897CA2 /* TextViewTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewTableCell.m; sourceTree = "<group>"; };
 		FB5E1ED21BCB0FD800897CA2 /* TextViewTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewTableCell.xib; sourceTree = "<group>"; };
-		FB6C272D1B6ED1C70002034A /* HttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClient.h; sourceTree = "<group>"; };
-		FB6C272E1B6ED1C70002034A /* HttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpClient.m; sourceTree = "<group>"; };
 		FB6C27311B6ED1EF0002034A /* Pet2ShareService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pet2ShareService.h; sourceTree = "<group>"; };
 		FB6C27321B6ED1EF0002034A /* Pet2ShareService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pet2ShareService.m; sourceTree = "<group>"; };
 		FB6C273B1B6ED2950002034A /* UrlManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrlManager.h; sourceTree = "<group>"; };
@@ -215,6 +215,9 @@
 		FB6C273E1B6EEB0F0002034A /* ServiceConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceConfig.h; sourceTree = "<group>"; };
 		FBA2A3581BCDA78800368D39 /* PostImageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostImageVC.h; sourceTree = "<group>"; };
 		FBA2A3591BCDA78800368D39 /* PostImageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostImageVC.m; sourceTree = "<group>"; };
+		FBA2A35E1BCDAD8800368D39 /* ImageActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageActionSheet.h; sourceTree = "<group>"; };
+		FBA2A35F1BCDAD8800368D39 /* ImageActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageActionSheet.m; sourceTree = "<group>"; };
+		FBA2A3611BCDB2A600368D39 /* CellButtonDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CellButtonDelegate.h; sourceTree = "<group>"; };
 		FBA3F6B71BC5555E0094288D /* SignUpTableCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpTableCtrl.h; sourceTree = "<group>"; };
 		FBA3F6B81BC5555E0094288D /* SignUpTableCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpTableCtrl.m; sourceTree = "<group>"; };
 		FBB531121B9BA8A7004D5DA2 /* ResponseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseObject.h; sourceTree = "<group>"; };
@@ -237,7 +240,6 @@
 		FBCEA4451B4CC3E000497678 /* pet2shareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pet2shareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBCEA44A1B4CC3E000497678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBCEA4551B4CC78600497678 /* Pet2Share.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pet2Share.pch; sourceTree = "<group>"; };
-		FBCEA45D1B4CC99A00497678 /* testHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testHttpClient.m; sourceTree = "<group>"; };
 		FBCF4A691BC5876000C75066 /* Pet2ShareUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pet2ShareUser.h; sourceTree = "<group>"; };
 		FBCF4A6A1BC5876000C75066 /* Pet2ShareUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pet2ShareUser.m; sourceTree = "<group>"; };
 		FBCF4A741BC5B28700C75066 /* ProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileVC.h; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 				FB5E1ED01BCB0FD800897CA2 /* TextViewTableCell.h */,
 				FB5E1ED11BCB0FD800897CA2 /* TextViewTableCell.m */,
 				FB5E1ED21BCB0FD800897CA2 /* TextViewTableCell.xib */,
+				FBA2A3611BCDB2A600368D39 /* CellButtonDelegate.h */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -367,8 +370,6 @@
 		FB484A301B4FD0910045A6EA /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				FB6C272D1B6ED1C70002034A /* HttpClient.h */,
-				FB6C272E1B6ED1C70002034A /* HttpClient.m */,
 				FB484A441B4FD40A0045A6EA /* Logger.h */,
 				FB484A451B4FD40A0045A6EA /* OrderedDictionary.h */,
 				FB484A461B4FD40A0045A6EA /* OrderedDictionary.m */,
@@ -384,6 +385,8 @@
 				FB484A411B4FD3E60045A6EA /* Constants.m */,
 				FB5E1EC81BCA9DA400897CA2 /* DateFormatterFactory.h */,
 				FB5E1EC91BCA9DA400897CA2 /* DateFormatterFactory.m */,
+				FB4DB9361BCDC88300C1466D /* WebClient.h */,
+				FB4DB9371BCDC88300C1466D /* WebClient.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -435,6 +438,8 @@
 				FBCF4A7D1BC6888C00C75066 /* CircleImageView.m */,
 				FBCF4A9E1BC7116400C75066 /* ActivityView.h */,
 				FBCF4A9F1BC7116400C75066 /* ActivityView.m */,
+				FBA2A35E1BCDAD8800368D39 /* ImageActionSheet.h */,
+				FBA2A35F1BCDAD8800368D39 /* ImageActionSheet.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -599,7 +604,6 @@
 		FBCEA4481B4CC3E000497678 /* pet2shareTests */ = {
 			isa = PBXGroup;
 			children = (
-				FBCEA45D1B4CC99A00497678 /* testHttpClient.m */,
 				FBCEA4491B4CC3E000497678 /* Supporting Files */,
 			);
 			path = pet2shareTests;
@@ -878,6 +882,7 @@
 				FBCF4A9A1BC6CF6B00C75066 /* CollectionViewLayout.m in Sources */,
 				FB484A5E1B50BE4E0045A6EA /* ThemeManager.m in Sources */,
 				FB484A531B4FD40A0045A6EA /* Utils.m in Sources */,
+				FB4DB9381BCDC88300C1466D /* WebClient.m in Sources */,
 				FB484A621B50BE910045A6EA /* RoundCornerButton.m in Sources */,
 				FB6C273D1B6ED2950002034A /* UrlManager.m in Sources */,
 				FB484A4D1B4FD40A0045A6EA /* OrderedDictionary.m in Sources */,
@@ -910,6 +915,7 @@
 				FBCF4A921BC6CF5800C75066 /* PostCollectionCell.m in Sources */,
 				FB484A3F1B4FD12F0045A6EA /* Graphics.m in Sources */,
 				FBA2A35A1BCDA78800368D39 /* PostImageVC.m in Sources */,
+				FBA2A3601BCDAD8800368D39 /* ImageActionSheet.m in Sources */,
 				FB5050301BC4CBB40037F3E5 /* Address.m in Sources */,
 				FB484A421B4FD3E60045A6EA /* Constants.m in Sources */,
 				FBCF4A8E1BC6CF2E00C75066 /* PostsVC.m in Sources */,
@@ -925,7 +931,6 @@
 				FB484A4F1B4FD40A0045A6EA /* Reachability.m in Sources */,
 				FBCF4AA41BC72E9D00C75066 /* ProfileBasicInfoCell.m in Sources */,
 				FBCF4ABA1BC8641B00C75066 /* Pet.m in Sources */,
-				FB6C272F1B6ED1C70002034A /* HttpClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -935,7 +940,6 @@
 			files = (
 				FB484A521B4FD40A0045A6EA /* UIDevice+Hardware.m in Sources */,
 				FB484A4E1B4FD40A0045A6EA /* OrderedDictionary.m in Sources */,
-				FBCEA45E1B4CC99A00497678 /* testHttpClient.m in Sources */,
 				FB484A541B4FD40A0045A6EA /* Utils.m in Sources */,
 				FB484A501B4FD40A0045A6EA /* Reachability.m in Sources */,
 				FB484A431B4FD3E60045A6EA /* Constants.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "WSConstants.h"
+#import "WebClient.h"
 
 @protocol Pet2ShareServiceCallback <NSObject>
 
@@ -17,8 +18,6 @@
 @end
 
 @interface Pet2ShareService : NSObject
-
-@property (nonatomic, strong) Class jsonModel;
 
 - (void)loginUser:(NSObject<Pet2ShareServiceCallback> *)callback
      username:(NSString *)username
@@ -72,5 +71,11 @@
 
 - (void)loadImage:(NSString *)url
        completion:(void (^)(UIImage* image))completion;
+
+- (void)uploadImage:(NSObject<Pet2ShareServiceCallback> *)callback
+             userId:(NSInteger)userId
+           fileName:(NSString *)fileName
+              image:(UIImage *)image
+     isCoverPicture:(BOOL)isCoverPicture;
 
 @end

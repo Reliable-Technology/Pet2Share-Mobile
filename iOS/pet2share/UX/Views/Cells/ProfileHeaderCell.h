@@ -7,19 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CellButtonDelegate.h"
 
-@protocol ProfileHeaderDelegate <NSObject>
-
-@required
-- (void)editProfile:(id)sender;
-
-@end
 
 @class Pet2ShareUser;
 
 @interface ProfileHeaderCell : UICollectionViewCell
 
-@property (nonatomic, weak) id<ProfileHeaderDelegate> delegate;
+@property (nonatomic, weak) id<CellButtonDelegate> delegate;
 
 + (CGFloat)cellHeight;
 - (void)updateProfileAvatar:(NSString *)url name:(NSString *)name socialStatusInfo:(NSString *)socialStatusInfo;

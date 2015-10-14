@@ -55,9 +55,9 @@
 
 - (void)editProfileBtnTapped:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(editProfile:)])
+    if ([self.delegate respondsToSelector:@selector(editButtonTapped:)])
     {
-        [self.delegate performSelector:@selector(editProfile:) withObject:sender];
+        [self.delegate performSelector:@selector(editButtonTapped:) withObject:sender];
     }
 }
 

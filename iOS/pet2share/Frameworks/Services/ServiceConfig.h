@@ -45,5 +45,6 @@
 #define UPDATEUSERPROFILE_ENDPOINT          @"UpdateUserProfile"
 #define INSERTPETPROFILE_ENDPOINT           @"InsertPetProfile"
 #define UPDATEPETPROFILE_ENDPOINT           @"UpdatePetProfile"
+#define UPLOADUSERPICTURE_ENDPOINT          @"UploadUserPic"
 
 #endif

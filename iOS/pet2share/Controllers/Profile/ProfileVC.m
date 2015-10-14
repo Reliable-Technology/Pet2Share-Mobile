@@ -20,7 +20,7 @@ static NSString * const kHeaderIdentifier   = @"profileheadercell";
 static NSString * const kHeaderNibName      = @"ProfileHeaderCell";
 static NSString * const kCellNibName        = @"PetCollectionCell";
 
-@interface ProfileVC () <ProfileHeaderDelegate>
+@interface ProfileVC () <CellButtonDelegate>
 
 - (IBAction)addButtonTapped:(id)sender;
 
@@ -188,7 +188,7 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
 #pragma mark -
 #pragma mark <ProfileHeaderDelegate>
 
-- (void)editProfile:(id)sender
+- (void)editButtonTapped:(id)sender
 {
     [self performSegueWithIdentifier:kSegueEditProfile sender:self];
 }

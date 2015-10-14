@@ -15,5 +15,6 @@
 
 + (UrlManager *)sharedInstance;
 - (NSString *)webServiceUrl;
+- (NSString *)webServiceUrl:(NSString*)endpoint;
 
 @end

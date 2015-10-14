@@ -8,61 +8,93 @@
 
 #import <EGOCache/EGOCache.h>
 #import "Pet2ShareService.h"
-#import "HttpClient.h"
 #import "UrlManager.h"
 #import "Utils.h"
+#import "WebClient.h"
 
 static id ObjectOrNull(id object)
 {
     return object ?: [NSNull null];
 }
 
+@interface Pet2ShareService () <WebClientDelegate>
+
+@property (nonatomic, assign) id<Pet2ShareServiceCallback> callback;
+@property (nonatomic, strong) Class jsonModel;
+
+@end
+
 @implementation Pet2ShareService
 
-#pragma mark - Private Instance Methods
+#pragma mark -
+#pragma mark Private Instance Methods
 
-- (void)requestData:(NSObject<Pet2ShareServiceCallback> *)callback
-           endPoint:(NSString *)endPoint
-          jsonModel:(Class)model
+- (void)postJsonRequest:(NSObject<Pet2ShareServiceCallback> *)callback
+               endPoint:(NSString *)endPoint
+              jsonModel:(Class)model
            postData:(NSDictionary *)postData
 {
-    HttpClient *client = [HttpClient baseUrl:[[UrlManager sharedInstance] webServiceUrl]];
-    self.jsonModel = model;
+    NSString *data = [Utils jsonRepresentation:postData];
+    NSString *url = [[UrlManager sharedInstance] webServiceUrl:endPoint];
     
-    [client post:endPoint data:postData
-        callback:[HttpCallback callbackWithResult:^(HttpResponse *response) {
-        [self parseResponse:response callback:callback];
-    }]];
+    WebClient *webClient = [WebClient new];
+    webClient.delegate = self;
+    webClient.contentTypeJSON = YES;
+    self.jsonModel = model;
+    self.callback = callback;
+
+    [webClient post:url postData:data];
 }
 
-- (void)parseResponse:(HttpResponse *)response
-             callback:(NSObject<Pet2ShareServiceCallback> *)callback
+- (void)postBinaryRequest:(NSObject<Pet2ShareServiceCallback> *)callback
+                 endPoint:(NSString *)endPoint
+                jsonModel:(Class)model
+                 postData:(NSData *)data
 {
-    NSError *error;
+    NSString *url = [[UrlManager sharedInstance] webServiceUrl:endPoint];
+    
+    WebClient *webClient = [[WebClient alloc] init];
+    webClient.delegate = self;
+    webClient.contentType = CONTENT_TYPE_OCTET_STREAM;
+    self.jsonModel = model;
+    
+    [webClient post:url binaryData:data];
+}
+
+#pragma mark - 
+#pragma mark <WebClientDelegate>
+
+- (void)didFinishDownload:(NSData *)data webClient:(WebClient *)webClient
+{
     ErrorMessage *errorMessage = nil;
     NSMutableArray *objects = [NSMutableArray array];
     
     @try
     {
-        if (!response.hasError && [self.jsonModel isSubclassOfClass:[RepositoryObject class]])
+        if (webClient.statusCode == HTTP_STATUS_OK && [self.jsonModel isSubclassOfClass:[RepositoryObject class]])
         {
-            fTRACE(@"Response JSON: %@", response.json);
+            NSError *error = nil;
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+            NSLog(@"Response JSON: %@", json);
             
-            ResponseObject *responseObj = [[ResponseObject alloc] initWithDictionary:response.json error:&error];
-            errorMessage = responseObj.errorMessage;
-            
-            if (!responseObj)
+            if (json)
             {
-                NSLog(@"%s: Can't parse the ResponseObject: %@", __func__, error);
-            }
-            else
-            {
-                for (NSInteger i = 0; i < responseObj.results.count; i++)
+                ResponseObject *responseObj = [[ResponseObject alloc] initWithDictionary:json error:&error];
+                errorMessage = responseObj.errorMessage;
+                
+                if (!responseObj)
                 {
-                    id object = [[[self.jsonModel class] alloc] initWithDictionary:responseObj.results[i]
-                                                                             error:&error];
-                    if (object && [(RepositoryObject *)object isValidate]) [objects addObject:object];
-                    else NSLog(@"%s: Can't parse the Object: %@", __func__, error);
+                    NSLog(@"%s: Can't parse the ResponseObject: %@", __func__, error);
+                }
+                else
+                {
+                    for (NSInteger i = 0; i < responseObj.results.count; i++)
+                    {
+                        id object = [[[self.jsonModel class] alloc] initWithDictionary:responseObj.results[i]
+                                                                                 error:&error];
+                        if (object && [(RepositoryObject *)object isValidate]) [objects addObject:object];
+                        else NSLog(@"%s: Can't parse the Object: %@", __func__, error);
+                    }
                 }
             }
         }
@@ -77,17 +109,29 @@ static id ObjectOrNull(id object)
     {
         @try
         {
-            if (!errorMessage) [callback onReceiveSuccess:objects];
-            else [callback onReceiveError:errorMessage];
+            if (self.callback)
+            {
+                if (!errorMessage) [self.callback onReceiveSuccess:objects];
+                else [self.callback onReceiveError:errorMessage];
+            }
         }
         @catch (NSException *exception)
         {
-             NSLog(@"%s: exception on finally: %@", __func__, exception);
+            NSLog(@"%s: exception on finally: %@", __func__, exception);
         }
     }
 }
 
-#pragma mark - Public Instance Methods
+- (void)didFailDownload:(NSError *)error webClient:(WebClient *)webClient
+{
+    ErrorMessage *errorMessage = [ErrorMessage new];
+    errorMessage.message = error.description;
+    errorMessage.reasonCode = webClient.statusCode;
+    if (self.callback) [self.callback onReceiveError:errorMessage];
+}
+
+#pragma mark -
+#pragma mark Public Instance Methods
 
 - (void)loginUser:(NSObject<Pet2ShareServiceCallback> *)callback
          username:(NSString *)username
@@ -99,7 +143,7 @@ static id ObjectOrNull(id object)
     [postData setObject:ObjectOrNull(username) forKey:@"UserName"];
     [postData setObject:ObjectOrNull(password) forKey:@"Password"];
     
-    [self requestData:callback endPoint:LOGIN_ENDPOINT jsonModel:[User class] postData:postData];
+    [self postJsonRequest:callback endPoint:LOGIN_ENDPOINT jsonModel:[User class] postData:postData];
 }
 
 - (void)registerUser:(NSObject<Pet2ShareServiceCallback> *)callback
@@ -119,7 +163,7 @@ static id ObjectOrNull(id object)
     [postData setObject:ObjectOrNull(password) forKey:@"Password"];
     [postData setObject:ObjectOrNull(phone) forKey:@"Phone"];
     
-    [self requestData:callback endPoint:REGISTER_ENDPOINT jsonModel:[User class] postData:postData];
+    [self postJsonRequest:callback endPoint:REGISTER_ENDPOINT jsonModel:[User class] postData:postData];
 }
 
 - (void)getUserProfile:(NSObject<Pet2ShareServiceCallback> *)callback userId:(NSInteger)userId
@@ -129,7 +173,7 @@ static id ObjectOrNull(id object)
     NSMutableDictionary *postData = [NSMutableDictionary dictionary];
     [postData setObject:@(userId) forKey:@"UserId"];
     
-    [self requestData:callback endPoint:GETUSERPROFILE_ENDPOINT jsonModel:[User class] postData:postData];
+    [self postJsonRequest:callback endPoint:GETUSERPROFILE_ENDPOINT jsonModel:[User class] postData:postData];
 }
 
 - (void)updateUserProfile:(NSObject<Pet2ShareServiceCallback> *)callback
@@ -168,7 +212,7 @@ static id ObjectOrNull(id object)
     [postData setObject:ObjectOrNull(country) forKey:@"Country"];
     [postData setObject:ObjectOrNull(zipCode) forKey:@"ZipCode"];
     
-    [self requestData:callback endPoint:UPDATEUSERPROFILE_ENDPOINT jsonModel:[UpdateMessage class] postData:postData];
+    [self postJsonRequest:callback endPoint:UPDATEUSERPROFILE_ENDPOINT jsonModel:[UpdateMessage class] postData:postData];
 }
 
 - (void)insertPetProfile:(NSObject<Pet2ShareServiceCallback> *)callback
@@ -191,7 +235,7 @@ static id ObjectOrNull(id object)
     [postData setObject:ObjectOrNull(about) forKey:@"About"];
     [postData setObject:ObjectOrNull(favFood) forKey:@"FavFood"];
     
-    [self requestData:callback endPoint:INSERTPETPROFILE_ENDPOINT jsonModel:[UpdateMessage class] postData:postData];
+    [self postJsonRequest:callback endPoint:INSERTPETPROFILE_ENDPOINT jsonModel:[UpdateMessage class] postData:postData];
 }
 
 - (void)updatePetProfile:(NSObject<Pet2ShareServiceCallback> *)callback
@@ -216,7 +260,7 @@ static id ObjectOrNull(id object)
     [postData setObject:ObjectOrNull(about) forKey:@"About"];
     [postData setObject:ObjectOrNull(favFood) forKey:@"FavFood"];
     
-    [self requestData:callback endPoint:UPDATEPETPROFILE_ENDPOINT jsonModel:[UpdateMessage class] postData:postData];
+    [self postJsonRequest:callback endPoint:UPDATEPETPROFILE_ENDPOINT jsonModel:[UpdateMessage class] postData:postData];
 }
 
 - (void)loadImage:(NSString *)url
@@ -252,6 +296,21 @@ static id ObjectOrNull(id object)
             NSLog(@"%s: exception on download image: %@", __func__, exception);
         }
     });
+}
+
+- (void)uploadImage:(NSObject<Pet2ShareServiceCallback> *)callback
+             userId:(NSInteger)userId
+           fileName:(NSString *)fileName
+              image:(UIImage *)image
+     isCoverPicture:(BOOL)isCoverPicture
+{
+    fTRACE(@"%@ <Identifier: %ld>", UPLOADUSERPICTURE_ENDPOINT, userId);
+    
+    NSString *endPoint = [NSString stringWithFormat:@"%@?UserId=%ld&FileName=%@.png&IsCoverPic=%@",
+                          UPLOADUSERPICTURE_ENDPOINT, userId, fileName, isCoverPicture ? @"true" : @"false"];
+    NSData *data = UIImageJPEGRepresentation(image, 0.5);
+    
+    [self postBinaryRequest:callback endPoint:endPoint jsonModel:[UpdateMessage class] postData:data];
 }
 
 @end

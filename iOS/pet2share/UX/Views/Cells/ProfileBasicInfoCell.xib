@@ -134,6 +134,21 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adU-oZ-8hQ">
+                        <rect key="frame" x="523" y="93" width="56" height="30"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="UKO-DY-ak2"/>
+                            <constraint firstAttribute="width" constant="56" id="sPX-P6-tHp"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <state key="normal" title="Edit">
+                            <color key="titleColor" red="0.15410047769546509" green="0.41306763887405396" blue="0.69063264131546021" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="editAvatarImageBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="uGV-JX-ReY"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <animations/>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -141,6 +156,7 @@
                     <constraint firstItem="ZO2-6j-FqL" firstAttribute="top" secondItem="xNL-jn-x4h" secondAttribute="bottom" id="0Ys-Oe-YAb"/>
                     <constraint firstItem="xNL-jn-x4h" firstAttribute="leading" secondItem="ZO2-6j-FqL" secondAttribute="leading" id="1K5-Lc-Sh9"/>
                     <constraint firstItem="xNL-jn-x4h" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="9lH-rm-lvy"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="adU-oZ-8hQ" secondAttribute="trailing" constant="13" id="EWa-Lf-4Lh"/>
                     <constraint firstItem="ZO2-6j-FqL" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Isj-mB-nWs"/>
                     <constraint firstAttribute="bottomMargin" secondItem="8Is-n6-D7j" secondAttribute="bottom" constant="-9" id="KAg-xt-yWG"/>
                     <constraint firstAttribute="trailingMargin" secondItem="PcM-Bo-bdY" secondAttribute="trailing" constant="13" id="Pge-4G-pyf"/>
@@ -148,10 +164,14 @@
                     <constraint firstItem="8Is-n6-D7j" firstAttribute="top" secondItem="ZO2-6j-FqL" secondAttribute="bottom" id="VDW-XL-Rk4"/>
                     <constraint firstItem="8Is-n6-D7j" firstAttribute="trailing" secondItem="ZO2-6j-FqL" secondAttribute="trailing" id="YRg-Qi-lRV"/>
                     <constraint firstItem="ZO2-6j-FqL" firstAttribute="centerY" secondItem="PcM-Bo-bdY" secondAttribute="centerY" id="Ymm-BB-V13"/>
+                    <constraint firstItem="adU-oZ-8hQ" firstAttribute="leading" secondItem="xNL-jn-x4h" secondAttribute="trailing" constant="27" id="adl-O1-s5k"/>
                     <constraint firstItem="ZO2-6j-FqL" firstAttribute="trailing" secondItem="xNL-jn-x4h" secondAttribute="trailing" id="dOz-KU-6fH"/>
                     <constraint firstItem="PcM-Bo-bdY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="30" id="hIr-Tu-4X5"/>
+                    <constraint firstItem="adU-oZ-8hQ" firstAttribute="leading" secondItem="ZO2-6j-FqL" secondAttribute="trailing" constant="27" id="hor-jS-Mbq"/>
+                    <constraint firstItem="adU-oZ-8hQ" firstAttribute="leading" secondItem="8Is-n6-D7j" secondAttribute="trailing" constant="27" id="lJc-Sq-ZBX"/>
                     <constraint firstItem="ZO2-6j-FqL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="44" id="lxb-d9-QOD"/>
                     <constraint firstItem="8Is-n6-D7j" firstAttribute="leading" secondItem="ZO2-6j-FqL" secondAttribute="leading" id="psM-lM-PfL"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="adU-oZ-8hQ" secondAttribute="bottom" id="q0I-kn-gl7"/>
                     <constraint firstItem="ZO2-6j-FqL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="rxV-xd-u6U"/>
                 </constraints>
             </tableViewCellContentView>

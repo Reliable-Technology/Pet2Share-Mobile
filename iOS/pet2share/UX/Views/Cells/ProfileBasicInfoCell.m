@@ -21,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *firstnameTxtField;
 @property (weak, nonatomic) IBOutlet UITextField *lastnameTxtField;
 
+- (IBAction)editAvatarImageBtnTapped:(id)sender;
+
 @end
 
 @implementation ProfileBasicInfoCell
@@ -128,4 +130,11 @@
     }];
 }
 
+- (IBAction)editAvatarImageBtnTapped:(id)sender
+{
+    if ([self.buttonDelegate respondsToSelector:@selector(editButtonTapped:)])
+    {
+        [self.buttonDelegate performSelector:@selector(editButtonTapped:) withObject:sender];
+    }
+}
 @end

@@ -12,8 +12,26 @@
 
 @implementation Utils
 
-#pragma mark - 
-#pragma mark - Labels
+#pragma mark -
+#pragma mark Common
+
++ (NSString *)jsonRepresentation:(NSDictionary *)dict
+{
+    NSString *result = kEmptyString;
+    
+    @try
+    {
+        NSError *error;
+        NSData *json = [NSJSONSerialization dataWithJSONObject:dict options:kNilOptions error:&error];
+        result = [[NSString alloc] initWithData:json encoding:NSUTF8StringEncoding];
+    }
+    @catch (NSException *exception)
+    {
+        NSLog(@"%s: exception occurred: %@", __func__, exception);
+    }
+    
+    return result;
+}
 
 + (CGSize)findHeightForText:(NSString *)text havingWidth:(CGFloat)widthValue andFont:(UIFont *)font
 {
@@ -27,6 +45,13 @@
         size = CGSizeMake(frame.size.width, frame.size.height + 1);
     }
     return size;
+}
+
++ (NSString *)getUniqueFileName:(NSString *)fileName
+{
+    long long timeStamp = (long long)([[NSDate date] timeIntervalSince1970] * 1000.0);
+    NSString *uniqueFileName = [NSString stringWithFormat:@"%@_%lld", fileName, timeStamp];
+    return uniqueFileName;
 }
 
 #pragma mark -
