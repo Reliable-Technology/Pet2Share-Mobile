@@ -1,5 +1,5 @@
 //
-//  ProfileVC.h
+//  UserProfileVC.h
 //  pet2share
 //
 //  Created by Tony Kieu on 10/7/15.
@@ -8,6 +8,6 @@
 
 #import "CollectionViewController.h"
 
-@interface ProfileVC : CollectionViewController
+@interface UserProfileVC : CollectionViewController
 
 @end

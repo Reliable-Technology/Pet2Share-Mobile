@@ -1,12 +1,12 @@
 //
-//  ProfileVC.m
+//  UserProfileVC.m
 //  pet2share
 //
 //  Created by Tony Kieu on 10/7/15.
 //  Copyright © 2015 Pet 2 Share. All rights reserved.
 //
 
-#import "ProfileVC.h"
+#import "UserProfileVC.h"
 #import "AppColor.h"
 #import "ProfileHeaderCell.h"
 #import "PetCollectionCell.h"
@@ -20,13 +20,13 @@ static NSString * const kHeaderIdentifier   = @"profileheadercell";
 static NSString * const kHeaderNibName      = @"ProfileHeaderCell";
 static NSString * const kCellNibName        = @"PetCollectionCell";
 
-@interface ProfileVC () <CellButtonDelegate>
+@interface UserProfileVC () <CellButtonDelegate>
 
 - (IBAction)addButtonTapped:(id)sender;
 
 @end
 
-@implementation ProfileVC
+@implementation UserProfileVC
 
 #pragma mark -
 #pragma mark Life Cycle

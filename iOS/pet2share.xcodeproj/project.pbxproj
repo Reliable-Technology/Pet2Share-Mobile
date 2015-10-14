@@ -83,7 +83,7 @@
 		FBCEA43D1B4CC3E000497678 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBCEA43C1B4CC3E000497678 /* Images.xcassets */; };
 		FBCEA4401B4CC3E000497678 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBCEA43E1B4CC3E000497678 /* LaunchScreen.xib */; };
 		FBCF4A6B1BC5876000C75066 /* Pet2ShareUser.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A6A1BC5876000C75066 /* Pet2ShareUser.m */; settings = {ASSET_TAGS = (); }; };
-		FBCF4A761BC5B28700C75066 /* ProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A751BC5B28700C75066 /* ProfileVC.m */; settings = {ASSET_TAGS = (); }; };
+		FBCF4A761BC5B28700C75066 /* UserProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A751BC5B28700C75066 /* UserProfileVC.m */; settings = {ASSET_TAGS = (); }; };
 		FBCF4A7E1BC6888C00C75066 /* CircleImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A7D1BC6888C00C75066 /* CircleImageView.m */; settings = {ASSET_TAGS = (); }; };
 		FBCF4A821BC68CF200C75066 /* PetCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A801BC68CF200C75066 /* PetCollectionCell.m */; settings = {ASSET_TAGS = (); }; };
 		FBCF4A831BC68CF200C75066 /* PetCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBCF4A811BC68CF200C75066 /* PetCollectionCell.xib */; settings = {ASSET_TAGS = (); }; };
@@ -242,8 +242,8 @@
 		FBCEA4551B4CC78600497678 /* Pet2Share.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pet2Share.pch; sourceTree = "<group>"; };
 		FBCF4A691BC5876000C75066 /* Pet2ShareUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pet2ShareUser.h; sourceTree = "<group>"; };
 		FBCF4A6A1BC5876000C75066 /* Pet2ShareUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pet2ShareUser.m; sourceTree = "<group>"; };
-		FBCF4A741BC5B28700C75066 /* ProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileVC.h; sourceTree = "<group>"; };
-		FBCF4A751BC5B28700C75066 /* ProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileVC.m; sourceTree = "<group>"; };
+		FBCF4A741BC5B28700C75066 /* UserProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileVC.h; sourceTree = "<group>"; };
+		FBCF4A751BC5B28700C75066 /* UserProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileVC.m; sourceTree = "<group>"; };
 		FBCF4A7C1BC6888C00C75066 /* CircleImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleImageView.h; sourceTree = "<group>"; };
 		FBCF4A7D1BC6888C00C75066 /* CircleImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleImageView.m; sourceTree = "<group>"; };
 		FBCF4A7F1BC68CF200C75066 /* PetCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetCollectionCell.h; sourceTree = "<group>"; };
@@ -639,8 +639,8 @@
 		FBCF4A731BC5B26E00C75066 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				FBCF4A741BC5B28700C75066 /* ProfileVC.h */,
-				FBCF4A751BC5B28700C75066 /* ProfileVC.m */,
+				FBCF4A741BC5B28700C75066 /* UserProfileVC.h */,
+				FBCF4A751BC5B28700C75066 /* UserProfileVC.m */,
 				FBCF4A9B1BC7076200C75066 /* EditProfileVC.h */,
 				FBCF4A9C1BC7076200C75066 /* EditProfileVC.m */,
 				FB5E1EBD1BC9E2CE00897CA2 /* PetProfileVC.h */,
@@ -910,7 +910,7 @@
 				FB5E1ECA1BCA9DA400897CA2 /* DateFormatterFactory.m in Sources */,
 				FB5E1EBF1BC9E2CE00897CA2 /* PetProfileVC.m in Sources */,
 				FBA3F6B91BC5555E0094288D /* SignUpTableCtrl.m in Sources */,
-				FBCF4A761BC5B28700C75066 /* ProfileVC.m in Sources */,
+				FBCF4A761BC5B28700C75066 /* UserProfileVC.m in Sources */,
 				FB484A511B4FD40A0045A6EA /* UIDevice+Hardware.m in Sources */,
 				FBCF4A921BC6CF5800C75066 /* PostCollectionCell.m in Sources */,
 				FB484A3F1B4FD12F0045A6EA /* Graphics.m in Sources */,
