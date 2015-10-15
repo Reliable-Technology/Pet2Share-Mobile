@@ -13,6 +13,7 @@ static NSString * const kUserNameImageIcon      = @"usernameimageicon";
 static NSString * const kFirstNameImageIcon     = @"firstnameimageicon";
 static NSString * const kLastNameImageIcon      = @"lastnameimageicon";
 static NSString * const kCellImageLink          = @"imagelink";
+static NSString * const kCellAvatarImage        = @"image";
 static NSString * const kUserNameKey            = @"username";
 static NSString * const kFirstNameKey           = @"firstname";
 static NSString * const kLastNameKey            = @"lastname";

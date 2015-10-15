@@ -119,7 +119,7 @@
                             <constraint firstItem="Zrk-JE-BSu" firstAttribute="centerY" secondItem="EHL-9A-thN" secondAttribute="centerY" id="zCC-4R-ZlQ"/>
                         </constraints>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="PcM-Bo-bdY" customClass="CircleImageView">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="PcM-Bo-bdY" customClass="CircleImageView">
                         <rect key="frame" x="523" y="38" width="56" height="56"/>
                         <animations/>
                         <constraints>
@@ -177,7 +177,7 @@
             </tableViewCellContentView>
             <animations/>
             <connections>
-                <outlet property="avatarImageView" destination="PcM-Bo-bdY" id="CUE-wd-5oo"/>
+                <outlet property="avatarImgView" destination="PcM-Bo-bdY" id="bwz-5c-YLg"/>
                 <outlet property="firstnameIconImgView" destination="mDG-gu-Aox" id="SZq-BC-KCq"/>
                 <outlet property="firstnameTxtField" destination="bET-iZ-XrU" id="OVu-kq-ZXq"/>
                 <outlet property="lastnameIconImgView" destination="EHL-9A-thN" id="foE-z8-lht"/>

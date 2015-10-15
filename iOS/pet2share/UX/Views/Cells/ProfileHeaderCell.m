@@ -44,10 +44,9 @@
     self.nameLabel.text = name ?: NSLocalizedString(@"N/A", @"");
     self.socialStatusInfoLabel.text = socialStatusInfo ?: NSLocalizedString(@"N/A", @"");
     
-    // Fetch image
     Pet2ShareService *service = [Pet2ShareService new];
     [service loadImage:url completion:^(UIImage *image) {
-        [self.avatarImageView setImage:image];
+        self.avatarImageView.image = image ?:[UIImage imageNamed:@"img-avatar"];
     }];
 }
 

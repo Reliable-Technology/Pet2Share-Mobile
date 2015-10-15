@@ -6,17 +6,17 @@
 //  Copyright © 2015 Pet 2 Share. All rights reserved.
 //
 
-#import <DBCamera/DBCameraContainerViewController.h>
 #import "ButtonTabbarController.h"
-#import "CameraNavigationController.h"
 #import "PostImageVC.h"
+#import "Graphics.h"
 
 static NSString * const kCameraImage            = @"img-camera";
 static NSInteger const kTabBarCameraItemTag     = 1;
 
-@interface ButtonTabbarController () <DBCameraViewControllerDelegate>
+@interface ButtonTabbarController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 {
     BOOL _cameraButtonTapped;
+    NSInteger _currentTabBarIndex;
 }
 
 @property (nonatomic, strong) UIImage *image;
@@ -33,6 +33,7 @@ static NSInteger const kTabBarCameraItemTag     = 1;
     if ((self = [super initWithCoder:aDecoder]))
     {
         _cameraButtonTapped = NO;
+        _currentTabBarIndex = 0;
     }
     return self;
 }
@@ -56,13 +57,6 @@ static NSInteger const kTabBarCameraItemTag     = 1;
         PostImageVC *postImageVC = (PostImageVC *)navController.topViewController;
         if (postImageVC) postImageVC.image = self.image;
     }
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-    if (_cameraButtonTapped)
-        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
 }
 
 #pragma mark -
@@ -105,46 +99,36 @@ static NSInteger const kTabBarCameraItemTag     = 1;
 {
     fTRACE(@"Sender: %@", sender);
     
-//    _cameraButtonTapped = YES;
-//    DBCameraContainerViewController *cameraContainer = [[DBCameraContainerViewController alloc] initWithDelegate:self];
-//    [cameraContainer setFullScreenMode];
-//    CameraNavigationController *nav = [[CameraNavigationController alloc] initWithRootViewController:cameraContainer];
-//    [self presentViewController:nav animated:YES completion:nil];
-    
-//    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-//    picker.delegate = self;
-//    picker.allowsEditing = YES;
-//    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-//    
-//    [self presentViewController:picker animated:YES completion:NULL];
-    
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    picker.allowsEditing = YES;
-    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    
-    [self presentViewController:picker animated:YES completion:NULL];
+    @try
+    {
+        UIImagePickerController *imagePickerController = [UIImagePickerController new];
+        imagePickerController.delegate = self;
+        imagePickerController.allowsEditing = YES;
+        imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+        [self presentViewController:imagePickerController animated:YES completion:nil];
+    }
+    @catch (NSException *exception)
+    {
+        NSLog(@"%s : Exception: %@", __func__, [exception description]);
+        [Graphics alert:NSLocalizedString(@"Error", @"")
+                message:NSLocalizedString(@"Camera is not available", @"")
+                   type:ErrorAlert];
+    }
 }
 
 #pragma mark -
-#pragma mark <DBCameraViewControllerDelegate>
+#pragma mark <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
-- (void)dismissCamera:(id)cameraViewController
+- (void)navigationController:(UINavigationController *)navigationController
+      willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
-    _cameraButtonTapped = NO;
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
-- (void)camera:(id)cameraViewController didFinishWithImage:(UIImage *)image withMetadata:(NSDictionary *)metadata
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
-    _cameraButtonTapped = NO;
-    self.image = image;
-    [cameraViewController restoreFullScreenMode];
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
-    [self dismissViewControllerAnimated:YES completion:^{
-        [self performSegueWithIdentifier:kSeguePostImage sender:nil];
-    }];
+    fTRACE(@"Info: %@", info);
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

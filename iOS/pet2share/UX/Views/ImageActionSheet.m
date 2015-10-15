@@ -15,8 +15,8 @@
 {
     switch (imageActionButton)
     {
-        case IMAGE_BUTTON_UPLOADIMAGE:
-            return NSLocalizedString(@"Upload Image", @"");
+        case IMAGE_BUTTON_CHOOSEFROMALBUM:
+            return NSLocalizedString(@"Choose From Album", @"");
         case IMAGE_BUTTON_TAKEPICTURE:
             return NSLocalizedString(@"Take Picture", @"");
     }

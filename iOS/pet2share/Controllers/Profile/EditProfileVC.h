@@ -17,6 +17,7 @@
 #import "TextFieldTableCell.h"
 #import "ProfileAddressInfoCell.h"
 #import "TextViewTableCell.h"
+#import <EGOCache/EGOCache.h>
 
 extern NSString * const kCellBasicInfoIdentifier;
 extern NSString * const kCellNameInfoIdentifier;
@@ -35,6 +36,7 @@ extern NSString * const kCellAboutMeNibName;
 @property (strong, nonatomic) ActivityView *activity;
 
 - (NSString *)getViewTitle;
+- (NSString *)getAvatarImageKey;
 - (NSString *)getSectionTitle:(NSString *)identifier;
 - (void)assignTableView:(UITableView *)table;
 - (CGFloat)getDynamicCellHeight:(NSString *)key;

@@ -18,5 +18,6 @@
 #import <Foundation/Foundation.h>
 #import "Logger.h"
 #import "Constants.h"
+#import "AppData.h"
 
 #endif

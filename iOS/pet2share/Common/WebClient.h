@@ -30,7 +30,7 @@
 
 @optional
 - (void)didFinishDownload:(NSData *)data;
-- (void)didFinishDownload:(NSError *)error webClient:(WebClient *)webClient;
+- (void)didFinishDownload:(NSData *)data webClient:(WebClient *)webClient;
 - (void)didFailDownload:(NSError *)error;
 - (void)didFailDownload:(NSError *)error webClient:(WebClient *)webClient;
 

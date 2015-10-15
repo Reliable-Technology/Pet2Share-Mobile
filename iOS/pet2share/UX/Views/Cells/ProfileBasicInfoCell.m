@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *usernameIconImgView;
 @property (weak, nonatomic) IBOutlet UIImageView *firstnameIconImgView;
 @property (weak, nonatomic) IBOutlet UIImageView *lastnameIconImgView;
-@property (weak, nonatomic) IBOutlet CircleImageView *avatarImageView;
+@property (weak, nonatomic) IBOutlet CircleImageView *avatarImgView;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *firstnameTxtField;
 @property (weak, nonatomic) IBOutlet UITextField *lastnameTxtField;
@@ -123,11 +123,19 @@
     self.firstnameTxtField.text = dict[kFirstNameKey];
     self.lastnameTxtField.text = dict[kLastNameKey];
     
-    // Request Avatar Image
-    Pet2ShareService *service = [Pet2ShareService new];
-    [service loadImage:dict[kCellImageLink] completion:^(UIImage *image) {
-        self.avatarImageView.image = image;
-    }];
+    // If there is a current session image (captured by camera or selected from Photos), use
+    // this image instead. Otherwise, use cached data or loaded from the server.
+    if (dict[kCellAvatarImage])
+    {
+        self.avatarImgView.image = dict[kCellAvatarImage];
+    }
+    else
+    {
+        Pet2ShareService *service = [Pet2ShareService new];
+        [service loadImage:dict[kCellImageLink] completion:^(UIImage *image) {
+            self.avatarImgView.image = image ?: [UIImage imageNamed:@"img-avatar"];
+        }];
+    }
 }
 
 - (IBAction)editAvatarImageBtnTapped:(id)sender

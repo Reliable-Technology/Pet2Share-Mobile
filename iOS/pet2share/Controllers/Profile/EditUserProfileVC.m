@@ -47,6 +47,11 @@
     return NSLocalizedString(@"EDIT PROFILE", @"");
 }
 
+- (NSString *)getAvatarImageKey
+{
+    return [Pet2ShareUser current].person.avatarUrl;
+}
+
 - (NSString *)getSectionTitle:(NSString *)identifier
 {
     NSString *sectionTitle;
@@ -83,15 +88,19 @@
             /// Basic Info
             ///------------------------------------------------
             
-            NSArray *cellBasicInfo = @[@{kUserNameImageIcon: @"icon-user-selected",
-                                         kFirstNameImageIcon: @"icon-contact-selected",
-                                         kLastNameImageIcon: @"icon-contact-selected",
-                                         kCellImageLink: currentUser.person.avatarUrl ?: kEmptyString,
-                                         kUserNameKey: currentUser.email ?: kEmptyString,
-                                         kFirstNameKey: currentUser.person.firstName ?: kEmptyString,
-                                         kLastNameKey: currentUser.person.lastName ?: kEmptyString,
-                                         kCellClassName: kCellBasicInfoNibName}];
-            [self.cellData setObject:cellBasicInfo forKey:kCellBasicInfoIdentifier];
+            NSMutableDictionary *cellBasicInfo = [NSMutableDictionary dictionary];
+            cellBasicInfo[kUserNameImageIcon] = @"icon-user-selected";
+            cellBasicInfo[kFirstNameImageIcon] = @"icon-contact-selected";
+            cellBasicInfo[kLastNameImageIcon] = @"icon-contact-selected";
+            cellBasicInfo[kCellImageLink] = currentUser.person.avatarUrl ?: kEmptyString;
+            cellBasicInfo[kUserNameKey] = currentUser.email ?: kEmptyString;
+            cellBasicInfo[kFirstNameKey] = currentUser.person.firstName ?: kEmptyString;
+            cellBasicInfo[kLastNameKey] = currentUser.person.lastName ?: kEmptyString;
+            cellBasicInfo[kCellClassName] = kCellBasicInfoNibName;
+            if ([[AppData sharedInstance] getObject:[self getAvatarImageKey]])
+                cellBasicInfo[kCellAvatarImage] = [[AppData sharedInstance] getObject:[self getAvatarImageKey]];
+
+            [self.cellData setObject:@[cellBasicInfo] forKey:kCellBasicInfoIdentifier];
             
             ///------------------------------------------------
             /// Other Info
@@ -194,23 +203,37 @@
             fTRACE(@"Unrecognized Key: %@ - Value: %@", key, value);
     }
     
-    Pet2ShareService *service = [Pet2ShareService new];
-    [service updateUserProfile:self
-                        userId:currentUser.identifier
-                     firstName:currentUser.person.firstName
-                      lastName:currentUser.person.lastName
-                         email:currentUser.email
-                alternateEmail:currentUser.alternateEmail
-                         phone:currentUser.phone
-                secondaryPhone:currentUser.person.secondaryPhone
-                   dateOfBirth:currentUser.person.dateOfBirth
-                       aboutMe:currentUser.person.aboutMe
-                  addressLine1:currentUser.person.address.addressLine1
-                  addressLine2:currentUser.person.address.addressLine2
-                          city:currentUser.person.address.city
-                         state:currentUser.person.address.state
-                       country:currentUser.person.address.country
-                       zipCode:currentUser.person.address.zipCode];
+    Pet2ShareService *updateProfileService = [Pet2ShareService new];
+    [updateProfileService updateUserProfile:self
+                                     userId:currentUser.identifier
+                                  firstName:currentUser.person.firstName
+                                   lastName:currentUser.person.lastName
+                                      email:currentUser.email
+                             alternateEmail:currentUser.alternateEmail
+                                      phone:currentUser.phone
+                             secondaryPhone:currentUser.person.secondaryPhone
+                                dateOfBirth:currentUser.person.dateOfBirth
+                                    aboutMe:currentUser.person.aboutMe
+                               addressLine1:currentUser.person.address.addressLine1
+                               addressLine2:currentUser.person.address.addressLine2
+                                       city:currentUser.person.address.city
+                                      state:currentUser.person.address.state
+                                    country:currentUser.person.address.country
+                                    zipCode:currentUser.person.address.zipCode];
+    
+    UIImage *image = [[AppData sharedInstance] getObject:[self getAvatarImageKey]];
+    if (image)
+    {
+        NSData *data = UIImageJPEGRepresentation(image, 1.0);
+        [[EGOCache globalCache] setData:data forKey:[self getAvatarImageKey] withTimeoutInterval:kImageCacheTimeOut];
+        [[AppData sharedInstance] removeObject:[self getAvatarImageKey]];
+        
+        NSString *imageKey = avatarUserKey([Pet2ShareUser current].identifier);
+        [[Pet2ShareService sharedService] uploadImage:nil profileId:[Pet2ShareUser current].identifier
+                                          profileType:UserAvatar
+                                             fileName:[Utils getUniqueFileName:imageKey]
+                                                image:image isCoverPicture:NO];
+    }
 }
 
 #pragma mark -

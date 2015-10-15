@@ -104,6 +104,8 @@
 		FBCF4ABA1BC8641B00C75066 /* Pet.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4AB91BC8641B00C75066 /* Pet.m */; settings = {ASSET_TAGS = (); }; };
 		FBCF4ABD1BC8691700C75066 /* PetType.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4ABC1BC8691700C75066 /* PetType.m */; settings = {ASSET_TAGS = (); }; };
 		FBD3938F1B50D9DB000ED817 /* BaseNavigationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD3938E1B50D9DB000ED817 /* BaseNavigationVC.m */; };
+		FBFC5CEA1BCF5C8600312F31 /* CacheKey.m in Sources */ = {isa = PBXBuildFile; fileRef = FBFC5CE91BCF5C8600312F31 /* CacheKey.m */; settings = {ASSET_TAGS = (); }; };
+		FBFC5CED1BCF636F00312F31 /* AppData.m in Sources */ = {isa = PBXBuildFile; fileRef = FBFC5CEC1BCF636F00312F31 /* AppData.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -282,6 +284,10 @@
 		FBCF4ABC1BC8691700C75066 /* PetType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetType.m; sourceTree = "<group>"; };
 		FBD3938D1B50D9DB000ED817 /* BaseNavigationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationVC.h; sourceTree = "<group>"; };
 		FBD3938E1B50D9DB000ED817 /* BaseNavigationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationVC.m; sourceTree = "<group>"; };
+		FBFC5CE81BCF5C8600312F31 /* CacheKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheKey.h; sourceTree = "<group>"; };
+		FBFC5CE91BCF5C8600312F31 /* CacheKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheKey.m; sourceTree = "<group>"; };
+		FBFC5CEB1BCF636F00312F31 /* AppData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppData.h; sourceTree = "<group>"; };
+		FBFC5CEC1BCF636F00312F31 /* AppData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -392,6 +398,10 @@
 				FB5E1EC91BCA9DA400897CA2 /* DateFormatterFactory.m */,
 				FB4DB9361BCDC88300C1466D /* WebClient.h */,
 				FB4DB9371BCDC88300C1466D /* WebClient.m */,
+				FBFC5CE81BCF5C8600312F31 /* CacheKey.h */,
+				FBFC5CE91BCF5C8600312F31 /* CacheKey.m */,
+				FBFC5CEB1BCF636F00312F31 /* AppData.h */,
+				FBFC5CEC1BCF636F00312F31 /* AppData.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -884,12 +894,14 @@
 			files = (
 				FBCDC9A81BC3381B00808E30 /* ErrorMessage.m in Sources */,
 				FB5E1ED31BCB0FD800897CA2 /* TextViewTableCell.m in Sources */,
+				FBFC5CEA1BCF5C8600312F31 /* CacheKey.m in Sources */,
 				FBCF4A7E1BC6888C00C75066 /* CircleImageView.m in Sources */,
 				FB484A391B4FD0DB0045A6EA /* NSString+URLEncoding.m in Sources */,
 				FBCF4A9A1BC6CF6B00C75066 /* CollectionViewLayout.m in Sources */,
 				FB484A5E1B50BE4E0045A6EA /* ThemeManager.m in Sources */,
 				FB484A531B4FD40A0045A6EA /* Utils.m in Sources */,
 				FB4DB9381BCDC88300C1466D /* WebClient.m in Sources */,
+				FBFC5CED1BCF636F00312F31 /* AppData.m in Sources */,
 				FB484A621B50BE910045A6EA /* RoundCornerButton.m in Sources */,
 				FB6C273D1B6ED2950002034A /* UrlManager.m in Sources */,
 				FB484A4D1B4FD40A0045A6EA /* OrderedDictionary.m in Sources */,

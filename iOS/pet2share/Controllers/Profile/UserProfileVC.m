@@ -20,7 +20,7 @@ static NSString * const kHeaderIdentifier   = @"profileheadercell";
 static NSString * const kHeaderNibName      = @"ProfileHeaderCell";
 static NSString * const kCellNibName        = @"PetCollectionCell";
 
-@interface UserProfileVC () <CellButtonDelegate>
+@interface UserProfileVC () <CellButtonDelegate, Pet2ShareServiceCallback>
 
 - (IBAction)addButtonTapped:(id)sender;
 
@@ -60,10 +60,7 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    [self.items removeAllObjects];
-    [self.items addObjectsFromArray:[Pet2ShareUser current].pets];
-    [self.collectionView reloadData];
+    [self requestUserData];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -111,12 +108,44 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
     }
 }
 
+- (void)requestUserData
+{
+    [self refreshView];
+    Pet2ShareService *service = [Pet2ShareService new];
+    [service getUserProfile:self userId:[Pet2ShareUser current].identifier cachePolicy:CacheDefault];
+}
+
+- (void)refreshView
+{
+    [self.items removeAllObjects];
+    [self.items addObjectsFromArray:[Pet2ShareUser current].pets];
+    [self.collectionView reloadData];
+}
+
 #pragma mark - 
 #pragma mark Events
 
 - (IBAction)addButtonTapped:(id)sender
 {
     [self performSegueWithIdentifier:kSegueAddEditPetProfile sender:self];
+}
+
+#pragma mark - 
+#pragma mark <Pet2ShareServiceCallback>
+
+- (void)onReceiveSuccess:(NSArray *)objects
+{
+    if (objects.count == 1)
+    {
+        User *user = objects[0];
+        fTRACE("User: %@", user);
+        [[Pet2ShareUser current] updateFromUser:user];
+    }
+}
+
+- (void)onReceiveError:(ErrorMessage *)errorMessage
+{
+    [Graphics alert:NSLocalizedString(@"Error", @"") message:errorMessage.message type:ErrorAlert];
 }
 
 #pragma mark -

@@ -110,6 +110,12 @@ NSString * const kCellAboutMeNibName            = @"TextViewTableCell";
     return 0;
 }
 
+- (NSString *)getAvatarImageKey
+{
+    // Need to be implemented at subclass
+    return nil;
+}
+
 - (NSString *)getSectionTitle:(NSString *)identifier
 {
     // Need to be implemented at subclass
@@ -198,33 +204,44 @@ NSString * const kCellAboutMeNibName            = @"TextViewTableCell";
 
 - (void)handleRightButtonEvent:(id)sender
 {
+    [[AppData sharedInstance] removeObject:[self getAvatarImageKey]];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)handleActionButton:(NSInteger)buttonIndex
 {
-    UIImagePickerController *picker = [UIImagePickerController new];
-    picker.delegate = self;
-    picker.allowsEditing = YES;
-    
-    switch (buttonIndex)
+    @try
     {
-        case IMAGE_BUTTON_UPLOADIMAGE:
+        UIImagePickerController *imagePickerController = [UIImagePickerController new];
+        imagePickerController.delegate = self;
+        imagePickerController.allowsEditing = YES;
+        
+        switch (buttonIndex)
         {
-            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-            break;
+            case IMAGE_BUTTON_CHOOSEFROMALBUM:
+            {
+                imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                [self presentViewController:imagePickerController animated:YES completion:nil];
+                break;
+            }
+                
+            case IMAGE_BUTTON_TAKEPICTURE:
+            {
+                imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+                [self presentViewController:imagePickerController animated:YES completion:nil];
+                break;
+            }
+                
+            default: break;
         }
-            
-        case IMAGE_BUTTON_TAKEPICTURE:
-        {
-            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-            break;
-        }
-            
-        default: break;
     }
-    
-    [self presentViewController:picker animated:YES completion:nil];
+    @catch (NSException *exception)
+    {
+        NSLog(@"%s : Exception: %@", __func__, [exception description]);
+        [Graphics alert:NSLocalizedString(@"Error", @"")
+                message:NSLocalizedString(@"Camera is not available", @"")
+                   type:ErrorAlert];
+    }
 }
 
 #pragma mark -
@@ -232,7 +249,7 @@ NSString * const kCellAboutMeNibName            = @"TextViewTableCell";
 
 - (void)editButtonTapped:(id)sender
 {
-    [self setupActionSheet:nil buttons:@[@(IMAGE_BUTTON_UPLOADIMAGE), @(IMAGE_BUTTON_TAKEPICTURE)]];
+    [self setupActionSheet:nil buttons:@[@(IMAGE_BUTTON_CHOOSEFROMALBUM), @(IMAGE_BUTTON_TAKEPICTURE)]];
 }
 
 #pragma mark -
@@ -249,7 +266,7 @@ NSString * const kCellAboutMeNibName            = @"TextViewTableCell";
 }
 
 #pragma mark -
-#pragma mark <UINavigationControllerDelegate>
+#pragma mark <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 - (void)navigationController:(UINavigationController *)navigationController
       willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
@@ -261,6 +278,20 @@ NSString * const kCellAboutMeNibName            = @"TextViewTableCell";
 {
     fTRACE(@"Info: %@", info);
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    /** Info Example
+     * UIImagePickerControllerCropRect = "NSRect: {{0, 0}, {2668, 1772}}";
+     * UIImagePickerControllerEditedImage = "<UIImage: 0x7fa49f896350> size {748, 496} orientation 0 scale 1.000000";
+     * UIImagePickerControllerMediaType = "public.image";
+     * UIImagePickerControllerOriginalImage = "<UIImage: 0x7fa49f895ec0> size {2668, 1772} orientation 0 scale 1.000000";
+     * UIImagePickerControllerReferenceURL = "assets-library://asset/asset.JPG?id=D77460CE-4855-4A54-BE4D-5C0A84C7742B&ext=JPG";
+     */
+    
+    // Notify form is dirty and save image to current session.
+    _isDirty = YES;
+    [[AppData sharedInstance] addObject:info[UIImagePickerControllerOriginalImage]
+                                 forKey:[self getAvatarImageKey]];
+    [self.table reloadData];
 }
 
 ///--------------------------------------------------------------------
@@ -339,7 +370,7 @@ NSString * const kCellAboutMeNibName            = @"TextViewTableCell";
     
     @try
     {
-        NSDictionary *data = [self.cellData objectAtIndex:section][index];
+        NSMutableDictionary *data = [self.cellData objectAtIndex:section][index];
         NSString *reuseIdentifier = [self.cellData keyAtIndex:section];
         
         Class cellClass = NSClassFromString(data[kCellClassName]);
@@ -349,13 +380,18 @@ NSString * const kCellAboutMeNibName            = @"TextViewTableCell";
         
         if ([reuseIdentifier isEqualToString:kCellBasicInfoIdentifier])
         {
+            if ([[AppData sharedInstance] getObject:[self getAvatarImageKey]])
+                data[kCellAvatarImage] = [[AppData sharedInstance] getObject:[self getAvatarImageKey]];
             [(ProfileBasicInfoCell *)cell setFormProtocol:self];
             [(ProfileBasicInfoCell *)cell setButtonDelegate:self];
             [(ProfileBasicInfoCell *)cell updateCell:data];
         }
         else if ([reuseIdentifier isEqualToString:kCellNameInfoIdentifier])
         {
+            if ([[AppData sharedInstance] getObject:[self getAvatarImageKey]])
+                data[kCellAvatarImage] = [[AppData sharedInstance] getObject:[self getAvatarImageKey]];
             [(ProfileNameInfoCell *)cell setFormProtocol:self];
+            [(ProfileNameInfoCell *)cell setButtonDelegate:self];
             [(ProfileNameInfoCell *)cell updateCell:data];
         }
         else if ([reuseIdentifier isEqualToString:kCellOtherInfoIdentifier])

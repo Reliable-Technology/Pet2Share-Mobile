@@ -11,6 +11,7 @@
 #import "UrlManager.h"
 #import "Utils.h"
 #import "WebClient.h"
+#import "CacheKey.h"
 
 static id ObjectOrNull(id object)
 {
@@ -21,10 +22,31 @@ static id ObjectOrNull(id object)
 
 @property (nonatomic, assign) id<Pet2ShareServiceCallback> callback;
 @property (nonatomic, strong) Class jsonModel;
+@property (nonatomic, assign) CachePolicy cachePolicy;
+@property (nonatomic, strong) CacheKey *cacheKey;
 
 @end
 
 @implementation Pet2ShareService
+
++ (Pet2ShareService *)sharedService
+{
+    static Pet2ShareService *_sharedService;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _sharedService = [Pet2ShareService new];
+    });
+    return _sharedService;
+}
+
+- (id)init
+{
+    if ((self = [super init]))
+    {
+        _cachePolicy = -1;
+    }
+    return self;
+}
 
 #pragma mark -
 #pragma mark Private Instance Methods
@@ -46,6 +68,65 @@ static id ObjectOrNull(id object)
     [webClient post:url postData:data];
 }
 
+- (void)postJsonRequest:(NSObject<Pet2ShareServiceCallback> *)callback
+               endPoint:(NSString *)endPoint
+              jsonModel:(Class)model
+               postData:(NSDictionary *)postData
+            cachePolicy:(CachePolicy)cachePolicy
+               cacheKey:(CacheKey *)cacheKey
+{
+    NSString *data = [Utils jsonRepresentation:postData];
+    NSString *url = [[UrlManager sharedInstance] webServiceUrl:endPoint];
+    
+    WebClient *webClient = [WebClient new];
+    webClient.delegate = self;
+    webClient.contentTypeJSON = YES;
+    self.jsonModel = model;
+    self.callback = callback;
+    self.cachePolicy = cachePolicy;
+    self.cacheKey = cacheKey;
+    
+    switch (self.cachePolicy)
+    {
+        case CacheDefault:
+        {
+            if ([[EGOCache globalCache] hasCacheForKey:self.cacheKey.getKey])
+            {
+                webClient.statusCode = HTTP_STATUS_OK;
+                NSData *data = [[EGOCache globalCache] dataForKey:self.cacheKey.getKey];
+                [self didFinishDownload:data];
+            }
+            [webClient post:url postData:data];
+            break;
+        }
+            
+        case NotExpired:
+        {
+            if ([[EGOCache globalCache] hasCacheForKey:self.cacheKey.getKey])
+            {
+                webClient.statusCode = HTTP_STATUS_OK;
+                NSData *data = [[EGOCache globalCache] dataForKey:self.cacheKey.getKey];
+                [self didFinishDownload:data];
+            }
+            else
+            {
+                [webClient post:url postData:data];
+            }
+            break;
+        }
+            
+        case NoCache:
+        case ForceRefresh:
+        {
+            [webClient post:url postData:data];
+            break;
+        }
+            
+        default:
+            break;
+    }
+}
+
 - (void)postBinaryRequest:(NSObject<Pet2ShareServiceCallback> *)callback
                  endPoint:(NSString *)endPoint
                 jsonModel:(Class)model
@@ -61,17 +142,14 @@ static id ObjectOrNull(id object)
     [webClient post:url binaryData:data];
 }
 
-#pragma mark - 
-#pragma mark <WebClientDelegate>
-
-- (void)didFinishDownload:(NSData *)data webClient:(WebClient *)webClient
+- (void)processResponseData:(NSData *)data
 {
     ErrorMessage *errorMessage = nil;
     NSMutableArray *objects = [NSMutableArray array];
     
     @try
     {
-        if (webClient.statusCode == HTTP_STATUS_OK && [self.jsonModel isSubclassOfClass:[RepositoryObject class]])
+        if ([self.jsonModel isSubclassOfClass:[RepositoryObject class]])
         {
             NSError *error = nil;
             NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
@@ -122,6 +200,24 @@ static id ObjectOrNull(id object)
     }
 }
 
+#pragma mark - 
+#pragma mark <WebClientDelegate>
+
+- (void)didFinishDownload:(NSData *)data
+{
+    TRACE_HERE;
+    if (self.cachePolicy == CacheDefault)
+    {
+        [[EGOCache globalCache] setData:data forKey:self.cacheKey.getKey withTimeoutInterval:kCacheTimeOut];
+    }
+    else if (self.cachePolicy == NotExpired)
+    {
+        [[EGOCache globalCache] setData:data forKey:self.cacheKey.getKey];
+    }
+    
+    [self processResponseData:data];
+}
+
 - (void)didFailDownload:(NSError *)error webClient:(WebClient *)webClient
 {
     ErrorMessage *errorMessage = [ErrorMessage new];
@@ -166,14 +262,25 @@ static id ObjectOrNull(id object)
     [self postJsonRequest:callback endPoint:REGISTER_ENDPOINT jsonModel:[User class] postData:postData];
 }
 
-- (void)getUserProfile:(NSObject<Pet2ShareServiceCallback> *)callback userId:(NSInteger)userId
+- (void)getUserProfile:(NSObject<Pet2ShareServiceCallback> *)callback
+                userId:(NSInteger)userId
+           cachePolicy:(CachePolicy)cachePolicy
 {
-    fTRACE(@"%@ <Identifier: %ld>", GETUSERPROFILE_ENDPOINT, (long)userId);
-    
+    CacheKey *cacheKey = [CacheKey new];
     NSMutableDictionary *postData = [NSMutableDictionary dictionary];
-    [postData setObject:@(userId) forKey:@"UserId"];
     
-    [self postJsonRequest:callback endPoint:GETUSERPROFILE_ENDPOINT jsonModel:[User class] postData:postData];
+    [cacheKey addKey:[[UrlManager sharedInstance] webServiceUrl:GETUSERPROFILE_ENDPOINT]];
+    [postData setObject:@(userId) forKey:@"UserId"];
+    [cacheKey addKey:[@(userId) stringValue]];
+    
+    fTRACE(@"%@ <Identifier: %ld CacheKey: %@>", GETUSERPROFILE_ENDPOINT, (long)userId, cacheKey);
+    
+    [self postJsonRequest:callback
+                 endPoint:GETUSERPROFILE_ENDPOINT
+                jsonModel:[User class]
+                 postData:postData
+              cachePolicy:cachePolicy
+                 cacheKey:cacheKey];
 }
 
 - (void)updateUserProfile:(NSObject<Pet2ShareServiceCallback> *)callback
@@ -276,7 +383,7 @@ static id ObjectOrNull(id object)
         return;
     }
     
-    dispatch_queue_t imageQueue = dispatch_queue_create("imageDownloader", nil);
+    dispatch_queue_t imageQueue = dispatch_queue_create("imagedownloadqueue", nil);
     dispatch_async(imageQueue, ^{
         @try
         {
@@ -299,18 +406,29 @@ static id ObjectOrNull(id object)
 }
 
 - (void)uploadImage:(NSObject<Pet2ShareServiceCallback> *)callback
-             userId:(NSInteger)userId
+          profileId:(NSInteger)profileId
+        profileType:(AvatarImageType)type
            fileName:(NSString *)fileName
               image:(UIImage *)image
      isCoverPicture:(BOOL)isCoverPicture
 {
-    fTRACE(@"%@ <Identifier: %ld>", UPLOADUSERPICTURE_ENDPOINT, (long)userId);
+    fTRACE(@"%@ <Identifier: %ld>", UPLOADUSERPICTURE_ENDPOINT, (long)profileId);
     
-    NSString *endPoint = [NSString stringWithFormat:@"%@?UserId=%ld&FileName=%@.png&IsCoverPic=%@",
-                          UPLOADUSERPICTURE_ENDPOINT, (long)userId, fileName, isCoverPicture ? @"true" : @"false"];
-    NSData *data = UIImageJPEGRepresentation(image, 0.5);
+    NSString *profileType;
+    if (type == UserAvatar) profileType = @"UserId";
+    else profileType = @"PetId";
     
-    [self postBinaryRequest:callback endPoint:endPoint jsonModel:[UpdateMessage class] postData:data];
+    @try
+    {
+        NSString *endPoint = [NSString stringWithFormat:@"%@?%@=%ld&FileName=%@.png&IsCoverPic=%@",
+                              UPLOADUSERPICTURE_ENDPOINT, profileType, (long)profileId, fileName, isCoverPicture ? @"true" : @"false"];
+        NSData *data = UIImageJPEGRepresentation(image, 1.0);
+        [self postBinaryRequest:callback endPoint:endPoint jsonModel:[UpdateMessage class] postData:data];
+    }
+    @catch (NSException *exception)
+    {
+        NSLog(@"%s: exception on upload image: %@", __func__, exception);
+    }
 }
 
 @end

@@ -8,7 +8,20 @@
 
 #import <Foundation/Foundation.h>
 #import "WSConstants.h"
-#import "WebClient.h"
+
+typedef NS_ENUM(NSInteger, CachePolicy)
+{
+    CacheDefault,
+    NoCache,
+    NotExpired,
+    ForceRefresh
+};
+
+typedef NS_ENUM(NSInteger, AvatarImageType)
+{
+    UserAvatar,
+    PetAvatar
+};
 
 @protocol Pet2ShareServiceCallback <NSObject>
 
@@ -18,6 +31,8 @@
 @end
 
 @interface Pet2ShareService : NSObject
+
++ (Pet2ShareService *)sharedService;
 
 - (void)loginUser:(NSObject<Pet2ShareServiceCallback> *)callback
      username:(NSString *)username
@@ -31,7 +46,8 @@
                phone:(NSString *)phone;
 
 - (void)getUserProfile:(NSObject<Pet2ShareServiceCallback> *)callback
-                userId:(NSInteger)userId;
+                userId:(NSInteger)userId
+           cachePolicy:(CachePolicy)cachePolicy;
 
 - (void)updateUserProfile:(NSObject<Pet2ShareServiceCallback> *)callback
                    userId:(NSInteger)userId
@@ -73,7 +89,8 @@
        completion:(void (^)(UIImage* image))completion;
 
 - (void)uploadImage:(NSObject<Pet2ShareServiceCallback> *)callback
-             userId:(NSInteger)userId
+             profileId:(NSInteger)userId
+        profileType:(AvatarImageType)type
            fileName:(NSString *)fileName
               image:(UIImage *)image
      isCoverPicture:(BOOL)isCoverPicture;

@@ -43,6 +43,16 @@
     }
 }
 
+- (NSString *)getAvatarImageKey
+{
+    switch (self.petProfileMode)
+    {
+        case AddPetProfile: return kTempAvatarImage;
+        case EditPetProfile: return self.pet.profilePicture;
+        default: return nil;
+    }
+}
+
 - (NSString *)getSectionTitle:(NSString *)identifier
 {
     NSString *sectionTitle;
@@ -75,13 +85,17 @@
             /// Basic Pet Info
             ///------------------------------------------------
             
-            NSArray *cellBasicInfo = @[@{kFirstNameImageIcon: @"icon-contact-selected",
-                                         kLastNameImageIcon: @"icon-contact-selected",
-                                         kCellImageLink: self.pet.profilePicture ?: kEmptyString,
-                                         kFirstNameKey: self.pet.name ?: kEmptyString,
-                                         kLastNameKey: self.pet.familyName ?: kEmptyString,
-                                         kCellClassName: kCellNameInfoNibName}];
-            [self.cellData setObject:cellBasicInfo forKey:kCellNameInfoIdentifier];
+            NSMutableDictionary *cellBasicInfo = [NSMutableDictionary dictionary];
+            cellBasicInfo[kFirstNameImageIcon] = @"icon-contact-selected";
+            cellBasicInfo[kLastNameImageIcon] = @"icon-contact-selected";
+            cellBasicInfo[kCellImageLink] = self.pet.profilePicture ?: kEmptyString;
+            cellBasicInfo[kFirstNameKey] = self.pet.name ?: kEmptyString;
+            cellBasicInfo[kLastNameKey] = self.pet.familyName ?: kEmptyString;
+            cellBasicInfo[kCellClassName] = kCellNameInfoNibName;
+            if ([[AppData sharedInstance] getObject:[self getAvatarImageKey]])
+                cellBasicInfo[kCellAvatarImage] = [[AppData sharedInstance] getObject:[self getAvatarImageKey]];
+            
+            [self.cellData setObject:@[cellBasicInfo] forKey:kCellNameInfoIdentifier];
             
             ///------------------------------------------------
             /// Other Pet Info
@@ -180,6 +194,21 @@
                           dateOfBirth:self.pet.dateOfBirth
                                 about:self.pet.about
                               favFood:self.pet.favFood];
+            
+            UIImage *image = [[AppData sharedInstance] getObject:[self getAvatarImageKey]];
+            if (image)
+            {
+                NSData *data = UIImageJPEGRepresentation(image, 1.0);
+                [[EGOCache globalCache] setData:data forKey:[self getAvatarImageKey] withTimeoutInterval:kImageCacheTimeOut];
+                [[AppData sharedInstance] removeObject:[self getAvatarImageKey]];
+                
+                NSString *imageKey = avatarUserKey([Pet2ShareUser current].identifier);
+                [[Pet2ShareService sharedService] uploadImage:nil
+                                                    profileId:self.pet.identifier
+                                                  profileType:PetAvatar
+                                                     fileName:[Utils getUniqueFileName:imageKey]
+                                                        image:image isCoverPicture:NO];
+            }
         }
             
         default: break;

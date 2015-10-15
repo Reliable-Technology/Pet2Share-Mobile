@@ -19,13 +19,18 @@
 #define propertyKeyPath(property) (@""#property)
 #define propertyKeyPathLastComponent(property) [[(@""#property) componentsSeparatedByString:@"."] lastObject]
 
+#define avatarUserKey(identifier) [NSString stringWithFormat:@"avatar_user_%ld", identifier]
+#define avatarPetKey(identifier) [NSString stringWithFormat:@"avatar_pet_%ld", identifier]
+
 extern NSString * const kEmptyString;
 extern CGFloat const kBarButtonWidth;
 extern CGFloat const kBarButtonHeight;
 extern NSString * const kLogoTypeface;
 extern NSInteger const kcenturyInSeconds;
 extern NSInteger const kDescriptionMaxCharacters;
+extern NSInteger const kCacheTimeOut;
 extern NSInteger const kImageCacheTimeOut;
+extern NSString * const kTempAvatarImage;
 
 #pragma mark - Segues
 
