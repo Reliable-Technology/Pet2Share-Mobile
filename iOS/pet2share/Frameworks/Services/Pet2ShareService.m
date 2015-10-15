@@ -20,7 +20,7 @@ static id ObjectOrNull(id object)
 
 @interface Pet2ShareService () <WebClientDelegate>
 
-@property (nonatomic, assign) id<Pet2ShareServiceCallback> callback;
+@property (nonatomic, weak) id<Pet2ShareServiceCallback> callback;
 @property (nonatomic, strong) Class jsonModel;
 @property (nonatomic, assign) CachePolicy cachePolicy;
 @property (nonatomic, strong) CacheKey *cacheKey;
@@ -127,20 +127,20 @@ static id ObjectOrNull(id object)
     }
 }
 
-- (void)postBinaryRequest:(NSObject<Pet2ShareServiceCallback> *)callback
-                 endPoint:(NSString *)endPoint
-                jsonModel:(Class)model
-                 postData:(NSData *)data
-{
-    NSString *url = [[UrlManager sharedInstance] webServiceUrl:endPoint];
-    
-    WebClient *webClient = [[WebClient alloc] init];
-    webClient.delegate = self;
-    webClient.contentType = CONTENT_TYPE_OCTET_STREAM;
-    self.jsonModel = model;
-    
-    [webClient post:url binaryData:data];
-}
+//- (void)postBinaryRequest:(NSObject<Pet2ShareServiceCallback> *)callback
+//                 endPoint:(NSString *)endPoint
+//                jsonModel:(Class)model
+//                 postData:(NSData *)data
+//{
+//    NSString *url = [[UrlManager sharedInstance] webServiceUrl:endPoint];
+//    
+//    WebClient *webClient = [[WebClient alloc] init];
+//    webClient.delegate = self;
+//    webClient.contentType = CONTENT_TYPE_OCTET_STREAM;
+//    self.jsonModel = model;
+//    
+//    [webClient post:url binaryData:data];
+//}
 
 - (void)processResponseData:(NSData *)data
 {
@@ -302,6 +302,10 @@ static id ObjectOrNull(id object)
 {
     fTRACE(@"%@ <Identifier: %ld>", UPDATEUSERPROFILE_ENDPOINT, (long)userId);
     
+    CacheKey *cacheKey = [CacheKey new];
+    [cacheKey addKey:[[UrlManager sharedInstance] webServiceUrl:GETUSERPROFILE_ENDPOINT]];
+    [cacheKey addKey:[@(userId) stringValue]];
+
     NSMutableDictionary *postData = [NSMutableDictionary dictionary];
     [postData setObject:@(userId) forKey:@"UserId"];
     [postData setObject:ObjectOrNull(firstName) forKey:@"FirstName"];
@@ -414,21 +418,39 @@ static id ObjectOrNull(id object)
 {
     fTRACE(@"%@ <Identifier: %ld>", UPLOADUSERPICTURE_ENDPOINT, (long)profileId);
     
-    NSString *profileType;
-    if (type == UserAvatar) profileType = @"UserId";
-    else profileType = @"PetId";
+    dispatch_queue_t imageUploadQueue = dispatch_get_main_queue();
+    dispatch_async(imageUploadQueue, ^{
+        @try
+        {
+            NSString *profileType;
+            if (type == UserAvatar) profileType = @"UserId";
+            else profileType = @"PetId";
+            
+            @try
+            {
+                NSString *endPoint = [NSString stringWithFormat:@"%@?%@=%ld&FileName=%@.png&IsCoverPic=%@",
+                                      UPLOADUSERPICTURE_ENDPOINT, profileType, (long)profileId, fileName, isCoverPicture ? @"true" : @"false"];
+                NSString *url = [[UrlManager sharedInstance] webServiceUrl:endPoint];
+                
+                NSData *data = UIImageJPEGRepresentation(image, 1.0);
+                
+                WebClient *webClient = [[WebClient alloc] init];
+                webClient.delegate = self;
+                webClient.contentType = CONTENT_TYPE_OCTET_STREAM;
+                self.jsonModel = [UpdateMessage class];
+                [webClient post:url binaryData:data];
+            }
+            @catch (NSException *exception)
+            {
+                NSLog(@"%s: exception on upload image: %@", __func__, exception);
+            }
+        }
+        @catch (NSException *exception)
+        {
+            NSLog(@"%s: exception on download image: %@", __func__, exception);
+        }
+    });
     
-    @try
-    {
-        NSString *endPoint = [NSString stringWithFormat:@"%@?%@=%ld&FileName=%@.png&IsCoverPic=%@",
-                              UPLOADUSERPICTURE_ENDPOINT, profileType, (long)profileId, fileName, isCoverPicture ? @"true" : @"false"];
-        NSData *data = UIImageJPEGRepresentation(image, 1.0);
-        [self postBinaryRequest:callback endPoint:endPoint jsonModel:[UpdateMessage class] postData:data];
-    }
-    @catch (NSException *exception)
-    {
-        NSLog(@"%s: exception on upload image: %@", __func__, exception);
-    }
 }
 
 @end

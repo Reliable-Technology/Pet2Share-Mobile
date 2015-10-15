@@ -21,6 +21,8 @@
               @"DOB": @"dateOfBirth",
               @"ProfilePicture": @"profilePicture",
               @"CoverPicture": @"coverPicture",
+              @"ProfilePictureURL": @"profilePictureUrl",
+              @"CoverPictureURL": @"coverPictureUrl",
               @"About": @"about",
               @"FavFood": @"favFood",
               @"DateAdded": @"dateAdded",

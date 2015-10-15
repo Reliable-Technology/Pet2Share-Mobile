@@ -152,7 +152,7 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
             NSString *firstName = self.pet.name;
             NSString *lastName = self.pet.familyName;
             NSString *name = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
-            [cell updateProfileAvatar:self.pet.profilePicture name:name socialStatusInfo:nil];
+            [cell updateProfileAvatar:self.pet.profilePictureUrl name:name socialStatusInfo:nil];
             cell.delegate = self;
             return cell;
         }

@@ -49,7 +49,7 @@
 
 - (NSString *)getAvatarImageKey
 {
-    return [Pet2ShareUser current].person.avatarUrl;
+    return [Pet2ShareUser current].person.profilePictureUrl;
 }
 
 - (NSString *)getSectionTitle:(NSString *)identifier
@@ -92,7 +92,7 @@
             cellBasicInfo[kUserNameImageIcon] = @"icon-user-selected";
             cellBasicInfo[kFirstNameImageIcon] = @"icon-contact-selected";
             cellBasicInfo[kLastNameImageIcon] = @"icon-contact-selected";
-            cellBasicInfo[kCellImageLink] = currentUser.person.avatarUrl ?: kEmptyString;
+            cellBasicInfo[kCellImageLink] = currentUser.person.profilePictureUrl ?: kEmptyString;
             cellBasicInfo[kUserNameKey] = currentUser.email ?: kEmptyString;
             cellBasicInfo[kFirstNameKey] = currentUser.person.firstName ?: kEmptyString;
             cellBasicInfo[kLastNameKey] = currentUser.person.lastName ?: kEmptyString;
@@ -229,10 +229,12 @@
         [[AppData sharedInstance] removeObject:[self getAvatarImageKey]];
         
         NSString *imageKey = avatarUserKey([Pet2ShareUser current].identifier);
-        [[Pet2ShareService sharedService] uploadImage:nil profileId:[Pet2ShareUser current].identifier
+        [[Pet2ShareService sharedService] uploadImage:nil
+                                            profileId:[Pet2ShareUser current].identifier
                                           profileType:UserAvatar
-                                             fileName:[Utils getUniqueFileName:imageKey]
-                                                image:image isCoverPicture:NO];
+                                             fileName:imageKey
+                                                image:image
+                                       isCoverPicture:NO];
     }
 }
 

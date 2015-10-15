@@ -22,6 +22,9 @@
 @property NSString<Optional> *primaryPhone;
 @property NSString<Optional> *secondaryPhone;
 @property NSString<Optional> *avatarUrl;
+@property NSString<Optional> *coverPicture;
+@property NSString<Optional> *profilePictureUrl;
+@property NSString<Optional> *coverPictureUrl;
 @property NSString<Optional> *aboutMe;
 @property Date *dateAdded;
 @property Date *dateModified;

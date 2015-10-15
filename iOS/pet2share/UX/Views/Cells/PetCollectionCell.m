@@ -53,7 +53,7 @@
 
 - (void)setupView:(Pet *)pet
 {
-    fTRACE(@"Pet: %@", pet);
+    // fTRACE(@"Pet: %@", pet);
     
     // Pet name
     self.nameLabel.text = pet.name;
@@ -64,7 +64,7 @@
     // Load Image
     self.profileImageView.image = [UIImage new];
     Pet2ShareService *service = [Pet2ShareService new];
-    [service loadImage:pet.profilePicture completion:^(UIImage *image) {
+    [service loadImage:pet.profilePictureUrl completion:^(UIImage *image) {
         if (!image) image = [UIImage new];
         self.profileImageView.image = image;
     }];

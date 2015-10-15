@@ -21,6 +21,8 @@
 @property Date *dateOfBirth;
 @property NSString<Optional> *profilePicture;
 @property NSString<Optional> *coverPicture;
+@property NSString<Optional> *profilePictureUrl;
+@property NSString<Optional> *coverPictureUrl;
 @property NSString<Optional> *about;
 @property NSString<Optional> *favFood;
 @property Date *dateAdded;

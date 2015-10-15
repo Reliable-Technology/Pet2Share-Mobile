@@ -48,7 +48,7 @@
     switch (self.petProfileMode)
     {
         case AddPetProfile: return kTempAvatarImage;
-        case EditPetProfile: return self.pet.profilePicture;
+        case EditPetProfile: return self.pet.profilePictureUrl;
         default: return nil;
     }
 }
@@ -88,7 +88,7 @@
             NSMutableDictionary *cellBasicInfo = [NSMutableDictionary dictionary];
             cellBasicInfo[kFirstNameImageIcon] = @"icon-contact-selected";
             cellBasicInfo[kLastNameImageIcon] = @"icon-contact-selected";
-            cellBasicInfo[kCellImageLink] = self.pet.profilePicture ?: kEmptyString;
+            cellBasicInfo[kCellImageLink] = self.pet.profilePictureUrl ?: kEmptyString;
             cellBasicInfo[kFirstNameKey] = self.pet.name ?: kEmptyString;
             cellBasicInfo[kLastNameKey] = self.pet.familyName ?: kEmptyString;
             cellBasicInfo[kCellClassName] = kCellNameInfoNibName;
@@ -202,12 +202,12 @@
                 [[EGOCache globalCache] setData:data forKey:[self getAvatarImageKey] withTimeoutInterval:kImageCacheTimeOut];
                 [[AppData sharedInstance] removeObject:[self getAvatarImageKey]];
                 
-                NSString *imageKey = avatarUserKey([Pet2ShareUser current].identifier);
-                [[Pet2ShareService sharedService] uploadImage:nil
-                                                    profileId:self.pet.identifier
-                                                  profileType:PetAvatar
-                                                     fileName:[Utils getUniqueFileName:imageKey]
-                                                        image:image isCoverPicture:NO];
+//                NSString *imageKey = avatarUserKey([Pet2ShareUser current].identifier);
+//                [[Pet2ShareService sharedService] uploadImage:nil
+//                                                    profileId:self.pet.identifier
+//                                                  profileType:PetAvatar
+//                                                     fileName:imageKey
+//                                                        image:image isCoverPicture:NO];
             }
         }
             

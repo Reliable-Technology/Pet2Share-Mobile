@@ -55,12 +55,14 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
           forSupplementaryViewOfKind:CSStickyHeaderParallaxHeader
                  withReuseIdentifier:kHeaderIdentifier];
     self.collectionView.backgroundColor = [AppColorScheme white];
+    
+    [self requestUserData];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self requestUserData];
+    [self refreshView];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -138,7 +140,7 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
     if (objects.count == 1)
     {
         User *user = objects[0];
-        fTRACE("User: %@", user);
+        // fTRACE("User: %@", user);
         [[Pet2ShareUser current] updateFromUser:user];
     }
 }
@@ -184,7 +186,7 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
             NSString *firstName = currentUser.person.firstName;
             NSString *lastName = currentUser.person.lastName;
             NSString *name = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
-            [cell updateProfileAvatar:currentUser.person.avatarUrl name:name socialStatusInfo:nil];
+            [cell updateProfileAvatar:currentUser.person.profilePictureUrl name:name socialStatusInfo:nil];
             cell.delegate = self;
             return cell;
         }

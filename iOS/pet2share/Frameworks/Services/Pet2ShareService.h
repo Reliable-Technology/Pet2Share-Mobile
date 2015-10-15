@@ -89,7 +89,7 @@ typedef NS_ENUM(NSInteger, AvatarImageType)
        completion:(void (^)(UIImage* image))completion;
 
 - (void)uploadImage:(NSObject<Pet2ShareServiceCallback> *)callback
-             profileId:(NSInteger)userId
+          profileId:(NSInteger)profileId
         profileType:(AvatarImageType)type
            fileName:(NSString *)fileName
               image:(UIImage *)image

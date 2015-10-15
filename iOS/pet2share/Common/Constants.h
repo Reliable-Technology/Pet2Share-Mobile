@@ -19,8 +19,8 @@
 #define propertyKeyPath(property) (@""#property)
 #define propertyKeyPathLastComponent(property) [[(@""#property) componentsSeparatedByString:@"."] lastObject]
 
-#define avatarUserKey(identifier) [NSString stringWithFormat:@"avatar_user_%ld", identifier]
-#define avatarPetKey(identifier) [NSString stringWithFormat:@"avatar_pet_%ld", identifier]
+#define avatarUserKey(identifier) [NSString stringWithFormat:@"avatar_user_%ld", (long)identifier]
+#define avatarPetKey(identifier) [NSString stringWithFormat:@"avatar_pet_%ld", (long)identifier]
 
 extern NSString * const kEmptyString;
 extern CGFloat const kBarButtonWidth;

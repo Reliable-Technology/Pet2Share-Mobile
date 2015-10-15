@@ -53,7 +53,6 @@
 		FB484A9C1B50C6130045A6EA /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A891B50C6130045A6EA /* Lato-ThinItalic.ttf */; };
 		FB4BCBD11BCD6FA7009F853E /* ProfileNameInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB4BCBCF1BCD6FA7009F853E /* ProfileNameInfoCell.m */; settings = {ASSET_TAGS = (); }; };
 		FB4BCBD21BCD6FA7009F853E /* ProfileNameInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB4BCBD01BCD6FA7009F853E /* ProfileNameInfoCell.xib */; settings = {ASSET_TAGS = (); }; };
-		FB4BCBD91BCDA08A009F853E /* CameraNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB4BCBD81BCDA08A009F853E /* CameraNavigationController.m */; settings = {ASSET_TAGS = (); }; };
 		FB4DB9381BCDC88300C1466D /* WebClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FB4DB9371BCDC88300C1466D /* WebClient.m */; settings = {ASSET_TAGS = (); }; };
 		FB4DB9411BCE9F5200C1466D /* EditProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB4DB9401BCE9F5200C1466D /* EditProfileVC.m */; settings = {ASSET_TAGS = (); }; };
 		FB4ED0251BCC843200E9F379 /* AddEditPetProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB4ED0241BCC843200E9F379 /* AddEditPetProfileVC.m */; settings = {ASSET_TAGS = (); }; };
@@ -182,8 +181,6 @@
 		FB4BCBCE1BCD6FA7009F853E /* ProfileNameInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileNameInfoCell.h; sourceTree = "<group>"; };
 		FB4BCBCF1BCD6FA7009F853E /* ProfileNameInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileNameInfoCell.m; sourceTree = "<group>"; };
 		FB4BCBD01BCD6FA7009F853E /* ProfileNameInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileNameInfoCell.xib; sourceTree = "<group>"; };
-		FB4BCBD71BCDA08A009F853E /* CameraNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraNavigationController.h; sourceTree = "<group>"; };
-		FB4BCBD81BCDA08A009F853E /* CameraNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraNavigationController.m; sourceTree = "<group>"; };
 		FB4DB9361BCDC88300C1466D /* WebClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebClient.h; sourceTree = "<group>"; };
 		FB4DB9371BCDC88300C1466D /* WebClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebClient.m; sourceTree = "<group>"; };
 		FB4DB93F1BCE9F5200C1466D /* EditProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileVC.h; sourceTree = "<group>"; };
@@ -509,8 +506,6 @@
 		FB4BCBD31BCD9E6A009F853E /* Camera */ = {
 			isa = PBXGroup;
 			children = (
-				FB4BCBD71BCDA08A009F853E /* CameraNavigationController.h */,
-				FB4BCBD81BCDA08A009F853E /* CameraNavigationController.m */,
 				FBA2A3581BCDA78800368D39 /* PostImageVC.h */,
 				FBA2A3591BCDA78800368D39 /* PostImageVC.m */,
 			);
@@ -943,7 +938,6 @@
 				FB5E1ECE1BCABF7000897CA2 /* ProfileAddressInfoCell.m in Sources */,
 				FBCF4AB71BC81BC900C75066 /* UpdateMessage.m in Sources */,
 				FB5050331BC4D0B10037F3E5 /* Date.m in Sources */,
-				FB4BCBD91BCDA08A009F853E /* CameraNavigationController.m in Sources */,
 				FB1067F01B535B4C00BEBC40 /* LoginTableCtrl.m in Sources */,
 				FB4DB9411BCE9F5200C1466D /* EditProfileVC.m in Sources */,
 				FB265B431BC37FAB0094AC37 /* Person.m in Sources */,
