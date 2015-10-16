@@ -85,6 +85,36 @@ typedef NS_ENUM(NSInteger, AvatarImageType)
                    about:(NSString *)about
                  favFood:(NSString *)favFood;
 
+- (void)getPosts:(NSObject<Pet2ShareServiceCallback> *)callback;
+
+- (void)addPost:(NSObject<Pet2ShareServiceCallback> *)callback
+postDescription:(NSString *)postDescription
+       postedBy:(NSInteger)userId
+    isPostByPet:(BOOL)isPostedByPet;
+
+- (void)updatePost:(NSObject<Pet2ShareServiceCallback> *)callback
+            postId:(NSInteger)postId
+   postDescription:(NSString *)postDescription;
+
+- (void)deletePost:(NSObject<Pet2ShareServiceCallback> *)callback
+            postId:(NSInteger)postId;
+
+- (void)getComments:(NSObject<Pet2ShareServiceCallback> *)callback
+             postId:(NSInteger)postId;
+
+- (void)addComment:(NSObject<Pet2ShareServiceCallback> *)callback
+            postId:(NSInteger)postId
+       commentById:(NSInteger)userId
+  isCommentedByPet:(BOOL)isCommentedByPet
+commentDescription:(NSString *)commentDescription;
+
+- (void)updateComment:(NSObject<Pet2ShareServiceCallback> *)callback
+            commentId:(NSInteger)commentId
+   commentDescription:(NSString *)commentDescription;
+
+- (void)deleteComment:(NSObject<Pet2ShareServiceCallback> *)callback
+            commentId:(NSInteger)commentId;
+
 - (void)loadImage:(NSString *)url
        completion:(void (^)(UIImage* image))completion;
 

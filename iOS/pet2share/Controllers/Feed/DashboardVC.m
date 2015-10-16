@@ -37,7 +37,12 @@ static NSString * const kCellNibName    = @"DashboardCollectionCell";
     
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSForegroundColorAttributeName: [AppColor navigationBarTextColor],
-       NSFontAttributeName:[UIFont fontWithName:kLogoTypeface size:20.0f]}];    
+       NSFontAttributeName:[UIFont fontWithName:kLogoTypeface size:20.0f]}];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

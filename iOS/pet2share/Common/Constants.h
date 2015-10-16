@@ -42,6 +42,7 @@ extern NSString * const kSegueProfile;
 extern NSString * const kSegueLoginContainer;
 extern NSString * const kSegueRegisterContainer;
 extern NSString * const kSegueDashboard;
+extern NSString * const kSeguePostsCollection;
 extern NSString * const kSegueMainView;
 extern NSString * const kSegueEditProfile;
 extern NSString * const kSeguePetProfile;

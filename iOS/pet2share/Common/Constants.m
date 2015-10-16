@@ -30,6 +30,7 @@ NSString * const kSegueProfile              = @"profile";
 NSString * const kSegueLoginContainer       = @"logincontainer";
 NSString * const kSegueRegisterContainer    = @"registercontainer";
 NSString * const kSegueDashboard            = @"dashboard";
+NSString * const kSeguePostsCollection      = @"postscollection";
 NSString * const kSegueMainView             = @"mainview";
 NSString * const kSegueEditProfile          = @"editprofile";
 NSString * const kSeguePetProfile           = @"petprofile";

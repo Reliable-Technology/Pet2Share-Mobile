@@ -12,5 +12,6 @@
 
 @property BOOL isSuccessful;
 @property NSString *message;
+@property NSInteger updateId;
 
 @end
