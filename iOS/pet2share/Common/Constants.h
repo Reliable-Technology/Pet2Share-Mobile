@@ -27,6 +27,7 @@ extern CGFloat const kBarButtonWidth;
 extern CGFloat const kBarButtonHeight;
 extern NSString * const kLogoTypeface;
 extern NSInteger const kcenturyInSeconds;
+extern NSInteger const kPostMaxCharacters;
 extern NSInteger const kDescriptionMaxCharacters;
 extern NSInteger const kCacheTimeOut;
 extern NSInteger const kImageCacheTimeOut;
@@ -48,7 +49,7 @@ extern NSString * const kSegueEditProfile;
 extern NSString * const kSeguePetProfile;
 extern NSString * const kSegueAddEditPetProfile;
 extern NSString * const kSegueShowCamera;
-extern NSString * const kSeguePostImage;
+extern NSString * const kSegueNewPost;
 
 #pragma mark - Date Format
 

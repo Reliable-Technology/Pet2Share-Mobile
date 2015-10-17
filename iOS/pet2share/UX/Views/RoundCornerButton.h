@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, ActivityPosition) {
+    RightSide,
+    Center
+};
+
 @interface RoundCornerButton : UIButton
 
 @property (nonatomic, assign) BOOL isLoading;
+@property (nonatomic, assign) ActivityPosition activityPosition;
 
 + (instancetype)button;
 

@@ -7,17 +7,12 @@
 //
 
 #import "ButtonTabbarController.h"
-#import "PostImageVC.h"
 #import "Graphics.h"
 
 static NSString * const kCameraImage            = @"img-camera";
 static NSInteger const kTabBarCameraItemTag     = 1;
 
 @interface ButtonTabbarController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
-{
-    BOOL _cameraButtonTapped;
-    NSInteger _currentTabBarIndex;
-}
 
 @property (nonatomic, strong) UIImage *image;
 
@@ -30,11 +25,7 @@ static NSInteger const kTabBarCameraItemTag     = 1;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
-    if ((self = [super initWithCoder:aDecoder]))
-    {
-        _cameraButtonTapped = NO;
-        _currentTabBarIndex = 0;
-    }
+    if ((self = [super initWithCoder:aDecoder])) {}
     return self;
 }
 
@@ -51,12 +42,6 @@ static NSInteger const kTabBarCameraItemTag     = 1;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:kSeguePostImage])
-    {
-        UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
-        PostImageVC *postImageVC = (PostImageVC *)navController.topViewController;
-        if (postImageVC) postImageVC.image = self.image;
-    }
 }
 
 #pragma mark -
@@ -125,9 +110,9 @@ static NSInteger const kTabBarCameraItemTag     = 1;
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *, id> *)info
 {
-    fTRACE(@"Info: %@", info);
+    fTRACE("Info: %@", info);
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -51,7 +51,7 @@
     // Corner Radius
     self.layer.cornerRadius = 3.f;
     self.clipsToBounds = YES;
-    
+    self.activityPosition = RightSide;
     _isLoading = NO;
 }
 
@@ -60,9 +60,25 @@
     if (!_activity)
     {
         _activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+        
         CGFloat height = self.bounds.size.height / 2;
-        CGFloat width = self.bounds.size.width;
-        self.activity.center = CGPointMake(width - height , height);
+        CGFloat width;
+        
+        switch (self.activityPosition)
+        {
+            case RightSide:
+                width = self.bounds.size.width;
+                self.activity.center = CGPointMake(width - height , height);
+                break;
+            case Center:
+                width = self.bounds.size.width/2;
+                self.activity.center = CGPointMake(width , height);
+                break;
+                
+            default:
+                break;
+        }
+
         [self addSubview:self.activity];
     }
     return _activity;
@@ -74,6 +90,9 @@
 {
     self.enabled = NO;
     self.isLoading = YES;
+    
+    if (self.activityPosition == Center)
+        self.titleLabel.layer.opacity = 0.0f;
     [self.activity startAnimating];
 }
 
@@ -81,6 +100,8 @@
 {
     self.enabled = YES;
     self.isLoading = NO;
+    if (self.activityPosition == Center)
+        self.titleLabel.layer.opacity = 1.0f;
     [self.activity stopAnimating];
 }
 
