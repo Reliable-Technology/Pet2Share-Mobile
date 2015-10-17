@@ -8,6 +8,24 @@
 
 #import "User.h"
 
+@implementation SUser : RepositoryObject
+
++ (JSONKeyMapper *)keyMapper
+{
+    return [[JSONKeyMapper alloc]
+            initWithDictionary:@{@"Id": @"identifier",
+                                 @"Name": @"name",
+                                 @"ProfilePictureURL": @"profilePictureUrl",
+                                 @"Username": @"userName"}];
+}
+
+- (BOOL)isValidate
+{
+    return (self.identifier != -1) ? YES : NO;
+}
+
+@end
+
 @implementation User
 
 + (JSONKeyMapper *)keyMapper

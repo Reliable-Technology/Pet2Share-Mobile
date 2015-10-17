@@ -85,7 +85,15 @@ typedef NS_ENUM(NSInteger, AvatarImageType)
                    about:(NSString *)about
                  favFood:(NSString *)favFood;
 
-- (void)getPosts:(NSObject<Pet2ShareServiceCallback> *)callback;
+- (void)getPostsByUser:(NSObject<Pet2ShareServiceCallback> *)callback
+                userId:(NSInteger)userId
+             postCount:(NSInteger)postCount
+            pageNumber:(NSInteger)pageNumber;
+
+- (void)getPostsByPet:(NSObject<Pet2ShareServiceCallback> *)callback
+                petId:(NSInteger)petId
+            postCount:(NSInteger)postCount
+           pageNumber:(NSInteger)pageNumber;
 
 - (void)addPost:(NSObject<Pet2ShareServiceCallback> *)callback
 postDescription:(NSString *)postDescription

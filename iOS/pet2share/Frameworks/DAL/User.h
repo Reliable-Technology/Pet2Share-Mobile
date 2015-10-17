@@ -15,6 +15,15 @@
 
 @protocol Pet;
 
+@interface SUser : RepositoryObject
+
+@property NSInteger identifier;
+@property NSString<Optional> *name;
+@property NSString<Optional> *profilePictureUrl;
+@property NSString<Optional> *username;
+
+@end
+
 @interface User : RepositoryObject
 
 @property NSInteger identifier;

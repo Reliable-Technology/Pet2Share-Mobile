@@ -13,7 +13,6 @@
 #import "Pet2ShareUser.h"
 #import "Pet2ShareService.h"
 #import "AppColor.h"
-#import "ActivityView.h"
 #import "Graphics.h"
 #import "RoundCornerButton.h"
 
@@ -27,7 +26,6 @@ static CGFloat const kToolbarHeight = 44.0f;
 @property (weak, nonatomic) IBOutlet CircleImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet PlaceHolderTextView *textView;
 @property (strong, nonatomic) UILabel *remainCharacterLabels;
-@property (strong, nonatomic) ActivityView *activity;
 @property (strong, nonatomic) RoundCornerButton *postBtn;
 
 - (IBAction)closeBtnTapped:(id)sender;
@@ -57,9 +55,6 @@ static CGFloat const kToolbarHeight = 44.0f;
     [service loadImage:[Pet2ShareUser current].person.profilePictureUrl completion:^(UIImage *image) {
         self.avatarImageView.image = image ?: [UIImage imageNamed:@"img-avatar"];
     }];
-    
-    // Activity View
-//    _activity = [[ActivityView alloc] initWithView:self.view xOffset:0.0f yOffset:<#(CGFloat)#>];
     
     // Set textview placeholder
     self.textView.placeholder = NSLocalizedString(@"Write Something...", @"");
@@ -145,7 +140,6 @@ static CGFloat const kToolbarHeight = 44.0f;
 
 - (void)postBtnTapped:(id)sender
 {
-    [self.activity show];
     Pet2ShareService *service = [Pet2ShareService new];
     [service addPost:self postDescription:self.textView.text postedBy:[Pet2ShareUser current].identifier isPostByPet:NO];
 }
@@ -170,13 +164,13 @@ static CGFloat const kToolbarHeight = 44.0f;
 
 - (void)onReceiveSuccess:(NSArray *)objects
 {
-    [self.activity hide];
+    [self.postBtn hideActivityIndicator];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)onReceiveError:(ErrorMessage *)errorMessage
 {
-    [self.activity hide];
+    [self.postBtn hideActivityIndicator];
     [Graphics alert:NSLocalizedString(@"Error", @"") message:errorMessage.message type:ErrorAlert];
 }
 

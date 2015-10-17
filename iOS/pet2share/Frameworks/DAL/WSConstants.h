@@ -15,3 +15,5 @@
 #import "Date.h"
 #import "UpdateMessage.h"
 #import "Pet.h"
+#import "Post.h"
+#import "Comment.h"

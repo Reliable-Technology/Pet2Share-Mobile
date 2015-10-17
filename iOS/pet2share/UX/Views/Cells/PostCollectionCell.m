@@ -11,6 +11,7 @@
 #import "Graphics.h"
 #import "AppColor.h"
 #import "Utils.h"
+#import "Post.h"
 
 @interface PostCollectionCell ()
 
@@ -51,11 +52,12 @@
     [Graphics dropShadow:self shadowOpacity:0.85f shadowRadius:1.0f offset:CGSizeZero];
 }
 
-#pragma mark - Public Instance Methods
+#pragma mark -
+#pragma mark Public Instance Methods
 
-- (void)setUpView
+- (void)setUpView:(Post *)post
 {
-    // TODO: Implement later
+    fTRACE("Post: %@", post);
 }
 
 @end

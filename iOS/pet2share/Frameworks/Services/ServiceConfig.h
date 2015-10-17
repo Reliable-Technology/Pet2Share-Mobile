@@ -46,7 +46,8 @@
 #define INSERTPETPROFILE_ENDPOINT           @"InsertPetProfile"
 #define UPDATEPETPROFILE_ENDPOINT           @"UpdatePetProfile"
 #define UPLOADUSERPICTURE_ENDPOINT          @"UploadUserPic"
-#define GETPOSTS_ENDPOINT                   @"GetPosts"
+#define GETPOSTSBYUSER_ENDPOINT             @"getPostsByUser"
+#define GETPOSTSBYPET_ENDPOINT              @"getPostsByPet"
 #define ADDPOST_ENDPOINT                    @"AddPost"
 #define UPDATEPOST_ENDPOINT                 @"UpdatePost"
 #define DELETEPOST_ENDPOINT                 @"DeletePost"
@@ -56,10 +57,3 @@
 #define DELETECOMMENT_ENDPOINT              @"DeleteComment"
 
 #endif
-
-typedef NS_ENUM(NSInteger, PostType)
-{
-    StatusUpdate,
-    PostWithText,
-    PostWithImage
-};

@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class Post;
+
 @interface PostCollectionCell : UICollectionViewCell
 
 + (CGFloat)cellHeight:(CGFloat)spacing;
-- (void)setUpView;
+- (void)setUpView:(Post *)post;
 
 @end

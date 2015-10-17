@@ -17,8 +17,8 @@ NSString * const kLogoTypeface              = @"LobsterTwo-Bold";
 NSInteger const kcenturyInSeconds           = 3154000000;
 NSInteger const kDescriptionMaxCharacters   = 1000;
 NSInteger const kPostMaxCharacters          = 300;
-NSInteger const kCacheTimeOut               = 60*3;     // 3 minutes
-NSInteger const kImageCacheTimeOut          = 60*60*24; // 1 day
+NSInteger const kCacheTimeOut               = 60*3;                 // 3 minutes
+NSInteger const kImageCacheTimeOut          = 60*60*24;             // 1 day
 NSString * const kTempAvatarImage           = @"avatarimage";
 
 #pragma mark - Segues
@@ -38,6 +38,7 @@ NSString * const kSeguePetProfile           = @"petprofile";
 NSString * const kSegueAddEditPetProfile    = @"addeditpetprofile";
 NSString * const kSegueShowCamera           = @"showcamera";
 NSString * const kSegueNewPost              = @"newpost";
+NSString * const kSeguePostDetail           = @"postdetail";
 
 #pragma mark - Date Format
 

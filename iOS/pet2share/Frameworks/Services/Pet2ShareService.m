@@ -64,6 +64,8 @@ static id ObjectOrNull(id object)
     webClient.contentTypeJSON = YES;
     self.jsonModel = model;
     self.callback = callback;
+    
+    fTRACE(@"Post Request: %@", url);
 
     [webClient post:url postData:data];
 }
@@ -126,21 +128,6 @@ static id ObjectOrNull(id object)
             break;
     }
 }
-
-//- (void)postBinaryRequest:(NSObject<Pet2ShareServiceCallback> *)callback
-//                 endPoint:(NSString *)endPoint
-//                jsonModel:(Class)model
-//                 postData:(NSData *)data
-//{
-//    NSString *url = [[UrlManager sharedInstance] webServiceUrl:endPoint];
-//    
-//    WebClient *webClient = [[WebClient alloc] init];
-//    webClient.delegate = self;
-//    webClient.contentType = CONTENT_TYPE_OCTET_STREAM;
-//    self.jsonModel = model;
-//    
-//    [webClient post:url binaryData:data];
-//}
 
 - (void)processResponseData:(NSData *)data
 {
@@ -374,9 +361,34 @@ static id ObjectOrNull(id object)
     [self postJsonRequest:callback endPoint:UPDATEPETPROFILE_ENDPOINT jsonModel:[UpdateMessage class] postData:postData];
 }
 
-- (void)getPosts:(NSObject<Pet2ShareServiceCallback> *)callback
+- (void)getPostsByUser:(NSObject<Pet2ShareServiceCallback> *)callback
+                userId:(NSInteger)userId
+             postCount:(NSInteger)postCount
+            pageNumber:(NSInteger)pageNumber
 {
-    // TODO: Implement later
+    fTRACE("%@ <UserId: %ld>", GETPOSTSBYUSER_ENDPOINT, (long)userId);
+    
+    NSMutableDictionary *postData = [NSMutableDictionary dictionary];
+    [postData setObject:@(userId) forKey:@"ProfileId"];
+    [postData setObject:@(postCount) forKey:@"PostCount"];
+    [postData setObject:@(pageNumber) forKey:@"PageNumber"];
+    
+    [self postJsonRequest:callback endPoint:GETPOSTSBYUSER_ENDPOINT jsonModel:[Post class] postData:postData];
+}
+
+- (void)getPostsByPet:(NSObject<Pet2ShareServiceCallback> *)callback
+                petId:(NSInteger)petId
+            postCount:(NSInteger)postCount
+           pageNumber:(NSInteger)pageNumber
+{
+    fTRACE("%@ <PetId: %ld>", GETPOSTSBYPET_ENDPOINT, (long)petId);
+    
+    NSMutableDictionary *postData = [NSMutableDictionary dictionary];
+    [postData setObject:@(petId) forKey:@"PetId"];
+    [postData setObject:@(postCount) forKey:@"PostCount"];
+    [postData setObject:@(pageNumber) forKey:@"PageNumber"];
+    
+    [self postJsonRequest:callback endPoint:GETPOSTSBYPET_ENDPOINT jsonModel:[Post class] postData:postData];
 }
 
 - (void)addPost:(NSObject<Pet2ShareServiceCallback> *)callback
@@ -427,7 +439,7 @@ postDescription:(NSString *)postDescription
     NSMutableDictionary *postData = [NSMutableDictionary dictionary];
     [postData setObject:@(postId) forKey:@"PostId"];
     
-    [self postJsonRequest:callback endPoint:GETCOMMENTS_ENDPOINT jsonModel:[UpdateMessage class] postData:postData];
+    [self postJsonRequest:callback endPoint:GETCOMMENTS_ENDPOINT jsonModel:[Comment class] postData:postData];
 }
 
 - (void)addComment:(NSObject<Pet2ShareServiceCallback> *)callback
@@ -442,7 +454,7 @@ commentDescription:(NSString *)commentDescription
     [postData setObject:@(postId) forKey:@"PostId"];
     [postData setObject:@(userId) forKey:@"CommentedById"];
     [postData setObject:@(NO) forKey:@"IsCommentedByPet"];
-    [postData setObject:commentDescription forKey:@"CommentDescription"];
+    [postData setObject:ObjectOrNull(commentDescription) forKey:@"CommentDescription"];
     
     [self postJsonRequest:callback endPoint:ADDCOMMENT_ENDPOINT jsonModel:[UpdateMessage class] postData:postData];
 }
@@ -455,7 +467,7 @@ commentDescription:(NSString *)commentDescription
     
     NSMutableDictionary *postdata = [NSMutableDictionary dictionary];
     [postdata setObject:@(commentId) forKey:@"CommentId"];
-    [postdata setObject:commentDescription forKey:@"CommentDescription"];
+    [postdata setObject:ObjectOrNull(commentDescription) forKey:@"CommentDescription"];
     
     [self postJsonRequest:callback endPoint:UPDATECOMMENT_ENDPOINT jsonModel:[UpdateMessage class] postData:postdata];
 }

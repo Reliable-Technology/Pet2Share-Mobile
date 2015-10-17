@@ -50,6 +50,7 @@ extern NSString * const kSeguePetProfile;
 extern NSString * const kSegueAddEditPetProfile;
 extern NSString * const kSegueShowCamera;
 extern NSString * const kSegueNewPost;
+extern NSString * const kSeguePostDetail;
 
 #pragma mark - Date Format
 
