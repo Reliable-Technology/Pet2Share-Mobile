@@ -75,6 +75,7 @@
                         <outlet property="tableView" destination="bg1-bD-9ih" id="5ei-Jg-Zug"/>
                         <segue destination="Nvm-8K-IOa" kind="presentation" identifier="newpost" id="j2g-9r-CHo"/>
                         <segue destination="NlX-a2-r8q" kind="show" identifier="postdetail" id="XEf-cj-qdz"/>
+                        <segue destination="utb-Y4-g4h" kind="show" identifier="profile" id="O77-Oe-qBo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sce-Q8-a5c" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -686,7 +687,7 @@
             <objects>
                 <collectionViewController id="utb-Y4-g4h" customClass="UserProfileVC" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="ONN-bk-krf">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" red="0.90980392160000001" green="0.92549019610000005" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -698,7 +699,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="fnm-xU-NoZ">
-                                <rect key="frame" x="0.0" y="64" width="50" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -796,7 +797,7 @@
             <objects>
                 <collectionViewController title="Pet 2 Share" id="03B-eo-mY5" customClass="PetProfileVC" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="RSr-e6-p8F">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
@@ -808,7 +809,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="qs1-gQ-Bdd">
-                                <rect key="frame" x="0.0" y="64" width="50" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -903,8 +904,9 @@
         <image name="img-avatar" width="86" height="84"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZTT-kt-YwX"/>
         <segue reference="j2g-9r-CHo"/>
-        <segue reference="3JU-0T-BsM"/>
+        <segue reference="ZTT-kt-YwX"/>
+        <segue reference="O77-Oe-qBo"/>
+        <segue reference="a6S-YY-rEy"/>
     </inferredMetricsTieBreakers>
 </document>

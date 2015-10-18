@@ -57,6 +57,7 @@
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="U9i-Uk-Txx" firstAttribute="leading" secondItem="BgE-r9-UP6" secondAttribute="trailing" constant="15" id="0I7-Cf-jJo"/>
                 <constraint firstItem="U9i-Uk-Txx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="17" id="2GQ-hj-lY1"/>
@@ -70,7 +71,15 @@
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="qE2-25-jMs" appends="YES" id="XHB-F9-8VG"/>
+            </connections>
             <point key="canvasLocation" x="490" y="429"/>
         </view>
+        <tapGestureRecognizer id="qE2-25-jMs">
+            <connections>
+                <action selector="headerDidTapped:" destination="-1" id="oHA-jO-MwL"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>

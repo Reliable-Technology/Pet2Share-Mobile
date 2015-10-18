@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (strong, nonatomic) IBOutlet UIView *view;
+- (IBAction)headerDidTapped:(id)sender;
 
 @end
 
@@ -67,6 +68,12 @@
     
     self.nameLabel.text = postedName;
     self.dateLabel.text = [Utils formatNSDateToString:postedDate];
+}
+
+- (IBAction)headerDidTapped:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(performActionOnTap:)])
+        [self.delegate performActionOnTap:self];
 }
 
 @end

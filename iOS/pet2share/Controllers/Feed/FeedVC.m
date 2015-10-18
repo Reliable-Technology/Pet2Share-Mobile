@@ -19,7 +19,8 @@
 #import "FeedDetailVC.h"
 #import "NewPostVC.h"
 
-@interface FeedVC () <BaseNavigationProtocol, Pet2ShareServiceCallback, UITableViewDataSource, UITableViewDelegate>
+@interface FeedVC () <BaseNavigationProtocol, Pet2ShareServiceCallback,
+UITableViewDataSource, UITableViewDelegate, NewPostDelegate, PostHeaderDelegate>
 {
     NSInteger _pageNumber;
     BOOL _hasAllData;
@@ -122,16 +123,6 @@ static CGFloat const kLoadingCellHeight         = 88.0f;
 }
 
 #pragma mark -
-#pragma mark <NewPostDelegate>
-
-- (void)didPost
-{
-    _pageNumber = 0;
-    _hasAllData = NO;
-    [self requestData];
-}
-
-#pragma mark -
 #pragma mark  <Pet2ShareServiceCallback>
 
 - (void)onReceiveSuccess:(NSArray *)objects
@@ -156,7 +147,7 @@ static CGFloat const kLoadingCellHeight         = 88.0f;
 }
 
 #pragma mark -
-#pragma mark <BaseNavigationProtocol>
+#pragma mark Delegates
 
 - (UIButton *)setupRightBarButton
 {
@@ -170,6 +161,21 @@ static CGFloat const kLoadingCellHeight         = 88.0f;
 - (void)handleRightButtonEvent:(id)sender
 {
     [self performSegueWithIdentifier:kSegueNewPost sender:self];
+}
+
+- (void)didPost
+{
+    _pageNumber = 0;
+    _hasAllData = NO;
+    [self requestData];
+}
+
+- (void)performActionOnTap:(id)sender
+{
+    if ([sender isKindOfClass:[PostHeaderView class]])
+    {
+        [self performSegueWithIdentifier:kSegueProfile sender:self];
+    }
 }
 
 #pragma mark -
@@ -209,6 +215,7 @@ static CGFloat const kLoadingCellHeight         = 88.0f;
     PostHeaderView *headerView = [[PostHeaderView alloc] initWithFrame:CGRectMake(0, 0, width, [PostHeaderView height])];
     [headerView updateHeaderView:post.user.profilePictureUrl postedName:post.user.name postedDate:post.dateAdded];
     headerView.alpha = 0.95f;
+    headerView.delegate = self;
     
     return headerView;
 }

@@ -8,7 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol PostHeaderDelegate <NSObject>
+
+@optional;
+- (void)performActionOnTap:(id)sender;
+
+@end
+
 @interface PostHeaderView : UIView
+
+@property (nonatomic, weak) id<PostHeaderDelegate> delegate;
 
 + (CGFloat)height;
 - (void)updateHeaderView:(NSString *)imageUrl postedName:(NSString *)postedName postedDate:(NSDate *)postedDate;
