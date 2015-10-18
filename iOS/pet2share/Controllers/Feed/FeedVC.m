@@ -7,6 +7,7 @@
 //
 
 #import "FeedVC.h"
+#import "Utils.h"
 #import "AppColor.h"
 #import "Graphics.h"
 #import "Post.h"
@@ -14,9 +15,10 @@
 #import "CircleImageView.h"
 #import "Pet2ShareService.h"
 #import "Pet2ShareUser.h"
-#import "Utils.h"
+#import "PostHeaderView.h"
+#import "FeedDetailVC.h"
 
-@interface FeedVC () <BaseNavigationProtocol, Pet2ShareServiceCallback>
+@interface FeedVC () <BaseNavigationProtocol, Pet2ShareServiceCallback, UITableViewDataSource, UITableViewDelegate>
 {
     NSInteger _pageNumber;
     BOOL _hasAllData;
@@ -32,7 +34,6 @@
 static NSString * const kCellIdentifier         = @"posttextcell";
 static NSString * const kCellNibName            = @"PostTextCell";
 static NSInteger const kNumberOfPostPerPage     = 10;
-static CGFloat const kCellHeaderHeight          = 60.0f;
 static CGFloat const kLoadingCellHeight         = 88.0f;
 
 #pragma mark -
@@ -76,9 +77,11 @@ static CGFloat const kLoadingCellHeight         = 88.0f;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:kSeguePostDetail])
+    if ([segue.identifier isEqualToString:kSeguePostDetail]
+        && [sender isKindOfClass:[Post class]])
     {
-        // TODO: Implement later
+        FeedDetailVC *detailVC = (FeedDetailVC *)segue.destinationViewController;
+        detailVC.post = (Post *)sender;
     }
 }
 
@@ -86,6 +89,7 @@ static CGFloat const kLoadingCellHeight         = 88.0f;
 {
     TRACE_HERE;
     self.tableView = nil;
+    self.posts = nil;
 }
 
 #pragma mark -
@@ -167,42 +171,10 @@ static CGFloat const kLoadingCellHeight         = 88.0f;
     Post *post = self.posts[section];
     
     CGFloat width = tableView.bounds.size.width;
-    
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, width, kCellHeaderHeight)];
-    headerView.backgroundColor = [UIColor whiteColor];
-    headerView.userInteractionEnabled = YES;
-    headerView.tag = section;
-    
-    CircleImageView *avatarImageView = [[CircleImageView alloc] initWithFrame:CGRectMake(16.0f, 8.0f, 44.0f, 44.0f)];
-    avatarImageView.borderColor = [AppColorScheme darkGray];
-    avatarImageView.borderWidth = 0.5f;
-    avatarImageView.image = [UIImage imageNamed:@"img-avatar"];
-    [headerView addSubview:avatarImageView];
-    Pet2ShareService *service = [Pet2ShareService new];
-    [service loadImage:post.user.profilePictureUrl completion:^(UIImage *image) {
-        avatarImageView.image = image ?: [UIImage imageNamed:@"img-avatar"];
-    }];
-    
-    UILabel *postNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(76.0f, 12.0f, width-76.0f-16.0f, 21.0f)];
-    postNameLabel.backgroundColor = [AppColorScheme clear];
-    postNameLabel.textColor = [AppColorScheme darkGray];
-    postNameLabel.font = [UIFont systemFontOfSize:15.0f weight:UIFontWeightMedium];
-    postNameLabel.text = post.user.name;
-    [headerView addSubview:postNameLabel];
-    
-    UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(76.0f, 12.0f+21.0f, width-76.0f-16.0f, 15.0f)];
-    dateLabel.backgroundColor = [AppColorScheme clear];
-    dateLabel.textColor = [AppColorScheme lightGray];
-    dateLabel.font = [UIFont systemFontOfSize:12.0f weight:UIFontWeightLight];
-    dateLabel.text = [Utils formatNSDateToString:post.dateModified];
-    [headerView addSubview:dateLabel];
-    
-//    UIButton *button = [[UIButton alloc] initWithFrame:headerView.frame];
-//    button.alpha = 0.0;
-//    [button addTarget:self action:@selector(headerTapped:) forControlEvents:UIControlEventTouchUpInside];
-//    [headerView addSubview:button];
-    
-    // DEBUG_RECT("Header View ", headerView.frame);
+
+    PostHeaderView *headerView = [[PostHeaderView alloc] initWithFrame:CGRectMake(0, 0, width, [PostHeaderView height])];
+    [headerView updateHeaderView:post.user.profilePictureUrl postedName:post.user.name postedDate:post.dateAdded];
+    headerView.alpha = 0.95f;
     
     return headerView;
 }
@@ -266,7 +238,7 @@ static CGFloat const kLoadingCellHeight         = 88.0f;
 {
     if (section < self.posts.count)
     {
-        return kCellHeaderHeight;
+        return [PostHeaderView height];
     }
     else
     {

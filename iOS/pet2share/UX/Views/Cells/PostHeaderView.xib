@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostHeaderView">
+            <connections>
+                <outlet property="avatarImageView" destination="BgE-r9-UP6" id="oML-Wo-ka0"/>
+                <outlet property="dateLabel" destination="X2E-oc-vU0" id="hZU-6w-xAj"/>
+                <outlet property="nameLabel" destination="U9i-Uk-Txx" id="YLQ-Ch-Uje"/>
+                <outlet property="view" destination="iN0-l3-epB" id="JJO-WW-drS"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="68"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BgE-r9-UP6" customClass="CircleImageView">
+                    <rect key="frame" x="16" y="12" width="44" height="44"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="ax1-Ru-Vrx"/>
+                        <constraint firstAttribute="width" constant="44" id="f5R-X7-pIF"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" red="0.42655369639396667" green="0.47584608197212219" blue="0.48026475310325623" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="0.5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9i-Uk-Txx">
+                    <rect key="frame" x="75" y="17" width="508" height="18"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="7s2-Uy-Ulx"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2E-oc-vU0">
+                    <rect key="frame" x="75" y="39" width="508" height="12"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="12" id="cWk-Uq-QIy"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                    <color key="textColor" red="0.42655369640000002" green="0.475846082" blue="0.4802647531" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="U9i-Uk-Txx" firstAttribute="leading" secondItem="BgE-r9-UP6" secondAttribute="trailing" constant="15" id="0I7-Cf-jJo"/>
+                <constraint firstItem="U9i-Uk-Txx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="17" id="2GQ-hj-lY1"/>
+                <constraint firstItem="BgE-r9-UP6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="6Zf-Iz-QCy"/>
+                <constraint firstAttribute="trailing" secondItem="U9i-Uk-Txx" secondAttribute="trailing" constant="17" id="FMA-9x-ly3"/>
+                <constraint firstAttribute="trailing" secondItem="X2E-oc-vU0" secondAttribute="trailing" constant="17" id="hrB-y0-2Jn"/>
+                <constraint firstItem="X2E-oc-vU0" firstAttribute="leading" secondItem="BgE-r9-UP6" secondAttribute="trailing" constant="15" id="lp6-yd-FzF"/>
+                <constraint firstItem="X2E-oc-vU0" firstAttribute="top" secondItem="U9i-Uk-Txx" secondAttribute="bottom" constant="4" id="xYY-5V-e3n"/>
+                <constraint firstItem="BgE-r9-UP6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="znC-5c-w3s"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="490" y="429"/>
+        </view>
+    </objects>
+</document>

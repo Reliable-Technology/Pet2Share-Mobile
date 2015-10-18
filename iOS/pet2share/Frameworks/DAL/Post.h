@@ -27,7 +27,7 @@ typedef NS_ENUM(NSInteger, PostType)
 @property NSInteger postedBy;
 @property SUser<Optional> *user;
 @property NSString <Optional> *postDescription;
-@property NSArray<Comment, Optional> *comments;
+@property NSArray<Comment> *comments;
 @property NSInteger postCommentCount;
 @property NSInteger postLikeCount;
 @property NSArray <Optional> *postLikedBy;

@@ -18,6 +18,7 @@ static id ObjectOrNull(id object)
     return object ?: [NSNull null];
 }
 
+
 @interface Pet2ShareService () <WebClientDelegate>
 
 @property (nonatomic, weak) id<Pet2ShareServiceCallback> callback;
