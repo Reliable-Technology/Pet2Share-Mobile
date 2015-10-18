@@ -8,6 +8,13 @@
 
 #import "BaseNavigationVC.h"
 
+@protocol NewPostDelegate <NSObject>
+- (void)didPost;
+
+@end
+
 @interface NewPostVC : BaseNavigationVC
+
+@property (nonatomic, weak) id<NewPostDelegate> delegate;
 
 @end

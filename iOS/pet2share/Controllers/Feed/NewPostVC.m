@@ -58,6 +58,8 @@ static CGFloat const kToolbarHeight = 44.0f;
     
     // Set textview placeholder
     self.textView.placeholder = NSLocalizedString(@"Write Something...", @"");
+    self.textView.textColor = [AppColorScheme darkGray];
+    self.textView.font = [UIFont systemFontOfSize:13.0f weight:UIFontWeightRegular];
     self.textView.inputAccessoryView = [self createCustomToolbar];
     self.textView.delegate = self;
     [self.textView becomeFirstResponder];
@@ -165,6 +167,10 @@ static CGFloat const kToolbarHeight = 44.0f;
 - (void)onReceiveSuccess:(NSArray *)objects
 {
     [self.postBtn hideActivityIndicator];
+    
+    if ([self.delegate respondsToSelector:@selector(didPost)])
+        [self.delegate didPost];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

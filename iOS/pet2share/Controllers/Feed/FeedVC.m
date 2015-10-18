@@ -17,6 +17,7 @@
 #import "Pet2ShareUser.h"
 #import "PostHeaderView.h"
 #import "FeedDetailVC.h"
+#import "NewPostVC.h"
 
 @interface FeedVC () <BaseNavigationProtocol, Pet2ShareServiceCallback, UITableViewDataSource, UITableViewDelegate>
 {
@@ -26,6 +27,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *posts;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -55,10 +57,15 @@ static CGFloat const kLoadingCellHeight         = 88.0f;
 {
     [super viewDidLoad];
 
-    // Setup table view
+    // Setup tableview
     [self.tableView registerNib:[UINib nibWithNibName:kCellNibName bundle:nil]
          forCellReuseIdentifier:kCellIdentifier];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    // Setup refresh control
+    _refreshControl = [UIRefreshControl new];
+    [self.tableView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self action:@selector(requestData) forControlEvents:UIControlEventValueChanged];
     [self.tableView reloadData];
     
     // Request data
@@ -83,6 +90,11 @@ static CGFloat const kLoadingCellHeight         = 88.0f;
         FeedDetailVC *detailVC = (FeedDetailVC *)segue.destinationViewController;
         detailVC.post = (Post *)sender;
     }
+    else if ([segue.identifier isEqualToString:kSegueNewPost])
+    {
+        NewPostVC *newPostVC = (NewPostVC *)segue.destinationViewController;
+        newPostVC.delegate = self;
+    }
 }
 
 - (void)dealloc
@@ -97,6 +109,12 @@ static CGFloat const kLoadingCellHeight         = 88.0f;
 
 - (void)requestData
 {
+    if (self.refreshControl.isRefreshing)
+    {
+        _pageNumber = 0;
+        _hasAllData = NO;
+    }
+    
     Pet2ShareService *service = [Pet2ShareService new];
     _pageNumber++;
     fTRACE(@"Page Number: %ld", (long)_pageNumber);
@@ -104,11 +122,26 @@ static CGFloat const kLoadingCellHeight         = 88.0f;
 }
 
 #pragma mark -
-#pragma mark - <Pet2ShareServiceCallback>
+#pragma mark <NewPostDelegate>
+
+- (void)didPost
+{
+    _pageNumber = 0;
+    _hasAllData = NO;
+    [self requestData];
+}
+
+#pragma mark -
+#pragma mark  <Pet2ShareServiceCallback>
 
 - (void)onReceiveSuccess:(NSArray *)objects
 {
     fTRACE(@"Number of Objects: %ld", objects.count);
+    if (self.refreshControl.isRefreshing || _pageNumber == 1)
+    {
+        [self.posts removeAllObjects];
+        [self.refreshControl endRefreshing];
+    }
     if (self.posts.count > 0 && objects.count == 0) _hasAllData = YES;
     [self.posts addObjectsFromArray:objects];
     [self.tableView reloadData];
@@ -116,6 +149,7 @@ static CGFloat const kLoadingCellHeight         = 88.0f;
 
 - (void)onReceiveError:(ErrorMessage *)errorMessage
 {
+    [self.refreshControl endRefreshing];
     [Graphics alert:NSLocalizedString(@"Error", @"")
             message:errorMessage.message
                type:ErrorAlert];
