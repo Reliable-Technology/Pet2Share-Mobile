@@ -48,8 +48,6 @@ static CGFloat const kLoadingCellHeight         = 88.0f;
     {
         self.baseNavProtocol = self;
         _posts = [NSMutableArray array];
-        _pageNumber = 0;
-        _hasAllData = NO;
     }
     return self;
 }
@@ -68,9 +66,6 @@ static CGFloat const kLoadingCellHeight         = 88.0f;
     [self.tableView addSubview:self.refreshControl];
     [self.refreshControl addTarget:self action:@selector(requestData) forControlEvents:UIControlEventValueChanged];
     [self.tableView reloadData];
-    
-    // Request data
-    [self requestData];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -81,6 +76,11 @@ static CGFloat const kLoadingCellHeight         = 88.0f;
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSForegroundColorAttributeName: [AppColor navigationBarTextColor],
        NSFontAttributeName:[UIFont fontWithName:kLogoTypeface size:20.0f]}];
+    
+    // Request data
+    _pageNumber = 0;
+    _hasAllData = NO;
+    [self requestData];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

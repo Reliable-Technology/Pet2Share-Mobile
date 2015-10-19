@@ -39,6 +39,7 @@ NSString * const kSegueAddEditPetProfile    = @"addeditpetprofile";
 NSString * const kSegueShowCamera           = @"showcamera";
 NSString * const kSegueNewPost              = @"newpost";
 NSString * const kSeguePostDetail           = @"postdetail";
+NSString * const kSeguePostDetailContainer  = @"postdetailcontainer";
 
 #pragma mark - Date Format
 
