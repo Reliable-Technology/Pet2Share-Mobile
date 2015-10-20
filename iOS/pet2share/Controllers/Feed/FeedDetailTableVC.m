@@ -110,7 +110,7 @@ static NSString * const kCellReuseIdentifier            = @"cellIdentifier";
                                           kCellNameKey: self.post.user.name ?: kEmptyString,
                                           kCellImageLink: self.post.user.profilePictureUrl ?: kEmptyString,
                                           kCellDateKey: self.post.dateAdded ?: [NSNull class],
-                                          kCellPostTextKey: self.post.postDescription,
+                                          kCellTextKey: self.post.postDescription,
                                           kCellReuseIdentifier: kPostDetailTextCellIdenfier};
         [self.cellData addObject:profileCellDict];
         
@@ -231,7 +231,7 @@ static NSString * const kCellReuseIdentifier            = @"cellIdentifier";
             [(PostDetailTextCell *)cell update:data[kCellImageLink]
                                     postedName:data[kCellNameKey]
                                     postedDate:data[kCellDateKey]
-                                          text:data[kCellPostTextKey]];
+                                          text:data[kCellTextKey]];
         }
         else if ([reuseIdentifier isEqualToString:kCommentCellIdentifier])
         {
@@ -262,7 +262,7 @@ static NSString * const kCellReuseIdentifier            = @"cellIdentifier";
 {
     NSDictionary *data = self.cellData[indexPath.row];
     if ([data[kCellReuseIdentifier] isEqualToString:kPostDetailTextCellIdenfier])
-        return [PostDetailTextCell cellHeightForText:data[kCellPostTextKey]];
+        return [PostDetailTextCell cellHeightForText:data[kCellTextKey]];
     else if ([data[kCellReuseIdentifier] isEqualToString:kCommentCellIdentifier])
         return [CommentCell cellHeightForText:data[kCellCommentKey]];
     return 0;

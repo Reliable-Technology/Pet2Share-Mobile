@@ -19,4 +19,6 @@
 
 @property (nonatomic, weak) id<FeedCollectionDelegate> collectionDelegate;
 
+- (void)refreshData;
+
 @end

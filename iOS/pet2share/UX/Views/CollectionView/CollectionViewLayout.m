@@ -16,7 +16,7 @@
     {
         case OneColumn:     return width - 2 * spacing;
         case TwoColumns:    return (width - 3 * spacing) / 2;
-        case ThreeColumns:  return (width - 4 * spacing)/ 3;
+        case ThreeColumns:  return (width - 4 * spacing) / 3;
         default:            return width - 2 * spacing;
     }
 }

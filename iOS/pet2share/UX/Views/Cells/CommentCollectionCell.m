@@ -1,40 +1,38 @@
 //
-//  PostTextCollectionCell.m
+//  CommentCollectionCell.m
 //  pet2share
 //
-//  Created by Tony Kieu on 10/19/15.
+//  Created by Tony Kieu on 10/20/15.
 //  Copyright © 2015 Pet 2 Share. All rights reserved.
 //
 
-#import "PostTextCollectionCell.h"
-#import "Utils.h"
-#import "Graphics.h"
+#import "CommentCollectionCell.h"
 #import "Pet2ShareService.h"
 #import "CircleImageView.h"
+#import "Utils.h"
+#import "Graphics.h"
 
-@interface PostTextCollectionCell ()
+@interface CommentCollectionCell ()
 
 @property (weak, nonatomic) IBOutlet CircleImageView *imageView;
-@property (weak, nonatomic) IBOutlet UILabel *primaryTxtLbl;
-@property (weak, nonatomic) IBOutlet UILabel *secondaryTxtLbl;
-@property (weak, nonatomic) IBOutlet UILabel *statusLbl;
+@property (weak, nonatomic) IBOutlet UILabel *headerLbl;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTxtView;
-@property (weak, nonatomic) IBOutlet UIView *headerIndicatorView;
+@property (weak, nonatomic) IBOutlet UILabel *statusLbl;
 
 @end
 
-@implementation PostTextCollectionCell
+@implementation CommentCollectionCell
 
-static CGFloat const kCellHeight            = 170.0f;
-static CGFloat const kTextLeftPadding       = 17.0f;
+static CGFloat const kCellHeight            = 100.0f;
+static CGFloat const kTextLeftPadding       = 72.0f;
 static CGFloat const kTextRightPadding      = 20.0f;
-static CGFloat const kTextViewHeight        = 78.0f;
+static CGFloat const kTextViewHeight        = 46.0f;
 static CGFloat const kTextViewFontSize      = 13.0f;
 static CGFloat const kBottomSpacing         = 16.0f;
 
 + (CGFloat)defaultHeight
 {
-    return 150.f;
+    return 100.0f;
 }
 
 + (CGFloat)heightByText:(NSString *)text itemWidth:(CGFloat)itemWidth
@@ -66,8 +64,7 @@ static CGFloat const kBottomSpacing         = 16.0f;
 
 - (void)loadDataWithImageUrl:(NSString *)imgUrl
         placeHolderImageName:(NSString *)placeHolderImgName
-                 primaryText:(NSString *)primaryText
-               secondaryText:(NSString *)secondaryText
+                  headerText:(NSString *)headerText
              descriptionText:(NSString *)descriptionText
                   statusText:(NSString *)statusText
 {
@@ -77,18 +74,11 @@ static CGFloat const kBottomSpacing         = 16.0f;
         self.imageView.image = image ?: [UIImage imageNamed:placeHolderImgName];
     }];
     
-    self.primaryTxtLbl.text = primaryText;
-    self.secondaryTxtLbl.text = secondaryText;
+    self.headerLbl.text = headerText;
     self.descriptionTxtView.text = descriptionText;
     self.descriptionTxtView.font = [UIFont systemFontOfSize:kTextViewFontSize weight:UIFontWeightRegular];
     self.descriptionTxtView.textColor = [AppColorScheme darkGray];
-    
     self.statusLbl.text = statusText;
-}
-
-- (void)displayHeaderIndicator
-{
-    self.headerIndicatorView.alpha = 1.0f;
 }
 
 @end

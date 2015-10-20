@@ -27,7 +27,7 @@
 
 @implementation FeedCollectionVC
 
-static NSString * const kDataCellIdentifier     = @"petcollectioncell";
+static NSString * const kDataCellIdentifier     = @"posttextcollectioncell";
 static NSString * const kDataCellNibName        = @"PostTextCollectionCell";
 static NSString * const kLoadingCellIdentifier  = @"loadingcollectioncell";
 static NSString * const kLoadingCellNibName     = @"LoadingCollectionCell";
@@ -55,13 +55,14 @@ static NSInteger const kNumberOfPostPerPage     = 10;
     // Setup refresh control
     self.refreshControl = [UIRefreshControl new];
     [self.collectionView addSubview:self.refreshControl];
-    [self.refreshControl addTarget:self action:@selector(requestData) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self action:@selector(refreshData) forControlEvents:UIControlEventValueChanged];
+    
+    [self requestData];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self requestData];
 }
 
 - (void)dealloc
@@ -72,14 +73,16 @@ static NSInteger const kNumberOfPostPerPage     = 10;
 #pragma mark -
 #pragma mark  Web Services
 
+- (void)refreshData
+{
+    _pageNumber = 0;
+    _hasAllData = NO;
+    [self requestData];
+}
+
 - (void)requestData
 {
     _isRequesting = YES;
-    if (self.refreshControl.isRefreshing)
-    {
-        _pageNumber = 0;
-        _hasAllData = NO;
-    }
     
     Pet2ShareService *service = [Pet2ShareService new];
     _pageNumber++;
@@ -170,17 +173,17 @@ static NSInteger const kNumberOfPostPerPage     = 10;
             NSString *likeStringCount = post.postLikeCount == 1
             ? [NSString stringWithFormat:@"%ld Like", (long)post.postLikeCount]
             : [NSString stringWithFormat:@"%ld Likes", (long)post.postLikeCount];
-            NSString *commentStringCount = post.postLikeCount == 1
+            NSString *commentStringCount = post.postCommentCount == 1
             ? [NSString stringWithFormat:@"%ld Comment", (long)post.postCommentCount]
             : [NSString stringWithFormat:@"%ld Comments", (long)post.postCommentCount];
-            NSString *likeComment = [NSString stringWithFormat:@"%@ • %@", likeStringCount, commentStringCount];
+            NSString *statusComment = [NSString stringWithFormat:@"%@ • %@", likeStringCount, commentStringCount];
             
             [(PostTextCollectionCell *)cell loadDataWithImageUrl:post.user.profilePictureUrl
                                             placeHolderImageName:@"img-avatar"
                                                      primaryText:post.user.name
                                                    secondaryText:[Utils formatNSDateToString:post.dateAdded withFormat:kFormatDayOfWeekWithDateTime]
                                                  descriptionText:post.postDescription
-                                                      statusText:likeComment];
+                                                      statusText:statusComment];
         }
         else
         {
@@ -194,12 +197,6 @@ static NSInteger const kNumberOfPostPerPage     = 10;
     }
     
     return cell;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.row < self.items.count) return YES;
-    else return NO;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath

@@ -39,6 +39,8 @@ NSString * const kSeguePetProfile               = @"petprofile";
 NSString * const kSegueAddEditPetProfile        = @"addeditpetprofile";
 NSString * const kSegueShowCamera               = @"showcamera";
 NSString * const kSegueNewPost                  = @"newpost";
+NSString * const kSegueComment                  = @"comment";
+NSString * const kSegueCommentContainer         = @"commentcontainer";
 NSString * const kSeguePostDetail               = @"postdetail";
 NSString * const kSeguePostDetailContainer      = @"postdetailcontainer";
 

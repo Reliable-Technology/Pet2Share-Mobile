@@ -10,12 +10,13 @@
 #import "Graphics.h"
 #import "AppColor.h"
 #import "FeedCollectionVC.h"
-#import "FeedDetailVC.h"
+#import "CommentVC.h"
 #import "Post.h"
 #import "NewPostVC.h"
 
 @interface FeedVC () <BaseNavigationProtocol, FeedCollectionDelegate, NewPostDelegate>
 
+@property (nonatomic, strong) FeedCollectionVC *feedCollection;
 
 @end
 
@@ -50,10 +51,10 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:kSeguePostDetail] && [sender isKindOfClass:[Post class]])
+    if ([segue.identifier isEqualToString:kSegueComment] && [sender isKindOfClass:[Post class]])
     {
-        FeedDetailVC *detailVC = (FeedDetailVC *)segue.destinationViewController;
-        detailVC.post = (Post *)sender;
+        CommentVC *commentVC = (CommentVC *)segue.destinationViewController;
+        commentVC.post = (Post *)sender;
     }
     else if ([segue.identifier isEqualToString:kSegueNewPost])
     {
@@ -63,7 +64,8 @@
     }
     else if ([segue.identifier isEqualToString:kSegueFeedCollection])
     {
-        [(FeedCollectionVC *)segue.destinationViewController setCollectionDelegate:self];
+        self.feedCollection = (FeedCollectionVC *)segue.destinationViewController;
+        self.feedCollection.collectionDelegate = self;
     }
 }
 
@@ -89,15 +91,15 @@
     [self performSegueWithIdentifier:kSegueNewPost sender:self];
 }
 
-
 - (void)didSelectItem:(id)item
 {
-    [self performSegueWithIdentifier:kSeguePostDetail sender:item];
+    [self performSegueWithIdentifier:kSegueComment sender:item];
 }
 
 - (void)didPost
 {
     TRACE_HERE;
+    [self.feedCollection refreshData];
 }
 
 @end

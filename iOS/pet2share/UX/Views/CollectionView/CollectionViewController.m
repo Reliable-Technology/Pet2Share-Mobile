@@ -32,8 +32,8 @@
 {
     [super viewDidLoad];
     
-    self.collectionView.showsHorizontalScrollIndicator = NO;
-    self.collectionView.showsVerticalScrollIndicator = NO;
+    self.collectionView.showsHorizontalScrollIndicator = YES;
+    self.collectionView.showsVerticalScrollIndicator = YES;
     self.collectionView.backgroundColor = [AppColorScheme clear];
     self.collectionView.alwaysBounceVertical = YES;
     
