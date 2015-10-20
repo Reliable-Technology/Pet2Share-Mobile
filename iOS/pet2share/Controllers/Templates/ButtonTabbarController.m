@@ -15,6 +15,7 @@ static NSInteger const kTabBarCameraItemTag     = 1;
 @interface ButtonTabbarController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) TransitionZoom *transitionZoom;
 
 @end
 
@@ -25,7 +26,10 @@ static NSInteger const kTabBarCameraItemTag     = 1;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
-    if ((self = [super initWithCoder:aDecoder])) {}
+    if ((self = [super initWithCoder:aDecoder]))
+    {
+        _transitionZoom = [TransitionZoom new];
+    }
     return self;
 }
 
@@ -90,6 +94,7 @@ static NSInteger const kTabBarCameraItemTag     = 1;
         imagePickerController.delegate = self;
         imagePickerController.allowsEditing = YES;
         imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imagePickerController.transitioningDelegate = self.transitionZoom;
         [self presentViewController:imagePickerController animated:YES completion:nil];
     }
     @catch (NSException *exception)

@@ -23,6 +23,9 @@
 
 @property (nonatomic, weak) id<BaseNavigationProtocol> baseNavProtocol;
 
+@property (nonatomic, strong) TransitionManager *transitionManager;
+@property (nonatomic, strong) TransitionZoom *transitionZoom;
+
 - (void)handleLeftButtonEvent:(id)sender;
 - (void)handleRightButtonEvent:(id)sender;
 - (void)setLeftBarButtonTitle:(NSString *)text;

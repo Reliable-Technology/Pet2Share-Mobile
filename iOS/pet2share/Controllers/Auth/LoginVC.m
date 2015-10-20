@@ -19,6 +19,7 @@
 
 @property (strong , nonatomic) LoginTableCtrl *loginTableCtrl;
 @property (weak, nonatomic) IBOutlet RoundCornerButton *loginBtn;
+@property (strong, nonatomic) TransitionZoom *transitionZoom;
 
 @end
 
@@ -28,7 +29,10 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
-    if ((self = [super initWithCoder:aDecoder])) {}
+    if ((self = [super initWithCoder:aDecoder]))
+    {
+        _transitionZoom = [TransitionZoom new];
+    }
     return self;
 }
 
@@ -56,6 +60,10 @@
     {
         self.loginTableCtrl = (LoginTableCtrl *)segue.destinationViewController;
         self.loginTableCtrl.formProtocol = self;
+    }
+    else if ([segue.identifier isEqual:kSegueMainView])
+    {
+        segue.destinationViewController.transitioningDelegate = self.transitionZoom;
     }
 }
 

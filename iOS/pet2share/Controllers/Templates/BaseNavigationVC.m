@@ -8,7 +8,7 @@
 
 #import "BaseNavigationVC.h"
 
-@interface BaseNavigationVC () <ImageActionSheetDelegate>
+@interface BaseNavigationVC () <ImageActionSheetDelegate, UIViewControllerTransitioningDelegate>
 
 @property (nonatomic, strong) ImageActionSheet *actionSheet;
 
@@ -21,6 +21,16 @@
 
 #pragma mark -
 #pragma mark Life Cycle
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if ((self = [super initWithCoder:aDecoder]))
+    {
+        _transitionManager = [TransitionManager new];
+        _transitionZoom = [TransitionZoom new];
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {

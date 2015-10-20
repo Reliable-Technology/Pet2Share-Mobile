@@ -16,6 +16,7 @@
 
 @interface FeedVC () <BaseNavigationProtocol, FeedCollectionDelegate, NewPostDelegate>
 
+
 @end
 
 @implementation FeedVC
@@ -57,6 +58,7 @@
     else if ([segue.identifier isEqualToString:kSegueNewPost])
     {
         NewPostVC *newPostVC = (NewPostVC *)segue.destinationViewController;
+        newPostVC.transitioningDelegate = self.transitionManager;
         newPostVC.delegate = self;
     }
     else if ([segue.identifier isEqualToString:kSegueFeedCollection])
