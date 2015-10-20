@@ -19,6 +19,8 @@
 {
     NSInteger _pageNumber;
     BOOL _hasAllData;
+    CGFloat _lastContentOffset;
+    BOOL _isRequesting;
 }
 
 @end
@@ -72,6 +74,7 @@ static NSInteger const kNumberOfPostPerPage     = 10;
 
 - (void)requestData
 {
+    _isRequesting = YES;
     if (self.refreshControl.isRefreshing)
     {
         _pageNumber = 0;
@@ -86,19 +89,21 @@ static NSInteger const kNumberOfPostPerPage     = 10;
 
 - (void)onReceiveSuccess:(NSArray *)objects
 {
+    _isRequesting = NO;
     fTRACE(@"Number of Objects: %ld", objects.count);
     if (self.refreshControl.isRefreshing || _pageNumber == 1)
     {
         [self.items removeAllObjects];
         [self.refreshControl endRefreshing];
     }
-    if (objects.count == 0) _hasAllData = YES;
+    if (objects.count == 0 || objects.count < kNumberOfPostPerPage) _hasAllData = YES;
     [self.items addObjectsFromArray:objects];
     [self.collectionView reloadData];
 }
 
 - (void)onReceiveError:(ErrorMessage *)errorMessage
 {
+    _isRequesting = NO;
     [self.refreshControl endRefreshing];
     [Graphics alert:NSLocalizedString(@"Error", @"") message:errorMessage.message type:ErrorAlert];
 }
@@ -214,9 +219,24 @@ static NSInteger const kNumberOfPostPerPage     = 10;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if (scrollView.contentSize.height - scrollView.contentOffset.y < (self.collectionView.bounds.size.height))
+    ScrollDirection scrollDirection = ScrollDirectionNone;
+    if (_lastContentOffset > scrollView.contentOffset.y)
+        scrollDirection = ScrollDirectionDown;
+    else if (_lastContentOffset < scrollView.contentOffset.y)
+        scrollDirection = ScrollDirectionUp;
+    _lastContentOffset = scrollView.contentOffset.y;
+    
+    /*
+    fTRACE(@"Scroll Direction: %d Content Size: %.2f Offset: %.2f, View Height: %.2f",
+           scrollDirection, scrollView.contentSize.height,  _lastContentOffset, self.view.bounds.size.height); */
+    
+    if (_lastContentOffset > 0)
     {
-        [self requestData];
+        CGFloat offset = scrollView.contentSize.height - _lastContentOffset;
+        if (scrollDirection == ScrollDirectionDown && offset < self.view.bounds.size.height && !_isRequesting)
+        {
+            [self requestData];
+        }
     }
 }
 

@@ -22,6 +22,16 @@
 #define avatarUserKey(identifier) [NSString stringWithFormat:@"avatar_user_%ld", (long)identifier]
 #define avatarPetKey(identifier) [NSString stringWithFormat:@"avatar_pet_%ld", (long)identifier]
 
+typedef enum ScrollDirection
+{
+    ScrollDirectionNone,
+    ScrollDirectionRight,
+    ScrollDirectionLeft,
+    ScrollDirectionUp,
+    ScrollDirectionDown,
+    ScrollDirectionCrazy,
+} ScrollDirection;
+
 extern NSString * const kEmptyString;
 extern CGFloat const kBarButtonWidth;
 extern CGFloat const kBarButtonHeight;

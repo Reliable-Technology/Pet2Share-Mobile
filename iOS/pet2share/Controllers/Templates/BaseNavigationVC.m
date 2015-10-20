@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Pet 2 Share. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "BaseNavigationVC.h"
 
 @interface BaseNavigationVC () <ImageActionSheetDelegate, UIViewControllerTransitioningDelegate>
@@ -57,6 +58,8 @@
             self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightBtn];
         }
     }
+    
+    self.navigationController.navigationBar.layer.cornerRadius=25;
 }
 
 - (void)dealloc

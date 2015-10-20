@@ -25,6 +25,9 @@
     // Default Themes
     [ThemeManager setDefaultTheme];
     
+    self.window.layer.cornerRadius = 6.0f;
+    self.window.layer.masksToBounds = YES;
+    
     return YES;
 }
 
