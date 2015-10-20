@@ -10,29 +10,22 @@
 
 @implementation CollectionViewLayout
 
-- (void)setupLayout:(CollectionLayout)layoutType cellHeight:(CGFloat)cellHeight spacing:(CGFloat)spacing
++ (CGFloat)getItemWidth:(CGFloat)width layoutType:(CollectionLayout)layoutType spacing:(CGFloat)spacing
 {
-    CGSize itemSize;
-    CGFloat width = self.collectionView.frame.size.width;
-    
     switch (layoutType)
     {
-        case OneColumn:
-            itemSize = CGSizeMake(width-2*spacing, cellHeight);
-            break;
-            
-        case TwoColumns:
-            itemSize = CGSizeMake((width-3*spacing)/2, cellHeight);
-            break;
-            
-        case ThreeColumns:
-            itemSize = CGSizeMake((width-4*spacing)/3, cellHeight);
-            break;
-            
-        default:
-            itemSize = CGSizeMake(width-2*spacing, cellHeight);
-            break;
+        case OneColumn:     return width - 2 * spacing;
+        case TwoColumns:    return (width - 3 * spacing) / 2;
+        case ThreeColumns:  return (width - 4 * spacing)/ 3;
+        default:            return width - 2 * spacing;
     }
+}
+
+- (void)setupLayout:(CollectionLayout)layoutType cellHeight:(CGFloat)cellHeight spacing:(CGFloat)spacing
+{
+    CGFloat width = self.collectionView.frame.size.width;
+    CGFloat itemWidth = [CollectionViewLayout getItemWidth:width layoutType:layoutType spacing:spacing];
+    CGSize itemSize = CGSizeMake(itemWidth, cellHeight);
     
     DEBUG_SIZE("Collection Item Size", itemSize);
     

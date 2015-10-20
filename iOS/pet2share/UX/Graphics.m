@@ -110,8 +110,8 @@
 + (void)roundView:(UIView *)view cornerRadius:(CGFloat)cornerRadius
     shadowOpacity:(CGFloat)shadowOpacity shadowRadius:(CGFloat)shadowRadius offset:(CGSize)shadowOffset
 {
+    [self dropShadow:view shadowOpacity:shadowOpacity shadowRadius:shadowRadius offset:shadowOffset];
     view.layer.cornerRadius = cornerRadius;
-    [self dropShadow:view shadowOpacity:cornerRadius shadowRadius:shadowRadius offset:shadowOffset];
 }
 
 + (void)dropShadow:(UIView *)view shadowOpacity:(CGFloat)shadowOpacity

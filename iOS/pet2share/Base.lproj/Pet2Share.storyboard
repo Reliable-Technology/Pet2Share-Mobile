@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OBQ-c6-ya4">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -47,31 +48,27 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bg1-bD-9ih">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aZz-aI-Buz">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="537"/>
                                 <animations/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="separatorColor" red="0.42655369639396667" green="0.47584608197212219" blue="0.48026475310325623" alpha="1" colorSpace="calibratedRGB"/>
-                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="wQ8-ER-nBr" id="QcV-QF-pIp"/>
-                                    <outlet property="delegate" destination="wQ8-ER-nBr" id="rGT-5y-UOL"/>
+                                    <segue destination="cch-Hn-SdT" kind="embed" identifier="feedcollection" id="Tjc-hk-jQF"/>
                                 </connections>
-                            </tableView>
+                            </containerView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.90980392156862744" green="0.92549019607843142" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Gzk-aZ-XW1" firstAttribute="top" secondItem="bg1-bD-9ih" secondAttribute="bottom" constant="-49" id="JN8-Bl-nyg"/>
-                            <constraint firstItem="bg1-bD-9ih" firstAttribute="top" secondItem="WWe-XX-LgW" secondAttribute="bottom" id="QEt-cr-SVV"/>
-                            <constraint firstItem="bg1-bD-9ih" firstAttribute="trailing" secondItem="EME-Eb-GQv" secondAttribute="trailing" id="Vfs-Zp-gKU"/>
-                            <constraint firstItem="bg1-bD-9ih" firstAttribute="leading" secondItem="EME-Eb-GQv" secondAttribute="leading" id="u4p-BI-mjf"/>
+                            <constraint firstItem="aZz-aI-Buz" firstAttribute="top" secondItem="WWe-XX-LgW" secondAttribute="bottom" id="1in-Eq-DH9"/>
+                            <constraint firstItem="aZz-aI-Buz" firstAttribute="leading" secondItem="EME-Eb-GQv" secondAttribute="leading" id="LXm-5x-iQF"/>
+                            <constraint firstItem="aZz-aI-Buz" firstAttribute="trailing" secondItem="EME-Eb-GQv" secondAttribute="trailing" id="Tyi-2z-GJJ"/>
+                            <constraint firstItem="Gzk-aZ-XW1" firstAttribute="top" secondItem="aZz-aI-Buz" secondAttribute="bottom" constant="-50" id="u3V-6l-dMH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Pet 2 Share" id="gPE-D5-9qP"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="tableView" destination="bg1-bD-9ih" id="5ei-Jg-Zug"/>
                         <segue destination="Nvm-8K-IOa" kind="presentation" identifier="newpost" id="j2g-9r-CHo"/>
                         <segue destination="NlX-a2-r8q" kind="show" identifier="postdetail" id="XEf-cj-qdz"/>
                         <segue destination="utb-Y4-g4h" kind="show" identifier="profile" id="O77-Oe-qBo"/>
@@ -102,7 +99,7 @@
                             </containerView>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.68888300657272339" green="0.71366006135940552" blue="0.73448425531387329" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="YcD-Er-xzk" firstAttribute="leading" secondItem="6zJ-Uv-Mvf" secondAttribute="leading" id="Gvz-Hu-b1A"/>
                             <constraint firstItem="Lbb-DS-3Ph" firstAttribute="top" secondItem="YcD-Er-xzk" secondAttribute="bottom" id="M0o-e1-lVN"/>
@@ -113,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RNF-eP-wi9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4511" y="1890"/>
+            <point key="canvasLocation" x="4836" y="1878"/>
         </scene>
         <!--Feed Detail TableVC-->
         <scene sceneID="anW-72-qPv">
@@ -145,7 +142,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P4B-f9-x5c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5227" y="1889.5"/>
+            <point key="canvasLocation" x="5669" y="1877.5"/>
         </scene>
         <!--Pet 2 Share-->
         <scene sceneID="ogo-MI-ag9">
@@ -560,6 +557,44 @@
             </objects>
             <point key="canvasLocation" x="3637" y="712"/>
         </scene>
+        <!--Feed CollectionVC-->
+        <scene sceneID="Feu-ib-ejQ">
+            <objects>
+                <collectionViewController id="cch-Hn-SdT" customClass="FeedCollectionVC" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="YZf-5G-dRF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="537"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hFX-FV-22B" customClass="CollectionViewLayout">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="9cy-6Y-eVX">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <animations/>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="cch-Hn-SdT" id="CzG-Mp-otK"/>
+                            <outlet property="delegate" destination="cch-Hn-SdT" id="z2j-dc-IMr"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XiG-1C-FDb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3806" y="1272"/>
+        </scene>
         <!--Feed-->
         <scene sceneID="j49-kY-qw5">
             <objects>
@@ -929,8 +964,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ZTT-kt-YwX"/>
-        <segue reference="tlJ-h2-45j"/>
         <segue reference="O77-Oe-qBo"/>
+        <segue reference="j2g-9r-CHo"/>
         <segue reference="a6S-YY-rEy"/>
     </inferredMetricsTieBreakers>
 </document>

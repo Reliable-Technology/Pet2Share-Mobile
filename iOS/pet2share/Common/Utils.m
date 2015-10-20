@@ -42,7 +42,7 @@
                                           options:NSStringDrawingUsesLineFragmentOrigin
                                        attributes:@{ NSFontAttributeName:font}
                                           context:nil];
-        size = CGSizeMake(frame.size.width, frame.size.height + 1);
+        size = CGSizeMake(frame.size.width, frame.size.height);
     }
     return size;
 }

@@ -16,7 +16,7 @@
     BOOL _needReset;
 }
 
-@property (nonatomic, strong) UIImageView *activityIndicator;
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -34,7 +34,7 @@ static const CGFloat kActivityViewSize = 22.0f;
         _yOffset = 0.0f;
         _needReset = NO;
         
-        _activityIndicator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon-activity"]];
+        _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         self.activityIndicator.bounds = CGRectMake(0.0f, 0.0f, kActivityViewSize, kActivityViewSize);
         [self setFlexibleMarginsForView:self.activityIndicator];
         [self setFlexibleMarginsForView:self];
@@ -64,7 +64,7 @@ static const CGFloat kActivityViewSize = 22.0f;
         _yOffset = yOffset;
         _needReset = YES;
         
-        _activityIndicator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon-activity"]];
+        _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         self.activityIndicator.bounds = CGRectMake(0.0f, 0.0f, kActivityViewSize, kActivityViewSize);
         [self setFlexibleMarginsForView:self.activityIndicator];
         [self setFlexibleMarginsForView:self];
@@ -123,14 +123,6 @@ static const CGFloat kActivityViewSize = 22.0f;
 
 - (void)show
 {
-    CABasicAnimation *animation = [CABasicAnimation new];
-    animation.keyPath = @"transform.rotation.z";
-    animation.fromValue = @(degreesToRadians(360));
-    animation.toValue = @(degreesToRadians(0));
-    animation.duration = 1.2;
-    animation.repeatCount = HUGE;
-    [self.activityIndicator.layer addAnimation:animation forKey:@""];
-    
     if (parentView) [parentView addSubview:self];
 }
 

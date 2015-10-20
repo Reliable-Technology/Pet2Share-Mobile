@@ -62,6 +62,7 @@
 		FB5BB63E1BD5050800A382AC /* InputTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5BB63D1BD5050800A382AC /* InputTableView.m */; settings = {ASSET_TAGS = (); }; };
 		FB5BB6411BD52ABE00A382AC /* KeyboardBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5BB6401BD52ABE00A382AC /* KeyboardBar.m */; settings = {ASSET_TAGS = (); }; };
 		FB5BB6441BD52BA900A382AC /* FeedDetailTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5BB6431BD52BA900A382AC /* FeedDetailTableVC.m */; settings = {ASSET_TAGS = (); }; };
+		FB5BB6471BD5559300A382AC /* FeedCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5BB6461BD5559300A382AC /* FeedCollectionVC.m */; settings = {ASSET_TAGS = (); }; };
 		FB5E1EBC1BC9DDAB00897CA2 /* FeedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5E1EBB1BC9DDAB00897CA2 /* FeedVC.m */; settings = {ASSET_TAGS = (); }; };
 		FB5E1EBF1BC9E2CE00897CA2 /* PetProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5E1EBE1BC9E2CE00897CA2 /* PetProfileVC.m */; settings = {ASSET_TAGS = (); }; };
 		FB5E1EC61BCA944C00897CA2 /* TextFieldTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5E1EC41BCA944C00897CA2 /* TextFieldTableCell.m */; settings = {ASSET_TAGS = (); }; };
@@ -118,6 +119,10 @@
 		FBCF4ABA1BC8641B00C75066 /* Pet.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4AB91BC8641B00C75066 /* Pet.m */; settings = {ASSET_TAGS = (); }; };
 		FBCF4ABD1BC8691700C75066 /* PetType.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4ABC1BC8691700C75066 /* PetType.m */; settings = {ASSET_TAGS = (); }; };
 		FBD3938F1B50D9DB000ED817 /* BaseNavigationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD3938E1B50D9DB000ED817 /* BaseNavigationVC.m */; };
+		FBDE4CEA1BD55658000BA3C7 /* PostTextCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4CE81BD55658000BA3C7 /* PostTextCollectionCell.m */; settings = {ASSET_TAGS = (); }; };
+		FBDE4CEB1BD55658000BA3C7 /* PostTextCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4CE91BD55658000BA3C7 /* PostTextCollectionCell.xib */; settings = {ASSET_TAGS = (); }; };
+		FBDE4CEF1BD58E49000BA3C7 /* LoadingCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4CED1BD58E49000BA3C7 /* LoadingCollectionCell.m */; settings = {ASSET_TAGS = (); }; };
+		FBDE4CF01BD58E49000BA3C7 /* LoadingCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4CEE1BD58E49000BA3C7 /* LoadingCollectionCell.xib */; settings = {ASSET_TAGS = (); }; };
 		FBFC5CEA1BCF5C8600312F31 /* CacheKey.m in Sources */ = {isa = PBXBuildFile; fileRef = FBFC5CE91BCF5C8600312F31 /* CacheKey.m */; settings = {ASSET_TAGS = (); }; };
 		FBFC5CED1BCF636F00312F31 /* AppData.m in Sources */ = {isa = PBXBuildFile; fileRef = FBFC5CEC1BCF636F00312F31 /* AppData.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -217,6 +222,8 @@
 		FB5BB6401BD52ABE00A382AC /* KeyboardBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardBar.m; sourceTree = "<group>"; };
 		FB5BB6421BD52BA900A382AC /* FeedDetailTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedDetailTableVC.h; sourceTree = "<group>"; };
 		FB5BB6431BD52BA900A382AC /* FeedDetailTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedDetailTableVC.m; sourceTree = "<group>"; };
+		FB5BB6451BD5559300A382AC /* FeedCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCollectionVC.h; sourceTree = "<group>"; };
+		FB5BB6461BD5559300A382AC /* FeedCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedCollectionVC.m; sourceTree = "<group>"; };
 		FB5E1EBA1BC9DDAB00897CA2 /* FeedVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedVC.h; sourceTree = "<group>"; };
 		FB5E1EBB1BC9DDAB00897CA2 /* FeedVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedVC.m; sourceTree = "<group>"; };
 		FB5E1EBD1BC9E2CE00897CA2 /* PetProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetProfileVC.h; sourceTree = "<group>"; };
@@ -322,6 +329,12 @@
 		FBCF4ABC1BC8691700C75066 /* PetType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetType.m; sourceTree = "<group>"; };
 		FBD3938D1B50D9DB000ED817 /* BaseNavigationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationVC.h; sourceTree = "<group>"; };
 		FBD3938E1B50D9DB000ED817 /* BaseNavigationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationVC.m; sourceTree = "<group>"; };
+		FBDE4CE71BD55658000BA3C7 /* PostTextCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostTextCollectionCell.h; sourceTree = "<group>"; };
+		FBDE4CE81BD55658000BA3C7 /* PostTextCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostTextCollectionCell.m; sourceTree = "<group>"; };
+		FBDE4CE91BD55658000BA3C7 /* PostTextCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostTextCollectionCell.xib; sourceTree = "<group>"; };
+		FBDE4CEC1BD58E49000BA3C7 /* LoadingCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingCollectionCell.h; sourceTree = "<group>"; };
+		FBDE4CED1BD58E49000BA3C7 /* LoadingCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingCollectionCell.m; sourceTree = "<group>"; };
+		FBDE4CEE1BD58E49000BA3C7 /* LoadingCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCollectionCell.xib; sourceTree = "<group>"; };
 		FBFC5CE81BCF5C8600312F31 /* CacheKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheKey.h; sourceTree = "<group>"; };
 		FBFC5CE91BCF5C8600312F31 /* CacheKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheKey.m; sourceTree = "<group>"; };
 		FBFC5CEB1BCF636F00312F31 /* AppData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppData.h; sourceTree = "<group>"; };
@@ -424,6 +437,12 @@
 				FB95D18F1BD309EF00254B06 /* PostDetailTextCell.h */,
 				FB95D1901BD309EF00254B06 /* PostDetailTextCell.m */,
 				FB95D1911BD309EF00254B06 /* PostDetailTextCell.xib */,
+				FBDE4CE71BD55658000BA3C7 /* PostTextCollectionCell.h */,
+				FBDE4CE81BD55658000BA3C7 /* PostTextCollectionCell.m */,
+				FBDE4CE91BD55658000BA3C7 /* PostTextCollectionCell.xib */,
+				FBDE4CEC1BD58E49000BA3C7 /* LoadingCollectionCell.h */,
+				FBDE4CED1BD58E49000BA3C7 /* LoadingCollectionCell.m */,
+				FBDE4CEE1BD58E49000BA3C7 /* LoadingCollectionCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -572,6 +591,8 @@
 				FB95D1781BD2CCCA00254B06 /* FeedDetailVC.m */,
 				FB5BB6421BD52BA900A382AC /* FeedDetailTableVC.h */,
 				FB5BB6431BD52BA900A382AC /* FeedDetailTableVC.m */,
+				FB5BB6451BD5559300A382AC /* FeedCollectionVC.h */,
+				FB5BB6461BD5559300A382AC /* FeedCollectionVC.m */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -841,10 +862,12 @@
 				FB5E1ECF1BCABF7000897CA2 /* ProfileAddressInfoCell.xib in Resources */,
 				FB484A8F1B50C6130045A6EA /* Lato-Hairline.ttf in Resources */,
 				FB484A9A1B50C6130045A6EA /* Lato-SemiboldItalic.ttf in Resources */,
+				FBDE4CF01BD58E49000BA3C7 /* LoadingCollectionCell.xib in Resources */,
 				FB484A961B50C6130045A6EA /* Lato-Medium.ttf in Resources */,
 				FB484A8D1B50C6130045A6EA /* Lato-Bold.ttf in Resources */,
 				FB484A741B50C5FB0045A6EA /* LobsterTwo-Italic.otf in Resources */,
 				FB484A991B50C6130045A6EA /* Lato-Semibold.ttf in Resources */,
+				FBDE4CEB1BD55658000BA3C7 /* PostTextCollectionCell.xib in Resources */,
 				FB484A8B1B50C6130045A6EA /* Lato-Black.ttf in Resources */,
 				FB484A9C1B50C6130045A6EA /* Lato-ThinItalic.ttf in Resources */,
 				FB5E1ED41BCB0FD800897CA2 /* TextViewTableCell.xib in Resources */,
@@ -966,16 +989,19 @@
 				FB6C273D1B6ED2950002034A /* UrlManager.m in Sources */,
 				FB484A4D1B4FD40A0045A6EA /* OrderedDictionary.m in Sources */,
 				FB4BCBD11BCD6FA7009F853E /* ProfileNameInfoCell.m in Sources */,
+				FB5BB6471BD5559300A382AC /* FeedCollectionVC.m in Sources */,
 				FB4ED0251BCC843200E9F379 /* AddEditPetProfileVC.m in Sources */,
 				FB95D1751BD2B30E00254B06 /* PostTextCell.m in Sources */,
 				FBCF4A991BC6CF6B00C75066 /* CollectionViewController.m in Sources */,
 				FB5BB63E1BD5050800A382AC /* InputTableView.m in Sources */,
 				FB5E1EC61BCA944C00897CA2 /* TextFieldTableCell.m in Sources */,
 				FBB531141B9BA8A7004D5DA2 /* ResponseObject.m in Sources */,
+				FBDE4CEA1BD55658000BA3C7 /* PostTextCollectionCell.m in Sources */,
 				FBCF4AA01BC7116400C75066 /* ActivityView.m in Sources */,
 				FBCDC9AA1BC3381B00808E30 /* User.m in Sources */,
 				FB5050391BC4D1E70037F3E5 /* JSONValueTransformer+Date.m in Sources */,
 				FB1067E91B5341A500BEBC40 /* LoginVC.m in Sources */,
+				FBDE4CEF1BD58E49000BA3C7 /* LoadingCollectionCell.m in Sources */,
 				FBCF4A821BC68CF200C75066 /* PetCollectionCell.m in Sources */,
 				FBCF4A871BC698B700C75066 /* ProfileHeaderCell.m in Sources */,
 				FBCF4A8B1BC6B82400C75066 /* ButtonTabbarController.m in Sources */,
@@ -1155,7 +1181,7 @@
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Pet2Share/Pet2Share.pch";
 				INFOPLIST_FILE = pet2share/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "pet2share.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1173,7 +1199,7 @@
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Pet2Share/Pet2Share.pch";
 				INFOPLIST_FILE = pet2share/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "pet2share.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
