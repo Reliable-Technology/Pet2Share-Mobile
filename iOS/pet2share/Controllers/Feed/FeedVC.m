@@ -9,14 +9,18 @@
 #import "FeedVC.h"
 #import "Graphics.h"
 #import "AppColor.h"
+#import "WSConstants.h"
 #import "FeedCollectionVC.h"
+#import "Pet2ShareService.h"
+#import "Pet2ShareUser.h"
 #import "CommentVC.h"
-#import "Post.h"
 #import "NewPostVC.h"
 
 @interface FeedVC () <BaseNavigationProtocol, FeedCollectionDelegate, NewPostDelegate>
 
 @property (nonatomic, strong) FeedCollectionVC *feedCollection;
+@property (strong, nonatomic) UIButton *avatarBtn;
+@property (strong, nonatomic) NSString *avatarImgUrl;
 
 @end
 
@@ -30,6 +34,10 @@
     if ((self = [super initWithCoder:aDecoder]))
     {
         self.baseNavProtocol = self;
+        _avatarImgUrl = [Pet2ShareUser current].person.profilePictureUrl;
+        _avatarBtn = [Graphics circleImageButton:28.0f
+                                           image:[UIImage imageNamed:@"img-avatar"]
+                                     borderColor:[UIColor whiteColor]];
     }
     return self;
 }
@@ -37,6 +45,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self loadAvatarButtonImage];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -59,13 +68,18 @@
     else if ([segue.identifier isEqualToString:kSegueNewPost])
     {
         NewPostVC *newPostVC = (NewPostVC *)segue.destinationViewController;
-        newPostVC.transitioningDelegate = self.transitionManager;
+        newPostVC.transitioningDelegate = self.transitionZoom;
         newPostVC.delegate = self;
     }
     else if ([segue.identifier isEqualToString:kSegueFeedCollection])
     {
         self.feedCollection = (FeedCollectionVC *)segue.destinationViewController;
         self.feedCollection.collectionDelegate = self;
+    }
+    else if ([segue.identifier isEqualToString:kSegueProfileSelection])
+    {
+        UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
+        navController.transitioningDelegate = self.transitionManager;
     }
 }
 
@@ -75,7 +89,24 @@
 }
 
 #pragma mark -
+#pragma mark Private Instance Methods
+
+- (void)loadAvatarButtonImage
+{
+    Pet2ShareService *service = [Pet2ShareService new];
+    [service loadImage:self.avatarImgUrl completion:^(UIImage *image) {
+        [self.avatarBtn setBackgroundImage:image forState:UIControlStateNormal];
+        [self.avatarBtn setBackgroundImage:image forState:UIControlStateHighlighted];
+    }];
+}
+
+#pragma mark -
 #pragma mark Delegates
+
+- (UIButton *)setupLeftBarButton
+{
+    return self.avatarBtn;
+}
 
 - (UIButton *)setupRightBarButton
 {
@@ -84,6 +115,11 @@
     [button setImage:[Graphics tintImage:[UIImage imageNamed:@"icon-compose"]
                                withColor:[AppColorScheme white]] forState:UIControlStateNormal];
     return button;
+}
+
+- (void)handleLeftButtonEvent:(id)sender
+{
+    [self performSegueWithIdentifier:kSegueProfileSelection sender:self];
 }
 
 - (void)handleRightButtonEvent:(id)sender

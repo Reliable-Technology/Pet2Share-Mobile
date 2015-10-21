@@ -34,13 +34,14 @@ NSString * const kSegueDashboard                = @"dashboard";
 NSString * const kSeguePostsCollection          = @"postscollection";
 NSString * const kSegueMainView                 = @"mainview";
 NSString * const kSegueFeedCollection           = @"feedcollection";
+NSString * const kSegueProfileSelection         = @"profileselection";
+NSString * const kSegueNewPost                  = @"newpost";
+NSString * const kSegueComment                  = @"comment";
+NSString * const kSegueCommentContainer         = @"commentcontainer";
 NSString * const kSegueEditProfile              = @"editprofile";
 NSString * const kSeguePetProfile               = @"petprofile";
 NSString * const kSegueAddEditPetProfile        = @"addeditpetprofile";
 NSString * const kSegueShowCamera               = @"showcamera";
-NSString * const kSegueNewPost                  = @"newpost";
-NSString * const kSegueComment                  = @"comment";
-NSString * const kSegueCommentContainer         = @"commentcontainer";
 NSString * const kSeguePostDetail               = @"postdetail";
 NSString * const kSeguePostDetailContainer      = @"postdetailcontainer";
 

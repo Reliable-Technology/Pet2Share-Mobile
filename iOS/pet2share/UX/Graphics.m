@@ -126,6 +126,54 @@
     view.layer.shadowOpacity = shadowOpacity;
 }
 
++ (void)circleImageView:(UIImageView *)imageView hasBorder:(BOOL)hasBorder
+{
+    imageView.layer.cornerRadius = imageView.frame.size.width/2;
+    imageView.clipsToBounds = YES;
+    
+    if (hasBorder)
+    {
+        imageView.layer.borderWidth = 2.0f;
+        imageView.layer.borderColor = [AppColorScheme darkGray].CGColor;
+    }
+}
+
++ (UIButton *)circleImageButton:(CGFloat)diameter image:(UIImage *)image borderColor:(UIColor *)color
+{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    button.bounds = CGRectMake(0.0f, 0.0f, diameter, diameter);
+    [button setBackgroundImage:image forState:UIControlStateNormal];
+    [button setBackgroundImage:image forState:UIControlStateHighlighted];
+    button.layer.masksToBounds = YES;
+    button.layer.cornerRadius = diameter/2;
+    button.layer.borderColor = color.CGColor;
+    button.layer.borderWidth = 1.0f;
+    return button;
+}
+
+/**
+ * Draw a gradient UIImage separator. The height optimal for 2px and color
+ * should be the background color of the container.
+ * @param CGFloat height - Separator height
+ * @param UIColor color - Container background color
+ * @return UIImage
+ */
++ (UIImage *)separatorImage:(CGFloat)height backgroundColor:(UIColor *)color
+{
+    UIGraphicsBeginImageContext(CGSizeMake(1, height*2));
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    UIGraphicsPushContext(context);
+    CGContextSetFillColorWithColor(context, [self darkerColorForColor:color].CGColor);
+    CGContextFillRect(context, CGRectMake(0, 0, 0.25*height*2, height));
+    CGContextSetFillColorWithColor(context, [self lighterColorForColor:color].CGColor);
+    CGContextFillRect(context, CGRectMake(0, 0.75*height*2, 0.25*height*2, height));
+    UIGraphicsPopContext();
+    UIImage *outputImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return [UIImage imageWithCGImage:outputImage.CGImage scale:height orientation:UIImageOrientationUp];
+}
+
 + (UIImage *)circleImage:(UIImage*)image frame:(CGRect)frame
 {
     // Create the bitmap graphics context

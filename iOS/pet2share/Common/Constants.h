@@ -56,13 +56,14 @@ extern NSString * const kSegueDashboard;
 extern NSString * const kSeguePostsCollection;
 extern NSString * const kSegueMainView;
 extern NSString * const kSegueFeedCollection;
+extern NSString * const kSegueProfileSelection;
+extern NSString * const kSegueNewPost;
+extern NSString * const kSegueComment;
+extern NSString * const kSegueCommentContainer;
 extern NSString * const kSegueEditProfile;
 extern NSString * const kSeguePetProfile;
 extern NSString * const kSegueAddEditPetProfile;
 extern NSString * const kSegueShowCamera;
-extern NSString * const kSegueComment;
-extern NSString * const kSegueCommentContainer;
-extern NSString * const kSegueNewPost;
 extern NSString * const kSeguePostDetail;
 extern NSString * const kSeguePostDetailContainer;
 

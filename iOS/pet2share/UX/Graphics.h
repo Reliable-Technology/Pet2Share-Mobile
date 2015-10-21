@@ -39,6 +39,9 @@ typedef NS_ENUM(NSInteger, AlertType)
     shadowOpacity:(CGFloat)shadowOpacity shadowRadius:(CGFloat)shadowRadius offset:(CGSize)shadowOffset;
 + (void)dropShadow:(UIView *)view shadowOpacity:(CGFloat)shadowOpacity
       shadowRadius:(CGFloat)shadowRadius offset:(CGSize)shadowOffset;
++ (void)circleImageView:(UIImageView *)imageView hasBorder:(BOOL)hasBorder;
++ (UIButton *)circleImageButton:(CGFloat)diameter image:(UIImage *)image borderColor:(UIColor *)color;
++ (UIImage *)separatorImage:(CGFloat)height backgroundColor:(UIColor *)color;
 + (UIImage *)circleImage:(UIImage*)image frame:(CGRect)frame;
 + (UIImage *)scaleImage:(UIImage *)image toSize:(CGSize)newSize;
 + (UIImage *)tintImage:(UIImage *)source withColor:(UIColor *)color;

@@ -62,8 +62,6 @@
 
 - (void)setupLayout {}
 - (void)didScrollOutOfBound {}
-- (void)showNoDataView {}
-- (void)hideNoDataView {}
 
 #pragma mark <UICollectionViewDataSource>
 
