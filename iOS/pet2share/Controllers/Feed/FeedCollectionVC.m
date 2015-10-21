@@ -9,6 +9,7 @@
 #import "FeedCollectionVC.h"
 #import "ActivityView.h"
 #import "Graphics.h"
+#import "Constants.h"
 #import "PostTextCollectionCell.h"
 #import "LoadingCollectionCell.h"
 #import "Pet2ShareService.h"
@@ -27,11 +28,11 @@
 
 @implementation FeedCollectionVC
 
+static CGFloat kCellSpacing                     = 5.0f;
 static NSString * const kDataCellIdentifier     = @"posttextcollectioncell";
 static NSString * const kDataCellNibName        = @"PostTextCollectionCell";
 static NSString * const kLoadingCellIdentifier  = @"loadingcollectioncell";
 static NSString * const kLoadingCellNibName     = @"LoadingCollectionCell";
-static NSInteger const kNumberOfPostPerPage     = 10;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -49,7 +50,8 @@ static NSInteger const kNumberOfPostPerPage     = 10;
 {
     [super viewDidLoad];
     
-    [self.collectionView registerNib:[UINib nibWithNibName:kLoadingCellNibName bundle:[NSBundle mainBundle]]
+    // Extra cell
+    [self.collectionView registerNib:[UINib nibWithNibName:kLoadingCellNibName bundle:nil]
           forCellWithReuseIdentifier:kLoadingCellIdentifier];
     
     // Empty Data View
@@ -140,7 +142,7 @@ static NSInteger const kNumberOfPostPerPage     = 10;
 - (void)setupLayout
 {
     CollectionViewLayout *layout = (CollectionViewLayout *)self.collectionViewLayout;
-    [layout setupLayout:OneColumn cellHeight:[PostTextCollectionCell defaultHeight] spacing:5.0f];
+    [layout setupLayout:OneColumn cellHeight:[PostTextCollectionCell defaultHeight] spacing:kCellSpacing];
 }
 
 - (void)didScrollOutOfBound
@@ -150,7 +152,7 @@ static NSInteger const kNumberOfPostPerPage     = 10;
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat itemWidth = [CollectionViewLayout getItemWidth:self.collectionView.frame.size.width layoutType:OneColumn spacing:5.0f];
+    CGFloat itemWidth = [CollectionViewLayout getItemWidth:self.collectionView.frame.size.width layoutType:OneColumn spacing:kCellSpacing];
     
     if (indexPath.row < self.items.count)
     {
@@ -198,20 +200,25 @@ static NSInteger const kNumberOfPostPerPage     = 10;
             
             Post *post = [self.items objectAtIndex:indexPath.row];
             
-            NSString *likeStringCount = post.postLikeCount == 1
-            ? [NSString stringWithFormat:@"%ld Like", (long)post.postLikeCount]
-            : [NSString stringWithFormat:@"%ld Likes", (long)post.postLikeCount];
-            NSString *commentStringCount = post.postCommentCount == 1
-            ? [NSString stringWithFormat:@"%ld Comment", (long)post.postCommentCount]
-            : [NSString stringWithFormat:@"%ld Comments", (long)post.postCommentCount];
-            NSString *statusComment = [NSString stringWithFormat:@"%@ • %@", likeStringCount, commentStringCount];
+            NSString *profileImageUrl = kEmptyString;
+            NSString *profileName = kEmptyString;
+            if (post.isPostByPet)
+            {
+                profileImageUrl = post.pet.profilePictureUrl;
+                profileName = post.pet.name;
+            }
+            else
+            {
+                profileImageUrl = post.user.profilePictureUrl;
+                profileName = post.user.name;
+            }
             
-            [(PostTextCollectionCell *)cell loadDataWithImageUrl:post.user.profilePictureUrl
+            [(PostTextCollectionCell *)cell loadDataWithImageUrl:profileImageUrl
                                             placeHolderImageName:@"img-avatar"
-                                                     primaryText:post.user.name
+                                                     primaryText:profileName
                                                    secondaryText:[Utils formatNSDateToString:post.dateAdded withFormat:kFormatDayOfWeekWithDateTime]
                                                  descriptionText:post.postDescription
-                                                      statusText:statusComment];
+                                                      statusText:post.getPostStatusString];
         }
         else
         {

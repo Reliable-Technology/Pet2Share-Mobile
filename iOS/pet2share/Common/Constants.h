@@ -42,6 +42,7 @@ extern NSInteger const kDescriptionMaxCharacters;
 extern NSInteger const kCacheTimeOut;
 extern NSInteger const kImageCacheTimeOut;
 extern NSString * const kTempAvatarImage;
+extern NSInteger const kNumberOfPostPerPage;
 
 #pragma mark - Segues
 

@@ -385,7 +385,7 @@ static id ObjectOrNull(id object)
     fTRACE("%@ <PetId: %ld>", GETPOSTSBYPET_ENDPOINT, (long)petId);
     
     NSMutableDictionary *postData = [NSMutableDictionary dictionary];
-    [postData setObject:@(petId) forKey:@"PetId"];
+    [postData setObject:@(petId) forKey:@"ProfileId"];
     [postData setObject:@(postCount) forKey:@"PostCount"];
     [postData setObject:@(pageNumber) forKey:@"PageNumber"];
     

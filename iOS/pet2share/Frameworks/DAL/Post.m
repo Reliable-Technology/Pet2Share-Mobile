@@ -17,6 +17,7 @@
               @"PostTypeId": @"postTypeId",
               @"PostedBy": @"postedBy",
               @"SUser": @"user",
+              @"SPet": @"pet",
               @"Description": @"postDescription",
               @"Comments": @"comments",
               @"PostCommentCount": @"postCommentCount",
@@ -32,6 +33,18 @@
 - (BOOL)isValidate
 {
     return (self.identifier != -1) ? YES : NO;
+}
+
+- (NSString *)getPostStatusString
+{
+    NSString *likeStringCount = self.postLikeCount == 1
+    ? [NSString stringWithFormat:@"%ld Like", (long)self.postLikeCount]
+    : [NSString stringWithFormat:@"%ld Likes", (long)self.postLikeCount];
+    NSString *commentStringCount = self.postCommentCount == 1
+    ? [NSString stringWithFormat:@"%ld Comment", (long)self.postCommentCount]
+    : [NSString stringWithFormat:@"%ld Comments", (long)self.postCommentCount];
+    NSString *postStatus = [NSString stringWithFormat:@"%@ • %@", likeStringCount, commentStringCount];
+    return postStatus;
 }
 
 @end

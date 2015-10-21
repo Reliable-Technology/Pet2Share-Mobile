@@ -17,7 +17,8 @@ typedef NS_ENUM(NSInteger, PostType)
 };
 
 @class Date;
-@protocol SUser;
+@class SUser;
+@class SPet;
 @protocol Comment;
 
 @interface Post : RepositoryObject
@@ -26,6 +27,7 @@ typedef NS_ENUM(NSInteger, PostType)
 @property PostType postTypeId;
 @property NSInteger postedBy;
 @property SUser<Optional> *user;
+@property SPet<Optional> *pet;
 @property NSString <Optional> *postDescription;
 @property NSArray<Comment> *comments;
 @property NSInteger postCommentCount;
@@ -36,5 +38,7 @@ typedef NS_ENUM(NSInteger, PostType)
 @property BOOL isDeleted;
 @property Date *dateAdded;
 @property Date *dateModified;
+
+- (NSString *)getPostStatusString;
 
 @end

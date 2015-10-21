@@ -8,6 +8,24 @@
 
 #import "Pet.h"
 
+@implementation SPet
+
++ (JSONKeyMapper *)keyMapper
+{
+    return [[JSONKeyMapper alloc] initWithDictionary:
+            @{@"Id": @"identifier",
+              @"Name": @"name",
+              @"FamilyName": @"familyName",
+              @"ProfilePictureURL": @"profilePictureUrl"}];
+}
+
+- (BOOL)isValidate
+{
+    return self.identifier != -1 ? YES : NO;
+}
+
+@end
+
 @implementation Pet
 
 + (JSONKeyMapper *)keyMapper

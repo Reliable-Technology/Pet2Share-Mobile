@@ -11,11 +11,20 @@
 @class PetType;
 @class Date;
 
+@interface SPet : RepositoryObject
+
+@property NSInteger identifier;
+@property NSString<Optional> *name;
+@property NSString<Optional> *familyName;
+@property NSString<Optional> *profilePictureUrl;
+
+@end
+
 @interface Pet : RepositoryObject
 
 @property NSInteger identifier;
-@property NSString *name;
-@property NSString *familyName;
+@property NSString<Optional> *name;
+@property NSString<Optional> *familyName;
 @property NSInteger userIdentifier;
 @property PetType<Optional> *petType;
 @property Date *dateOfBirth;
