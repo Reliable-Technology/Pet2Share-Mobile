@@ -26,7 +26,6 @@
     {
         _items = [NSMutableArray array];
         _cellReuseIdentifier = kEmptyString;
-        _dataEmptyString = NSLocalizedString(@"Data Not Available", @"");
     }
     return self;
 }
@@ -63,6 +62,8 @@
 
 - (void)setupLayout {}
 - (void)didScrollOutOfBound {}
+- (void)showNoDataView {}
+- (void)hideNoDataView {}
 
 #pragma mark <UICollectionViewDataSource>
 

@@ -158,6 +158,8 @@
 		FBDE4D531BD67F9A000BA3C7 /* CommentCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D511BD67F9A000BA3C7 /* CommentCollectionCell.xib */; settings = {ASSET_TAGS = (); }; };
 		FBDE4D571BD6E091000BA3C7 /* NoDataCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D551BD6E091000BA3C7 /* NoDataCollectionCell.m */; settings = {ASSET_TAGS = (); }; };
 		FBDE4D581BD6E091000BA3C7 /* NoDataCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D561BD6E091000BA3C7 /* NoDataCollectionCell.xib */; settings = {ASSET_TAGS = (); }; };
+		FBDE4D5B1BD73E17000BA3C7 /* EmptyDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D5A1BD73E17000BA3C7 /* EmptyDataView.m */; settings = {ASSET_TAGS = (); }; };
+		FBDE4D5F1BD73E42000BA3C7 /* EmptyDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D5E1BD73E42000BA3C7 /* EmptyDataView.xib */; settings = {ASSET_TAGS = (); }; };
 		FBFC5CEA1BCF5C8600312F31 /* CacheKey.m in Sources */ = {isa = PBXBuildFile; fileRef = FBFC5CE91BCF5C8600312F31 /* CacheKey.m */; settings = {ASSET_TAGS = (); }; };
 		FBFC5CED1BCF636F00312F31 /* AppData.m in Sources */ = {isa = PBXBuildFile; fileRef = FBFC5CEC1BCF636F00312F31 /* AppData.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -410,6 +412,9 @@
 		FBDE4D541BD6E091000BA3C7 /* NoDataCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoDataCollectionCell.h; sourceTree = "<group>"; };
 		FBDE4D551BD6E091000BA3C7 /* NoDataCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoDataCollectionCell.m; sourceTree = "<group>"; };
 		FBDE4D561BD6E091000BA3C7 /* NoDataCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoDataCollectionCell.xib; sourceTree = "<group>"; };
+		FBDE4D591BD73E17000BA3C7 /* EmptyDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyDataView.h; sourceTree = "<group>"; };
+		FBDE4D5A1BD73E17000BA3C7 /* EmptyDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyDataView.m; sourceTree = "<group>"; };
+		FBDE4D5E1BD73E42000BA3C7 /* EmptyDataView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyDataView.xib; sourceTree = "<group>"; };
 		FBFC5CE81BCF5C8600312F31 /* CacheKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheKey.h; sourceTree = "<group>"; };
 		FBFC5CE91BCF5C8600312F31 /* CacheKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheKey.m; sourceTree = "<group>"; };
 		FBFC5CEB1BCF636F00312F31 /* AppData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppData.h; sourceTree = "<group>"; };
@@ -611,6 +616,9 @@
 				FB5BB63D1BD5050800A382AC /* InputTableView.m */,
 				FB5BB63F1BD52ABE00A382AC /* KeyboardBar.h */,
 				FB5BB6401BD52ABE00A382AC /* KeyboardBar.m */,
+				FBDE4D591BD73E17000BA3C7 /* EmptyDataView.h */,
+				FBDE4D5A1BD73E17000BA3C7 /* EmptyDataView.m */,
+				FBDE4D5E1BD73E42000BA3C7 /* EmptyDataView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -991,6 +999,7 @@
 				FB484A8D1B50C6130045A6EA /* Lato-Bold.ttf in Resources */,
 				FBDE4D581BD6E091000BA3C7 /* NoDataCollectionCell.xib in Resources */,
 				FB484A741B50C5FB0045A6EA /* LobsterTwo-Italic.otf in Resources */,
+				FBDE4D5F1BD73E42000BA3C7 /* EmptyDataView.xib in Resources */,
 				FB484A991B50C6130045A6EA /* Lato-Semibold.ttf in Resources */,
 				FBDE4CEB1BD55658000BA3C7 /* PostTextCollectionCell.xib in Resources */,
 				FB484A8B1B50C6130045A6EA /* Lato-Black.ttf in Resources */,
@@ -1114,6 +1123,7 @@
 				FB484A5E1B50BE4E0045A6EA /* ThemeManager.m in Sources */,
 				FB484A531B4FD40A0045A6EA /* Utils.m in Sources */,
 				FB4DB9381BCDC88300C1466D /* WebClient.m in Sources */,
+				FBDE4D5B1BD73E17000BA3C7 /* EmptyDataView.m in Sources */,
 				FBFC5CED1BCF636F00312F31 /* AppData.m in Sources */,
 				FB95D1791BD2CCCA00254B06 /* FeedDetailVC.m in Sources */,
 				FBDE4D2D1BD5E28E000BA3C7 /* SpringLabel.swift in Sources */,

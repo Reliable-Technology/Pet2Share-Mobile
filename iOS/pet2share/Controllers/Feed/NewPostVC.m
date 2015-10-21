@@ -89,12 +89,12 @@ static CGFloat const kToolbarHeight = 44.0f;
     UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
                                                                                 target:nil
                                                                                 action:nil];
-    fixedSpace.width = 5.0f;
+    fixedSpace.width = 10.0f;
     
     if (!self.remainCharacterLabels)
     {
         _remainCharacterLabels = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 100.0f, kToolbarHeight)];
-        _remainCharacterLabels.text = NSLocalizedString(@"300", @"");
+        _remainCharacterLabels.text = NSLocalizedString(@"300 Characters", @"");
         _remainCharacterLabels.textAlignment = NSTextAlignmentRight;
         _remainCharacterLabels.font = [UIFont systemFontOfSize:12.0f weight:UIFontWeightLight];
         _remainCharacterLabels.textColor = [AppColorScheme lightGray];
@@ -104,7 +104,7 @@ static CGFloat const kToolbarHeight = 44.0f;
     
     if (!self.postBtn)
     {
-        _postBtn = [[RoundCornerButton alloc] initWithFrame:CGRectMake(0.0f, 4.0f, 100.0f, 36.0f)];
+        _postBtn = [[RoundCornerButton alloc] initWithFrame:CGRectMake(0.0f, 4.0f, 80.0f, 32.0f)];
         _postBtn.activityPosition = Center;
         _postBtn.layer.backgroundColor = [AppColorScheme darkBlueColor].CGColor;
         _postBtn.layer.cornerRadius = 3.0f;
@@ -127,8 +127,8 @@ static CGFloat const kToolbarHeight = 44.0f;
 - (void)updateRemainCharactersLabel
 {
     NSInteger remainingChar = _remainCharacters > 0 ? _remainCharacters : 0;
-    if (remainingChar == 1) self.remainCharacterLabels.text = [NSString stringWithFormat:@"%ld", (long)remainingChar];
-    else self.remainCharacterLabels.text = [NSString stringWithFormat:@"%ld", (long)remainingChar];
+    if (remainingChar == 1) self.remainCharacterLabels.text = [NSString stringWithFormat:@"%ld Characters", (long)remainingChar];
+    else self.remainCharacterLabels.text = [NSString stringWithFormat:@"%ld Characters", (long)remainingChar];
     [self.remainCharacterLabels reloadInputViews];
 }
 

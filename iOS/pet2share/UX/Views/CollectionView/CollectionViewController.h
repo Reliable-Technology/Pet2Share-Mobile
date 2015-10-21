@@ -7,12 +7,13 @@
 //
 
 #import "CollectionViewLayout.h"
+#import "EmptyDataView.h"
 
 @interface CollectionViewController : UICollectionViewController
 
 @property (nonatomic, strong) NSString *cellReuseIdentifier;
 @property (nonatomic, strong) NSString *customNibName;
-@property (nonatomic, strong) NSString *dataEmptyString;
+@property (nonatomic, strong) EmptyDataView *emptyDataView;
 @property (nonatomic, strong) NSMutableArray *items;
 
 @property (nonatomic, strong) UIRefreshControl *refreshControl;

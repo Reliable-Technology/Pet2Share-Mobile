@@ -14,6 +14,7 @@
 #import "Pet2ShareService.h"
 #import "Pet2ShareUser.h"
 #import "Utils.h"
+#import "EmptyDataView.h"
 
 @interface FeedCollectionVC () <Pet2ShareServiceCallback>
 {
@@ -51,11 +52,22 @@ static NSInteger const kNumberOfPostPerPage     = 10;
     [self.collectionView registerNib:[UINib nibWithNibName:kLoadingCellNibName bundle:[NSBundle mainBundle]]
           forCellWithReuseIdentifier:kLoadingCellIdentifier];
     
+    // Empty Data View
+    self.emptyDataView = [[EmptyDataView alloc] initWithFrame:CGRectMake(0, 0, [EmptyDataView width], [EmptyDataView height])];
+    [self.emptyDataView updateViewWithFirstText:NSLocalizedString(@"YOU HAVE NO POST YET!", @"")
+                                     secondText:NSLocalizedString(@"to add new post", @"")
+                                  iconImageName:@"img-compose"];
+    self.emptyDataView.center = CGPointMake(self.collectionView.frame.size.width/2,
+                                            self.collectionView.frame.size.height/2 - 49);  // Offset the TabBar
+    [self.collectionView addSubview:self.emptyDataView];
+    [self.collectionView bringSubviewToFront:self.emptyDataView];
+    
     // Setup refresh control
     self.refreshControl = [UIRefreshControl new];
     [self.collectionView addSubview:self.refreshControl];
     [self.refreshControl addTarget:self action:@selector(refreshData) forControlEvents:UIControlEventValueChanged];
     
+    // Request data
     [self requestData];
 }
 
@@ -81,6 +93,8 @@ static NSInteger const kNumberOfPostPerPage     = 10;
 
 - (void)requestData
 {
+    [self.emptyDataView hide];
+    
     if (_isRequesting) return;
     _isRequesting = YES;
     
@@ -92,8 +106,6 @@ static NSInteger const kNumberOfPostPerPage     = 10;
 
 - (void)onReceiveSuccess:(NSArray *)objects
 {
-    objects = @[];
-    
     _isRequesting = NO;
     fTRACE(@"Number of Objects: %ld", objects.count);
     if (self.refreshControl.isRefreshing || _pageNumber == 1)
@@ -101,9 +113,18 @@ static NSInteger const kNumberOfPostPerPage     = 10;
         [self.items removeAllObjects];
         [self.refreshControl endRefreshing];
     }
-    if (objects.count == 0 || objects.count < kNumberOfPostPerPage) _hasAllData = YES;
+    if (objects.count == 0 || objects.count < kNumberOfPostPerPage)
+    {
+        _hasAllData = YES;
+    }
+    
     [self.items addObjectsFromArray:objects];
     [self.collectionView reloadData];
+    
+    if ([self.items count] == 0)
+    {
+        [self.emptyDataView show];
+    }
 }
 
 - (void)onReceiveError:(ErrorMessage *)errorMessage
