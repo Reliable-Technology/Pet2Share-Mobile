@@ -19,7 +19,6 @@
 {
     NSInteger _pageNumber;
     BOOL _hasAllData;
-    CGFloat _lastContentOffset;
     BOOL _isRequesting;
 }
 
@@ -82,6 +81,7 @@ static NSInteger const kNumberOfPostPerPage     = 10;
 
 - (void)requestData
 {
+    if (_isRequesting) return;
     _isRequesting = YES;
     
     Pet2ShareService *service = [Pet2ShareService new];
@@ -92,6 +92,8 @@ static NSInteger const kNumberOfPostPerPage     = 10;
 
 - (void)onReceiveSuccess:(NSArray *)objects
 {
+    objects = @[];
+    
     _isRequesting = NO;
     fTRACE(@"Number of Objects: %ld", objects.count);
     if (self.refreshControl.isRefreshing || _pageNumber == 1)
@@ -118,6 +120,11 @@ static NSInteger const kNumberOfPostPerPage     = 10;
 {
     CollectionViewLayout *layout = (CollectionViewLayout *)self.collectionViewLayout;
     [layout setupLayout:OneColumn cellHeight:[PostTextCollectionCell defaultHeight] spacing:5.0f];
+}
+
+- (void)didScrollOutOfBound
+{
+    [self requestData];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -207,32 +214,6 @@ static NSInteger const kNumberOfPostPerPage     = 10;
         if ([self.collectionDelegate respondsToSelector:@selector(didSelectItem:)])
         {
             [self.collectionDelegate didSelectItem:post];
-        }
-    }
-}
-
-#pragma mark -
-#pragma mark - <UIScrollViewDelegate>
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    ScrollDirection scrollDirection = ScrollDirectionNone;
-    if (_lastContentOffset > scrollView.contentOffset.y)
-        scrollDirection = ScrollDirectionDown;
-    else if (_lastContentOffset < scrollView.contentOffset.y)
-        scrollDirection = ScrollDirectionUp;
-    _lastContentOffset = scrollView.contentOffset.y;
-    
-    /*
-    fTRACE(@"Scroll Direction: %d Content Size: %.2f Offset: %.2f, View Height: %.2f",
-           scrollDirection, scrollView.contentSize.height,  _lastContentOffset, self.view.bounds.size.height); */
-    
-    if (_lastContentOffset > 0)
-    {
-        CGFloat offset = scrollView.contentSize.height - _lastContentOffset;
-        if (scrollDirection == ScrollDirectionDown && offset < self.view.bounds.size.height && !_isRequesting)
-        {
-            [self requestData];
         }
     }
 }

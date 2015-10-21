@@ -156,6 +156,8 @@
 		FBDE4D4E1BD67F1D000BA3C7 /* CommentCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D4D1BD67F1D000BA3C7 /* CommentCollectionVC.m */; settings = {ASSET_TAGS = (); }; };
 		FBDE4D521BD67F9A000BA3C7 /* CommentCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D501BD67F9A000BA3C7 /* CommentCollectionCell.m */; settings = {ASSET_TAGS = (); }; };
 		FBDE4D531BD67F9A000BA3C7 /* CommentCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D511BD67F9A000BA3C7 /* CommentCollectionCell.xib */; settings = {ASSET_TAGS = (); }; };
+		FBDE4D571BD6E091000BA3C7 /* NoDataCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D551BD6E091000BA3C7 /* NoDataCollectionCell.m */; settings = {ASSET_TAGS = (); }; };
+		FBDE4D581BD6E091000BA3C7 /* NoDataCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D561BD6E091000BA3C7 /* NoDataCollectionCell.xib */; settings = {ASSET_TAGS = (); }; };
 		FBFC5CEA1BCF5C8600312F31 /* CacheKey.m in Sources */ = {isa = PBXBuildFile; fileRef = FBFC5CE91BCF5C8600312F31 /* CacheKey.m */; settings = {ASSET_TAGS = (); }; };
 		FBFC5CED1BCF636F00312F31 /* AppData.m in Sources */ = {isa = PBXBuildFile; fileRef = FBFC5CEC1BCF636F00312F31 /* AppData.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -405,6 +407,9 @@
 		FBDE4D4F1BD67F9A000BA3C7 /* CommentCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCollectionCell.h; sourceTree = "<group>"; };
 		FBDE4D501BD67F9A000BA3C7 /* CommentCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCollectionCell.m; sourceTree = "<group>"; };
 		FBDE4D511BD67F9A000BA3C7 /* CommentCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCollectionCell.xib; sourceTree = "<group>"; };
+		FBDE4D541BD6E091000BA3C7 /* NoDataCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoDataCollectionCell.h; sourceTree = "<group>"; };
+		FBDE4D551BD6E091000BA3C7 /* NoDataCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoDataCollectionCell.m; sourceTree = "<group>"; };
+		FBDE4D561BD6E091000BA3C7 /* NoDataCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoDataCollectionCell.xib; sourceTree = "<group>"; };
 		FBFC5CE81BCF5C8600312F31 /* CacheKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheKey.h; sourceTree = "<group>"; };
 		FBFC5CE91BCF5C8600312F31 /* CacheKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheKey.m; sourceTree = "<group>"; };
 		FBFC5CEB1BCF636F00312F31 /* AppData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppData.h; sourceTree = "<group>"; };
@@ -481,6 +486,9 @@
 				FBDE4CE71BD55658000BA3C7 /* PostTextCollectionCell.h */,
 				FBDE4CE81BD55658000BA3C7 /* PostTextCollectionCell.m */,
 				FBDE4CE91BD55658000BA3C7 /* PostTextCollectionCell.xib */,
+				FBDE4D541BD6E091000BA3C7 /* NoDataCollectionCell.h */,
+				FBDE4D551BD6E091000BA3C7 /* NoDataCollectionCell.m */,
+				FBDE4D561BD6E091000BA3C7 /* NoDataCollectionCell.xib */,
 				FBCF4A841BC698B700C75066 /* ProfileHeaderCell.h */,
 				FBCF4A851BC698B700C75066 /* ProfileHeaderCell.m */,
 				FBCF4A861BC698B700C75066 /* ProfileHeaderCell.xib */,
@@ -981,6 +989,7 @@
 				FBDE4CF01BD58E49000BA3C7 /* LoadingCollectionCell.xib in Resources */,
 				FB484A961B50C6130045A6EA /* Lato-Medium.ttf in Resources */,
 				FB484A8D1B50C6130045A6EA /* Lato-Bold.ttf in Resources */,
+				FBDE4D581BD6E091000BA3C7 /* NoDataCollectionCell.xib in Resources */,
 				FB484A741B50C5FB0045A6EA /* LobsterTwo-Italic.otf in Resources */,
 				FB484A991B50C6130045A6EA /* Lato-Semibold.ttf in Resources */,
 				FBDE4CEB1BD55658000BA3C7 /* PostTextCollectionCell.xib in Resources */,
@@ -1151,6 +1160,7 @@
 				FBCEA4321B4CC3E000497678 /* main.m in Sources */,
 				FBDE4D2E1BD5E28E000BA3C7 /* SpringTextField.swift in Sources */,
 				FB484A5B1B50BE410045A6EA /* AppColorScheme.m in Sources */,
+				FBDE4D571BD6E091000BA3C7 /* NoDataCollectionCell.m in Sources */,
 				FBCF4ABD1BC8691700C75066 /* PetType.m in Sources */,
 				FB5E1ECA1BCA9DA400897CA2 /* DateFormatterFactory.m in Sources */,
 				FBDE4D241BD5E28E000BA3C7 /* KeyboardLayoutConstraint.swift in Sources */,

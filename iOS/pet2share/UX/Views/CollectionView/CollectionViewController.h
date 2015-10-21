@@ -18,5 +18,6 @@
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 - (void)setupLayout;
+- (void)didScrollOutOfBound;
 
 @end

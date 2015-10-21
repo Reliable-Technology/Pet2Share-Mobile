@@ -49,7 +49,10 @@
 
 - (NSString *)getAvatarImageKey
 {
-    return [Pet2ShareUser current].person.profilePictureUrl;
+    NSString *imageKey = [Pet2ShareUser current].person.profilePictureUrl;
+    if (!imageKey || [imageKey isEqualToString:kEmptyString]) imageKey = kTempAvatarImage;
+    fTRACE("Key: %@", imageKey);
+    return imageKey;
 }
 
 - (NSString *)getSectionTitle:(NSString *)identifier
