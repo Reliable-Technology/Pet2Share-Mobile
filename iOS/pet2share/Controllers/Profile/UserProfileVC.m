@@ -8,28 +8,26 @@
 
 #import "UserProfileVC.h"
 #import "AppColor.h"
-#import "ProfileHeaderCell.h"
 #import "PetCollectionCell.h"
+#import "EmptyPetCollectionCell.h"
 #import "Pet2ShareService.h"
 #import "Pet2ShareUser.h"
 #import "PetProfileVC.h"
 #import "AddEditPetProfileVC.h"
 
-static NSString * const kCellIdentifier     = @"petcollectioncell";
-static NSString * const kHeaderIdentifier   = @"profileheadercell";
-static NSString * const kHeaderNibName      = @"ProfileHeaderCell";
-static NSString * const kCellNibName        = @"PetCollectionCell";
+static NSString * const kCellIdentifier         = @"petcollectioncell";
+static NSString * const kCellNibName            = @"PetCollectionCell";
+static NSString * const kEmptyCellIdentifier    = @"emptypetcollectioncell";
+static NSString * const kEmptyCellNibName       = @"EmptyPetCollectionCell";
+static CGFloat kCellSpacing                     = 5.0f;
 
-@interface UserProfileVC () <CellButtonDelegate, Pet2ShareServiceCallback>
-
-- (IBAction)addButtonTapped:(id)sender;
+@interface UserProfileVC () <Pet2ShareServiceCallback>
 
 @end
 
 @implementation UserProfileVC
 
-#pragma mark -
-#pragma mark Life Cycle
+#pragma mark - Life Cycle
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -49,13 +47,12 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSForegroundColorAttributeName: [AppColor navigationBarTextColor],
        NSFontAttributeName:[UIFont fontWithName:kLogoTypeface size:20.0f]}];
- 
-    // Setup collection view
-    [self.collectionView registerNib:[UINib nibWithNibName:kHeaderNibName bundle:nil]
-          forSupplementaryViewOfKind:CSStickyHeaderParallaxHeader
-                 withReuseIdentifier:kHeaderIdentifier];
-    self.collectionView.backgroundColor = [AppColorScheme white];
     
+    // Register extra cells
+    [self.collectionView registerNib:[UINib nibWithNibName:kEmptyCellNibName bundle:nil]
+          forCellWithReuseIdentifier:kEmptyCellIdentifier];
+ 
+    // Request User Data
     [self requestUserData];
 }
 
@@ -67,11 +64,7 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:kSegueEditProfile])
-    {
-        TRACE_HERE;
-    }
-    else if ([segue.identifier isEqualToString:kSeguePetProfile])
+    if ([segue.identifier isEqualToString:kSeguePetProfile])
     {
         PetProfileVC *viewController = (PetProfileVC *)segue.destinationViewController;
         viewController.pet = (Pet *)sender;
@@ -85,6 +78,7 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
             addEditProfileVC.petProfileMode = AddPetProfile;
             addEditProfileVC.pet = [Pet new];
         }
+        navController.transitioningDelegate = self.transitionManager;
     }
 }
 
@@ -93,8 +87,29 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
     TRACE_HERE;
 }
 
-#pragma mark -
-#pragma mark Private Instance Methods
+#pragma mark - Private & Protected Instance Methods
+
+- (NSString *)getProfileImageUrl
+{
+    return [Pet2ShareUser current].person.profilePictureUrl;
+}
+
+- (NSString *)getProfileCoverImageUrl
+{
+    return [Pet2ShareUser current].person.coverPictureUrl;
+}
+
+-  (NSString *)getProfileName
+{
+    NSString *name = [NSString stringWithFormat:@"%@ %@",
+                      [Pet2ShareUser current].person.firstName, [Pet2ShareUser current].person.lastName];
+    return name;
+}
+
+- (NSString *)getEditSegueIdentifier
+{
+    return kSegueEditProfile;
+}
 
 - (void)setupLayout
 {
@@ -102,19 +117,12 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
     
     if ([layout isKindOfClass:[CSStickyHeaderFlowLayout class]])
     {
-        layout.parallaxHeaderReferenceSize = CGSizeMake(self.view.frame.size.width, [ProfileHeaderCell cellHeight]);
-        layout.parallaxHeaderMinimumReferenceSize = CGSizeMake(self.view.frame.size.width, [ProfileHeaderCell cellHeight]-20.0f);
-        [layout setupLayout:TwoColumns cellHeight:[PetCollectionCell cellHeight:5.0f] spacing:5.0f];
+        layout.parallaxHeaderReferenceSize = CGSizeMake(self.view.frame.size.width, [ProfileHeaderCell height]);
+        layout.parallaxHeaderMinimumReferenceSize = CGSizeMake(self.view.frame.size.width, [ProfileHeaderCell height]-10.0f);
+        [layout setupLayout:TwoColumns cellHeight:[PetCollectionCell height:kCellSpacing] spacing:kCellSpacing];
         layout.parallaxHeaderAlwaysOnTop = NO;
         layout.disableStickyHeaders = YES;
     }
-}
-
-- (void)requestUserData
-{
-    [self refreshView];
-    Pet2ShareService *service = [Pet2ShareService new];
-    [service getUserProfile:self userId:[Pet2ShareUser current].identifier cachePolicy:CacheDefault];
 }
 
 - (void)refreshView
@@ -124,16 +132,21 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
     [self.collectionView reloadData];
 }
 
-#pragma mark - 
-#pragma mark Events
+#pragma mark - Events
 
-- (IBAction)addButtonTapped:(id)sender
+- (void)addButtonTapped:(id)sender
 {
     [self performSegueWithIdentifier:kSegueAddEditPetProfile sender:self];
 }
 
-#pragma mark - 
-#pragma mark <Pet2ShareServiceCallback>
+#pragma mark - Web service
+
+- (void)requestUserData
+{
+    [self refreshView];
+    Pet2ShareService *service = [Pet2ShareService new];
+    [service getUserProfile:self userId:[Pet2ShareUser current].identifier cachePolicy:CacheDefault];
+}
 
 - (void)onReceiveSuccess:(NSArray *)objects
 {
@@ -150,19 +163,35 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
     [Graphics alert:NSLocalizedString(@"Error", @"") message:errorMessage.message type:ErrorAlert];
 }
 
-#pragma mark -
-#pragma mark <UICollectionViewDataSource>
+#pragma mark - Collection View
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return [self.items count] + 1;  // With empty cell
+}
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    PetCollectionCell *cell =
-    (PetCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:self.cellReuseIdentifier
-                                                                   forIndexPath:indexPath];
+    UICollectionViewCell *cell;
+    
+    
     @try
     {
-        Pet *pet = [self.items objectAtIndex:indexPath.row];
-        [cell setupView:pet];
+        if (indexPath.row == self.items.count)  // This is the bottom of the list
+        {
+            cell = (EmptyPetCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kEmptyCellIdentifier
+                                                                                  forIndexPath:indexPath];
+            [((EmptyPetCollectionCell *)cell).addPetBtn addTarget:self action:@selector(addButtonTapped:)
+                                                 forControlEvents:UIControlEventTouchUpInside];
+        }
+        else
+        {
+            cell = (PetCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:self.cellReuseIdentifier
+                                                                                  forIndexPath:indexPath];
+            Pet *pet = [self.items objectAtIndex:indexPath.row];
+            [(PetCollectionCell *)cell setupView:pet];
+        }
     }
     @catch (NSException *exception)
     {
@@ -172,56 +201,26 @@ static NSString * const kCellNibName        = @"PetCollectionCell";
     return cell;
 }
 
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
-           viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-{
-    if ([kind isEqualToString:CSStickyHeaderParallaxHeader])
-    {
-        @try
-        {
-            ProfileHeaderCell *cell = [collectionView dequeueReusableSupplementaryViewOfKind:kind
-                                                                         withReuseIdentifier:kHeaderIdentifier
-                                                                                forIndexPath:indexPath];
-            Pet2ShareUser *currentUser = [Pet2ShareUser current];
-            NSString *firstName = currentUser.person.firstName;
-            NSString *lastName = currentUser.person.lastName;
-            NSString *name = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
-            [cell updateProfileAvatar:currentUser.person.profilePictureUrl name:name socialStatusInfo:nil];
-            cell.delegate = self;
-            return cell;
-        }
-        @catch (NSException *exception)
-        {
-            NSLog(@"%s: Exception: %@", __func__, exception.description);
-        }
-    }
-    return nil;
-}
-
-#pragma mark -
-#pragma mark <UICollectionViewDelegates>
-
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     fTRACE(@"Tile Selected Index: %ld", (long)indexPath.row);
     
     @try
     {
-        Pet *pet = [self.items objectAtIndex:indexPath.row];
-        [self performSegueWithIdentifier:kSeguePetProfile sender:pet];
+        if (indexPath.row == self.items.count)
+        {
+            [self addButtonTapped:self];
+        }
+        else
+        {
+            Pet *pet = [self.items objectAtIndex:indexPath.row];
+            [self performSegueWithIdentifier:kSeguePetProfile sender:pet];
+        }
     }
     @catch (NSException *exception)
     {
         NSLog(@"%s: Exception: %@", __func__, exception.description);
     }
-}
-
-#pragma mark -
-#pragma mark <ProfileHeaderDelegate>
-
-- (void)editButtonTapped:(id)sender
-{
-    [self performSegueWithIdentifier:kSegueEditProfile sender:self];
 }
 
 @end

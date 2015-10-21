@@ -29,6 +29,7 @@ static CGFloat const kToolbarHeight = 44.0f;
 @property (weak, nonatomic) IBOutlet PlaceHolderTextView *textView;
 @property (strong, nonatomic) UILabel *remainCharacterLabels;
 @property (strong, nonatomic) RoundCornerButton *postBtn;
+@property (strong, nonatomic) NSString *profileName;
 
 - (IBAction)closeBtnTapped:(id)sender;
 
@@ -62,19 +63,22 @@ static CGFloat const kToolbarHeight = 44.0f;
         imageUrl = [Pet2ShareUser current].person.profilePictureUrl;
         _profileId = [Pet2ShareUser current].identifier;
         _isPostedByPet = NO;
+        _profileName = [NSString stringWithFormat:@"%@ %@",
+                        [Pet2ShareUser current].person.firstName, [Pet2ShareUser current].person.lastName];
     }
     else
     {
         imageUrl = [Pet2ShareUser current].selectedPet.profilePictureUrl;
         _profileId = [Pet2ShareUser current].selectedPet.identifier;
         _isPostedByPet = YES;
+        _profileName = [Pet2ShareUser current].selectedPet.name;
     }
     [service loadImage:imageUrl completion:^(UIImage *image) {
         self.avatarImageView.image = image ?: [UIImage imageNamed:@"img-avatar"];
     }];
     
     // Set textview placeholder
-    self.textView.placeholder = NSLocalizedString(@"Write Something...", @"");
+    self.textView.placeholder = [NSString stringWithFormat:@"%@: %@", self.profileName, NSLocalizedString(@"Write Something...", @"")];
     self.textView.textColor = [AppColorScheme darkGray];
     self.textView.font = [UIFont systemFontOfSize:13.0f weight:UIFontWeightRegular];
     self.textView.inputAccessoryView = [self createCustomToolbar];

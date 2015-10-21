@@ -17,24 +17,24 @@
     return rgb; \
 }
 
-+ (UIColor *)blue           { return [UIColor flatSkyBlueColor]; }
-+ (UIColor *)darkBlueColor  { return [UIColor flatSkyBlueColorDark]; }
-+ (UIColor *)black			{ return [UIColor flatBlackColor]; }
-+ (UIColor *)green          { return [UIColor flatGreenColorDark]; }
-+ (UIColor *)mint           { return [UIColor flatMintColor]; }
-+ (UIColor *)darkGray		{ return [UIColor flatGrayColorDark]; }
-+ (UIColor *)lightGray		{ return [UIColor flatGrayColor]; }
-+ (UIColor *)purple         RGB(127,     92,     230)
-+ (UIColor *)violet         { return [UIColor flatPurpleColorDark]; }
-+ (UIColor *)red			{ return [UIColor flatRedColor]; }
-+ (UIColor *)pink			{ return [UIColor flatPinkColor]; }
-+ (UIColor *)orange         { return [UIColor flatOrangeColor]; }
-+ (UIColor *)yellow         { return [UIColor flatYellowColor]; }
-+ (UIColor *)white			{ return [UIColor flatWhiteColor]; }
-+ (UIColor *)clear          {return [ UIColor clearColor];}
-+ (UIColor *)systemDarkGray RGB(84,     84,     84)
-+ (UIColor *)silver         RGB(177,    179,    182)
-+ (UIColor *)lightSilver	RGB(209,    211,    212)
-
++ (UIColor *)blue               { return [UIColor flatSkyBlueColor]; }
++ (UIColor *)darkBlueColor      { return [UIColor flatSkyBlueColorDark]; }
++ (UIColor *)black              { return [UIColor flatBlackColor]; }
++ (UIColor *)green              { return [UIColor flatGreenColorDark]; }
++ (UIColor *)mint               { return [UIColor flatMintColor]; }
++ (UIColor *)darkGray           { return [UIColor flatGrayColorDark]; }
++ (UIColor *)lightGray          { return [UIColor flatGrayColor]; }
++ (UIColor *)purple             RGB(127,     92,     230)
++ (UIColor *)violet             { return [UIColor flatPurpleColorDark]; }
++ (UIColor *)red                { return [UIColor flatRedColor]; }
++ (UIColor *)pink               { return [UIColor flatPinkColor]; }
++ (UIColor *)orange             { return [UIColor flatOrangeColor]; }
++ (UIColor *)yellow             { return [UIColor flatYellowColor]; }
++ (UIColor *)white              { return [UIColor flatWhiteColor]; }
++ (UIColor *)clear              {return [ UIColor clearColor];}
++ (UIColor *)systemLightGray    RGB(232,    236,    238)
++ (UIColor *)systemDarkGray     RGB(84,     84,     84)
++ (UIColor *)silver             RGB(177,    179,    182)
++ (UIColor *)lightSilver        RGB(209,    211,    212)
 
 @end

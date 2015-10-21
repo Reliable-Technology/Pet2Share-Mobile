@@ -501,7 +501,8 @@ commentDescription:(NSString *)commentDescription
     dispatch_async(imageQueue, ^{
         @try
         {
-            NSURL *imageUrl = [NSURL URLWithString:url];
+            NSString *encodedUrl = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            NSURL *imageUrl = [NSURL URLWithString:encodedUrl];
             NSData *data = [NSData dataWithContentsOfURL:imageUrl];
             UIImage *image = [UIImage imageWithData:data];
             

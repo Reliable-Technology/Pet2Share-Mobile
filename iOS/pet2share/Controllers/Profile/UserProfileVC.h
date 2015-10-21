@@ -6,8 +6,8 @@
 //  Copyright © 2015 Pet 2 Share. All rights reserved.
 //
 
-#import "CollectionViewController.h"
+#import "ProfileVC.h"
 
-@interface UserProfileVC : CollectionViewController
+@interface UserProfileVC : ProfileVC
 
 @end

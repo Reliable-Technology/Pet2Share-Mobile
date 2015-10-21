@@ -12,8 +12,7 @@
 
 @implementation Utils
 
-#pragma mark -
-#pragma mark Common
+#pragma mark - Common
 
 + (NSString *)jsonRepresentation:(NSDictionary *)dict
 {
@@ -54,8 +53,12 @@
     return uniqueFileName;
 }
 
-#pragma mark -
-#pragma mark Validation Tools
++ (BOOL)isNullOrEmpty:(NSString *)string
+{
+    return (!string || [string isEqualToString:kEmptyString]);
+}
+
+#pragma mark - Validation Tools
 
 + (BOOL)validateAlpha:(NSString *)candidate
 {
@@ -106,8 +109,7 @@
     return [emailTest evaluateWithObject:candidate];
 }
 
-#pragma mark -
-#pragma mark Date
+#pragma mark - Date
 
 + (NSDate *)deserializeJsonDateString:(NSString *)jsonDateString
 {

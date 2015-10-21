@@ -183,15 +183,21 @@ NSString * const kCellAboutMeNibName            = @"TextViewTableCell";
 
 - (UIButton *)setupLeftBarButton
 {
-    return [Graphics createBarButtonWithTitle:NSLocalizedString(@"DONE", @"")];
+    return [Graphics createBarButtonWithTitle:NSLocalizedString(@"CANCEL", @"")];
 }
 
 - (UIButton *)setupRightBarButton
 {
-    return [Graphics createBarButtonWithTitle:NSLocalizedString(@"CANCEL", @"")];
+    return [Graphics createBarButtonWithTitle:NSLocalizedString(@"DONE", @"")];
 }
 
 - (void)handleLeftButtonEvent:(id)sender
+{
+    [[AppData sharedInstance] removeObject:[self getAvatarImageKey]];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)handleRightButtonEvent:(id)sender
 {
     if (!_isDirty)
     {
@@ -200,12 +206,6 @@ NSString * const kCellAboutMeNibName            = @"TextViewTableCell";
     }
     
     [self alertSavingData];
-}
-
-- (void)handleRightButtonEvent:(id)sender
-{
-    [[AppData sharedInstance] removeObject:[self getAvatarImageKey]];
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)handleActionButton:(NSInteger)buttonIndex

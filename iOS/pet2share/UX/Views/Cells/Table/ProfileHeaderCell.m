@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *socialStatusInfoLabel;
 @property (weak, nonatomic) IBOutlet UIButton *editProfileBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *coverImageView;
 
 @end
 
@@ -25,9 +26,9 @@
 
 #pragma mark - Life Cycle
 
-+ (CGFloat)cellHeight
++ (CGFloat)height
 {
-    return 240.0f;
+    return 200.0f;
 }
 
 - (void)awakeFromNib
@@ -39,15 +40,25 @@
     [self.editProfileBtn addTarget:self action:@selector(editProfileBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)updateProfileAvatar:(NSString *)url name:(NSString *)name socialStatusInfo:(NSString *)socialStatusInfo
+- (void)loadDataWithProfileImageUrl:(NSString *)imageUrl
+            profileImagePlaceHolder:(NSString *)placeHolder
+                      coverImageUrl:(NSString *)coverImageUrl
+                               name:(NSString *)name
+                   socialStatusInfo:(NSString *)socialStatusInfo
 {
     self.nameLabel.text = name ?: NSLocalizedString(@"N/A", @"");
     self.socialStatusInfoLabel.text = socialStatusInfo ?: NSLocalizedString(@"N/A", @"");
     
-    Pet2ShareService *service = [Pet2ShareService new];
-    [service loadImage:url completion:^(UIImage *image) {
-        self.avatarImageView.image = image ?:[UIImage imageNamed:@"img-avatar"];
+    Pet2ShareService *profileImgUrlService = [Pet2ShareService new];
+    [profileImgUrlService loadImage:imageUrl completion:^(UIImage *image) {
+        self.avatarImageView.image = image ?:[UIImage imageNamed:placeHolder];
     }];
+    
+    /*
+    Pet2ShareService *coverImgUrlService = [Pet2ShareService new];
+    [coverImgUrlService loadImage:coverImageUrl completion:^(UIImage *image) {
+        if (image) self.coverImageView.image = image;
+    }]; */
 }
 
 #pragma mark - Events

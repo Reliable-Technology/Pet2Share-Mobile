@@ -10,15 +10,14 @@
 
 @interface Utils : NSObject
 
-#pragma mark -
-#pragma mark Common
+#pragma mark - Common
 
 + (NSString *)jsonRepresentation:(NSDictionary *)dict;
 + (CGSize)findHeightForText:(NSString *)text havingWidth:(CGFloat)widthValue andFont:(UIFont *)font;
 + (NSString *)getUniqueFileName:(NSString *)fileName;
++ (BOOL)isNullOrEmpty:(NSString *)string;
 
-#pragma mark -
-#pragma mark Validation Tools
+#pragma mark - Validation Tools
 
 + (BOOL)validateAlpha:(NSString *)candidate;
 + (BOOL)validateAlphaSpaces:(NSString *)candidate;
@@ -29,8 +28,7 @@
 + (BOOL)validateNotEmpty:(NSString *)candidate;
 + (BOOL)validateEmail:(NSString *)candidate;
 
-#pragma mark -
-#pragma mark Date
+#pragma mark - Date
 
 + (NSDate *)deserializeJsonDateString:(NSString *)jsonDateString;
 + (id)formatNSDateToDateTime:(NSDate *)date;

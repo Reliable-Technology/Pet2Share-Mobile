@@ -16,7 +16,11 @@
 
 @property (nonatomic, weak) id<CellButtonDelegate> delegate;
 
-+ (CGFloat)cellHeight;
-- (void)updateProfileAvatar:(NSString *)url name:(NSString *)name socialStatusInfo:(NSString *)socialStatusInfo;
++ (CGFloat)height;
+- (void)loadDataWithProfileImageUrl:(NSString *)url
+            profileImagePlaceHolder:(NSString *)placeHolder
+                      coverImageUrl:(NSString *)coverImageUrl
+                               name:(NSString *)name
+                   socialStatusInfo:(NSString *)socialStatusInfo;
 
 @end

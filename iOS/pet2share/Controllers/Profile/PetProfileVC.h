@@ -6,11 +6,11 @@
 //  Copyright © 2015 Pet 2 Share. All rights reserved.
 //
 
-#import "CollectionViewController.h"
+#import "ProfileVC.h"
 
 @class Pet;
 
-@interface PetProfileVC : CollectionViewController
+@interface PetProfileVC : ProfileVC
 
 @property (nonatomic, strong) Pet *pet;
 

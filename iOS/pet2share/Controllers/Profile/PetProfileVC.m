@@ -9,19 +9,16 @@
 #import "PetProfileVC.h"
 #import "WSConstants.h"
 #import "AppColor.h"
-#import "ProfileHeaderCell.h"
 #import "Pet2ShareService.h"
 #import "PostCollectionCell.h"
 #import "AddEditPetProfileVC.h"
 
-static CGFloat kCellSpacing                     = 10.0f;
-static NSString * const kHeaderIdentifier       = @"profileheadercell";
+static CGFloat kCellSpacing                     = 5.0f;
 static NSString * const kCellIdentifier         = @"postcollectioncell";
-static NSString * const kHeaderNibName          = @"ProfileHeaderCell";
 static NSString * const kCellNibName            = @"PostCollectionCell";
 static NSString * const kLeftIconImageName      = @"icon-arrowback";
 
-@interface PetProfileVC () <Pet2ShareServiceCallback, CellButtonDelegate>
+@interface PetProfileVC () <Pet2ShareServiceCallback>
 
 @end
 
@@ -49,14 +46,6 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
     [backButton setImage:[UIImage imageNamed:kLeftIconImageName] forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(backBarButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    
-    // Setup collection view
-    [self.collectionView registerNib:[UINib nibWithNibName:kHeaderNibName bundle:nil]
-          forSupplementaryViewOfKind:CSStickyHeaderParallaxHeader
-                 withReuseIdentifier:kHeaderIdentifier];
-    [self.collectionView registerNib:[UINib nibWithNibName:kCellNibName bundle:nil]
-          forCellWithReuseIdentifier:kCellIdentifier];
-    self.collectionView.backgroundColor = [AppColorScheme white];
     
     // Request Data
     [self requestData];
@@ -89,19 +78,48 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
 
 #pragma mark - Private Instance Methods
 
+- (NSString *)getProfileImageUrl
+{
+    return self.pet.profilePictureUrl;
+}
+
+- (NSString *)getProfileCoverImageUrl
+{
+    return self.pet.coverPictureUrl;
+}
+
+-  (NSString *)getProfileName
+{
+    return self.pet.name;
+}
+
+- (NSString *)getEditSegueIdentifier
+{
+    return kSegueEditProfile;
+}
+
 - (void)setupLayout
 {
     CollectionViewLayout *layout = (CollectionViewLayout *)self.collectionViewLayout;
     
     if ([layout isKindOfClass:[CSStickyHeaderFlowLayout class]])
     {
-        layout.parallaxHeaderReferenceSize = CGSizeMake(self.view.frame.size.width, [ProfileHeaderCell cellHeight]);
-        layout.parallaxHeaderMinimumReferenceSize = CGSizeMake(self.view.frame.size.width, [ProfileHeaderCell cellHeight]-20.0f);
+        layout.parallaxHeaderReferenceSize = CGSizeMake(self.view.frame.size.width, [ProfileHeaderCell height]);
+        layout.parallaxHeaderMinimumReferenceSize = CGSizeMake(self.view.frame.size.width, [ProfileHeaderCell height]-10.0f);
         [layout setupLayout:OneColumn cellHeight:[PostCollectionCell cellHeight:kCellSpacing] spacing:kCellSpacing];
         layout.parallaxHeaderAlwaysOnTop = NO;
         layout.disableStickyHeaders = YES;
     }
 }
+
+#pragma mark - Events
+
+- (void)backBarButtonTapped
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - Web Services
 
 - (void)requestData
 {
@@ -115,17 +133,6 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
     }
 }
 
-#pragma mark -
-#pragma mark Events
-
-- (void)backBarButtonTapped
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-#pragma mark -
-#pragma mark <Pet2ShareServiceCallback>
-
 - (void)onReceiveSuccess:(NSArray *)objects
 {
     fTRACE(@"Objects: %@", objects);
@@ -136,33 +143,7 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
     fTRACE(@"Error Message: %@", errorMessage.message);
 }
 
-#pragma mark -
-#pragma mark <UICollectionViewDataSource>
-
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
-           viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-{
-    if ([kind isEqualToString:CSStickyHeaderParallaxHeader])
-    {
-        @try
-        {
-            ProfileHeaderCell *cell = [collectionView dequeueReusableSupplementaryViewOfKind:kind
-                                                                         withReuseIdentifier:kHeaderIdentifier
-                                                                                forIndexPath:indexPath];  
-            NSString *firstName = self.pet.name;
-            NSString *lastName = self.pet.familyName;
-            NSString *name = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
-            [cell updateProfileAvatar:self.pet.profilePictureUrl name:name socialStatusInfo:nil];
-            cell.delegate = self;
-            return cell;
-        }
-        @catch (NSException *exception)
-        {
-            NSLog(@"%s: Exception: %@", __func__, exception.description);
-        }
-    }
-    return nil;
-}
+#pragma mark - <UICollectionViewDataSource>
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -170,14 +151,6 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
     (PostCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:self.cellReuseIdentifier
                                                                     forIndexPath:indexPath];
     return cell;
-}
-
-#pragma mark -
-#pragma mark <CellButtonDelegate>
-
-- (void)editButtonTapped:(id)sender
-{
-    [self performSegueWithIdentifier:kSegueAddEditPetProfile sender:self];
 }
 
 @end

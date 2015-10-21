@@ -75,6 +75,9 @@
 		FB9AC5291BD1919200B0DF25 /* PlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9AC5281BD1919200B0DF25 /* PlaceHolderTextView.m */; settings = {ASSET_TAGS = (); }; };
 		FBA2A3601BCDAD8800368D39 /* ImageActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA2A35F1BCDAD8800368D39 /* ImageActionSheet.m */; settings = {ASSET_TAGS = (); }; };
 		FBA3F6B91BC5555E0094288D /* SignUpTableCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA3F6B81BC5555E0094288D /* SignUpTableCtrl.m */; settings = {ASSET_TAGS = (); }; };
+		FBA78F4A1BD7EF0D00E45D14 /* ProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA78F491BD7EF0D00E45D14 /* ProfileVC.m */; settings = {ASSET_TAGS = (); }; };
+		FBA78F4E1BD8304900E45D14 /* EmptyPetCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA78F4C1BD8304900E45D14 /* EmptyPetCollectionCell.m */; settings = {ASSET_TAGS = (); }; };
+		FBA78F4F1BD8304900E45D14 /* EmptyPetCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBA78F4D1BD8304900E45D14 /* EmptyPetCollectionCell.xib */; settings = {ASSET_TAGS = (); }; };
 		FBB531141B9BA8A7004D5DA2 /* ResponseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB531131B9BA8A7004D5DA2 /* ResponseObject.m */; };
 		FBCDC9A81BC3381B00808E30 /* ErrorMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCDC9A21BC3381B00808E30 /* ErrorMessage.m */; settings = {ASSET_TAGS = (); }; };
 		FBCDC9A91BC3381B00808E30 /* RepositoryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCDC9A41BC3381B00808E30 /* RepositoryObject.m */; settings = {ASSET_TAGS = (); }; };
@@ -291,6 +294,11 @@
 		FBA2A3611BCDB2A600368D39 /* CellButtonDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CellButtonDelegate.h; sourceTree = "<group>"; };
 		FBA3F6B71BC5555E0094288D /* SignUpTableCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpTableCtrl.h; sourceTree = "<group>"; };
 		FBA3F6B81BC5555E0094288D /* SignUpTableCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpTableCtrl.m; sourceTree = "<group>"; };
+		FBA78F481BD7EF0D00E45D14 /* ProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileVC.h; sourceTree = "<group>"; };
+		FBA78F491BD7EF0D00E45D14 /* ProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileVC.m; sourceTree = "<group>"; };
+		FBA78F4B1BD8304900E45D14 /* EmptyPetCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyPetCollectionCell.h; sourceTree = "<group>"; };
+		FBA78F4C1BD8304900E45D14 /* EmptyPetCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyPetCollectionCell.m; sourceTree = "<group>"; };
+		FBA78F4D1BD8304900E45D14 /* EmptyPetCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyPetCollectionCell.xib; sourceTree = "<group>"; };
 		FBB531121B9BA8A7004D5DA2 /* ResponseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseObject.h; sourceTree = "<group>"; };
 		FBB531131B9BA8A7004D5DA2 /* ResponseObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseObject.m; sourceTree = "<group>"; };
 		FBCDC9A11BC3381B00808E30 /* ErrorMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorMessage.h; sourceTree = "<group>"; };
@@ -805,6 +813,8 @@
 				FBCF4A9C1BC7076200C75066 /* EditUserProfileVC.m */,
 				FB4ED0231BCC843200E9F379 /* AddEditPetProfileVC.h */,
 				FB4ED0241BCC843200E9F379 /* AddEditPetProfileVC.m */,
+				FBA78F481BD7EF0D00E45D14 /* ProfileVC.h */,
+				FBA78F491BD7EF0D00E45D14 /* ProfileVC.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -883,6 +893,9 @@
 				FBDE4D671BD758FA000BA3C7 /* NoDataCollectionCell.h */,
 				FBDE4D681BD758FA000BA3C7 /* NoDataCollectionCell.m */,
 				FBDE4D691BD758FA000BA3C7 /* NoDataCollectionCell.xib */,
+				FBA78F4B1BD8304900E45D14 /* EmptyPetCollectionCell.h */,
+				FBA78F4C1BD8304900E45D14 /* EmptyPetCollectionCell.m */,
+				FBA78F4D1BD8304900E45D14 /* EmptyPetCollectionCell.xib */,
 				FBDE4D6A1BD758FA000BA3C7 /* PetCollectionCell.h */,
 				FBDE4D6B1BD758FA000BA3C7 /* PetCollectionCell.m */,
 				FBDE4D6C1BD758FA000BA3C7 /* PetCollectionCell.xib */,
@@ -1028,6 +1041,7 @@
 				FB484A941B50C6130045A6EA /* Lato-Light.ttf in Resources */,
 				FB484A8F1B50C6130045A6EA /* Lato-Hairline.ttf in Resources */,
 				FBDE4DA61BD75953000BA3C7 /* ProfileHeaderCell.xib in Resources */,
+				FBA78F4F1BD8304900E45D14 /* EmptyPetCollectionCell.xib in Resources */,
 				FB484A9A1B50C6130045A6EA /* Lato-SemiboldItalic.ttf in Resources */,
 				FBDE4D231BD5E28E000BA3C7 /* Info.plist in Resources */,
 				FB484A961B50C6130045A6EA /* Lato-Medium.ttf in Resources */,
@@ -1220,6 +1234,7 @@
 				FB484A3F1B4FD12F0045A6EA /* Graphics.m in Sources */,
 				FBDE4D2B1BD5E28E000BA3C7 /* SpringButton.swift in Sources */,
 				FBA2A3601BCDAD8800368D39 /* ImageActionSheet.m in Sources */,
+				FBA78F4A1BD7EF0D00E45D14 /* ProfileVC.m in Sources */,
 				FB5050301BC4CBB40037F3E5 /* Address.m in Sources */,
 				FB484A421B4FD3E60045A6EA /* Constants.m in Sources */,
 				FBDE4D481BD6023F000BA3C7 /* CommentVC.m in Sources */,
@@ -1233,6 +1248,7 @@
 				FBCF4AB71BC81BC900C75066 /* UpdateMessage.m in Sources */,
 				FB5050331BC4D0B10037F3E5 /* Date.m in Sources */,
 				FBDE4D1E1BD5E28E000BA3C7 /* DesignableTabBarController.swift in Sources */,
+				FBA78F4E1BD8304900E45D14 /* EmptyPetCollectionCell.m in Sources */,
 				FB1067F01B535B4C00BEBC40 /* LoginTableCtrl.m in Sources */,
 				FBDE4D771BD758FA000BA3C7 /* NoDataCollectionCell.m in Sources */,
 				FB4DB9411BCE9F5200C1466D /* EditProfileVC.m in Sources */,

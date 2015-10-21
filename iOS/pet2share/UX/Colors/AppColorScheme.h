@@ -26,6 +26,7 @@
 + (UIColor *)yellow;
 + (UIColor *)white;
 + (UIColor *)clear;
++ (UIColor *)systemLightGray;
 + (UIColor *)systemDarkGray;
 + (UIColor *)silver;
 + (UIColor *)lightSilver;

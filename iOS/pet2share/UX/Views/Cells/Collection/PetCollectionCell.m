@@ -23,7 +23,7 @@
 
 @implementation PetCollectionCell
 
-+ (CGFloat)cellHeight:(CGFloat)spacing
++ (CGFloat)height:(CGFloat)spacing
 {
     CGSize size = [Graphics getDeviceSize];
     
@@ -46,7 +46,7 @@
 
 - (void)awakeFromNib
 {
-    [Graphics dropShadow:self shadowOpacity:0.85f shadowRadius:1.0f offset:CGSizeZero];
+    [Graphics dropShadow:self shadowOpacity:0.5f shadowRadius:0.5f offset:CGSizeZero];
 }
 
 #pragma mark - Public Instance Methods
