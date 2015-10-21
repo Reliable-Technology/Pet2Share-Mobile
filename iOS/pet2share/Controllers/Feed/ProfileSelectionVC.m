@@ -14,10 +14,12 @@
 @interface ProfileSelectionVC () <BaseNavigationProtocol, UITableViewDataSource, UITableViewDelegate>
 {
     NSInteger _selectedIndex;
+    BOOL _isDirty;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *cellData;
+@property (strong, nonatomic) Pet *selectedPet;
 
 @end
 
@@ -35,7 +37,9 @@ static NSString * const kCellIsMaster           = @"ismasterkey";
     {
         self.baseNavProtocol = self;
         _cellData = [NSMutableArray array];
-        _selectedIndex = -1;
+        _selectedIndex = 0;
+        _selectedPet = [Pet2ShareUser current].selectedPet;
+        _isDirty = NO;
     }
     return self;
 }
@@ -52,10 +56,17 @@ static NSString * const kCellIsMaster           = @"ismasterkey";
     NSString *name = [NSString stringWithFormat:@"%@ %@", currUser.person.firstName, currUser.person.lastName];
     [self.cellData addObject:@{kCellTextKey: name, kCellImageUrlKey: currUser.person.profilePictureUrl, kCellIsMaster: @(YES)}];
     
-    for (Pet *pet in currUser.pets)
-    {
-        [self.cellData addObject:@{kCellTextKey: pet.name, kCellImageUrlKey: pet.profilePictureUrl, kCellIsMaster: @(NO)}];
-    }
+    [currUser.pets enumerateObjectsUsingBlock:^(Pet *pet, NSUInteger idx, BOOL *stop) {
+        
+        if (pet.identifier == self.selectedPet.identifier)
+        {
+            _selectedPet = pet;
+            _selectedIndex = idx+1;
+        }
+        [self.cellData addObject:@{kCellTextKey: pet.name,
+                                   kCellImageUrlKey: pet.profilePictureUrl,
+                                   kCellIsMaster: @(NO)}];
+    }];
 }
 
 #pragma mark -
@@ -78,7 +89,18 @@ static NSString * const kCellIsMaster           = @"ismasterkey";
 
 - (void)handleRightButtonEvent:(id)sender
 {
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    if (_isDirty)
+    {
+        [Graphics promptAlert:NSLocalizedString(@"Save Settings", @"")
+                      message:NSLocalizedString(@"Do you want to set a new default profile?", @"")
+                         type:NormalAlert
+                           ok:^(SIAlertView *alert) {
+                               [Pet2ShareUser current].selectedPet = self.selectedPet;
+                               [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+                           } cancel:^(SIAlertView *alert) {
+                               return;
+                           }];
+    }
 }
 
 #pragma mark -
@@ -126,12 +148,19 @@ static NSString * const kCellIsMaster           = @"ismasterkey";
 
 - (void)checkMarkTouched:(id)sender
 {
-    fTRACE("Sender: %@", [sender description]);
-    
     if ([sender isKindOfClass:[CheckMark class]])
     {
         CheckMark *checkMark = (CheckMark *)sender;
         _selectedIndex = checkMark.tag;
+        _isDirty = YES;
+        
+        if (_selectedIndex == 0)
+            self.selectedPet = nil;
+        else
+            self.selectedPet = [Pet2ShareUser current].pets[checkMark.tag-1];
+        
+        fTRACE(@"Selected Pet: %@", self.selectedPet);
+
         [self.tableView reloadData];
     }
     else

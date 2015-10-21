@@ -21,6 +21,8 @@ static CGFloat const kToolbarHeight = 44.0f;
 @interface NewPostVC () <UITextViewDelegate, Pet2ShareServiceCallback>
 {
     NSInteger _remainCharacters;
+    NSInteger _profileId;
+    BOOL _isPostedByPet;
 }
 
 @property (weak, nonatomic) IBOutlet CircleImageView *avatarImageView;
@@ -42,6 +44,8 @@ static CGFloat const kToolbarHeight = 44.0f;
     if ((self = [super initWithCoder:aDecoder]))
     {
         _remainCharacters = kPostMaxCharacters;
+        _profileId = -1;
+        _isPostedByPet = NO;
     }
     return self;
 }
@@ -52,7 +56,20 @@ static CGFloat const kToolbarHeight = 44.0f;
     
     // Load Profile Image
     Pet2ShareService *service = [Pet2ShareService new];
-    [service loadImage:[Pet2ShareUser current].person.profilePictureUrl completion:^(UIImage *image) {
+    NSString *imageUrl = kEmptyString;
+    if (![Pet2ShareUser current].selectedPet)
+    {
+        imageUrl = [Pet2ShareUser current].person.profilePictureUrl;
+        _profileId = [Pet2ShareUser current].identifier;
+        _isPostedByPet = NO;
+    }
+    else
+    {
+        imageUrl = [Pet2ShareUser current].selectedPet.profilePictureUrl;
+        _profileId = [Pet2ShareUser current].selectedPet.identifier;
+        _isPostedByPet = YES;
+    }
+    [service loadImage:imageUrl completion:^(UIImage *image) {
         self.avatarImageView.image = image ?: [UIImage imageNamed:@"img-avatar"];
     }];
     
@@ -143,7 +160,7 @@ static CGFloat const kToolbarHeight = 44.0f;
 - (void)postBtnTapped:(id)sender
 {
     Pet2ShareService *service = [Pet2ShareService new];
-    [service addPost:self postDescription:self.textView.text postedBy:[Pet2ShareUser current].identifier isPostByPet:NO];
+    [service addPost:self postDescription:self.textView.text postedBy:_profileId isPostByPet:_isPostedByPet];
 }
 
 #pragma mark -

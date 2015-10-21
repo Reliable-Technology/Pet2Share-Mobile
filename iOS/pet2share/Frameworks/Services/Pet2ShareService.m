@@ -394,16 +394,16 @@ static id ObjectOrNull(id object)
 
 - (void)addPost:(NSObject<Pet2ShareServiceCallback> *)callback
 postDescription:(NSString *)postDescription
-       postedBy:(NSInteger)userId
+       postedBy:(NSInteger)profileId
     isPostByPet:(BOOL)isPostedByPet
 {
-    fTRACE("%@ <UserId: %ld", ADDPOST_ENDPOINT, (long)userId);
+    fTRACE("%@ <ProfileId: %ld", ADDPOST_ENDPOINT, (long)profileId);
     
     NSMutableDictionary *postData = [NSMutableDictionary dictionary];
     [postData setObject:@(PostWithText) forKey:@"PostTypeId"];  // TODO: Refactor later
     [postData setObject:postDescription forKey:@"Description"];
-    [postData setObject:@(userId) forKey:@"PostedBy"];
-    [postData setObject:@(NO) forKey:@"IsPostByPet"];   // TODO: Refactor later
+    [postData setObject:@(profileId) forKey:@"PostedBy"];
+    [postData setObject:@(isPostedByPet) forKey:@"IsPostByPet"];
     
     [self postJsonRequest:callback endPoint:ADDPOST_ENDPOINT jsonModel:[UpdateMessage class] postData:postData];
 }

@@ -34,18 +34,12 @@
     if ((self = [super initWithCoder:aDecoder]))
     {
         self.baseNavProtocol = self;
-        _avatarImgUrl = [Pet2ShareUser current].person.profilePictureUrl;
+        _avatarImgUrl = kEmptyString;
         _avatarBtn = [Graphics circleImageButton:28.0f
                                            image:[UIImage imageNamed:@"img-avatar"]
                                      borderColor:[UIColor whiteColor]];
     }
     return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    [self loadAvatarButtonImage];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -56,6 +50,9 @@
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSForegroundColorAttributeName: [AppColor navigationBarTextColor],
        NSFontAttributeName:[UIFont fontWithName:kLogoTypeface size:20.0f]}];
+    
+    // Load avatar image
+    [self loadAvatarButtonImage];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -93,8 +90,14 @@
 
 - (void)loadAvatarButtonImage
 {
+    if (![Pet2ShareUser current].selectedPet)
+        self.avatarImgUrl = [Pet2ShareUser current].person.profilePictureUrl;
+    else
+        self.avatarImgUrl = [Pet2ShareUser current].selectedPet.profilePictureUrl;
+    
     Pet2ShareService *service = [Pet2ShareService new];
     [service loadImage:self.avatarImgUrl completion:^(UIImage *image) {
+        if (!image) image = [UIImage imageNamed:@"img-avatar"];
         [self.avatarBtn setBackgroundImage:image forState:UIControlStateNormal];
         [self.avatarBtn setBackgroundImage:image forState:UIControlStateHighlighted];
     }];

@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "WSConstants.h"
 
+@class Pet;
+
 @interface Pet2ShareUser : NSObject
 
 + (instancetype)current;
@@ -27,5 +29,6 @@
 @property (nonatomic, strong) NSMutableArray *pets;
 @property (nonatomic, readonly) BOOL isAuthenticated;
 @property (nonatomic, readonly) BOOL isActive;
+@property (nonatomic, strong) Pet *selectedPet;
 
 @end

@@ -46,8 +46,6 @@
                         <animations/>
                         <color key="backgroundColor" red="0.85043728351593018" green="0.21816034615039825" blue="0.15920260548591614" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="15" id="2ff-dr-idD"/>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="45a-Jr-itt"/>
                             <constraint firstAttribute="height" constant="17" id="Bes-w9-Fag"/>
                             <constraint firstAttribute="width" constant="50" id="vvA-c1-EBl"/>
                         </constraints>
@@ -84,7 +82,6 @@
                     <constraint firstItem="KKd-C5-eXP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="mJ4-oP-0j8"/>
                     <constraint firstItem="HNG-sA-9Kv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="12" id="pn3-LE-4xU"/>
                     <constraint firstItem="smR-qa-wQc" firstAttribute="leading" secondItem="HNG-sA-9Kv" secondAttribute="trailing" constant="20" id="qsh-6V-lKF"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="KKd-C5-eXP" secondAttribute="bottom" constant="11" id="tx7-he-4D7"/>
                 </constraints>
             </tableViewCellContentView>
             <animations/>
