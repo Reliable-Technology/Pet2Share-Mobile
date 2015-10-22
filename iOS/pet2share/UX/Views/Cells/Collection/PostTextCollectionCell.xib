@@ -16,7 +16,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gzT-CY-RaU">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="rAW-L9-xJr" customClass="CircleImageView">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="rAW-L9-xJr" customClass="CircleImageView">
                                 <rect key="frame" x="20" y="12" width="36" height="36"/>
                                 <animations/>
                                 <constraints>

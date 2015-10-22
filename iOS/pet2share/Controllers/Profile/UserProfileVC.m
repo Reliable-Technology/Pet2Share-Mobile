@@ -64,6 +64,8 @@ static CGFloat kCellSpacing                     = 5.0f;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    [super prepareForSegue:segue sender:sender];
+    
     if ([segue.identifier isEqualToString:kSeguePetProfile])
     {
         PetProfileVC *viewController = (PetProfileVC *)segue.destinationViewController;

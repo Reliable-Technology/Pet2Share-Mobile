@@ -91,6 +91,7 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
             addEditProfileVC.petProfileMode = EditPetProfile;
             addEditProfileVC.pet = self.pet;
         }
+        navController.transitioningDelegate = self.transitionManager;
     }
 }
 
@@ -118,7 +119,7 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
 
 - (NSString *)getEditSegueIdentifier
 {
-    return kSegueEditProfile;
+    return kSegueAddEditPetProfile;
 }
 
 #pragma mark - Events

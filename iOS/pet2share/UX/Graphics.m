@@ -10,7 +10,7 @@
 
 @implementation Graphics
 
-#pragma mark - Private Helpersname
+#pragma mark - Private Helpers
 
 + (SIAlertView *)buildAlert:(NSString *)title message:(NSString *)message type:(AlertType)type
 {
@@ -142,12 +142,13 @@
 {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
     button.bounds = CGRectMake(0.0f, 0.0f, diameter, diameter);
-    [button setBackgroundImage:image forState:UIControlStateNormal];
-    [button setBackgroundImage:image forState:UIControlStateHighlighted];
     button.layer.masksToBounds = YES;
     button.layer.cornerRadius = diameter/2;
     button.layer.borderColor = color.CGColor;
     button.layer.borderWidth = 1.0f;
+    [button setBackgroundImage:image forState:UIControlStateNormal];
+    [button setBackgroundImage:image forState:UIControlStateHighlighted];
+    [button.imageView setContentMode:UIViewContentModeScaleAspectFill];
     return button;
 }
 

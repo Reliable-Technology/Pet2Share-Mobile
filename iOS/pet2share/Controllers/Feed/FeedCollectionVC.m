@@ -197,7 +197,6 @@ static NSString * const kLoadingCellNibName     = @"LoadingCollectionCell";
         {
             cell = (PostTextCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:self.cellReuseIdentifier
                                                                                        forIndexPath:indexPath];
-            
             Post *post = [self.items objectAtIndex:indexPath.row];
             
             NSString *profileImageUrl = kEmptyString;
