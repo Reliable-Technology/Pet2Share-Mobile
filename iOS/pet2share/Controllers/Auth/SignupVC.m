@@ -12,6 +12,7 @@
 #import "RoundCornerButton.h"
 #import "Utils.h"
 #import "Graphics.h"
+#import "Pet2ShareUser.h"
 
 @interface SignupVC () <FormProtocol, Pet2ShareServiceCallback>
 
@@ -108,6 +109,8 @@
     
     if (objects.count == 1)
     {
+        User *user = [objects objectAtIndex:0];
+        [[Pet2ShareUser current] updateFromUser:user];
         [self.createAccountBtn hideActivityIndicator];
         [self performSegueWithIdentifier:kSegueMainView sender:self];
     }

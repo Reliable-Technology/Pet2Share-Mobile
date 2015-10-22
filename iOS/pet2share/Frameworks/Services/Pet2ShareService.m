@@ -49,8 +49,7 @@ static id ObjectOrNull(id object)
     return self;
 }
 
-#pragma mark -
-#pragma mark Private Instance Methods
+#pragma mark - Private Instance Methods
 
 - (void)postJsonRequest:(NSObject<Pet2ShareServiceCallback> *)callback
                endPoint:(NSString *)endPoint
@@ -188,8 +187,7 @@ static id ObjectOrNull(id object)
     }
 }
 
-#pragma mark - 
-#pragma mark <WebClientDelegate>
+#pragma mark - <WebClientDelegate>
 
 - (void)didFinishDownload:(NSData *)data
 {
@@ -214,8 +212,7 @@ static id ObjectOrNull(id object)
     if (self.callback) [self.callback onReceiveError:errorMessage];
 }
 
-#pragma mark -
-#pragma mark Public Instance Methods
+#pragma mark - Public Instance Methods
 
 - (void)loginUser:(NSObject<Pet2ShareServiceCallback> *)callback
          username:(NSString *)username
@@ -406,6 +403,28 @@ postDescription:(NSString *)postDescription
     [postData setObject:@(isPostedByPet) forKey:@"IsPostByPet"];
     
     [self postJsonRequest:callback endPoint:ADDPOST_ENDPOINT jsonModel:[UpdateMessage class] postData:postData];
+}
+
+- (void)addPhotoPost:(NSObject<Pet2ShareServiceCallback> *)callback
+         description:(NSString *)description
+            postedBy:(NSInteger)profileId
+         isPostByPet:(BOOL)isPostedByPet
+               image:(UIImage *)image
+            fileName:(NSString *)fileName
+{
+    fTRACE("%@ <ProfileId: %ld", ADDPOSTWITHPIC_ENDPOINT, (long)profileId);
+    
+    NSString *encodedDescription = [description stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *endPoint = [NSString stringWithFormat:@"%@?PostedBy=%ld&IsPostedByPet=%d&Description=%@&FileName=%@.png",
+                          ADDPOSTWITHPIC_ENDPOINT, (long)profileId, isPostedByPet, encodedDescription, fileName];
+    NSString *url = [[UrlManager sharedInstance] webServiceUrl:endPoint];
+    NSData *data = UIImageJPEGRepresentation(image, 1.0);
+    
+    WebClient *webClient = [[WebClient alloc] init];
+    webClient.delegate = self;
+    webClient.contentType = CONTENT_TYPE_OCTET_STREAM;
+    self.jsonModel = [UpdateMessage class];
+    [webClient post:url binaryData:data];
 }
 
 - (void)updatePost:(NSObject<Pet2ShareServiceCallback> *)callback

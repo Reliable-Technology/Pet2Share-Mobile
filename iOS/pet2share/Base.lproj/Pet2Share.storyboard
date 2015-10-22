@@ -751,7 +751,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbL-q0-sXc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2935" y="2655"/>
+            <point key="canvasLocation" x="2935" y="3102"/>
         </scene>
         <!--New PostVC-->
         <scene sceneID="NJg-Ug-IK0">
@@ -806,9 +806,9 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rII-9l-Fhz" customClass="PlaceHolderTextView">
-                                <rect key="frame" x="20" y="86" width="566" height="264"/>
+                                <rect key="frame" x="20" y="86" width="566" height="205"/>
                                 <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.42655369639396667" green="0.47584608197212219" blue="0.48026475310325623" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="0.42655369639396667" green="0.47584608197212219" blue="0.48026475310325623" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -821,7 +821,7 @@
                             <constraint firstItem="rII-9l-Fhz" firstAttribute="top" secondItem="PmB-jR-TuY" secondAttribute="bottom" constant="20" id="0ZM-8M-hri"/>
                             <constraint firstItem="rII-9l-Fhz" firstAttribute="top" secondItem="BDP-F7-igf" secondAttribute="bottom" constant="28" id="5UF-7v-wzQ"/>
                             <constraint firstItem="PmB-jR-TuY" firstAttribute="top" secondItem="hbb-Gr-bWf" secondAttribute="bottom" constant="10" id="6Nz-bx-TIh"/>
-                            <constraint firstItem="1qj-tQ-xB5" firstAttribute="top" secondItem="rII-9l-Fhz" secondAttribute="bottom" constant="250" id="A9x-Mk-wlX"/>
+                            <constraint firstItem="1qj-tQ-xB5" firstAttribute="top" secondItem="rII-9l-Fhz" secondAttribute="bottom" constant="309" id="A9x-Mk-wlX"/>
                             <constraint firstItem="BDP-F7-igf" firstAttribute="top" secondItem="hbb-Gr-bWf" secondAttribute="bottom" constant="17" id="Ed4-15-Jos"/>
                             <constraint firstAttribute="trailingMargin" secondItem="PmB-jR-TuY" secondAttribute="trailing" constant="-6" id="Ej5-aJ-0v9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rII-9l-Fhz" secondAttribute="trailing" constant="-6" id="LwF-pP-kSE"/>
@@ -1102,9 +1102,9 @@
         <image name="img-avatar" width="86" height="84"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="a6S-YY-rEy"/>
-        <segue reference="kUj-pF-gm8"/>
         <segue reference="ZTT-kt-YwX"/>
-        <segue reference="j2g-9r-CHo"/>
+        <segue reference="tlJ-h2-45j"/>
+        <segue reference="kUj-pF-gm8"/>
+        <segue reference="3JU-0T-BsM"/>
     </inferredMetricsTieBreakers>
 </document>

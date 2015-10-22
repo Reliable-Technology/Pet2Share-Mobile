@@ -100,6 +100,13 @@ postDescription:(NSString *)postDescription
        postedBy:(NSInteger)userId
     isPostByPet:(BOOL)isPostedByPet;
 
+- (void)addPhotoPost:(NSObject<Pet2ShareServiceCallback> *)callback
+         description:(NSString *)description
+            postedBy:(NSInteger)profileId
+         isPostByPet:(BOOL)isPostedByPet
+               image:(UIImage *)image
+            fileName:(NSString *)fileName;
+
 - (void)updatePost:(NSObject<Pet2ShareServiceCallback> *)callback
             postId:(NSInteger)postId
    postDescription:(NSString *)postDescription;

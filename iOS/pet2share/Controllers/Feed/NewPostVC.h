@@ -15,6 +15,7 @@
 
 @interface NewPostVC : BaseNavigationVC
 
-@property (nonatomic, weak) id<NewPostDelegate> delegate;
+@property (weak, nonatomic) id<NewPostDelegate> delegate;
+@property (strong, nonatomic) UIImage *postImage;
 
 @end

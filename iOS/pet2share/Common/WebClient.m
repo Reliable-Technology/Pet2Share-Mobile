@@ -233,6 +233,11 @@
     return request;
 }
 
+- (void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
+{
+    fTRACE("Total bytes written: %ld, Total expected bytes: %ld", (long)totalBytesWritten, (long)totalBytesExpectedToWrite);
+}
+
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
     [receivedData setLength:0];

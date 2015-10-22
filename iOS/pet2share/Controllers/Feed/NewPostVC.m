@@ -13,16 +13,18 @@
 #import "Pet2ShareUser.h"
 #import "Pet2ShareService.h"
 #import "AppColor.h"
+#import "Utils.h"
 #import "Graphics.h"
 #import "RoundCornerButton.h"
 
 static CGFloat const kToolbarHeight = 44.0f;
 
-@interface NewPostVC () <UITextViewDelegate, Pet2ShareServiceCallback>
+@interface NewPostVC () <UITextViewDelegate, Pet2ShareServiceCallback, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 {
     NSInteger _remainCharacters;
     NSInteger _profileId;
     BOOL _isPostedByPet;
+    CGRect _previousRect;
 }
 
 @property (weak, nonatomic) IBOutlet CircleImageView *avatarImageView;
@@ -37,8 +39,7 @@ static CGFloat const kToolbarHeight = 44.0f;
 
 @implementation NewPostVC
 
-#pragma mark - 
-#pragma mark Life Cycle
+#pragma mark - Life Cycle
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -83,7 +84,32 @@ static CGFloat const kToolbarHeight = 44.0f;
     self.textView.font = [UIFont systemFontOfSize:13.0f weight:UIFontWeightRegular];
     self.textView.inputAccessoryView = [self createCustomToolbar];
     self.textView.delegate = self;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
     [self.textView becomeFirstResponder];
+    if (self.postImage)
+    {
+        CGSize size = [Graphics getImageViewSizeForImage:self.postImage
+                                            constraintTo:self.textView.frame.size.width-10];
+        NSString *currentText = self.textView.text;
+
+        NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:kEmptyString];
+        NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
+        textAttachment.image = self.postImage;
+        textAttachment.bounds = CGRectMake(0.0f, 0.0f, size.width, size.height);
+        NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment];
+        [attrString replaceCharactersInRange:NSMakeRange(0, 0) withAttributedString:attrStringWithImage];
+        [attrString appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n\n"]];
+        [attrString appendAttributedString:[[NSAttributedString alloc] initWithString:currentText]];
+        
+        self.textView.attributedText = attrString;
+        self.textView.textColor = [AppColorScheme darkGray];
+        self.textView.font = [UIFont systemFontOfSize:13.0f weight:UIFontWeightRegular];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -99,8 +125,7 @@ static CGFloat const kToolbarHeight = 44.0f;
     [self.textView resignFirstResponder];
 }
 
-#pragma mark - 
-#pragma mark Private Instance Methods
+#pragma mark - Private Instance Methods
 
 - (UIToolbar *)createCustomToolbar
 {
@@ -111,6 +136,16 @@ static CGFloat const kToolbarHeight = 44.0f;
                                                                                 target:nil
                                                                                 action:nil];
     fixedSpace.width = 10.0f;
+    
+    // Camera Button
+    UIButton *cameraBtn = [self createIconBarButton:CGRectMake(0.0f, 0.0f, 20.0f, 18.0f) iconName:@"icon-camera-small"];
+    [cameraBtn addTarget:self action:@selector(cameraBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *cameraBtnItem = [[UIBarButtonItem alloc] initWithCustomView:cameraBtn];
+    
+    // Image Button
+    UIButton *imageBtn = [self createIconBarButton:CGRectMake(0.0f, 0.0f, 20.0f, 18.0f) iconName:@"icon-image-small"];
+    [imageBtn addTarget:self action:@selector(imageBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *imageBtnItem = [[UIBarButtonItem alloc] initWithCustomView:imageBtn];
     
     if (!self.remainCharacterLabels)
     {
@@ -138,11 +173,23 @@ static CGFloat const kToolbarHeight = 44.0f;
     UIBarButtonItem *postBtnItem = [[UIBarButtonItem alloc] initWithCustomView:self.postBtn];
     
     UIToolbar *toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, kToolbarHeight)];
-    toolbar.items = [NSArray arrayWithObjects:flexibleSpace, labelBtnItem, fixedSpace, postBtnItem, nil];
+    toolbar.items = [NSArray arrayWithObjects:cameraBtnItem, fixedSpace, imageBtnItem, flexibleSpace, labelBtnItem, postBtnItem, nil];
     toolbar.barStyle = UIBarStyleDefault;
     [toolbar sizeToFit];
     
     return toolbar;
+}
+
+- (UIButton *)createIconBarButton:(CGRect)frame iconName:(NSString *)iconName
+{
+    UIButton *iconBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    iconBtn.bounds = CGRectMake(0.0f, 0.0f, 20.0f, 18.0f);
+    [iconBtn setBackgroundImage:[[UIImage imageNamed:iconName]
+                                   imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    iconBtn.tintColor = [AppColorScheme lightGray];
+    [iconBtn.imageView setContentMode:UIViewContentModeScaleAspectFill];
+    
+    return iconBtn;
 }
 
 - (void)updateRemainCharactersLabel
@@ -153,37 +200,80 @@ static CGFloat const kToolbarHeight = 44.0f;
     [self.remainCharacterLabels reloadInputViews];
 }
 
-#pragma mark - 
-#pragma mark Events
+#pragma mark - Events
 
 - (IBAction)closeBtnTapped:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)cameraBtnTapped:(id)sender
+{
+    fTRACE(@"Sender: %@", sender);
+    
+    @try
+    {
+        UIImagePickerController *imagePickerController = [UIImagePickerController new];
+        imagePickerController.delegate = self;
+        imagePickerController.allowsEditing = YES;
+        imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imagePickerController.transitioningDelegate = self.transitionZoom;
+        [self presentViewController:imagePickerController animated:YES completion:nil];
+    }
+    @catch (NSException *exception)
+    {
+        NSLog(@"%s : Exception: %@", __func__, [exception description]);
+        [Graphics alert:NSLocalizedString(@"Error", @"")
+                message:NSLocalizedString(@"Camera is not available", @"")
+                   type:ErrorAlert];
+    };
+}
+
+- (void)imageBtnTapped:(id)sender
+{
+    fTRACE(@"Sender: %@", sender);
+    
+    @try
+    {
+        UIImagePickerController *imagePickerController = [UIImagePickerController new];
+        imagePickerController.delegate = self;
+        imagePickerController.allowsEditing = YES;
+        imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        imagePickerController.transitioningDelegate = self.transitionZoom;
+        [self presentViewController:imagePickerController animated:YES completion:nil];
+    }
+    @catch (NSException *exception)
+    {
+        NSLog(@"%s : Exception: %@", __func__, [exception description]);
+        [Graphics alert:NSLocalizedString(@"Error", @"")
+                message:NSLocalizedString(@"Photo Library is not available", @"")
+                   type:ErrorAlert];
+    };
+}
+
 - (void)postBtnTapped:(id)sender
 {
     Pet2ShareService *service = [Pet2ShareService new];
-    [service addPost:self postDescription:self.textView.text postedBy:_profileId isPostByPet:_isPostedByPet];
+    
+    NSMutableString *description = [[NSMutableString alloc] initWithString:self.textView.text];
+    NSRange myRange = NSMakeRange(0, [description length]);
+    [description replaceOccurrencesOfString:@"\n" withString:kEmptyString options:0 range:myRange];
+    fTRACE("Text: %@", description);
+
+    if (!self.postImage)
+    {
+        [service addPost:self postDescription:description
+                postedBy:_profileId isPostByPet:_isPostedByPet];
+    }
+    else
+    {
+        [service addPhotoPost:self
+                  description:description postedBy:_profileId isPostByPet:_isPostedByPet
+                        image:self.postImage fileName:postUserImage(_profileId)];
+    }
 }
 
-#pragma mark -
-#pragma mark <UITextViewDelegate>
-
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
-{
-    if (range.location < kPostMaxCharacters) return YES;
-    else return NO;
-}
-
-- (void)textViewDidChange:(UITextView *)textView
-{
-    _remainCharacters = kPostMaxCharacters - textView.text.length;
-    [self updateRemainCharactersLabel];
-}
-
-#pragma mark -
-#pragma mark <Pet2ShareServiceCallback>
+#pragma mark - <Pet2ShareServiceCallback>
 
 - (void)onReceiveSuccess:(NSArray *)objects
 {
@@ -199,6 +289,48 @@ static CGFloat const kToolbarHeight = 44.0f;
 {
     [self.postBtn hideActivityIndicator];
     [Graphics alert:NSLocalizedString(@"Error", @"") message:errorMessage.message type:ErrorAlert];
+}
+
+#pragma mark - <UITextViewDelegate>
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    if (range.location < kPostMaxCharacters) return YES;
+    else return NO;
+}
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    _remainCharacters = kPostMaxCharacters - textView.text.length;
+    [self updateRemainCharactersLabel];
+    
+    if ([textView.text isEqualToString:kEmptyString]) self.postImage = nil;
+    
+    fTRACE("Text: %@", textView.text);
+}
+
+#pragma mark - <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+
+- (void)navigationController:(UINavigationController *)navigationController
+      willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *, id> *)info
+{
+    fTRACE("Info: %@", info);
+    
+    /** Info Example
+     * UIImagePickerControllerCropRect = "NSRect: {{0, 0}, {2668, 1772}}";
+     * UIImagePickerControllerEditedImage = "<UIImage: 0x7fa49f896350> size {748, 496} orientation 0 scale 1.000000";
+     * UIImagePickerControllerMediaType = "public.image";
+     * UIImagePickerControllerOriginalImage = "<UIImage: 0x7fa49f895ec0> size {2668, 1772} orientation 0 scale 1.000000";
+     * UIImagePickerControllerReferenceURL = "assets-library://asset/asset.JPG?id=D77460CE-4855-4A54-BE4D-5C0A84C7742B&ext=JPG";
+     */
+    
+    self.postImage = info[UIImagePickerControllerOriginalImage];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

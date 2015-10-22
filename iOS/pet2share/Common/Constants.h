@@ -22,6 +22,11 @@
 #define avatarUserKey(identifier) [NSString stringWithFormat:@"avatar_user_%ld", (long)identifier]
 #define avatarPetKey(identifier) [NSString stringWithFormat:@"avatar_pet_%ld", (long)identifier]
 
+#define postUserImage(identifier) [NSString stringWithFormat:@"avatar_postimage_%ld", (long)identifier]
+#define postPetImage(identifier) [NSString stringWithFormat:@"avatar_postimage_%ld", (long)identifier]
+
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+
 typedef enum ScrollDirection
 {
     ScrollDirectionNone,

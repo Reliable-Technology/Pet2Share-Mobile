@@ -8,21 +8,21 @@
 
 #import "ButtonTabbarController.h"
 #import "Graphics.h"
+#import "NewPostVC.h"
 
 static NSString * const kCameraImage            = @"img-camera";
 static NSInteger const kTabBarCameraItemTag     = 1;
 
 @interface ButtonTabbarController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
-@property (nonatomic, strong) UIImage *image;
-@property (nonatomic, strong) TransitionZoom *transitionZoom;
+@property (strong, nonatomic) UIImage *capturedImage;
+@property (strong, nonatomic) TransitionZoom *transitionZoom;
 
 @end
 
 @implementation ButtonTabbarController
 
-#pragma mark -
-#pragma mark Life Cycle
+#pragma mark - Life Cycle
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -46,10 +46,22 @@ static NSInteger const kTabBarCameraItemTag     = 1;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    if ([segue.identifier isEqualToString:kSegueNewPost])
+    {
+        NewPostVC *newPostVC = (NewPostVC *)segue.destinationViewController;
+        newPostVC.transitioningDelegate = self.transitionZoom;
+        newPostVC.postImage = self.capturedImage;
+    }
 }
 
-#pragma mark -
-#pragma mark Private Instance Methods
+- (void)dealloc
+{
+    TRACE_HERE;
+    self.capturedImage = nil;
+    self.transitionZoom = nil;
+}
+
+#pragma mark - Private Instance Methods
 
 /*!
  *  @method addCenterButtonWithImage:highlightImage:
@@ -106,8 +118,7 @@ static NSInteger const kTabBarCameraItemTag     = 1;
     }
 }
 
-#pragma mark -
-#pragma mark <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+#pragma mark - <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 - (void)navigationController:(UINavigationController *)navigationController
       willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
@@ -118,7 +129,18 @@ static NSInteger const kTabBarCameraItemTag     = 1;
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *, id> *)info
 {
     fTRACE("Info: %@", info);
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    /** Info Example
+     * UIImagePickerControllerCropRect = "NSRect: {{0, 0}, {2668, 1772}}";
+     * UIImagePickerControllerEditedImage = "<UIImage: 0x7fa49f896350> size {748, 496} orientation 0 scale 1.000000";
+     * UIImagePickerControllerMediaType = "public.image";
+     * UIImagePickerControllerOriginalImage = "<UIImage: 0x7fa49f895ec0> size {2668, 1772} orientation 0 scale 1.000000";
+     * UIImagePickerControllerReferenceURL = "assets-library://asset/asset.JPG?id=D77460CE-4855-4A54-BE4D-5C0A84C7742B&ext=JPG";
+     */
+    
+    self.capturedImage = info[UIImagePickerControllerOriginalImage];
+    [picker dismissViewControllerAnimated:NO completion:nil];
+    [self performSegueWithIdentifier:kSegueNewPost sender:self];
 }
 
 @end

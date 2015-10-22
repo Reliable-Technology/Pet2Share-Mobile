@@ -49,6 +49,7 @@
 #define GETPOSTSBYUSER_ENDPOINT             @"getPostsByUser"
 #define GETPOSTSBYPET_ENDPOINT              @"getPostsByPet"
 #define ADDPOST_ENDPOINT                    @"AddPost"
+#define ADDPOSTWITHPIC_ENDPOINT             @"AddPostWithPic"
 #define UPDATEPOST_ENDPOINT                 @"UpdatePost"
 #define DELETEPOST_ENDPOINT                 @"DeletePost"
 #define GETCOMMENTS_ENDPOINT                @"GetComments"
