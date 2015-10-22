@@ -273,6 +273,14 @@
     return coloredImg;
 }
 
++ (CGSize)getImageViewSizeForImage:(UIImage *)image constraintTo:(CGFloat)width
+{
+    CGFloat ratio = image.size.height/image.size.width;
+    CGSize imageViewSize = CGSizeMake(width, width*ratio);
+    DEBUG_SIZE("Image View Size ", imageViewSize);
+    return imageViewSize;
+}
+
 + (CGSize)getDeviceSize
 {
     CGRect screenBounds = [UIScreen mainScreen].bounds;
