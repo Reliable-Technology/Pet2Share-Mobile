@@ -30,5 +30,6 @@
 @property (nonatomic, readonly) BOOL isAuthenticated;
 @property (nonatomic, readonly) BOOL isActive;
 @property (nonatomic, strong) Pet *selectedPet;
+@property (nonatomic, strong) UIImage *sessionAvatarImage;
 
 @end

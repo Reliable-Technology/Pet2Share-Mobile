@@ -57,27 +57,33 @@ static CGFloat const kToolbarHeight = 44.0f;
     [super viewDidLoad];
     
     // Load Profile Image
-    Pet2ShareService *service = [Pet2ShareService new];
-    NSString *imageUrl = kEmptyString;
     if (![Pet2ShareUser current].selectedPet)
     {
-        imageUrl = [Pet2ShareUser current].person.profilePictureUrl;
         _profileId = [Pet2ShareUser current].identifier;
         _isPostedByPet = NO;
         _profileName = [NSString stringWithFormat:@"%@ %@",
                         [Pet2ShareUser current].person.firstName, [Pet2ShareUser current].person.lastName];
+        if ([Pet2ShareUser current].sessionAvatarImage)
+        {
+            self.avatarImageView.image = [Pet2ShareUser current].sessionAvatarImage;
+        }
+        else
+        {
+            [[Pet2ShareService new] loadImage:[Pet2ShareUser current].person.profilePictureUrl completion:^(UIImage *image) {
+                self.avatarImageView.image = image ?: [UIImage imageNamed:@"img-avatar"];
+            }];
+        }
     }
     else
     {
-        imageUrl = [Pet2ShareUser current].selectedPet.profilePictureUrl;
         _profileId = [Pet2ShareUser current].selectedPet.identifier;
         _isPostedByPet = YES;
         _profileName = [Pet2ShareUser current].selectedPet.name;
+        [[Pet2ShareService new] loadImage:[Pet2ShareUser current].selectedPet.profilePictureUrl completion:^(UIImage *image) {
+            self.avatarImageView.image = image ?: [UIImage imageNamed:@"img-avatar"];
+        }];
     }
-    [service loadImage:imageUrl completion:^(UIImage *image) {
-        self.avatarImageView.image = image ?: [UIImage imageNamed:@"img-avatar"];
-    }];
-    
+   
     // Set textview placeholder
     self.textView.placeholder = [NSString stringWithFormat:@"%@: %@", self.profileName, NSLocalizedString(@"Write Something...", @"")];
     self.textView.textColor = [AppColorScheme darkGray];

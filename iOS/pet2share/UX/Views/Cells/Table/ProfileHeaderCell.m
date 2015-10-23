@@ -42,6 +42,7 @@
 
 - (void)loadDataWithProfileImageUrl:(NSString *)imageUrl
             profileImagePlaceHolder:(NSString *)placeHolder
+                       sessionImage:(UIImage *)sessionImage
                       coverImageUrl:(NSString *)coverImageUrl
                                name:(NSString *)name
                    socialStatusInfo:(NSString *)socialStatusInfo
@@ -49,11 +50,18 @@
     self.nameLabel.text = name ?: NSLocalizedString(@"N/A", @"");
     self.socialStatusInfoLabel.text = socialStatusInfo ?: NSLocalizedString(@"N/A", @"");
     
-    Pet2ShareService *profileImgUrlService = [Pet2ShareService new];
-    [profileImgUrlService loadImage:imageUrl completion:^(UIImage *image) {
-        self.avatarImageView.image = image ?:[UIImage imageNamed:placeHolder];
-    }];
-    
+    if (sessionImage)
+    {
+        self.avatarImageView.image = sessionImage;
+    }
+    else
+    {
+        Pet2ShareService *profileImgUrlService = [Pet2ShareService new];
+        [profileImgUrlService loadImage:imageUrl completion:^(UIImage *image) {
+            self.avatarImageView.image = image ?:[UIImage imageNamed:placeHolder];
+        }];
+    }
+
     /*
     Pet2ShareService *coverImgUrlService = [Pet2ShareService new];
     [coverImgUrlService loadImage:coverImageUrl completion:^(UIImage *image) {

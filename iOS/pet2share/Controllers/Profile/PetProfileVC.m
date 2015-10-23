@@ -14,6 +14,7 @@
 #import "PostTextCollectionCell.h"
 #import "LoadingCollectionCell.h"
 #import "AddEditPetProfileVC.h"
+#import "Pet2ShareUser.h"
 
 static CGFloat kCellSpacing                     = 5.0f;
 static NSString * const kCellIdentifier         = @"posttextcollectioncell";
@@ -100,7 +101,7 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
     TRACE_HERE;
 }
 
-#pragma mark - Private Instance Methods
+#pragma mark - Protected Instance Methods
 
 - (NSString *)getProfileImageUrl
 {
@@ -110,6 +111,11 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
 - (NSString *)getProfileCoverImageUrl
 {
     return self.pet.coverPictureUrl;
+}
+
+- (UIImage *)getSessionImage
+{
+    return [[AppData sharedInstance] getObject:kPetTempAvatarImage];
 }
 
 -  (NSString *)getProfileName
@@ -247,6 +253,8 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
             
             NSString *profileImageUrl = kEmptyString;
             NSString *profileName = kEmptyString;
+            UIImage *sessionImage = nil;
+            
             if (post.isPostByPet)
             {
                 profileImageUrl = post.pet.profilePictureUrl;
@@ -256,10 +264,13 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
             {
                 profileImageUrl = post.user.profilePictureUrl;
                 profileName = post.user.name;
+                if (post.user.identifier == [Pet2ShareUser current].identifier)
+                    sessionImage = [Pet2ShareUser current].sessionAvatarImage;
             }
             
             [(PostTextCollectionCell *)cell loadDataWithImageUrl:profileImageUrl
                                             placeHolderImageName:@"img-avatar"
+                                                    sessionImage:sessionImage
                                                      primaryText:profileName
                                                    secondaryText:[Utils formatNSDateToString:post.dateAdded withFormat:kFormatDayOfWeekWithDateTime]
                                                  descriptionText:post.postDescription

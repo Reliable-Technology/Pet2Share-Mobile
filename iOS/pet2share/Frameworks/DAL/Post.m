@@ -16,6 +16,7 @@
             @{@"Id": @"identifier",
               @"PostTypeId": @"postTypeId",
               @"PostedBy": @"postedBy",
+              @"PostURL": @"postUrl",
               @"SUser": @"user",
               @"SPet": @"pet",
               @"Description": @"postDescription",

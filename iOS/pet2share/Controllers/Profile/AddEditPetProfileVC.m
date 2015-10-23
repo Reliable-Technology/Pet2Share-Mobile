@@ -47,7 +47,7 @@
 {
     switch (self.petProfileMode)
     {
-        case AddPetProfile: return kTempAvatarImage;
+        case AddPetProfile: return kPetTempAvatarImage;
         case EditPetProfile: return self.pet.profilePictureUrl;
         default: return nil;
     }

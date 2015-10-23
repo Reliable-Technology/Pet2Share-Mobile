@@ -26,8 +26,7 @@
 
 @implementation FeedVC
 
-#pragma mark -
-#pragma mark Life Cycle
+#pragma mark - Life Cycle
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -85,15 +84,24 @@
     TRACE_HERE;
 }
 
-#pragma mark -
-#pragma mark Private Instance Methods
+#pragma mark - Private Instance Methods
 
 - (void)loadAvatarButtonImage
 {
     if (![Pet2ShareUser current].selectedPet)
+    {
         self.avatarImgUrl = [Pet2ShareUser current].person.profilePictureUrl;
+        if ([Pet2ShareUser current].sessionAvatarImage)
+        {
+            [self.avatarBtn setBackgroundImage:[Pet2ShareUser current].sessionAvatarImage forState:UIControlStateNormal];
+            [self.avatarBtn setBackgroundImage:[Pet2ShareUser current].sessionAvatarImage forState:UIControlStateHighlighted];
+            return;
+        }
+    }
     else
+    {
         self.avatarImgUrl = [Pet2ShareUser current].selectedPet.profilePictureUrl;
+    }
     
     Pet2ShareService *service = [Pet2ShareService new];
     [service loadImage:self.avatarImgUrl completion:^(UIImage *image) {
@@ -103,8 +111,7 @@
     }];
 }
 
-#pragma mark -
-#pragma mark Delegates
+#pragma mark - Delegates
 
 - (UIButton *)setupLeftBarButton
 {

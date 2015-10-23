@@ -14,6 +14,7 @@
 + (CGFloat)heightByText:(NSString *)text itemWidth:(CGFloat)itemWidth;
 - (void)loadDataWithImageUrl:(NSString *)imgUrl
         placeHolderImageName:(NSString *)placeHolderImgName
+                sessionImage:(UIImage *)sessionImage
                   headerText:(NSString *)headerText
              descriptionText:(NSString *)descriptionText
                   statusText:(NSString *)statusText;

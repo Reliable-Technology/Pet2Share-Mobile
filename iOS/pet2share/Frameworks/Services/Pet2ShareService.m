@@ -201,7 +201,7 @@ static id ObjectOrNull(id object)
         [[EGOCache globalCache] setData:data forKey:self.cacheKey.getKey];
     }
     
-    [self processResponseData:data];
+    if (self.callback) [self processResponseData:data];
 }
 
 - (void)didFailDownload:(NSError *)error webClient:(WebClient *)webClient
@@ -539,47 +539,72 @@ commentDescription:(NSString *)commentDescription
     });
 }
 
-- (void)uploadImage:(NSObject<Pet2ShareServiceCallback> *)callback
-          profileId:(NSInteger)profileId
-        profileType:(AvatarImageType)type
-           fileName:(NSString *)fileName
-              image:(UIImage *)image
-     isCoverPicture:(BOOL)isCoverPicture
+- (void)uploadImageWithProfileId:(NSInteger)profileId
+                     profileType:(AvatarImageType)type
+                        fileName:(NSString *)fileName
+                        cacheKey:(NSString *)cacheKey
+                           image:(UIImage *)image
+                  isCoverPicture:(BOOL)isCoverPicture
+                      completion:(void (^)(NSString* imageUrl))completion
 {
     fTRACE(@"%@ <Identifier: %ld>", UPLOADUSERPICTURE_ENDPOINT, (long)profileId);
     
-    dispatch_queue_t imageUploadQueue = dispatch_get_main_queue();
-    dispatch_async(imageUploadQueue, ^{
-        @try
-        {
-            NSString *profileType;
-            if (type == UserAvatar) profileType = @"UserId";
-            else profileType = @"PetId";
-            
-            @try
-            {
-                NSString *endPoint = [NSString stringWithFormat:@"%@?%@=%ld&FileName=%@.png&IsCoverPic=%@",
-                                      UPLOADUSERPICTURE_ENDPOINT, profileType, (long)profileId, fileName, isCoverPicture ? @"true" : @"false"];
-                NSString *url = [[UrlManager sharedInstance] webServiceUrl:endPoint];
-                
-                NSData *data = UIImageJPEGRepresentation(image, 1.0);
-                
-                WebClient *webClient = [[WebClient alloc] init];
-                webClient.delegate = self;
-                webClient.contentType = CONTENT_TYPE_OCTET_STREAM;
-                self.jsonModel = [UpdateMessage class];
-                [webClient post:url binaryData:data];
-            }
-            @catch (NSException *exception)
-            {
-                NSLog(@"%s: exception on upload image: %@", __func__, exception);
-            }
-        }
-        @catch (NSException *exception)
-        {
-            NSLog(@"%s: exception on download image: %@", __func__, exception);
-        }
-    });
+    NSString *profileType;
+    if (type == UserAvatar) profileType = @"UserId";
+    else profileType = @"PetId";
+    
+    NSString *endPoint = [NSString stringWithFormat:@"%@?%@=%ld&FileName=%@.png&IsCoverPic=%@",
+                          UPLOADUSERPICTURE_ENDPOINT, profileType, (long)profileId, fileName, isCoverPicture ? @"true" : @"false"];
+    NSString *url = [[UrlManager sharedInstance] webServiceUrl:endPoint];
+    NSData *data = UIImageJPEGRepresentation(image, 1.0);
+    WebClient *webClient = [[WebClient alloc] init];
+    webClient.contentType = CONTENT_TYPE_OCTET_STREAM;
+    self.jsonModel = [UpdateMessage class];
+    self.callback = nil;
+    webClient.delegate = nil;
+    
+    if ([[EGOCache globalCache] hasCacheForKey:cacheKey])
+    {
+        NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
+        [[EGOCache globalCache] setData:imageData forKey:cacheKey];
+    }
+    
+    [webClient post:url postData:data queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+      
+      @try
+      {
+          if ([self.jsonModel isSubclassOfClass:[RepositoryObject class]])
+          {
+              NSError *error = nil;
+              NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+              fTRACE("Response JSON: %@", json);
+              
+              if (json)
+              {
+                  ResponseObject *responseObj = [[ResponseObject alloc] initWithDictionary:json error:&error];
+                  
+                  if (!responseObj)
+                  {
+                      fTRACE("%s: Can't parse the ResponseObject: %@", __func__, error);
+                  }
+                  else
+                  {
+                      UpdateMessage * updateMessage = (UpdateMessage *)[[[self.jsonModel class] alloc] initWithDictionary:responseObj.results[0]
+                                                                                                                    error:&error];
+                      if (updateMessage && [updateMessage isValidate])
+                      {
+                          fTRACE("Message: %@", updateMessage.message);
+                          completion(updateMessage.message);
+                      }
+                  }
+              }
+          }
+      }
+      @catch (NSException *exception)
+      {
+          NSLog(@"%s: exception occurred: %@", __func__, exception);
+      }
+  }];
     
 }
 

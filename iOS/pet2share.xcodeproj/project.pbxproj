@@ -167,6 +167,8 @@
 		FBDE4DB41BD759D0000BA3C7 /* ProfileSelectionTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4DB21BD759D0000BA3C7 /* ProfileSelectionTableCell.xib */; settings = {ASSET_TAGS = (); }; };
 		FBDE4DB71BD75A6C000BA3C7 /* CheckMark.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4DB61BD75A6C000BA3C7 /* CheckMark.m */; settings = {ASSET_TAGS = (); }; };
 		FBDE4DBA1BD75C73000BA3C7 /* ProfileSelectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4DB91BD75C73000BA3C7 /* ProfileSelectionVC.m */; settings = {ASSET_TAGS = (); }; };
+		FBEFA1621BD972C10071AD8E /* PostImageCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBEFA1601BD972C10071AD8E /* PostImageCollectionCell.m */; settings = {ASSET_TAGS = (); }; };
+		FBEFA1631BD972C10071AD8E /* PostImageCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBEFA1611BD972C10071AD8E /* PostImageCollectionCell.xib */; settings = {ASSET_TAGS = (); }; };
 		FBFC5CEA1BCF5C8600312F31 /* CacheKey.m in Sources */ = {isa = PBXBuildFile; fileRef = FBFC5CE91BCF5C8600312F31 /* CacheKey.m */; settings = {ASSET_TAGS = (); }; };
 		FBFC5CED1BCF636F00312F31 /* AppData.m in Sources */ = {isa = PBXBuildFile; fileRef = FBFC5CEC1BCF636F00312F31 /* AppData.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -434,6 +436,9 @@
 		FBDE4DB61BD75A6C000BA3C7 /* CheckMark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckMark.m; sourceTree = "<group>"; };
 		FBDE4DB81BD75C73000BA3C7 /* ProfileSelectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileSelectionVC.h; sourceTree = "<group>"; };
 		FBDE4DB91BD75C73000BA3C7 /* ProfileSelectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileSelectionVC.m; sourceTree = "<group>"; };
+		FBEFA15F1BD972C10071AD8E /* PostImageCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostImageCollectionCell.h; sourceTree = "<group>"; };
+		FBEFA1601BD972C10071AD8E /* PostImageCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostImageCollectionCell.m; sourceTree = "<group>"; };
+		FBEFA1611BD972C10071AD8E /* PostImageCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostImageCollectionCell.xib; sourceTree = "<group>"; };
 		FBFC5CE81BCF5C8600312F31 /* CacheKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheKey.h; sourceTree = "<group>"; };
 		FBFC5CE91BCF5C8600312F31 /* CacheKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheKey.m; sourceTree = "<group>"; };
 		FBFC5CEB1BCF636F00312F31 /* AppData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppData.h; sourceTree = "<group>"; };
@@ -905,6 +910,9 @@
 				FBDE4D701BD758FA000BA3C7 /* PostTextCollectionCell.h */,
 				FBDE4D711BD758FA000BA3C7 /* PostTextCollectionCell.m */,
 				FBDE4D721BD758FA000BA3C7 /* PostTextCollectionCell.xib */,
+				FBEFA15F1BD972C10071AD8E /* PostImageCollectionCell.h */,
+				FBEFA1601BD972C10071AD8E /* PostImageCollectionCell.m */,
+				FBEFA1611BD972C10071AD8E /* PostImageCollectionCell.xib */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -1076,6 +1084,7 @@
 				FB484A971B50C6130045A6EA /* Lato-MediumItalic.ttf in Resources */,
 				FBCEA4401B4CC3E000497678 /* LaunchScreen.xib in Resources */,
 				FB484A9B1B50C6130045A6EA /* Lato-Thin.ttf in Resources */,
+				FBEFA1631BD972C10071AD8E /* PostImageCollectionCell.xib in Resources */,
 				FBCEA43D1B4CC3E000497678 /* Images.xcassets in Resources */,
 				FB484A981B50C6130045A6EA /* Lato-Regular.ttf in Resources */,
 			);
@@ -1191,6 +1200,7 @@
 				FB5BB6471BD5559300A382AC /* FeedCollectionVC.m in Sources */,
 				FBDE4DB31BD759D0000BA3C7 /* ProfileSelectionTableCell.m in Sources */,
 				FB4ED0251BCC843200E9F379 /* AddEditPetProfileVC.m in Sources */,
+				FBEFA1621BD972C10071AD8E /* PostImageCollectionCell.m in Sources */,
 				FBCF4A991BC6CF6B00C75066 /* CollectionViewController.m in Sources */,
 				FB5BB63E1BD5050800A382AC /* InputTableView.m in Sources */,
 				FBB531141B9BA8A7004D5DA2 /* ResponseObject.m in Sources */,

@@ -39,8 +39,7 @@
     [self assignTableView:self.tableView];
 }
 
-#pragma mark -
-#pragma mark Superclass Instance Methods
+#pragma mark - Overriden Methods
 
 - (NSString *)getViewTitle
 {
@@ -49,10 +48,7 @@
 
 - (NSString *)getAvatarImageKey
 {
-    NSString *imageKey = [Pet2ShareUser current].person.profilePictureUrl;
-    if (!imageKey || [imageKey isEqualToString:kEmptyString]) imageKey = kTempAvatarImage;
-    fTRACE("Key: %@", imageKey);
-    return imageKey;
+    return kUserSessionAvatarImage;
 }
 
 - (NSString *)getSectionTitle:(NSString *)identifier
@@ -223,31 +219,39 @@
                                       state:currentUser.person.address.state
                                     country:currentUser.person.address.country
                                     zipCode:currentUser.person.address.zipCode];
-    
-    UIImage *image = [[AppData sharedInstance] getObject:[self getAvatarImageKey]];
-    if (image)
-    {
-        NSData *data = UIImageJPEGRepresentation(image, 1.0);
-        [[EGOCache globalCache] setData:data forKey:[self getAvatarImageKey] withTimeoutInterval:kImageCacheTimeOut];
-        [[AppData sharedInstance] removeObject:[self getAvatarImageKey]];
-        
-        NSString *imageKey = avatarUserKey([Pet2ShareUser current].identifier);
-        [[Pet2ShareService sharedService] uploadImage:nil
-                                            profileId:[Pet2ShareUser current].identifier
-                                          profileType:UserAvatar
-                                             fileName:imageKey
-                                                image:image
-                                       isCoverPicture:NO];
-    }
 }
 
-#pragma mark -
-#pragma mark <Pet2ShareServiceCallback>
+#pragma mark - <Pet2ShareServiceCallback>
 
 - (void)onReceiveSuccess:(NSArray *)objects
 {
     [self.activity hide];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    
+    // Get session image from AppData
+    NSString *cacheKey = [Pet2ShareUser current].person.profilePictureUrl;
+    fTRACE("<Session Image Key: %@ - CacheKey: %@>", [self getAvatarImageKey], cacheKey);
+    UIImage *image = [[AppData sharedInstance] getObject:[self getAvatarImageKey]];
+    
+    // Load to Pet2ShareUser singleton, then remove from AppData
+    [Pet2ShareUser current].sessionAvatarImage = image;
+    [[AppData sharedInstance] removeObject:[self getAvatarImageKey]];
+    
+    if (image)
+    {
+        NSString *imageKey = avatarUserKey([Pet2ShareUser current].identifier);
+        Pet2ShareService *service = [Pet2ShareService sharedService];
+        [service uploadImageWithProfileId:[Pet2ShareUser current].identifier
+                              profileType:UserAvatar
+                                 fileName:imageKey
+                                 cacheKey:cacheKey
+                                    image:image
+                           isCoverPicture:NO
+                               completion:^(NSString *imageUrl) {
+                                   [Pet2ShareUser current].sessionAvatarImage = nil;
+                                   [Pet2ShareUser current].person.profilePictureUrl = imageUrl;
+                               }];
+    }
 }
 
 - (void)onReceiveError:(ErrorMessage *)errorMessage

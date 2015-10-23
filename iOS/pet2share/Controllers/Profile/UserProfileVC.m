@@ -51,15 +51,12 @@ static CGFloat kCellSpacing                     = 5.0f;
     // Register extra cells
     [self.collectionView registerNib:[UINib nibWithNibName:kEmptyCellNibName bundle:nil]
           forCellWithReuseIdentifier:kEmptyCellIdentifier];
- 
-    // Request User Data
-    [self requestUserData];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self refreshView];
+    [self requestUserData];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -127,13 +124,6 @@ static CGFloat kCellSpacing                     = 5.0f;
     }
 }
 
-- (void)refreshView
-{
-    [self.items removeAllObjects];
-    [self.items addObjectsFromArray:[Pet2ShareUser current].pets];
-    [self.collectionView reloadData];
-}
-
 #pragma mark - Events
 
 - (void)addButtonTapped:(id)sender
@@ -145,7 +135,9 @@ static CGFloat kCellSpacing                     = 5.0f;
 
 - (void)requestUserData
 {
-    [self refreshView];
+    [self.items removeAllObjects];
+    [self.items addObjectsFromArray:[Pet2ShareUser current].pets];
+    [self.collectionView reloadData];
     Pet2ShareService *service = [Pet2ShareService new];
     [service getUserProfile:self userId:[Pet2ShareUser current].identifier cachePolicy:CacheDefault];
 }
@@ -157,11 +149,13 @@ static CGFloat kCellSpacing                     = 5.0f;
         User *user = objects[0];
         // fTRACE("User: %@", user);
         [[Pet2ShareUser current] updateFromUser:user];
+        [self.collectionView reloadData];
     }
 }
 
 - (void)onReceiveError:(ErrorMessage *)errorMessage
 {
+    fTRACE("Error: %@", errorMessage.message);
     [Graphics alert:NSLocalizedString(@"Error", @"") message:errorMessage.message type:ErrorAlert];
 }
 
@@ -176,7 +170,6 @@ static CGFloat kCellSpacing                     = 5.0f;
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell;
-    
     
     @try
     {

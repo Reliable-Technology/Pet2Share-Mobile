@@ -26,6 +26,7 @@ typedef NS_ENUM(NSInteger, PostType)
 @property NSInteger identifier;
 @property PostType postTypeId;
 @property NSInteger postedBy;
+@property NSString *postUrl;
 @property SUser<Optional> *user;
 @property SPet<Optional> *pet;
 @property NSString <Optional> *postDescription;

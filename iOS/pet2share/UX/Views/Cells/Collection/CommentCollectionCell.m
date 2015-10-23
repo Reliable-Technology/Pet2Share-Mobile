@@ -64,15 +64,23 @@ static CGFloat const kBottomSpacing         = 16.0f;
 
 - (void)loadDataWithImageUrl:(NSString *)imgUrl
         placeHolderImageName:(NSString *)placeHolderImgName
+                sessionImage:(UIImage *)sessionImage
                   headerText:(NSString *)headerText
              descriptionText:(NSString *)descriptionText
                   statusText:(NSString *)statusText
 {
-    Pet2ShareService *service = [Pet2ShareService new];
-    self.imageView.image = [UIImage imageNamed:placeHolderImgName];
-    [service loadImage:imgUrl completion:^(UIImage *image) {
-        self.imageView.image = image ?: [UIImage imageNamed:placeHolderImgName];
-    }];
+    if (sessionImage)
+    {
+        self.imageView.image = sessionImage;
+    }
+    else
+    {
+        Pet2ShareService *service = [Pet2ShareService new];
+        self.imageView.image = [UIImage imageNamed:placeHolderImgName];
+        [service loadImage:imgUrl completion:^(UIImage *image) {
+            self.imageView.image = image ?: [UIImage imageNamed:placeHolderImgName];
+        }];
+    }
     
     self.headerLbl.text = headerText;
     self.descriptionTxtView.text = descriptionText;

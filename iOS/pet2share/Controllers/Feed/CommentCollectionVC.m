@@ -17,6 +17,7 @@
 #import "PostTextCollectionCell.h"
 #import "NoDataCollectionCell.h"
 #import "OrderedDictionary.h"
+#import "Pet2ShareUser.h"
 
 @interface CommentCollectionVC () <Pet2ShareServiceCallback>
 
@@ -73,23 +74,34 @@ static CGFloat const kSpacing                   = 5.0f;
 {
     [self.cellDict removeAllObjects];
     
-    NSString *likeStringCount = self.post.postLikeCount == 1
-    ? [NSString stringWithFormat:@"%ld Like", (long)self.post.postLikeCount]
-    : [NSString stringWithFormat:@"%ld Likes", (long)self.post.postLikeCount];
-    NSString *commentStringCount = self.post.postCommentCount == 1
-    ? [NSString stringWithFormat:@"%ld Comment", (long)self.post.postCommentCount]
-    : [NSString stringWithFormat:@"%ld Comments", (long)self.post.postCommentCount];
-    NSString *postStatus = [NSString stringWithFormat:@"%@ • %@", likeStringCount, commentStringCount];
+    NSString *postStatus = [self.post getPostStatusString];
+    NSString *profileImageUrl = kEmptyString;
+    NSString *profileName = kEmptyString;
+    UIImage *sessionImage = nil;
     
-    NSString *postDate = [Utils formatNSDateToString:self.post.dateAdded withFormat:kFormatDayOfWeekWithDateTime];
+    if (self.post.isPostByPet)
+    {
+        profileImageUrl = self.post.pet.profilePictureUrl ?: kEmptyString;
+        profileName = self.post.pet.name ?:kEmptyString;
+    }
+    else
+    {
+        profileImageUrl = self.post.user.profilePictureUrl;
+        profileName = self.post.user.name;
+        if (self.post.user.identifier == [Pet2ShareUser current].identifier)
+            sessionImage = [Pet2ShareUser current].sessionAvatarImage;
+    }
+
+    NSMutableDictionary *profileCellDict = [NSMutableDictionary dictionary];
+    profileCellDict[kCellClassName] = kPostCellNibName;
+    profileCellDict[kCellNameKey] = profileName;
+    profileCellDict[kCellImageLink] = profileImageUrl;
+    profileCellDict[kCellTextKey] = self.post.postDescription ?: kEmptyString;
+    profileCellDict[kCellDateKey] = [Utils formatNSDateToString:self.post.dateAdded withFormat:kFormatDayOfWeekWithDateTime];
+    profileCellDict[kCellPostStatusKey] = postStatus;
+    profileCellDict[kCellReuseIdentifier] = kPostCellIdentifier;
+    if (sessionImage) profileCellDict[kCellSessionImageKey] = sessionImage;
     
-    NSDictionary *profileCellDict = @{kCellClassName: kPostCellNibName,
-                                      kCellNameKey: self.post.user.name ?: kEmptyString,
-                                      kCellImageLink: self.post.user.profilePictureUrl ?: kEmptyString,
-                                      kCellTextKey: self.post.postDescription,
-                                      kCellDateKey: postDate,
-                                      kCellPostStatusKey: postStatus,
-                                      kCellReuseIdentifier: kPostCellIdentifier};
     [self.cellDict insertObject:@[profileCellDict] forKey:kPostCellIdentifier atIndex:0];
     
     NSMutableArray *commentList = [NSMutableArray array];
@@ -98,14 +110,18 @@ static CGFloat const kSpacing                   = 5.0f;
     {
         for (Comment *comment in comments)
         {
-            NSString *commentDate = [Utils formatNSDateToString:comment.dateAdded withFormat:kFormatDayOfWeekWithDateTime];
-            
-            NSDictionary *commentDict = @{kCellClassName: kCommentCellNibName,
-                                          kCellNameKey: comment.user.name ?: kEmptyString,
-                                          kCellImageLink: comment.user.profilePictureUrl ?: kEmptyString,
-                                          kCellDateKey: commentDate,
-                                          kCellTextKey: comment.commentDescription,
-                                          kCellReuseIdentifier: kCommentCellIdentifier};
+            if (comment.user.identifier == [Pet2ShareUser current].identifier)
+                sessionImage = [Pet2ShareUser current].sessionAvatarImage;
+
+            NSMutableDictionary *commentDict = [NSMutableDictionary dictionary];
+            commentDict[kCellClassName] = kCommentCellNibName;
+            commentDict[kCellNameKey] = comment.user.name ?: kEmptyString;
+            commentDict[kCellImageLink] = comment.user.profilePictureUrl ?: kEmptyString;
+            commentDict[kCellDateKey] = [Utils formatNSDateToString:comment.dateAdded withFormat:kFormatDayOfWeekWithDateTime];
+            commentDict[kCellTextKey] = comment.commentDescription ?: kEmptyString;
+            commentDict[kCellReuseIdentifier] = kCommentCellIdentifier;
+            if (sessionImage) commentDict[kCellSessionImageKey] = sessionImage;
+
             [commentList addObject:commentDict];
         }
         [self.cellDict insertObject:commentList forKey:kCommentCellIdentifier atIndex:1];
@@ -227,6 +243,7 @@ static CGFloat const kSpacing                   = 5.0f;
             cellDict = data[0];
             [(PostTextCollectionCell *)cell loadDataWithImageUrl:cellDict[kCellImageLink]
                                             placeHolderImageName:@"img-avatar"
+                                                    sessionImage:cellDict[kCellSessionImageKey]
                                                      primaryText:cellDict[kCellNameKey]
                                                    secondaryText:cellDict[kCellDateKey]
                                                  descriptionText:cellDict[kCellTextKey]
@@ -238,6 +255,7 @@ static CGFloat const kSpacing                   = 5.0f;
             cellDict = data[index];
             [(CommentCollectionCell *)cell loadDataWithImageUrl:cellDict[kCellImageLink]
                                            placeHolderImageName:@"img-avatar"
+                                                   sessionImage:cellDict[kCellSessionImageKey]
                                                      headerText:cellDict[kCellNameKey]
                                                 descriptionText:cellDict[kCellTextKey]
                                                      statusText:cellDict[kCellDateKey]];

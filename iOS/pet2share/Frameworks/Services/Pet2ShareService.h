@@ -133,11 +133,12 @@ commentDescription:(NSString *)commentDescription;
 - (void)loadImage:(NSString *)url
        completion:(void (^)(UIImage* image))completion;
 
-- (void)uploadImage:(NSObject<Pet2ShareServiceCallback> *)callback
-          profileId:(NSInteger)profileId
-        profileType:(AvatarImageType)type
-           fileName:(NSString *)fileName
-              image:(UIImage *)image
-     isCoverPicture:(BOOL)isCoverPicture;
+- (void)uploadImageWithProfileId:(NSInteger)profileId
+                     profileType:(AvatarImageType)type
+                        fileName:(NSString *)fileName
+                        cacheKey:(NSString *)cacheKey
+                           image:(UIImage *)image
+                  isCoverPicture:(BOOL)isCoverPicture
+                      completion:(void (^)(NSString* imageUrl))completion;
 
 @end

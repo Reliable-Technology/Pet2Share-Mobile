@@ -19,7 +19,8 @@ NSInteger const kDescriptionMaxCharacters       = 1000;
 NSInteger const kPostMaxCharacters              = 300;
 NSInteger const kCacheTimeOut                   = 60*3;                 // 3 minutes
 NSInteger const kImageCacheTimeOut              = 60*60*24;             // 1 day
-NSString * const kTempAvatarImage               = @"avatarimage";
+NSString * const kUserSessionAvatarImage        = @"useravatarsessionimage";
+NSString * const kPetTempAvatarImage            = @"petavatarimage";
 NSInteger const kNumberOfPostPerPage            = 10;
 
 #pragma mark - Segues

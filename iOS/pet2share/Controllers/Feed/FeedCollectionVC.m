@@ -201,6 +201,8 @@ static NSString * const kLoadingCellNibName     = @"LoadingCollectionCell";
             
             NSString *profileImageUrl = kEmptyString;
             NSString *profileName = kEmptyString;
+            UIImage *sessionImage = nil;
+            
             if (post.isPostByPet)
             {
                 profileImageUrl = post.pet.profilePictureUrl;
@@ -210,10 +212,13 @@ static NSString * const kLoadingCellNibName     = @"LoadingCollectionCell";
             {
                 profileImageUrl = post.user.profilePictureUrl;
                 profileName = post.user.name;
+                if (post.user.identifier == [Pet2ShareUser current].identifier)
+                    sessionImage = [Pet2ShareUser current].sessionAvatarImage;
             }
             
             [(PostTextCollectionCell *)cell loadDataWithImageUrl:profileImageUrl
                                             placeHolderImageName:@"img-avatar"
+                                                    sessionImage:sessionImage
                                                      primaryText:profileName
                                                    secondaryText:[Utils formatNSDateToString:post.dateAdded withFormat:kFormatDayOfWeekWithDateTime]
                                                  descriptionText:post.postDescription

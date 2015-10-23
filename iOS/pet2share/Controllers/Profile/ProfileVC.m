@@ -9,6 +9,7 @@
 #import "ProfileVC.h"
 #import "Utils.h"
 #import "AppColorScheme.h"
+#import "Pet2ShareUser.h"
 
 @interface ProfileVC ()
 
@@ -52,8 +53,7 @@ static NSString * const kHeaderNibName          = @"ProfileHeaderCell";
     TRACE_HERE;
 }
 
-#pragma mark -
-#pragma mark Protected Instance Methods
+#pragma mark - Overriden Instance Methods
 
 - (NSString *)getProfileImageUrl
 {
@@ -79,8 +79,7 @@ static NSString * const kHeaderNibName          = @"ProfileHeaderCell";
     return kEmptyString;
 }
 
-#pragma mark -
-#pragma mark <UICollectionViewDataSource>
+#pragma mark - <UICollectionViewDataSource>
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
            viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
@@ -92,7 +91,9 @@ static NSString * const kHeaderNibName          = @"ProfileHeaderCell";
             ProfileHeaderCell *cell = [collectionView dequeueReusableSupplementaryViewOfKind:kind
                                                                          withReuseIdentifier:kHeaderIdentifier
                                                                                 forIndexPath:indexPath];
-            [cell loadDataWithProfileImageUrl:[self getProfileImageUrl] profileImagePlaceHolder:@"img-avatar"
+            [cell loadDataWithProfileImageUrl:[self getProfileImageUrl]
+                      profileImagePlaceHolder:@"img-avatar"
+                                 sessionImage:[Pet2ShareUser current].sessionAvatarImage
                                 coverImageUrl:[self getProfileCoverImageUrl]
                                          name:[self getProfileName]
                              socialStatusInfo:nil];
@@ -107,8 +108,7 @@ static NSString * const kHeaderNibName          = @"ProfileHeaderCell";
     return nil;
 }
 
-#pragma mark -
-#pragma mark <CellButtonDelegate>
+#pragma mark - <CellButtonDelegate>
 
 - (void)editButtonTapped:(id)sender
 {
