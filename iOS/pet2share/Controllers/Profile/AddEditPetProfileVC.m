@@ -45,12 +45,7 @@
 
 - (NSString *)getAvatarImageKey
 {
-    switch (self.petProfileMode)
-    {
-        case AddPetProfile: return kPetTempAvatarImage;
-        case EditPetProfile: return self.pet.profilePictureUrl;
-        default: return nil;
-    }
+    return kPetSessionAvatarImage;
 }
 
 - (NSString *)getSectionTitle:(NSString *)identifier
@@ -194,21 +189,6 @@
                           dateOfBirth:self.pet.dateOfBirth
                                 about:self.pet.about
                               favFood:self.pet.favFood];
-            
-            UIImage *image = [[AppData sharedInstance] getObject:[self getAvatarImageKey]];
-            if (image)
-            {
-                NSData *data = UIImageJPEGRepresentation(image, 1.0);
-                [[EGOCache globalCache] setData:data forKey:[self getAvatarImageKey] withTimeoutInterval:kImageCacheTimeOut];
-                [[AppData sharedInstance] removeObject:[self getAvatarImageKey]];
-                
-//                NSString *imageKey = avatarUserKey([Pet2ShareUser current].identifier);
-//                [[Pet2ShareService sharedService] uploadImage:nil
-//                                                    profileId:self.pet.identifier
-//                                                  profileType:PetAvatar
-//                                                     fileName:imageKey
-//                                                        image:image isCoverPicture:NO];
-            }
         }
             
         default: break;
@@ -222,6 +202,53 @@
 {
     [self.activity hide];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    
+    NSInteger petIdentifier;
+    switch (self.petProfileMode)
+    {
+        case AddPetProfile:
+        {
+            if (objects.count == 0)
+            {
+                UpdateMessage *updateMessage = objects[0];
+                petIdentifier = updateMessage.updateId;
+            }
+        }
+        case EditPetProfile:
+        {
+            petIdentifier = self.pet.identifier;
+        }
+        default: break;
+    }
+    
+    // Notify the delegate
+    if ([self.delegate respondsToSelector:@selector(didUpdateProfile)])
+        [self.delegate didUpdateProfile];
+    
+    // Get session image from AppData
+    NSString *cacheKey = self.pet.profilePictureUrl;
+    fTRACE("<Session Image Key: %@ - CacheKey: %@>", [self getAvatarImageKey], cacheKey);
+    UIImage *image = [[AppData sharedInstance] getObject:[self getAvatarImageKey]];
+    
+    // Load to Pet2ShareUser singleton, then remove from AppData
+    [Pet2ShareUser current].petSessionAvatarImages[@(petIdentifier)] = image;
+    [[AppData sharedInstance] removeObject:[self getAvatarImageKey]];
+    
+    if (image)
+    {
+        NSString *imageKey = avatarPetKey(self.pet.identifier);
+        Pet2ShareService *service = [Pet2ShareService sharedService];
+        [service uploadImageWithProfileId:self.pet.identifier profileType:PetAvatar
+                                 fileName:imageKey
+                                 cacheKey:cacheKey
+                                    image:image
+                           isCoverPicture:NO
+                               completion:^(NSString *imageUrl) {
+                                   [[Pet2ShareUser current].petSessionAvatarImages removeObjectForKey:@(petIdentifier)];
+                                   [[Pet2ShareUser current] removePet:0];
+                                   [[Pet2ShareUser current] updatePet:petIdentifier withAvatarUrl:imageUrl];
+                               }];
+    }
 }
 
 - (void)onReceiveError:(ErrorMessage *)errorMessage
@@ -230,8 +257,7 @@
     [Graphics alert:NSLocalizedString(@"Error", @"") message:errorMessage.message type:ErrorAlert];
 }
 
-#pragma mark -
-#pragma mark <FormProtocol>
+#pragma mark - <FormProtocol>
 
 - (void)updateData:(NSString *)key value:(NSString *)value
 {

@@ -207,13 +207,14 @@ static NSString * const kLoadingCellNibName     = @"LoadingCollectionCell";
             {
                 profileImageUrl = post.pet.profilePictureUrl;
                 profileName = post.pet.name;
+                sessionImage = [Pet2ShareUser current].petSessionAvatarImages[@(post.pet.identifier)];
             }
             else
             {
                 profileImageUrl = post.user.profilePictureUrl;
                 profileName = post.user.name;
                 if (post.user.identifier == [Pet2ShareUser current].identifier)
-                    sessionImage = [Pet2ShareUser current].sessionAvatarImage;
+                    sessionImage = [Pet2ShareUser current].getUserSessionAvatarImage;
             }
             
             [(PostTextCollectionCell *)cell loadDataWithImageUrl:profileImageUrl

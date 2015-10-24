@@ -228,13 +228,17 @@
     [self.activity hide];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     
+    // Notify the delegate
+    if ([self.delegate respondsToSelector:@selector(didUpdateProfile)])
+        [self.delegate didUpdateProfile];
+    
     // Get session image from AppData
     NSString *cacheKey = [Pet2ShareUser current].person.profilePictureUrl;
     fTRACE("<Session Image Key: %@ - CacheKey: %@>", [self getAvatarImageKey], cacheKey);
     UIImage *image = [[AppData sharedInstance] getObject:[self getAvatarImageKey]];
     
     // Load to Pet2ShareUser singleton, then remove from AppData
-    [Pet2ShareUser current].sessionAvatarImage = image;
+    [[Pet2ShareUser current] setUserSessionAvatarImage:image];
     [[AppData sharedInstance] removeObject:[self getAvatarImageKey]];
     
     if (image)
@@ -248,7 +252,7 @@
                                     image:image
                            isCoverPicture:NO
                                completion:^(NSString *imageUrl) {
-                                   [Pet2ShareUser current].sessionAvatarImage = nil;
+                                   [[Pet2ShareUser current] setUserSessionAvatarImage:nil];
                                    [Pet2ShareUser current].person.profilePictureUrl = imageUrl;
                                }];
     }

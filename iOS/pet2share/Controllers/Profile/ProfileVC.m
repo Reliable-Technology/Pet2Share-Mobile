@@ -79,6 +79,11 @@ static NSString * const kHeaderNibName          = @"ProfileHeaderCell";
     return kEmptyString;
 }
 
+- (UIImage *)getProfileSessionAvatarImage
+{
+    return nil;
+}
+
 #pragma mark - <UICollectionViewDataSource>
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
@@ -93,7 +98,7 @@ static NSString * const kHeaderNibName          = @"ProfileHeaderCell";
                                                                                 forIndexPath:indexPath];
             [cell loadDataWithProfileImageUrl:[self getProfileImageUrl]
                       profileImagePlaceHolder:@"img-avatar"
-                                 sessionImage:[Pet2ShareUser current].sessionAvatarImage
+                                 sessionImage:[self getProfileSessionAvatarImage]
                                 coverImageUrl:[self getProfileCoverImageUrl]
                                          name:[self getProfileName]
                              socialStatusInfo:nil];

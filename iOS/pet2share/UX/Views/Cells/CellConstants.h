@@ -17,6 +17,7 @@ static NSString * const kCellAvatarImage        = @"image";
 static NSString * const kCellNameKey            = @"name";
 static NSString * const kCellDateKey            = @"date";
 static NSString * const kCellTextKey            = @"text";
+static NSString * const kCellImageUrlKey        = @"imageurl";
 static NSString * const kCellSessionImageKey    = @"sessionimage";
 static NSString * const kCellPostStatusKey      = @"poststatus";
 static NSString * const kCellCommentKey         = @"comment";

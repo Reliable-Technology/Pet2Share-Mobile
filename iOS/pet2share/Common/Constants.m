@@ -17,10 +17,10 @@ NSString * const kLogoTypeface                  = @"LobsterTwo-Bold";
 NSInteger const kcenturyInSeconds               = 3154000000;
 NSInteger const kDescriptionMaxCharacters       = 1000;
 NSInteger const kPostMaxCharacters              = 300;
-NSInteger const kCacheTimeOut                   = 60*3;                 // 3 minutes
-NSInteger const kImageCacheTimeOut              = 60*60*24;             // 1 day
+NSInteger const kCacheTimeOut                   = 60*3;
+NSInteger const kImageCacheTimeOut              = 60*60*24;
 NSString * const kUserSessionAvatarImage        = @"useravatarsessionimage";
-NSString * const kPetTempAvatarImage            = @"petavatarimage";
+NSString * const kPetSessionAvatarImage         = @"petavatarimage";
 NSInteger const kNumberOfPostPerPage            = 10;
 
 #pragma mark - Segues

@@ -88,19 +88,31 @@
 
 - (void)loadAvatarButtonImage
 {
+    UIImage *sessionAvatarImage;
+    
     if (![Pet2ShareUser current].selectedPet)
     {
         self.avatarImgUrl = [Pet2ShareUser current].person.profilePictureUrl;
-        if ([Pet2ShareUser current].sessionAvatarImage)
+        sessionAvatarImage = [Pet2ShareUser current].getUserSessionAvatarImage;
+        if (sessionAvatarImage)
         {
-            [self.avatarBtn setBackgroundImage:[Pet2ShareUser current].sessionAvatarImage forState:UIControlStateNormal];
-            [self.avatarBtn setBackgroundImage:[Pet2ShareUser current].sessionAvatarImage forState:UIControlStateHighlighted];
+            [self.avatarBtn setBackgroundImage:sessionAvatarImage forState:UIControlStateNormal];
+            [self.avatarBtn setBackgroundImage:sessionAvatarImage forState:UIControlStateHighlighted];
             return;
         }
     }
     else
     {
-        self.avatarImgUrl = [Pet2ShareUser current].selectedPet.profilePictureUrl;
+        Pet *selectedPet = [Pet2ShareUser current].selectedPet;
+        sessionAvatarImage = [Pet2ShareUser current].petSessionAvatarImages[@(selectedPet.identifier)];
+        
+        self.avatarImgUrl = selectedPet.profilePictureUrl;
+        if (sessionAvatarImage)
+        {
+            [self.avatarBtn setBackgroundImage:sessionAvatarImage forState:UIControlStateNormal];
+            [self.avatarBtn setBackgroundImage:sessionAvatarImage forState:UIControlStateHighlighted];
+            return;
+        }
     }
     
     Pet2ShareService *service = [Pet2ShareService new];

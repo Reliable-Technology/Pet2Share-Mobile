@@ -35,8 +35,7 @@ NSString * const kCellOtherInfoNibName          = @"TextFieldTableCell";
 NSString * const kCellAddressInfoNibName        = @"ProfileAddressInfoCell";
 NSString * const kCellAboutMeNibName            = @"TextViewTableCell";
 
-#pragma mark -
-#pragma mark Life Cycle
+#pragma mark - Life Cycle
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -95,8 +94,7 @@ NSString * const kCellAboutMeNibName            = @"TextViewTableCell";
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
-#pragma mark -
-#pragma mark Protected Instance Methods
+#pragma mark - Protected Instance Methods
 
 - (NSString *)getViewTitle
 {
@@ -150,8 +148,7 @@ NSString * const kCellAboutMeNibName            = @"TextViewTableCell";
     // Need to be implemented at subclass
 }
 
-#pragma mark -
-#pragma mark Events
+#pragma mark - Events
 
 - (void)keyboardWillShow:(NSNotification *)sender
 {
@@ -178,8 +175,7 @@ NSString * const kCellAboutMeNibName            = @"TextViewTableCell";
 /// Delegates & Protocols callbacks
 ///--------------------------------------------------------------------
 
-#pragma mark -
-#pragma mark <BaseNavigationProtocol>
+#pragma mark - <BaseNavigationProtocol>
 
 - (UIButton *)setupLeftBarButton
 {
@@ -244,16 +240,14 @@ NSString * const kCellAboutMeNibName            = @"TextViewTableCell";
     }
 }
 
-#pragma mark -
-#pragma mark <CellButtonDelegate>
+#pragma mark - <CellButtonDelegate>
 
 - (void)editButtonTapped:(id)sender
 {
     [self setupActionSheet:nil buttons:@[@(IMAGE_BUTTON_CHOOSEFROMALBUM), @(IMAGE_BUTTON_TAKEPICTURE)]];
 }
 
-#pragma mark -
-#pragma mark <FormProtocol>
+#pragma mark - <FormProtocol>
 
 - (void)performAction
 {
@@ -265,8 +259,7 @@ NSString * const kCellAboutMeNibName            = @"TextViewTableCell";
     if (!_isDirty) _isDirty = YES;
 }
 
-#pragma mark -
-#pragma mark <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+#pragma mark - <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 - (void)navigationController:(UINavigationController *)navigationController
       willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
@@ -298,8 +291,7 @@ NSString * const kCellAboutMeNibName            = @"TextViewTableCell";
 /// This handles all delegate and datasource methods of the UITableView
 ///--------------------------------------------------------------------
 
-#pragma mark -
-#pragma mark <UITableViewDelegate>
+#pragma mark - <UITableViewDelegate>
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -348,8 +340,7 @@ NSString * const kCellAboutMeNibName            = @"TextViewTableCell";
     else return [self getDynamicCellHeight:sectionKey];
 }
 
-#pragma mark -
-#pragma mark <UITableViewDataSource>
+#pragma mark - <UITableViewDataSource>
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

@@ -27,9 +27,9 @@
 
 static NSString * const kCellReuseIdentifier    = @"profileselectiontablecell";
 static NSString * const kCellNibName            = @"ProfileSelectionTableCell";
-static NSString * const kCellTextKey            = @"textkey";
-static NSString * const kCellImageUrlKey        = @"imageurlkey";
-static NSString * const kCellIsMaster           = @"ismasterkey";
+static NSString * const kCellIsMaster           = @"ismaster";
+
+#pragma mark - Life Cycle
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -54,23 +54,34 @@ static NSString * const kCellIsMaster           = @"ismasterkey";
     
     Pet2ShareUser *currUser = [Pet2ShareUser current];
     NSString *name = [NSString stringWithFormat:@"%@ %@", currUser.person.firstName, currUser.person.lastName];
-    [self.cellData addObject:@{kCellTextKey: name, kCellImageUrlKey: currUser.person.profilePictureUrl, kCellIsMaster: @(YES)}];
+    
+    NSMutableDictionary *userDict = [NSMutableDictionary dictionary];
+    userDict[kCellTextKey] = name ?: kEmptyString;
+    userDict[kCellImageUrlKey] = currUser.person.profilePictureUrl ?: kEmptyString;
+    userDict[kCellIsMaster] = @(YES);
+    if (currUser.getUserSessionAvatarImage) userDict[kCellSessionImageKey] = currUser.getUserSessionAvatarImage;
+    [self.cellData addObject:userDict];
     
     [currUser.pets enumerateObjectsUsingBlock:^(Pet *pet, NSUInteger idx, BOOL *stop) {
+        
+        NSMutableDictionary *petDict = [NSMutableDictionary dictionary];
         
         if (pet.identifier == self.selectedPet.identifier)
         {
             _selectedPet = pet;
             _selectedIndex = idx+1;
         }
-        [self.cellData addObject:@{kCellTextKey: pet.name,
-                                   kCellImageUrlKey: pet.profilePictureUrl,
-                                   kCellIsMaster: @(NO)}];
+        
+        petDict[kCellTextKey] = pet.name ?: kEmptyString;
+        petDict[kCellImageUrlKey] = pet.profilePictureUrl ?: kEmptyString;
+        petDict[kCellIsMaster] = @(NO);
+        UIImage *petSessionImage = [Pet2ShareUser current].petSessionAvatarImages[@(pet.identifier)];
+        if (petSessionImage) petDict[kCellSessionImageKey] = petSessionImage;
+        [self.cellData addObject:petDict];
     }];
 }
 
-#pragma mark -
-#pragma mark <BaseNavigationProtocol>
+#pragma mark - <BaseNavigationProtocol>
 
 - (UIButton *)setupLeftBarButton
 {
@@ -101,10 +112,13 @@ static NSString * const kCellIsMaster           = @"ismasterkey";
                                return;
                            }];
     }
+    else
+    {
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
-#pragma mark -
-#pragma mark <UITableViewDataSource>
+#pragma mark - <UITableViewDataSource>
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -121,6 +135,7 @@ static NSString * const kCellIsMaster           = @"ismasterkey";
                                                            reuseIdentifier:kCellReuseIdentifier];
         [(ProfileSelectionTableCell *)cell loadDataWithImageUrl:data[kCellImageUrlKey]
                                            placeHolderImageName:@"img-avatar"
+                                                   sessionImage:data[kCellSessionImageKey]
                                                        nameText:data[kCellTextKey]
                                                        isMaster:[data[kCellIsMaster] boolValue]];
         
@@ -169,8 +184,7 @@ static NSString * const kCellIsMaster           = @"ismasterkey";
     }
 }
 
-#pragma mark -
-#pragma mark <UITableViewDelegate>
+#pragma mark - <UITableViewDelegate>
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

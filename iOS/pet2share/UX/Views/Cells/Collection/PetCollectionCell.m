@@ -62,12 +62,20 @@
     self.otherInfoLabel.text = pet.about;
     
     // Load Image
-    self.profileImageView.image = [UIImage new];
-    Pet2ShareService *service = [Pet2ShareService new];
-    [service loadImage:pet.profilePictureUrl completion:^(UIImage *image) {
-        if (!image) image = [UIImage new];
-        self.profileImageView.image = image;
-    }];
+    UIImage *sessionImage = [Pet2ShareUser current].petSessionAvatarImages[@(pet.identifier)];
+    if (sessionImage)
+    {
+        self.profileImageView.image = sessionImage;
+    }
+    else
+    {
+        self.profileImageView.image = [UIImage new];
+        Pet2ShareService *service = [Pet2ShareService new];
+        [service loadImage:pet.profilePictureUrl completion:^(UIImage *image) {
+            if (!image) image = [UIImage new];
+            self.profileImageView.image = image;
+        }];
+    }
 }
 
 @end

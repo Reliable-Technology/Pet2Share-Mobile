@@ -19,6 +19,13 @@
 #import "TextViewTableCell.h"
 #import <EGOCache/EGOCache.h>
 
+@protocol EditProfileDelegate <NSObject>
+
+@optional
+- (void)didUpdateProfile;
+
+@end
+
 extern NSString * const kCellBasicInfoIdentifier;
 extern NSString * const kCellNameInfoIdentifier;
 extern NSString * const kCellOtherInfoIdentifier;
@@ -34,6 +41,7 @@ extern NSString * const kCellAboutMeNibName;
 
 @property (strong, nonatomic) MutableOrderedDictionary *cellData;
 @property (strong, nonatomic) ActivityView *activity;
+@property (weak, nonatomic) id<EditProfileDelegate> delegate;
 
 - (NSString *)getViewTitle;
 - (NSString *)getAvatarImageKey;

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CheckMark.h"
+#import "CellConstants.h"
 
 @interface ProfileSelectionTableCell : UITableViewCell
 
@@ -16,6 +17,7 @@
 + (CGFloat)height;
 - (void)loadDataWithImageUrl:(NSString *)imageUrl
         placeHolderImageName:(NSString *)placeHolderImgName
+                sessionImage:(UIImage *)sessionImage
                     nameText:(NSString *)nameText
                     isMaster:(BOOL)isMaster;
 

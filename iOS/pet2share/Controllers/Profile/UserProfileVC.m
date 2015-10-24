@@ -21,7 +21,10 @@ static NSString * const kEmptyCellIdentifier    = @"emptypetcollectioncell";
 static NSString * const kEmptyCellNibName       = @"EmptyPetCollectionCell";
 static CGFloat kCellSpacing                     = 5.0f;
 
-@interface UserProfileVC () <Pet2ShareServiceCallback>
+@interface UserProfileVC () <Pet2ShareServiceCallback, EditProfileDelegate>
+{
+    CachePolicy _cachePolicy;
+}
 
 @end
 
@@ -35,6 +38,7 @@ static CGFloat kCellSpacing                     = 5.0f;
     {
         self.cellReuseIdentifier = kCellIdentifier;
         self.customNibName = kCellNibName;
+        _cachePolicy = CacheDefault;
     }
     return self;
 }
@@ -76,6 +80,7 @@ static CGFloat kCellSpacing                     = 5.0f;
         {
             addEditProfileVC.petProfileMode = AddPetProfile;
             addEditProfileVC.pet = [Pet new];
+            addEditProfileVC.delegate = self;
         }
         navController.transitioningDelegate = self.transitionManager;
     }
@@ -110,6 +115,11 @@ static CGFloat kCellSpacing                     = 5.0f;
     return kSegueEditProfile;
 }
 
+- (UIImage *)getProfileSessionAvatarImage
+{
+    return [Pet2ShareUser current].getUserSessionAvatarImage;
+}
+
 - (void)setupLayout
 {
     CollectionViewLayout *layout = (CollectionViewLayout *)self.collectionViewLayout;
@@ -139,7 +149,7 @@ static CGFloat kCellSpacing                     = 5.0f;
     [self.items addObjectsFromArray:[Pet2ShareUser current].pets];
     [self.collectionView reloadData];
     Pet2ShareService *service = [Pet2ShareService new];
-    [service getUserProfile:self userId:[Pet2ShareUser current].identifier cachePolicy:CacheDefault];
+    [service getUserProfile:self userId:[Pet2ShareUser current].identifier cachePolicy:_cachePolicy];
 }
 
 - (void)onReceiveSuccess:(NSArray *)objects
@@ -151,12 +161,20 @@ static CGFloat kCellSpacing                     = 5.0f;
         [[Pet2ShareUser current] updateFromUser:user];
         [self.collectionView reloadData];
     }
+    _cachePolicy = CacheDefault;
 }
 
 - (void)onReceiveError:(ErrorMessage *)errorMessage
 {
     fTRACE("Error: %@", errorMessage.message);
     [Graphics alert:NSLocalizedString(@"Error", @"") message:errorMessage.message type:ErrorAlert];
+}
+
+#pragma mark - <EditProfileDelegate>
+
+- (void)didUpdateProfile
+{
+    _cachePolicy = ForceRefresh;
 }
 
 #pragma mark - Collection View

@@ -34,14 +34,23 @@
 
 - (void)loadDataWithImageUrl:(NSString *)imageUrl
         placeHolderImageName:(NSString *)placeHolderImgName
+                sessionImage:(UIImage *)sessionImage
                     nameText:(NSString *)nameText
                     isMaster:(BOOL)isMaster
 {
-    Pet2ShareService *service = [Pet2ShareService new];
-    self.avatarImageView.image = [UIImage imageNamed:placeHolderImgName];
-    [service loadImage:imageUrl completion:^(UIImage *image) {
-        self.avatarImageView.image = image ?: [UIImage imageNamed:placeHolderImgName];
-    }];
+    if (sessionImage)
+    {
+        self.avatarImageView.image = sessionImage;
+    }
+    else
+    {
+        Pet2ShareService *service = [Pet2ShareService new];
+        self.avatarImageView.image = [UIImage imageNamed:placeHolderImgName];
+        [service loadImage:imageUrl completion:^(UIImage *image) {
+            self.avatarImageView.image = image ?: [UIImage imageNamed:placeHolderImgName];
+        }];
+    }
+    
     self.nameLabel.text = nameText;
     self.roleLabel.hidden = !isMaster;
 }

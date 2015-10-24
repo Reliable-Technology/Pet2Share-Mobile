@@ -550,11 +550,25 @@ commentDescription:(NSString *)commentDescription
     fTRACE(@"%@ <Identifier: %ld>", UPLOADUSERPICTURE_ENDPOINT, (long)profileId);
     
     NSString *profileType;
-    if (type == UserAvatar) profileType = @"UserId";
-    else profileType = @"PetId";
+    NSString *endpoint;
+    
+    switch (type)
+    {
+        case UserAvatar:
+            profileType = @"UserId";
+            endpoint = UPLOADUSERPICTURE_ENDPOINT;
+            break;
+        case PetAvatar:
+            profileType = @"PetId";
+            endpoint = UPLOADPETPICTURE_ENDPOINT;
+            break;
+            
+        default:
+            break;
+    }
     
     NSString *endPoint = [NSString stringWithFormat:@"%@?%@=%ld&FileName=%@.png&IsCoverPic=%@",
-                          UPLOADUSERPICTURE_ENDPOINT, profileType, (long)profileId, fileName, isCoverPicture ? @"true" : @"false"];
+                          endpoint, profileType, (long)profileId, fileName, isCoverPicture ? @"true" : @"false"];
     NSString *url = [[UrlManager sharedInstance] webServiceUrl:endPoint];
     NSData *data = UIImageJPEGRepresentation(image, 1.0);
     WebClient *webClient = [[WebClient alloc] init];

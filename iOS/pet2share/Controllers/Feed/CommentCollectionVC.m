@@ -77,7 +77,7 @@ static CGFloat const kSpacing                   = 5.0f;
     NSString *postStatus = [self.post getPostStatusString];
     NSString *profileImageUrl = kEmptyString;
     NSString *profileName = kEmptyString;
-    UIImage *sessionImage = nil;
+    UIImage *profileSessionImage = nil;
     
     if (self.post.isPostByPet)
     {
@@ -89,7 +89,7 @@ static CGFloat const kSpacing                   = 5.0f;
         profileImageUrl = self.post.user.profilePictureUrl;
         profileName = self.post.user.name;
         if (self.post.user.identifier == [Pet2ShareUser current].identifier)
-            sessionImage = [Pet2ShareUser current].sessionAvatarImage;
+            profileSessionImage = [Pet2ShareUser current].getUserSessionAvatarImage;
     }
 
     NSMutableDictionary *profileCellDict = [NSMutableDictionary dictionary];
@@ -100,7 +100,7 @@ static CGFloat const kSpacing                   = 5.0f;
     profileCellDict[kCellDateKey] = [Utils formatNSDateToString:self.post.dateAdded withFormat:kFormatDayOfWeekWithDateTime];
     profileCellDict[kCellPostStatusKey] = postStatus;
     profileCellDict[kCellReuseIdentifier] = kPostCellIdentifier;
-    if (sessionImage) profileCellDict[kCellSessionImageKey] = sessionImage;
+    if (profileSessionImage) profileCellDict[kCellSessionImageKey] = profileSessionImage;
     
     [self.cellDict insertObject:@[profileCellDict] forKey:kPostCellIdentifier atIndex:0];
     
@@ -108,10 +108,12 @@ static CGFloat const kSpacing                   = 5.0f;
     
     if ([comments count] > 0)
     {
+        UIImage *commentProfileSessionImage = nil;
+        
         for (Comment *comment in comments)
         {
             if (comment.user.identifier == [Pet2ShareUser current].identifier)
-                sessionImage = [Pet2ShareUser current].sessionAvatarImage;
+                commentProfileSessionImage = [Pet2ShareUser current].getUserSessionAvatarImage;
 
             NSMutableDictionary *commentDict = [NSMutableDictionary dictionary];
             commentDict[kCellClassName] = kCommentCellNibName;
@@ -120,7 +122,7 @@ static CGFloat const kSpacing                   = 5.0f;
             commentDict[kCellDateKey] = [Utils formatNSDateToString:comment.dateAdded withFormat:kFormatDayOfWeekWithDateTime];
             commentDict[kCellTextKey] = comment.commentDescription ?: kEmptyString;
             commentDict[kCellReuseIdentifier] = kCommentCellIdentifier;
-            if (sessionImage) commentDict[kCellSessionImageKey] = sessionImage;
+            if (commentProfileSessionImage) commentDict[kCellSessionImageKey] = commentProfileSessionImage;
 
             [commentList addObject:commentDict];
         }

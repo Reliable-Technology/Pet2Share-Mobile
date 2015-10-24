@@ -34,8 +34,7 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
 
 @implementation PetProfileVC
 
-#pragma mark - 
-#pragma mark Life Cycle
+#pragma mark - Life Cycle
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -115,7 +114,7 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
 
 - (UIImage *)getSessionImage
 {
-    return [[AppData sharedInstance] getObject:kPetTempAvatarImage];
+    return [[AppData sharedInstance] getObject:kPetSessionAvatarImage];
 }
 
 -  (NSString *)getProfileName
@@ -126,6 +125,11 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
 - (NSString *)getEditSegueIdentifier
 {
     return kSegueAddEditPetProfile;
+}
+
+- (UIImage *)getProfileSessionAvatarImage
+{
+    return [Pet2ShareUser current].petSessionAvatarImages[@(self.pet.identifier)];
 }
 
 #pragma mark - Events
@@ -265,7 +269,7 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
                 profileImageUrl = post.user.profilePictureUrl;
                 profileName = post.user.name;
                 if (post.user.identifier == [Pet2ShareUser current].identifier)
-                    sessionImage = [Pet2ShareUser current].sessionAvatarImage;
+                    sessionImage = [Pet2ShareUser current].getUserSessionAvatarImage;
             }
             
             [(PostTextCollectionCell *)cell loadDataWithImageUrl:profileImageUrl

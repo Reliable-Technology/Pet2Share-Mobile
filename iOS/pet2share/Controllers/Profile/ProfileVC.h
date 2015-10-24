@@ -17,5 +17,6 @@
 - (NSString *)getProfileCoverImageUrl;
 - (NSString *)getProfileName;
 - (NSString *)getEditSegueIdentifier;
+- (UIImage *)getProfileSessionAvatarImage;
 
 @end

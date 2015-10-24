@@ -10,12 +10,20 @@
 
 static Pet2ShareUser *_current = nil;
 
+@interface Pet2ShareUser ()
+
+@property (nonatomic, strong) UIImage *sessionAvatarImage;
+
+@end
+
 @implementation Pet2ShareUser
 
 @synthesize identifier = _identifier;
 @synthesize username = _username;
 @synthesize isAuthenticated = _isAuthenticated;
 @synthesize isActive = _isActive;
+
+#pragma mark - Life Cycle
 
 + (Pet2ShareUser *)current
 {
@@ -36,9 +44,12 @@ static Pet2ShareUser *_current = nil;
     if ((self = [super init]))
     {
         _person = [Person new];
+        _petSessionAvatarImages = [NSMutableDictionary dictionary];
     }
     return self;
 }
+
+#pragma mark - Public Methods
 
 - (void)updateFromUser:(User *)user
 {
@@ -58,6 +69,41 @@ static Pet2ShareUser *_current = nil;
         _isAuthenticated = user.isAuthenticated;
         _isActive = user.isActive;
     }
+}
+
+- (void)updatePet:(NSInteger)identifier withAvatarUrl:(NSString *)url
+{
+    for (Pet *pet in self.pets)
+    {
+        if (pet.identifier == identifier)
+        {
+            pet.profilePictureUrl = url;
+            break;
+        }
+    }
+}
+
+- (void)removePet:(NSInteger)identifier
+{
+    Pet *removedPet = nil;
+    for (Pet *pet in self.pets)
+    {
+        if (pet.identifier == identifier)
+        {
+            removedPet = pet;
+        }
+    }
+    [self.pets removeObject:removedPet];
+}
+
+- (UIImage *)getUserSessionAvatarImage
+{
+    return [self.sessionAvatarImage copy];
+}
+
+- (void)setUserSessionAvatarImage:(UIImage *)image
+{
+    self.sessionAvatarImage = image;
 }
 
 @end

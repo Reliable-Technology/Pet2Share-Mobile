@@ -46,6 +46,7 @@
 #define INSERTPETPROFILE_ENDPOINT           @"InsertPetProfile"
 #define UPDATEPETPROFILE_ENDPOINT           @"UpdatePetProfile"
 #define UPLOADUSERPICTURE_ENDPOINT          @"UploadUserPic"
+#define UPLOADPETPICTURE_ENDPOINT           @"UploadPetPic"
 #define GETPOSTSBYUSER_ENDPOINT             @"getPostsByUser"
 #define GETPOSTSBYPET_ENDPOINT              @"getPostsByPet"
 #define ADDPOST_ENDPOINT                    @"AddPost"

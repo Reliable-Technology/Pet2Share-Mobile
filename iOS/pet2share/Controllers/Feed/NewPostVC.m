@@ -56,16 +56,21 @@ static CGFloat const kToolbarHeight = 44.0f;
 {
     [super viewDidLoad];
     
+    Pet *selectedPet = [Pet2ShareUser current].selectedPet;
+    UIImage *sessionAvatarImage;
+    
     // Load Profile Image
-    if (![Pet2ShareUser current].selectedPet)
+    if (!selectedPet)
     {
         _profileId = [Pet2ShareUser current].identifier;
         _isPostedByPet = NO;
         _profileName = [NSString stringWithFormat:@"%@ %@",
                         [Pet2ShareUser current].person.firstName, [Pet2ShareUser current].person.lastName];
-        if ([Pet2ShareUser current].sessionAvatarImage)
+        sessionAvatarImage = [Pet2ShareUser current].getUserSessionAvatarImage;
+        
+        if (sessionAvatarImage)
         {
-            self.avatarImageView.image = [Pet2ShareUser current].sessionAvatarImage;
+            self.avatarImageView.image = sessionAvatarImage;
         }
         else
         {
@@ -76,12 +81,21 @@ static CGFloat const kToolbarHeight = 44.0f;
     }
     else
     {
-        _profileId = [Pet2ShareUser current].selectedPet.identifier;
+        _profileId = selectedPet.identifier;
         _isPostedByPet = YES;
-        _profileName = [Pet2ShareUser current].selectedPet.name;
-        [[Pet2ShareService new] loadImage:[Pet2ShareUser current].selectedPet.profilePictureUrl completion:^(UIImage *image) {
-            self.avatarImageView.image = image ?: [UIImage imageNamed:@"img-avatar"];
-        }];
+        _profileName = selectedPet.name ?: kEmptyString;
+        
+        UIImage *petSessionImage = [Pet2ShareUser current].petSessionAvatarImages[@(_profileId)];
+        if (petSessionImage)
+        {
+            self.avatarImageView.image = petSessionImage;
+        }
+        else
+        {
+            [[Pet2ShareService new] loadImage:[Pet2ShareUser current].selectedPet.profilePictureUrl completion:^(UIImage *image) {
+                self.avatarImageView.image = image ?: [UIImage imageNamed:@"img-avatar"];
+            }];
+        }
     }
    
     // Set textview placeholder

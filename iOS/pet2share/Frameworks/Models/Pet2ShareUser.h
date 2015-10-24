@@ -13,9 +13,6 @@
 
 @interface Pet2ShareUser : NSObject
 
-+ (instancetype)current;
-- (void)updateFromUser:(User *)user;
-
 @property (nonatomic, readonly) NSInteger identifier;
 @property (nonatomic, readonly) NSString *username;
 @property (nonatomic, strong) NSString *email;
@@ -30,6 +27,14 @@
 @property (nonatomic, readonly) BOOL isAuthenticated;
 @property (nonatomic, readonly) BOOL isActive;
 @property (nonatomic, strong) Pet *selectedPet;
-@property (nonatomic, strong) UIImage *sessionAvatarImage;
+
+@property (nonatomic, strong) NSMutableDictionary *petSessionAvatarImages;
+
++ (instancetype)current;
+- (void)updateFromUser:(User *)user;
+- (void)updatePet:(NSInteger)identifier withAvatarUrl:(NSString *)url;
+- (void)removePet:(NSInteger)identifier;
+- (UIImage *)getUserSessionAvatarImage;
+- (void)setUserSessionAvatarImage:(UIImage *)image;
 
 @end
