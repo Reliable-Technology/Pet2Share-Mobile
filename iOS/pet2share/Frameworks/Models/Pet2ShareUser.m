@@ -13,6 +13,7 @@ static Pet2ShareUser *_current = nil;
 @interface Pet2ShareUser ()
 
 @property (nonatomic, strong) UIImage *sessionAvatarImage;
+@property (nonatomic, strong) NSMutableDictionary *petSessionAvatarImages;
 
 @end
 
@@ -104,6 +105,21 @@ static Pet2ShareUser *_current = nil;
 - (void)setUserSessionAvatarImage:(UIImage *)image
 {
     self.sessionAvatarImage = image;
+}
+
+- (UIImage *)getPetSessionAvatarImage:(NSInteger)petId
+{
+    return [self.petSessionAvatarImages[@(petId)] copy];
+}
+
+- (void)setPetSessionAvatarImage:(UIImage *)image petId:(NSInteger)petId
+{
+    self.petSessionAvatarImages[@(petId)] = image;
+}
+
+- (void)removePetSessionAvatarImage:(NSInteger)petId
+{
+    [self.petSessionAvatarImages removeObjectForKey:@(petId)];
 }
 
 @end

@@ -22,6 +22,7 @@ NSInteger const kImageCacheTimeOut              = 60*60*24;
 NSString * const kUserSessionAvatarImage        = @"useravatarsessionimage";
 NSString * const kPetSessionAvatarImage         = @"petavatarimage";
 NSInteger const kNumberOfPostPerPage            = 10;
+CGFloat const kImageCompressionRatio            = 0.5;
 
 #pragma mark - Segues
 

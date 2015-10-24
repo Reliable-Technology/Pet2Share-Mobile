@@ -20,6 +20,9 @@ static id ObjectOrNull(id object)
 
 
 @interface Pet2ShareService () <WebClientDelegate>
+{
+    BOOL _didReceivedData;
+}
 
 @property (nonatomic, weak) id<Pet2ShareServiceCallback> callback;
 @property (nonatomic, strong) Class jsonModel;
@@ -45,6 +48,7 @@ static id ObjectOrNull(id object)
     if ((self = [super init]))
     {
         _cachePolicy = -1;
+        _didReceivedData = NO;
     }
     return self;
 }
@@ -79,6 +83,7 @@ static id ObjectOrNull(id object)
 {
     NSString *data = [Utils jsonRepresentation:postData];
     NSString *url = [[UrlManager sharedInstance] webServiceUrl:endPoint];
+    _didReceivedData = NO;
     
     WebClient *webClient = [WebClient new];
     webClient.delegate = self;
@@ -133,7 +138,7 @@ static id ObjectOrNull(id object)
 {
     ErrorMessage *errorMessage = nil;
     NSMutableArray *objects = [NSMutableArray array];
-    
+
     @try
     {
         if ([self.jsonModel isSubclassOfClass:[RepositoryObject class]])
@@ -192,24 +197,29 @@ static id ObjectOrNull(id object)
 - (void)didFinishDownload:(NSData *)data
 {
     TRACE_HERE;
+    
+    if (_didReceivedData) return;
+    
     if (self.cachePolicy == CacheDefault)
-    {
         [[EGOCache globalCache] setData:data forKey:self.cacheKey.getKey withTimeoutInterval:kCacheTimeOut];
-    }
     else if (self.cachePolicy == NotExpired)
-    {
         [[EGOCache globalCache] setData:data forKey:self.cacheKey.getKey];
-    }
     
     if (self.callback) [self processResponseData:data];
+    _didReceivedData = YES;
 }
 
 - (void)didFailDownload:(NSError *)error webClient:(WebClient *)webClient
 {
+    TRACE_HERE;
+    
+    if (_didReceivedData) return;
+    
     ErrorMessage *errorMessage = [ErrorMessage new];
     errorMessage.message = error.description;
     errorMessage.reasonCode = webClient.statusCode;
     if (self.callback) [self.callback onReceiveError:errorMessage];
+    _didReceivedData = YES;
 }
 
 #pragma mark - Public Instance Methods
@@ -418,7 +428,7 @@ postDescription:(NSString *)postDescription
     NSString *endPoint = [NSString stringWithFormat:@"%@?PostedBy=%ld&IsPostedByPet=%d&Description=%@&FileName=%@.png",
                           ADDPOSTWITHPIC_ENDPOINT, (long)profileId, isPostedByPet, encodedDescription, fileName];
     NSString *url = [[UrlManager sharedInstance] webServiceUrl:endPoint];
-    NSData *data = UIImageJPEGRepresentation(image, 1.0);
+    NSData *data = UIImageJPEGRepresentation(image, kImageCompressionRatio);
     
     WebClient *webClient = [[WebClient alloc] init];
     webClient.delegate = self;
@@ -506,7 +516,9 @@ commentDescription:(NSString *)commentDescription
 - (void)loadImage:(NSString *)url
        completion:(void (^)(UIImage* image))completion
 {
-    if (!url) return;
+    if ([Utils isNullOrEmpty:url]) return;
+    
+    fTRACE(@"Url: %@", url);
     
     if ([[EGOCache globalCache] hasCacheForKey:url])
     {
@@ -570,16 +582,17 @@ commentDescription:(NSString *)commentDescription
     NSString *endPoint = [NSString stringWithFormat:@"%@?%@=%ld&FileName=%@.png&IsCoverPic=%@",
                           endpoint, profileType, (long)profileId, fileName, isCoverPicture ? @"true" : @"false"];
     NSString *url = [[UrlManager sharedInstance] webServiceUrl:endPoint];
-    NSData *data = UIImageJPEGRepresentation(image, 1.0);
-    WebClient *webClient = [[WebClient alloc] init];
+    NSData *data = UIImageJPEGRepresentation(image, kImageCompressionRatio);
+    WebClient *webClient = [WebClient new];
     webClient.contentType = CONTENT_TYPE_OCTET_STREAM;
+    webClient.timeOut = WEBCLINET_UPLOAD_TIMEOUT;
     self.jsonModel = [UpdateMessage class];
     self.callback = nil;
     webClient.delegate = nil;
     
-    if ([[EGOCache globalCache] hasCacheForKey:cacheKey])
+    if ([[EGOCache globalCache] hasCacheForKey:cacheKey] && ![Utils isNullOrEmpty:cacheKey])
     {
-        NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
+        NSData *imageData = UIImageJPEGRepresentation(image, kImageCompressionRatio);
         [[EGOCache globalCache] setData:imageData forKey:cacheKey];
     }
     

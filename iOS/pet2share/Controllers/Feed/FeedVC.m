@@ -104,7 +104,7 @@
     else
     {
         Pet *selectedPet = [Pet2ShareUser current].selectedPet;
-        sessionAvatarImage = [Pet2ShareUser current].petSessionAvatarImages[@(selectedPet.identifier)];
+        sessionAvatarImage = [[Pet2ShareUser current] getPetSessionAvatarImage:selectedPet.identifier];
         
         self.avatarImgUrl = selectedPet.profilePictureUrl;
         if (sessionAvatarImage)

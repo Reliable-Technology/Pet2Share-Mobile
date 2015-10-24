@@ -233,7 +233,7 @@
         [self.delegate didUpdateProfile];
     
     // Get session image from AppData
-    NSString *cacheKey = [Pet2ShareUser current].person.profilePictureUrl;
+    __block NSString *cacheKey = [Pet2ShareUser current].person.profilePictureUrl;
     fTRACE("<Session Image Key: %@ - CacheKey: %@>", [self getAvatarImageKey], cacheKey);
     UIImage *image = [[AppData sharedInstance] getObject:[self getAvatarImageKey]];
     
@@ -252,7 +252,7 @@
                                     image:image
                            isCoverPicture:NO
                                completion:^(NSString *imageUrl) {
-                                   [[Pet2ShareUser current] setUserSessionAvatarImage:nil];
+                                   // [[Pet2ShareUser current] setUserSessionAvatarImage:nil];
                                    [Pet2ShareUser current].person.profilePictureUrl = imageUrl;
                                }];
     }

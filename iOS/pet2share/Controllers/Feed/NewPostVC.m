@@ -85,7 +85,7 @@ static CGFloat const kToolbarHeight = 44.0f;
         _isPostedByPet = YES;
         _profileName = selectedPet.name ?: kEmptyString;
         
-        UIImage *petSessionImage = [Pet2ShareUser current].petSessionAvatarImages[@(_profileId)];
+        UIImage *petSessionImage = [[Pet2ShareUser current] getPetSessionAvatarImage:_profileId];
         if (petSessionImage)
         {
             self.avatarImageView.image = petSessionImage;

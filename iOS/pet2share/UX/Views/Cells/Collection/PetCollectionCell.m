@@ -62,10 +62,11 @@
     self.otherInfoLabel.text = pet.about;
     
     // Load Image
-    UIImage *sessionImage = [Pet2ShareUser current].petSessionAvatarImages[@(pet.identifier)];
-    if (sessionImage)
+    UIImage *profileSessionImage = [[Pet2ShareUser current] getPetSessionAvatarImage:pet.identifier];
+    
+    if (profileSessionImage)
     {
-        self.profileImageView.image = sessionImage;
+        self.profileImageView.image = profileSessionImage;
     }
     else
     {

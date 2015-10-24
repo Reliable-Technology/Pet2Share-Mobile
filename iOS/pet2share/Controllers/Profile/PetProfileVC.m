@@ -129,7 +129,7 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
 
 - (UIImage *)getProfileSessionAvatarImage
 {
-    return [Pet2ShareUser current].petSessionAvatarImages[@(self.pet.identifier)];
+    return [[Pet2ShareUser current] getPetSessionAvatarImage:self.pet.identifier];
 }
 
 #pragma mark - Events

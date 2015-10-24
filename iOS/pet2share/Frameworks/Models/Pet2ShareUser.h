@@ -28,13 +28,14 @@
 @property (nonatomic, readonly) BOOL isActive;
 @property (nonatomic, strong) Pet *selectedPet;
 
-@property (nonatomic, strong) NSMutableDictionary *petSessionAvatarImages;
-
 + (instancetype)current;
 - (void)updateFromUser:(User *)user;
 - (void)updatePet:(NSInteger)identifier withAvatarUrl:(NSString *)url;
 - (void)removePet:(NSInteger)identifier;
 - (UIImage *)getUserSessionAvatarImage;
 - (void)setUserSessionAvatarImage:(UIImage *)image;
+- (UIImage *)getPetSessionAvatarImage:(NSInteger)petId;
+- (void)setPetSessionAvatarImage:(UIImage *)image petId:(NSInteger)petId;
+- (void)removePetSessionAvatarImage:(NSInteger)petId;
 
 @end

@@ -49,6 +49,7 @@ extern NSInteger const kImageCacheTimeOut;
 extern NSString * const kUserSessionAvatarImage;
 extern NSString * const kPetSessionAvatarImage;
 extern NSInteger const kNumberOfPostPerPage;
+extern CGFloat const kImageCompressionRatio;
 
 #pragma mark - Segues
 

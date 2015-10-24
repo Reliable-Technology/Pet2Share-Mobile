@@ -75,7 +75,7 @@ static NSString * const kCellIsMaster           = @"ismaster";
         petDict[kCellTextKey] = pet.name ?: kEmptyString;
         petDict[kCellImageUrlKey] = pet.profilePictureUrl ?: kEmptyString;
         petDict[kCellIsMaster] = @(NO);
-        UIImage *petSessionImage = [Pet2ShareUser current].petSessionAvatarImages[@(pet.identifier)];
+        UIImage *petSessionImage = [[Pet2ShareUser current] getPetSessionAvatarImage:pet.identifier];
         if (petSessionImage) petDict[kCellSessionImageKey] = petSessionImage;
         [self.cellData addObject:petDict];
     }];

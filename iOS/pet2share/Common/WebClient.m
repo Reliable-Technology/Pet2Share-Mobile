@@ -277,6 +277,7 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
+    TRACE_HERE;
     if (self.ignoreResponses && !self.forceResponsesProcessing) return;
     
     if ([receivedData length] == 1 || self.statusCode == HTTP_STATUS_FORBIDDEN)

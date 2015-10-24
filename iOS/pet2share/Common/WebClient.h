@@ -22,7 +22,8 @@
 #define CONTENT_TYPE_XML                @"application/xml"
 #define CONTENT_TYPE_OCTET_STREAM       @"binary/octet-stream"
 
-#define WEBCLIENT_DEFAULT_TIMEOUT       90
+#define WEBCLIENT_DEFAULT_TIMEOUT       120
+#define WEBCLINET_UPLOAD_TIMEOUT        900
 
 @class WebClient;
 
