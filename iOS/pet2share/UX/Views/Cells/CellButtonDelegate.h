@@ -9,6 +9,6 @@
 @protocol CellButtonDelegate <NSObject>
 
 @required
-- (void)editButtonTapped:(id)sender;
+- (void)mainButtonTapped:(id)sender;
 
 @end

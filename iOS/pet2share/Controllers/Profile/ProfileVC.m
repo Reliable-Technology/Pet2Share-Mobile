@@ -115,7 +115,7 @@ static NSString * const kHeaderNibName          = @"ProfileHeaderCell";
 
 #pragma mark - <CellButtonDelegate>
 
-- (void)editButtonTapped:(id)sender
+- (void)mainButtonTapped:(id)sender
 {
     if (![Utils isNullOrEmpty:self.getEditSegueIdentifier])
     {

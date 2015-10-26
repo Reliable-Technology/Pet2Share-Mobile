@@ -11,7 +11,7 @@
 #import "AppColor.h"
 #import "CommentCollectionVC.h"
 
-@interface CommentVC () <BaseNavigationProtocol>
+@interface CommentVC () <BaseNavigationProtocol, CellButtonDelegate>
 
 @end
 
@@ -42,6 +42,7 @@
     {
         CommentCollectionVC *commentCollection = (CommentCollectionVC *)segue.destinationViewController;
         commentCollection.post = self.post;
+        commentCollection.buttonDelegate = self;
     }
 }
 
@@ -60,5 +61,13 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+#pragma mark - <CellButtonDelegate>
+
+- (void)mainButtonTapped:(id)sender
+{
+    [self performSegueWithIdentifier:kSeguePostNewComment sender:self];
+}
+
 
 @end

@@ -12,4 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *addPetBtn;
 
++ (CGFloat)height:(CGFloat)spacing;
+
 @end

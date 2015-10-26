@@ -80,7 +80,7 @@ static CGFloat const kBottomSpacing         = 16.0f;
     {
         Pet2ShareService *service = [Pet2ShareService new];
         self.imageView.image = [UIImage imageNamed:placeHolderImgName];
-        [service loadImage:imgUrl completion:^(UIImage *image) {
+        [service loadImage:imgUrl aspectRatio:Square completion:^(UIImage *image) {
             self.imageView.image = image ?: [UIImage imageNamed:placeHolderImgName];
         }];
     }

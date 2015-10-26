@@ -23,6 +23,14 @@ typedef NS_ENUM(NSInteger, AvatarImageType)
     PetAvatar
 };
 
+typedef NS_ENUM(NSInteger, ImageAspectRatio)
+{
+    Default,
+    Square,
+    Landscape,
+    Portrait
+};
+
 @protocol Pet2ShareServiceCallback <NSObject>
 
 - (void)onReceiveSuccess:(NSArray *)objects;
@@ -131,6 +139,7 @@ commentDescription:(NSString *)commentDescription;
             commentId:(NSInteger)commentId;
 
 - (void)loadImage:(NSString *)url
+      aspectRatio:(ImageAspectRatio)aspectRatio
        completion:(void (^)(UIImage* image))completion;
 
 - (void)uploadImageWithProfileId:(NSInteger)profileId

@@ -242,7 +242,7 @@ NSString * const kCellAboutMeNibName            = @"TextViewTableCell";
 
 #pragma mark - <CellButtonDelegate>
 
-- (void)editButtonTapped:(id)sender
+- (void)mainButtonTapped:(id)sender
 {
     [self setupActionSheet:nil buttons:@[@(IMAGE_BUTTON_CHOOSEFROMALBUM), @(IMAGE_BUTTON_TAKEPICTURE)]];
 }

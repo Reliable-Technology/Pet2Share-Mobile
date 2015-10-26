@@ -70,11 +70,9 @@
     }
     else
     {
-        self.profileImageView.image = [UIImage new];
-        Pet2ShareService *service = [Pet2ShareService new];
-        [service loadImage:pet.profilePictureUrl completion:^(UIImage *image) {
-            if (!image) image = [UIImage new];
-            self.profileImageView.image = image;
+        self.profileImageView.image = [UIImage imageNamed:@"img-petplaceholder"];
+        [[Pet2ShareService new] loadImage:pet.profilePictureUrl aspectRatio:Square completion:^(UIImage *image) {
+            self.profileImageView.image = image ?: [UIImage imageNamed:@"img-petplaceholder"];
         }];
     }
 }

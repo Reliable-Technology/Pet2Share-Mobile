@@ -63,7 +63,7 @@
 {
     Pet2ShareService *service = [Pet2ShareService new];
     self.avatarImageView.image = [UIImage imageNamed:@"img-avatar"];
-    [service loadImage:imageUrl completion:^(UIImage *image) {
+    [service loadImage:imageUrl aspectRatio:Square completion:^(UIImage *image) {
         self.avatarImageView.image = image ?: [UIImage imageNamed:@"img-avatar"];
     }];
     

@@ -18,7 +18,7 @@
 
 #define LOCALWEBSERVICE_TEST 1         // Turn on local testing mode
 
-#define PET2SHARE_DEV_LOCAL_URL             @"http://192.168.0.7:8087"
+#define PET2SHARE_DEV_LOCAL_URL             @"http://192.168.200.7:8087"
 #define PET2SHARE_DEV_URL                   @""
 #define PET2SHARE_QA_URL                    @""
 #define PET2SHARE_STAGING_URL               @""

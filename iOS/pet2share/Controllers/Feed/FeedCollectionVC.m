@@ -109,7 +109,7 @@ static NSString * const kLoadingCellNibName     = @"LoadingCollectionCell";
 - (void)onReceiveSuccess:(NSArray *)objects
 {
     _isRequesting = NO;
-    fTRACE(@"Number of Objects: %ld", objects.count);
+    fTRACE(@"Number of Objects: %ld", (long)objects.count);
     if (self.refreshControl.isRefreshing || _pageNumber == 1)
     {
         [self.items removeAllObjects];

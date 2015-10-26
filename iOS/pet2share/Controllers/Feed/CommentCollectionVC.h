@@ -9,9 +9,18 @@
 @class Post;
 
 #import "CollectionViewController.h"
+#import "CellButtonDelegate.h"
+
+typedef NS_ENUM(NSInteger, CommentMode)
+{
+    ShowComment,
+    PostComment
+};
 
 @interface CommentCollectionVC : CollectionViewController
 
 @property (strong, nonatomic) Post *post;
+@property (weak, nonatomic) id<CellButtonDelegate> buttonDelegate;
+@property (assign, nonatomic) CommentMode commentMode;
 
 @end

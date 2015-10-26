@@ -13,15 +13,16 @@
 #import "AppColor.h"
 #import "Graphics.h"
 #import "Pet2ShareService.h"
-#import "CommentCollectionCell.h"
 #import "PostTextCollectionCell.h"
-#import "NoDataCollectionCell.h"
+#import "CommentCollectionCell.h"
+#import "ActionCollectionCell.h"
 #import "OrderedDictionary.h"
 #import "Pet2ShareUser.h"
 
 @interface CommentCollectionVC () <Pet2ShareServiceCallback>
 
 @property (nonatomic, strong) MutableOrderedDictionary *cellDict;
+@property (nonatomic, strong) TransitionManager *transitionManager;
 
 @end
 
@@ -31,13 +32,12 @@ static NSString * const kCommentCellIdentifier  = @"commentcollectioncell";
 static NSString * const kCommentCellNibName     = @"CommentCollectionCell";
 static NSString * const kPostCellIdentifier     = @"posttextcell";
 static NSString * const kPostCellNibName        = @"PostTextCollectionCell";
-static NSString * const kNoDataCellIdentifier   = @"nodatacell";
-static NSString * const kNoDataCellNibName      = @"NoDataCollectionCell";
+static NSString * const kActionCellIndetifier   = @"actioncell";
+static NSString * const kActionCellNibName      = @"ActionCollectionCell";
 static NSString * const kCellReuseIdentifier    = @"cellidentifier";
 static CGFloat const kSpacing                   = 5.0f;
 
-#pragma mark -
-#pragma mark Life Cycle
+#pragma mark - Life Cycle
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -46,6 +46,7 @@ static CGFloat const kSpacing                   = 5.0f;
         self.cellReuseIdentifier = kCommentCellIdentifier;
         self.customNibName = kCommentCellNibName;
         _cellDict = [MutableOrderedDictionary dictionary];
+        _transitionManager = [TransitionManager new];
     }
     return self;
 }
@@ -57,8 +58,8 @@ static CGFloat const kSpacing                   = 5.0f;
     // Register extra cells
     [self.collectionView registerNib:[UINib nibWithNibName:kPostCellNibName bundle:[NSBundle mainBundle]]
           forCellWithReuseIdentifier:kPostCellIdentifier];
-    [self.collectionView registerNib:[UINib nibWithNibName:kNoDataCellNibName bundle:[NSBundle mainBundle]]
-          forCellWithReuseIdentifier:kNoDataCellIdentifier];
+    [self.collectionView registerNib:[UINib nibWithNibName:kActionCellNibName bundle:[NSBundle mainBundle]]
+          forCellWithReuseIdentifier:kActionCellIndetifier];
     
     // Preload data with existings comments
     [self prepareCellData:self.post.comments];
@@ -67,8 +68,21 @@ static CGFloat const kSpacing                   = 5.0f;
     [self requestData];
 }
 
-#pragma mark -
-#pragma mark Web Services
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:kSeguePostNewComment])
+    {
+        UIViewController *controller = segue.destinationViewController;
+        controller.transitioningDelegate = self.transitionManager;
+    }
+}
+
+- (void)dealloc
+{
+    TRACE_HERE;
+}
+
+#pragma mark - Web Services
 
 - (void)prepareCellData:(NSArray *)comments
 {
@@ -105,8 +119,7 @@ static CGFloat const kSpacing                   = 5.0f;
     [self.cellDict insertObject:@[profileCellDict] forKey:kPostCellIdentifier atIndex:0];
     
     NSMutableArray *commentList = [NSMutableArray array];
-    
-    if ([comments count] > 0)
+    if (comments.count > 0)
     {
         UIImage *commentProfileSessionImage = nil;
         
@@ -127,13 +140,18 @@ static CGFloat const kSpacing                   = 5.0f;
             [commentList addObject:commentDict];
         }
         [self.cellDict insertObject:commentList forKey:kCommentCellIdentifier atIndex:1];
+        
+        [commentList addObject:@{kCellClassName: kActionCellNibName,
+                                 kCellReuseIdentifier: kActionCellIndetifier,
+                                 kCellTextKey:NSLocalizedString(@"Add Comment", @"") }];
+        [self.cellDict insertObject:commentList forKey:kActionCellIndetifier atIndex:2];
     }
     else
     {
-        [commentList addObject:@{kCellClassName: kNoDataCellNibName,
-                                 kCellReuseIdentifier: kNoDataCellIdentifier,
-                                 kCellTextKey:NSLocalizedString(@"No Comments", @"") }];
-        [self.cellDict insertObject:commentList forKey:kNoDataCellIdentifier atIndex:1];
+        [commentList addObject:@{kCellClassName: kActionCellNibName,
+                                 kCellReuseIdentifier: kActionCellIndetifier,
+                                 kCellTextKey:NSLocalizedString(@"Add Comment", @"") }];
+        [self.cellDict insertObject:commentList forKey:kActionCellIndetifier atIndex:1];
     }
     
     [self.collectionView reloadData];
@@ -147,7 +165,7 @@ static CGFloat const kSpacing                   = 5.0f;
 
 - (void)onReceiveSuccess:(NSArray *)objects
 {
-    fTRACE(@"Number of Objects: %ld", objects.count);
+    fTRACE(@"Number of Objects: %ld", (long)objects.count);
     [self prepareCellData:objects];
 }
 
@@ -157,8 +175,7 @@ static CGFloat const kSpacing                   = 5.0f;
     [Graphics alert:NSLocalizedString(@"Error", @"") message:errorMessage.message type:ErrorAlert];
 }
 
-#pragma mark -
-#pragma mark Overriden Methods
+#pragma mark - Overriden Methods
 
 - (void)setupLayout
 {
@@ -171,8 +188,7 @@ static CGFloat const kSpacing                   = 5.0f;
     // No Implementation
 }
 
-#pragma mark -
-#pragma mark Collection View
+#pragma mark - Collection View
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -192,7 +208,7 @@ static CGFloat const kSpacing                   = 5.0f;
     {
         return kSpacing;
     }
-    else if ([sectionKey isEqualToString:kCommentCellIdentifier] || [sectionKey isEqualToString:kNoDataCellIdentifier])
+    else if ([sectionKey isEqualToString:kCommentCellIdentifier] || [sectionKey isEqualToString:kActionCellIndetifier])
     {
         return 0.0f;
     }
@@ -216,7 +232,7 @@ static CGFloat const kSpacing                   = 5.0f;
         if ([commentDict[kCellReuseIdentifier] isEqualToString:kCommentCellIdentifier])
             cellSize = CGSizeMake(itemWidth, [CommentCollectionCell heightByText:commentDict[kCellTextKey] itemWidth:itemWidth]);
         else
-            cellSize = CGSizeMake(itemWidth, [NoDataCollectionCell height]);
+            cellSize = CGSizeMake(itemWidth, [ActionCollectionCell height]);
     }
     
     DEBUG_SIZE("Cell Size: ", cellSize);
@@ -232,7 +248,7 @@ static CGFloat const kSpacing                   = 5.0f;
     
     @try
     {
-        fTRACE("Section: %ld - Index: %ld", indexPath.section, indexPath.row);
+        fTRACE("Section: %ld - Index: %ld", (long)indexPath.section, (long)indexPath.row);
 
         NSArray *data = self.cellDict[section];
         NSString *reuseIdentifier = [self.cellDict keyAtIndex:section];
@@ -262,10 +278,11 @@ static CGFloat const kSpacing                   = 5.0f;
                                                 descriptionText:cellDict[kCellTextKey]
                                                      statusText:cellDict[kCellDateKey]];
         }
-        else if ([reuseIdentifier isEqualToString:kNoDataCellIdentifier])
+        else if ([reuseIdentifier isEqualToString:kActionCellIndetifier])
         {
             cellDict = data[index];
-            [(NoDataCollectionCell *)cell load:cellDict[kCellTextKey]];
+            [(ActionCollectionCell *)cell setButtonText:cellDict[kCellTextKey]];
+            [(ActionCollectionCell *)cell setButtonDelegate:self.buttonDelegate];
         }
     }
     @catch (NSException *exception)

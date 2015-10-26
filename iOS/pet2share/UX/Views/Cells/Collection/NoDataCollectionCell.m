@@ -17,14 +17,14 @@
 
 @implementation NoDataCollectionCell
 
-- (void)awakeFromNib
-{
-    [Graphics dropShadow:self shadowOpacity:0.5f shadowRadius:0.5f offset:CGSizeZero];
-}
-
 + (CGFloat)height
 {
     return 50.0f;
+}
+
+- (void)awakeFromNib
+{
+    [Graphics dropShadow:self shadowOpacity:0.5f shadowRadius:0.5f offset:CGSizeZero];
 }
 
 - (void)load:(NSString *)text

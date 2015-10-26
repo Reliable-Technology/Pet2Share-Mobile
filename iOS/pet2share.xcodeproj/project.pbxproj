@@ -12,7 +12,7 @@
 		FB1067E91B5341A500BEBC40 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067E81B5341A500BEBC40 /* LoginVC.m */; };
 		FB1067EC1B5341D600BEBC40 /* SignupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067EB1B5341D600BEBC40 /* SignupVC.m */; };
 		FB1067F01B535B4C00BEBC40 /* LoginTableCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067EF1B535B4C00BEBC40 /* LoginTableCtrl.m */; };
-		FB265B431BC37FAB0094AC37 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = FB265B421BC37FAB0094AC37 /* Person.m */; settings = {ASSET_TAGS = (); }; };
+		FB265B431BC37FAB0094AC37 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = FB265B421BC37FAB0094AC37 /* Person.m */; };
 		FB484A391B4FD0DB0045A6EA /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A381B4FD0DB0045A6EA /* NSString+URLEncoding.m */; };
 		FB484A3F1B4FD12F0045A6EA /* Graphics.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A3E1B4FD12F0045A6EA /* Graphics.m */; };
 		FB484A421B4FD3E60045A6EA /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A411B4FD3E60045A6EA /* Constants.m */; };
@@ -51,126 +51,128 @@
 		FB484A9A1B50C6130045A6EA /* Lato-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A871B50C6130045A6EA /* Lato-SemiboldItalic.ttf */; };
 		FB484A9B1B50C6130045A6EA /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A881B50C6130045A6EA /* Lato-Thin.ttf */; };
 		FB484A9C1B50C6130045A6EA /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB484A891B50C6130045A6EA /* Lato-ThinItalic.ttf */; };
-		FB4DB9381BCDC88300C1466D /* WebClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FB4DB9371BCDC88300C1466D /* WebClient.m */; settings = {ASSET_TAGS = (); }; };
-		FB4DB9411BCE9F5200C1466D /* EditProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB4DB9401BCE9F5200C1466D /* EditProfileVC.m */; settings = {ASSET_TAGS = (); }; };
-		FB4ED0251BCC843200E9F379 /* AddEditPetProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB4ED0241BCC843200E9F379 /* AddEditPetProfileVC.m */; settings = {ASSET_TAGS = (); }; };
-		FB5050301BC4CBB40037F3E5 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = FB50502F1BC4CBB40037F3E5 /* Address.m */; settings = {ASSET_TAGS = (); }; };
-		FB5050331BC4D0B10037F3E5 /* Date.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5050321BC4D0B10037F3E5 /* Date.m */; settings = {ASSET_TAGS = (); }; };
-		FB5050391BC4D1E70037F3E5 /* JSONValueTransformer+Date.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5050381BC4D1E70037F3E5 /* JSONValueTransformer+Date.m */; settings = {ASSET_TAGS = (); }; };
-		FB5BB63E1BD5050800A382AC /* InputTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5BB63D1BD5050800A382AC /* InputTableView.m */; settings = {ASSET_TAGS = (); }; };
-		FB5BB6411BD52ABE00A382AC /* KeyboardBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5BB6401BD52ABE00A382AC /* KeyboardBar.m */; settings = {ASSET_TAGS = (); }; };
-		FB5BB6441BD52BA900A382AC /* FeedDetailTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5BB6431BD52BA900A382AC /* FeedDetailTableVC.m */; settings = {ASSET_TAGS = (); }; };
-		FB5BB6471BD5559300A382AC /* FeedCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5BB6461BD5559300A382AC /* FeedCollectionVC.m */; settings = {ASSET_TAGS = (); }; };
-		FB5E1EBC1BC9DDAB00897CA2 /* FeedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5E1EBB1BC9DDAB00897CA2 /* FeedVC.m */; settings = {ASSET_TAGS = (); }; };
-		FB5E1EBF1BC9E2CE00897CA2 /* PetProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5E1EBE1BC9E2CE00897CA2 /* PetProfileVC.m */; settings = {ASSET_TAGS = (); }; };
-		FB5E1ECA1BCA9DA400897CA2 /* DateFormatterFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5E1EC91BCA9DA400897CA2 /* DateFormatterFactory.m */; settings = {ASSET_TAGS = (); }; };
+		FB4DB9381BCDC88300C1466D /* WebClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FB4DB9371BCDC88300C1466D /* WebClient.m */; };
+		FB4DB9411BCE9F5200C1466D /* EditProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB4DB9401BCE9F5200C1466D /* EditProfileVC.m */; };
+		FB4ED0251BCC843200E9F379 /* AddEditPetProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB4ED0241BCC843200E9F379 /* AddEditPetProfileVC.m */; };
+		FB5050301BC4CBB40037F3E5 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = FB50502F1BC4CBB40037F3E5 /* Address.m */; };
+		FB5050331BC4D0B10037F3E5 /* Date.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5050321BC4D0B10037F3E5 /* Date.m */; };
+		FB5050391BC4D1E70037F3E5 /* JSONValueTransformer+Date.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5050381BC4D1E70037F3E5 /* JSONValueTransformer+Date.m */; };
+		FB5BB63E1BD5050800A382AC /* InputTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5BB63D1BD5050800A382AC /* InputTableView.m */; };
+		FB5BB6411BD52ABE00A382AC /* KeyboardBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5BB6401BD52ABE00A382AC /* KeyboardBar.m */; };
+		FB5BB6441BD52BA900A382AC /* FeedDetailTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5BB6431BD52BA900A382AC /* FeedDetailTableVC.m */; };
+		FB5BB6471BD5559300A382AC /* FeedCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5BB6461BD5559300A382AC /* FeedCollectionVC.m */; };
+		FB5E1EBC1BC9DDAB00897CA2 /* FeedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5E1EBB1BC9DDAB00897CA2 /* FeedVC.m */; };
+		FB5E1EBF1BC9E2CE00897CA2 /* PetProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5E1EBE1BC9E2CE00897CA2 /* PetProfileVC.m */; };
+		FB5E1ECA1BCA9DA400897CA2 /* DateFormatterFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5E1EC91BCA9DA400897CA2 /* DateFormatterFactory.m */; };
 		FB6C27331B6ED1EF0002034A /* Pet2ShareService.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C27321B6ED1EF0002034A /* Pet2ShareService.m */; };
 		FB6C273D1B6ED2950002034A /* UrlManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C273C1B6ED2950002034A /* UrlManager.m */; };
-		FB95D1661BD28B7700254B06 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = FB95D1651BD28B7700254B06 /* Post.m */; settings = {ASSET_TAGS = (); }; };
-		FB95D1691BD28ED900254B06 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = FB95D1681BD28ED900254B06 /* Comment.m */; settings = {ASSET_TAGS = (); }; };
-		FB95D1791BD2CCCA00254B06 /* FeedDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB95D1781BD2CCCA00254B06 /* FeedDetailVC.m */; settings = {ASSET_TAGS = (); }; };
-		FB95D1841BD2EB0000254B06 /* PostHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB95D1831BD2EB0000254B06 /* PostHeaderView.m */; settings = {ASSET_TAGS = (); }; };
-		FB95D1861BD2EB4800254B06 /* PostHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB95D1851BD2EB4800254B06 /* PostHeaderView.xib */; settings = {ASSET_TAGS = (); }; };
-		FB9AC5261BD1560A00B0DF25 /* NewPostVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9AC5251BD1560A00B0DF25 /* NewPostVC.m */; settings = {ASSET_TAGS = (); }; };
-		FB9AC5291BD1919200B0DF25 /* PlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9AC5281BD1919200B0DF25 /* PlaceHolderTextView.m */; settings = {ASSET_TAGS = (); }; };
-		FBA2A3601BCDAD8800368D39 /* ImageActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA2A35F1BCDAD8800368D39 /* ImageActionSheet.m */; settings = {ASSET_TAGS = (); }; };
-		FBA3F6B91BC5555E0094288D /* SignUpTableCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA3F6B81BC5555E0094288D /* SignUpTableCtrl.m */; settings = {ASSET_TAGS = (); }; };
-		FBA78F4A1BD7EF0D00E45D14 /* ProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA78F491BD7EF0D00E45D14 /* ProfileVC.m */; settings = {ASSET_TAGS = (); }; };
-		FBA78F4E1BD8304900E45D14 /* EmptyPetCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA78F4C1BD8304900E45D14 /* EmptyPetCollectionCell.m */; settings = {ASSET_TAGS = (); }; };
-		FBA78F4F1BD8304900E45D14 /* EmptyPetCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBA78F4D1BD8304900E45D14 /* EmptyPetCollectionCell.xib */; settings = {ASSET_TAGS = (); }; };
+		FB95D1661BD28B7700254B06 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = FB95D1651BD28B7700254B06 /* Post.m */; };
+		FB95D1691BD28ED900254B06 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = FB95D1681BD28ED900254B06 /* Comment.m */; };
+		FB95D1791BD2CCCA00254B06 /* FeedDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB95D1781BD2CCCA00254B06 /* FeedDetailVC.m */; };
+		FB95D1841BD2EB0000254B06 /* PostHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB95D1831BD2EB0000254B06 /* PostHeaderView.m */; };
+		FB95D1861BD2EB4800254B06 /* PostHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB95D1851BD2EB4800254B06 /* PostHeaderView.xib */; };
+		FB9AC5261BD1560A00B0DF25 /* NewPostVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9AC5251BD1560A00B0DF25 /* NewPostVC.m */; };
+		FB9AC5291BD1919200B0DF25 /* PlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9AC5281BD1919200B0DF25 /* PlaceHolderTextView.m */; };
+		FBA2A3601BCDAD8800368D39 /* ImageActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA2A35F1BCDAD8800368D39 /* ImageActionSheet.m */; };
+		FBA3F6B91BC5555E0094288D /* SignUpTableCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA3F6B81BC5555E0094288D /* SignUpTableCtrl.m */; };
+		FBA78F4A1BD7EF0D00E45D14 /* ProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA78F491BD7EF0D00E45D14 /* ProfileVC.m */; };
+		FBA78F4E1BD8304900E45D14 /* EmptyPetCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA78F4C1BD8304900E45D14 /* EmptyPetCollectionCell.m */; };
+		FBA78F4F1BD8304900E45D14 /* EmptyPetCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBA78F4D1BD8304900E45D14 /* EmptyPetCollectionCell.xib */; };
 		FBB531141B9BA8A7004D5DA2 /* ResponseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB531131B9BA8A7004D5DA2 /* ResponseObject.m */; };
-		FBCDC9A81BC3381B00808E30 /* ErrorMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCDC9A21BC3381B00808E30 /* ErrorMessage.m */; settings = {ASSET_TAGS = (); }; };
-		FBCDC9A91BC3381B00808E30 /* RepositoryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCDC9A41BC3381B00808E30 /* RepositoryObject.m */; settings = {ASSET_TAGS = (); }; };
-		FBCDC9AA1BC3381B00808E30 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCDC9A61BC3381B00808E30 /* User.m */; settings = {ASSET_TAGS = (); }; };
+		FBCDC9A81BC3381B00808E30 /* ErrorMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCDC9A21BC3381B00808E30 /* ErrorMessage.m */; };
+		FBCDC9A91BC3381B00808E30 /* RepositoryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCDC9A41BC3381B00808E30 /* RepositoryObject.m */; };
+		FBCDC9AA1BC3381B00808E30 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCDC9A61BC3381B00808E30 /* User.m */; };
 		FBCEA4321B4CC3E000497678 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCEA4311B4CC3E000497678 /* main.m */; };
 		FBCEA4351B4CC3E000497678 /* Pet2ShareDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCEA4341B4CC3E000497678 /* Pet2ShareDelegate.m */; };
 		FBCEA43B1B4CC3E000497678 /* Pet2Share.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBCEA4391B4CC3E000497678 /* Pet2Share.storyboard */; };
 		FBCEA43D1B4CC3E000497678 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBCEA43C1B4CC3E000497678 /* Images.xcassets */; };
 		FBCEA4401B4CC3E000497678 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBCEA43E1B4CC3E000497678 /* LaunchScreen.xib */; };
-		FBCF4A6B1BC5876000C75066 /* Pet2ShareUser.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A6A1BC5876000C75066 /* Pet2ShareUser.m */; settings = {ASSET_TAGS = (); }; };
-		FBCF4A761BC5B28700C75066 /* UserProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A751BC5B28700C75066 /* UserProfileVC.m */; settings = {ASSET_TAGS = (); }; };
-		FBCF4A7E1BC6888C00C75066 /* CircleImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A7D1BC6888C00C75066 /* CircleImageView.m */; settings = {ASSET_TAGS = (); }; };
-		FBCF4A8B1BC6B82400C75066 /* ButtonTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A8A1BC6B82400C75066 /* ButtonTabbarController.m */; settings = {ASSET_TAGS = (); }; };
-		FBCF4A8E1BC6CF2E00C75066 /* PostsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A8D1BC6CF2E00C75066 /* PostsVC.m */; settings = {ASSET_TAGS = (); }; };
-		FBCF4A991BC6CF6B00C75066 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A961BC6CF6B00C75066 /* CollectionViewController.m */; settings = {ASSET_TAGS = (); }; };
-		FBCF4A9A1BC6CF6B00C75066 /* CollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A981BC6CF6B00C75066 /* CollectionViewLayout.m */; settings = {ASSET_TAGS = (); }; };
-		FBCF4A9D1BC7076200C75066 /* EditUserProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A9C1BC7076200C75066 /* EditUserProfileVC.m */; settings = {ASSET_TAGS = (); }; };
-		FBCF4AA01BC7116400C75066 /* ActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A9F1BC7116400C75066 /* ActivityView.m */; settings = {ASSET_TAGS = (); }; };
-		FBCF4AB71BC81BC900C75066 /* UpdateMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4AB61BC81BC900C75066 /* UpdateMessage.m */; settings = {ASSET_TAGS = (); }; };
-		FBCF4ABA1BC8641B00C75066 /* Pet.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4AB91BC8641B00C75066 /* Pet.m */; settings = {ASSET_TAGS = (); }; };
-		FBCF4ABD1BC8691700C75066 /* PetType.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4ABC1BC8691700C75066 /* PetType.m */; settings = {ASSET_TAGS = (); }; };
+		FBCF4A6B1BC5876000C75066 /* Pet2ShareUser.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A6A1BC5876000C75066 /* Pet2ShareUser.m */; };
+		FBCF4A761BC5B28700C75066 /* UserProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A751BC5B28700C75066 /* UserProfileVC.m */; };
+		FBCF4A7E1BC6888C00C75066 /* CircleImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A7D1BC6888C00C75066 /* CircleImageView.m */; };
+		FBCF4A8B1BC6B82400C75066 /* ButtonTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A8A1BC6B82400C75066 /* ButtonTabbarController.m */; };
+		FBCF4A8E1BC6CF2E00C75066 /* PostsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A8D1BC6CF2E00C75066 /* PostsVC.m */; };
+		FBCF4A991BC6CF6B00C75066 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A961BC6CF6B00C75066 /* CollectionViewController.m */; };
+		FBCF4A9A1BC6CF6B00C75066 /* CollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A981BC6CF6B00C75066 /* CollectionViewLayout.m */; };
+		FBCF4A9D1BC7076200C75066 /* EditUserProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A9C1BC7076200C75066 /* EditUserProfileVC.m */; };
+		FBCF4AA01BC7116400C75066 /* ActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A9F1BC7116400C75066 /* ActivityView.m */; };
+		FBCF4AB71BC81BC900C75066 /* UpdateMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4AB61BC81BC900C75066 /* UpdateMessage.m */; };
+		FBCF4ABA1BC8641B00C75066 /* Pet.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4AB91BC8641B00C75066 /* Pet.m */; };
+		FBCF4ABD1BC8691700C75066 /* PetType.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4ABC1BC8691700C75066 /* PetType.m */; };
 		FBD3938F1B50D9DB000ED817 /* BaseNavigationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD3938E1B50D9DB000ED817 /* BaseNavigationVC.m */; };
-		FBDE4D171BD5E28E000BA3C7 /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4CF91BD5E28E000BA3C7 /* AsyncButton.swift */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D181BD5E28E000BA3C7 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4CFA1BD5E28E000BA3C7 /* AsyncImageView.swift */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D191BD5E28E000BA3C7 /* AutoTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4CFB1BD5E28E000BA3C7 /* AutoTextView.swift */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D1A1BD5E28E000BA3C7 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4CFC1BD5E28E000BA3C7 /* BlurView.swift */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D1B1BD5E28E000BA3C7 /* DesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4CFD1BD5E28E000BA3C7 /* DesignableButton.swift */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D1C1BD5E28E000BA3C7 /* DesignableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4CFE1BD5E28E000BA3C7 /* DesignableImageView.swift */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D1D1BD5E28E000BA3C7 /* DesignableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4CFF1BD5E28E000BA3C7 /* DesignableLabel.swift */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D1E1BD5E28E000BA3C7 /* DesignableTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D001BD5E28E000BA3C7 /* DesignableTabBarController.swift */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D1F1BD5E28E000BA3C7 /* DesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D011BD5E28E000BA3C7 /* DesignableTextField.swift */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D201BD5E28E000BA3C7 /* DesignableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D021BD5E28E000BA3C7 /* DesignableTextView.swift */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D211BD5E28E000BA3C7 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D031BD5E28E000BA3C7 /* DesignableView.swift */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D221BD5E28E000BA3C7 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D041BD5E28E000BA3C7 /* ImageLoader.swift */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D231BD5E28E000BA3C7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D051BD5E28E000BA3C7 /* Info.plist */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D241BD5E28E000BA3C7 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D061BD5E28E000BA3C7 /* KeyboardLayoutConstraint.swift */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D251BD5E28E000BA3C7 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D071BD5E28E000BA3C7 /* LoadingView.swift */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D261BD5E28E000BA3C7 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D081BD5E28E000BA3C7 /* LoadingView.xib */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D271BD5E28E000BA3C7 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D091BD5E28E000BA3C7 /* Misc.swift */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D281BD5E28E000BA3C7 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D0A1BD5E28E000BA3C7 /* SoundPlayer.swift */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D291BD5E28E000BA3C7 /* Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D0C1BD5E28E000BA3C7 /* Spring.swift */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D2A1BD5E28E000BA3C7 /* SpringAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D0D1BD5E28E000BA3C7 /* SpringAnimation.swift */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D2B1BD5E28E000BA3C7 /* SpringButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D0E1BD5E28E000BA3C7 /* SpringButton.swift */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D2C1BD5E28E000BA3C7 /* SpringImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D0F1BD5E28E000BA3C7 /* SpringImageView.swift */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D2D1BD5E28E000BA3C7 /* SpringLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D101BD5E28E000BA3C7 /* SpringLabel.swift */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D2E1BD5E28E000BA3C7 /* SpringTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D111BD5E28E000BA3C7 /* SpringTextField.swift */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D2F1BD5E28E000BA3C7 /* SpringTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D121BD5E28E000BA3C7 /* SpringTextView.swift */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D301BD5E28E000BA3C7 /* SpringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D131BD5E28E000BA3C7 /* SpringView.swift */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D311BD5E28E000BA3C7 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D141BD5E28E000BA3C7 /* TransitionManager.swift */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D321BD5E28E000BA3C7 /* TransitionZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D151BD5E28E000BA3C7 /* TransitionZoom.swift */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D331BD5E28E000BA3C7 /* UnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D161BD5E28E000BA3C7 /* UnwindSegue.swift */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D481BD6023F000BA3C7 /* CommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D471BD6023F000BA3C7 /* CommentVC.m */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D4E1BD67F1D000BA3C7 /* CommentCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D4D1BD67F1D000BA3C7 /* CommentCollectionVC.m */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D5B1BD73E17000BA3C7 /* EmptyDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D5A1BD73E17000BA3C7 /* EmptyDataView.m */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D5F1BD73E42000BA3C7 /* EmptyDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D5E1BD73E42000BA3C7 /* EmptyDataView.xib */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D731BD758FA000BA3C7 /* CommentCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D621BD758FA000BA3C7 /* CommentCollectionCell.m */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D741BD758FA000BA3C7 /* CommentCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D631BD758FA000BA3C7 /* CommentCollectionCell.xib */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D751BD758FA000BA3C7 /* LoadingCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D651BD758FA000BA3C7 /* LoadingCollectionCell.m */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D761BD758FA000BA3C7 /* LoadingCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D661BD758FA000BA3C7 /* LoadingCollectionCell.xib */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D771BD758FA000BA3C7 /* NoDataCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D681BD758FA000BA3C7 /* NoDataCollectionCell.m */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D781BD758FA000BA3C7 /* NoDataCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D691BD758FA000BA3C7 /* NoDataCollectionCell.xib */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D791BD758FA000BA3C7 /* PetCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D6B1BD758FA000BA3C7 /* PetCollectionCell.m */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D7A1BD758FA000BA3C7 /* PetCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D6C1BD758FA000BA3C7 /* PetCollectionCell.xib */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D7B1BD758FA000BA3C7 /* PostCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D6E1BD758FA000BA3C7 /* PostCollectionCell.m */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D7C1BD758FA000BA3C7 /* PostCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D6F1BD758FA000BA3C7 /* PostCollectionCell.xib */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D7D1BD758FA000BA3C7 /* PostTextCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D711BD758FA000BA3C7 /* PostTextCollectionCell.m */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D7E1BD758FA000BA3C7 /* PostTextCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D721BD758FA000BA3C7 /* PostTextCollectionCell.xib */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D9B1BD75953000BA3C7 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D811BD75953000BA3C7 /* CommentCell.m */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D9C1BD75953000BA3C7 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D821BD75953000BA3C7 /* CommentCell.xib */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D9D1BD75953000BA3C7 /* PostDetailTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D841BD75953000BA3C7 /* PostDetailTextCell.m */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D9E1BD75953000BA3C7 /* PostDetailTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D851BD75953000BA3C7 /* PostDetailTextCell.xib */; settings = {ASSET_TAGS = (); }; };
-		FBDE4D9F1BD75953000BA3C7 /* PostTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D871BD75953000BA3C7 /* PostTextCell.m */; settings = {ASSET_TAGS = (); }; };
-		FBDE4DA01BD75953000BA3C7 /* PostTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D881BD75953000BA3C7 /* PostTextCell.xib */; settings = {ASSET_TAGS = (); }; };
-		FBDE4DA11BD75953000BA3C7 /* ProfileAddressInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D8A1BD75953000BA3C7 /* ProfileAddressInfoCell.m */; settings = {ASSET_TAGS = (); }; };
-		FBDE4DA21BD75953000BA3C7 /* ProfileAddressInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D8B1BD75953000BA3C7 /* ProfileAddressInfoCell.xib */; settings = {ASSET_TAGS = (); }; };
-		FBDE4DA31BD75953000BA3C7 /* ProfileBasicInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D8D1BD75953000BA3C7 /* ProfileBasicInfoCell.m */; settings = {ASSET_TAGS = (); }; };
-		FBDE4DA41BD75953000BA3C7 /* ProfileBasicInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D8E1BD75953000BA3C7 /* ProfileBasicInfoCell.xib */; settings = {ASSET_TAGS = (); }; };
-		FBDE4DA51BD75953000BA3C7 /* ProfileHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D901BD75953000BA3C7 /* ProfileHeaderCell.m */; settings = {ASSET_TAGS = (); }; };
-		FBDE4DA61BD75953000BA3C7 /* ProfileHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D911BD75953000BA3C7 /* ProfileHeaderCell.xib */; settings = {ASSET_TAGS = (); }; };
-		FBDE4DA71BD75953000BA3C7 /* ProfileNameInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D931BD75953000BA3C7 /* ProfileNameInfoCell.m */; settings = {ASSET_TAGS = (); }; };
-		FBDE4DA81BD75953000BA3C7 /* ProfileNameInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D941BD75953000BA3C7 /* ProfileNameInfoCell.xib */; settings = {ASSET_TAGS = (); }; };
-		FBDE4DA91BD75953000BA3C7 /* TextFieldTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D961BD75953000BA3C7 /* TextFieldTableCell.m */; settings = {ASSET_TAGS = (); }; };
-		FBDE4DAA1BD75953000BA3C7 /* TextFieldTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D971BD75953000BA3C7 /* TextFieldTableCell.xib */; settings = {ASSET_TAGS = (); }; };
-		FBDE4DAB1BD75953000BA3C7 /* TextViewTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D991BD75953000BA3C7 /* TextViewTableCell.m */; settings = {ASSET_TAGS = (); }; };
-		FBDE4DAC1BD75953000BA3C7 /* TextViewTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D9A1BD75953000BA3C7 /* TextViewTableCell.xib */; settings = {ASSET_TAGS = (); }; };
-		FBDE4DB31BD759D0000BA3C7 /* ProfileSelectionTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4DB11BD759D0000BA3C7 /* ProfileSelectionTableCell.m */; settings = {ASSET_TAGS = (); }; };
-		FBDE4DB41BD759D0000BA3C7 /* ProfileSelectionTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4DB21BD759D0000BA3C7 /* ProfileSelectionTableCell.xib */; settings = {ASSET_TAGS = (); }; };
-		FBDE4DB71BD75A6C000BA3C7 /* CheckMark.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4DB61BD75A6C000BA3C7 /* CheckMark.m */; settings = {ASSET_TAGS = (); }; };
-		FBDE4DBA1BD75C73000BA3C7 /* ProfileSelectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4DB91BD75C73000BA3C7 /* ProfileSelectionVC.m */; settings = {ASSET_TAGS = (); }; };
-		FBEFA1621BD972C10071AD8E /* PostImageCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBEFA1601BD972C10071AD8E /* PostImageCollectionCell.m */; settings = {ASSET_TAGS = (); }; };
-		FBEFA1631BD972C10071AD8E /* PostImageCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBEFA1611BD972C10071AD8E /* PostImageCollectionCell.xib */; settings = {ASSET_TAGS = (); }; };
-		FBFC5CEA1BCF5C8600312F31 /* CacheKey.m in Sources */ = {isa = PBXBuildFile; fileRef = FBFC5CE91BCF5C8600312F31 /* CacheKey.m */; settings = {ASSET_TAGS = (); }; };
-		FBFC5CED1BCF636F00312F31 /* AppData.m in Sources */ = {isa = PBXBuildFile; fileRef = FBFC5CEC1BCF636F00312F31 /* AppData.m */; settings = {ASSET_TAGS = (); }; };
+		FBDE4D171BD5E28E000BA3C7 /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4CF91BD5E28E000BA3C7 /* AsyncButton.swift */; };
+		FBDE4D181BD5E28E000BA3C7 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4CFA1BD5E28E000BA3C7 /* AsyncImageView.swift */; };
+		FBDE4D191BD5E28E000BA3C7 /* AutoTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4CFB1BD5E28E000BA3C7 /* AutoTextView.swift */; };
+		FBDE4D1A1BD5E28E000BA3C7 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4CFC1BD5E28E000BA3C7 /* BlurView.swift */; };
+		FBDE4D1B1BD5E28E000BA3C7 /* DesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4CFD1BD5E28E000BA3C7 /* DesignableButton.swift */; };
+		FBDE4D1C1BD5E28E000BA3C7 /* DesignableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4CFE1BD5E28E000BA3C7 /* DesignableImageView.swift */; };
+		FBDE4D1D1BD5E28E000BA3C7 /* DesignableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4CFF1BD5E28E000BA3C7 /* DesignableLabel.swift */; };
+		FBDE4D1E1BD5E28E000BA3C7 /* DesignableTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D001BD5E28E000BA3C7 /* DesignableTabBarController.swift */; };
+		FBDE4D1F1BD5E28E000BA3C7 /* DesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D011BD5E28E000BA3C7 /* DesignableTextField.swift */; };
+		FBDE4D201BD5E28E000BA3C7 /* DesignableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D021BD5E28E000BA3C7 /* DesignableTextView.swift */; };
+		FBDE4D211BD5E28E000BA3C7 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D031BD5E28E000BA3C7 /* DesignableView.swift */; };
+		FBDE4D221BD5E28E000BA3C7 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D041BD5E28E000BA3C7 /* ImageLoader.swift */; };
+		FBDE4D231BD5E28E000BA3C7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D051BD5E28E000BA3C7 /* Info.plist */; };
+		FBDE4D241BD5E28E000BA3C7 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D061BD5E28E000BA3C7 /* KeyboardLayoutConstraint.swift */; };
+		FBDE4D251BD5E28E000BA3C7 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D071BD5E28E000BA3C7 /* LoadingView.swift */; };
+		FBDE4D261BD5E28E000BA3C7 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D081BD5E28E000BA3C7 /* LoadingView.xib */; };
+		FBDE4D271BD5E28E000BA3C7 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D091BD5E28E000BA3C7 /* Misc.swift */; };
+		FBDE4D281BD5E28E000BA3C7 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D0A1BD5E28E000BA3C7 /* SoundPlayer.swift */; };
+		FBDE4D291BD5E28E000BA3C7 /* Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D0C1BD5E28E000BA3C7 /* Spring.swift */; };
+		FBDE4D2A1BD5E28E000BA3C7 /* SpringAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D0D1BD5E28E000BA3C7 /* SpringAnimation.swift */; };
+		FBDE4D2B1BD5E28E000BA3C7 /* SpringButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D0E1BD5E28E000BA3C7 /* SpringButton.swift */; };
+		FBDE4D2C1BD5E28E000BA3C7 /* SpringImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D0F1BD5E28E000BA3C7 /* SpringImageView.swift */; };
+		FBDE4D2D1BD5E28E000BA3C7 /* SpringLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D101BD5E28E000BA3C7 /* SpringLabel.swift */; };
+		FBDE4D2E1BD5E28E000BA3C7 /* SpringTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D111BD5E28E000BA3C7 /* SpringTextField.swift */; };
+		FBDE4D2F1BD5E28E000BA3C7 /* SpringTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D121BD5E28E000BA3C7 /* SpringTextView.swift */; };
+		FBDE4D301BD5E28E000BA3C7 /* SpringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D131BD5E28E000BA3C7 /* SpringView.swift */; };
+		FBDE4D311BD5E28E000BA3C7 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D141BD5E28E000BA3C7 /* TransitionManager.swift */; };
+		FBDE4D321BD5E28E000BA3C7 /* TransitionZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D151BD5E28E000BA3C7 /* TransitionZoom.swift */; };
+		FBDE4D331BD5E28E000BA3C7 /* UnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D161BD5E28E000BA3C7 /* UnwindSegue.swift */; };
+		FBDE4D481BD6023F000BA3C7 /* CommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D471BD6023F000BA3C7 /* CommentVC.m */; };
+		FBDE4D4E1BD67F1D000BA3C7 /* CommentCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D4D1BD67F1D000BA3C7 /* CommentCollectionVC.m */; };
+		FBDE4D5B1BD73E17000BA3C7 /* EmptyDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D5A1BD73E17000BA3C7 /* EmptyDataView.m */; };
+		FBDE4D5F1BD73E42000BA3C7 /* EmptyDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D5E1BD73E42000BA3C7 /* EmptyDataView.xib */; };
+		FBDE4D731BD758FA000BA3C7 /* CommentCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D621BD758FA000BA3C7 /* CommentCollectionCell.m */; };
+		FBDE4D741BD758FA000BA3C7 /* CommentCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D631BD758FA000BA3C7 /* CommentCollectionCell.xib */; };
+		FBDE4D751BD758FA000BA3C7 /* LoadingCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D651BD758FA000BA3C7 /* LoadingCollectionCell.m */; };
+		FBDE4D761BD758FA000BA3C7 /* LoadingCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D661BD758FA000BA3C7 /* LoadingCollectionCell.xib */; };
+		FBDE4D771BD758FA000BA3C7 /* NoDataCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D681BD758FA000BA3C7 /* NoDataCollectionCell.m */; };
+		FBDE4D781BD758FA000BA3C7 /* NoDataCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D691BD758FA000BA3C7 /* NoDataCollectionCell.xib */; };
+		FBDE4D791BD758FA000BA3C7 /* PetCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D6B1BD758FA000BA3C7 /* PetCollectionCell.m */; };
+		FBDE4D7A1BD758FA000BA3C7 /* PetCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D6C1BD758FA000BA3C7 /* PetCollectionCell.xib */; };
+		FBDE4D7B1BD758FA000BA3C7 /* PostCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D6E1BD758FA000BA3C7 /* PostCollectionCell.m */; };
+		FBDE4D7C1BD758FA000BA3C7 /* PostCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D6F1BD758FA000BA3C7 /* PostCollectionCell.xib */; };
+		FBDE4D7D1BD758FA000BA3C7 /* PostTextCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D711BD758FA000BA3C7 /* PostTextCollectionCell.m */; };
+		FBDE4D7E1BD758FA000BA3C7 /* PostTextCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D721BD758FA000BA3C7 /* PostTextCollectionCell.xib */; };
+		FBDE4D9B1BD75953000BA3C7 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D811BD75953000BA3C7 /* CommentCell.m */; };
+		FBDE4D9C1BD75953000BA3C7 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D821BD75953000BA3C7 /* CommentCell.xib */; };
+		FBDE4D9D1BD75953000BA3C7 /* PostDetailTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D841BD75953000BA3C7 /* PostDetailTextCell.m */; };
+		FBDE4D9E1BD75953000BA3C7 /* PostDetailTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D851BD75953000BA3C7 /* PostDetailTextCell.xib */; };
+		FBDE4D9F1BD75953000BA3C7 /* PostTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D871BD75953000BA3C7 /* PostTextCell.m */; };
+		FBDE4DA01BD75953000BA3C7 /* PostTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D881BD75953000BA3C7 /* PostTextCell.xib */; };
+		FBDE4DA11BD75953000BA3C7 /* ProfileAddressInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D8A1BD75953000BA3C7 /* ProfileAddressInfoCell.m */; };
+		FBDE4DA21BD75953000BA3C7 /* ProfileAddressInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D8B1BD75953000BA3C7 /* ProfileAddressInfoCell.xib */; };
+		FBDE4DA31BD75953000BA3C7 /* ProfileBasicInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D8D1BD75953000BA3C7 /* ProfileBasicInfoCell.m */; };
+		FBDE4DA41BD75953000BA3C7 /* ProfileBasicInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D8E1BD75953000BA3C7 /* ProfileBasicInfoCell.xib */; };
+		FBDE4DA51BD75953000BA3C7 /* ProfileHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D901BD75953000BA3C7 /* ProfileHeaderCell.m */; };
+		FBDE4DA61BD75953000BA3C7 /* ProfileHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D911BD75953000BA3C7 /* ProfileHeaderCell.xib */; };
+		FBDE4DA71BD75953000BA3C7 /* ProfileNameInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D931BD75953000BA3C7 /* ProfileNameInfoCell.m */; };
+		FBDE4DA81BD75953000BA3C7 /* ProfileNameInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D941BD75953000BA3C7 /* ProfileNameInfoCell.xib */; };
+		FBDE4DA91BD75953000BA3C7 /* TextFieldTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D961BD75953000BA3C7 /* TextFieldTableCell.m */; };
+		FBDE4DAA1BD75953000BA3C7 /* TextFieldTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D971BD75953000BA3C7 /* TextFieldTableCell.xib */; };
+		FBDE4DAB1BD75953000BA3C7 /* TextViewTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D991BD75953000BA3C7 /* TextViewTableCell.m */; };
+		FBDE4DAC1BD75953000BA3C7 /* TextViewTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D9A1BD75953000BA3C7 /* TextViewTableCell.xib */; };
+		FBDE4DB31BD759D0000BA3C7 /* ProfileSelectionTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4DB11BD759D0000BA3C7 /* ProfileSelectionTableCell.m */; };
+		FBDE4DB41BD759D0000BA3C7 /* ProfileSelectionTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4DB21BD759D0000BA3C7 /* ProfileSelectionTableCell.xib */; };
+		FBDE4DB71BD75A6C000BA3C7 /* CheckMark.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4DB61BD75A6C000BA3C7 /* CheckMark.m */; };
+		FBDE4DBA1BD75C73000BA3C7 /* ProfileSelectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4DB91BD75C73000BA3C7 /* ProfileSelectionVC.m */; };
+		FBEFA1621BD972C10071AD8E /* PostImageCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBEFA1601BD972C10071AD8E /* PostImageCollectionCell.m */; };
+		FBEFA1631BD972C10071AD8E /* PostImageCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBEFA1611BD972C10071AD8E /* PostImageCollectionCell.xib */; };
+		FBF8F5191BDBB216001F34C7 /* ActionCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF8F5171BDBB216001F34C7 /* ActionCollectionCell.m */; };
+		FBF8F51A1BDBB216001F34C7 /* ActionCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBF8F5181BDBB216001F34C7 /* ActionCollectionCell.xib */; };
+		FBFC5CEA1BCF5C8600312F31 /* CacheKey.m in Sources */ = {isa = PBXBuildFile; fileRef = FBFC5CE91BCF5C8600312F31 /* CacheKey.m */; };
+		FBFC5CED1BCF636F00312F31 /* AppData.m in Sources */ = {isa = PBXBuildFile; fileRef = FBFC5CEC1BCF636F00312F31 /* AppData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -439,6 +441,9 @@
 		FBEFA15F1BD972C10071AD8E /* PostImageCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostImageCollectionCell.h; sourceTree = "<group>"; };
 		FBEFA1601BD972C10071AD8E /* PostImageCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostImageCollectionCell.m; sourceTree = "<group>"; };
 		FBEFA1611BD972C10071AD8E /* PostImageCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostImageCollectionCell.xib; sourceTree = "<group>"; };
+		FBF8F5161BDBB216001F34C7 /* ActionCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionCollectionCell.h; sourceTree = "<group>"; };
+		FBF8F5171BDBB216001F34C7 /* ActionCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionCollectionCell.m; sourceTree = "<group>"; };
+		FBF8F5181BDBB216001F34C7 /* ActionCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionCollectionCell.xib; sourceTree = "<group>"; };
 		FBFC5CE81BCF5C8600312F31 /* CacheKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheKey.h; sourceTree = "<group>"; };
 		FBFC5CE91BCF5C8600312F31 /* CacheKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheKey.m; sourceTree = "<group>"; };
 		FBFC5CEB1BCF636F00312F31 /* AppData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppData.h; sourceTree = "<group>"; };
@@ -913,6 +918,9 @@
 				FBEFA15F1BD972C10071AD8E /* PostImageCollectionCell.h */,
 				FBEFA1601BD972C10071AD8E /* PostImageCollectionCell.m */,
 				FBEFA1611BD972C10071AD8E /* PostImageCollectionCell.xib */,
+				FBF8F5161BDBB216001F34C7 /* ActionCollectionCell.h */,
+				FBF8F5171BDBB216001F34C7 /* ActionCollectionCell.m */,
+				FBF8F5181BDBB216001F34C7 /* ActionCollectionCell.xib */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -1059,6 +1067,7 @@
 				FBDE4D761BD758FA000BA3C7 /* LoadingCollectionCell.xib in Resources */,
 				FB484A991B50C6130045A6EA /* Lato-Semibold.ttf in Resources */,
 				FB484A8B1B50C6130045A6EA /* Lato-Black.ttf in Resources */,
+				FBF8F51A1BDBB216001F34C7 /* ActionCollectionCell.xib in Resources */,
 				FBDE4D9C1BD75953000BA3C7 /* CommentCell.xib in Resources */,
 				FBDE4DA01BD75953000BA3C7 /* PostTextCell.xib in Resources */,
 				FB484A9C1B50C6130045A6EA /* Lato-ThinItalic.ttf in Resources */,
@@ -1181,6 +1190,7 @@
 				FB9AC5291BD1919200B0DF25 /* PlaceHolderTextView.m in Sources */,
 				FB484A5E1B50BE4E0045A6EA /* ThemeManager.m in Sources */,
 				FB484A531B4FD40A0045A6EA /* Utils.m in Sources */,
+				FBF8F5191BDBB216001F34C7 /* ActionCollectionCell.m in Sources */,
 				FB4DB9381BCDC88300C1466D /* WebClient.m in Sources */,
 				FBDE4D5B1BD73E17000BA3C7 /* EmptyDataView.m in Sources */,
 				FBFC5CED1BCF636F00312F31 /* AppData.m in Sources */,

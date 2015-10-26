@@ -74,7 +74,7 @@ static CGFloat const kToolbarHeight = 44.0f;
         }
         else
         {
-            [[Pet2ShareService new] loadImage:[Pet2ShareUser current].person.profilePictureUrl completion:^(UIImage *image) {
+            [[Pet2ShareService new] loadImage:[Pet2ShareUser current].person.profilePictureUrl aspectRatio:Square completion:^(UIImage *image) {
                 self.avatarImageView.image = image ?: [UIImage imageNamed:@"img-avatar"];
             }];
         }
@@ -92,7 +92,7 @@ static CGFloat const kToolbarHeight = 44.0f;
         }
         else
         {
-            [[Pet2ShareService new] loadImage:[Pet2ShareUser current].selectedPet.profilePictureUrl completion:^(UIImage *image) {
+            [[Pet2ShareService new] loadImage:[Pet2ShareUser current].selectedPet.profilePictureUrl aspectRatio:Square completion:^(UIImage *image) {
                 self.avatarImageView.image = image ?: [UIImage imageNamed:@"img-avatar"];
             }];
         }

@@ -216,7 +216,7 @@ static id ObjectOrNull(id object)
     if (_didReceivedData) return;
     
     ErrorMessage *errorMessage = [ErrorMessage new];
-    errorMessage.message = error.description;
+    errorMessage.message = error.description ?: [NSString stringWithFormat:@"Error with status code: %ld", (long)webClient.statusCode];
     errorMessage.reasonCode = webClient.statusCode;
     if (self.callback) [self.callback onReceiveError:errorMessage];
     _didReceivedData = YES;
@@ -478,7 +478,7 @@ postDescription:(NSString *)postDescription
   isCommentedByPet:(BOOL)isCommentedByPet
 commentDescription:(NSString *)commentDescription
 {
-    fTRACE("%@ <PostId: %ld - UserId: %ld>", ADDCOMMENT_ENDPOINT, postId, userId);
+    fTRACE("%@ <PostId: %ld - UserId: %ld>", ADDCOMMENT_ENDPOINT, (long)postId, (long)userId);
     
     NSMutableDictionary *postData = [NSMutableDictionary dictionary];
     [postData setObject:@(postId) forKey:@"PostId"];
@@ -514,11 +514,32 @@ commentDescription:(NSString *)commentDescription
 }
 
 - (void)loadImage:(NSString *)url
+      aspectRatio:(ImageAspectRatio)aspectRatio
        completion:(void (^)(UIImage* image))completion
 {
     if ([Utils isNullOrEmpty:url]) return;
+
+    NSString *aspectRatioCode = kEmptyString;
     
-    fTRACE(@"Url: %@", url);
+    switch (aspectRatio)
+    {
+        case Default:
+            aspectRatioCode = kEmptyString;
+            break;
+        case Square:
+            aspectRatioCode = @"?w=360&h=360&mode=carve&quality=1";
+            break;
+        case Landscape:
+            aspectRatioCode = @"?w=640&h=360&mode=carve&quality=1";
+            break;
+        case Portrait:
+            aspectRatioCode = kEmptyString;
+            break;
+        default:
+            aspectRatioCode = kEmptyString;
+            break;;
+    }
+    
     
     if ([[EGOCache globalCache] hasCacheForKey:url])
     {
@@ -533,6 +554,8 @@ commentDescription:(NSString *)commentDescription
         @try
         {
             NSString *encodedUrl = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            encodedUrl = [encodedUrl stringByAppendingString:aspectRatioCode];
+            fTRACE(@"Image Url: %@", encodedUrl);
             NSURL *imageUrl = [NSURL URLWithString:encodedUrl];
             NSData *data = [NSData dataWithContentsOfURL:imageUrl];
             UIImage *image = [UIImage imageWithData:data];

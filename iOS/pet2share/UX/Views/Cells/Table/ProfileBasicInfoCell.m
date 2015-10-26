@@ -132,7 +132,7 @@
     else
     {
         Pet2ShareService *service = [Pet2ShareService new];
-        [service loadImage:dict[kCellImageLink] completion:^(UIImage *image) {
+        [service loadImage:dict[kCellImageLink] aspectRatio:Square completion:^(UIImage *image) {
             self.avatarImgView.image = image ?: [UIImage imageNamed:@"img-avatar"];
         }];
     }
@@ -140,9 +140,9 @@
 
 - (IBAction)editAvatarImageBtnTapped:(id)sender
 {
-    if ([self.buttonDelegate respondsToSelector:@selector(editButtonTapped:)])
+    if ([self.buttonDelegate respondsToSelector:@selector(mainButtonTapped:)])
     {
-        [self.buttonDelegate performSelector:@selector(editButtonTapped:) withObject:sender];
+        [self.buttonDelegate performSelector:@selector(mainButtonTapped:) withObject:sender];
     }
 }
 @end

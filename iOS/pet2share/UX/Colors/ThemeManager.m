@@ -22,10 +22,12 @@
 
 + (void)setNavigationBarTheme
 {
-    [UINavigationBar appearance].barTintColor = [AppColor navigationBarBackgroundColor];
-    [UINavigationBar appearance].tintColor = [AppColor navigationBarTintColor];
-    [UINavigationBar appearance].translucent = NO;
-    [UINavigationBar appearance].barStyle = UIBarStyleBlackOpaque;
+    [[UINavigationBar appearance] setBarTintColor:[AppColor navigationBarBackgroundColor]];
+    [[UINavigationBar appearance] setTintColor:[AppColor navigationBarTintColor]];
+    [[UINavigationBar appearance] setTranslucent:NO];
+    [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setShadowImage:[UIImage new]];
     
     [[UINavigationBar appearance] setTitleTextAttributes:
      @{NSForegroundColorAttributeName:[AppColor navigationBarTextColor],

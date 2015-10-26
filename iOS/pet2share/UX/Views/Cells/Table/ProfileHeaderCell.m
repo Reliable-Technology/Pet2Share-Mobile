@@ -34,6 +34,7 @@
 - (void)awakeFromNib
 {
     TRACE_HERE;
+    self.backgroundColor = [Graphics lighterColorForColor:[AppColorScheme darkBlueColor]]; // This match the color scheme of navigation bar
     self.editProfileBtn.layer.borderColor = [[AppColorScheme white] CGColor];
     self.editProfileBtn.layer.borderWidth = 1.0f;
     self.editProfileBtn.layer.cornerRadius = 3.0f;
@@ -57,7 +58,7 @@
     else
     {
         Pet2ShareService *profileImgUrlService = [Pet2ShareService new];
-        [profileImgUrlService loadImage:imageUrl completion:^(UIImage *image) {
+        [profileImgUrlService loadImage:imageUrl aspectRatio:Square completion:^(UIImage *image) {
             self.avatarImageView.image = image ?:[UIImage imageNamed:placeHolder];
         }];
     }
@@ -73,9 +74,9 @@
 
 - (void)editProfileBtnTapped:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(editButtonTapped:)])
+    if ([self.delegate respondsToSelector:@selector(mainButtonTapped:)])
     {
-        [self.delegate performSelector:@selector(editButtonTapped:) withObject:sender];
+        [self.delegate performSelector:@selector(mainButtonTapped:) withObject:sender];
     }
 }
 

@@ -41,6 +41,7 @@ NSString * const kSegueProfileSelection         = @"profileselection";
 NSString * const kSegueNewPost                  = @"newpost";
 NSString * const kSegueComment                  = @"comment";
 NSString * const kSegueCommentContainer         = @"commentcontainer";
+NSString * const kSeguePostNewComment           = @"postnewcomment";
 NSString * const kSegueEditProfile              = @"editprofile";
 NSString * const kSeguePetProfile               = @"petprofile";
 NSString * const kSegueAddEditPetProfile        = @"addeditpetprofile";

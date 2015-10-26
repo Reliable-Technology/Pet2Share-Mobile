@@ -54,7 +54,7 @@ static CGFloat const kBottomSpacing         = 16.0f;
              descriptionText:(NSString *)descriptionText
 {
     Pet2ShareService *service = [Pet2ShareService new];
-    [service loadImage:imgUrl completion:^(UIImage *image) {
+    [service loadImage:imgUrl aspectRatio:Square completion:^(UIImage *image) {
         self.postImageView.image = image;
     }];
 

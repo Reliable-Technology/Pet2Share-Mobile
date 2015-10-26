@@ -116,7 +116,7 @@
     }
     
     Pet2ShareService *service = [Pet2ShareService new];
-    [service loadImage:self.avatarImgUrl completion:^(UIImage *image) {
+    [service loadImage:self.avatarImgUrl aspectRatio:Square completion:^(UIImage *image) {
         if (!image) image = [UIImage imageNamed:@"img-avatar"];
         [self.avatarBtn setBackgroundImage:image forState:UIControlStateNormal];
         [self.avatarBtn setBackgroundImage:image forState:UIControlStateHighlighted];

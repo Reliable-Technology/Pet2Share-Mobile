@@ -68,6 +68,7 @@ extern NSString * const kSegueProfileSelection;
 extern NSString * const kSegueNewPost;
 extern NSString * const kSegueComment;
 extern NSString * const kSegueCommentContainer;
+extern NSString * const kSeguePostNewComment;
 extern NSString * const kSegueEditProfile;
 extern NSString * const kSeguePetProfile;
 extern NSString * const kSegueAddEditPetProfile;
