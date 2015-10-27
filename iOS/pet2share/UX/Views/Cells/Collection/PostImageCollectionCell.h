@@ -11,8 +11,14 @@
 @interface PostImageCollectionCell : UICollectionViewCell
 
 + (CGFloat)defaultHeight;
-+ (CGFloat)heightByText:(NSString *)text withImageHeight:(CGFloat)imageHeight itemWidth:(CGFloat)itemWidth;
++ (CGFloat)heightByText:(NSString *)text itemWidth:(CGFloat)itemWidth;
 - (void)loadDataWithImageUrl:(NSString *)imgUrl
-             descriptionText:(NSString *)descriptionText;
+        placeHolderImageName:(NSString *)placeHolderImgName
+                sessionImage:(UIImage *)sessionImage
+                postImageUrl:(NSString *)postImgUrl
+                 primaryText:(NSString *)primaryText
+               secondaryText:(NSString *)secondaryText
+             descriptionText:(NSString *)descriptionText
+                  statusText:(NSString *)statusText;
 
 @end

@@ -11,6 +11,7 @@
 #import "Graphics.h"
 #import "Constants.h"
 #import "PostTextCollectionCell.h"
+#import "PostImageCollectionCell.h"
 #import "LoadingCollectionCell.h"
 #import "Pet2ShareService.h"
 #import "Pet2ShareUser.h"
@@ -28,18 +29,20 @@
 
 @implementation FeedCollectionVC
 
-static CGFloat kCellSpacing                     = 5.0f;
-static NSString * const kDataCellIdentifier     = @"posttextcollectioncell";
-static NSString * const kDataCellNibName        = @"PostTextCollectionCell";
-static NSString * const kLoadingCellIdentifier  = @"loadingcollectioncell";
-static NSString * const kLoadingCellNibName     = @"LoadingCollectionCell";
+static CGFloat kCellSpacing                         = 5.0f;
+static NSString * const kPostTextCellIdentifier     = @"posttextcollectioncell";
+static NSString * const kPostTextCellNibName        = @"PostTextCollectionCell";
+static NSString * const kPostImageCellIdentifier    = @"postimagecollectioncell";
+static NSString * const kPostImageCellNibName       = @"PostImageCollectionCell";
+static NSString * const kLoadingCellIdentifier      = @"loadingcollectioncell";
+static NSString * const kLoadingCellNibName         = @"LoadingCollectionCell";
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if ((self = [super initWithCoder:aDecoder]))
     {
-        self.cellReuseIdentifier = kDataCellIdentifier;
-        self.customNibName = kDataCellNibName;
+        self.cellReuseIdentifier = kPostTextCellIdentifier;
+        self.customNibName = kPostTextCellNibName;
         _pageNumber = 0;
         _hasAllData = NO;
     }
@@ -51,6 +54,8 @@ static NSString * const kLoadingCellNibName     = @"LoadingCollectionCell";
     [super viewDidLoad];
     
     // Extra cell
+    [self.collectionView registerNib:[UINib nibWithNibName:kPostImageCellNibName bundle:nil]
+          forCellWithReuseIdentifier:kPostImageCellIdentifier];
     [self.collectionView registerNib:[UINib nibWithNibName:kLoadingCellNibName bundle:nil]
           forCellWithReuseIdentifier:kLoadingCellIdentifier];
     
@@ -157,7 +162,16 @@ static NSString * const kLoadingCellNibName     = @"LoadingCollectionCell";
     if (indexPath.row < self.items.count)
     {
         Post *post = [self.items objectAtIndexedSubscript:indexPath.row];
-        CGSize cellSize = CGSizeMake(itemWidth, [PostTextCollectionCell heightByText:post.postDescription itemWidth:itemWidth]);
+        CGSize cellSize;
+        if ([Utils isNullOrEmpty:post.postUrl])
+        {
+            cellSize = CGSizeMake(itemWidth, [PostTextCollectionCell heightByText:post.postDescription itemWidth:itemWidth]);
+        }
+        else
+        {
+            cellSize = CGSizeMake(itemWidth, [PostImageCollectionCell heightByText:post.postDescription itemWidth:itemWidth]);
+        }
+        
         return cellSize;
     }
     else
@@ -195,14 +209,15 @@ static NSString * const kLoadingCellNibName     = @"LoadingCollectionCell";
         // fTRACE("Index: %ld", indexPath.row);
         if (indexPath.row < self.items.count)
         {
-            cell = (PostTextCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:self.cellReuseIdentifier
-                                                                                       forIndexPath:indexPath];
+            
             Post *post = [self.items objectAtIndex:indexPath.row];
+            NSString *postDate = [Utils formatNSDateToString:post.dateAdded
+                                                  withFormat:kFormatDayOfWeekWithDateTime];
             
             NSString *profileImageUrl = kEmptyString;
             NSString *profileName = kEmptyString;
             UIImage *profileSessionImage = nil;
-            
+
             if (post.isPostByPet)
             {
                 profileImageUrl = post.pet.profilePictureUrl;
@@ -217,18 +232,33 @@ static NSString * const kLoadingCellNibName     = @"LoadingCollectionCell";
                     profileSessionImage = [Pet2ShareUser current].getUserSessionAvatarImage;
             }
             
-            [(PostTextCollectionCell *)cell loadDataWithImageUrl:profileImageUrl
-                                            placeHolderImageName:@"img-avatar"
-                                                    sessionImage:profileSessionImage
-                                                     primaryText:profileName
-                                                   secondaryText:[Utils formatNSDateToString:post.dateAdded withFormat:kFormatDayOfWeekWithDateTime]
-                                                 descriptionText:post.postDescription
-                                                      statusText:post.getPostStatusString];
+            if ([Utils isNullOrEmpty:post.postUrl])
+            {
+                cell = [collectionView dequeueReusableCellWithReuseIdentifier:self.cellReuseIdentifier forIndexPath:indexPath];
+                [(PostTextCollectionCell *)cell loadDataWithImageUrl:profileImageUrl
+                                                placeHolderImageName:@"img-avatar"
+                                                        sessionImage:profileSessionImage
+                                                         primaryText:profileName
+                                                       secondaryText:postDate
+                                                     descriptionText:post.postDescription
+                                                          statusText:post.getPostStatusString];
+            }
+            else
+            {
+                cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPostImageCellIdentifier forIndexPath:indexPath];
+                [(PostImageCollectionCell *)cell loadDataWithImageUrl:profileImageUrl
+                                                placeHolderImageName:@"img-avatar"
+                                                        sessionImage:profileSessionImage
+                                                         postImageUrl:post.postUrl
+                                                         primaryText:profileName
+                                                       secondaryText:postDate
+                                                     descriptionText:post.postDescription
+                                                          statusText:post.getPostStatusString];
+            }
         }
         else
         {
-            cell = (LoadingCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kLoadingCellIdentifier
-                                                                                       forIndexPath:indexPath];
+            cell = [collectionView dequeueReusableCellWithReuseIdentifier:kLoadingCellIdentifier forIndexPath:indexPath];
         }
     }
     @catch (NSException *exception)

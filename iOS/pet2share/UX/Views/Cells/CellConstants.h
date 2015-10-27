@@ -20,6 +20,7 @@ static NSString * const kCellTextKey            = @"text";
 static NSString * const kCellImageUrlKey        = @"imageurl";
 static NSString * const kCellSessionImageKey    = @"sessionimage";
 static NSString * const kCellPostStatusKey      = @"poststatus";
+static NSString * const kCellPostImageUrlKey    = @"postimageurl";
 static NSString * const kCellCommentKey         = @"comment";
 static NSString * const kUserNameKey            = @"username";
 static NSString * const kFirstNameKey           = @"firstname";

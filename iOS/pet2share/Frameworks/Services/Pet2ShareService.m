@@ -536,10 +536,10 @@ commentDescription:(NSString *)commentDescription
             aspectRatioCode = kEmptyString;
             break;
         case Square:
-            aspectRatioCode = @"?w=360&h=360&mode=carve&quality=1";
+            aspectRatioCode = @"?w=360&h=360&mode=carve&quality=100";
             break;
         case Landscape:
-            aspectRatioCode = @"?w=640&h=360&mode=carve&quality=1";
+            aspectRatioCode = @"?w=640&h=360&mode=carve&quality=100";
             break;
         case Portrait:
             aspectRatioCode = kEmptyString;

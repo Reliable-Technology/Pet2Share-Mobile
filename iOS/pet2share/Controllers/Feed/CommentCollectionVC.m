@@ -14,6 +14,7 @@
 #import "Graphics.h"
 #import "Pet2ShareService.h"
 #import "PostTextCollectionCell.h"
+#import "PostImageCollectionCell.h"
 #import "CommentCollectionCell.h"
 #import "TextViewCollectionCell.h"
 #import "OrderedDictionary.h"
@@ -30,17 +31,19 @@
 
 @implementation CommentCollectionVC
 
-static NSString * const kCommentCellIdentifier  = @"commentcollectioncell";
-static NSString * const kCommentCellNibName     = @"CommentCollectionCell";
-static NSString * const kPostCellIdentifier     = @"posttextcell";
-static NSString * const kPostCellNibName        = @"PostTextCollectionCell";
-static NSString * const kTextViewCellIdentifier = @"textviewcollectioncell";
-static NSString * const kTextViewCellNibName    = @"TextViewCollectionCell";
-static NSString * const kCellReuseIdentifier    = @"cellidentifier";
-static CGFloat const kSpacing                   = 5.0f;
-static CGFloat const kToolbarHeight             = 44.0f;
-static NSInteger const kGetCommentTag           = 100;
-static NSInteger const kPostCommentTag          = 101;
+static NSString * const kCommentCellIdentifier      = @"commentcollectioncell";
+static NSString * const kCommentCellNibName         = @"CommentCollectionCell";
+static NSString * const kPostTextCellIdentifier     = @"posttextcollectioncell";
+static NSString * const kPostTextCellNibName        = @"PostTextCollectionCell";
+static NSString * const kPostImageCellIdentifier    = @"postimagecollectioncell";
+static NSString * const kPostImageCellNibName       = @"PostImageCollectionCell";
+static NSString * const kTextViewCellIdentifier     = @"textviewcollectioncell";
+static NSString * const kTextViewCellNibName        = @"TextViewCollectionCell";
+static NSString * const kCellReuseIdentifier        = @"cellidentifier";
+static CGFloat const kSpacing                       = 5.0f;
+static CGFloat const kToolbarHeight                 = 44.0f;
+static NSInteger const kGetCommentTag               = 100;
+static NSInteger const kPostCommentTag              = 101;
 
 #pragma mark - Life Cycle
 
@@ -61,8 +64,10 @@ static NSInteger const kPostCommentTag          = 101;
     [super viewDidLoad];
     
     // Register extra cells
-    [self.collectionView registerNib:[UINib nibWithNibName:kPostCellNibName bundle:[NSBundle mainBundle]]
-          forCellWithReuseIdentifier:kPostCellIdentifier];
+    [self.collectionView registerNib:[UINib nibWithNibName:kPostTextCellNibName bundle:[NSBundle mainBundle]]
+          forCellWithReuseIdentifier:kPostTextCellIdentifier];
+    [self.collectionView registerNib:[UINib nibWithNibName:kPostImageCellNibName bundle:[NSBundle mainBundle]]
+          forCellWithReuseIdentifier:kPostImageCellIdentifier];
     [self.collectionView registerNib:[UINib nibWithNibName:kTextViewCellNibName bundle:[NSBundle mainBundle]]
           forCellWithReuseIdentifier:kTextViewCellIdentifier];
     
@@ -123,16 +128,16 @@ static NSInteger const kPostCommentTag          = 101;
     }
 
     NSMutableDictionary *profileCellDict = [NSMutableDictionary dictionary];
-    profileCellDict[kCellClassName] = kPostCellNibName;
+    profileCellDict[kCellClassName] = self.post.postUrl ? kPostImageCellNibName : kPostTextCellNibName;
+    profileCellDict[kCellReuseIdentifier] = self.post.postUrl ? kPostImageCellIdentifier : kPostTextCellIdentifier;
     profileCellDict[kCellNameKey] = profileName;
     profileCellDict[kCellImageLink] = profileImageUrl;
     profileCellDict[kCellTextKey] = self.post.postDescription ?: kEmptyString;
     profileCellDict[kCellDateKey] = [Utils formatNSDateToString:self.post.dateAdded withFormat:kFormatDayOfWeekWithDateTime];
+    profileCellDict[kCellPostImageUrlKey] = self.post.postUrl ?: kEmptyString;
     profileCellDict[kCellPostStatusKey] = postStatus;
-    profileCellDict[kCellReuseIdentifier] = kPostCellIdentifier;
     if (profileSessionImage) profileCellDict[kCellSessionImageKey] = profileSessionImage;
-    
-    [self.cellDict insertObject:@[profileCellDict] forKey:kPostCellIdentifier atIndex:0];
+    [self.cellDict insertObject:@[profileCellDict] forKey:profileCellDict[kCellReuseIdentifier] atIndex:0];
 
     if (comments.count > 0)
     {
@@ -310,7 +315,7 @@ static NSInteger const kPostCommentTag          = 101;
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
     NSString *sectionKey = [self.cellDict keyAtIndex:section];
-    if ([sectionKey isEqualToString:kPostCellIdentifier])
+    if ([sectionKey isEqualToString:kPostTextCellNibName] || [sectionKey isEqualToString:kPostImageCellNibName])
     {
         return kSpacing;
     }
@@ -329,7 +334,11 @@ static NSInteger const kPostCommentTag          = 101;
     
     if (indexPath.section == 0)
     {
-        cellSize = CGSizeMake(itemWidth, [PostTextCollectionCell heightByText:self.post.postDescription itemWidth:itemWidth]);
+        NSDictionary *dict = data[0];
+        if ([Utils isNullOrEmpty:dict[kCellPostImageUrlKey]])
+            cellSize = CGSizeMake(itemWidth, [PostTextCollectionCell heightByText:self.post.postDescription itemWidth:itemWidth]);
+        else
+            cellSize = CGSizeMake(itemWidth, [PostImageCollectionCell heightByText:self.post.postDescription itemWidth:itemWidth]);
     }
     else
     {
@@ -358,35 +367,48 @@ static NSInteger const kPostCommentTag          = 101;
 
         NSArray *data = self.cellDict[section];
         NSString *reuseIdentifier = [self.cellDict keyAtIndex:section];
-        NSDictionary *cellDict;
+        NSDictionary *dict;
         
         cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
         
-        if ([reuseIdentifier isEqualToString:kPostCellIdentifier])
+        if ([reuseIdentifier isEqualToString:kPostTextCellIdentifier])
         {
-            cellDict = data[0];
-            [(PostTextCollectionCell *)cell loadDataWithImageUrl:cellDict[kCellImageLink]
+            dict = data[0];
+            [(PostTextCollectionCell *)cell loadDataWithImageUrl:dict[kCellImageLink]
                                             placeHolderImageName:@"img-avatar"
-                                                    sessionImage:cellDict[kCellSessionImageKey]
-                                                     primaryText:cellDict[kCellNameKey]
-                                                   secondaryText:cellDict[kCellDateKey]
-                                                 descriptionText:cellDict[kCellTextKey]
-                                                      statusText:cellDict[kCellPostStatusKey]];
+                                                    sessionImage:dict[kCellSessionImageKey]
+                                                     primaryText:dict[kCellNameKey]
+                                                   secondaryText:dict[kCellDateKey]
+                                                 descriptionText:dict[kCellTextKey]
+                                                      statusText:dict[kCellPostStatusKey]];
+            
             [(PostTextCollectionCell *)cell displayHeaderIndicator];
+        }
+        else if ([reuseIdentifier isEqualToString:kPostImageCellIdentifier])
+        {
+            dict = data[0];
+            [(PostImageCollectionCell *)cell loadDataWithImageUrl:dict[kCellImageLink]
+                                             placeHolderImageName:@"img-avatar"
+                                                     sessionImage:dict[kCellSessionImageKey]
+                                                     postImageUrl:dict[kCellPostImageUrlKey]
+                                                      primaryText:dict[kCellNameKey]
+                                                    secondaryText:dict[kCellDateKey]
+                                                  descriptionText:dict[kCellTextKey]
+                                                       statusText:dict[kCellPostStatusKey]];
         }
         else if ([reuseIdentifier isEqualToString:kCommentCellIdentifier])
         {
-            cellDict = data[index];
-            [(CommentCollectionCell *)cell loadDataWithImageUrl:cellDict[kCellImageLink]
+            dict = data[index];
+            [(CommentCollectionCell *)cell loadDataWithImageUrl:dict[kCellImageLink]
                                            placeHolderImageName:@"img-avatar"
-                                                   sessionImage:cellDict[kCellSessionImageKey]
-                                                     headerText:cellDict[kCellNameKey]
-                                                descriptionText:cellDict[kCellTextKey]
-                                                     statusText:cellDict[kCellDateKey]];
+                                                   sessionImage:dict[kCellSessionImageKey]
+                                                     headerText:dict[kCellNameKey]
+                                                descriptionText:dict[kCellTextKey]
+                                                     statusText:dict[kCellDateKey]];
         }
         else if ([reuseIdentifier isEqualToString:kTextViewCellIdentifier])
         {
-            cellDict = data[0];
+            dict = data[0];
             [(TextViewCollectionCell *)cell loadCellWithPlaceholder:NSLocalizedString(@"Enter Comment...", @"")
                                                    inputAccessory:[self createCustomToolbar]
                                                          protocol:self];
