@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FormProtocol.h"
 
-@interface ActionCollectionCell : UICollectionViewCell
+@interface TextViewCollectionCell : UICollectionViewCell
 
 @property (nonatomic, readonly) NSInteger remainCharacters;
 

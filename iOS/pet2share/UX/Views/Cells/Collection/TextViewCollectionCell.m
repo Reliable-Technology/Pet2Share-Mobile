@@ -6,11 +6,11 @@
 //  Copyright © 2015 Pet 2 Share. All rights reserved.
 //
 
-#import "ActionCollectionCell.h"
+#import "TextViewCollectionCell.h"
 #import "Graphics.h"
 #import "PlaceHolderTextView.h"
 
-@interface ActionCollectionCell () <UITextViewDelegate>
+@interface TextViewCollectionCell () <UITextViewDelegate>
 {
     NSInteger _remainCharacters;
 }
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation ActionCollectionCell
+@implementation TextViewCollectionCell
 
 + (CGFloat)height
 {

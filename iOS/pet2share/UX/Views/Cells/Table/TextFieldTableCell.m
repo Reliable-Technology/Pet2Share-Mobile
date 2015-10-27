@@ -55,8 +55,7 @@
     [self.datePicker addTarget:self action:@selector(updateDateField:) forControlEvents:UIControlEventValueChanged];
 }
 
-#pragma mark -
-#pragma mark <UITextFieldDelegate>
+#pragma mark - <UITextFieldDelegate>
 
 - (BOOL)textFieldShouldClear:(UITextField *)textField
 {
@@ -75,8 +74,7 @@
         [self.formProtocol updateData:self.textFieldTag value:self.textFieldValue];
 }
 
-#pragma mark -
-#pragma mark Private Instance Methods
+#pragma mark - Private Instance Methods
 
 - (NSString *)textFieldValue
 {
@@ -145,8 +143,7 @@
     }
 }
 
-#pragma mark -
-#pragma mark Public Instance Methods
+#pragma mark - Public Instance Methods
 
 - (void)updateTextField:(NSString *)text iconImageName:(NSString *)imageName tag:(NSString *)tag
 {

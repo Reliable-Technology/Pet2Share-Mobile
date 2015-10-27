@@ -15,7 +15,7 @@
 #import "Pet2ShareService.h"
 #import "PostTextCollectionCell.h"
 #import "CommentCollectionCell.h"
-#import "ActionCollectionCell.h"
+#import "TextViewCollectionCell.h"
 #import "OrderedDictionary.h"
 #import "Pet2ShareUser.h"
 #import "RoundCornerButton.h"
@@ -34,8 +34,8 @@ static NSString * const kCommentCellIdentifier  = @"commentcollectioncell";
 static NSString * const kCommentCellNibName     = @"CommentCollectionCell";
 static NSString * const kPostCellIdentifier     = @"posttextcell";
 static NSString * const kPostCellNibName        = @"PostTextCollectionCell";
-static NSString * const kActionCellIndetifier   = @"actioncell";
-static NSString * const kActionCellNibName      = @"ActionCollectionCell";
+static NSString * const kTextViewCellIdentifier = @"textviewcollectioncell";
+static NSString * const kTextViewCellNibName    = @"TextViewCollectionCell";
 static NSString * const kCellReuseIdentifier    = @"cellidentifier";
 static CGFloat const kSpacing                   = 5.0f;
 static CGFloat const kToolbarHeight             = 44.0f;
@@ -63,8 +63,8 @@ static NSInteger const kPostCommentTag          = 101;
     // Register extra cells
     [self.collectionView registerNib:[UINib nibWithNibName:kPostCellNibName bundle:[NSBundle mainBundle]]
           forCellWithReuseIdentifier:kPostCellIdentifier];
-    [self.collectionView registerNib:[UINib nibWithNibName:kActionCellNibName bundle:[NSBundle mainBundle]]
-          forCellWithReuseIdentifier:kActionCellIndetifier];
+    [self.collectionView registerNib:[UINib nibWithNibName:kTextViewCellNibName bundle:[NSBundle mainBundle]]
+          forCellWithReuseIdentifier:kTextViewCellIdentifier];
     
     // Preload data with existings comments
     [self prepareCellData:self.post.comments];
@@ -156,17 +156,17 @@ static NSInteger const kPostCommentTag          = 101;
         }
         [self.cellDict insertObject:commentList forKey:kCommentCellIdentifier atIndex:1];
         
-        [self.cellDict insertObject:@[@{kCellClassName: kActionCellNibName,
-                                      kCellReuseIdentifier: kActionCellIndetifier,
+        [self.cellDict insertObject:@[@{kCellClassName: kTextViewCellNibName,
+                                      kCellReuseIdentifier: kTextViewCellIdentifier,
                                       kCellTextKey:NSLocalizedString(@"Add Comment", @"")}]
-                             forKey:kActionCellIndetifier atIndex:2];
+                             forKey:kTextViewCellIdentifier atIndex:2];
     }
     else
     {
-        [self.cellDict insertObject:@[@{kCellClassName: kActionCellNibName,
-                                        kCellReuseIdentifier: kActionCellIndetifier,
+        [self.cellDict insertObject:@[@{kCellClassName: kTextViewCellNibName,
+                                        kCellReuseIdentifier: kTextViewCellIdentifier,
                                         kCellTextKey:NSLocalizedString(@"Add Comment", @"")}]
-                             forKey:kActionCellIndetifier atIndex:1];
+                             forKey:kTextViewCellIdentifier atIndex:1];
     }
     
     [self.collectionView reloadData];
@@ -314,7 +314,7 @@ static NSInteger const kPostCommentTag          = 101;
     {
         return kSpacing;
     }
-    else if ([sectionKey isEqualToString:kCommentCellIdentifier] || [sectionKey isEqualToString:kActionCellIndetifier])
+    else if ([sectionKey isEqualToString:kCommentCellIdentifier] || [sectionKey isEqualToString:kTextViewCellIdentifier])
     {
         return 0.0f;
     }
@@ -338,7 +338,7 @@ static NSInteger const kPostCommentTag          = 101;
         if ([commentDict[kCellReuseIdentifier] isEqualToString:kCommentCellIdentifier])
             cellSize = CGSizeMake(itemWidth, [CommentCollectionCell heightByText:commentDict[kCellTextKey] itemWidth:itemWidth]);
         else
-            cellSize = CGSizeMake(itemWidth, [ActionCollectionCell height]);
+            cellSize = CGSizeMake(itemWidth, [TextViewCollectionCell height]);
     }
     
     DEBUG_SIZE("Cell Size: ", cellSize);
@@ -384,10 +384,10 @@ static NSInteger const kPostCommentTag          = 101;
                                                 descriptionText:cellDict[kCellTextKey]
                                                      statusText:cellDict[kCellDateKey]];
         }
-        else if ([reuseIdentifier isEqualToString:kActionCellIndetifier])
+        else if ([reuseIdentifier isEqualToString:kTextViewCellIdentifier])
         {
-            cellDict = data[index];
-            [(ActionCollectionCell *)cell loadCellWithPlaceholder:NSLocalizedString(@"Enter Comment...", @"")
+            cellDict = data[0];
+            [(TextViewCollectionCell *)cell loadCellWithPlaceholder:NSLocalizedString(@"Enter Comment...", @"")
                                                    inputAccessory:[self createCustomToolbar]
                                                          protocol:self];
         }

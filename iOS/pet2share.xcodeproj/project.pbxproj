@@ -57,9 +57,6 @@
 		FB5050301BC4CBB40037F3E5 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = FB50502F1BC4CBB40037F3E5 /* Address.m */; };
 		FB5050331BC4D0B10037F3E5 /* Date.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5050321BC4D0B10037F3E5 /* Date.m */; };
 		FB5050391BC4D1E70037F3E5 /* JSONValueTransformer+Date.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5050381BC4D1E70037F3E5 /* JSONValueTransformer+Date.m */; };
-		FB5BB63E1BD5050800A382AC /* InputTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5BB63D1BD5050800A382AC /* InputTableView.m */; };
-		FB5BB6411BD52ABE00A382AC /* KeyboardBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5BB6401BD52ABE00A382AC /* KeyboardBar.m */; };
-		FB5BB6441BD52BA900A382AC /* FeedDetailTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5BB6431BD52BA900A382AC /* FeedDetailTableVC.m */; };
 		FB5BB6471BD5559300A382AC /* FeedCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5BB6461BD5559300A382AC /* FeedCollectionVC.m */; };
 		FB5E1EBC1BC9DDAB00897CA2 /* FeedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5E1EBB1BC9DDAB00897CA2 /* FeedVC.m */; };
 		FB5E1EBF1BC9E2CE00897CA2 /* PetProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5E1EBE1BC9E2CE00897CA2 /* PetProfileVC.m */; };
@@ -68,7 +65,6 @@
 		FB6C273D1B6ED2950002034A /* UrlManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6C273C1B6ED2950002034A /* UrlManager.m */; };
 		FB95D1661BD28B7700254B06 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = FB95D1651BD28B7700254B06 /* Post.m */; };
 		FB95D1691BD28ED900254B06 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = FB95D1681BD28ED900254B06 /* Comment.m */; };
-		FB95D1791BD2CCCA00254B06 /* FeedDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB95D1781BD2CCCA00254B06 /* FeedDetailVC.m */; };
 		FB95D1841BD2EB0000254B06 /* PostHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB95D1831BD2EB0000254B06 /* PostHeaderView.m */; };
 		FB95D1861BD2EB4800254B06 /* PostHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB95D1851BD2EB4800254B06 /* PostHeaderView.xib */; };
 		FB9AC5261BD1560A00B0DF25 /* NewPostVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9AC5251BD1560A00B0DF25 /* NewPostVC.m */; };
@@ -147,10 +143,6 @@
 		FBDE4D7E1BD758FA000BA3C7 /* PostTextCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D721BD758FA000BA3C7 /* PostTextCollectionCell.xib */; };
 		FBDE4D9B1BD75953000BA3C7 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D811BD75953000BA3C7 /* CommentCell.m */; };
 		FBDE4D9C1BD75953000BA3C7 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D821BD75953000BA3C7 /* CommentCell.xib */; };
-		FBDE4D9D1BD75953000BA3C7 /* PostDetailTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D841BD75953000BA3C7 /* PostDetailTextCell.m */; };
-		FBDE4D9E1BD75953000BA3C7 /* PostDetailTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D851BD75953000BA3C7 /* PostDetailTextCell.xib */; };
-		FBDE4D9F1BD75953000BA3C7 /* PostTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D871BD75953000BA3C7 /* PostTextCell.m */; };
-		FBDE4DA01BD75953000BA3C7 /* PostTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D881BD75953000BA3C7 /* PostTextCell.xib */; };
 		FBDE4DA11BD75953000BA3C7 /* ProfileAddressInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D8A1BD75953000BA3C7 /* ProfileAddressInfoCell.m */; };
 		FBDE4DA21BD75953000BA3C7 /* ProfileAddressInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDE4D8B1BD75953000BA3C7 /* ProfileAddressInfoCell.xib */; };
 		FBDE4DA31BD75953000BA3C7 /* ProfileBasicInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4D8D1BD75953000BA3C7 /* ProfileBasicInfoCell.m */; };
@@ -169,8 +161,8 @@
 		FBDE4DBA1BD75C73000BA3C7 /* ProfileSelectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE4DB91BD75C73000BA3C7 /* ProfileSelectionVC.m */; };
 		FBEFA1621BD972C10071AD8E /* PostImageCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBEFA1601BD972C10071AD8E /* PostImageCollectionCell.m */; };
 		FBEFA1631BD972C10071AD8E /* PostImageCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBEFA1611BD972C10071AD8E /* PostImageCollectionCell.xib */; };
-		FBF8F5191BDBB216001F34C7 /* ActionCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF8F5171BDBB216001F34C7 /* ActionCollectionCell.m */; };
-		FBF8F51A1BDBB216001F34C7 /* ActionCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBF8F5181BDBB216001F34C7 /* ActionCollectionCell.xib */; };
+		FBF8F5191BDBB216001F34C7 /* TextViewCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF8F5171BDBB216001F34C7 /* TextViewCollectionCell.m */; };
+		FBF8F51A1BDBB216001F34C7 /* TextViewCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBF8F5181BDBB216001F34C7 /* TextViewCollectionCell.xib */; };
 		FBFC5CEA1BCF5C8600312F31 /* CacheKey.m in Sources */ = {isa = PBXBuildFile; fileRef = FBFC5CE91BCF5C8600312F31 /* CacheKey.m */; };
 		FBFC5CED1BCF636F00312F31 /* AppData.m in Sources */ = {isa = PBXBuildFile; fileRef = FBFC5CEC1BCF636F00312F31 /* AppData.m */; };
 /* End PBXBuildFile section */
@@ -261,12 +253,6 @@
 		FB5050381BC4D1E70037F3E5 /* JSONValueTransformer+Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONValueTransformer+Date.m"; sourceTree = "<group>"; };
 		FB535B691BC4610C00C6A3B3 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		FB535B6B1BC461CD00C6A3B3 /* libJSONModel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONModel.a; path = "Pods/../build/Debug-iphoneos/libJSONModel.a"; sourceTree = "<group>"; };
-		FB5BB63C1BD5050800A382AC /* InputTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputTableView.h; sourceTree = "<group>"; };
-		FB5BB63D1BD5050800A382AC /* InputTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputTableView.m; sourceTree = "<group>"; };
-		FB5BB63F1BD52ABE00A382AC /* KeyboardBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardBar.h; sourceTree = "<group>"; };
-		FB5BB6401BD52ABE00A382AC /* KeyboardBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardBar.m; sourceTree = "<group>"; };
-		FB5BB6421BD52BA900A382AC /* FeedDetailTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedDetailTableVC.h; sourceTree = "<group>"; };
-		FB5BB6431BD52BA900A382AC /* FeedDetailTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedDetailTableVC.m; sourceTree = "<group>"; };
 		FB5BB6451BD5559300A382AC /* FeedCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCollectionVC.h; sourceTree = "<group>"; };
 		FB5BB6461BD5559300A382AC /* FeedCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedCollectionVC.m; sourceTree = "<group>"; };
 		FB5E1EBA1BC9DDAB00897CA2 /* FeedVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedVC.h; sourceTree = "<group>"; };
@@ -284,8 +270,6 @@
 		FB95D1651BD28B7700254B06 /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		FB95D1671BD28ED900254B06 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		FB95D1681BD28ED900254B06 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
-		FB95D1771BD2CCCA00254B06 /* FeedDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedDetailVC.h; sourceTree = "<group>"; };
-		FB95D1781BD2CCCA00254B06 /* FeedDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedDetailVC.m; sourceTree = "<group>"; };
 		FB95D1821BD2EB0000254B06 /* PostHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostHeaderView.h; sourceTree = "<group>"; };
 		FB95D1831BD2EB0000254B06 /* PostHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostHeaderView.m; sourceTree = "<group>"; };
 		FB95D1851BD2EB4800254B06 /* PostHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostHeaderView.xib; sourceTree = "<group>"; };
@@ -407,12 +391,6 @@
 		FBDE4D801BD75953000BA3C7 /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
 		FBDE4D811BD75953000BA3C7 /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
 		FBDE4D821BD75953000BA3C7 /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
-		FBDE4D831BD75953000BA3C7 /* PostDetailTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostDetailTextCell.h; sourceTree = "<group>"; };
-		FBDE4D841BD75953000BA3C7 /* PostDetailTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostDetailTextCell.m; sourceTree = "<group>"; };
-		FBDE4D851BD75953000BA3C7 /* PostDetailTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostDetailTextCell.xib; sourceTree = "<group>"; };
-		FBDE4D861BD75953000BA3C7 /* PostTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostTextCell.h; sourceTree = "<group>"; };
-		FBDE4D871BD75953000BA3C7 /* PostTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostTextCell.m; sourceTree = "<group>"; };
-		FBDE4D881BD75953000BA3C7 /* PostTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostTextCell.xib; sourceTree = "<group>"; };
 		FBDE4D891BD75953000BA3C7 /* ProfileAddressInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileAddressInfoCell.h; sourceTree = "<group>"; };
 		FBDE4D8A1BD75953000BA3C7 /* ProfileAddressInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileAddressInfoCell.m; sourceTree = "<group>"; };
 		FBDE4D8B1BD75953000BA3C7 /* ProfileAddressInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileAddressInfoCell.xib; sourceTree = "<group>"; };
@@ -441,9 +419,9 @@
 		FBEFA15F1BD972C10071AD8E /* PostImageCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostImageCollectionCell.h; sourceTree = "<group>"; };
 		FBEFA1601BD972C10071AD8E /* PostImageCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostImageCollectionCell.m; sourceTree = "<group>"; };
 		FBEFA1611BD972C10071AD8E /* PostImageCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostImageCollectionCell.xib; sourceTree = "<group>"; };
-		FBF8F5161BDBB216001F34C7 /* ActionCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionCollectionCell.h; sourceTree = "<group>"; };
-		FBF8F5171BDBB216001F34C7 /* ActionCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionCollectionCell.m; sourceTree = "<group>"; };
-		FBF8F5181BDBB216001F34C7 /* ActionCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionCollectionCell.xib; sourceTree = "<group>"; };
+		FBF8F5161BDBB216001F34C7 /* TextViewCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewCollectionCell.h; sourceTree = "<group>"; };
+		FBF8F5171BDBB216001F34C7 /* TextViewCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewCollectionCell.m; sourceTree = "<group>"; };
+		FBF8F5181BDBB216001F34C7 /* TextViewCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewCollectionCell.xib; sourceTree = "<group>"; };
 		FBFC5CE81BCF5C8600312F31 /* CacheKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheKey.h; sourceTree = "<group>"; };
 		FBFC5CE91BCF5C8600312F31 /* CacheKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheKey.m; sourceTree = "<group>"; };
 		FBFC5CEB1BCF636F00312F31 /* AppData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppData.h; sourceTree = "<group>"; };
@@ -598,10 +576,6 @@
 				FBA2A35F1BCDAD8800368D39 /* ImageActionSheet.m */,
 				FB9AC5271BD1919200B0DF25 /* PlaceHolderTextView.h */,
 				FB9AC5281BD1919200B0DF25 /* PlaceHolderTextView.m */,
-				FB5BB63C1BD5050800A382AC /* InputTableView.h */,
-				FB5BB63D1BD5050800A382AC /* InputTableView.m */,
-				FB5BB63F1BD52ABE00A382AC /* KeyboardBar.h */,
-				FB5BB6401BD52ABE00A382AC /* KeyboardBar.m */,
 				FBDE4D591BD73E17000BA3C7 /* EmptyDataView.h */,
 				FBDE4D5A1BD73E17000BA3C7 /* EmptyDataView.m */,
 				FBDE4D5E1BD73E42000BA3C7 /* EmptyDataView.xib */,
@@ -665,10 +639,6 @@
 				FB5E1EBB1BC9DDAB00897CA2 /* FeedVC.m */,
 				FB9AC5241BD1560A00B0DF25 /* NewPostVC.h */,
 				FB9AC5251BD1560A00B0DF25 /* NewPostVC.m */,
-				FB95D1771BD2CCCA00254B06 /* FeedDetailVC.h */,
-				FB95D1781BD2CCCA00254B06 /* FeedDetailVC.m */,
-				FB5BB6421BD52BA900A382AC /* FeedDetailTableVC.h */,
-				FB5BB6431BD52BA900A382AC /* FeedDetailTableVC.m */,
 				FB5BB6451BD5559300A382AC /* FeedCollectionVC.h */,
 				FB5BB6461BD5559300A382AC /* FeedCollectionVC.m */,
 				FBDE4D461BD6023F000BA3C7 /* CommentVC.h */,
@@ -918,9 +888,9 @@
 				FBEFA15F1BD972C10071AD8E /* PostImageCollectionCell.h */,
 				FBEFA1601BD972C10071AD8E /* PostImageCollectionCell.m */,
 				FBEFA1611BD972C10071AD8E /* PostImageCollectionCell.xib */,
-				FBF8F5161BDBB216001F34C7 /* ActionCollectionCell.h */,
-				FBF8F5171BDBB216001F34C7 /* ActionCollectionCell.m */,
-				FBF8F5181BDBB216001F34C7 /* ActionCollectionCell.xib */,
+				FBF8F5161BDBB216001F34C7 /* TextViewCollectionCell.h */,
+				FBF8F5171BDBB216001F34C7 /* TextViewCollectionCell.m */,
+				FBF8F5181BDBB216001F34C7 /* TextViewCollectionCell.xib */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -934,12 +904,6 @@
 				FBDE4D801BD75953000BA3C7 /* CommentCell.h */,
 				FBDE4D811BD75953000BA3C7 /* CommentCell.m */,
 				FBDE4D821BD75953000BA3C7 /* CommentCell.xib */,
-				FBDE4D831BD75953000BA3C7 /* PostDetailTextCell.h */,
-				FBDE4D841BD75953000BA3C7 /* PostDetailTextCell.m */,
-				FBDE4D851BD75953000BA3C7 /* PostDetailTextCell.xib */,
-				FBDE4D861BD75953000BA3C7 /* PostTextCell.h */,
-				FBDE4D871BD75953000BA3C7 /* PostTextCell.m */,
-				FBDE4D881BD75953000BA3C7 /* PostTextCell.xib */,
 				FBDE4D891BD75953000BA3C7 /* ProfileAddressInfoCell.h */,
 				FBDE4D8A1BD75953000BA3C7 /* ProfileAddressInfoCell.m */,
 				FBDE4D8B1BD75953000BA3C7 /* ProfileAddressInfoCell.xib */,
@@ -1067,9 +1031,8 @@
 				FBDE4D761BD758FA000BA3C7 /* LoadingCollectionCell.xib in Resources */,
 				FB484A991B50C6130045A6EA /* Lato-Semibold.ttf in Resources */,
 				FB484A8B1B50C6130045A6EA /* Lato-Black.ttf in Resources */,
-				FBF8F51A1BDBB216001F34C7 /* ActionCollectionCell.xib in Resources */,
+				FBF8F51A1BDBB216001F34C7 /* TextViewCollectionCell.xib in Resources */,
 				FBDE4D9C1BD75953000BA3C7 /* CommentCell.xib in Resources */,
-				FBDE4DA01BD75953000BA3C7 /* PostTextCell.xib in Resources */,
 				FB484A9C1B50C6130045A6EA /* Lato-ThinItalic.ttf in Resources */,
 				FB484A901B50C6130045A6EA /* Lato-HairlineItalic.ttf in Resources */,
 				FBDE4DB41BD759D0000BA3C7 /* ProfileSelectionTableCell.xib in Resources */,
@@ -1078,7 +1041,6 @@
 				FB95D1861BD2EB4800254B06 /* PostHeaderView.xib in Resources */,
 				FBDE4DA21BD75953000BA3C7 /* ProfileAddressInfoCell.xib in Resources */,
 				FB484A8E1B50C6130045A6EA /* Lato-BoldItalic.ttf in Resources */,
-				FBDE4D9E1BD75953000BA3C7 /* PostDetailTextCell.xib in Resources */,
 				FB484A8C1B50C6130045A6EA /* Lato-BlackItalic.ttf in Resources */,
 				FB484A731B50C5FB0045A6EA /* LobsterTwo-BoldItalic.otf in Resources */,
 				FBDE4D7E1BD758FA000BA3C7 /* PostTextCollectionCell.xib in Resources */,
@@ -1190,19 +1152,17 @@
 				FB9AC5291BD1919200B0DF25 /* PlaceHolderTextView.m in Sources */,
 				FB484A5E1B50BE4E0045A6EA /* ThemeManager.m in Sources */,
 				FB484A531B4FD40A0045A6EA /* Utils.m in Sources */,
-				FBF8F5191BDBB216001F34C7 /* ActionCollectionCell.m in Sources */,
+				FBF8F5191BDBB216001F34C7 /* TextViewCollectionCell.m in Sources */,
 				FB4DB9381BCDC88300C1466D /* WebClient.m in Sources */,
 				FBDE4D5B1BD73E17000BA3C7 /* EmptyDataView.m in Sources */,
 				FBFC5CED1BCF636F00312F31 /* AppData.m in Sources */,
 				FBDE4D791BD758FA000BA3C7 /* PetCollectionCell.m in Sources */,
-				FB95D1791BD2CCCA00254B06 /* FeedDetailVC.m in Sources */,
 				FBDE4D2D1BD5E28E000BA3C7 /* SpringLabel.swift in Sources */,
 				FBDE4D1D1BD5E28E000BA3C7 /* DesignableLabel.swift in Sources */,
 				FBDE4D331BD5E28E000BA3C7 /* UnwindSegue.swift in Sources */,
 				FBDE4DA71BD75953000BA3C7 /* ProfileNameInfoCell.m in Sources */,
 				FBDE4D221BD5E28E000BA3C7 /* ImageLoader.swift in Sources */,
 				FB484A621B50BE910045A6EA /* RoundCornerButton.m in Sources */,
-				FBDE4D9D1BD75953000BA3C7 /* PostDetailTextCell.m in Sources */,
 				FB6C273D1B6ED2950002034A /* UrlManager.m in Sources */,
 				FBDE4DB71BD75A6C000BA3C7 /* CheckMark.m in Sources */,
 				FB484A4D1B4FD40A0045A6EA /* OrderedDictionary.m in Sources */,
@@ -1212,7 +1172,6 @@
 				FB4ED0251BCC843200E9F379 /* AddEditPetProfileVC.m in Sources */,
 				FBEFA1621BD972C10071AD8E /* PostImageCollectionCell.m in Sources */,
 				FBCF4A991BC6CF6B00C75066 /* CollectionViewController.m in Sources */,
-				FB5BB63E1BD5050800A382AC /* InputTableView.m in Sources */,
 				FBB531141B9BA8A7004D5DA2 /* ResponseObject.m in Sources */,
 				FBCF4AA01BC7116400C75066 /* ActivityView.m in Sources */,
 				FBCDC9AA1BC3381B00808E30 /* User.m in Sources */,
@@ -1223,7 +1182,6 @@
 				FBDE4D751BD758FA000BA3C7 /* LoadingCollectionCell.m in Sources */,
 				FBCF4A8B1BC6B82400C75066 /* ButtonTabbarController.m in Sources */,
 				FBCEA4351B4CC3E000497678 /* Pet2ShareDelegate.m in Sources */,
-				FB5BB6411BD52ABE00A382AC /* KeyboardBar.m in Sources */,
 				FBCF4A6B1BC5876000C75066 /* Pet2ShareUser.m in Sources */,
 				FBDE4D1F1BD5E28E000BA3C7 /* DesignableTextField.swift in Sources */,
 				FB95D1841BD2EB0000254B06 /* PostHeaderView.m in Sources */,
@@ -1231,7 +1189,6 @@
 				FBDE4D1B1BD5E28E000BA3C7 /* DesignableButton.swift in Sources */,
 				FBDE4D7B1BD758FA000BA3C7 /* PostCollectionCell.m in Sources */,
 				FBDE4D2F1BD5E28E000BA3C7 /* SpringTextView.swift in Sources */,
-				FB5BB6441BD52BA900A382AC /* FeedDetailTableVC.m in Sources */,
 				FB1067EC1B5341D600BEBC40 /* SignupVC.m in Sources */,
 				FB9AC5261BD1560A00B0DF25 /* NewPostVC.m in Sources */,
 				FBDE4DBA1BD75C73000BA3C7 /* ProfileSelectionVC.m in Sources */,
@@ -1259,7 +1216,6 @@
 				FB484A421B4FD3E60045A6EA /* Constants.m in Sources */,
 				FBDE4D481BD6023F000BA3C7 /* CommentVC.m in Sources */,
 				FBDE4DA11BD75953000BA3C7 /* ProfileAddressInfoCell.m in Sources */,
-				FBDE4D9F1BD75953000BA3C7 /* PostTextCell.m in Sources */,
 				FBCF4A8E1BC6CF2E00C75066 /* PostsVC.m in Sources */,
 				FBCF4A9D1BC7076200C75066 /* EditUserProfileVC.m in Sources */,
 				FBDE4DA31BD75953000BA3C7 /* ProfileBasicInfoCell.m in Sources */,
