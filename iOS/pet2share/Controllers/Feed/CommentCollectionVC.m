@@ -18,11 +18,13 @@
 #import "ActionCollectionCell.h"
 #import "OrderedDictionary.h"
 #import "Pet2ShareUser.h"
+#import "RoundCornerButton.h"
 
-@interface CommentCollectionVC () <Pet2ShareServiceCallback>
+@interface CommentCollectionVC () <Pet2ShareServiceCallback, FormProtocol>
 
 @property (nonatomic, strong) MutableOrderedDictionary *cellDict;
 @property (nonatomic, strong) TransitionManager *transitionManager;
+@property (nonatomic, strong) NSString *inputCommentText;
 
 @end
 
@@ -36,6 +38,9 @@ static NSString * const kActionCellIndetifier   = @"actioncell";
 static NSString * const kActionCellNibName      = @"ActionCollectionCell";
 static NSString * const kCellReuseIdentifier    = @"cellidentifier";
 static CGFloat const kSpacing                   = 5.0f;
+static CGFloat const kToolbarHeight             = 44.0f;
+static NSInteger const kGetCommentTag           = 100;
+static NSInteger const kPostCommentTag          = 101;
 
 #pragma mark - Life Cycle
 
@@ -65,7 +70,13 @@ static CGFloat const kSpacing                   = 5.0f;
     [self prepareCellData:self.post.comments];
     
     // Request comments
-    [self requestData];
+    [self getComments];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.view endEditing:YES];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -80,7 +91,12 @@ static CGFloat const kSpacing                   = 5.0f;
 - (void)dealloc
 {
     TRACE_HERE;
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
+
+#pragma mark - Events & Delegates
+
 
 #pragma mark - Web Services
 
@@ -117,11 +133,11 @@ static CGFloat const kSpacing                   = 5.0f;
     if (profileSessionImage) profileCellDict[kCellSessionImageKey] = profileSessionImage;
     
     [self.cellDict insertObject:@[profileCellDict] forKey:kPostCellIdentifier atIndex:0];
-    
-    NSMutableArray *commentList = [NSMutableArray array];
+
     if (comments.count > 0)
     {
         UIImage *commentProfileSessionImage = nil;
+        NSMutableArray *commentList = [NSMutableArray array];
         
         for (Comment *comment in comments)
         {
@@ -136,46 +152,69 @@ static CGFloat const kSpacing                   = 5.0f;
             commentDict[kCellTextKey] = comment.commentDescription ?: kEmptyString;
             commentDict[kCellReuseIdentifier] = kCommentCellIdentifier;
             if (commentProfileSessionImage) commentDict[kCellSessionImageKey] = commentProfileSessionImage;
-
             [commentList addObject:commentDict];
         }
         [self.cellDict insertObject:commentList forKey:kCommentCellIdentifier atIndex:1];
         
-        [commentList addObject:@{kCellClassName: kActionCellNibName,
-                                 kCellReuseIdentifier: kActionCellIndetifier,
-                                 kCellTextKey:NSLocalizedString(@"Add Comment", @"") }];
-        [self.cellDict insertObject:commentList forKey:kActionCellIndetifier atIndex:2];
+        [self.cellDict insertObject:@[@{kCellClassName: kActionCellNibName,
+                                      kCellReuseIdentifier: kActionCellIndetifier,
+                                      kCellTextKey:NSLocalizedString(@"Add Comment", @"")}]
+                             forKey:kActionCellIndetifier atIndex:2];
     }
     else
     {
-        [commentList addObject:@{kCellClassName: kActionCellNibName,
-                                 kCellReuseIdentifier: kActionCellIndetifier,
-                                 kCellTextKey:NSLocalizedString(@"Add Comment", @"") }];
-        [self.cellDict insertObject:commentList forKey:kActionCellIndetifier atIndex:1];
+        [self.cellDict insertObject:@[@{kCellClassName: kActionCellNibName,
+                                        kCellReuseIdentifier: kActionCellIndetifier,
+                                        kCellTextKey:NSLocalizedString(@"Add Comment", @"")}]
+                             forKey:kActionCellIndetifier atIndex:1];
     }
     
     [self.collectionView reloadData];
 }
 
-- (void)requestData
+- (void)getComments
 {
     Pet2ShareService *service = [Pet2ShareService new];
+    service.requestTag = kGetCommentTag;
     [service getComments:self postId:self.post.identifier];
 }
 
-- (void)onReceiveSuccess:(NSArray *)objects
+- (void)postComments
 {
-    fTRACE(@"Number of Objects: %ld", (long)objects.count);
-    [self prepareCellData:objects];
+    Pet2ShareService *service = [Pet2ShareService new];
+    service.requestTag = kPostCommentTag;
+    
+    [service addComment:self postId:self.post.identifier
+            commentById:[Pet2ShareUser current].identifier
+       isCommentedByPet:NO
+     commentDescription:self.inputCommentText];
 }
 
-- (void)onReceiveError:(ErrorMessage *)errorMessage
+- (void)onReceiveSuccess:(NSArray *)objects service:(Pet2ShareService *)service
+{
+    fTRACE(@"Number of Objects: %ld", (long)objects.count);
+    
+    switch (service.requestTag)
+    {
+        case kGetCommentTag:
+            [self prepareCellData:objects];
+            break;
+            
+        case kPostCommentTag:
+            [self getComments];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)onReceiveError:(ErrorMessage *)errorMessage service:(Pet2ShareService *)service
 {
     [self.refreshControl endRefreshing];
     [Graphics alert:NSLocalizedString(@"Error", @"") message:errorMessage.message type:ErrorAlert];
 }
 
-#pragma mark - Overriden Methods
+#pragma mark - Private & Overriden Methods
 
 - (void)setupLayout
 {
@@ -186,6 +225,73 @@ static CGFloat const kSpacing                   = 5.0f;
 - (void)didScrollOutOfBound
 {
     // No Implementation
+}
+
+- (UIToolbar *)createCustomToolbar
+{
+    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                                   target:nil
+                                                                                   action:nil];
+    
+    RoundCornerButton *postButton = [[RoundCornerButton alloc] initWithFrame:CGRectMake(0.0f, 4.0f, 80.0f, 32.0f)];
+    postButton.activityPosition = Center;
+    postButton.layer.backgroundColor = [AppColorScheme darkBlueColor].CGColor;
+    postButton.layer.cornerRadius = 3.0f;
+    postButton.titleLabel.font = [UIFont systemFontOfSize:14.0f weight:UIFontWeightMedium];
+    [postButton setTitle:NSLocalizedString(@"Post", @"") forState:UIControlStateNormal];
+    [postButton setTitle:NSLocalizedString(@"Post", @"") forState:UIControlStateHighlighted];
+    [postButton addTarget:self action:@selector(postBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *postBtnItem = [[UIBarButtonItem alloc] initWithCustomView:postButton];
+    
+    UIToolbar *toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, kToolbarHeight)];
+    toolbar.items = [NSArray arrayWithObjects:flexibleSpace, postBtnItem, nil];
+    toolbar.barStyle = UIBarStyleDefault;
+    [toolbar sizeToFit];
+    
+    return toolbar;
+}
+
+#pragma mark - Events
+
+- (void)keyboardWillShow:(NSNotification *)sender
+{
+    CGSize keyboardSize = [[[sender userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    NSTimeInterval duration = [[[sender userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    [UIView animateWithDuration:duration animations:^{
+        UIEdgeInsets edgeInsets = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0);
+        [self.collectionView setContentInset:edgeInsets];
+        [self.collectionView setScrollIndicatorInsets:edgeInsets];
+    }];
+}
+
+- (void)keyboardWillHide:(NSNotification *)sender
+{
+    NSTimeInterval duration = [[[sender userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    [UIView animateWithDuration:duration animations:^{
+        UIEdgeInsets edgeInsets = UIEdgeInsetsZero;
+        [self.collectionView setContentInset:edgeInsets];
+        [self.collectionView setScrollIndicatorInsets:edgeInsets];
+    }];
+}
+
+- (void)postBtnTapped:(id)sender
+{
+    fTRACE(@"Sender: %@", sender);
+    [self.view endEditing:YES];
+    [self postComments];
+}
+
+- (void)performAction
+{
+    // No Implementation
+}
+
+- (void)performAction:(id)data
+{
+    if ([data isKindOfClass:[NSString class]])
+    {
+        self.inputCommentText = (NSString *)data;
+    }
 }
 
 #pragma mark - Collection View
@@ -281,8 +387,9 @@ static CGFloat const kSpacing                   = 5.0f;
         else if ([reuseIdentifier isEqualToString:kActionCellIndetifier])
         {
             cellDict = data[index];
-            [(ActionCollectionCell *)cell setButtonText:cellDict[kCellTextKey]];
-            [(ActionCollectionCell *)cell setButtonDelegate:self.buttonDelegate];
+            [(ActionCollectionCell *)cell loadCellWithPlaceholder:NSLocalizedString(@"Enter Comment...", @"")
+                                                   inputAccessory:[self createCustomToolbar]
+                                                         protocol:self];
         }
     }
     @catch (NSException *exception)

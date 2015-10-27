@@ -58,8 +58,13 @@
 {
     if ([segue.identifier isEqualToString:kSegueComment] && [sender isKindOfClass:[Post class]])
     {
-        CommentVC *commentVC = (CommentVC *)segue.destinationViewController;
-        commentVC.post = (Post *)sender;
+//        CommentVC *commentVC = (CommentVC *)segue.destinationViewController;
+//        commentVC.transitioningDelegate = self.transitionZoom;
+//        commentVC.post = (Post *)sender;
+        UINavigationController *navController = segue.destinationViewController;
+        navController.transitioningDelegate = self.transitionZoom;
+        CommentVC *commentVC = (CommentVC *)navController.topViewController;
+        if (commentVC) commentVC.post = (Post *)sender;
     }
     else if ([segue.identifier isEqualToString:kSegueNewPost])
     {

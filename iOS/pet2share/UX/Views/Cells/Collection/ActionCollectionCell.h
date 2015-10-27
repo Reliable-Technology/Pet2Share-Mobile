@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CellButtonDelegate.h"
+#import "FormProtocol.h"
 
 @interface ActionCollectionCell : UICollectionViewCell
 
-@property (nonatomic, weak) id<CellButtonDelegate> buttonDelegate;
+@property (nonatomic, readonly) NSInteger remainCharacters;
 
 + (CGFloat)height;
-- (void)setButtonText:(NSString *)text;
+- (void)loadCellWithPlaceholder:(NSString *)placeHolder
+                 inputAccessory:(UIView *)inputAccessory
+                       protocol:(id<FormProtocol>)protocol;
 
 @end

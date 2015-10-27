@@ -40,7 +40,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2uo-f6-tau">
-                        <rect key="frame" x="72" y="33" width="508" height="46"/>
+                        <rect key="frame" x="71" y="34" width="508" height="46"/>
                         <animations/>
                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
                         <color key="textColor" red="0.42655369639396667" green="0.47584608197212219" blue="0.48026475310325623" alpha="1" colorSpace="calibratedRGB"/>
@@ -65,16 +65,16 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="2V1-5D-F35" secondAttribute="bottom" constant="6" id="2xm-MX-9Iv"/>
-                <constraint firstItem="2uo-f6-tau" firstAttribute="leading" secondItem="Yyr-nZ-vr0" secondAttribute="trailing" constant="16" id="4Ug-qZ-snp"/>
-                <constraint firstItem="2uo-f6-tau" firstAttribute="top" secondItem="z60-UB-86N" secondAttribute="bottom" id="4ma-6C-jWS"/>
+                <constraint firstItem="2uo-f6-tau" firstAttribute="leading" secondItem="Yyr-nZ-vr0" secondAttribute="trailing" constant="15" id="4Ug-qZ-snp"/>
+                <constraint firstItem="2uo-f6-tau" firstAttribute="top" secondItem="z60-UB-86N" secondAttribute="bottom" constant="1" id="4ma-6C-jWS"/>
                 <constraint firstAttribute="trailing" secondItem="2V1-5D-F35" secondAttribute="trailing" constant="20" id="VbO-NS-m0Y"/>
                 <constraint firstAttribute="trailing" secondItem="z60-UB-86N" secondAttribute="trailing" constant="20" id="gr1-l1-uIP"/>
                 <constraint firstItem="z60-UB-86N" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="iKE-Qd-mjA"/>
-                <constraint firstItem="2V1-5D-F35" firstAttribute="top" secondItem="2uo-f6-tau" secondAttribute="bottom" id="m2y-oX-9Ij"/>
+                <constraint firstItem="2V1-5D-F35" firstAttribute="top" secondItem="2uo-f6-tau" secondAttribute="bottom" constant="-1" id="m2y-oX-9Ij"/>
                 <constraint firstItem="z60-UB-86N" firstAttribute="leading" secondItem="Yyr-nZ-vr0" secondAttribute="trailing" constant="20" id="ntF-5X-gRZ"/>
                 <constraint firstItem="2V1-5D-F35" firstAttribute="leading" secondItem="Yyr-nZ-vr0" secondAttribute="trailing" constant="20" id="pCr-wZ-XFy"/>
                 <constraint firstItem="Yyr-nZ-vr0" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="sFh-CM-ufe"/>
-                <constraint firstAttribute="trailing" secondItem="2uo-f6-tau" secondAttribute="trailing" constant="20" id="vJ6-hr-pob"/>
+                <constraint firstAttribute="trailing" secondItem="2uo-f6-tau" secondAttribute="trailing" constant="21" id="vJ6-hr-pob"/>
                 <constraint firstItem="Yyr-nZ-vr0" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="wMb-nu-Zeb"/>
             </constraints>
             <connections>

@@ -179,10 +179,19 @@ static id ObjectOrNull(id object)
     {
         @try
         {
-            if (self.callback)
+            if (!errorMessage)
             {
-                if (!errorMessage) [self.callback onReceiveSuccess:objects];
-                else [self.callback onReceiveError:errorMessage];
+                if ([self.callback respondsToSelector:@selector(onReceiveSuccess:service:)])
+                    [self.callback onReceiveSuccess:objects service:self];
+                else if ([self.callback respondsToSelector:@selector(onReceiveSuccess:)])
+                    [self.callback onReceiveSuccess:objects];
+            }
+            else
+            {
+                if ([self.callback respondsToSelector:@selector(onReceiveError:service:)])
+                    [self.callback onReceiveError:errorMessage service:self];
+                else if ([self.callback respondsToSelector:@selector(onReceiveError:)])
+                    [self.callback onReceiveError:errorMessage];
             }
         }
         @catch (NSException *exception)

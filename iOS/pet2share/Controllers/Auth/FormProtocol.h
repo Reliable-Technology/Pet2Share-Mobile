@@ -13,6 +13,7 @@
 
 @optional
 - (void)fieldIsDirty;
+- (void)performAction:(id)data;
 - (void)updateData:(NSString *)key value:(NSString *)value;
 
 @end

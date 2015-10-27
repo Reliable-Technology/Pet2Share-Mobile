@@ -11,7 +11,7 @@
 #import "AppColor.h"
 #import "CommentCollectionVC.h"
 
-@interface CommentVC () <BaseNavigationProtocol, CellButtonDelegate>
+@interface CommentVC () <BaseNavigationProtocol>
 
 @end
 
@@ -42,32 +42,22 @@
     {
         CommentCollectionVC *commentCollection = (CommentCollectionVC *)segue.destinationViewController;
         commentCollection.post = self.post;
-        commentCollection.buttonDelegate = self;
     }
 }
 
-#pragma mark -
-#pragma mark <BaseNavigationProtocol>
+#pragma mark - <BaseNavigationProtocol>
 
 - (UIButton *)setupLeftBarButton
 {
-    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kBarButtonWidth, kBarButtonHeight)];
-    [backButton setImage:[UIImage imageNamed:@"icon-arrowback"] forState:UIControlStateNormal];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    return backButton;
+    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kBarButtonWidth, kBarButtonHeight)];
+    [closeButton setImage:[UIImage imageNamed:@"icon-close-white"] forState:UIControlStateNormal];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:closeButton];
+    return closeButton;
 }
 
 - (void)handleLeftButtonEvent:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-#pragma mark - <CellButtonDelegate>
-
-- (void)mainButtonTapped:(id)sender
-{
-    [self performSegueWithIdentifier:kSeguePostNewComment sender:self];
-}
-
 
 @end

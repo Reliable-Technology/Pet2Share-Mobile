@@ -9,6 +9,7 @@
 #import "TextViewTableCell.h"
 #import "Graphics.h"
 #import "Utils.h"
+#import "FormProtocol.h"
 
 static CGFloat const kCellHeight        = 250.f;
 static CGFloat const kTextViewHeight    = 198.0f;
@@ -28,8 +29,7 @@ static CGFloat const kSpacing           = 16.0f;
 
 @implementation TextViewTableCell
 
-#pragma mark -
-#pragma mark Life Cycle
+#pragma mark - Life Cycle
 
 + (CGFloat)cellHeightForText:(NSString *)text
 {
@@ -67,8 +67,7 @@ static CGFloat const kSpacing           = 16.0f;
     self.textView.delegate = self;
 }
 
-#pragma mark - 
-#pragma mark <UITextViewDelegate>
+#pragma mark - <UITextViewDelegate>
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
@@ -91,8 +90,7 @@ static CGFloat const kSpacing           = 16.0f;
         [self.formProtocol updateData:self.textViewTag value:self.textView.text];
 }
 
-#pragma mark -
-#pragma mark Private Instance Methods
+#pragma mark - Private Instance Methods
 
 - (void)updateRemainCharactersLabel
 {
@@ -102,8 +100,7 @@ static CGFloat const kSpacing           = 16.0f;
     [self.remainCharacterLabels reloadInputViews];
 }
 
-#pragma mark -
-#pragma mark Public Instance Methods
+#pragma mark - Public Instance Methods
 
 - (void)updateCell:(NSString *)text tag:(NSString *)tag
 {

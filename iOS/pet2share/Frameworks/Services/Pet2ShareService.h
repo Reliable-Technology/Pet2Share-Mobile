@@ -31,14 +31,21 @@ typedef NS_ENUM(NSInteger, ImageAspectRatio)
     Portrait
 };
 
+@class Pet2ShareService;
+
 @protocol Pet2ShareServiceCallback <NSObject>
 
+@optional
 - (void)onReceiveSuccess:(NSArray *)objects;
 - (void)onReceiveError:(ErrorMessage *)errorMessage;
+- (void)onReceiveSuccess:(NSArray *)objects service:(Pet2ShareService *)service;
+- (void)onReceiveError:(ErrorMessage *)errorMessage service:(Pet2ShareService *)service;
 
 @end
 
 @interface Pet2ShareService : NSObject
+
+@property (nonatomic, assign) NSInteger requestTag;
 
 + (Pet2ShareService *)sharedService;
 
