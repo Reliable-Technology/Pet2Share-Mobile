@@ -82,7 +82,7 @@
 		FBCEA4351B4CC3E000497678 /* Pet2ShareDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCEA4341B4CC3E000497678 /* Pet2ShareDelegate.m */; };
 		FBCEA43B1B4CC3E000497678 /* Pet2Share.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBCEA4391B4CC3E000497678 /* Pet2Share.storyboard */; };
 		FBCEA43D1B4CC3E000497678 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBCEA43C1B4CC3E000497678 /* Images.xcassets */; };
-		FBCEA4401B4CC3E000497678 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBCEA43E1B4CC3E000497678 /* LaunchScreen.xib */; };
+		FBCEA4401B4CC3E000497678 /* Pet2ShareLaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBCEA43E1B4CC3E000497678 /* Pet2ShareLaunchScreen.xib */; };
 		FBCF4A6B1BC5876000C75066 /* Pet2ShareUser.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A6A1BC5876000C75066 /* Pet2ShareUser.m */; };
 		FBCF4A761BC5B28700C75066 /* UserProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A751BC5B28700C75066 /* UserProfileVC.m */; };
 		FBCF4A7E1BC6888C00C75066 /* CircleImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCF4A7D1BC6888C00C75066 /* CircleImageView.m */; };
@@ -303,7 +303,7 @@
 		FBCEA4341B4CC3E000497678 /* Pet2ShareDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Pet2ShareDelegate.m; sourceTree = "<group>"; };
 		FBCEA43A1B4CC3E000497678 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Pet2Share.storyboard; sourceTree = "<group>"; };
 		FBCEA43C1B4CC3E000497678 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		FBCEA43F1B4CC3E000497678 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		FBCEA43F1B4CC3E000497678 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Pet2ShareLaunchScreen.xib; sourceTree = "<group>"; };
 		FBCEA4451B4CC3E000497678 /* pet2shareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pet2shareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBCEA44A1B4CC3E000497678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBCEA4551B4CC78600497678 /* Pet2Share.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pet2Share.pch; sourceTree = "<group>"; };
@@ -725,7 +725,7 @@
 				FB484A331B4FD0910045A6EA /* UX */,
 				FBCEA4561B4CC86200497678 /* Frameworks */,
 				FBCEA4391B4CC3E000497678 /* Pet2Share.storyboard */,
-				FBCEA43E1B4CC3E000497678 /* LaunchScreen.xib */,
+				FBCEA43E1B4CC3E000497678 /* Pet2ShareLaunchScreen.xib */,
 				FBCEA43C1B4CC3E000497678 /* Images.xcassets */,
 				FBCEA42F1B4CC3E000497678 /* Supporting Files */,
 			);
@@ -1053,7 +1053,7 @@
 				FB484A751B50C5FB0045A6EA /* LobsterTwo-Regular.otf in Resources */,
 				FBDE4DAC1BD75953000BA3C7 /* TextViewTableCell.xib in Resources */,
 				FB484A971B50C6130045A6EA /* Lato-MediumItalic.ttf in Resources */,
-				FBCEA4401B4CC3E000497678 /* LaunchScreen.xib in Resources */,
+				FBCEA4401B4CC3E000497678 /* Pet2ShareLaunchScreen.xib in Resources */,
 				FB484A9B1B50C6130045A6EA /* Lato-Thin.ttf in Resources */,
 				FBEFA1631BD972C10071AD8E /* PostImageCollectionCell.xib in Resources */,
 				FBCEA43D1B4CC3E000497678 /* Images.xcassets in Resources */,
@@ -1277,12 +1277,12 @@
 			name = Pet2Share.storyboard;
 			sourceTree = "<group>";
 		};
-		FBCEA43E1B4CC3E000497678 /* LaunchScreen.xib */ = {
+		FBCEA43E1B4CC3E000497678 /* Pet2ShareLaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				FBCEA43F1B4CC3E000497678 /* Base */,
 			);
-			name = LaunchScreen.xib;
+			name = Pet2ShareLaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
