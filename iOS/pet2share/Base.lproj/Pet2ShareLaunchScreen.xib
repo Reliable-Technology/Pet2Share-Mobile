@@ -11,6 +11,10 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-background" translatesAutoresizingMaskIntoConstraints="NO" id="IV2-xO-tHJ">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                    <animations/>
+                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-pet2share" translatesAutoresizingMaskIntoConstraints="NO" id="b9d-AU-zz2">
                     <rect key="frame" x="160" y="226" width="160" height="28"/>
                     <animations/>
@@ -21,10 +25,14 @@
                 </imageView>
             </subviews>
             <animations/>
-            <color key="backgroundColor" red="0.15410047769546509" green="0.41306763887405396" blue="0.69063264131546021" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="b9d-AU-zz2" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="9zl-26-9g6"/>
                 <constraint firstItem="b9d-AU-zz2" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="EWp-Ay-WW8"/>
+                <constraint firstAttribute="bottom" secondItem="IV2-xO-tHJ" secondAttribute="bottom" id="QGR-ud-8vY"/>
+                <constraint firstAttribute="trailing" secondItem="IV2-xO-tHJ" secondAttribute="trailing" id="Zfr-iu-09S"/>
+                <constraint firstItem="IV2-xO-tHJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="l6M-t0-Mg2"/>
+                <constraint firstItem="IV2-xO-tHJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ml3-zg-fZH"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -32,6 +40,7 @@
         </view>
     </objects>
     <resources>
+        <image name="img-background" width="1242" height="2208"/>
         <image name="img-pet2share" width="451" height="78"/>
     </resources>
 </document>

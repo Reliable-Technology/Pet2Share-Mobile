@@ -32,6 +32,7 @@
     
     [self.createAccountBtn addTarget:self action:@selector(signupBtnTapped:)
                     forControlEvents:UIControlEventTouchUpInside];
+    [Graphics dropShadow:self.createAccountBtn shadowOpacity:1.0f shadowRadius:1.0f offset:CGSizeZero];
     
     UITapGestureRecognizer *singleTap
     = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mainViewTapped:)];

@@ -16,19 +16,19 @@
 ///
 ///------------------------------------------------------------------------------
 
-#define LOCALWEBSERVICE_TEST 1         // Turn on local testing mode
+// #define LOCALWEBSERVICE_TEST 1         // Turn on local testing mode
 
 #define PET2SHARE_DEV_LOCAL_URL             @"http://192.168.200.7:8087"
-#define PET2SHARE_DEV_URL                   @""
+#define PET2SHARE_DEV_URL                   @"http://service.pet2share.com"
 #define PET2SHARE_QA_URL                    @""
 #define PET2SHARE_STAGING_URL               @""
-#define PET2SHARE_PROD_URL                  @""
+#define PET2SHARE_PROD_URL                  @"http://service.pet2share.com"
 
 #define PET2SHARE_DEV_LOCAL_WEBSERVICE_PATH @"/Service_Main.svc"
-#define PET2SHARE_DEV_WEBSERVICE_PATH       @""
+#define PET2SHARE_DEV_WEBSERVICE_PATH       @"/Service_Main.svc"
 #define PET2SHARE_QA_WEBSERVICE_PATH        @""
 #define PET2SHARE_STAGING_WEBSERVICE_PATH   @""
-#define PET2SHARE_PROD_WEBSERVICE_PATH      @""
+#define PET2SHARE_PROD_WEBSERVICE_PATH      @"/Service_Main.svc"
 
 #define PET2SHARE_DEV_KEY                   @"dev"
 #define PET2SHARE_QA_KEY                    @"qa"

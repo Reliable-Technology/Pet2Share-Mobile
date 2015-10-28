@@ -13,6 +13,7 @@
 		FB1067EC1B5341D600BEBC40 /* SignupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067EB1B5341D600BEBC40 /* SignupVC.m */; };
 		FB1067F01B535B4C00BEBC40 /* LoginTableCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1067EF1B535B4C00BEBC40 /* LoginTableCtrl.m */; };
 		FB265B431BC37FAB0094AC37 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = FB265B421BC37FAB0094AC37 /* Person.m */; };
+		FB40E0481BE16359004DE930 /* DateFormatterFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5E1EC91BCA9DA400897CA2 /* DateFormatterFactory.m */; };
 		FB484A391B4FD0DB0045A6EA /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A381B4FD0DB0045A6EA /* NSString+URLEncoding.m */; };
 		FB484A3F1B4FD12F0045A6EA /* Graphics.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A3E1B4FD12F0045A6EA /* Graphics.m */; };
 		FB484A421B4FD3E60045A6EA /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = FB484A411B4FD3E60045A6EA /* Constants.m */; };
@@ -1250,6 +1251,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB40E0481BE16359004DE930 /* DateFormatterFactory.m in Sources */,
 				FB484A521B4FD40A0045A6EA /* UIDevice+Hardware.m in Sources */,
 				FB484A4E1B4FD40A0045A6EA /* OrderedDictionary.m in Sources */,
 				FB484A541B4FD40A0045A6EA /* Utils.m in Sources */,

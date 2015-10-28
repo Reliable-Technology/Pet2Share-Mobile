@@ -52,6 +52,7 @@
     self.layer.cornerRadius = 3.f;
     self.clipsToBounds = YES;
     self.activityPosition = RightSide;
+    self.activityStyle = UIActivityIndicatorViewStyleWhite;
     _isLoading = NO;
 }
 
@@ -59,7 +60,7 @@
 {
     if (!_activity)
     {
-        _activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+        _activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:self.activityStyle];
         
         CGFloat height = self.bounds.size.height / 2;
         CGFloat width;

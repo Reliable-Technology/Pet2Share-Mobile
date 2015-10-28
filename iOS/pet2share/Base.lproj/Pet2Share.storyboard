@@ -206,6 +206,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-background" translatesAutoresizingMaskIntoConstraints="NO" id="Cxv-Kd-8EA">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yar-p1-V8P">
                                 <rect key="frame" x="20" y="64" width="560" height="280"/>
                                 <subviews>
@@ -222,15 +226,20 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3g-dk-wY5" customClass="RoundCornerButton">
                                         <rect key="frame" x="0.0" y="176" width="560" height="40"/>
                                         <animations/>
-                                        <color key="backgroundColor" red="0.19376453757286072" green="0.50850099325180054" blue="0.85232251882553101" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="KY3-i4-S6S"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                         <state key="normal" title="Sign In">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="0.42655369639396667" green="0.47584608197212219" blue="0.48026475310325623" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="activityStyle">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l8L-9n-aHB">
                                         <rect key="frame" x="0.0" y="246" width="560" height="24"/>
@@ -280,9 +289,13 @@
                         <animations/>
                         <color key="backgroundColor" red="0.15410047769546509" green="0.41306763887405396" blue="0.69063264131546021" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="Cxv-Kd-8EA" firstAttribute="leading" secondItem="HCN-gC-bSJ" secondAttribute="leading" id="0bt-8W-VNq"/>
+                            <constraint firstItem="Cxv-Kd-8EA" firstAttribute="trailing" secondItem="HCN-gC-bSJ" secondAttribute="trailing" id="FPD-nH-zib"/>
                             <constraint firstItem="yar-p1-V8P" firstAttribute="top" secondItem="2YU-ku-K4j" secondAttribute="bottom" constant="44" id="IxA-qJ-k8s"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yar-p1-V8P" secondAttribute="trailing" id="k8L-Ll-MdM"/>
+                            <constraint firstItem="Fe5-zp-ubT" firstAttribute="top" secondItem="Cxv-Kd-8EA" secondAttribute="bottom" id="ufk-AD-ZQ4"/>
                             <constraint firstAttribute="leadingMargin" secondItem="yar-p1-V8P" secondAttribute="leading" id="xOw-W3-8BN"/>
+                            <constraint firstItem="Cxv-Kd-8EA" firstAttribute="top" secondItem="2YU-ku-K4j" secondAttribute="bottom" constant="-20" id="yYv-UK-2pQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Pet 2 Share" id="bXN-Z6-brm"/>
@@ -388,6 +401,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-background" translatesAutoresizingMaskIntoConstraints="NO" id="4bJ-bT-WAP">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="244-jJ-FwC">
                                 <rect key="frame" x="544" y="24" width="36" height="36"/>
                                 <animations/>
@@ -416,14 +433,19 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jii-xn-Edr" customClass="RoundCornerButton">
                                         <rect key="frame" x="0.0" y="276" width="560" height="40"/>
                                         <animations/>
-                                        <color key="backgroundColor" red="0.19376453757286072" green="0.50850099325180054" blue="0.85232251882553101" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Wpw-r8-LPl"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                         <state key="normal" title="Create Account">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="0.42655369639396667" green="0.47584608197212219" blue="0.48026475310325623" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="activityStyle">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </button>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bd1-Hy-W4q">
                                         <rect key="frame" x="0.0" y="56" width="560" height="200"/>
@@ -458,9 +480,13 @@
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="KU0-Kb-b8J" secondAttribute="leading" id="5Ix-4o-xTk"/>
                             <constraint firstItem="KU0-Kb-b8J" firstAttribute="top" secondItem="9cd-fw-rUX" secondAttribute="bottom" constant="44" id="BVe-ok-3Up"/>
+                            <constraint firstItem="4bJ-bT-WAP" firstAttribute="top" secondItem="9cd-fw-rUX" secondAttribute="bottom" constant="-20" id="Cz5-5o-dWj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KU0-Kb-b8J" secondAttribute="trailing" id="DNr-N5-AkN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="244-jJ-FwC" secondAttribute="trailing" id="M6H-Ht-ZwC"/>
                             <constraint firstItem="244-jJ-FwC" firstAttribute="top" secondItem="9cd-fw-rUX" secondAttribute="bottom" constant="4" id="QuE-6S-lWC"/>
+                            <constraint firstItem="4bJ-bT-WAP" firstAttribute="leading" secondItem="VuQ-vN-9RQ" secondAttribute="leading" id="pL7-cc-MbS"/>
+                            <constraint firstItem="4bJ-bT-WAP" firstAttribute="trailing" secondItem="VuQ-vN-9RQ" secondAttribute="trailing" id="uRa-xw-DhT"/>
+                            <constraint firstItem="obp-WI-azw" firstAttribute="top" secondItem="4bJ-bT-WAP" secondAttribute="bottom" id="ug5-3H-u8f"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1056,6 +1082,7 @@
         <image name="icon-user" width="28" height="24"/>
         <image name="icon-user-selected" width="28" height="24"/>
         <image name="img-avatar" width="86" height="84"/>
+        <image name="img-background" width="1242" height="2208"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="O77-Oe-qBo"/>

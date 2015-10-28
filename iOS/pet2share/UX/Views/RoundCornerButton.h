@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSInteger, ActivityPosition) {
+typedef NS_ENUM(NSInteger, ActivityPosition)
+{
     RightSide,
     Center
 };
@@ -17,6 +18,7 @@ typedef NS_ENUM(NSInteger, ActivityPosition) {
 
 @property (nonatomic, assign) BOOL isLoading;
 @property (nonatomic, assign) ActivityPosition activityPosition;
+@property (nonatomic, assign) UIActivityIndicatorViewStyle activityStyle;
 
 + (instancetype)button;
 

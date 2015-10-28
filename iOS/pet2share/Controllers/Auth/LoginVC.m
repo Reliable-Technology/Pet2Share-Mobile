@@ -41,6 +41,7 @@
     
     [self.loginBtn addTarget:self action:@selector(loginBtnTapped:)
             forControlEvents:UIControlEventTouchUpInside];
+    [Graphics dropShadow:self.loginBtn shadowOpacity:0.5f shadowRadius:1.0f offset:CGSizeZero];
     
     UITapGestureRecognizer *singleTap
     = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mainViewTapped:)];

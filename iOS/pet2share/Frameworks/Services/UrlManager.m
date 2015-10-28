@@ -94,10 +94,16 @@ static UrlManager *_sharedInstance = nil;
 - (Url *)getUrl
 {
     // TODO: Refactor this environment later
+#ifdef DEBUG
     NSString *currEnv = PET2SHARE_DEV_KEY;
+#else
+    NSString *currEnv = PET2SHARE_PROD_KEY;
+#endif
     if (!currEnv) currEnv = PET2SHARE_PROD_KEY;
     
     Url *url = [self.urlDict objectForKey:currEnv];
+    NSLog(@"Curr Env: %@ - Url: %@", currEnv, url.toWebServiceUrl);
+    
     if (!url) [self.urlDict objectForKey:PET2SHARE_PROD_KEY];
     
     return url;
