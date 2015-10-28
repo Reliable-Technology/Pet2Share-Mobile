@@ -9,7 +9,6 @@
 #import "ProfileVC.h"
 #import "Utils.h"
 #import "AppColorScheme.h"
-#import "Pet2ShareUser.h"
 
 @interface ProfileVC ()
 

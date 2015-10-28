@@ -14,7 +14,6 @@
 #import "PostImageCollectionCell.h"
 #import "LoadingCollectionCell.h"
 #import "Pet2ShareService.h"
-#import "Pet2ShareUser.h"
 #import "Utils.h"
 #import "EmptyDataView.h"
 

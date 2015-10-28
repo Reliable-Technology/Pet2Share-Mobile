@@ -11,7 +11,8 @@
 typedef NS_ENUM(NSInteger, ImageActionButton)
 {
     IMAGE_BUTTON_CHOOSEFROMALBUM,
-    IMAGE_BUTTON_TAKEPICTURE
+    IMAGE_BUTTON_TAKEPICTURE,
+    IMAGE_BUTTON_LOGOUT
 };
 
 @class ImageActionSheet;

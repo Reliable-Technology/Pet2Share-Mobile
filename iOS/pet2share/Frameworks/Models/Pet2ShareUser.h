@@ -37,5 +37,6 @@
 - (UIImage *)getPetSessionAvatarImage:(NSInteger)petId;
 - (void)setPetSessionAvatarImage:(UIImage *)image petId:(NSInteger)petId;
 - (void)removePetSessionAvatarImage:(NSInteger)petId;
+- (void)clearSession;
 
 @end

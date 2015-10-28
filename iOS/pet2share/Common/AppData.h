@@ -14,6 +14,7 @@
 - (void)addObject:(id)obj forKey:(NSString *)key;
 - (void)removeObject:(NSString *)key;
 - (id)getObject:(NSString *)key;
+- (void)clearSession;
 
 @end
 

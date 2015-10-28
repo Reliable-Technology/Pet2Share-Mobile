@@ -19,6 +19,8 @@
             return NSLocalizedString(@"Choose From Album", @"");
         case IMAGE_BUTTON_TAKEPICTURE:
             return NSLocalizedString(@"Take Picture", @"");
+        case IMAGE_BUTTON_LOGOUT:
+            return NSLocalizedString(@"Log Out", @"");
     }
     
     return kEmptyString;

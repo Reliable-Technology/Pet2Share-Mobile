@@ -12,7 +12,6 @@
 #import "WSConstants.h"
 #import "FeedCollectionVC.h"
 #import "Pet2ShareService.h"
-#import "Pet2ShareUser.h"
 #import "CommentVC.h"
 #import "NewPostVC.h"
 

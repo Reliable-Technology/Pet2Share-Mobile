@@ -7,7 +7,6 @@
 //
 
 #import "EditUserProfileVC.h"
-#import "Pet2ShareUser.h"
 #import "Pet2ShareService.h"
 
 @interface EditUserProfileVC () <Pet2ShareServiceCallback>

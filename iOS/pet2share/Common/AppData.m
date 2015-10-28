@@ -66,4 +66,9 @@
     return key != nil && ![key isEqualToString:kEmptyString];
 }
 
+- (void)clearSession
+{
+    dictionary = [NSMutableDictionary new];
+}
+
 @end

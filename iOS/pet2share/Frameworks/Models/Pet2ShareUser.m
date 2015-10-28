@@ -12,6 +12,10 @@ static Pet2ShareUser *_current = nil;
 
 @interface Pet2ShareUser ()
 
+@property (nonatomic, readwrite) NSInteger identifier;
+@property (nonatomic, readwrite) NSString *username;
+@property (nonatomic, readwrite) BOOL isAuthenticated;
+@property (nonatomic, readwrite) BOOL isActive;
 @property (nonatomic, strong) UIImage *sessionAvatarImage;
 @property (nonatomic, strong) NSMutableDictionary *petSessionAvatarImages;
 
@@ -120,6 +124,26 @@ static Pet2ShareUser *_current = nil;
 - (void)removePetSessionAvatarImage:(NSInteger)petId
 {
     [self.petSessionAvatarImages removeObjectForKey:@(petId)];
+}
+
+- (void)clearSession
+{
+    self.identifier = 0;
+    self.username = nil;
+    self.email = nil;
+    self.alternateEmail = nil;
+    self.socialMediaId = nil;
+    self.socialMediaName = nil;
+    self.phone = nil;
+    self.socialMediaSource = nil;
+    self.person = nil;
+    self.userType = nil;
+    self.pets = nil;
+    self.isAuthenticated = NO;
+    self.isActive = nil;
+    self.selectedPet = nil;
+    self.sessionAvatarImage = nil;
+    self.petSessionAvatarImages = [NSMutableDictionary new];
 }
 
 @end

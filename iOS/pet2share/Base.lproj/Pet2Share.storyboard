@@ -244,7 +244,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="EWB-ce-Lku" kind="presentation" id="Ljw-d4-lhe"/>
+                                            <segue destination="EWB-ce-Lku" kind="presentation" identifier="signup" id="Ljw-d4-lhe"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet 2 Share" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KbB-k0-8gq">
@@ -465,7 +465,6 @@
                     </view>
                     <connections>
                         <outlet property="createAccountBtn" destination="jii-xn-Edr" id="al4-Q1-AG7"/>
-                        <segue destination="IvN-8E-Uwe" kind="presentation" identifier="mainview" id="ZTT-kt-YwX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y5L-54-brY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1059,10 +1058,9 @@
         <image name="img-avatar" width="86" height="84"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3JU-0T-BsM"/>
         <segue reference="O77-Oe-qBo"/>
-        <segue reference="ZTT-kt-YwX"/>
         <segue reference="EVh-Xp-k2E"/>
         <segue reference="idX-P7-zh9"/>
+        <segue reference="3JU-0T-BsM"/>
     </inferredMetricsTieBreakers>
 </document>

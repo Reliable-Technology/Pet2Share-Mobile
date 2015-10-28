@@ -10,7 +10,6 @@
 #import "NewPostVC.h"
 #import "PlaceHolderTextView.h"
 #import "CircleImageView.h"
-#import "Pet2ShareUser.h"
 #import "Pet2ShareService.h"
 #import "AppColor.h"
 #import "Utils.h"

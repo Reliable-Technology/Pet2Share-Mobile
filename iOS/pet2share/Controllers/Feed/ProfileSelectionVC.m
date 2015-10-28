@@ -9,7 +9,6 @@
 #import "ProfileSelectionVC.h"
 #import "Graphics.h"
 #import "ProfileSelectionTableCell.h"
-#import "Pet2ShareUser.h"
 
 @interface ProfileSelectionVC () <BaseNavigationProtocol, UITableViewDataSource, UITableViewDelegate>
 {

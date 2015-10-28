@@ -19,6 +19,7 @@
 #import "Logger.h"
 #import "Constants.h"
 #import "AppData.h"
+#import "Pet2ShareUser.h"
 #import "pet2share-swift.h"
 
 #endif

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#pragma mark - Commons
+#pragma mark - Common Definitions
 
 /** Degrees to Radians **/
 #define degreesToRadians( degrees ) ( ( degrees ) / 180.0 * M_PI )
@@ -27,6 +27,8 @@
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
+#pragma mark - Common Enums
+
 typedef enum ScrollDirection
 {
     ScrollDirectionNone,
@@ -36,6 +38,8 @@ typedef enum ScrollDirection
     ScrollDirectionDown,
     ScrollDirectionCrazy,
 } ScrollDirection;
+
+#pragma mark - Common Constants
 
 extern NSString * const kEmptyString;
 extern CGFloat const kBarButtonWidth;

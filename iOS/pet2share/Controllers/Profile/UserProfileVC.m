@@ -11,7 +11,6 @@
 #import "PetCollectionCell.h"
 #import "EmptyPetCollectionCell.h"
 #import "Pet2ShareService.h"
-#import "Pet2ShareUser.h"
 #import "PetProfileVC.h"
 #import "AddEditPetProfileVC.h"
 
@@ -21,7 +20,9 @@ static NSString * const kEmptyCellIdentifier    = @"emptypetcollectioncell";
 static NSString * const kEmptyCellNibName       = @"EmptyPetCollectionCell";
 static CGFloat kCellSpacing                     = 5.0f;
 
-@interface UserProfileVC () <Pet2ShareServiceCallback, EditProfileDelegate>
+@interface UserProfileVC () <Pet2ShareServiceCallback, EditProfileDelegate, ImageActionSheetDelegate>
+
+@property (nonatomic, strong) ImageActionSheet *actionSheet;
 
 @end
 
@@ -47,6 +48,12 @@ static CGFloat kCellSpacing                     = 5.0f;
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSForegroundColorAttributeName: [AppColor navigationBarTextColor],
        NSFontAttributeName:[UIFont fontWithName:kLogoTypeface size:20.0f]}];
+    
+    // Custom Log Out button
+    UIButton *logoutButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kBarButtonWidth, kBarButtonHeight)];
+    [logoutButton setImage:[Graphics tintImage:[UIImage imageNamed:@"icon-exit"] withColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+    [logoutButton addTarget:self action:@selector(logOut:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:logoutButton];
     
     // Register extra cells
     [self.collectionView registerNib:[UINib nibWithNibName:kEmptyCellNibName bundle:nil]
@@ -135,6 +142,37 @@ static CGFloat kCellSpacing                     = 5.0f;
 - (void)addButtonTapped:(id)sender
 {
     [self performSegueWithIdentifier:kSegueAddEditPetProfile sender:self];
+}
+
+- (void)logOut:(id)sender
+{
+    TRACE_HERE;
+    [self setupActionSheet:nil buttons:@[@(IMAGE_BUTTON_LOGOUT)]];
+}
+
+#pragma mark - ActionSheet
+
+- (void)setupActionSheet:(NSString *)title buttons:(NSArray *)buttons
+{
+    _actionSheet = [[ImageActionSheet alloc] initWithTitle:title
+                                                  delegate:self
+                                          availableButtons:buttons
+                                         cancelButtonTitle:NSLocalizedString(@"Cancel", @"")];
+    [self.actionSheet showInViewController:self];
+}
+
+- (void)actionSheet:(ImageActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex)
+    {
+        case IMAGE_BUTTON_LOGOUT:
+        {
+            [[Pet2ShareUser current] clearSession];
+            [[AppData sharedInstance] clearSession];
+            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        }
+        default: return;
+    }
 }
 
 #pragma mark - Web service

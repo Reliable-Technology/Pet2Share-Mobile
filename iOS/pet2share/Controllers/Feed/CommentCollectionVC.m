@@ -18,7 +18,6 @@
 #import "CommentCollectionCell.h"
 #import "TextViewCollectionCell.h"
 #import "OrderedDictionary.h"
-#import "Pet2ShareUser.h"
 #import "RoundCornerButton.h"
 
 @interface CommentCollectionVC () <Pet2ShareServiceCallback, FormProtocol>

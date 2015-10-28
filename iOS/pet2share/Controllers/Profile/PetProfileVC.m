@@ -15,7 +15,6 @@
 #import "PostTextCollectionCell.h"
 #import "LoadingCollectionCell.h"
 #import "AddEditPetProfileVC.h"
-#import "Pet2ShareUser.h"
 #import "NewPostVC.h"
 #import "CommentVC.h"
 

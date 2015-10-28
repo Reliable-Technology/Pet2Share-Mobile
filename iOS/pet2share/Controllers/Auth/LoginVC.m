@@ -13,13 +13,12 @@
 #import "LoginTableCtrl.h"
 #import "Utils.h"
 #import "Pet2ShareService.h"
-#import "Pet2ShareUser.h"
 
 @interface LoginVC () <FormProtocol, Pet2ShareServiceCallback>
 
 @property (strong , nonatomic) LoginTableCtrl *loginTableCtrl;
 @property (weak, nonatomic) IBOutlet RoundCornerButton *loginBtn;
-@property (strong, nonatomic) TransitionZoom *transitionZoom;
+@property (strong, nonatomic) TransitionManager *transitionManager;
 
 @end
 
@@ -31,7 +30,7 @@
 {
     if ((self = [super initWithCoder:aDecoder]))
     {
-        _transitionZoom = [TransitionZoom new];
+        _transitionManager = [TransitionManager new];
     }
     return self;
 }
@@ -48,6 +47,17 @@
     [self.view addGestureRecognizer:singleTap];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if ([Pet2ShareUser current].isAuthenticated)
+    {
+        fTRACE(@"User <%ld - %@> is authenticated",
+               (long)[Pet2ShareUser current].identifier, [Pet2ShareUser current].username);
+        [self performSegueWithIdentifier:kSegueMainView sender:self];
+    }
+}
+
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
@@ -61,9 +71,13 @@
         self.loginTableCtrl = (LoginTableCtrl *)segue.destinationViewController;
         self.loginTableCtrl.formProtocol = self;
     }
-    else if ([segue.identifier isEqual:kSegueMainView])
+    else if ([segue.identifier isEqualToString:kSegueSignUp] || [segue.identifier isEqual:kSegueMainView])
     {
-        segue.destinationViewController.transitioningDelegate = self.transitionZoom;
+        segue.destinationViewController.transitioningDelegate = self.transitionManager;
+    }
+    else
+    {
+        fTRACE(@"Unknown Segue Id: %@", segue.identifier);
     }
 }
 
