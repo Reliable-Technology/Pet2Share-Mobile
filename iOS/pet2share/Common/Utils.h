@@ -16,6 +16,7 @@
 + (CGSize)findHeightForText:(NSString *)text havingWidth:(CGFloat)widthValue andFont:(UIFont *)font;
 + (NSString *)getUniqueFileName:(NSString *)fileName;
 + (BOOL)isNullOrEmpty:(NSString *)string;
++ (NSString *)getBooleanString:(BOOL)value;
 
 #pragma mark - Validation Tools
 

@@ -58,8 +58,7 @@ static UrlManager *_sharedInstance = nil;
 
 @implementation UrlManager
 
-#pragma mark -
-#pragma mark Life Cycle
+#pragma mark - Life Cycle
 
 + (UrlManager *)sharedInstance
 {
@@ -90,8 +89,7 @@ static UrlManager *_sharedInstance = nil;
     return self;
 }
 
-#pragma mark -
-#pragma mark Private Instance Methods
+#pragma mark - Private Instance Methods
 
 - (Url *)getUrl
 {
@@ -105,8 +103,7 @@ static UrlManager *_sharedInstance = nil;
     return url;
 }
 
-#pragma mark -
-#pragma mark Public Instance Methods
+#pragma mark - Public Instance Methods
 
 - (NSString *)webServiceUrl
 {

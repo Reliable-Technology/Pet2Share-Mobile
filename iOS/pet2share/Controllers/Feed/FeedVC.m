@@ -58,9 +58,6 @@
 {
     if ([segue.identifier isEqualToString:kSegueComment] && [sender isKindOfClass:[Post class]])
     {
-//        CommentVC *commentVC = (CommentVC *)segue.destinationViewController;
-//        commentVC.transitioningDelegate = self.transitionZoom;
-//        commentVC.post = (Post *)sender;
         UINavigationController *navController = segue.destinationViewController;
         navController.transitioningDelegate = self.transitionZoom;
         CommentVC *commentVC = (CommentVC *)navController.topViewController;
@@ -162,7 +159,10 @@
 - (void)didPost
 {
     TRACE_HERE;
-    [self.feedCollection refreshData];
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^{
+        [self.feedCollection refreshData];
+    });
 }
 
 @end

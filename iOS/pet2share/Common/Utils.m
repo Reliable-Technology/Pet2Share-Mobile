@@ -58,6 +58,11 @@
     return (!string || [string isEqualToString:kEmptyString]);
 }
 
++ (NSString *)getBooleanString:(BOOL)value
+{
+    return value ? @"true" : @"false";
+}
+
 #pragma mark - Validation Tools
 
 + (BOOL)validateAlpha:(NSString *)candidate

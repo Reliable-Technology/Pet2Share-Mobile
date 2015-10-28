@@ -15,7 +15,7 @@
     return [[JSONKeyMapper alloc] initWithDictionary:
             @{@"IsSuccessful": @"isSuccessful",
               @"Message": @"message",
-              @"UpdateId": @"updateId"}];
+              @"UpdatedId": @"updatedId"}];
 }
 
 - (BOOL)isValidate

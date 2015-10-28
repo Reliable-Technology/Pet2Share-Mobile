@@ -76,6 +76,11 @@ static NSInteger const kPostCommentTag              = 101;
     
     // Request comments
     [self getComments];
+    
+    // Setup refresh control
+    self.refreshControl = [UIRefreshControl new];
+    [self.collectionView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self action:@selector(getComments) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -107,6 +112,10 @@ static NSInteger const kPostCommentTag              = 101;
 
 - (void)prepareCellData:(NSArray *)comments
 {
+    [comments sortedArrayUsingComparator:^NSComparisonResult(Comment *comment1, Comment *comment2) {
+        return [comment1.dateAdded compare:comment2.dateAdded];
+    }];
+    
     [self.cellDict removeAllObjects];
     
     NSString *postStatus = [self.post getPostStatusString];
@@ -128,8 +137,8 @@ static NSInteger const kPostCommentTag              = 101;
     }
 
     NSMutableDictionary *profileCellDict = [NSMutableDictionary dictionary];
-    profileCellDict[kCellClassName] = self.post.postUrl ? kPostImageCellNibName : kPostTextCellNibName;
-    profileCellDict[kCellReuseIdentifier] = self.post.postUrl ? kPostImageCellIdentifier : kPostTextCellIdentifier;
+    profileCellDict[kCellClassName] = [Utils isNullOrEmpty:self.post.postUrl] ? kPostTextCellNibName : kPostImageCellNibName;
+    profileCellDict[kCellReuseIdentifier] = [Utils isNullOrEmpty:self.post.postUrl] ? kPostTextCellIdentifier : kPostImageCellIdentifier;
     profileCellDict[kCellNameKey] = profileName;
     profileCellDict[kCellImageLink] = profileImageUrl;
     profileCellDict[kCellTextKey] = self.post.postDescription ?: kEmptyString;
@@ -199,6 +208,9 @@ static NSInteger const kPostCommentTag              = 101;
 {
     fTRACE(@"Number of Objects: %ld", (long)objects.count);
     
+    if (self.refreshControl.isRefreshing)
+        [self.refreshControl endRefreshing];
+    
     switch (service.requestTag)
     {
         case kGetCommentTag:
@@ -215,7 +227,8 @@ static NSInteger const kPostCommentTag              = 101;
 
 - (void)onReceiveError:(ErrorMessage *)errorMessage service:(Pet2ShareService *)service
 {
-    [self.refreshControl endRefreshing];
+    if (self.refreshControl.isRefreshing)
+        [self.refreshControl endRefreshing];
     [Graphics alert:NSLocalizedString(@"Error", @"") message:errorMessage.message type:ErrorAlert];
 }
 
@@ -382,7 +395,7 @@ static NSInteger const kPostCommentTag              = 101;
                                                  descriptionText:dict[kCellTextKey]
                                                       statusText:dict[kCellPostStatusKey]];
             
-            [(PostTextCollectionCell *)cell displayHeaderIndicator];
+            /* [(PostTextCollectionCell *)cell displayHeaderIndicator]; */
         }
         else if ([reuseIdentifier isEqualToString:kPostImageCellIdentifier])
         {

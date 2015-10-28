@@ -110,6 +110,12 @@ typedef NS_ENUM(NSInteger, ImageAspectRatio)
             postCount:(NSInteger)postCount
            pageNumber:(NSInteger)pageNumber;
 
+- (void)getFeedsRequest:(NSObject<Pet2ShareServiceCallback> *)callback
+              profileId:(NSInteger)profileId
+            isPostByPet:(BOOL)isPostedByPet
+              postCount:(NSInteger)postCount
+             pageNumber:(NSInteger)pageNumber;
+
 - (void)addPost:(NSObject<Pet2ShareServiceCallback> *)callback
 postDescription:(NSString *)postDescription
        postedBy:(NSInteger)userId
@@ -155,6 +161,6 @@ commentDescription:(NSString *)commentDescription;
                         cacheKey:(NSString *)cacheKey
                            image:(UIImage *)image
                   isCoverPicture:(BOOL)isCoverPicture
-                      completion:(void (^)(NSString* imageUrl))completion;
+                      completion:(void (^)(UpdateMessage *message))completion;
 
 @end

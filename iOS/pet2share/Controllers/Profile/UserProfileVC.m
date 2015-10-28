@@ -22,9 +22,6 @@ static NSString * const kEmptyCellNibName       = @"EmptyPetCollectionCell";
 static CGFloat kCellSpacing                     = 5.0f;
 
 @interface UserProfileVC () <Pet2ShareServiceCallback, EditProfileDelegate>
-{
-    CachePolicy _cachePolicy;
-}
 
 @end
 
@@ -38,7 +35,6 @@ static CGFloat kCellSpacing                     = 5.0f;
     {
         self.cellReuseIdentifier = kCellIdentifier;
         self.customNibName = kCellNibName;
-        _cachePolicy = CacheDefault;
     }
     return self;
 }
@@ -145,11 +141,9 @@ static CGFloat kCellSpacing                     = 5.0f;
 
 - (void)requestUserData
 {
-    [self.items removeAllObjects];
-    [self.items addObjectsFromArray:[Pet2ShareUser current].pets];
-    [self.collectionView reloadData];
+    [self loadData];
     Pet2ShareService *service = [Pet2ShareService new];
-    [service getUserProfile:self userId:[Pet2ShareUser current].identifier cachePolicy:_cachePolicy];
+    [service getUserProfile:self userId:[Pet2ShareUser current].identifier cachePolicy:ForceRefresh];
 }
 
 - (void)onReceiveSuccess:(NSArray *)objects
@@ -159,9 +153,8 @@ static CGFloat kCellSpacing                     = 5.0f;
         User *user = objects[0];
         // fTRACE("User: %@", user);
         [[Pet2ShareUser current] updateFromUser:user];
-        [self.collectionView reloadData];
+        [self loadData];
     }
-    _cachePolicy = CacheDefault;
 }
 
 - (void)onReceiveError:(ErrorMessage *)errorMessage
@@ -170,11 +163,18 @@ static CGFloat kCellSpacing                     = 5.0f;
     [Graphics alert:NSLocalizedString(@"Error", @"") message:errorMessage.message type:ErrorAlert];
 }
 
+- (void)loadData
+{
+    [self.items removeAllObjects];
+    [self.items addObjectsFromArray:[Pet2ShareUser current].pets];
+    [self.collectionView reloadData];
+}
+
 #pragma mark - <EditProfileDelegate>
 
 - (void)didUpdateProfile
 {
-    _cachePolicy = ForceRefresh;
+    [self requestUserData];
 }
 
 #pragma mark - Collection View

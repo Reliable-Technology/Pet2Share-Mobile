@@ -125,6 +125,7 @@ static id ObjectOrNull(id object)
         case NoCache:
         case ForceRefresh:
         {
+            [[EGOCache globalCache] removeCacheForKey:self.cacheKey.getKey];
             [webClient post:url postData:data];
             break;
         }
@@ -393,6 +394,23 @@ static id ObjectOrNull(id object)
     [self postJsonRequest:callback endPoint:GETPOSTSBYUSER_ENDPOINT jsonModel:[Post class] postData:postData];
 }
 
+- (void)getFeedsRequest:(NSObject<Pet2ShareServiceCallback> *)callback
+              profileId:(NSInteger)profileId
+            isPostByPet:(BOOL)isPostedByPet
+              postCount:(NSInteger)postCount
+             pageNumber:(NSInteger)pageNumber
+{
+    fTRACE("%@ <UserId: %ld>", GETFEEDSREQUEST_ENDPOINT, (long)profileId);
+    
+    NSMutableDictionary *postData = [NSMutableDictionary dictionary];
+    [postData setObject:@(profileId) forKey:@"ProfileId"];
+    [postData setObject:[Utils getBooleanString:isPostedByPet] forKey:@"IsRequesterPet"];
+    [postData setObject:@(postCount) forKey:@"PostCount"];
+    [postData setObject:@(pageNumber) forKey:@"PageNumber"];
+    
+    [self postJsonRequest:callback endPoint:GETFEEDSREQUEST_ENDPOINT jsonModel:[Post class] postData:postData];
+}
+
 - (void)getPostsByPet:(NSObject<Pet2ShareServiceCallback> *)callback
                 petId:(NSInteger)petId
             postCount:(NSInteger)postCount
@@ -431,17 +449,16 @@ postDescription:(NSString *)postDescription
                image:(UIImage *)image
             fileName:(NSString *)fileName
 {
-    fTRACE("%@ <ProfileId: %ld", ADDPOSTWITHPIC_ENDPOINT, (long)profileId);
-    
-    NSString *encodedDescription = [description stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSString *endPoint = [NSString stringWithFormat:@"%@?PostedBy=%ld&IsPostedByPet=%d&Description=%@&FileName=%@.png",
-                          ADDPOSTWITHPIC_ENDPOINT, (long)profileId, isPostedByPet, encodedDescription, fileName];
+    fTRACE("%@ <ProfileId: %ld", ADDPHOTOPOST_ENDPOINT, (long)profileId);
+    NSString *endPoint = [NSString stringWithFormat:@"%@?FileName=%@.png&Description=%@&PostedBy=%ld&IsPostByPet=%@&IsPublic=%@",
+                          ADDPHOTOPOST_ENDPOINT, fileName, description, (long)profileId, [Utils getBooleanString:isPostedByPet], @"true"];
     NSString *url = [[UrlManager sharedInstance] webServiceUrl:endPoint];
     NSData *data = UIImageJPEGRepresentation(image, kImageCompressionRatio);
     
     WebClient *webClient = [[WebClient alloc] init];
     webClient.delegate = self;
     webClient.contentType = CONTENT_TYPE_OCTET_STREAM;
+    self.callback = callback;
     self.jsonModel = [UpdateMessage class];
     [webClient post:url binaryData:data];
 }
@@ -549,7 +566,6 @@ commentDescription:(NSString *)commentDescription
             break;;
     }
     
-    
     if ([[EGOCache globalCache] hasCacheForKey:url])
     {
         NSData *data = [[EGOCache globalCache] dataForKey:url];
@@ -589,7 +605,7 @@ commentDescription:(NSString *)commentDescription
                         cacheKey:(NSString *)cacheKey
                            image:(UIImage *)image
                   isCoverPicture:(BOOL)isCoverPicture
-                      completion:(void (^)(NSString* imageUrl))completion
+                      completion:(void (^)(UpdateMessage *message))completion
 {
     fTRACE(@"%@ <Identifier: %ld>", UPLOADUSERPICTURE_ENDPOINT, (long)profileId);
     
@@ -653,7 +669,7 @@ commentDescription:(NSString *)commentDescription
                       if (updateMessage && [updateMessage isValidate])
                       {
                           fTRACE("Message: %@", updateMessage.message);
-                          completion(updateMessage.message);
+                          completion(updateMessage);
                       }
                   }
               }

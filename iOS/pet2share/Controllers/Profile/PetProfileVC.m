@@ -11,24 +11,30 @@
 #import "AppColor.h"
 #import "Constants.h"
 #import "Pet2ShareService.h"
+#import "PostImageCollectionCell.h"
 #import "PostTextCollectionCell.h"
 #import "LoadingCollectionCell.h"
 #import "AddEditPetProfileVC.h"
 #import "Pet2ShareUser.h"
+#import "NewPostVC.h"
+#import "CommentVC.h"
 
-static CGFloat kCellSpacing                     = 5.0f;
-static NSString * const kCellIdentifier         = @"posttextcollectioncell";
-static NSString * const kCellNibName            = @"PostTextCollectionCell";
-static NSString * const kLoadingCellIdentifier  = @"loadingcollectioncell";
-static NSString * const kLoadingCellNibName     = @"LoadingCollectionCell";
-static NSString * const kLeftIconImageName      = @"icon-arrowback";
+static CGFloat kCellSpacing                             = 5.0f;
+static NSString * const kPostTextCellIdentifier         = @"posttextcollectioncell";
+static NSString * const kPostTextCellNibName            = @"PostTextCollectionCell";
+static NSString * const kPostImageCellIdentifier        = @"postimagecollectioncell";
+static NSString * const kPostImageCellNibName           = @"PostImageCollectionCell";
+static NSString * const kLoadingCellIdentifier          = @"loadingcollectioncell";
+static NSString * const kLoadingCellNibName             = @"LoadingCollectionCell";
 
-@interface PetProfileVC () <Pet2ShareServiceCallback>
+@interface PetProfileVC () <Pet2ShareServiceCallback, NewPostDelegate>
 {
     NSInteger _pageNumber;
     BOOL _hasAllData;
     BOOL _isRequesting;
 }
+
+@property (nonatomic, strong) TransitionZoom *transitionZoom;
 
 @end
 
@@ -40,8 +46,11 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
 {
     if ((self = [super initWithCoder:aDecoder]))
     {
-        self.cellReuseIdentifier = kCellIdentifier;
-        self.customNibName = kCellNibName;
+        self.cellReuseIdentifier = kPostTextCellIdentifier;
+        self.customNibName = kPostTextCellNibName;
+        _transitionZoom = [TransitionZoom new];
+        _pageNumber = 0;
+        _hasAllData = NO;
     }
     return self;
 }
@@ -52,11 +61,19 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
             
     // Custom Back button
     UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kBarButtonWidth, kBarButtonHeight)];
-    [backButton setImage:[UIImage imageNamed:kLeftIconImageName] forState:UIControlStateNormal];
+    [backButton setImage:[Graphics tintImage:[UIImage imageNamed:@"icon-arrowback"] withColor:[UIColor whiteColor]] forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(backBarButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     
+    // Custom Post button
+    UIButton *postButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kBarButtonWidth, kBarButtonHeight)];
+    [postButton setImage:[Graphics tintImage:[UIImage imageNamed:@"icon-compose"] withColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+    [postButton addTarget:self action:@selector(composeButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:postButton];
+    
     // Extra cell
+    [self.collectionView registerNib:[UINib nibWithNibName:kPostImageCellNibName bundle:nil]
+          forCellWithReuseIdentifier:kPostImageCellIdentifier];
     [self.collectionView registerNib:[UINib nibWithNibName:kLoadingCellNibName bundle:nil]
           forCellWithReuseIdentifier:kLoadingCellIdentifier];
     
@@ -92,6 +109,20 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
             addEditProfileVC.pet = self.pet;
         }
         navController.transitioningDelegate = self.transitionManager;
+    }
+    else if ([segue.identifier isEqualToString:kSegueNewPost])
+    {
+        NewPostVC *newPostVC = (NewPostVC *)segue.destinationViewController;
+        newPostVC.delegate = self;
+        newPostVC.transitioningDelegate = self.transitionZoom;
+        newPostVC.pet = self.pet;
+    }
+    else if ([segue.identifier isEqualToString:kSegueComment])
+    {
+        UINavigationController *navController = segue.destinationViewController;
+        navController.transitioningDelegate = self.transitionZoom;
+        CommentVC *commentVC = (CommentVC *)navController.topViewController;
+        if (commentVC) commentVC.post = (Post *)sender;
     }
 }
 
@@ -139,6 +170,18 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)composeButtonTapped
+{
+    [self performSegueWithIdentifier:kSegueNewPost sender:self];
+}
+
+- (void)didPost
+{
+    _pageNumber = 0;
+    _hasAllData = NO;
+    [self requestData];
+}
+
 #pragma mark - Web Services
 
 - (void)requestData
@@ -158,10 +201,9 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
 {
     _isRequesting = NO;
     fTRACE(@"Number of Objects: %ld", (long)objects.count);
-    if (self.refreshControl.isRefreshing || _pageNumber == 1)
+    if (_pageNumber == 1)
     {
         [self.items removeAllObjects];
-        [self.refreshControl endRefreshing];
     }
     if (objects.count == 0 || objects.count < kNumberOfPostPerPage)
     {
@@ -180,7 +222,6 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
 - (void)onReceiveError:(ErrorMessage *)errorMessage
 {
     _isRequesting = NO;
-    [self.refreshControl endRefreshing];
     [Graphics alert:NSLocalizedString(@"Error", @"") message:errorMessage.message type:ErrorAlert];
 }
 
@@ -206,7 +247,11 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
     if (indexPath.row < self.items.count)
     {
         Post *post = [self.items objectAtIndexedSubscript:indexPath.row];
-        CGSize cellSize = CGSizeMake(itemWidth, [PostTextCollectionCell heightByText:post.postDescription itemWidth:itemWidth]);
+        CGSize cellSize;
+        if ([Utils isNullOrEmpty:post.postUrl])
+            cellSize = CGSizeMake(itemWidth, [PostTextCollectionCell heightByText:post.postDescription itemWidth:itemWidth]);
+        else
+            cellSize = CGSizeMake(itemWidth, [PostImageCollectionCell heightByText:post.postDescription itemWidth:itemWidth]);
         return cellSize;
     }
     else
@@ -218,7 +263,7 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
 
 - (void)didScrollOutOfBound
 {
-    [self requestData];
+//    [self requestData];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -248,16 +293,16 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
     @try
     {
         // fTRACE("Index: %ld", indexPath.row);
+        
         if (indexPath.row < self.items.count)
         {
-            cell = (PostTextCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:self.cellReuseIdentifier
-                                                                                       forIndexPath:indexPath];
-            
             Post *post = [self.items objectAtIndex:indexPath.row];
+            NSString *postDate = [Utils formatNSDateToString:post.dateAdded
+                                                  withFormat:kFormatDayOfWeekWithDateTime];
             
             NSString *profileImageUrl = kEmptyString;
             NSString *profileName = kEmptyString;
-            UIImage *sessionImage = nil;
+            UIImage *profileSessionImage = nil;
             
             if (post.isPostByPet)
             {
@@ -269,16 +314,32 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
                 profileImageUrl = post.user.profilePictureUrl;
                 profileName = post.user.name;
                 if (post.user.identifier == [Pet2ShareUser current].identifier)
-                    sessionImage = [Pet2ShareUser current].getUserSessionAvatarImage;
+                    profileSessionImage = [Pet2ShareUser current].getUserSessionAvatarImage;
             }
             
-            [(PostTextCollectionCell *)cell loadDataWithImageUrl:profileImageUrl
-                                            placeHolderImageName:@"img-avatar"
-                                                    sessionImage:sessionImage
-                                                     primaryText:profileName
-                                                   secondaryText:[Utils formatNSDateToString:post.dateAdded withFormat:kFormatDayOfWeekWithDateTime]
-                                                 descriptionText:post.postDescription
-                                                      statusText:post.getPostStatusString];
+            if ([Utils isNullOrEmpty:post.postUrl])
+            {
+                cell = [collectionView dequeueReusableCellWithReuseIdentifier:self.cellReuseIdentifier forIndexPath:indexPath];
+                [(PostTextCollectionCell *)cell loadDataWithImageUrl:profileImageUrl
+                                                placeHolderImageName:@"img-avatar"
+                                                        sessionImage:profileSessionImage
+                                                         primaryText:profileName
+                                                       secondaryText:postDate
+                                                     descriptionText:post.postDescription
+                                                          statusText:post.getPostStatusString];
+            }
+            else
+            {
+                cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPostImageCellIdentifier forIndexPath:indexPath];
+                [(PostImageCollectionCell *)cell loadDataWithImageUrl:profileImageUrl
+                                                 placeHolderImageName:@"img-avatar"
+                                                         sessionImage:profileSessionImage
+                                                         postImageUrl:post.postUrl
+                                                          primaryText:profileName
+                                                        secondaryText:postDate
+                                                      descriptionText:post.postDescription
+                                                           statusText:post.getPostStatusString];
+            }
         }
         else
         {
@@ -292,6 +353,15 @@ static NSString * const kLeftIconImageName      = @"icon-arrowback";
     }
     
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row < self.items.count)
+    {
+        Post *post = [self.items objectAtIndex:indexPath.row];
+        [self performSegueWithIdentifier:kSegueComment sender:post];
+    }
 }
 
 @end

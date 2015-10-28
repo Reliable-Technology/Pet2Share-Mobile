@@ -20,8 +20,8 @@
                                 <rect key="frame" x="20" y="12" width="36" height="36"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="36" id="ZhR-aT-Ndc"/>
-                                    <constraint firstAttribute="height" constant="36" id="bbs-Ni-BJd"/>
+                                    <constraint firstAttribute="width" constant="36" id="HJ7-rM-0Cu"/>
+                                    <constraint firstAttribute="height" constant="36" id="ePt-PE-Ze7"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -36,7 +36,7 @@
                                 <rect key="frame" x="70" y="12" width="510" height="21"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="M09-hf-yTd"/>
+                                    <constraint firstAttribute="height" constant="21" id="783-U4-H3I"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.42655369639396667" green="0.47584608197212219" blue="0.48026475310325623" alpha="1" colorSpace="calibratedRGB"/>
@@ -45,6 +45,9 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 Hour Ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOP-qV-QlR">
                                 <rect key="frame" x="70" y="33" width="510" height="15"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="9pN-fb-wMt"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="10"/>
                                 <color key="textColor" red="0.69019607843137254" green="0.71372549019607845" blue="0.73333333333333328" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -53,17 +56,17 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="dea-ZM-Eh2" secondAttribute="trailing" constant="20" id="5OV-Hj-JgH"/>
-                            <constraint firstItem="wPW-83-PMY" firstAttribute="top" secondItem="72A-bq-lSA" secondAttribute="top" constant="12" id="IJd-D0-YbH"/>
-                            <constraint firstItem="eOP-qV-QlR" firstAttribute="leading" secondItem="wPW-83-PMY" secondAttribute="trailing" constant="14" id="L39-QX-gFu"/>
-                            <constraint firstItem="wPW-83-PMY" firstAttribute="leading" secondItem="72A-bq-lSA" secondAttribute="leading" constant="20" id="MlR-sH-kXP"/>
-                            <constraint firstAttribute="trailing" secondItem="wPW-83-PMY" secondAttribute="trailing" constant="544" id="Rkw-vO-dIu"/>
-                            <constraint firstItem="dea-ZM-Eh2" firstAttribute="top" secondItem="72A-bq-lSA" secondAttribute="top" constant="12" id="TYW-ig-cd8"/>
-                            <constraint firstItem="dea-ZM-Eh2" firstAttribute="leading" secondItem="wPW-83-PMY" secondAttribute="trailing" constant="14" id="WRd-Uj-7pL"/>
-                            <constraint firstItem="eOP-qV-QlR" firstAttribute="top" secondItem="dea-ZM-Eh2" secondAttribute="bottom" id="Zyo-G9-sJC"/>
+                            <constraint firstAttribute="bottom" secondItem="wPW-83-PMY" secondAttribute="bottom" constant="12" id="0h2-jp-ggs"/>
+                            <constraint firstAttribute="trailing" secondItem="dea-ZM-Eh2" secondAttribute="trailing" constant="20" id="5tf-KS-cdJ"/>
+                            <constraint firstItem="dea-ZM-Eh2" firstAttribute="top" secondItem="72A-bq-lSA" secondAttribute="top" constant="12" id="62A-ha-VmI"/>
+                            <constraint firstItem="dea-ZM-Eh2" firstAttribute="leading" secondItem="wPW-83-PMY" secondAttribute="trailing" constant="14" id="9Sk-OA-nlf"/>
+                            <constraint firstItem="eOP-qV-QlR" firstAttribute="leading" secondItem="wPW-83-PMY" secondAttribute="trailing" constant="14" id="MY7-nV-9kf"/>
+                            <constraint firstItem="wPW-83-PMY" firstAttribute="top" secondItem="72A-bq-lSA" secondAttribute="top" constant="12" id="Mfw-zc-7ic"/>
+                            <constraint firstItem="eOP-qV-QlR" firstAttribute="top" secondItem="dea-ZM-Eh2" secondAttribute="bottom" id="dNt-Zb-qiL"/>
+                            <constraint firstAttribute="trailing" secondItem="eOP-qV-QlR" secondAttribute="trailing" constant="20" id="eio-JH-kSH"/>
                             <constraint firstAttribute="height" constant="60" id="gA1-76-EuG"/>
-                            <constraint firstAttribute="trailing" secondItem="eOP-qV-QlR" secondAttribute="trailing" constant="20" id="tfh-Xe-tNU"/>
-                            <constraint firstAttribute="bottom" secondItem="eOP-qV-QlR" secondAttribute="bottom" constant="12" id="xNK-W3-DDn"/>
+                            <constraint firstAttribute="bottom" secondItem="eOP-qV-QlR" secondAttribute="bottom" constant="12" id="mcY-nw-n6K"/>
+                            <constraint firstItem="wPW-83-PMY" firstAttribute="leading" secondItem="72A-bq-lSA" secondAttribute="leading" constant="20" id="uUu-IP-aQX"/>
                         </constraints>
                     </view>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9tJ-Mg-qz1">

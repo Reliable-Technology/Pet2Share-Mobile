@@ -251,9 +251,9 @@
                                  cacheKey:cacheKey
                                     image:image
                            isCoverPicture:NO
-                               completion:^(NSString *imageUrl) {
+                               completion:^(UpdateMessage *updateMessage) {
                                    // [[Pet2ShareUser current] setUserSessionAvatarImage:nil];
-                                   [Pet2ShareUser current].person.profilePictureUrl = imageUrl;
+                                   [Pet2ShareUser current].person.profilePictureUrl = updateMessage.message;
                                }];
     }
 }

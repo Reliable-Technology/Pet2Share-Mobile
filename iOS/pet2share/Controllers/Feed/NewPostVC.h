@@ -13,9 +13,12 @@
 
 @end
 
+@class Pet;
+
 @interface NewPostVC : BaseNavigationVC
 
 @property (weak, nonatomic) id<NewPostDelegate> delegate;
 @property (strong, nonatomic) UIImage *postImage;
+@property (strong, nonatomic) Pet *pet;
 
 @end

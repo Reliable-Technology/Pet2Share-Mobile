@@ -201,17 +201,18 @@
 - (void)onReceiveSuccess:(NSArray *)objects
 {
     [self.activity hide];
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     
     NSInteger petIdentifier;
     switch (self.petProfileMode)
     {
         case AddPetProfile:
         {
-            if (objects.count == 0)
+            if (objects.count == 1)
             {
                 UpdateMessage *updateMessage = objects[0];
-                petIdentifier = updateMessage.updateId;
+                petIdentifier = updateMessage.updatedId;
+                self.pet.identifier = petIdentifier;
+                [[Pet2ShareUser current].pets addObject:self.pet];
             }
         }
         case EditPetProfile:
@@ -220,10 +221,6 @@
         }
         default: break;
     }
-    
-    // Notify the delegate
-    if ([self.delegate respondsToSelector:@selector(didUpdateProfile)])
-        [self.delegate didUpdateProfile];
     
     // Get session image from AppData
     __block NSString *cacheKey = self.pet.profilePictureUrl;
@@ -243,12 +240,17 @@
                                  cacheKey:cacheKey
                                     image:image
                            isCoverPicture:NO
-                               completion:^(NSString *imageUrl) {
+                               completion:^(UpdateMessage *updateMessage) {
                                    // [[Pet2ShareUser current] removePetSessionAvatarImage:petIdentifier];
-                                   [[Pet2ShareUser current] removePet:0];
-                                   [[Pet2ShareUser current] updatePet:petIdentifier withAvatarUrl:imageUrl];
+                                   [[Pet2ShareUser current] updatePet:petIdentifier withAvatarUrl:updateMessage.message];
                                }];
     }
+    
+    // Notify the delegate
+    if ([self.delegate respondsToSelector:@selector(didUpdateProfile)])
+        [self.delegate didUpdateProfile];
+    
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)onReceiveError:(ErrorMessage *)errorMessage

@@ -75,7 +75,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tiE-sL-Dfn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5304" y="395"/>
+            <point key="canvasLocation" x="5392" y="1563"/>
         </scene>
         <!--Pet 2 Share-->
         <scene sceneID="MRJ-2h-OZj">
@@ -154,7 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aUD-WU-f22" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5424" y="1090"/>
+            <point key="canvasLocation" x="5392" y="2408"/>
         </scene>
         <!--Comment CollectionVC-->
         <scene sceneID="NC5-Cn-QcM">
@@ -192,7 +192,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nkk-99-p4I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6154" y="1090"/>
+            <point key="canvasLocation" x="6106" y="2408"/>
         </scene>
         <!--Pet 2 Share-->
         <scene sceneID="ogo-MI-ag9">
@@ -643,7 +643,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XiG-1C-FDb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4620" y="1913.5"/>
+            <point key="canvasLocation" x="3806" y="1249.5"/>
         </scene>
         <!--Feed-->
         <scene sceneID="j49-kY-qw5">
@@ -776,7 +776,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pWn-JR-WU7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4612" y="2663"/>
+            <point key="canvasLocation" x="3806" y="2667"/>
         </scene>
         <!--Profile-->
         <scene sceneID="Mvd-4w-Nbm">
@@ -887,7 +887,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ryo-mR-e7M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4620" y="3554"/>
+            <point key="canvasLocation" x="4636" y="5142"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4xr-Ge-PZH">
@@ -906,7 +906,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kcD-K1-D30" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3726" y="3554"/>
+            <point key="canvasLocation" x="3790" y="5142"/>
         </scene>
         <!--Pet 2 Share-->
         <scene sceneID="VCZ-Mb-fA5">
@@ -943,11 +943,13 @@
                     </collectionView>
                     <connections>
                         <segue destination="jLb-Ts-bBI" kind="presentation" identifier="addeditpetprofile" id="3JU-0T-BsM"/>
+                        <segue destination="Nvm-8K-IOa" kind="presentation" identifier="newpost" id="EVh-Xp-k2E"/>
+                        <segue destination="B2Q-4O-nwN" kind="presentation" identifier="comment" id="idX-P7-zh9"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IYZ-kW-UDa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2935" y="5004"/>
+            <point key="canvasLocation" x="3790" y="3388"/>
         </scene>
         <!--Add Edit Pet ProfileVC-->
         <scene sceneID="Ry2-ik-PuJ">
@@ -987,7 +989,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ugd-kY-vsO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4620" y="4323"/>
+            <point key="canvasLocation" x="4620" y="4302"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="o9u-wJ-7ae">
@@ -1006,7 +1008,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GI0-fY-j0c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3726" y="4323"/>
+            <point key="canvasLocation" x="3790" y="4302"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Hgf-SX-KxJ">
@@ -1025,7 +1027,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Evl-G8-0Mt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4612" y="395"/>
+            <point key="canvasLocation" x="4700" y="1563"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hXe-4C-8uR">
@@ -1044,7 +1046,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nYa-eg-xtn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4612" y="1090"/>
+            <point key="canvasLocation" x="4700" y="2408"/>
         </scene>
     </scenes>
     <resources>
@@ -1057,9 +1059,10 @@
         <image name="img-avatar" width="86" height="84"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZTT-kt-YwX"/>
-        <segue reference="tlJ-h2-45j"/>
-        <segue reference="O77-Oe-qBo"/>
         <segue reference="3JU-0T-BsM"/>
+        <segue reference="O77-Oe-qBo"/>
+        <segue reference="ZTT-kt-YwX"/>
+        <segue reference="EVh-Xp-k2E"/>
+        <segue reference="idX-P7-zh9"/>
     </inferredMetricsTieBreakers>
 </document>

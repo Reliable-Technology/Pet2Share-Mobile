@@ -16,6 +16,7 @@
 #import "Utils.h"
 #import "Graphics.h"
 #import "RoundCornerButton.h"
+#import "NSString+URLEncoding.h"
 
 static CGFloat const kToolbarHeight = 44.0f;
 
@@ -57,6 +58,8 @@ static CGFloat const kToolbarHeight = 44.0f;
     [super viewDidLoad];
     
     Pet *selectedPet = [Pet2ShareUser current].selectedPet;
+    if (self.pet) selectedPet = self.pet;
+    
     UIImage *sessionAvatarImage;
     
     // Load Profile Image
@@ -273,22 +276,23 @@ static CGFloat const kToolbarHeight = 44.0f;
 
 - (void)postBtnTapped:(id)sender
 {
-    Pet2ShareService *service = [Pet2ShareService new];
+    [self.postBtn showActivityIndicator];
     
-    NSMutableString *description = [[NSMutableString alloc] initWithString:self.textView.text];
-    NSRange myRange = NSMakeRange(0, [description length]);
-    [description replaceOccurrencesOfString:@"\n" withString:kEmptyString options:0 range:myRange];
-    fTRACE("Text: %@", description);
-
+    Pet2ShareService *service = [Pet2ShareService new];
+    NSString *description = [[NSMutableString alloc] initWithString:self.textView.text];
+    description = [description stringByReplacingOccurrencesOfString:@"\n" withString:kEmptyString];
+    NSString *encodedDescription = [description stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
     if (!self.postImage)
     {
-        [service addPost:self postDescription:description
+        [service addPost:self postDescription:encodedDescription
                 postedBy:_profileId isPostByPet:_isPostedByPet];
     }
     else
     {
+        encodedDescription = [encodedDescription substringWithRange:NSMakeRange(9, [encodedDescription length]-9)];
         [service addPhotoPost:self
-                  description:description postedBy:_profileId isPostByPet:_isPostedByPet
+                  description:encodedDescription postedBy:_profileId isPostByPet:_isPostedByPet
                         image:self.postImage fileName:postUserImage(_profileId)];
     }
 }

@@ -81,6 +81,7 @@ static NSString * const kLoadingCellNibName         = @"LoadingCollectionCell";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self refreshData];
 }
 
 - (void)dealloc
@@ -88,8 +89,7 @@ static NSString * const kLoadingCellNibName         = @"LoadingCollectionCell";
     TRACE_HERE;
 }
 
-#pragma mark -
-#pragma mark  Web Services
+#pragma mark - Web Services
 
 - (void)refreshData
 {
@@ -108,7 +108,17 @@ static NSString * const kLoadingCellNibName         = @"LoadingCollectionCell";
     Pet2ShareService *service = [Pet2ShareService new];
     _pageNumber++;
     fTRACE(@"Page Number: %ld", (long)_pageNumber);
-    [service getPostsByUser:self userId:[Pet2ShareUser current].identifier postCount:kNumberOfPostPerPage pageNumber:_pageNumber];
+    
+    if ([Pet2ShareUser current].selectedPet)
+    {
+        [service getFeedsRequest:self profileId:[Pet2ShareUser current].selectedPet.identifier
+                     isPostByPet:YES postCount:kNumberOfPostPerPage pageNumber:_pageNumber];
+    }
+    else
+    {
+        [service getFeedsRequest:self profileId:[Pet2ShareUser current].identifier
+                     isPostByPet:NO postCount:kNumberOfPostPerPage pageNumber:_pageNumber];
+    }
 }
 
 - (void)onReceiveSuccess:(NSArray *)objects
