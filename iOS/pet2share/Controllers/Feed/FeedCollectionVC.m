@@ -17,7 +17,7 @@
 #import "Utils.h"
 #import "EmptyDataView.h"
 
-@interface FeedCollectionVC () <Pet2ShareServiceCallback>
+@interface FeedCollectionVC () <Pet2ShareServiceCallback, CellButtonDelegate>
 {
     NSInteger _pageNumber;
     BOOL _hasAllData;
@@ -35,6 +35,10 @@ static NSString * const kPostImageCellIdentifier    = @"postimagecollectioncell"
 static NSString * const kPostImageCellNibName       = @"PostImageCollectionCell";
 static NSString * const kLoadingCellIdentifier      = @"loadingcollectioncell";
 static NSString * const kLoadingCellNibName         = @"LoadingCollectionCell";
+
+///--------------------------------------
+#pragma mark - Life Cycle
+///--------------------------------------
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -88,7 +92,9 @@ static NSString * const kLoadingCellNibName         = @"LoadingCollectionCell";
     TRACE_HERE;
 }
 
+///--------------------------------------
 #pragma mark - Web Services
+///--------------------------------------
 
 - (void)refreshData
 {
@@ -134,7 +140,10 @@ static NSString * const kLoadingCellNibName         = @"LoadingCollectionCell";
         _hasAllData = YES;
     }
     
-    [self.items addObjectsFromArray:objects];
+    for (Post *post in objects)
+    {
+        if (!post.isDeleted) [self.items addObject:post];
+    }
     [self.collectionView reloadData];
     
     if ([self.items count] == 0)
@@ -150,8 +159,9 @@ static NSString * const kLoadingCellNibName         = @"LoadingCollectionCell";
     [Graphics alert:NSLocalizedString(@"Error", @"") message:errorMessage.message type:ErrorAlert];
 }
 
-#pragma mark -
-#pragma mark Collection View
+///--------------------------------------
+#pragma mark - Collection View
+///--------------------------------------
 
 - (void)setupLayout
 {
@@ -247,6 +257,10 @@ static NSString * const kLoadingCellNibName         = @"LoadingCollectionCell";
                 [(PostTextCollectionCell *)cell loadDataWithImageUrl:profileImageUrl
                                                 placeHolderImageName:@"img-avatar"
                                                         sessionImage:profileSessionImage
+                                                            delegate:self
+                                                              postId:post.identifier
+                                                          isPostById:post.postedBy
+                                                         isPostByPet:post.isPostByPet
                                                          primaryText:profileName
                                                        secondaryText:postDate
                                                      descriptionText:post.postDescription
@@ -256,13 +270,17 @@ static NSString * const kLoadingCellNibName         = @"LoadingCollectionCell";
             {
                 cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPostImageCellIdentifier forIndexPath:indexPath];
                 [(PostImageCollectionCell *)cell loadDataWithImageUrl:profileImageUrl
-                                                placeHolderImageName:@"img-avatar"
-                                                        sessionImage:profileSessionImage
+                                                 placeHolderImageName:@"img-avatar"
+                                                         sessionImage:profileSessionImage
+                                                             delegate:self
+                                                               postId:post.identifier
+                                                           isPostById:post.postedBy
+                                                          isPostByPet:post.isPostByPet
                                                          postImageUrl:post.postUrl
-                                                         primaryText:profileName
-                                                       secondaryText:postDate
-                                                     descriptionText:post.postDescription
-                                                          statusText:post.getPostStatusString];
+                                                          primaryText:profileName
+                                                        secondaryText:postDate
+                                                      descriptionText:post.postDescription
+                                                           statusText:post.getPostStatusString];
             }
         }
         else
@@ -288,6 +306,24 @@ static NSString * const kLoadingCellNibName         = @"LoadingCollectionCell";
             [self.collectionDelegate didSelectItem:post];
         }
     }
+}
+
+///--------------------------------------
+#pragma mark - <CellButtonDelegate>
+///--------------------------------------
+
+- (void)actionButtonTapped:(id)sender identifier:(NSInteger)identifier
+{
+    for (NSInteger i = self.items.count-1; i >= 0; --i)
+    {
+        Post *post = [self.items objectAtIndex:i];
+        if (post.identifier == identifier)
+        {
+            [self.items removeObjectAtIndex:i];
+            break;
+        }
+    }
+    [self.collectionView reloadData];
 }
 
 @end

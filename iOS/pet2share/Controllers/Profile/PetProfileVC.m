@@ -322,6 +322,10 @@ static NSString * const kLoadingCellNibName             = @"LoadingCollectionCel
                 [(PostTextCollectionCell *)cell loadDataWithImageUrl:profileImageUrl
                                                 placeHolderImageName:@"img-avatar"
                                                         sessionImage:profileSessionImage
+                                                            delegate:self
+                                                              postId:post.identifier
+                                                          isPostById:post.postedBy
+                                                         isPostByPet:post.isPostByPet
                                                          primaryText:profileName
                                                        secondaryText:postDate
                                                      descriptionText:post.postDescription
@@ -333,6 +337,10 @@ static NSString * const kLoadingCellNibName             = @"LoadingCollectionCel
                 [(PostImageCollectionCell *)cell loadDataWithImageUrl:profileImageUrl
                                                  placeHolderImageName:@"img-avatar"
                                                          sessionImage:profileSessionImage
+                                                             delegate:self
+                                                               postId:post.identifier
+                                                           isPostById:post.postedBy
+                                                          isPostByPet:post.isPostByPet
                                                          postImageUrl:post.postUrl
                                                           primaryText:profileName
                                                         secondaryText:postDate

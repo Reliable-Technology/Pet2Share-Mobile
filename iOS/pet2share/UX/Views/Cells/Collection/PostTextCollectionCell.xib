@@ -33,7 +33,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Smith" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLx-7M-vpB">
-                                <rect key="frame" x="70" y="12" width="510" height="21"/>
+                                <rect key="frame" x="70" y="12" width="480" height="21"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="b0d-hh-S0g"/>
@@ -43,26 +43,37 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 Hour Ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NW9-GL-1Jx">
-                                <rect key="frame" x="70" y="33" width="510" height="15"/>
+                                <rect key="frame" x="70" y="33" width="480" height="15"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="10"/>
                                 <color key="textColor" red="0.69019607843137254" green="0.71372549019607845" blue="0.73333333333333328" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uAX-Jf-ycF">
+                                <rect key="frame" x="570" y="12" width="16" height="16"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="hxD-fs-rwr"/>
+                                    <constraint firstAttribute="width" constant="16" id="o7U-Ry-n5C"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="icon-close-small-gray"/>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="SLx-7M-vpB" firstAttribute="leading" secondItem="rAW-L9-xJr" secondAttribute="trailing" constant="14" id="3jd-66-WGU"/>
                             <constraint firstAttribute="bottom" secondItem="NW9-GL-1Jx" secondAttribute="bottom" constant="12" id="6QR-mI-T3O"/>
+                            <constraint firstItem="uAX-Jf-ycF" firstAttribute="leading" secondItem="SLx-7M-vpB" secondAttribute="trailing" constant="20" id="E4m-6M-73q"/>
                             <constraint firstItem="rAW-L9-xJr" firstAttribute="top" secondItem="gzT-CY-RaU" secondAttribute="top" constant="12" id="Ifj-9k-qKq"/>
+                            <constraint firstAttribute="trailing" secondItem="uAX-Jf-ycF" secondAttribute="trailing" constant="14" id="KgQ-65-wHU"/>
                             <constraint firstItem="NW9-GL-1Jx" firstAttribute="top" secondItem="SLx-7M-vpB" secondAttribute="bottom" id="NFY-hd-4bN"/>
                             <constraint firstItem="SLx-7M-vpB" firstAttribute="top" secondItem="gzT-CY-RaU" secondAttribute="top" constant="12" id="NdU-sH-HYD"/>
+                            <constraint firstItem="uAX-Jf-ycF" firstAttribute="leading" secondItem="NW9-GL-1Jx" secondAttribute="trailing" constant="20" id="Rol-c8-X5S"/>
                             <constraint firstAttribute="height" constant="60" id="SmD-LX-RZz"/>
                             <constraint firstItem="NW9-GL-1Jx" firstAttribute="leading" secondItem="rAW-L9-xJr" secondAttribute="trailing" constant="14" id="Vgh-QL-Xut"/>
-                            <constraint firstAttribute="trailing" secondItem="SLx-7M-vpB" secondAttribute="trailing" constant="20" id="eRL-QY-5Lp"/>
+                            <constraint firstItem="uAX-Jf-ycF" firstAttribute="top" secondItem="gzT-CY-RaU" secondAttribute="top" constant="12" id="XoV-Wi-l5k"/>
                             <constraint firstItem="rAW-L9-xJr" firstAttribute="leading" secondItem="gzT-CY-RaU" secondAttribute="leading" constant="20" id="hzS-nR-Hij"/>
-                            <constraint firstAttribute="trailing" secondItem="NW9-GL-1Jx" secondAttribute="trailing" constant="20" id="tew-xr-B8Q"/>
                         </constraints>
                     </view>
                     <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwY-Gk-Hz0">
@@ -126,6 +137,7 @@
             </constraints>
             <size key="customSize" width="600" height="214"/>
             <connections>
+                <outlet property="deleteBtn" destination="uAX-Jf-ycF" id="XaN-CY-Nk1"/>
                 <outlet property="descriptionTxtView" destination="dwY-Gk-Hz0" id="Hif-2l-2b6"/>
                 <outlet property="headerIndicatorView" destination="v4b-Qt-Pxm" id="1cn-QN-6fR"/>
                 <outlet property="imageView" destination="rAW-L9-xJr" id="IDP-vz-Qy0"/>
@@ -137,6 +149,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="icon-close-small-gray" width="15" height="15"/>
         <image name="img-avatar" width="86" height="84"/>
     </resources>
 </document>

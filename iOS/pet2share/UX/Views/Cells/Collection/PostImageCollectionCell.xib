@@ -33,7 +33,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Smith" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dea-ZM-Eh2">
-                                <rect key="frame" x="70" y="12" width="510" height="21"/>
+                                <rect key="frame" x="70" y="12" width="480" height="21"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="783-U4-H3I"/>
@@ -43,7 +43,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 Hour Ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOP-qV-QlR">
-                                <rect key="frame" x="70" y="33" width="510" height="15"/>
+                                <rect key="frame" x="70" y="33" width="480" height="15"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="9pN-fb-wMt"/>
@@ -52,18 +52,29 @@
                                 <color key="textColor" red="0.69019607843137254" green="0.71372549019607845" blue="0.73333333333333328" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mas-kY-YEA">
+                                <rect key="frame" x="570" y="12" width="16" height="16"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="16" id="g1x-ed-Z7q"/>
+                                    <constraint firstAttribute="height" constant="16" id="pYy-IV-8da"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="icon-close-small-gray"/>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="wPW-83-PMY" secondAttribute="bottom" constant="12" id="0h2-jp-ggs"/>
-                            <constraint firstAttribute="trailing" secondItem="dea-ZM-Eh2" secondAttribute="trailing" constant="20" id="5tf-KS-cdJ"/>
                             <constraint firstItem="dea-ZM-Eh2" firstAttribute="top" secondItem="72A-bq-lSA" secondAttribute="top" constant="12" id="62A-ha-VmI"/>
                             <constraint firstItem="dea-ZM-Eh2" firstAttribute="leading" secondItem="wPW-83-PMY" secondAttribute="trailing" constant="14" id="9Sk-OA-nlf"/>
+                            <constraint firstAttribute="trailing" secondItem="Mas-kY-YEA" secondAttribute="trailing" constant="14" id="APF-t1-d8O"/>
+                            <constraint firstItem="Mas-kY-YEA" firstAttribute="top" secondItem="72A-bq-lSA" secondAttribute="top" constant="12" id="Ecq-43-xJW"/>
+                            <constraint firstItem="Mas-kY-YEA" firstAttribute="leading" secondItem="eOP-qV-QlR" secondAttribute="trailing" constant="20" id="Kal-fi-yMh"/>
                             <constraint firstItem="eOP-qV-QlR" firstAttribute="leading" secondItem="wPW-83-PMY" secondAttribute="trailing" constant="14" id="MY7-nV-9kf"/>
                             <constraint firstItem="wPW-83-PMY" firstAttribute="top" secondItem="72A-bq-lSA" secondAttribute="top" constant="12" id="Mfw-zc-7ic"/>
+                            <constraint firstItem="Mas-kY-YEA" firstAttribute="leading" secondItem="dea-ZM-Eh2" secondAttribute="trailing" constant="20" id="Yqk-cq-BIU"/>
                             <constraint firstItem="eOP-qV-QlR" firstAttribute="top" secondItem="dea-ZM-Eh2" secondAttribute="bottom" id="dNt-Zb-qiL"/>
-                            <constraint firstAttribute="trailing" secondItem="eOP-qV-QlR" secondAttribute="trailing" constant="20" id="eio-JH-kSH"/>
                             <constraint firstAttribute="height" constant="60" id="gA1-76-EuG"/>
                             <constraint firstAttribute="bottom" secondItem="eOP-qV-QlR" secondAttribute="bottom" constant="12" id="mcY-nw-n6K"/>
                             <constraint firstItem="wPW-83-PMY" firstAttribute="leading" secondItem="72A-bq-lSA" secondAttribute="leading" constant="20" id="uUu-IP-aQX"/>
@@ -127,6 +138,7 @@
             </constraints>
             <connections>
                 <outlet property="avatarImageView" destination="wPW-83-PMY" id="xEU-eS-SSO"/>
+                <outlet property="deleteBtn" destination="Mas-kY-YEA" id="6Vh-In-SmR"/>
                 <outlet property="descriptionTxtView" destination="9tJ-Mg-qz1" id="dJJ-zT-6PZ"/>
                 <outlet property="postImageView" destination="NrZ-Ec-dlg" id="Elz-dD-Uvz"/>
                 <outlet property="primaryTxtLbl" destination="dea-ZM-Eh2" id="tn7-u1-ne6"/>
@@ -136,6 +148,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="icon-close-small-gray" width="15" height="15"/>
         <image name="img-avatar" width="86" height="84"/>
     </resources>
 </document>

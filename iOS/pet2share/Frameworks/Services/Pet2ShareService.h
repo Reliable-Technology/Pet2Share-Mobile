@@ -135,6 +135,11 @@ postDescription:(NSString *)postDescription
 - (void)deletePost:(NSObject<Pet2ShareServiceCallback> *)callback
             postId:(NSInteger)postId;
 
+- (void)deletePostByPoster:(NSObject<Pet2ShareServiceCallback> *)callback
+                    postId:(NSInteger)postId
+                postedById:(NSInteger)postedById
+             isPostedByPet:(BOOL)isPostedByPet;
+
 - (void)getComments:(NSObject<Pet2ShareServiceCallback> *)callback
              postId:(NSInteger)postId;
 
@@ -147,6 +152,9 @@ commentDescription:(NSString *)commentDescription;
 - (void)updateComment:(NSObject<Pet2ShareServiceCallback> *)callback
             commentId:(NSInteger)commentId
    commentDescription:(NSString *)commentDescription;
+
+- (void)deleteComment:(NSObject<Pet2ShareServiceCallback> *)callback
+            commentId:(NSInteger)commentId;
 
 - (void)deleteCommentByUser:(NSObject<Pet2ShareServiceCallback> *)callback
                   commentId:(NSInteger)commentId

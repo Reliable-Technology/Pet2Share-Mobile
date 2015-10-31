@@ -487,6 +487,21 @@ postDescription:(NSString *)postDescription
     [self postJsonRequest:callback endPoint:DELETEPOST_ENDPOINT jsonModel:[UpdateMessage class] postData:postData];
 }
 
+- (void)deletePostByPoster:(NSObject<Pet2ShareServiceCallback> *)callback
+                    postId:(NSInteger)postId
+                postedById:(NSInteger)postedById
+             isPostedByPet:(BOOL)isPostedByPet
+{
+    fTRACE("%@ <PostId: %ld, PostedBy: %ld>", DELETEPOSTBYPOSTER_ENDPOINT, (long)postId, (long)postedById);
+    
+    NSMutableDictionary *postData = [NSMutableDictionary dictionary];
+    [postData setObject:@(postId) forKey:@"PostId"];
+    [postData setObject:@(postedById) forKey:@"PostedById"];
+    [postData setObject:[Utils getBooleanString:isPostedByPet] forKey:@"IsPostedByPet"];
+    
+    [self postJsonRequest:callback endPoint:DELETEPOSTBYPOSTER_ENDPOINT jsonModel:[UpdateMessage class] postData:postData];
+}
+
 - (void)getComments:(NSObject<Pet2ShareServiceCallback> *)callback
              postId:(NSInteger)postId
 {
@@ -526,6 +541,17 @@ commentDescription:(NSString *)commentDescription
     [postdata setObject:ObjectOrNull(commentDescription) forKey:@"CommentDescription"];
     
     [self postJsonRequest:callback endPoint:UPDATECOMMENT_ENDPOINT jsonModel:[UpdateMessage class] postData:postdata];
+}
+
+- (void)deleteComment:(NSObject<Pet2ShareServiceCallback> *)callback
+            commentId:(NSInteger)commentId
+{
+    fTRACE("%@ <CommentId: %ld>", DELETECOMMENT_ENDPOINT, (long)commentId);
+    
+    NSMutableDictionary *postData = [NSMutableDictionary dictionary];
+    [postData setObject:@(commentId) forKey:@"CommentId"];
+    
+    [self postJsonRequest:callback endPoint:DELETECOMMENT_ENDPOINT jsonModel:[UpdateMessage class] postData:postData];
 }
 
 - (void)deleteCommentByUser:(NSObject<Pet2ShareServiceCallback> *)callback

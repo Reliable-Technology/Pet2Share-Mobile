@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CellButtonDelegate.h"
 
 @interface PostImageCollectionCell : UICollectionViewCell
 
@@ -15,6 +16,10 @@
 - (void)loadDataWithImageUrl:(NSString *)imgUrl
         placeHolderImageName:(NSString *)placeHolderImgName
                 sessionImage:(UIImage *)sessionImage
+                    delegate:(id<CellButtonDelegate>)delegate
+                      postId:(NSInteger)postId
+                  isPostById:(NSInteger)isPostById
+                 isPostByPet:(BOOL)isPostByPet
                 postImageUrl:(NSString *)postImgUrl
                  primaryText:(NSString *)primaryText
                secondaryText:(NSString *)secondaryText

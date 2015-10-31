@@ -39,8 +39,11 @@ static NSString * const kPostImageCellNibName       = @"PostImageCollectionCell"
 static NSString * const kTextViewCellIdentifier     = @"textviewcollectioncell";
 static NSString * const kTextViewCellNibName        = @"TextViewCollectionCell";
 static NSString * const kCellReuseIdentifier        = @"cellidentifier";
-static NSString * const kCellCommentBy              = @"commentby";
 static NSString * const kCellCommentId              = @"commentid";
+static NSString * const kCellCommentBy              = @"commentby";
+static NSString * const kCellPostId                 = @"postid";
+static NSString * const kCellIsPostBy               = @"ispostbyid";
+static NSString * const kCellIsPostByPet            = @"ispostbypet";
 static CGFloat const kSpacing                       = 5.0f;
 static CGFloat const kToolbarHeight                 = 44.0f;
 static NSInteger const kGetCommentTag               = 100;
@@ -153,6 +156,11 @@ static NSInteger const kPostCommentTag              = 101;
     }
 }
 
+- (void)actionButtonTapped:(id)sender identifier:(NSInteger)identifier
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)mainButtonTapped:(id)sender
 {
     [self getComments];
@@ -188,17 +196,21 @@ static NSInteger const kPostCommentTag              = 101;
             profileSessionImage = [Pet2ShareUser current].getUserSessionAvatarImage;
     }
 
-    NSMutableDictionary *profileCellDict = [NSMutableDictionary dictionary];
-    profileCellDict[kCellClassName] = [Utils isNullOrEmpty:self.post.postUrl] ? kPostTextCellNibName : kPostImageCellNibName;
-    profileCellDict[kCellReuseIdentifier] = [Utils isNullOrEmpty:self.post.postUrl] ? kPostTextCellIdentifier : kPostImageCellIdentifier;
-    profileCellDict[kCellNameKey] = profileName;
-    profileCellDict[kCellImageLink] = profileImageUrl;
-    profileCellDict[kCellTextKey] = self.post.postDescription ?: kEmptyString;
-    profileCellDict[kCellDateKey] = [Utils formatNSDateToString:self.post.dateAdded withFormat:kFormatDayOfWeekWithDateTime];
-    profileCellDict[kCellPostImageUrlKey] = self.post.postUrl ?: kEmptyString;
-    profileCellDict[kCellPostStatusKey] = postStatus;
-    if (profileSessionImage) profileCellDict[kCellSessionImageKey] = profileSessionImage;
-    [self.cellDict insertObject:@[profileCellDict] forKey:profileCellDict[kCellReuseIdentifier] atIndex:0];
+    NSMutableDictionary *postCellDict = [NSMutableDictionary dictionary];
+    postCellDict[kCellClassName] = [Utils isNullOrEmpty:self.post.postUrl] ? kPostTextCellNibName : kPostImageCellNibName;
+    postCellDict[kCellReuseIdentifier] = [Utils isNullOrEmpty:self.post.postUrl] ? kPostTextCellIdentifier : kPostImageCellIdentifier;
+    postCellDict[kCellNameKey] = profileName;
+    postCellDict[kCellImageLink] = profileImageUrl;
+    postCellDict[kCellTextKey] = self.post.postDescription ?: kEmptyString;
+    postCellDict[kCellDateKey] = [Utils formatNSDateToString:self.post.dateAdded withFormat:kFormatDayOfWeekWithDateTime];
+    postCellDict[kCellPostImageUrlKey] = self.post.postUrl ?: kEmptyString;
+    postCellDict[kCellPostStatusKey] = postStatus;
+    postCellDict[kCellPostId] = @(self.post.identifier);
+    postCellDict[kCellIsPostBy] = @(self.post.postedBy);
+    postCellDict[kCellIsPostByPet] = @(self.post.isPostByPet);
+    
+    if (profileSessionImage) postCellDict[kCellSessionImageKey] = profileSessionImage;
+    [self.cellDict insertObject:@[postCellDict] forKey:postCellDict[kCellReuseIdentifier] atIndex:0];
 
     if (comments.count > 0)
     {
@@ -405,6 +417,10 @@ static NSInteger const kPostCommentTag              = 101;
             [(PostTextCollectionCell *)cell loadDataWithImageUrl:dict[kCellImageLink]
                                             placeHolderImageName:@"img-avatar"
                                                     sessionImage:dict[kCellSessionImageKey]
+                                                        delegate:self
+                                                          postId:[dict[kCellPostId] integerValue]
+                                                      isPostById:[dict[kCellIsPostBy] integerValue]
+                                                     isPostByPet:[dict[kCellIsPostByPet] boolValue]
                                                      primaryText:dict[kCellNameKey]
                                                    secondaryText:dict[kCellDateKey]
                                                  descriptionText:dict[kCellTextKey]
@@ -418,6 +434,10 @@ static NSInteger const kPostCommentTag              = 101;
             [(PostImageCollectionCell *)cell loadDataWithImageUrl:dict[kCellImageLink]
                                              placeHolderImageName:@"img-avatar"
                                                      sessionImage:dict[kCellSessionImageKey]
+                                                         delegate:self
+                                                           postId:[dict[kCellPostId] integerValue]
+                                                       isPostById:[dict[kCellIsPostBy] integerValue]
+                                                      isPostByPet:[dict[kCellIsPostByPet] boolValue]
                                                      postImageUrl:dict[kCellPostImageUrlKey]
                                                       primaryText:dict[kCellNameKey]
                                                     secondaryText:dict[kCellDateKey]
@@ -441,8 +461,8 @@ static NSInteger const kPostCommentTag              = 101;
         {
             dict = data[0];
             [(TextViewCollectionCell *)cell loadCellWithPlaceholder:NSLocalizedString(@"Enter Comment...", @"")
-                                                   inputAccessory:[self createCustomToolbar]
-                                                         protocol:self];
+                                                     inputAccessory:[self createCustomToolbar]
+                                                           protocol:self];
         }
     }
     @catch (NSException *exception)

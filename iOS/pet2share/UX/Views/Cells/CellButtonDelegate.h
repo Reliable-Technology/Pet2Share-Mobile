@@ -8,7 +8,8 @@
 
 @protocol CellButtonDelegate <NSObject>
 
-@required
+@optional
 - (void)mainButtonTapped:(id)sender;
+- (void)actionButtonTapped:(id)sender identifier:(NSInteger)identifier;
 
 @end
