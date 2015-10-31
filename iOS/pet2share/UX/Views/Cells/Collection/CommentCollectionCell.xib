@@ -29,16 +29,15 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Smith" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z60-UB-86N">
-                        <rect key="frame" x="76" y="12" width="504" height="21"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5pY-ow-J9l">
+                        <rect key="frame" x="570" y="10" width="16" height="16"/>
                         <animations/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="cJn-D6-sdd"/>
+                            <constraint firstAttribute="height" constant="16" id="8v2-r4-Enl"/>
+                            <constraint firstAttribute="width" constant="16" id="eIY-iS-NLh"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                        <color key="textColor" red="0.42655369639396667" green="0.47584608197212219" blue="0.48026475310325623" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                        <state key="normal" image="icon-close-small-gray"/>
+                    </button>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2uo-f6-tau">
                         <rect key="frame" x="71" y="34" width="508" height="46"/>
                         <animations/>
@@ -57,6 +56,16 @@
                         <color key="textColor" red="0.68888300657272339" green="0.71366006135940552" blue="0.73448425531387329" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Smith" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z60-UB-86N">
+                        <rect key="frame" x="76" y="8" width="474" height="21"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="cJn-D6-sdd"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                        <color key="textColor" red="0.42655369639396667" green="0.47584608197212219" blue="0.48026475310325623" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <animations/>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -64,13 +73,16 @@
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="5pY-ow-J9l" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="2aQ-SR-V5U"/>
                 <constraint firstAttribute="bottom" secondItem="2V1-5D-F35" secondAttribute="bottom" constant="6" id="2xm-MX-9Iv"/>
                 <constraint firstItem="2uo-f6-tau" firstAttribute="leading" secondItem="Yyr-nZ-vr0" secondAttribute="trailing" constant="15" id="4Ug-qZ-snp"/>
-                <constraint firstItem="2uo-f6-tau" firstAttribute="top" secondItem="z60-UB-86N" secondAttribute="bottom" constant="1" id="4ma-6C-jWS"/>
+                <constraint firstItem="5pY-ow-J9l" firstAttribute="leading" secondItem="z60-UB-86N" secondAttribute="trailing" constant="20" id="4cD-Eb-qmU"/>
+                <constraint firstItem="2uo-f6-tau" firstAttribute="top" secondItem="z60-UB-86N" secondAttribute="bottom" constant="5" id="4ma-6C-jWS"/>
+                <constraint firstItem="2uo-f6-tau" firstAttribute="top" secondItem="5pY-ow-J9l" secondAttribute="bottom" constant="8" id="Jcx-rk-RLZ"/>
                 <constraint firstAttribute="trailing" secondItem="2V1-5D-F35" secondAttribute="trailing" constant="20" id="VbO-NS-m0Y"/>
-                <constraint firstAttribute="trailing" secondItem="z60-UB-86N" secondAttribute="trailing" constant="20" id="gr1-l1-uIP"/>
-                <constraint firstItem="z60-UB-86N" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="iKE-Qd-mjA"/>
+                <constraint firstItem="z60-UB-86N" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="iKE-Qd-mjA"/>
                 <constraint firstItem="2V1-5D-F35" firstAttribute="top" secondItem="2uo-f6-tau" secondAttribute="bottom" constant="-1" id="m2y-oX-9Ij"/>
+                <constraint firstAttribute="trailing" secondItem="5pY-ow-J9l" secondAttribute="trailing" constant="14" id="mqJ-cc-631"/>
                 <constraint firstItem="z60-UB-86N" firstAttribute="leading" secondItem="Yyr-nZ-vr0" secondAttribute="trailing" constant="20" id="ntF-5X-gRZ"/>
                 <constraint firstItem="2V1-5D-F35" firstAttribute="leading" secondItem="Yyr-nZ-vr0" secondAttribute="trailing" constant="20" id="pCr-wZ-XFy"/>
                 <constraint firstItem="Yyr-nZ-vr0" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="sFh-CM-ufe"/>
@@ -78,6 +90,7 @@
                 <constraint firstItem="Yyr-nZ-vr0" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="wMb-nu-Zeb"/>
             </constraints>
             <connections>
+                <outlet property="deleteBtn" destination="5pY-ow-J9l" id="z5V-5r-7lg"/>
                 <outlet property="descriptionTxtView" destination="2uo-f6-tau" id="LY5-xF-5i9"/>
                 <outlet property="headerLbl" destination="z60-UB-86N" id="rV7-lU-TFm"/>
                 <outlet property="imageView" destination="Yyr-nZ-vr0" id="4NP-Gz-Z4B"/>
@@ -86,6 +99,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="icon-close-small-gray" width="15" height="15"/>
         <image name="img-avatar" width="86" height="84"/>
     </resources>
 </document>

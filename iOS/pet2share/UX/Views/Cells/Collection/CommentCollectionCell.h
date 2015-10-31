@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CellButtonDelegate.h"
 
 @interface CommentCollectionCell : UICollectionViewCell
 
@@ -15,6 +16,9 @@
 - (void)loadDataWithImageUrl:(NSString *)imgUrl
         placeHolderImageName:(NSString *)placeHolderImgName
                 sessionImage:(UIImage *)sessionImage
+                    delegate:(id<CellButtonDelegate>)delegate
+                   commentId:(NSInteger)commentId
+                   commentBy:(NSInteger)commentBy
                   headerText:(NSString *)headerText
              descriptionText:(NSString *)descriptionText
                   statusText:(NSString *)statusText;

@@ -148,8 +148,9 @@ commentDescription:(NSString *)commentDescription;
             commentId:(NSInteger)commentId
    commentDescription:(NSString *)commentDescription;
 
-- (void)deleteComment:(NSObject<Pet2ShareServiceCallback> *)callback
-            commentId:(NSInteger)commentId;
+- (void)deleteCommentByUser:(NSObject<Pet2ShareServiceCallback> *)callback
+                  commentId:(NSInteger)commentId
+                     userId:(NSInteger)userId;
 
 - (void)loadImage:(NSString *)url
       aspectRatio:(ImageAspectRatio)aspectRatio

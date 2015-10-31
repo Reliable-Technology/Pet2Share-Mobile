@@ -16,9 +16,9 @@
 ///
 ///------------------------------------------------------------------------------
 
-// #define LOCALWEBSERVICE_TEST 1         // Turn on local testing mode
+#define LOCALWEBSERVICE_TEST 1         // Turn on local testing mode
 
-#define PET2SHARE_DEV_LOCAL_URL             @"http://192.168.200.7:8087"
+#define PET2SHARE_DEV_LOCAL_URL             @"http://192.168.200.8:8087"
 #define PET2SHARE_DEV_URL                   @"http://service.pet2share.com"
 #define PET2SHARE_QA_URL                    @""
 #define PET2SHARE_STAGING_URL               @""
@@ -58,5 +58,6 @@
 #define ADDCOMMENT_ENDPOINT                 @"AddComment"
 #define UPDATECOMMENT_ENDPOINT              @"UpdateComment"
 #define DELETECOMMENT_ENDPOINT              @"DeleteComment"
+#define DELETECOMMENTBYUSER_ENDPOINT        @"DeleteCommentByUser"
 
 #endif

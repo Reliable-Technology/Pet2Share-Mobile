@@ -20,7 +20,7 @@
 #import "OrderedDictionary.h"
 #import "RoundCornerButton.h"
 
-@interface CommentCollectionVC () <Pet2ShareServiceCallback, FormProtocol>
+@interface CommentCollectionVC () <Pet2ShareServiceCallback, FormProtocol, CellButtonDelegate>
 
 @property (nonatomic, strong) MutableOrderedDictionary *cellDict;
 @property (nonatomic, strong) TransitionManager *transitionManager;
@@ -39,12 +39,16 @@ static NSString * const kPostImageCellNibName       = @"PostImageCollectionCell"
 static NSString * const kTextViewCellIdentifier     = @"textviewcollectioncell";
 static NSString * const kTextViewCellNibName        = @"TextViewCollectionCell";
 static NSString * const kCellReuseIdentifier        = @"cellidentifier";
+static NSString * const kCellCommentBy              = @"commentby";
+static NSString * const kCellCommentId              = @"commentid";
 static CGFloat const kSpacing                       = 5.0f;
 static CGFloat const kToolbarHeight                 = 44.0f;
 static NSInteger const kGetCommentTag               = 100;
 static NSInteger const kPostCommentTag              = 101;
 
+///--------------------------------------
 #pragma mark - Life Cycle
+///--------------------------------------
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -104,10 +108,59 @@ static NSInteger const kPostCommentTag              = 101;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
-#pragma mark - Events & Delegates
+///--------------------------------------
+#pragma mark - Events
+///--------------------------------------
 
+- (void)keyboardWillShow:(NSNotification *)sender
+{
+    CGSize keyboardSize = [[[sender userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    NSTimeInterval duration = [[[sender userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    [UIView animateWithDuration:duration animations:^{
+        UIEdgeInsets edgeInsets = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0);
+        [self.collectionView setContentInset:edgeInsets];
+        [self.collectionView setScrollIndicatorInsets:edgeInsets];
+    }];
+}
 
+- (void)keyboardWillHide:(NSNotification *)sender
+{
+    NSTimeInterval duration = [[[sender userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    [UIView animateWithDuration:duration animations:^{
+        UIEdgeInsets edgeInsets = UIEdgeInsetsZero;
+        [self.collectionView setContentInset:edgeInsets];
+        [self.collectionView setScrollIndicatorInsets:edgeInsets];
+    }];
+}
+
+- (void)postBtnTapped:(id)sender
+{
+    fTRACE(@"Sender: %@", sender);
+    [self.view endEditing:YES];
+    [self postComments];
+}
+
+- (void)performAction
+{
+    // No Implementation
+}
+
+- (void)performAction:(id)data
+{
+    if ([data isKindOfClass:[NSString class]])
+    {
+        self.inputCommentText = (NSString *)data;
+    }
+}
+
+- (void)mainButtonTapped:(id)sender
+{
+    [self getComments];
+}
+
+///--------------------------------------
 #pragma mark - Web Services
+///--------------------------------------
 
 - (void)prepareCellData:(NSArray *)comments
 {
@@ -164,6 +217,8 @@ static NSInteger const kPostCommentTag              = 101;
             commentDict[kCellDateKey] = [Utils formatNSDateToString:comment.dateAdded withFormat:kFormatDayOfWeekWithDateTime];
             commentDict[kCellTextKey] = comment.commentDescription ?: kEmptyString;
             commentDict[kCellReuseIdentifier] = kCommentCellIdentifier;
+            commentDict[kCellCommentId] = @(comment.identifier);
+            commentDict[kCellCommentBy] = @(comment.commentedBy);
             if (commentProfileSessionImage) commentDict[kCellSessionImageKey] = commentProfileSessionImage;
             [commentList addObject:commentDict];
         }
@@ -231,7 +286,9 @@ static NSInteger const kPostCommentTag              = 101;
     [Graphics alert:NSLocalizedString(@"Error", @"") message:errorMessage.message type:ErrorAlert];
 }
 
+///--------------------------------------
 #pragma mark - Private & Overriden Methods
+///--------------------------------------
 
 - (void)setupLayout
 {
@@ -268,50 +325,9 @@ static NSInteger const kPostCommentTag              = 101;
     return toolbar;
 }
 
-#pragma mark - Events
-
-- (void)keyboardWillShow:(NSNotification *)sender
-{
-    CGSize keyboardSize = [[[sender userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
-    NSTimeInterval duration = [[[sender userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    [UIView animateWithDuration:duration animations:^{
-        UIEdgeInsets edgeInsets = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0);
-        [self.collectionView setContentInset:edgeInsets];
-        [self.collectionView setScrollIndicatorInsets:edgeInsets];
-    }];
-}
-
-- (void)keyboardWillHide:(NSNotification *)sender
-{
-    NSTimeInterval duration = [[[sender userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    [UIView animateWithDuration:duration animations:^{
-        UIEdgeInsets edgeInsets = UIEdgeInsetsZero;
-        [self.collectionView setContentInset:edgeInsets];
-        [self.collectionView setScrollIndicatorInsets:edgeInsets];
-    }];
-}
-
-- (void)postBtnTapped:(id)sender
-{
-    fTRACE(@"Sender: %@", sender);
-    [self.view endEditing:YES];
-    [self postComments];
-}
-
-- (void)performAction
-{
-    // No Implementation
-}
-
-- (void)performAction:(id)data
-{
-    if ([data isKindOfClass:[NSString class]])
-    {
-        self.inputCommentText = (NSString *)data;
-    }
-}
-
+///--------------------------------------
 #pragma mark - Collection View
+///--------------------------------------
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -414,6 +430,9 @@ static NSInteger const kPostCommentTag              = 101;
             [(CommentCollectionCell *)cell loadDataWithImageUrl:dict[kCellImageLink]
                                            placeHolderImageName:@"img-avatar"
                                                    sessionImage:dict[kCellSessionImageKey]
+                                                       delegate:self
+                                                      commentId:[dict[kCellCommentId] integerValue]
+                                                      commentBy:[dict[kCellCommentBy] integerValue]
                                                      headerText:dict[kCellNameKey]
                                                 descriptionText:dict[kCellTextKey]
                                                      statusText:dict[kCellDateKey]];

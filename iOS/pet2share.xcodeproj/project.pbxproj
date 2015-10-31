@@ -981,7 +981,7 @@
 				TargetAttributes = {
 					FBCEA42B1B4CC3E000497678 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = ZU5W5X3DU9;
+						DevelopmentTeam = 6G34LX7B7Q;
 					};
 					FBCEA4441B4CC3E000497678 = {
 						CreatedOnToolsVersion = 6.4;
@@ -1383,7 +1383,7 @@
 				INFOPLIST_FILE = pet2share/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "pet2share.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.perfectsqsenterprise.pet2share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -1401,7 +1401,7 @@
 				INFOPLIST_FILE = pet2share/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "pet2share.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.perfectsqsenterprise.pet2share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

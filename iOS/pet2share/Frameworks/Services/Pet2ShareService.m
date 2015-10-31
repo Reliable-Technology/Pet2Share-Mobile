@@ -528,15 +528,17 @@ commentDescription:(NSString *)commentDescription
     [self postJsonRequest:callback endPoint:UPDATECOMMENT_ENDPOINT jsonModel:[UpdateMessage class] postData:postdata];
 }
 
-- (void)deleteComment:(NSObject<Pet2ShareServiceCallback> *)callback
-            commentId:(NSInteger)commentId
+- (void)deleteCommentByUser:(NSObject<Pet2ShareServiceCallback> *)callback
+                  commentId:(NSInteger)commentId
+                     userId:(NSInteger)userId
 {
-    fTRACE("%@ <CommentId: %ld>", DELETECOMMENT_ENDPOINT, (long)commentId);
+    fTRACE("%@ <CommentId: %ld, UserId: %ld>", DELETECOMMENTBYUSER_ENDPOINT, (long)commentId, (long)userId);
     
     NSMutableDictionary *postData = [NSMutableDictionary dictionary];
     [postData setObject:@(commentId) forKey:@"CommentId"];
+    [postData setObject:@(userId) forKey:@"UserId"];
     
-    [self postJsonRequest:callback endPoint:DELETECOMMENT_ENDPOINT jsonModel:[UpdateMessage class] postData:postData];
+    [self postJsonRequest:callback endPoint:DELETECOMMENTBYUSER_ENDPOINT jsonModel:[UpdateMessage class] postData:postData];
 }
 
 - (void)loadImage:(NSString *)url

@@ -52,7 +52,7 @@ static CGFloat const kHeaderHeight          = 60.0f;
     
     CGSize size = [Graphics getDeviceSize];
     CGFloat actualImageWidth = size.width-2*kImageSpacing;
-    CGFloat actualImageHeight = ceilf(actualImageWidth*3/4);
+    CGFloat actualImageHeight = ceilf(actualImageWidth*12/16);
     
     cellHeight += actualImageHeight;
     
